@@ -1,0 +1,376 @@
+
+<!DOCTYPE html>
+
+
+
+
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>2.4. Comparison of List Implementations &mdash; BM40A1500 Data Structures and Algorithms</title>
+    
+    <link rel="stylesheet" href="_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../lib/normalize.css" type="text/css" />
+    <link rel="stylesheet" href="../../../lib/JSAV.css" type="text/css" />
+    <link rel="stylesheet" href="../../../lib/odsaMOD-min.css" type="text/css" />
+    <link rel="stylesheet" href="../../../lib/jquery.ui.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../../lib/odsaStyle-min.css" type="text/css" />
+    
+  <script type="text/javascript">
+    var DOCUMENTATION_OPTIONS = {
+      URL_ROOT:    './',
+      VERSION:     '0.4.1',
+      COLLAPSE_INDEX: false,
+      FILE_SUFFIX: '.html',
+      HAS_SOURCE:  true
+    };
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEscapes: true
+      },
+      "HTML-CSS": {
+        scale: "80"
+      }
+    });
+  </script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="index" title="BM40A1500 Data Structures and Algorithms" href="index.html" />
+    <link rel="next" title="5. Stacks" href="StackArray.html" />
+    <link rel="prev" title="3. Linked Lists" href="ListLinked.html" />
+
+  </head>
+
+  <body>
+
+
+      <div class="header">
+        
+  
+      <script type="text/javascript" src="../../../lib/jquery.min.js"></script>
+      <script type="text/javascript" src="../../../lib/jquery.migrate.min.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/localforage/1.9.0/localforage.min.js"></script>
+    <script type="text/javascript" src="../../../lib/jquery.ui.min.js"></script>
+    <script type="text/javascript" src="../../../lib/jquery.transit.js"></script>
+    <script type="text/javascript" src="../../../lib/raphael.js"></script>
+    <script type="text/javascript" src="../../../lib/JSAV-min.js"></script>
+    <script type="text/javascript" src="_static/config.js"></script>
+    <script type="text/javascript" src="../../../lib/timeme-min.js"></script>
+    <script type="text/javascript" src="../../../lib/odsaUtils-min.js"></script>
+    <script type="text/javascript" src="../../../lib/odsaMOD-min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.min.js"></script>
+    <script type="text/javascript" src="https://d3js.org/d3-selection-multi.v1.min.js"></script>
+    <script type="text/javascript" src="../../../lib/dataStructures.js"></script>
+    <script type="text/javascript" src="../../../lib/conceptMap.js"></script>
+
+        
+<a id="username-link" style="float:right;color:red;margin:10px 20px auto; display: none" class="username-link" href="Gradebook.html"></a>
+<a id="login-link" style="float:right;color:red;margin:10px 20px auto" class="login-link" href="#"><Macro 'login'></a>
+<div id="login-box" class="login-popup">
+  <a href="#" class="close"><img src="_static/Images/close_pop.png" class="btn_close" title="Close Window" alt="Close" /></a>
+  <form method="post" class="signin" action="https://#">
+    <fieldset class="textbox">
+      <label class="username">
+        <span>Username</span>
+        <input id="username" value="" type="text" autocomplete="on" placeholder="Username" tabindex="1">
+      </label>
+      <label class="password">
+        <span>Password</span>
+        <input id="password" value="" type="password" placeholder="Password" tabindex="2">
+        <span><a id="forgot" href="#">Forgot your password?</a></span>
+      </label>
+
+      <p>
+        <input type="submit" id="login-submit-button" value="Sign in" tabindex="3" />
+      </p>
+      <p>
+        <input type="button" id="register-button" value="Register" tabindex="4" />
+      </p>
+    </fieldset>
+  </form>
+</div>
+
+        
+<a id="registration-link" style="float:right;color:red;margin:10px 20px auto" class="registration-link" href="#">Register</a>
+<div id="registration-box" class="registration-popup ">
+  <a href="#" class="close"><img src="_static/Images/close_pop.png" class="btn_close" title="Close Window" alt="Close Window" /></a>
+  <form method="post" class="signin" action="https://#">
+    <fieldset class="textbox">
+      <div id="register_error" class="error"></div>
+      <label class="username">
+        <span>Username:</span>
+        <input type="text" id="user" placeholder="Username" />
+      </label>
+
+      <label class="password">
+        <span>Password</span>
+        <input id="pass" type="password" placeholder="Password" />
+      </label>
+
+      <label class="password">
+        <span>Confirm Password</span>
+        <input id="rpass" type="password" placeholder="Confirm Password" />
+      </label>
+
+      <label class="email">
+        <span>Email:</span>
+        <input type="text" id="email" placeholder="Email">
+      </label>
+
+      <p>
+        <input type="submit" id="register-submit-button" value="Register &rarr;"/>
+      </p>
+    </fieldset>
+  </form>
+</div>
+<img class="leftlogo" src="_static/OpenDSALogoT64.png" alt="Logo"/><div class="title-wrapper">
+          <div class="title-inbetween" style="display: table-cell; vertical-align: middle;">
+            <div class="title-content">
+              <h1 class="heading" ><a href="index.html">
+                <span>BM40A1500 Data Structures and Algorithms</span></a></h1>
+              <h2 class="heading" ><span>Chapter 2 Linear Data Structures</span></h2>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="topnav">
+        <p>
+            <a style="float:left;color:blue;" href="../source/ListAnalysis.rst.rst"
+              target="_blank" rel="nofollow">Show Source | </a>&#160;&#160;
+            <a class="abt" style="float:left;color:blue;" href="#" rel="nofollow">| About</a>&#160;&#160;
+
+          
+        «&#160;&#160;<a id="prevmod" href="ListLinked.html">2.<span class="section-number">3. </span>Linked Lists</a>
+        &#160;&#160;::&#160;&#160;
+        <a  class="uplink" href="index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a  id="nextmod" href="StackArray.html">2.<span class="section-number">5. </span>Stacks</a>&#160;&#160;»
+
+
+        </p>
+      </div>
+       
+      <div class="content">
+        
+  <script>ODSA.SETTINGS.MODULE_SECTIONS = ['space-comparison', 'time-comparison'];</script><script>ODSA.SETTINGS.DISP_MOD_COMP = true;ODSA.SETTINGS.MODULE_NAME = "ListAnalysis";ODSA.SETTINGS.MODULE_LONG_NAME = "Comparison of List Implementations";ODSA.SETTINGS.MODULE_CHAPTER = "Linear Data Structures"; ODSA.SETTINGS.BUILD_DATE = "2024-08-13 08:46:36"; ODSA.SETTINGS.BUILD_CMAP = false;JSAV_OPTIONS['lang']='en';JSAV_EXERCISE_OPTIONS['code']='python';</script><div class="section" id="comparison-of-list-implementations">
+<h1>2.<span class="section-number">4. </span>Comparison of List Implementations<a class="headerlink" href="#comparison-of-list-implementations" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="space-comparison">
+<h2>2.<span class="section-number">4.1. </span>Space Comparison<a class="headerlink" href="#space-comparison" title="Permalink to this headline">¶</a></h2>
+<p>Now that you have seen two substantially different implementations for
+lists, it is natural to ask which is better.
+In particular, if you must implement a list for some task,
+which implementation should you choose?</p>
+<p>Given a collection of elements to store, they take up some amount of
+space whether they are simple integers or large objects with many
+fields.
+Any container data structure like a list then requires some additional
+space to organize the elements being stored.
+This additional space is called <a class="reference internal" href="Glossary.html#term-overhead"><span class="xref std std-term">overhead</span></a>.</p>
+<p><a class="reference internal" href="Glossary.html#term-array-based-list"><span class="xref std std-term">Array-based lists</span></a> have the disadvantage
+that their size must be predetermined before the array can be
+allocated.
+Array-based lists cannot grow beyond their predetermined size.
+Whenever the list contains only a few elements, a
+substantial amount of space might be tied up in a largely empty array.
+This empty space is the overhead required by the array-based list.
+<a class="reference internal" href="Glossary.html#term-linked-list"><span class="xref std std-term">Linked lists</span></a> have the advantage that they only
+need space for the objects actually on the list.
+There is no limit to the number of elements on a linked list,
+as long as there is <a class="reference internal" href="Glossary.html#term-free-store"><span class="xref std std-term">free store</span></a> memory available.
+The amount of space required by a linked list is <span class="math notranslate nohighlight">\(\Theta(n)\)</span>,
+while the space required by the array-based list implementation is
+<span class="math notranslate nohighlight">\(\Omega(n)\)</span>, but can be greater.</p>
+<p>Array-based lists have the advantage that there is no wasted
+space for an individual element.
+Linked lists require that an extra pointer for the <code class="docutils literal notranslate"><span class="pre">next</span></code> field be
+added to every list node.
+So the linked list has these <code class="docutils literal notranslate"><span class="pre">next</span></code> pointers as overhead.
+If the element size is small, then the overhead for
+links can be a significant fraction of the total storage.
+When the array for the array-based list is completely filled, there
+is no wasted space, and so no overhead.
+The array-based list will then be more space efficient, by a
+constant factor, than the linked implementation.</p>
+<p>A simple formula can be used to determine whether the array-based list
+or the linked list implementation will be more space efficient in a
+particular situation.
+Call <span class="math notranslate nohighlight">\(n\)</span> the number of elements currently in the list,
+<span class="math notranslate nohighlight">\(P\)</span> the size of a pointer in storage units
+(typically four bytes), <span class="math notranslate nohighlight">\(E\)</span> the size of a data element in
+storage units (this could be anything, from one bit for a Boolean
+variable on up to thousands of bytes or more for complex records),
+and <span class="math notranslate nohighlight">\(D\)</span> the maximum number of list elements that can be stored
+in the array.
+The amount of space required for the array-based list is <span class="math notranslate nohighlight">\(DE\)</span>,
+regardless of the number of elements actually stored in the list at
+any given time.
+The amount of space required for the linked list is <span class="math notranslate nohighlight">\(n(P + E)\)</span>.
+The smaller of these expressions for a given value <span class="math notranslate nohighlight">\(n\)</span>
+determines the more space-efficient implementation for <span class="math notranslate nohighlight">\(n\)</span>
+elements.
+In general, the linked implementation requires less space than the
+array-based implementation when relatively few elements are in the
+list.
+Conversely, the array-based implementation becomes more space
+efficient when the array is close to full.
+Using the equation, we can solve for <span class="math notranslate nohighlight">\(n\)</span> to determine the
+<a class="reference internal" href="Glossary.html#term-break-even-point"><span class="xref std std-term">break-even point</span></a> beyond which the array-based implementation
+is more space efficient in any particular situation.
+This occurs when</p>
+<div class="math notranslate nohighlight">
+\[n &gt; DE/(P + E).\]</div>
+<p>If <span class="math notranslate nohighlight">\(P = E\)</span>, then the break-even point is at <span class="math notranslate nohighlight">\(D/2\)</span>.
+This would happen if the element field is either a four-byte
+<code class="docutils literal notranslate"><span class="pre">int</span></code> value or a pointer, and the <code class="docutils literal notranslate"><span class="pre">next</span></code> field is a typical
+four-byte pointer.
+That is, the array-based implementation would be more efficient (if
+the link field and the element field are the same size) whenever the
+array is more than half full.</p>
+<p>As a rule of thumb, linked lists are more space efficient when
+implementing lists whose number of elements varies widely or is
+unknown.
+Array-based lists are generally more space efficient when
+the user knows in advance approximately how large the list will
+become, and can be confident that the list will never grow beyond a
+certain limit.</p>
+</div>
+<div class="section" id="time-comparison">
+<h2>2.<span class="section-number">4.2. </span>Time Comparison<a class="headerlink" href="#time-comparison" title="Permalink to this headline">¶</a></h2>
+<p>Array-based lists are faster for access by position.
+Positions can easily be adjusted forwards or backwards by
+the <code class="docutils literal notranslate"><span class="pre">next</span></code> and <code class="docutils literal notranslate"><span class="pre">prev</span></code> methods.
+These operations always take <span class="math notranslate nohighlight">\(\Theta(1)\)</span> time.
+In contrast, singly linked lists have no explicit access to the
+previous element, and access by position requires that we march
+down the list from the front (or the current position) to the
+specified position.
+Both of these operations require <span class="math notranslate nohighlight">\(\Theta(n)\)</span> time in the average
+and worst cases, if we assume that each position on the list is
+equally likely to be accessed on any call to <code class="docutils literal notranslate"><span class="pre">prev</span></code> or
+<code class="docutils literal notranslate"><span class="pre">moveToPos</span></code>.</p>
+<p>Given a pointer to a suitable location in the list,
+the <code class="docutils literal notranslate"><span class="pre">insert</span></code> and <code class="docutils literal notranslate"><span class="pre">remove</span></code> methods for linked lists
+require only <span class="math notranslate nohighlight">\(\Theta(1)\)</span> time.
+Array-based lists must shift the remainder of the list up or down
+within the array.
+This requires <span class="math notranslate nohighlight">\(\Theta(n)\)</span> time in the average and worst cases.
+For many applications, the time to insert and delete elements
+dominates all other operations.
+For this reason, linked lists are often preferred to array-based
+lists.</p>
+<p>When implementing the array-based list, an implementor could
+allow the size of the array to grow and shrink depending on the number
+of elements that are actually stored.
+This data structure is known as a <a class="reference internal" href="Glossary.html#term-dynamic-array"><span class="xref std std-term">dynamic array</span></a>.
+For example, both the Java and C++/STL <code class="docutils literal notranslate"><span class="pre">Vector</span></code> classes implement a
+dynamic array,
+and JavaScript arrays are always dynamic.
+Dynamic arrays allow the programmer to get around the limitation on
+the traditional array that its size cannot be changed once the array
+has been created.
+This also means that space need not be allocated to the dynamic array
+until it is to be used.
+The disadvantage of this approach is that it takes time to deal
+with space adjustments on the array.
+Each time the array grows in size, its contents must be copied.
+A good implementation of the dynamic array will grow and shrink
+the array in such a way as to keep the overall cost for a series of
+insert/delete operations relatively inexpensive, even though an
+occasional insert/delete operation might be expensive.
+A simple rule of thumb is to double the size of the array when it
+becomes full, and to cut the array size in half when it becomes one
+quarter full.
+To analyze the overall cost of dynamic array operations over time,
+we need to use a technique known as
+<a class="reference internal" href="Glossary.html#term-amortized-analysis"><span class="xref std std-term">amortized analysis</span></a>.</p>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      <p><span class="email_div" style="display:inline;"><a id="contact_us" class="contact" style="float:left;color:blue;" rel="nofollow" href="mailto:">Contact Us |</a><a style="float:left;color:blue;" rel="nofollow" href="../../../lib/Privacy.html" target="_blank">| Privacy |</a> <a style="float:left;color:blue;" rel="nofollow" href="../../../lib/license.html" target="_blank">| License</a></span>&#160;&#160;
+      
+        «&#160;&#160;<a id="prevmod1" href="ListLinked.html">2.<span class="section-number">3. </span>Linked Lists</a>
+        &#160;&#160;::&#160;&#160;
+        <a  class="uplink" href="index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a  id="nextmod1" href="StackArray.html">2.<span class="section-number">5. </span>Stacks</a>&#160;&#160;»
+
+</p>
+      </div>
+      <img style="float:right;" src="_static/nsf1.gif" height="62" width="62" alt="nsf"/>
+
+
+    <div class="footer">
+      <p>
+        <span class="email_div" style="display:inline;">
+          <a id="contact_us" class="contact" style="float:left;color:blue;" rel="nofollow" href="mailto:">Contact Us |</a>
+          <a id="bugreport-link" style="float:left;color:blue;" class="bugreport-link" href="#">| Report a bug</a>
+        </span>
+      </p>
+        &copy; Copyright 2011-2023 by OpenDSA Project Contributors and distributed under an MIT license.
+      Last updated on Aug 13, 2024.
+      Created using <a target="_blank" href="http://sphinx.pocoo.org/">Sphinx</a> 4.4.0.
+    </div>
+    
+<div id="bugreport-box" class="bugreport-popup ">
+  <a href="#" class="close"><img src="_static/Images/close_pop.png" class="btn_close" title="Close Window" alt="Close Window" /></a>
+  <form method="post" class="report" action="https://#">
+    <fieldset class="textbox">
+      <div id="bug_error" class="error"></div>
+      <label>
+        <span>Summary*:</span>
+        <input type="text" id="b_title" placeholder="Summary" />
+      </label>
+
+      <label class="os">
+        <span>Operating system*:</span>
+        <select id="b_os">
+          <option value="windows">Windows</option>
+          <option value="macos">Mac OS</option>
+          <option value="linux">Linux</option>
+          <option value="ios">iOS</option>
+          <option value="android">Android</option>
+          <option value="other">Other</option>
+        </select>
+      </label>
+
+      <label class="browser">
+        <span>Browser*:</span>
+        <select id="b_browser">
+          <option value="chrome">Chrome</option>
+          <option value="safari">Safari</option>
+          <option value="internetexplorer">Internet Explorer</option>
+          <option value="opera">Opera</option>
+          <option value="other">Other</option>
+        </select>
+      </label>
+
+      <label class="description">
+        <span>Description*:</span><br>
+        <textarea id="b_description" rows="5" cols="25" placeholder="***BUG** Please enter: (1) a consice description of the problem. (2) steps to reproduce bug. (3) the version of your browser and operating system."></textarea>
+      </label>
+
+      <label class="screenshot">
+        <span>Attach a screenshot (optional):</span>
+        <input type="file" id="b_screenshot" accept="image/*" placeholder="Attach a screenshot (optional)">
+      </label>
+
+      <p>
+        <input type="submit" id="bug-submit-button" value="Submit &rarr;"/>
+      </p>
+    </fieldset>
+  </form>
+</div>
+
+  </body>
+</html>

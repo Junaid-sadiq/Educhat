@@ -1,0 +1,433 @@
+
+<!DOCTYPE html>
+
+
+
+
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>2.3. Linked Lists &mdash; BM40A1500 Data Structures and Algorithms</title>
+    
+    <link rel="stylesheet" href="_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../lib/normalize.css" type="text/css" />
+    <link rel="stylesheet" href="../../../lib/JSAV.css" type="text/css" />
+    <link rel="stylesheet" href="../../../lib/odsaMOD-min.css" type="text/css" />
+    <link rel="stylesheet" href="../../../lib/jquery.ui.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../../lib/odsaStyle-min.css" type="text/css" />
+    
+  <script type="text/javascript">
+    var DOCUMENTATION_OPTIONS = {
+      URL_ROOT:    './',
+      VERSION:     '0.4.1',
+      COLLAPSE_INDEX: false,
+      FILE_SUFFIX: '.html',
+      HAS_SOURCE:  true
+    };
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEscapes: true
+      },
+      "HTML-CSS": {
+        scale: "80"
+      }
+    });
+  </script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="index" title="BM40A1500 Data Structures and Algorithms" href="index.html" />
+    <link rel="next" title="4. Comparison of List Implementations" href="ListAnalysis.html" />
+    <link rel="prev" title="2. Array-Based List Implementation" href="ListArray.html" />
+
+  </head>
+
+  <body>
+
+
+      <div class="header">
+        
+  
+      <script type="text/javascript" src="../../../lib/jquery.min.js"></script>
+      <script type="text/javascript" src="../../../lib/jquery.migrate.min.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/localforage/1.9.0/localforage.min.js"></script>
+    <script type="text/javascript" src="../../../lib/jquery.ui.min.js"></script>
+    <script type="text/javascript" src="../../../lib/jquery.transit.js"></script>
+    <script type="text/javascript" src="../../../lib/raphael.js"></script>
+    <script type="text/javascript" src="../../../lib/JSAV-min.js"></script>
+    <script type="text/javascript" src="_static/config.js"></script>
+    <script type="text/javascript" src="../../../lib/timeme-min.js"></script>
+    <script type="text/javascript" src="../../../lib/odsaUtils-min.js"></script>
+    <script type="text/javascript" src="../../../lib/odsaMOD-min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.min.js"></script>
+    <script type="text/javascript" src="https://d3js.org/d3-selection-multi.v1.min.js"></script>
+    <script type="text/javascript" src="../../../lib/dataStructures.js"></script>
+    <script type="text/javascript" src="../../../lib/conceptMap.js"></script>
+
+        
+<a id="username-link" style="float:right;color:red;margin:10px 20px auto; display: none" class="username-link" href="Gradebook.html"></a>
+<a id="login-link" style="float:right;color:red;margin:10px 20px auto" class="login-link" href="#"><Macro 'login'></a>
+<div id="login-box" class="login-popup">
+  <a href="#" class="close"><img src="_static/Images/close_pop.png" class="btn_close" title="Close Window" alt="Close" /></a>
+  <form method="post" class="signin" action="https://#">
+    <fieldset class="textbox">
+      <label class="username">
+        <span>Username</span>
+        <input id="username" value="" type="text" autocomplete="on" placeholder="Username" tabindex="1">
+      </label>
+      <label class="password">
+        <span>Password</span>
+        <input id="password" value="" type="password" placeholder="Password" tabindex="2">
+        <span><a id="forgot" href="#">Forgot your password?</a></span>
+      </label>
+
+      <p>
+        <input type="submit" id="login-submit-button" value="Sign in" tabindex="3" />
+      </p>
+      <p>
+        <input type="button" id="register-button" value="Register" tabindex="4" />
+      </p>
+    </fieldset>
+  </form>
+</div>
+
+        
+<a id="registration-link" style="float:right;color:red;margin:10px 20px auto" class="registration-link" href="#">Register</a>
+<div id="registration-box" class="registration-popup ">
+  <a href="#" class="close"><img src="_static/Images/close_pop.png" class="btn_close" title="Close Window" alt="Close Window" /></a>
+  <form method="post" class="signin" action="https://#">
+    <fieldset class="textbox">
+      <div id="register_error" class="error"></div>
+      <label class="username">
+        <span>Username:</span>
+        <input type="text" id="user" placeholder="Username" />
+      </label>
+
+      <label class="password">
+        <span>Password</span>
+        <input id="pass" type="password" placeholder="Password" />
+      </label>
+
+      <label class="password">
+        <span>Confirm Password</span>
+        <input id="rpass" type="password" placeholder="Confirm Password" />
+      </label>
+
+      <label class="email">
+        <span>Email:</span>
+        <input type="text" id="email" placeholder="Email">
+      </label>
+
+      <p>
+        <input type="submit" id="register-submit-button" value="Register &rarr;"/>
+      </p>
+    </fieldset>
+  </form>
+</div>
+<img class="leftlogo" src="_static/OpenDSALogoT64.png" alt="Logo"/><div class="title-wrapper">
+          <div class="title-inbetween" style="display: table-cell; vertical-align: middle;">
+            <div class="title-content">
+              <h1 class="heading" ><a href="index.html">
+                <span>BM40A1500 Data Structures and Algorithms</span></a></h1>
+              <h2 class="heading" ><span>Chapter 2 Linear Data Structures</span></h2>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="topnav">
+        <p>
+            <a style="float:left;color:blue;" href="../source/ListLinked.rst.rst"
+              target="_blank" rel="nofollow">Show Source | </a>&#160;&#160;
+            <a class="abt" style="float:left;color:blue;" href="#" rel="nofollow">| About</a>&#160;&#160;
+
+          
+        «&#160;&#160;<a id="prevmod" href="ListArray.html">2.<span class="section-number">2. </span>Array-Based List Implementation</a>
+        &#160;&#160;::&#160;&#160;
+        <a  class="uplink" href="index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a  id="nextmod" href="ListAnalysis.html">2.<span class="section-number">4. </span>Comparison of List Implementations</a>&#160;&#160;»
+
+
+        </p>
+      </div>
+       
+      <div class="content">
+        
+  <script>ODSA.SETTINGS.MODULE_SECTIONS = ['why-this-has-problems', 'a-better-solution', 'linked-list-insertion', 'linked-list-remove'];</script><script>ODSA.SETTINGS.DISP_MOD_COMP = true;ODSA.SETTINGS.MODULE_NAME = "ListLinked";ODSA.SETTINGS.MODULE_LONG_NAME = "Linked Lists";ODSA.SETTINGS.MODULE_CHAPTER = "Linear Data Structures"; ODSA.SETTINGS.BUILD_DATE = "2024-08-13 08:46:36"; ODSA.SETTINGS.BUILD_CMAP = false;JSAV_OPTIONS['lang']='en';JSAV_EXERCISE_OPTIONS['code']='python';</script><link href="../../../AV/List/llistCON.css" rel="stylesheet" type="text/css" />
+<div class="section" id="linked-lists">
+<h1>2.<span class="section-number">3. </span>Linked Lists<a class="headerlink" href="#linked-lists" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2>2.<span class="section-number">3.1. </span>Linked Lists<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>In this module we present one of the two traditional implementations
+for lists, usually called a <a class="reference internal" href="Glossary.html#term-linked-list"><span class="xref std std-term">linked list</span></a>.
+The linked list uses <a class="reference internal" href="Glossary.html#term-dynamic-memory-allocation"><span class="xref std std-term">dynamic memory allocation</span></a>,
+that is, it allocates memory for new list elements as needed.
+The following diagram illustrates the linked list concept.
+Here there are three <a class="reference internal" href="Glossary.html#term-node"><span class="xref std std-term">nodes</span></a> that
+are “linked” together.
+Each node has two boxes.
+The box on the right holds a link to the next node in the list.
+Notice that the rightmost node has a diagonal slash through its link
+box, signifying that there is no link coming out of this box.</p>
+<div class="divdgm" id="linkedlistnodes">
+<div id="llistRepCON">
+</div>
+</div>
+<p>Because a list node is a distinct object (as opposed to simply a cell
+in an array), it is good practice to make a separate list node class.
+(We can also re-use the list node class to implement linked
+implementations for the <a class="reference internal" href="Glossary.html#term-stack"><span class="xref std std-term">stack</span></a> and
+<a class="reference internal" href="Queue.html#queue"><span class="std std-ref">queue</span></a> data structures.
+Here is an implementation for list nodes, called the <code class="docutils literal notranslate"><span class="pre">Link</span></code> class.
+Objects in the <code class="docutils literal notranslate"><span class="pre">Link</span></code> class contain an <code class="docutils literal notranslate"><span class="pre">element</span></code> field to
+store the element value, and a <code class="docutils literal notranslate"><span class="pre">next</span></code> field to store a pointer to
+the next node on the list.
+The list built from such nodes is called a <a class="reference internal" href="Glossary.html#term-singly-linked-list"><span class="xref std std-term">singly linked list</span></a>,
+or a <a class="reference internal" href="Glossary.html#term-one-way-list"><span class="xref std std-term">one-way list</span></a>, because each list node
+has a single pointer to the next node on the list.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">Link</span></code> class is quite simple.
+There are two forms for its constructor, one with
+an initial element value and one without.
+Member functions allow the link user to get or set the <code class="docutils literal notranslate"><span class="pre">element</span></code>
+and <code class="docutils literal notranslate"><span class="pre">link</span></code> fields.</p>
+<div id="llistBadCON" class="ssAV" data-points="0.0" data-threshold="1.0" data-type="ss" data-required="False" data-short-name="llistBadCON" data-long-name="Linked List Slideshow 1" data-exer-id="" alt="Linked List Slideshow 1" tabIndex="-1">
+ <span class="jsavcounter"></span>
+ <a class="jsavsettings" href="#">Settings</a>
+ <div class="jsavcontrols"></div>
+ <p class="jsavoutput jsavline"></p>
+ <div class="jsavcanvas"></div>
+ <div class="prof_indicators">
+  <img id="llistBadCON_check_mark" class="prof_check_mark" src="_static/Images/green_check.png" alt="Proficient" />
+  <span id="llistBadCON_cm_saving_msg" class="cm_saving_msg">Saving...</span>
+  <span id="llistBadCON_cm_error_msg" class="cm_error_msg">
+   <img id="llistBadCON_cm_warning_icon" class="cm_warning_icon" src="_static/Images/warning.png" alt="Error Saving" /><br />
+   Server Error<br />
+   <a href="#" class="resubmit_link">Resubmit</a>
+  </span>
+ </div>
+</div>
+<p></p>
+</div>
+<div class="section" id="why-this-has-problems">
+<h2>2.<span class="section-number">3.2. </span>Why This Has Problems<a class="headerlink" href="#why-this-has-problems" title="Permalink to this headline">¶</a></h2>
+<p>There are a number of problems with the representation just
+described.
+First, there are lots of special cases to code for.
+For example, when the list is empty we have
+no element for <code class="docutils literal notranslate"><span class="pre">head</span></code>, <code class="docutils literal notranslate"><span class="pre">tail</span></code>, and <code class="docutils literal notranslate"><span class="pre">curr</span></code> to point to.
+Implementing special cases for <code class="docutils literal notranslate"><span class="pre">insert</span></code> and <code class="docutils literal notranslate"><span class="pre">remove</span></code>
+increases code complexity, making it harder to understand,
+and thus increases the chance of introducing bugs.</p>
+<div id="llistBadDelCON" class="ssAV" data-points="0.0" data-threshold="1.0" data-type="ss" data-required="False" data-short-name="llistBadDelCON" data-long-name="Linked List Slideshow 2" data-exer-id="" alt="Linked List Slideshow 2" tabIndex="-1">
+ <span class="jsavcounter"></span>
+ <a class="jsavsettings" href="#">Settings</a>
+ <div class="jsavcontrols"></div>
+ <p class="jsavoutput jsavline"></p>
+ <div class="jsavcanvas"></div>
+ <div class="prof_indicators">
+  <img id="llistBadDelCON_check_mark" class="prof_check_mark" src="_static/Images/green_check.png" alt="Proficient" />
+  <span id="llistBadDelCON_cm_saving_msg" class="cm_saving_msg">Saving...</span>
+  <span id="llistBadDelCON_cm_error_msg" class="cm_error_msg">
+   <img id="llistBadDelCON_cm_warning_icon" class="cm_warning_icon" src="_static/Images/warning.png" alt="Error Saving" /><br />
+   Server Error<br />
+   <a href="#" class="resubmit_link">Resubmit</a>
+  </span>
+ </div>
+</div>
+<p></p>
+</div>
+<div class="section" id="a-better-solution">
+<h2>2.<span class="section-number">3.3. </span>A Better Solution<a class="headerlink" href="#a-better-solution" title="Permalink to this headline">¶</a></h2>
+<p>Fortunately, there is a fairly easy way to deal with all of the
+special cases, as well as the problem with deleting the last node.
+Many special cases can be eliminated by implementing
+linked lists with an additional <a class="reference internal" href="Glossary.html#term-header-node"><span class="xref std std-term">header node</span></a>
+as the first node of the list.
+This header node is a link node like any other, but its value is
+ignored and it is not considered to be an actual element of the list.
+The header node saves coding effort because we no longer need to
+consider special cases for empty lists or when the current position is
+at one end of the list.
+The cost of this simplification is the space for the header node.
+However, there are space savings due to smaller code size,
+because statements to handle the special cases are omitted.
+We get rid of the remaining special cases related to being at the end
+of the list by adding a “trailer” node that also never stores a
+value.</p>
+<p>The following diagram shows initial conditions for a linked list
+with header and trailer nodes.</p>
+<div class="divdgm" id="linkedlistinit">
+<div id="llistInitCON">
+</div>
+</div>
+<p>Here is what a list with some elements looks like with the header and
+trailer nodes added.</p>
+<div class="divdgm" id="linkedlisttailer">
+<div id="llistHeaderCON">
+</div>
+</div>
+<p>Adding the trailer node also solves our problem with deleting the last
+node on the list, as we will see when we take a closer look at the
+remove method’s implementation.</p>
+</div>
+<div class="section" id="linked-list-insertion">
+<h2>2.<span class="section-number">3.4. </span>Linked List insertion<a class="headerlink" href="#linked-list-insertion" title="Permalink to this headline">¶</a></h2>
+<div id="llistInsertCON" class="ssAV" data-points="0.0" data-threshold="1.0" data-type="ss" data-required="False" data-short-name="llistInsertCON" data-long-name="Linked List Insert Slideshow" data-exer-id="" alt="Linked List Insert Slideshow" tabIndex="-1">
+ <span class="jsavcounter"></span>
+ <a class="jsavsettings" href="#">Settings</a>
+ <div class="jsavcontrols"></div>
+ <p class="jsavoutput jsavline"></p>
+ <div class="jsavcanvas"></div>
+ <div class="prof_indicators">
+  <img id="llistInsertCON_check_mark" class="prof_check_mark" src="_static/Images/green_check.png" alt="Proficient" />
+  <span id="llistInsertCON_cm_saving_msg" class="cm_saving_msg">Saving...</span>
+  <span id="llistInsertCON_cm_error_msg" class="cm_error_msg">
+   <img id="llistInsertCON_cm_warning_icon" class="cm_warning_icon" src="_static/Images/warning.png" alt="Error Saving" /><br />
+   Server Error<br />
+   <a href="#" class="resubmit_link">Resubmit</a>
+  </span>
+ </div>
+</div>
+<p></p>
+<dl class="simple">
+<dt>Here are some special cases for linked list insertion: Inserting at</dt><dd><p>the end, and inserting to an empty list.</p>
+</dd>
+</dl>
+<div id="llistSpecialCON" class="ssAV" data-points="0.0" data-threshold="1.0" data-type="ss" data-required="False" data-short-name="llistSpecialCON" data-long-name="Linked List Special Insert Slideshow" data-exer-id="" alt="Linked List Special Insert Slideshow" tabIndex="-1">
+ <span class="jsavcounter"></span>
+ <a class="jsavsettings" href="#">Settings</a>
+ <div class="jsavcontrols"></div>
+ <p class="jsavoutput jsavline"></p>
+ <div class="jsavcanvas"></div>
+ <div class="prof_indicators">
+  <img id="llistSpecialCON_check_mark" class="prof_check_mark" src="_static/Images/green_check.png" alt="Proficient" />
+  <span id="llistSpecialCON_cm_saving_msg" class="cm_saving_msg">Saving...</span>
+  <span id="llistSpecialCON_cm_error_msg" class="cm_error_msg">
+   <img id="llistSpecialCON_cm_warning_icon" class="cm_warning_icon" src="_static/Images/warning.png" alt="Error Saving" /><br />
+   Server Error<br />
+   <a href="#" class="resubmit_link">Resubmit</a>
+  </span>
+ </div>
+</div>
+<p></p>
+</div>
+<div class="section" id="linked-list-remove">
+<h2>2.<span class="section-number">3.5. </span>Linked List Remove<a class="headerlink" href="#linked-list-remove" title="Permalink to this headline">¶</a></h2>
+<div id="llistRemoveCON" class="ssAV" data-points="0.0" data-threshold="1.0" data-type="ss" data-required="False" data-short-name="llistRemoveCON" data-long-name="Linked List Remove Slideshow" data-exer-id="" alt="Linked List Remove Slideshow" tabIndex="-1">
+ <span class="jsavcounter"></span>
+ <a class="jsavsettings" href="#">Settings</a>
+ <div class="jsavcontrols"></div>
+ <p class="jsavoutput jsavline"></p>
+ <div class="jsavcanvas"></div>
+ <div class="prof_indicators">
+  <img id="llistRemoveCON_check_mark" class="prof_check_mark" src="_static/Images/green_check.png" alt="Proficient" />
+  <span id="llistRemoveCON_cm_saving_msg" class="cm_saving_msg">Saving...</span>
+  <span id="llistRemoveCON_cm_error_msg" class="cm_error_msg">
+   <img id="llistRemoveCON_cm_warning_icon" class="cm_warning_icon" src="_static/Images/warning.png" alt="Error Saving" /><br />
+   Server Error<br />
+   <a href="#" class="resubmit_link">Resubmit</a>
+  </span>
+ </div>
+</div>
+<p></p>
+<p>Implementations for the remaining operations each require
+<span class="math notranslate nohighlight">\(\Theta(1)\)</span> time.</p>
+<script type="text/javascript" src="../../../AV/List/llist.js"></script>
+<script type="text/javascript" src="../../../AV/List/llistRepCON.js"></script>
+<script type="text/javascript" src="../../../AV/List/llistBadCON.js"></script>
+<script type="text/javascript" src="../../../AV/List/llistBadDelCON.js"></script>
+<script type="text/javascript" src="../../../AV/List/llistInitCON.js"></script>
+<script type="text/javascript" src="../../../AV/List/llistHeaderCON.js"></script>
+<script type="text/javascript" src="../../../AV/List/llistInsertCON.js"></script>
+<script type="text/javascript" src="../../../AV/List/llistSpecialCON.js"></script>
+<script type="text/javascript" src="../../../AV/List/llistRemoveCON.js"></script>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      <p><span class="email_div" style="display:inline;"><a id="contact_us" class="contact" style="float:left;color:blue;" rel="nofollow" href="mailto:">Contact Us |</a><a style="float:left;color:blue;" rel="nofollow" href="../../../lib/Privacy.html" target="_blank">| Privacy |</a> <a style="float:left;color:blue;" rel="nofollow" href="../../../lib/license.html" target="_blank">| License</a></span>&#160;&#160;
+      
+        «&#160;&#160;<a id="prevmod1" href="ListArray.html">2.<span class="section-number">2. </span>Array-Based List Implementation</a>
+        &#160;&#160;::&#160;&#160;
+        <a  class="uplink" href="index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a  id="nextmod1" href="ListAnalysis.html">2.<span class="section-number">4. </span>Comparison of List Implementations</a>&#160;&#160;»
+
+</p>
+      </div>
+      <img style="float:right;" src="_static/nsf1.gif" height="62" width="62" alt="nsf"/>
+
+
+    <div class="footer">
+      <p>
+        <span class="email_div" style="display:inline;">
+          <a id="contact_us" class="contact" style="float:left;color:blue;" rel="nofollow" href="mailto:">Contact Us |</a>
+          <a id="bugreport-link" style="float:left;color:blue;" class="bugreport-link" href="#">| Report a bug</a>
+        </span>
+      </p>
+        &copy; Copyright 2011-2023 by OpenDSA Project Contributors and distributed under an MIT license.
+      Last updated on Aug 13, 2024.
+      Created using <a target="_blank" href="http://sphinx.pocoo.org/">Sphinx</a> 4.4.0.
+    </div>
+    
+<div id="bugreport-box" class="bugreport-popup ">
+  <a href="#" class="close"><img src="_static/Images/close_pop.png" class="btn_close" title="Close Window" alt="Close Window" /></a>
+  <form method="post" class="report" action="https://#">
+    <fieldset class="textbox">
+      <div id="bug_error" class="error"></div>
+      <label>
+        <span>Summary*:</span>
+        <input type="text" id="b_title" placeholder="Summary" />
+      </label>
+
+      <label class="os">
+        <span>Operating system*:</span>
+        <select id="b_os">
+          <option value="windows">Windows</option>
+          <option value="macos">Mac OS</option>
+          <option value="linux">Linux</option>
+          <option value="ios">iOS</option>
+          <option value="android">Android</option>
+          <option value="other">Other</option>
+        </select>
+      </label>
+
+      <label class="browser">
+        <span>Browser*:</span>
+        <select id="b_browser">
+          <option value="chrome">Chrome</option>
+          <option value="safari">Safari</option>
+          <option value="internetexplorer">Internet Explorer</option>
+          <option value="opera">Opera</option>
+          <option value="other">Other</option>
+        </select>
+      </label>
+
+      <label class="description">
+        <span>Description*:</span><br>
+        <textarea id="b_description" rows="5" cols="25" placeholder="***BUG** Please enter: (1) a consice description of the problem. (2) steps to reproduce bug. (3) the version of your browser and operating system."></textarea>
+      </label>
+
+      <label class="screenshot">
+        <span>Attach a screenshot (optional):</span>
+        <input type="file" id="b_screenshot" accept="image/*" placeholder="Attach a screenshot (optional)">
+      </label>
+
+      <p>
+        <input type="submit" id="bug-submit-button" value="Submit &rarr;"/>
+      </p>
+    </fieldset>
+  </form>
+</div>
+
+  </body>
+</html>

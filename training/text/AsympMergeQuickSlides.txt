@@ -1,0 +1,94 @@
+Algorithm efficiency of Mergesort and Quicksort 
+1. Mergesort 
+2. Quicksort 
+1. Mergesort 
+Pseudocode from another lecture: Mergesort: a divide and conquer algorithm 
+Assumption: input array to MERGE A[1..n], where n = 2x, for integer x, x 2. 
+Algorithm efficiency of Mergesort and Quicksort 
+1. Mergesort 
+2. Quicksort 
+1. Mergesort 
+Pseudocode from another lecture: Mergesort: a divide and conquer algorithm 
+Assumption: input array to MERGE A[1..n], where n = 2x, for integer x, x 2. 
+
+Observations: 
+- simple operations in for-loop in lines 5-7: x
+- simple operations in lines 8-21: x
+Assumption: input array to MERGESORT: A[1..2x], L = 1, R = 2x. 
+Q: How often is MERGE executed in MERGESORT and with what arguments? 
+Observations: 
+- simple operations in for-loop in lines 5-7: x
+- simple operations in lines 8-21: x
+Assumption: input array to MERGESORT: A[1..2x], L = 1, R = 2x. 
+Q: How often is MERGE executed in MERGESORT and with what arguments? 
+
+On each recurssion level all elements of A[1..2x] are merged. 
+Q: How many recursion levels in MERGESORT? 
+A: x. 
+Sum all operations in MERGE: 
+Using n = 2x or log2 n = x: 
+Q: How about when n2x? 
+A: Same efficiency. 
+On each recurssion level all elements of A[1..2x] are merged. 
+Q: How many recursion levels in MERGESORT? 
+A: x. 
+Sum all operations in MERGE: 
+Using n = 2x or log2 n = x: 
+Q: How about when n2x? 
+A: Same efficiency. 
+
+2. Quicksort 
+Pseudocode from another lecture: Quicksort: a divide and conquer algorithm 
+Assumption: input array is A[1..n], where n = 2x - 1, for integer x, x 2. 
+Q: What is runtime efficiency of PARTITION when input is A[1..(2x - 1)], L = 1, R = (2x - 1). 
+A: Runtime efficiency is x - 1x
+Assumption: input to QUICKSORT is A[1..(2x - 1)], L = 1, R = (2x - 1). 
+2. Quicksort 
+Pseudocode from another lecture: Quicksort: a divide and conquer algorithm 
+Assumption: input array is A[1..n], where n = 2x - 1, for integer x, x 2. 
+Q: What is runtime efficiency of PARTITION when input is A[1..(2x - 1)], L = 1, R = (2x - 1). 
+A: Runtime efficiency is x - 1x
+Assumption: input to QUICKSORT is A[1..(2x - 1)], L = 1, R = (2x - 1). 
+
+Q: How often is PARTITION executed in QUICKSORT and with what arguments? 
+A: Depends on pivot location (value of k). 
+Assumption: pivot is always in middle k = L + R)/2
+This assumption corresponds to best case (lower bound on runtime efficiency). 
+Q: How often is PARTITION executed in QUICKSORT and with what arguments? 
+A: Depends on pivot location (value of k). 
+Assumption: pivot is always in middle k = L + R)/2
+This assumption corresponds to best case (lower bound on runtime efficiency). 
+
+NOTE: arrays in last row are actually not partitioned, but they are used in a call to 
+QUICKSORT. 
+Q: How many recursion levels when pivot is always in middle? 
+A: xSums of all array sizes in previous table: 
+NOTE: arrays in last row are actually not partitioned, but they are used in a call to 
+QUICKSORT. 
+Q: How many recursion levels when pivot is always in middle? 
+A: xSums of all array sizes in previous table: 
+
+Worst case for Quicksort in lecture: Algorithm design techniques: randomization 
+Efficiency result for both MERGESORT and QUICKSORT: 
+Are MERGESORT and QUICKSORT equally efficient? 
+- yes (theoretically) when considering best case for QUICKSORT 
+- in practice QUICKSORT usually better, but it requires 'tuning' 
+Worst case for Quicksort in lecture: Algorithm design techniques: randomization 
+Efficiency result for both MERGESORT and QUICKSORT: 
+Are MERGESORT and QUICKSORT equally efficient? 
+- yes (theoretically) when considering best case for QUICKSORT 
+- in practice QUICKSORT usually better, but it requires 'tuning' 
+
+Tämä teos on lisensoitu Creative Commons Nimeä-EiKaupallinen-
+EiMuutoksia 4.0 Kansainvälinen -lisenssillä. Tarkastele lisenssiä osoitteessa 
+http://creativecommons.org/licenses/by-nc-nd/4.0/. 
+
+tekijä: Frank Cameron 
+
+This work is licensed under the Creative Commons Attribution-
+NonCommercial-NoDerivatives 4.0 International License. To view a copy of 
+this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/. 
+
+made by Frank Cameron 
+
+

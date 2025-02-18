@@ -1,0 +1,156 @@
+Algorithms, pseudocode, programming code; overview 
+
+1. Algorithm
+2. Three presentation levels
+3. Pseudocode 
+1. Algorithm 
+At start: some problem (questions) we want to solve, given some material/information 
+
+At end: solution (answers) to the problem 
+
+Definition of algorithm (Levitin A. The design and analysis of algorithms) 
+
+An algorithm is a sequence of unambiguous instructions for solving a problem i.e. for 
+obtaining a required output for any legitimate input in a finite amount of time. 
+
+Example 
+
+Start: you are inside with socks on; a (suitable) pair of your shoes exist inside 
+End: both shoes on correct feet and you are ready to go outside 
+
+An algorithm for putting on shoes: 
+
+1. Find the left shoe. 
+2. Find the right shoe. 
+3. Put the left shoe on your left foot. 
+4. Put the right shoe on your right foot. 
+5. If your left shoe has laces and the laces need to be tied, then tie the laces. 
+6. If your right shoe has laces and the laces need to be tied, then tie the laces. 
+7. If your left shoe has straps and the straps need to be fasten, then fasten them. 
+8. If your right shoe has straps and the straps need to be fasten, then fasten them. 
+9. Your shoes are on. 
+
+In computer science: 
+Algorithm starting point: problem with well specified starting (input) data X 
+Algorithm ending point: well specified output data Y that solves problem 
+Algorithm: how do we compute Y from X? 
+
+Unambiguous instructions: 
+
+• each instruction is given in sufficient detail so that the device performing the algorithm 
+cannot misunderstand it 
+• each instruction has only one interpretation 
+• the order of the instructions has only one interpretation, which cannot be misunderstood 
+• the conditions for terminating the algorithm cannot be misunderstood (algorithm must 
+
+terminate!) 
+
+Legitimate input 
+• what input is acceptable/unacceptable must be well specifed 
+• what form/format the input can be given in must be well specifed 
+
+Finite amount of time 
+
+- algorithm must terminate! 
+- conditions under which algorithm terminates must be well specified 
+
+2. Three presentation levels 
+Three levels of presentation for some algorithm: 
+• description level: person to person 
+• pseudocode level: technical person (programmer) to technical person (programmer) 
+• program code level: programmer/computer to computer 
+
+0111001011000101 
+description 
+pseudocode 
+programming 
+language 
+low on technicalities 
+high on 
+technicalities or 
+
+Description level 
+
+• describe what each step/stage of algorithm does 
+
+• can be mixture of ordinary language, math, very simple code 
+
+Pseudocode level 
+• not a programming language ready for compiling and/or execution 
+• parameters and variables used and defined 
+• use typical control structures and blocks, e.g. if-then-else-end, for-end, while-end, 
+
+for each-end 
+• no error handling, checking on inputs, modularity, etc. 
+• avoid program language specifics e.g. ++ for incrementaion of integer counter 
+
+Progam code level 
+• some recognized language C++, Java, Python, Matlab, etc. 
+• intended for compilation/execution 
+• syntax requirements 
+• other specification must be met: error handling, checking validity of input, etc. 
+
+
+Example 
+
+
+
+3. Pseudocode 
+Suppose Jussi knows Finnish, English, Java and python. 
+Suppose Mio knows Japanese, Korean, C++ and C#. 
+How can they communicate efficiently an algorithm? 
+
+What we can ignore: What we can focus on: 
+• error handling • algorithm computations/operations 
+• variable types (often) • essential variables/parameters 
+• file I/O, formatting 
+• syntax (to a certain extent) 
+• hardware 
+• programming language 
+
+Pseudocode specifications 
+
+• indentation is used to indicate blocks 
+
+• control-blocks similar to C++: 
+if-then-else-end, for-end, while-end, 
+
+• control block used to iterate through elements in a set/list 
+for each-end 
+
+• comments within “/* */” 
+
+
+• assignment made with single equals “=”, testing made with double equals “==” 
+• variables are local to a given procedure (function) 
+• element in i’th location in array L is L[i] 
+• elements in locations i, i + 1, . . . j in array L are L[i..j] 
+• an object contains compound data; an object has attributes, e.g.
+
+ person : object name 
+person.firstname : one object attribute 
+person.lastname : another object attribute 
+
+• return transfers control back to calling procedure immediately 
+• NIL is a reference (pointer) to nothing 
+• use 8to present a free-form instruction, e.g. 
+
+8check that all numbers in array L are even 
+
+These specifications are not universal! 
+
+
+Tämä teos on lisensoitu Creative Commons Nimeä-EiKaupallinen-
+EiMuutoksia 4.0 Kansainvälinen -lisenssillä. Tarkastele lisenssiä osoitteessa EiMuutoksia 4.0 Kansainvälinen -lisenssillä. Tarkastele lisenssiä osoitteessa 
+http://creativecommons.org/licenses/by-nc-nd/4.0/. 
+
+tekijä: Frank Cameron 
+
+This work is licensed under the Creative Commons Attribution-
+NonCommercial-NoDerivatives 4.0 International License. To view a copy of 
+this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/. 
+
+made by Frank Cameron 
+
+
+

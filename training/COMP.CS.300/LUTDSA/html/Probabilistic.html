@@ -1,0 +1,340 @@
+
+<!DOCTYPE html>
+
+
+
+
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>5.7. Introduction to Probabilistic Algorithms &mdash; BM40A1500 Data Structures and Algorithms</title>
+    
+    <link rel="stylesheet" href="_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../lib/normalize.css" type="text/css" />
+    <link rel="stylesheet" href="../../../lib/JSAV.css" type="text/css" />
+    <link rel="stylesheet" href="../../../lib/odsaMOD-min.css" type="text/css" />
+    <link rel="stylesheet" href="../../../lib/jquery.ui.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../../lib/odsaStyle-min.css" type="text/css" />
+    
+  <script type="text/javascript">
+    var DOCUMENTATION_OPTIONS = {
+      URL_ROOT:    './',
+      VERSION:     '0.4.1',
+      COLLAPSE_INDEX: false,
+      FILE_SUFFIX: '.html',
+      HAS_SOURCE:  true
+    };
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEscapes: true
+      },
+      "HTML-CSS": {
+        scale: "80"
+      }
+    });
+  </script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="index" title="BM40A1500 Data Structures and Algorithms" href="index.html" />
+    <link rel="next" title="8. Finding Prime Numbers" href="Primes.html" />
+    <link rel="prev" title="6. Dynamic Programming" href="DynamicProgramming.html" />
+
+  </head>
+
+  <body>
+
+
+      <div class="header">
+        
+  
+      <script type="text/javascript" src="../../../lib/jquery.min.js"></script>
+      <script type="text/javascript" src="../../../lib/jquery.migrate.min.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/localforage/1.9.0/localforage.min.js"></script>
+    <script type="text/javascript" src="../../../lib/jquery.ui.min.js"></script>
+    <script type="text/javascript" src="../../../lib/jquery.transit.js"></script>
+    <script type="text/javascript" src="../../../lib/raphael.js"></script>
+    <script type="text/javascript" src="../../../lib/JSAV-min.js"></script>
+    <script type="text/javascript" src="_static/config.js"></script>
+    <script type="text/javascript" src="../../../lib/timeme-min.js"></script>
+    <script type="text/javascript" src="../../../lib/odsaUtils-min.js"></script>
+    <script type="text/javascript" src="../../../lib/odsaMOD-min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.min.js"></script>
+    <script type="text/javascript" src="https://d3js.org/d3-selection-multi.v1.min.js"></script>
+    <script type="text/javascript" src="../../../lib/dataStructures.js"></script>
+    <script type="text/javascript" src="../../../lib/conceptMap.js"></script>
+
+        
+<a id="username-link" style="float:right;color:red;margin:10px 20px auto; display: none" class="username-link" href="Gradebook.html"></a>
+<a id="login-link" style="float:right;color:red;margin:10px 20px auto" class="login-link" href="#"><Macro 'login'></a>
+<div id="login-box" class="login-popup">
+  <a href="#" class="close"><img src="_static/Images/close_pop.png" class="btn_close" title="Close Window" alt="Close" /></a>
+  <form method="post" class="signin" action="https://#">
+    <fieldset class="textbox">
+      <label class="username">
+        <span>Username</span>
+        <input id="username" value="" type="text" autocomplete="on" placeholder="Username" tabindex="1">
+      </label>
+      <label class="password">
+        <span>Password</span>
+        <input id="password" value="" type="password" placeholder="Password" tabindex="2">
+        <span><a id="forgot" href="#">Forgot your password?</a></span>
+      </label>
+
+      <p>
+        <input type="submit" id="login-submit-button" value="Sign in" tabindex="3" />
+      </p>
+      <p>
+        <input type="button" id="register-button" value="Register" tabindex="4" />
+      </p>
+    </fieldset>
+  </form>
+</div>
+
+        
+<a id="registration-link" style="float:right;color:red;margin:10px 20px auto" class="registration-link" href="#">Register</a>
+<div id="registration-box" class="registration-popup ">
+  <a href="#" class="close"><img src="_static/Images/close_pop.png" class="btn_close" title="Close Window" alt="Close Window" /></a>
+  <form method="post" class="signin" action="https://#">
+    <fieldset class="textbox">
+      <div id="register_error" class="error"></div>
+      <label class="username">
+        <span>Username:</span>
+        <input type="text" id="user" placeholder="Username" />
+      </label>
+
+      <label class="password">
+        <span>Password</span>
+        <input id="pass" type="password" placeholder="Password" />
+      </label>
+
+      <label class="password">
+        <span>Confirm Password</span>
+        <input id="rpass" type="password" placeholder="Confirm Password" />
+      </label>
+
+      <label class="email">
+        <span>Email:</span>
+        <input type="text" id="email" placeholder="Email">
+      </label>
+
+      <p>
+        <input type="submit" id="register-submit-button" value="Register &rarr;"/>
+      </p>
+    </fieldset>
+  </form>
+</div>
+<img class="leftlogo" src="_static/OpenDSALogoT64.png" alt="Logo"/><div class="title-wrapper">
+          <div class="title-inbetween" style="display: table-cell; vertical-align: middle;">
+            <div class="title-content">
+              <h1 class="heading" ><a href="index.html">
+                <span>BM40A1500 Data Structures and Algorithms</span></a></h1>
+              <h2 class="heading" ><span>Chapter 5 Algorithm Design Principles</span></h2>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="topnav">
+        <p>
+            <a style="float:left;color:blue;" href="../source/Probabilistic.rst.rst"
+              target="_blank" rel="nofollow">Show Source | </a>&#160;&#160;
+            <a class="abt" style="float:left;color:blue;" href="#" rel="nofollow">| About</a>&#160;&#160;
+
+          
+        «&#160;&#160;<a id="prevmod" href="DynamicProgramming.html">5.<span class="section-number">6. </span>Dynamic Programming</a>
+        &#160;&#160;::&#160;&#160;
+        <a  class="uplink" href="index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a  id="nextmod" href="Primes.html">5.<span class="section-number">8. </span>Finding Prime Numbers</a>&#160;&#160;»
+
+
+        </p>
+      </div>
+       
+      <div class="content">
+        
+  <script>ODSA.SETTINGS.MODULE_SECTIONS = ['probabilistic-algorithms'];</script><script>ODSA.SETTINGS.DISP_MOD_COMP = true;ODSA.SETTINGS.MODULE_NAME = "Probabilistic";ODSA.SETTINGS.MODULE_LONG_NAME = "Introduction to Probabilistic Algorithms";ODSA.SETTINGS.MODULE_CHAPTER = "Algorithm Design Principles"; ODSA.SETTINGS.BUILD_DATE = "2024-08-13 08:46:36"; ODSA.SETTINGS.BUILD_CMAP = false;JSAV_OPTIONS['lang']='en';JSAV_EXERCISE_OPTIONS['code']='python';</script><div class="section" id="introduction-to-probabilistic-algorithms">
+<h1>5.<span class="section-number">7. </span>Introduction to Probabilistic Algorithms<a class="headerlink" href="#introduction-to-probabilistic-algorithms" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="probabilistic-algorithms">
+<h2>5.<span class="section-number">7.1. </span>Probabilistic Algorithms<a class="headerlink" href="#probabilistic-algorithms" title="Permalink to this headline">¶</a></h2>
+<p>We now consider how introducing randomness into our
+algorithms might speed things up, although perhaps at the expense of
+accuracy.
+But often we can reduce the possibility for error to be as low as we
+like, while still speeding up the algorithm.</p>
+<p>The <a class="reference internal" href="Glossary.html#term-maximum-lower-bound"><span class="xref std std-term">lower bound for maximum finding</span></a>
+in an unsorted list is <span class="math notranslate nohighlight">\(\Omega(n)\)</span>.
+This is the least time needed to be certain that we have found the
+maximum value.
+But what if we are willing to relax our requirement for certainty?
+The first question is: What do we mean by this?
+There are many aspects to “certainty” and we might relax the
+requirement in various ways.</p>
+<p>There are several possible guarantees that we might require from an
+algorithm that produces <span class="math notranslate nohighlight">\(X\)</span> as the maximum value, when the true
+maximum is <span class="math notranslate nohighlight">\(Y\)</span>.</p>
+<ul class="simple">
+<li><p>So far we have assumed that we require <span class="math notranslate nohighlight">\(X\)</span> to equal <span class="math notranslate nohighlight">\(Y\)</span>.
+This is known as an exact or <a class="reference internal" href="Glossary.html#term-deterministic-algorithm"><span class="xref std std-term">deterministic algorithm</span></a> to
+solve the problem.</p></li>
+<li><p>We could relax this and require only that <span class="math notranslate nohighlight">\(X\)</span> ‘s rank is
+“close to” <span class="math notranslate nohighlight">\(Y\)</span> ‘s rank (perhaps within a fixed distance or
+percentage).
+This is known as an <a class="reference internal" href="Glossary.html#term-approximation-algorithm"><span class="xref std std-term">approximation algorithm</span></a>.</p></li>
+<li><p>We could require that <span class="math notranslate nohighlight">\(X\)</span> is “usually” <span class="math notranslate nohighlight">\(Y\)</span>.
+This is known as a <a class="reference internal" href="Glossary.html#term-probabilistic-algorithm"><span class="xref std std-term">probabilistic algorithm</span></a>.</p></li>
+<li><p>Finally, we could require only that <span class="math notranslate nohighlight">\(X\)</span> ‘s rank is “usually”
+“close” to <span class="math notranslate nohighlight">\(Y\)</span> ‘s rank.
+This is known as a <a class="reference internal" href="Glossary.html#term-heuristic-algorithm"><span class="xref std std-term">heuristic algorithm</span></a>.</p></li>
+</ul>
+<p>There are also different ways that we might choose to sacrifice
+reliability for speed.
+These types of algorithms also have names.</p>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="Glossary.html#term-Las-Vegas-algorithms"><span class="xref std std-term">Las Vegas Algorithms</span></a>:
+We always find the maximum value, and “usually” we find it fast.
+Such algorithms have a guaranteed result, but do not guarantee fast
+running time.</p></li>
+<li><p><a class="reference internal" href="Glossary.html#term-Monte-Carlo-algorithms"><span class="xref std std-term">Monte Carlo Algorithms</span></a>:
+We find the maximum value fast, or we don’t get an answer at all
+(but fast).
+While such algorithms have good running time, their result is not
+guaranteed.</p></li>
+</ol>
+<p>Here is an example of an algorithm for finding a large value that
+gives up its guarantee of getting the best value in exchange for an
+improved running time.
+This is an example of a <a class="reference internal" href="Glossary.html#term-probabilistic-algorithm"><span class="xref std std-term">probabilistic algorithm</span></a>, since it
+includes steps that are affected by random events.
+Choose <span class="math notranslate nohighlight">\(m\)</span> elements at random, and pick the best one of those as
+the answer.
+For large <span class="math notranslate nohighlight">\(n\)</span>, if <span class="math notranslate nohighlight">\(m \approx \log n\)</span>, the answer is pretty
+good.
+The cost is <span class="math notranslate nohighlight">\(m-1\)</span> compares (since we must find the maximum of
+<span class="math notranslate nohighlight">\(m\)</span> values).
+But we don’t know for sure what we will get.
+However, we can estimate that the rank will be about
+<span class="math notranslate nohighlight">\(\frac{mn}{m+1}\)</span>.
+For example, if <span class="math notranslate nohighlight">\(n = 1,000,000\)</span> and <span class="math notranslate nohighlight">\(m = \log n = 20\)</span>,
+then we expect that the largest of the 20 randomly selected values be
+among the top 5% of the <span class="math notranslate nohighlight">\(n\)</span> values.</p>
+<p>Next, consider a slightly different problem where the goal is to
+pick a number in the upper half of <span class="math notranslate nohighlight">\(n\)</span> values.
+We would pick the maximum from among the first <span class="math notranslate nohighlight">\(\frac{n+1}{2}\)</span>
+values for a cost of <span class="math notranslate nohighlight">\(n/2\)</span> comparisons.
+Can we do better than this?
+Not if we want to guarantee getting the correct answer.
+But if we are willing to accept near certainty instead of absolute
+certainty, we can gain a lot in terms of speed.</p>
+<p>As an alternative, consider this probabilistic algorithm.
+Pick 2 numbers and choose the greater.
+This will be in the upper half with probability 3/4 (since it is not
+in the upper half only when both numbers we choose happen to be in the
+lower half).
+Is a probability of 3/4 not good enough?
+Then we simply pick more numbers!
+For <span class="math notranslate nohighlight">\(k\)</span> numbers, the greatest is in upper half with probability
+<span class="math notranslate nohighlight">\(1 - \frac{1}{2^k}\)</span>, regardless of the number <span class="math notranslate nohighlight">\(n\)</span> that we
+pick from, so long as <span class="math notranslate nohighlight">\(n\)</span> is much larger than <span class="math notranslate nohighlight">\(k\)</span>
+(otherwise the chances might become even better).
+If we pick ten numbers, then the chance of failure is only one in
+<span class="math notranslate nohighlight">\(2^{10} = 1024\)</span>.
+What if we really want to be sure, because lives depend on drawing a
+number from the upper half?
+If we pick 30 numbers, we can fail only one time in a billion.
+If we pick enough numbers, then the chance of picking a small
+number is less than the chance of the power failing during the
+computation.
+Picking 100 numbers means that we can fail only one time in
+<span class="math notranslate nohighlight">\(10^{100}\)</span> which is less than the chance any plausible
+disaster that you can imagine will disrupt the process.</p>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      <p><span class="email_div" style="display:inline;"><a id="contact_us" class="contact" style="float:left;color:blue;" rel="nofollow" href="mailto:">Contact Us |</a><a style="float:left;color:blue;" rel="nofollow" href="../../../lib/Privacy.html" target="_blank">| Privacy |</a> <a style="float:left;color:blue;" rel="nofollow" href="../../../lib/license.html" target="_blank">| License</a></span>&#160;&#160;
+      
+        «&#160;&#160;<a id="prevmod1" href="DynamicProgramming.html">5.<span class="section-number">6. </span>Dynamic Programming</a>
+        &#160;&#160;::&#160;&#160;
+        <a  class="uplink" href="index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a  id="nextmod1" href="Primes.html">5.<span class="section-number">8. </span>Finding Prime Numbers</a>&#160;&#160;»
+
+</p>
+      </div>
+      <img style="float:right;" src="_static/nsf1.gif" height="62" width="62" alt="nsf"/>
+
+
+    <div class="footer">
+      <p>
+        <span class="email_div" style="display:inline;">
+          <a id="contact_us" class="contact" style="float:left;color:blue;" rel="nofollow" href="mailto:">Contact Us |</a>
+          <a id="bugreport-link" style="float:left;color:blue;" class="bugreport-link" href="#">| Report a bug</a>
+        </span>
+      </p>
+        &copy; Copyright 2011-2023 by OpenDSA Project Contributors and distributed under an MIT license.
+      Last updated on Aug 13, 2024.
+      Created using <a target="_blank" href="http://sphinx.pocoo.org/">Sphinx</a> 4.4.0.
+    </div>
+    
+<div id="bugreport-box" class="bugreport-popup ">
+  <a href="#" class="close"><img src="_static/Images/close_pop.png" class="btn_close" title="Close Window" alt="Close Window" /></a>
+  <form method="post" class="report" action="https://#">
+    <fieldset class="textbox">
+      <div id="bug_error" class="error"></div>
+      <label>
+        <span>Summary*:</span>
+        <input type="text" id="b_title" placeholder="Summary" />
+      </label>
+
+      <label class="os">
+        <span>Operating system*:</span>
+        <select id="b_os">
+          <option value="windows">Windows</option>
+          <option value="macos">Mac OS</option>
+          <option value="linux">Linux</option>
+          <option value="ios">iOS</option>
+          <option value="android">Android</option>
+          <option value="other">Other</option>
+        </select>
+      </label>
+
+      <label class="browser">
+        <span>Browser*:</span>
+        <select id="b_browser">
+          <option value="chrome">Chrome</option>
+          <option value="safari">Safari</option>
+          <option value="internetexplorer">Internet Explorer</option>
+          <option value="opera">Opera</option>
+          <option value="other">Other</option>
+        </select>
+      </label>
+
+      <label class="description">
+        <span>Description*:</span><br>
+        <textarea id="b_description" rows="5" cols="25" placeholder="***BUG** Please enter: (1) a consice description of the problem. (2) steps to reproduce bug. (3) the version of your browser and operating system."></textarea>
+      </label>
+
+      <label class="screenshot">
+        <span>Attach a screenshot (optional):</span>
+        <input type="file" id="b_screenshot" accept="image/*" placeholder="Attach a screenshot (optional)">
+      </label>
+
+      <p>
+        <input type="submit" id="bug-submit-button" value="Submit &rarr;"/>
+      </p>
+    </fieldset>
+  </form>
+</div>
+
+  </body>
+</html>

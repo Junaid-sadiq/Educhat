@@ -1,0 +1,14 @@
+[
+    {
+        "file": "./training/COMP.CS.300/tirakirja.pdf",
+        "error": "Error extracting PDF ./training/COMP.CS.300/tirakirja.pdf: Failed to open file './training/COMP.CS.300/tirakirja.pdf'."
+    },
+    {
+        "file": "./training/COMP.CS.300/material\\fall2024\\prg-en.pdf",
+        "error": "Error extracting PDF ./training/COMP.CS.300/material\\fall2024\\prg-en.pdf: Cannot open empty file: filename='./training/COMP.CS.300/material\\\\fall2024\\\\prg-en.pdf'."
+    },
+    {
+        "file": "./training/COMP.CS.300/material\\fall2024\\prg-fi.pdf",
+        "error": "Error extracting PDF ./training/COMP.CS.300/material\\fall2024\\prg-fi.pdf: Cannot open empty file: filename='./training/COMP.CS.300/material\\\\fall2024\\\\prg-fi.pdf'."
+    }
+]

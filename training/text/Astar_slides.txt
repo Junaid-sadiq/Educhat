@@ -1,0 +1,70 @@
+The A* algorithm and the shortest path problem 
+1. Background and example2. A* algortihm3. Remarks 
+1. Background and example 
+Example 
+Shortest path from s = F to t = H? 
+The A* algorithm and the shortest path problem 
+1. Background and example2. A* algortihm3. Remarks 
+1. Background and example 
+Example 
+Shortest path from s = F to t = H? 
+
+A modified Dijkstra's algorithm can be used to solve the single-pair shortest path problem. A modified Dijkstra's algorithm can be used to solve the single-pair shortest path problem. 
+
+Example (cont'd) 
+i = order in which node handled 
+x.d = length of shortest path from s = F to x 
+= edge of current shortest path tree 
+Shortest path from s = F to t = H using DIJKSTAPAIR. 
+Example (cont'd) 
+i = order in which node handled 
+x.d = length of shortest path from s = F to x 
+= edge of current shortest path tree 
+Shortest path from s = F to t = H using DIJKSTAPAIR. 
+
+Remarks 
+2. A* algortihm 
+Remarks 
+2. A* algortihm 
+
+Note: g(s,x) is the same as x.d in Dijkstra 
+Example (contd) 
+For graph shown, using the 
+coordinates and above Euclidean 
+distance: 
+Note: g(s,x) is the same as x.d in Dijkstra 
+Example (contd) 
+For graph shown, using the 
+coordinates and above Euclidean 
+distance: 
+
+Example (contd) 
+i = order in which node handled 
+x.e = lower bound estimate of length of shortest path from s = F to t = H passing through x 
+= edge of current shortest path tree 
+Shortest path from s = F to t = H using ASTAR 
+Example (contd) 
+i = order in which node handled 
+x.e = lower bound estimate of length of shortest path from s = F to t = H passing through x 
+= edge of current shortest path tree 
+Shortest path from s = F to t = H using ASTAR 
+
+continue ... continue ... 
+
+3. Remarks 3. Remarks 
+
+Tämä teos on lisensoitu Creative Commons Nimeä-EiKaupallinen-
+EiMuutoksia 4.0 Kansainvälinen -lisenssillä. Tarkastele lisenssiä osoitteessa 
+http://creativecommons.org/licenses/by-nc-nd/4.0/. 
+
+tekijä: Frank Cameron 
+
+This work is licensed under the Creative Commons Attribution-
+NonCommercial-NoDerivatives 4.0 International License. To view a copy of 
+this license, visit 
+
+http://creativecommons.org/licenses/by-nc-nd/4.0/. 
+
+made by Frank Cameron 
+
+

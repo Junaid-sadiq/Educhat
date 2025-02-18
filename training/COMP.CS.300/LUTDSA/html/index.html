@@ -1,0 +1,573 @@
+
+<!DOCTYPE html>
+
+
+
+
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Chapter 0 Introduction for Data Structures and Algorithms &mdash; BM40A1500 Data Structures and Algorithms</title>
+    
+    <link rel="stylesheet" href="_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../lib/normalize.css" type="text/css" />
+    <link rel="stylesheet" href="../../../lib/JSAV.css" type="text/css" />
+    <link rel="stylesheet" href="../../../lib/odsaMOD-min.css" type="text/css" />
+    <link rel="stylesheet" href="../../../lib/jquery.ui.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../../lib/odsaStyle-min.css" type="text/css" />
+    
+  <script type="text/javascript">
+    var DOCUMENTATION_OPTIONS = {
+      URL_ROOT:    './',
+      VERSION:     '0.4.1',
+      COLLAPSE_INDEX: false,
+      FILE_SUFFIX: '.html',
+      HAS_SOURCE:  true
+    };
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEscapes: true
+      },
+      "HTML-CSS": {
+        scale: "80"
+      }
+    });
+  </script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="index" title="BM40A1500 Data Structures and Algorithms" href="#" />
+    <link rel="next" title="1. Data Structures and Algorithms" href="IntroDSA.html" />
+
+  <style>
+ul li {
+	background: none;
+	list-style-type: none;
+}
+</style>
+</head>
+
+  <body>
+
+
+      <div class="header">
+        
+  
+      <script type="text/javascript" src="../../../lib/jquery.min.js"></script>
+      <script type="text/javascript" src="../../../lib/jquery.migrate.min.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/localforage/1.9.0/localforage.min.js"></script>
+    <script type="text/javascript" src="../../../lib/jquery.ui.min.js"></script>
+    <script type="text/javascript" src="../../../lib/jquery.transit.js"></script>
+    <script type="text/javascript" src="../../../lib/raphael.js"></script>
+    <script type="text/javascript" src="../../../lib/JSAV-min.js"></script>
+    <script type="text/javascript" src="_static/config.js"></script>
+    <script type="text/javascript" src="../../../lib/timeme-min.js"></script>
+    <script type="text/javascript" src="../../../lib/odsaUtils-min.js"></script>
+    <script type="text/javascript" src="../../../lib/odsaMOD-min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.min.js"></script>
+    <script type="text/javascript" src="https://d3js.org/d3-selection-multi.v1.min.js"></script>
+    <script type="text/javascript" src="../../../lib/dataStructures.js"></script>
+    <script type="text/javascript" src="../../../lib/conceptMap.js"></script>
+
+        
+<a id="username-link" style="float:right;color:red;margin:10px 20px auto; display: none" class="username-link" href="Gradebook.html"></a>
+<a id="login-link" style="float:right;color:red;margin:10px 20px auto" class="login-link" href="#"><Macro 'login'></a>
+<div id="login-box" class="login-popup">
+  <a href="#" class="close"><img src="_static/Images/close_pop.png" class="btn_close" title="Close Window" alt="Close" /></a>
+  <form method="post" class="signin" action="https://#">
+    <fieldset class="textbox">
+      <label class="username">
+        <span>Username</span>
+        <input id="username" value="" type="text" autocomplete="on" placeholder="Username" tabindex="1">
+      </label>
+      <label class="password">
+        <span>Password</span>
+        <input id="password" value="" type="password" placeholder="Password" tabindex="2">
+        <span><a id="forgot" href="#">Forgot your password?</a></span>
+      </label>
+
+      <p>
+        <input type="submit" id="login-submit-button" value="Sign in" tabindex="3" />
+      </p>
+      <p>
+        <input type="button" id="register-button" value="Register" tabindex="4" />
+      </p>
+    </fieldset>
+  </form>
+</div>
+
+        
+<a id="registration-link" style="float:right;color:red;margin:10px 20px auto" class="registration-link" href="#">Register</a>
+<div id="registration-box" class="registration-popup ">
+  <a href="#" class="close"><img src="_static/Images/close_pop.png" class="btn_close" title="Close Window" alt="Close Window" /></a>
+  <form method="post" class="signin" action="https://#">
+    <fieldset class="textbox">
+      <div id="register_error" class="error"></div>
+      <label class="username">
+        <span>Username:</span>
+        <input type="text" id="user" placeholder="Username" />
+      </label>
+
+      <label class="password">
+        <span>Password</span>
+        <input id="pass" type="password" placeholder="Password" />
+      </label>
+
+      <label class="password">
+        <span>Confirm Password</span>
+        <input id="rpass" type="password" placeholder="Confirm Password" />
+      </label>
+
+      <label class="email">
+        <span>Email:</span>
+        <input type="text" id="email" placeholder="Email">
+      </label>
+
+      <p>
+        <input type="submit" id="register-submit-button" value="Register &rarr;"/>
+      </p>
+    </fieldset>
+  </form>
+</div>
+<img class="leftlogo" src="_static/OpenDSALogoT64.png" alt="Logo"/><div class="title-wrapper">
+          <div class="title-inbetween" style="display: table-cell; vertical-align: middle;">
+            <div class="title-content">
+              <h1 class="heading" ><a href="#">
+                <span>BM40A1500 Data Structures and Algorithms</span></a></h1><h2 class="heading" ><span> Table Of Contents </span></h2>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="topnav">
+        <p>
+            <a style="float:left;color:blue;" href="../source/index.rst.rst"
+              target="_blank" rel="nofollow">Show Source | </a>&#160;&#160;
+            <a class="abt" style="float:left;color:blue;" href="#" rel="nofollow">| About</a>&#160;&#160;
+
+          
+        <a  class="uplink" href="#">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a  id="nextmod" href="IntroDSA.html">0.<span class="section-number">1. </span>Data Structures and Algorithms</a>&#160;&#160;»
+
+
+        </p>
+      </div>
+       
+      <div class="content"><div class="sidebar" style="border-style:none;background-color:transparent">
+          <h3 style="margin-top:0em;">Search the book</h3>
+          <form class="search" action="search.html" method="get">
+            <input type="text" />
+            <input type="submit" value="Go" />
+            <input type="hidden" value="yes" />
+            <input type="hidden" value="default" />
+          </form>
+          <p class="searchtip" style="font-size: 60%">
+            Enter search terms or a module, class or function name.
+          </p>
+        </div>
+        
+  <script>ODSA.SETTINGS.DISP_MOD_COMP = false;ODSA.SETTINGS.MODULE_NAME = "index";ODSA.SETTINGS.MODULE_LONG_NAME = "Contents";ODSA.SETTINGS.MODULE_CHAPTER = ""; ODSA.SETTINGS.BUILD_DATE = "2024-08-13 08:46:36"; ODSA.SETTINGS.BUILD_CMAP = false;</script><div class="section" id="introduction-for-data-structures-and-algorithms">
+<h1><span class="sectnum">Chapter 0</span> Introduction for Data Structures and Algorithms<a class="headerlink" href="#introduction-for-data-structures-and-algorithms" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="IntroDSA.html">0.1. Data Structures and Algorithms</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="IntroDSA.html#introduction">0.1.1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="IntroDSA.html#a-philosophy-of-data-structures">0.1.2. A Philosophy of Data Structures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="IntroDSA.html#selecting-a-data-structure">0.1.3. Selecting a Data Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="AnalPrelim.html">0.2. Problems, Algorithms, and Programs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="AnalPrelim.html#problems">0.2.1. Problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AnalPrelim.html#algorithms">0.2.2. Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AnalPrelim.html#programs">0.2.3. Programs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AnalPrelim.html#summary">0.2.4. Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ADT.html">0.3. Abstract Data Types</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="algorithm-analysis">
+<h1><span class="sectnum">Chapter 1</span> Algorithm Analysis<a class="headerlink" href="#algorithm-analysis" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="AnalChap.html">1.1. Chapter Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AnalIntro.html">1.2. Comparing Algorithms</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="AnalIntro.html#introduction">1.2.1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AnalIntro.html#basic-operations-and-input-size">1.2.2. Basic Operations and Input Size</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AnalIntro.html#growth-rates">1.2.3. Growth Rates</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="AnalCases.html">1.3. Best, Worst, and Average Cases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AnalCompvsAlg.html">1.4. Faster Computer, or Faster Algorithm?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AnalAsymptotic.html">1.5. Asymptotic Analysis and Upper Bounds</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="AnalAsymptotic.html#upper-bounds">1.5.1. Upper Bounds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AnalAsymptotic.html#simplifying-rules">1.5.2. Simplifying Rules</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="AnalAsymptotic.html#summary">1.5.3. Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="AnalLower.html">1.6. Lower Bounds and <span class="math notranslate nohighlight">\(\Theta\)</span> Notation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="AnalLower.html#lower-bounds">1.6.1. Lower Bounds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AnalLower.html#theta-notation">1.6.2. Theta Notation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AnalLower.html#classifying-functions">1.6.3. Classifying Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="AnalProgram.html">1.7. Calculating Program Running Time</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AnalMisunderstanding.html">1.8. Common Misunderstandings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AnalMultiple.html">1.9. Multiple Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AnalSpace.html">1.10. Space Bounds</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="linear-data-structures">
+<h1><span class="sectnum">Chapter 2</span> Linear Data Structures<a class="headerlink" href="#linear-data-structures" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="ListADT.html">2.1. The List ADT</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ListADT.html#defining-the-adt">2.1.1. Defining the ADT</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ListArray.html">2.2. Array-Based List Implementation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ListArray.html#insert">2.2.1. Insert</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ListArray.html#append-and-remove">2.2.2. Append and Remove</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ListLinked.html">2.3. Linked Lists</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ListLinked.html#id1">2.3.1. Linked Lists</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ListLinked.html#why-this-has-problems">2.3.2. Why This Has Problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ListLinked.html#a-better-solution">2.3.3. A Better Solution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ListLinked.html#linked-list-insertion">2.3.4. Linked List insertion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ListLinked.html#linked-list-remove">2.3.5. Linked List Remove</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ListAnalysis.html">2.4. Comparison of List Implementations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ListAnalysis.html#space-comparison">2.4.1. Space Comparison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ListAnalysis.html#time-comparison">2.4.2. Time Comparison</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="StackArray.html">2.5. Stacks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="StackArray.html#stack-terminology-and-implementation">2.5.1. Stack Terminology and Implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="StackArray.html#array-based-stacks">2.5.2. Array-Based Stacks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="StackArray.html#pop">2.5.3. Pop</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="StackLinked.html">2.6. Linked Stacks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="StackLinked.html#linked-stack-implementation">2.6.1. Linked Stack Implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="StackLinked.html#linked-stack-push">2.6.2. Linked Stack Push</a></li>
+<li class="toctree-l2"><a class="reference internal" href="StackLinked.html#linked-stack-pop">2.6.3. Linked Stack Pop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="StackLinked.html#comparison-of-array-based-and-linked-stacks">2.6.4. Comparison of Array-Based and Linked Stacks</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Queue.html">2.7. Queues</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Queue.html#queue-terminology-and-implementation">2.7.1. Queue Terminology and Implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Queue.html#array-based-queues">2.7.2. Array-Based Queues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Queue.html#the-circular-queue">2.7.3. The Circular Queue</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="QueueLinked.html">2.8. Linked Queues</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="QueueLinked.html#linked-enqueue">2.8.1. Linked Enqueue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QueueLinked.html#linked-dequeue">2.8.2. Linked Dequeue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QueueLinked.html#comparison-of-array-based-and-linked-queues">2.8.3. Comparison of Array-Based and Linked Queues</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="BinarySearch.html">2.9. Searching in an Array</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="BinarySearch.html#sequential-search">2.9.1. Sequential Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="BinarySearch.html#binary-search">2.9.2. Binary Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="BinarySearch.html#analyzing-binary-search">2.9.3. Analyzing Binary Search</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="hashing">
+<h1><span class="sectnum">Chapter 3</span> Hashing<a class="headerlink" href="#hashing" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="HashIntro.html">3.1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="HashFunc.html">3.2. Hash Function Principles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="HashFuncExamp.html">3.3. Sample Hash Functions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="HashFuncExamp.html#simple-mod-function">3.3.1. Simple Mod Function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="HashFuncExamp.html#binning">3.3.2. Binning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="HashFuncExamp.html#the-mid-square-method">3.3.3. The Mid-Square Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="HashFuncExamp.html#a-simple-hash-function-for-strings">3.3.4. A Simple Hash Function for Strings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="HashFuncExamp.html#string-folding">3.3.5. String Folding</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="OpenHash.html">3.4. Open Hashing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="OpenHash.html#id1">3.4.1. Open Hashing</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="BucketHash.html">3.5. Bucket Hashing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="BucketHash.html#id1">3.5.1. Bucket Hashing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="BucketHash.html#an-alternate-approach">3.5.2. An Alternate Approach</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="HashCSimple.html">3.6. Collision Resolution</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="HashCSimple.html#id1">3.6.1. Collision Resolution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="HashCSimple.html#the-problem-with-linear-probing">3.6.2. The Problem with Linear Probing</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="HashDel.html">3.7. Deletion</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="recursion-and-binary-trees">
+<h1><span class="sectnum">Chapter 4</span> Recursion and Binary Trees<a class="headerlink" href="#recursion-and-binary-trees" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="RecIntro.html">4.1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RecWrite.html">4.2. Writing a recursive function</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RecTrace.html">4.3. Tracing Recursive Code</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="RecTrace.html#a-domino-analogy">4.3.1. A Domino Analogy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="RecTrace.html#towers-of-hanoi">4.3.2. Towers of Hanoi</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="BinaryTree.html">4.4. Binary Trees</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="BinaryTree.html#introduction">4.4.1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="BinaryTree.html#definitions-and-properties">4.4.2. Definitions and Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="BinaryTree.html#binary-tree-as-a-recursive-data-structure">4.4.3. Binary Tree as a Recursive Data Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="BST.html">4.5. Binary Search Trees</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="BST.html#binary-search-tree-definition">4.5.1. Binary Search Tree Definition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="BST.html#bst-search">4.5.2. BST Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="BST.html#bst-insert">4.5.3. BST Insert</a></li>
+<li class="toctree-l2"><a class="reference internal" href="BST.html#bst-remove">4.5.4. BST Remove</a></li>
+<li class="toctree-l2"><a class="reference internal" href="BST.html#bst-analysis">4.5.5. BST Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="BinaryTreeTraversal.html">4.6. Binary Tree Traversals</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="BinaryTreeTraversal.html#preorder-traversal">4.6.1. Preorder Traversal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="BinaryTreeTraversal.html#postorder-traversal">4.6.2. Postorder Traversal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="BinaryTreeTraversal.html#inorder-traversal">4.6.3. Inorder Traversal</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="BSTDict.html">4.7. Dictionary Implementation Using a BST</a></li>
+<li class="toctree-l1"><a class="reference internal" href="BalancedTree.html">4.8. Balanced Trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TwoThreeTree.html">4.9. 2-3 Trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AVL.html">4.10. The AVL Tree</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Heaps.html">4.11. Heaps and Priority Queues</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Heaps.html#id1">4.11.1. Heaps and Priority Queues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Heaps.html#building-a-heap">4.11.2. Building a Heap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Heaps.html#removing-from-the-heap-or-updating-an-object-s-priority">4.11.3. Removing from the heap or updating an object’s priority</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Heaps.html#priority-queues">4.11.4. Priority Queues</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Heapsort.html">4.12. Heapsort</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Heapsort.html#id2">4.12.1. Heapsort</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="algorithm-design-principles">
+<h1><span class="sectnum">Chapter 5</span> Algorithm Design Principles<a class="headerlink" href="#algorithm-design-principles" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="AlgDesignIntro.html">5.1. Algorithm Design Principles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Greedy.html">5.2. The Greedy Approach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mergesort.html">5.3. Divide and Conquer: Mergesort</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Mergesort.html#mergesort-concepts">5.3.1. Mergesort Concepts</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Quicksort.html">5.4. Divide and Conquer: Quicksort</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Quicksort.html#introduction">5.4.1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Quicksort.html#partition">5.4.2. Partition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Quicksort.html#putting-it-together">5.4.3. Putting It Together</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Quicksort.html#quicksort-analysis">5.4.4. Quicksort Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Backtracking.html">5.5. Backtracking, and Branch and Bound</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Backtracking.html#id1">5.5.1. Backtracking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Backtracking.html#from-loops-to-recursion">5.5.2. From loops to recursion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Backtracking.html#implementing-the-search">5.5.3. Implementing the search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Backtracking.html#subsets">5.5.4. Subsets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Backtracking.html#permutations">5.5.5. Permutations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Backtracking.html#the-n-queens-problem">5.5.6. The N Queens Problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Backtracking.html#allocating-tasks">5.5.7. Allocating tasks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Backtracking.html#branch-and-bound">5.5.8. Branch And Bound</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="DynamicProgramming.html">5.6. Dynamic Programming</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="DynamicProgramming.html#id1">5.6.1. Dynamic Programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="DynamicProgramming.html#computing-fibonacci-numbers">5.6.2. Computing Fibonacci Numbers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="DynamicProgramming.html#the-knapsack-problem">5.6.3. The Knapsack Problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="DynamicProgramming.html#chained-matrix-multiplication">5.6.4. Chained Matrix Multiplication</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Probabilistic.html">5.7. Introduction to Probabilistic Algorithms</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Probabilistic.html#probabilistic-algorithms">5.7.1. Probabilistic Algorithms</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Primes.html">5.8. Finding Prime Numbers</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="graphs">
+<h1><span class="sectnum">Chapter 6</span> Graphs<a class="headerlink" href="#graphs" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="GraphIntro.html">6.1. Graphs Chapter Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="GraphIntro.html#graph-terminology-and-implementation">6.1.1. Graph Terminology and Implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="GraphIntro.html#graph-representations">6.1.2. Graph Representations</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="GraphTraversal.html">6.2. Graph Traversals</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="GraphTraversal.html#depth-first-search">6.2.1. Depth-First Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="GraphTraversal.html#breadth-first-search">6.2.2. Breadth-First Search</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="GraphShortest.html">6.3. Shortest-Paths Problems</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="GraphShortest.html#single-source-shortest-paths">6.3.1. Single-Source Shortest Paths</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Floyd.html">6.4. All-Pairs Shortest Paths</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MCST.html">6.5. Minimal Cost Spanning Trees</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="MCST.html#prim-s-algorithm">6.5.1. Prim’s Algorithm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MCST.html#prim-s-algorithm-alternative-implementation">6.5.2. Prim’s Algorithm Alternative Implementation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Kruskal.html">6.6. Kruskal’s Algorithm</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="np-completeness">
+<h1><span class="sectnum">Chapter 7</span> NP-completeness<a class="headerlink" href="#np-completeness" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="LimComp.html">7.1. Limits to Computing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="LimComp.html#id1">7.1.1. Limits to Computing</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Reduction.html">7.2. Reductions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Reduction.html#example-the-pairing-problem">7.2.1. Example: The Pairing Problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Reduction.html#reduction-and-finding-a-lower-bound">7.2.2. Reduction and Finding a Lower Bound</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Reduction.html#the-reduction-template">7.2.3. The Reduction Template</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Reduction.html#two-multiplication-examples">7.2.4. Two Multiplication Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Reduction.html#bounds-theorems">7.2.5. Bounds Theorems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Reduction.html#the-cost-of-making-a-simple-polygon">7.2.6. The Cost of Making a Simple Polygon</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="NPComplete.html">7.3. NP-Completeness</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="NPComplete.html#hard-problems">7.3.1. Hard Problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NPComplete.html#the-theory-of-np-completeness">7.3.2. The Theory of NP-Completeness</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="NPExamp.html">7.4. Examples of NP-complete problems</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="NPExamp.html#formula-satisfiability">7.4.1. Formula Satisfiability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NPExamp.html#vertex-cover">7.4.2. Vertex Cover</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NPExamp.html#hamiltonian-cycle">7.4.3. Hamiltonian Cycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NPExamp.html#traveling-salesman">7.4.4. Traveling Salesman</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="provingNPC.html">7.5. NP-Completeness Proofs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="provingNPC.html#id1">7.5.1. NP-Completeness Proofs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="provingNPC.html#hamiltonian-cycle-to-traveling-salesman">7.5.2. Hamiltonian Cycle to Traveling Salesman</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="NPCoping.html">7.6. Coping with NP-Complete Problems</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="appendix">
+<h1><span class="sectnum">Chapter 8</span> Appendix<a class="headerlink" href="#appendix" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Glossary.html">8.1. Glossary</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      <p><span class="email_div" style="display:inline;"><a id="contact_us" class="contact" style="float:left;color:blue;" rel="nofollow" href="mailto:">Contact Us |</a><a style="float:left;color:blue;" rel="nofollow" href="../../../lib/Privacy.html" target="_blank">| Privacy |</a> <a style="float:left;color:blue;" rel="nofollow" href="../../../lib/license.html" target="_blank">| License</a></span>&#160;&#160;
+      
+        <a  class="uplink" href="#">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a  id="nextmod1" href="IntroDSA.html">0.<span class="section-number">1. </span>Data Structures and Algorithms</a>&#160;&#160;»
+
+</p>
+      </div>
+      <img style="float:right;" src="_static/nsf1.gif" height="62" width="62" alt="nsf"/>
+
+
+    <div class="footer">
+      <p>
+        <span class="email_div" style="display:inline;">
+          <a id="contact_us" class="contact" style="float:left;color:blue;" rel="nofollow" href="mailto:">Contact Us |</a>
+          <a id="bugreport-link" style="float:left;color:blue;" class="bugreport-link" href="#">| Report a bug</a>
+        </span>
+      </p>
+        &copy; Copyright 2011-2023 by OpenDSA Project Contributors and distributed under an MIT license.
+      Last updated on Aug 13, 2024.
+      Created using <a target="_blank" href="http://sphinx.pocoo.org/">Sphinx</a> 4.4.0.
+    </div>
+    
+<div id="bugreport-box" class="bugreport-popup ">
+  <a href="#" class="close"><img src="_static/Images/close_pop.png" class="btn_close" title="Close Window" alt="Close Window" /></a>
+  <form method="post" class="report" action="https://#">
+    <fieldset class="textbox">
+      <div id="bug_error" class="error"></div>
+      <label>
+        <span>Summary*:</span>
+        <input type="text" id="b_title" placeholder="Summary" />
+      </label>
+
+      <label class="os">
+        <span>Operating system*:</span>
+        <select id="b_os">
+          <option value="windows">Windows</option>
+          <option value="macos">Mac OS</option>
+          <option value="linux">Linux</option>
+          <option value="ios">iOS</option>
+          <option value="android">Android</option>
+          <option value="other">Other</option>
+        </select>
+      </label>
+
+      <label class="browser">
+        <span>Browser*:</span>
+        <select id="b_browser">
+          <option value="chrome">Chrome</option>
+          <option value="safari">Safari</option>
+          <option value="internetexplorer">Internet Explorer</option>
+          <option value="opera">Opera</option>
+          <option value="other">Other</option>
+        </select>
+      </label>
+
+      <label class="description">
+        <span>Description*:</span><br>
+        <textarea id="b_description" rows="5" cols="25" placeholder="***BUG** Please enter: (1) a consice description of the problem. (2) steps to reproduce bug. (3) the version of your browser and operating system."></textarea>
+      </label>
+
+      <label class="screenshot">
+        <span>Attach a screenshot (optional):</span>
+        <input type="file" id="b_screenshot" accept="image/*" placeholder="Attach a screenshot (optional)">
+      </label>
+
+      <p>
+        <input type="submit" id="bug-submit-button" value="Submit &rarr;"/>
+      </p>
+    </fieldset>
+  </form>
+</div>
+
+  </body>
+</html>
