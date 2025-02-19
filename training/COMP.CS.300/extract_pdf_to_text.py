@@ -1,9 +1,9 @@
 import os
 import json
 import re
-import fitz  # PyMuPDF for PDF text extraction
-from tqdm import tqdm  # Progress bar
-from bs4 import BeautifulSoup  # For HTML extraction
+import fitz  
+from tqdm import tqdm  
+from bs4 import BeautifulSoup  
 
 def clean_text(text):
     """Clean text by removing extra whitespace, newlines, and artifacts."""
