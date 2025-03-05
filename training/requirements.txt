@@ -3,3 +3,5 @@ tqdm
 beautifulsoup4
 ollama
 requests
+datasets
+pandas
