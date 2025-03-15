@@ -1,3 +1,0 @@
-pipeline_order:
-  - folder: "Kiran_univeristy_assistant_pipeline"
-    config: "config.yaml"

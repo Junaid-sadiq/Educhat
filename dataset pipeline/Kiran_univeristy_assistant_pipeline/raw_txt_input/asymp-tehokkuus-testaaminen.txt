@@ -1,1 +1,0 @@
-Asymptoottisen tehokkuuden testaaminen COMP.CS.300 Tietorakenteet ja algoritmit 1 Matti Rintala (matti.rintala@tuni.fi) Asymptoottisen tehokkuuden testaaminen •Pseudokoodi/suunnittelu – Arvio asymptoottisesta tehokkuudesta •Toteutus/koodaus – Mahd. tehokas toteutus – Toivottavasti haluttu asymptoottinen tehokkuus •Testaus – Vastaako toteutuksen tehokkuus suunniteltua???
