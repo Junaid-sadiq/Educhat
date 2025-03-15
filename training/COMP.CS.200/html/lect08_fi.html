@@ -1,0 +1,1200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+
+    <title>WSD: lect08</title>
+
+    <meta name="description" content="A framework for easily creating beautiful presentations using HTML" />
+    <meta name="author" content="Pia Niemelä" />
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="dist/reset.css" />
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="../css/deadline.css" />
+
+
+    <link rel="stylesheet" href="dist/theme/moon.css" id="theme" />
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme" />
+    <link href="https://fonts.googleapis.com/css?family=Coda" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+        integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="../css/infograph.css" id="theme" />
+    <style>
+        h1 {
+            font-size: 40%;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <div class="reveal">
+        <!-- Any section element inside of this container is displayed as a slide -->
+        <div class="slides">
+            <section data-background="#81237F">
+                <h2>Luennot 8 - JavaScriptin perusteet</h2>
+                <div style="display: flex;font-size:80%">
+                    <ul style="width:60%">
+                        <li>Johdanto JavaScriptiin
+                            <ul>
+                                <li>JS-kirjastot</li>
+                                <li>CDN</li>
+                            </ul>
+                        </li>
+                        <li>Muuttujat: </li>
+                        <ul width="60%">
+                            <li> var, let, const</li>
+                            <li>skooppi:
+                                <ul style="font-size:80%">
+                                    <li>paikallinen vs. globaali</li>
+                                    <li>lohko ja funktio</li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <li> Tietotyypit</li>
+                        <ul style="font-size:80%" width="40%">
+                            <li>Alkeistietotyypit</li>
+                            <li>Kaikki muut ovat olioita, jopa taulukot ja funktiot</li>
+                        </ul>
+                    </ul>
+                    <ul style="width:50%">
+                        <li> Operaattorit
+                            <ul style="font-size:80%">
+                                <li>strict vertailu</li>
+                            </ul>
+                        </li>
+                        <li> Ohjausrakenteet</li>
+                        <ul style="font-size:80%">
+                            <li>if, switch, for, while, do</li>
+                        </ul>
+                        <li> Funktiot
+                            <ul style="font-size:80%">
+                                <li> määrittelyt vs. lausekkeet</li>
+                                <li> anonyymit funktiot (lausekkeet)</li>
+                                <li> määrittelyt nostetaan (hoisting)</li>
+                                <li> parametrilistat</li>
+                                <li> paluuarvot</li>
+                                <li> callback-funktiot</li>
+                            </ul>
+                        </li>
+                        <li>Kommentit</li>
+                    </ul>
+                </div>
+                <img style="position: absolute; top:-100px;right:-100px;width:20%;"
+                    src="../img/face-inverted-small.png" />
+            </section>
+            <section>
+                <section>
+                    <h2>Johdanto JavaScriptiin</h2>
+                    <ul style="font-size:80%">
+                        <li> <strong>dynaamisesti</strong> ja <strong>löyhästi tyypitetty</strong> <em>skriptikieli</em>
+                        </li>
+                        <pre style="width:95%;font-size:50%"><code class= "language-js" contenteditable="false">let x = "Hello";  // x on merkkijono
+        x = 10;           // x muuttuu numeroksi
+        y = "5";          // y on merkkijono, globaali muuttuja (ei suositeltu)
+        let z = x + y;    // muuntaa x:n merkkijonoksi ja suorittaa yhteenlaskun
+                          // z on merkkijono "105"</code></pre>
+                        <li> mahdollistaa sisällön dynaamisen päivittämisen, ohjaamisen</li>
+                        multimediaa, kuvien animointia jne.
+                        <li> vaatii huolellisuutta odottamattoman käyttäytymisen välttämiseksi</li>
+                        <li> hyödyntää laajasti asynkronisia callbackeja</li>
+                        <li> toimii yhdellä säikeellä (tapahtumasilmukka)</li>
+                        <li> tärkeät funktiot!</li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>JavaScriptin rooli</h2>
+                    <div style="display: flex;font-size:80%">
+                        <ul style="width:60%">
+                            <li>Frontend-JavaScript</li>
+                            <ul style="font-size:100%">
+                                <li> tulkitaan selaimessa</li>
+                                <li> käsittelee käyttäjän syötteitä/tapahtumia</li>
+                                <li> muuttaa sivun tilaa</li>
+                                <li> hakee tietoja muilta palvelimilta</li>
+                                <li> lähettää usein tietoja asiakkaalta (selain) palvelimelle</li>
+                            </ul>
+                        </ul>
+                        <ul style="width:60%">
+                            <li> Backend</li>
+                            <ul style="font-size:100%">
+                                <li>esim. palvelinpuolen sovellukset käyttämällä Node.js</li>
+                                <ul>
+                                    <li> katso esim. <a
+                                            href="https://humanwhocodes.com/blog/2013/10/07/node-js-and-the-new-web-front-end/">Nicholas
+                                            Zakas</a>
+                                    </li>
+                                </ul>
+                            </ul>
+                        </ul>
+                    </div>
+                    <p>Tämä kurssi keskittyy vain frontend-kehitykseen, kun taas COMP.CS.500 käsittelee koko stackin</p>
+                </section>
+                <section>
+                    <h2>JavaScript, kehykset ja kirjastot</h2>
+                    <ul style="font-size:80%">
+                        <li> ECMAScript-standardin toteutus</li>
+                        <li>Runsaasti 'funktio'-kokoelmia ja muita ohjelmarakenteita</li>
+                        <ul style="font-size:80%">
+                            <li>jotkut kutsutaan 'kehyksiksi', toiset 'kirjastoiksi'</li>
+                            <ul>
+                                <li>esim. jQuery ja d3</li>
+                            </ul>
+                            <li>hyödynnettävissä omassa JavaScript-ohjelmassasi</li>
+                        </ul>
+                    </ul>
+                </section>
+                <section data-auto-animate>
+                    <h2>JavaScriptin lisääminen, kolme vaihtoehtoa</h2>
+                    <ul>
+                        <li>Inline-JavaScript
+                            <pre
+                                style="width:100%;font-size:35%"><code class="language-html" contenteditable="false">&lt;button onclick="alert('Hei, maailma!')">Klikkaa minua&lt;/button></code></pre>
+                        </li>
+                        <li>Sivun sisäinen JavaScript
+                            <pre style="width:100%;font-size:35%"><code class="language-html" contenteditable="false">&lt;script>
+        document.addEventListener("DOMContentLoaded", function() {
+        document.querySelector("p.greet").innerText = "Hei sivun sisäisestä skriptistä!";
+        });
+        &lt;/script></code></pre>
+                        </li>
+                        <li>Ulkoisen tiedoston JavaScript</li>
+                        <pre
+                            style="width:100%;font-size:35%"><code class="language-html" contenteditable="false">&lt;script src="script.js">&lt;/script></code></pre>
+                        </li>
+                    </ul>
+                </section>
+                <section style="font-size: 80%;">
+
+                    <h2> Skriptien lisääminen viimeiseksi </h2>
+
+                    <div style="display: flex;font-size:80%">
+                        <ul style="width:35%">
+                            HTML
+
+                            <pre style="width:100%;font-size:35%"><code data-line-numbers="3,11">. . .
+                
+                &lt;link rel="stylesheet" href="css/js.css"/>
+                
+                &lt;body>
+                    <div id="container">
+                        <h1>JWT</h1>
+                        <p class="greet"></p>
+                    </div>
+                
+                <script src="script.js"></script>
+                
+                &lt;/body>
+                
+                . . .</code></pre>
+                        </ul>
+
+                        <ul style="width:38%">
+                            JavaScript (script.js)
+
+                            <pre style="width:100%;font-size:35%"><code class="language-js" contenteditable="false">function greet() {
+const elem = document.querySelector("p.greet");
+const greetText = "";
+const inHours = new Date().getHours(); // Lisätty sulkeet funktiokutsuun
+if (inHours > 21 || inHours &lt; 1) { 
+    greetText = 'Hyvää yötä!'; 
+} else if (inHours > 18) {
+    greetText = 'Hyvää iltaa!';
+} else if (inHours > 11) {
+    greetText = 'Hyvää iltapäivää!';
+} else if (inHours > 5) {
+    greetText = 'Hyvää huomenta!';
+} else {
+    greetText = 'Sinun pitäisi olla nukkumassa!'; // Korjattu kirjoitusvirhe ja lisätty huutomerkki
+}
+if (elem) { // Tarkistetaan, että elementti on olemassa ennen sen muokkaamista
+    elem.innerHTML = greetText; // Korjattu muuttujan nimi: greetElem -> elem
+} else {
+    console.error("Tervehdyselementtiä ei löydy!"); // Lisätty virhekäsittely
+}
+}
+
+greet(); 
+</code></pre>
+                        </ul>
+                    </div>
+                    <div style="font-size: 50%;">
+
+                        <p>...varmistaa, että DOM on rakentunut. Tämä mahdollistaa skriptin pääsyn elementteihin ja
+                            niiden käsittelyn ilman virheitä. Muita mekanismeja:</p>
+                        <ul>
+                            <li><code>defer</code>: <code>&lt;script defer src="script.js"&gt;&lt;/script&gt;</code> -
+                                Viivästyttää skriptin suorittamista HTML:n jäsentämisen jälkeen, mutta ennen
+                                DOMContentLoaded-tapahtumaa.</li>
+                            <li>DOMContentLoaded-tapahtuman kuuntelija: Kääri skriptin suoritus kuuntelijaan, joka
+                                odottaa DOM:n olevan valmis. Esimerkki:
+                                <pre style="width:100%;font-size:50%"><code class="language-js">document.addEventListener('DOMContentLoaded', function() {
+                    // Koodisi tähän
+                    greet();
+                });</code></pre>
+                            </li>
+                        </ul>
+                    </div>
+
+                </section>
+
+                <section>
+
+                    <h2>Kirjaston nopea lataus CDN:n avulla</h2>
+
+                    <ul style="font-size:70%">
+                        <li>CDN tarkoittaa Content Delivery Networkia; palvelinverkkoa, joka on optimoitu palauttamaan
+                            staattisia tiedostoja nopeasti lähialueilta.</li>
+                        <li>Selaimesi saattaa jo sisältää kirjaston välimuistissa, joten sitä ei tarvitse ladata
+                            uudelleen.</li>
+                        <li>Voit saada <strong>Bootstrapin</strong> verkosta käyttämällä seuraavaa
+                            <code>&lt;link&gt;</code>-elementtiä:
+                        </li>
+                        <pre style="width:100%;font-size:55%"><code class="language-html">&lt;link rel="stylesheet"
+                        href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+                        integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+                        crossorigin="anonymous"&gt;</code></pre>
+
+                        <li>… ja <strong>JavaScript</strong>-kirjaston verkosta käyttämällä seuraavaa
+                            <code>&lt;script&gt;</code>-elementtiä:
+                        </li>
+                        <pre style="width:100%;font-size:55%"><code class="language-html">&lt;script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
+                        integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+                        crossorigin="anonymous"&gt;&lt;/script&gt;</code></pre>
+                    </ul>
+                    <dl style="font-size: 40%;">
+                        <dt><code>integrity</code>:</dt>
+                        <dd>Varmistaa tiedoston eheyden tarjoamalla kryptografisen hajautusarvon. Selain tarkistaa
+                            tiedoston tätä hajautusarvoa vasten ja estää latauksen, jos se ei täsmää.</dd>
+
+                        <dt><code>crossorigin</code>:</dt>
+                        <dd>Hallinnoi ristialueisiin liittyvää resurssien noutoa ja tunnistetietojen käsittelyä. Arvot:
+                            <ul>
+                                <li><code>anonymous</code>: hakee resurssin ilman tunnistetietoja.</li>
+                                <li><code>use-credentials</code>: hakee resurssin tunnistetietojen kanssa.</li>
+                            </ul>
+                        </dd>
+                    </dl>
+
+                </section>
+
+            </section>
+            <section>
+                <section class="present" style="top: 0px; display: block;">
+                    <h2>Muuttujat</h2>
+                    <ul style="font-size:70%">
+                        <li>nimi</li>
+                        <li>var, let, const</li>
+                        <li>alue (scope)
+                            <ul>
+                                <li>paikallinen ja globaali</li>
+                                <li>lohko ja funktio</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Muuttujan nimi (tunniste)</h2>
+                    <ul style="font-size:80%">
+                        <li>JavaScript on kirjainkoolle herkkä (case-sensitive).</li>
+                        <li>Muuttujan nimi voi sisältää:</li>
+                        <ul style="font-size:80%">
+                            <li>kirjaimia, numeroita, alaviivoja (esim. varName, this_one_too)</li>
+                            <li>ei voi alkaa numerolla (esim. 99_notAllowed, isAllowed_99)</li>
+                            <li>funktioiden nimeämisessä suositaan camelCase-tyyliä (esim. getValue)</li>
+                        </ul>
+                        <li>Varattuja sanoja ei voi käyttää muuttujien niminä, esim. <a
+                                href="https://www.w3schools.com/js/js_reserved.asp">https://www.w3schools.com/js/js_reserved.asp</a>.
+                        </li>
+                    </ul>
+                </section>
+
+                <section style="font-size: 50%;">
+                    <table style="border:1;border-collapse: collapse; width: 100%; text-align: left;">
+                        <thead>
+                            <tr>
+                                <th>Ominaisuus</th>
+                                <th>var</th>
+                                <th>let</th>
+                                <th>const</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Esitelty</strong></td>
+                                <td>ES1 (1997)</td>
+                                <td>ES6 (2015)</td>
+                                <td>ES6 (2015)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Alue (scope)</strong></td>
+                                <td>Funktioscope</td>
+                                <td>Lohkoscope</td>
+                                <td>Lohkoscope</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Hoisting</strong></td>
+                                <td>Nostetaan ylös <code>undefined</code> (voidaan käyttää ennen määrittelyä)</td>
+                                <td>Nostetaan mutta <strong>ei alusteta</strong> (ReferenceError, jos käytetään ennen
+                                    määrittelyä)</td>
+                                <td>Nostetaan mutta <strong>ei alusteta</strong> (ReferenceError, jos käytetään ennen
+                                    määrittelyä)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Uudelleenkäyttö</strong></td>
+                                <td>✅ Sallittu</td>
+                                <td>✅ Sallittu</td>
+                                <td>❌ Ei sallittu (on alustettava määrittelyssä)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Uudelleenmäärittely</strong></td>
+                                <td>✅ Sallittu (jopa samassa scope:ssa)</td>
+                                <td>❌ Ei sallittu samassa scope:ssa</td>
+                                <td>❌ Ei sallittu samassa scope:ssa</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Muokattavuus</strong></td>
+                                <td>✅ Muokattavissa</td>
+                                <td>✅ Muokattavissa</td>
+                                <td>❌ Ei muokattavissa (arvoa ei voi vaihtaa)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Globaali alue</strong></td>
+                                <td>✅ Tulee osaksi <code>window</code>-objektia (<code>window.varName</code>)</td>
+                                <td>❌ Ei tule osaksi <code>window</code>-objektia</td>
+                                <td>❌ Ei tule osaksi <code>window</code>-objektia</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Käyttötapa</strong></td>
+                                <td>Vältä <code>var</code>-käyttöä scope-ongelmien vuoksi</td>
+                                <td>Käytä, kun arvo voi muuttua</td>
+                                <td>Käytä FP-tyylissä ja vakioille (suositeltu!)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <section>
+                    <h2>Paikallisten muuttujien alue</h2>
+                    <div style="display: flex;font-size:75%">
+                        <ul>
+                            <li>function scope
+                                <ul style="font-size:70%">
+                                    <li><code>var</code></li>
+                                    <li>Sisältää funktiolohkon</li>
+                                    <li><code>var</code>:n nostaminen (hoisting)
+                                        <ul>
+                                            <li>muuttujan määrittely "nostetaan" funktion alkuun</li>
+                                            <li>käytä mieluummin <code>let</code> tai <code>const</code> kuin
+                                                <code>var</code>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>block scope
+                                <ul style="font-size:70%">
+                                    <li><code>let</code>, <code>const</code></li>
+                                    <li>Sisältää lausekelohkon - {}</li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <div style="width:60%">
+                            <pre style="width:90%;font-size:55%"><code class= "language-js" contenteditable="false">function getValue(condition){
+    // color hoisted here as undefined
+    if(condition){
+        var color = "blue";
+        return color;
+    }
+    else{
+    // color exists here as undefined
+    }
+}</code></pre>
+
+                            <pre style="width:90%;font-size:55%"><code class= "language-js" contenteditable="false">function getValue(condition){
+    // color does not exist here
+    if(condition){
+        let color = "blue";
+        return color;
+    }
+    else{
+        // color does not exist here
+    }
+    // color does not exist here
+}</code></pre>
+
+                        </div>
+                </section>
+                <section style="font-size: 80%;">
+
+                    <h2>Muuttujat: <code>const</code></h2>
+
+                    <ul style="font-size: 80%">
+                        <li><strong>Parantaa muuttumattomuutta</strong> (hyödyllinen estämään tahattomia muutoksia)</li>
+                        <ul>
+                            <li>✅ Estää tahattomat tyypin muutokset</li>
+                            <li>✅ Varmistaa ennustettavat arvot</li>
+                        </ul>
+                        <li><strong>Nimeämiskäytäntö:</strong> Vakiot kirjoitetaan yleensä isoilla kirjaimilla</li>
+                        <ul>
+                            <li>Esimerkki: <code>const MAX_USERS = 100;</code></li>
+                        </ul>
+                        <li><strong>Julistetaan kerran - uudelleenmäärittely ei ole sallittua!</strong></li>
+                        <pre style="width: 95%; font-size: 60%">
+                <code class="language-js" contenteditable="false">
+                const PI = 3.141592653589793;
+                PI = 3.14;      // ❌ Virhe: Vakion arvon muuttaminen
+                PI = PI + 10;   // ❌ Virhe: Vakion arvon muuttaminen
+                </code>
+                </pre>
+
+                        <li><strong>⚠️ Huomautus:</strong> <code>const</code> estää objektin uudelleenmäärittelyn, mutta
+                            <strong>ei tee objektista itsestään muuttumatonta</strong>.
+                        </li>
+                        <pre style="width: 95%; font-size: 50%">
+                <code class="language-js" contenteditable="false">const user = { name: "Alice", age: 25 };
+                
+// ✅ Sallittua: Objektin ominaisuuksien muuttaminen
+user.age = 30;
+console.log(user.age); // 30
+
+// ❌ Virhe: Objektin uudelleenmäärittely
+user = { name: "Bob", age: 40 }; 
+// TypeError: Vakion arvon muuttaminen
+</code>
+                </pre>
+                    </ul>
+                </section>
+
+                <section class="present" style="top: 0px; display: block;">
+
+                    <h2>Laiska ja dynaaminen tyypitys</h2>
+                    <ul style="font-size:70%">
+                        <li>Määrittely ja alustus voidaan tehdä erikseen,
+                            eli <strong>löyhästi</strong>, tai ne voidaan yhdistää</li>
+                        <pre style="width:95%;font-size:60%"><code class= "language-js" contenteditable="false">let count, name;            // muuttujalla ei ole vielä tietotyyppiä
+count = 0;                  // numero-muuttuja
+name = "Charles Dickens";   // merkkijono-muuttuja
+let number2 = 12;           // uusi numero-muuttuja
+name = 123;                 // muuttuu kokonaisluvuksi (!)
+name = "Uusi nimi";        // muuttuu takaisin merkkijonoksi, ei sallittu const:lla</code></pre>
+
+                        <li>Muuttujan tietotyyppi määritetään <strong>dynaamisesti</strong> annettavan arvon perusteella
+                        </li>
+                        <li>Voiko muuttujaa käyttää ilman, että se on ensin määritelty?</li>
+                        <ul>
+                            <li>Kyllä, mutta JavaScript määrittää sen automaattisesti globaaliksi muuttujaksi.</li>
+                            <li>Tämä tapahtuu vain ei-tiukassa tilassa.</li>
+                            <li>Tiukassa tilassa (<code>"use strict";</code>) määrittelemättömän muuttujan käyttö
+                                aiheuttaa virheen. Tiukka tila on suositeltava.</li>
+                        </ul>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Paikallinen ja globaali laajuus</h2>
+                    <div style="display: flex; font-size: 80%;">
+                        <ul style="width: 50%; list-style-type: none; padding-left: 0;">
+                            <li><strong>Paikalliset muuttujat</strong>
+                                <ul style="font-size: 70%; list-style-type: none; padding-left: 20px;">
+                                    <li>Saatavilla vain funktion sisällä</li>
+                                </ul>
+                            </li>
+                            <li><strong>Globaalit muuttujat</strong>
+                                <ul style="font-size: 70%; list-style-type: none; padding-left: 20px;">
+                                    <li>Määritelty funktion ulkopuolella</li>
+                                    <li>Muuttujat, joita käytetään ilman määrittelyä</li>
+                                    <li>Näkyvät kaikkialla</li>
+                                    <li><strong>Globaali laajuus voi olla haitallinen, koska:</strong>
+                                        <ul style="font-size: 70%; list-style-type: none; padding-left: 20px;">
+                                            <li>Sivuvaikutukset ja ei-toivotut taustamuutokset</li>
+                                            <li>Varjostaa muita globaaleja muuttujia</li>
+                                            <li>Kirjastot vaikeuttavat globaalien muuttujien hallintaa</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul style="width: 50%; list-style-type: none; padding-left: 0;">
+                            <pre style="width: 90%; font-size: 60%;">
+<code class="language-js" contenteditable="false">let a = 5;      // globaali muuttuja
+let sum = 0;    // globaali muuttuja
+
+function teeJotain() {
+    let b = 12; // paikallinen muuttuja
+    c = 10;     // globaali (!)
+}
+/* tässä b ei ole olemassa, mutta c on */
+</code>
+                </pre>
+                        </ul>
+                    </div>
+                </section>
+
+                <section style="font-size: 60%;">
+                    <h2>window-objekti globaalina laajuutena</h2>
+                    <ul>
+                        <li><strong>Mikä on <code>window</code>-objekti?</strong>
+                            <ul style="font-size:80%">
+                                <li>Selaimen globaali objekti, joka edustaa selainikkunaa</li>
+                                <li>Tarjoaa pääsyn selaimen ominaisuuksiin ja API:hin</li>
+                                <li>Jokainen globaali muuttuja ja funktio on <code>window</code>-objektin ominaisuus
+                                </li>
+                            </ul>
+                        </li>
+                        <li><strong><code>window</code> välittäjänä</strong>
+                            <ul style="font-size:80%">
+                                <li>Toimii käyttöliittymänä JavaScriptin ja selaimen välillä</li>
+                                <li>Yhdistää JavaScriptin selainkohtaisiin toiminnallisuuksiin:</li>
+                                <ul>
+                                    <li>DOM → verkkosivun sisällön muokkaus</li>
+                                    <li>BOM → historia, sijainti, navigointi jne.</li>
+                                    <li>Tapahtumankäsittely → Ajastimet, hiiri/näppäimistötapahtumat</li>
+                                </ul>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+
+
+
+
+
+            </section>
+            <section>
+                <section>
+
+                    <h2>Tietotyypit</h2>
+                    <ul style="font-size: 80%;">
+
+                        <li><strong>Alkeistietotyypit</strong>
+                            <ul style="font-size: 80%;">
+                                <li><code>number</code>, <code>string</code>, <code>boolean</code>,
+                                    <code>undefined</code>
+                                </li>
+                                <li>Harvinaisia: <code>bigint</code>, <code>symbol</code></li>
+                                <li><code>null</code> (erityinen tyyppi, joka edustaa "ei arvoa")</li>
+                            </ul>
+                        </li>
+
+                        <li><strong>Viitetyypit</strong>
+                            <ul style="font-size: 80%;">
+                                <li><strong>Objektit</strong>
+                                    <ul>
+
+                                        <li>Sisäänrakennetut objektit:
+                                            <code>Number</code>, <code>String</code>, <code>Boolean</code>,
+                                            <code>Date</code>, <code>Math</code>, <code>RegExp</code>
+                                        </li>
+                                        <li><code>Array</code> ja <code>Function</code> ovat myös objekteja</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+
+                    </ul>
+
+                </section>
+
+                <section>
+
+                    <h2>Sisäänrakennetut objektit</h2>
+                    <ul style="font-size:80%">
+                        <li>Apuobjektit</li>
+                        <ul style="font-size:80%">
+                            <li>Valmiita objekteja, joilla on paljon hyödyllisiä metodeja datan käsittelyyn</li>
+                            <li>Esim. Math, Date ja RegExp</li>
+                        </ul>
+                        <pre style="width:100%;font-size:50%"><code class="language-js" contenteditable="false">let seed = Math.random();                   // satunnainen luku välillä 0 ja 1 [0,1)
+let lottoNr = Math.floor(1 + 40*seed);
+const start_date = new Date(2019,4,4,14,15);// vuosi, kuukausi, päivä, tunti ja minuutti
+const month = start_date.getMonth();        // kuukausi = 4
+let today = new Date();
+const pattern = /[0-9]/;
+const str = new String(today);
+let found = str.match(pattern);             // palauttaa ensimmäisen osuman</code></pre>
+
+                    </ul>
+                </section>
+
+                <section>
+
+                    <h2>Merkkijono (string)</h2>
+                    <ul style="font-size:70%">
+                        <li>Kirjoitetaan "lainausmerkeissä", 'heittomerkeissä' tai `backtick`-merkeillä
+                            (mallimerkkijonot)</li>
+                        <li>Lainaukset ja muut erikoismerkit pitää paeta kenoviivalla (\):</li>
+                        <ul style="font-size:80%">
+                            <li> \" - lainausmerkki</li>
+                            <li> \' - heittomerkki</li>
+                            <li> \\ - kenoviiva</li>
+                        </ul>
+
+                        <li>Muita yleisiä pakoitusmerkkejä:</li>
+                        <ul style="font-size:80%">
+                            <li> \n - rivinvaihto</li>
+                            <li> \t - sarkain</li>
+                        </ul>
+                    </ul>
+                    <pre style="width:100%;font-size:45%"><code class="language-js" contenteditable="false">const str1 = 'Tämä on merkkijono';
+const str2 = "Niin on tämäkin";
+const str3 = 'Tässä on "lainausmerkki"';
+const str4 = "Tässä on \"lainausmerkki\", toinen tapa tehdä se";
+const str5 = "123";                     // merkkijono, ei numero
+const str6 = "ensimmäinen rivi\ntoinen rivi";   // tulostuu kahdelle riville</code></pre>
+
+                </section>
+
+                <section>
+
+                    <h2>Yhdistäminen (Concatenation)</h2>
+                    <ul style="font-size:70%">
+                        <li>Kun toinen operandi on merkkijono</li>
+                        <ul>
+                            <li>+ -operaattori tulkitaan yhdistämisoperaattoriksi</li>
+                            <li>Se yhdistää merkkijonot; toinen operandi muunnetaan merkkijonoksi</li>
+                        </ul>
+                        <li>Mallimerkkijonot (template literals, ES6) backtick-merkeillä `${str7}` helpottavat
+                            muuttujien upottamista</li>
+                    </ul>
+                    <pre style="width:100%;font-size:45%"><code class="language-js" contenteditable="false">const start = "Tämä on alku";
+const end = "ja tämä on loppu";
+const mjono = start + ", " + end + "."; // "Tämä on alku, ja tämä on loppu."
+const num = 12;
+const strNum = num + ""; // "12" merkkijonona</code></pre>
+                </section>
+
+                <section>
+
+                    <h2>Totuusarvo (Boolean)</h2>
+                    <ul style="font-size:80%">
+                        <li>Arvot: <code>true</code> ja <code>false</code></li>
+                        <pre style="width:70%;font-size:50%"><code class="language-js" contenteditable="false">const married = true;
+                    if (married) {
+                        console.log("Olemme naimisissa");
+                    }</code></pre>
+                    </ul>
+                </section>
+
+                <section>
+
+                    <h2> undefined</h2>
+                    <ul style="font-size:80%">
+                        <li> Muuttujan tietotyyppi määräytyy sen sisällön perusteella</li>
+                        <li> Entä muuttuja, jolla ei ole vielä arvoa?</li>
+                        <code>undefined</code>
+                        <ul style="font-size:80%">
+                            <li> undefined on tietotyyppi, joka sisältää vain yhden arvon (arvon undefined)</li>
+                        </ul>
+                        <li> Muuttujan arvo, jos</li>
+                        <ul style="font-size:80%">
+                            <li>ei ole annettu arvoa, ja se voitaisiin alustaa arvolla <code class="language-js">null</code>
+                            </li>
+                
+                            <li> <code class="language-js">null</code> voidaan automaattisesti muuntaa tyhjäksi
+                                merkkijonoksi,
+                                <code class="language-js">null</code> tai <code>false</code>
+                                (riippuen vastaanottavasta muuttujasta)
+                            </li>
+                        </ul>
+                    </ul>
+                
+                </section>
+                <section>
+                
+                    <h2> typeof()</h2>
+                    <ul style="font-size:80%">
+                        <li> Sisäänrakennettu funktio, joka palauttaa muuttujassa tai lausekkeessa
+                            olevan tiedon tyypin</li>
+                    </ul>
+    <pre style="width:100%;font-size:60%"><code class= "language-js" contenteditable="false">let n = 6, name = "TAU";
+typeof(n)               // palauttaa 'number' (merkkijonona)
+typeof(name)            // palauttaa 'string' (merkkijonona)
+typeof(6 > 5)           // palauttaa 'boolean' (merkkijonona)
+
+let title;
+typeof(title)           // palauttaa 'undefined' (merkkijonona)
+typeof(arrOfSomething)  // palauttaa 'object' (ei ole taulukko)</code></pre>
+                
+                </section>
+                
+                <section>
+                    <section id="arrays">
+                        <h2 class="r-fit-text">Taulukot</h2>
+                    </section>
+                
+                    <section>
+                
+                        <h2>Taulukko</h2>
+                        <ul style="font-size:80%">
+                            <li> Taulukko esitetään <code class="language-js">Array</code>-objektina. Luodaksesi
+                                taulukon, jossa on N elementtiä, voit kirjoittaa</li>
+                            <pre
+                                style="width:80%;font-size:70%"><code class= "language-js" contenteditable="false">let myArray = new Array(N);</code></pre>
+                
+                            <li> Taulukon indeksit kulkevat välillä 0 - N-1.</li>
+                            <li> JavaScript sallii erilaisten arvojen tallentamisen taulukkoon</li>
+                            <li> Ominaisuus <code class="language-js">length</code> kertoo taulukon alkioiden määrän.</li>
+                            <li> Sisältää useita metodeja elementtien käsittelyyn, esim.</li>
+                            <code class="language-js">reverse()</code>, <code class="language-js">push()</code>, <code
+                                class="language-js">concat()</code>, <code class="language-js">flat()</code> jne.
+                        </ul>
+                
+                    </section>
+                    <section>
+                
+                        <h2> Taulukon Määrittelyesimerkkejä</h2>
+                        <pre style="width:100%;font-size:45%"><code class= "language-js" contenteditable="false">// Taulukko, jossa on 3 alkiota, jokainen undefined
+                let Car = new Array(3);
+                
+                // Aseta arvoja alkioille
+                Car[0] = "Ford";
+                Car[1] = "Toyota";
+                Car[2] = "Honda";
+                
+                // Luo taulukko kolmella alustetulla alkiolla
+                let Car2 = new Array("Ford", "Toyota", "Honda");
+                
+                // Sama taulukko eri syntaksilla
+                let Car3 = ["Ford", "Toyota", "Honda"];</code></pre>
+                
+                    </section>
+                    <section>
+                
+                        <h2> Arvojen määrittäminen taulukkoon</h2>
+                        <pre style="width:100%;font-size:50%"><code class= "language-js" contenteditable="false">// Taulukko, jossa on 3 alkiota ja eri tietotyyppejä
+                let tmp3 = new Array(1, "a", true);
+                
+                // Muuttaa tmp3-taulukon 10 alkiota pitkäksi
+                // alkioista tmp3[3] - tmp3[9] tulee undefined
+                
+                tmp3.length = 10; 
+                
+                // Muuttaa tmp3-taulukon 100 alkiota pitkäksi
+                tmp3[99] = "Jotain";
+                // alkioista tmp3[3] - tmp3[98] tulee undefined. Taulukko on harva.</code></pre>
+                
+                    </section>
+                
+                    <section>
+                        <h3>Moniulotteiset/sisäkkäiset taulukot</h3>
+                        <p>Taulukot voivat sisältää myös muita taulukoita:</p>
+                        <pre><code class="language-js" data-line-numbers>// Esimerkki: matriisi
+                const matrix = [
+                [1, 2, 3],
+                [4, 5, 6],
+                [7, 8, 9]
+                ];
+                
+                // Alkioiden käsittelyä
+                let middle = matrix[1][1]; // 5
+                let firstInnerArray = matrix[0]; // [1, 2, 3]
+                let lastInnerArray = matrix.at(-1); // [7, 8, 9]
+                </code></pre>
+                    </section>
+                            <section>
+                <section>
+                    <h2> Operaattorit</h2>
+                    Tarkastellaan <strong>lausetta</strong>:
+                    <pre style="width:60%;font-size:95%"><code class="language-js">let muuttuja = 5 + 6.0;</code></pre>
+                    <table style="font-size:70%">
+                        <th>missä</th>
+                        <th></th>
+                        <tr>
+                            <td>5 + 6.0</td>
+                            <td>on lauseke</td>
+                        </tr>
+                        <tr>
+                            <td> 5 ja 6.0</td>
+                            <td>ovat operandeja</td>
+                        </tr>
+                        <tr>
+                            <td> + </td>
+                            <td>on <strong>operaattori</strong></td>
+                        </tr>
+                    </table>
+                </section>
+
+                <section>
+                    <h2> Aritmeettiset ja vertailuoperaattorit</h2>
+                    <div style="display: flex;font-size:80%">
+                        <ul style="width:40%">
+                            <li>Aritmeettiset operaattorit</li>
+                            +, -, *, /, %, ++, --
+                            <li>Vertailuoperaattorit</li>
+                            ==, ===, !=, !==, &lt;,>, &lt;=,>=
+                            <ul>
+                                <li>== tyyppimuunnos</li>
+                                <li>=== tarkka vertailu</li>
+                            </ul>
+                        </ul>
+                        <ul style="width:30%">
+                            <pre style="width:100%;font-size:55%"><code class="language-js" contenteditable="false">// muuttujat
+                                        tuloa ja b määritelty:
+                                        let a = 5;
+                                        let b = 10;
+                                            
+                                        let c = '10';</code></pre>
+                        </ul>
+                        <ul style="width:40%">
+                            <pre style="width:100%;font-size:55%"><code class="language-js" contenteditable="false">a + b   // arvo on 15
+a - b   // arvo on -5
+a * b   // arvo on 50
+a / b   // arvo on 0.5
+a % b   // arvo on 5
+a++     // arvo on 5
+a--     // arvo on 5
+
+(a == b)  // arvo on false
+(b == c)  // arvo on true
+(b === c) // arvo on false
+(b != c)  // arvo on false
+(b !== c) // arvo on true
+(a > b)   // arvo on false
+(a &lt; c)   // arvo on true
+(b > c)   // arvo on false
+(b &lt; c)   // arvo on false</code></pre>
+                        </ul>
+                    </div>
+                </section>
+
+
+
+
+
+                <section>
+
+                    <h2> Tarkistetaan, onko objekti taulukko</h2>
+                    <ul style="font-size:80%">
+                        <li>
+                            <pre style="width:100%;font-size:60%"><code class= "language-js" contenteditable="false">function addArrayItems(arrOfSomething){
+    if(Array.isArray(arrOfSomething)){
+        // kaikki hyvin, se on taulukko
+    }
+}</code></pre>
+                        </li>
+                        <li>
+                            <pre
+                                style="width:100%;font-size:60%"><code class= "language-js" contenteditable="false">typeof(arrOfSomething) //palauttaa "object" (ei "array")</code></pre>
+                        </li>
+                    </ul>
+                </section>
+                
+                <section>
+                    <h3>Alkioiden lisääminen ja poistaminen</h3>
+                    <ul>
+                        <li>
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push"
+                                target="_blank">arr.push(…items)</a>
+                            - lisää alkioita loppuun,
+                        </li>
+                        <li>
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/pop"
+                                target="_blank">arr.pop()</a>
+                            - poistaa alkion lopusta,
+                        </li>
+                        <li>
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/shift"
+                                target="_blank">arr.shift()</a>
+                            - poistaa alkion alusta,
+                        </li>
+                        <li>
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/unshift"
+                                target="_blank">arr.unshift(…items)</a>
+                            - lisää alkioita alkuun.
+                        </li>
+                        <li>
+                            <strong>HUOM: Kaikki nämä funktiot muuttavat alkuperäistä taulukkoa</strong>
+                            <ul>
+                                <li>taulukon alkioiden määrä muuttuu</li>
+                                <li>
+                                    <code>arr.shift()</code> ja
+                                    <code>arr.unshift()</code> muuttavat myös alkioiden indeksejä
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+                
+                <section>
+                    <h3><code>...</code> Spread-syntaksi</h3>
+                    <ul>
+                        <li>
+                            Spread (<code>...</code>) -syntaksi:
+                            <ul>
+                                <li>
+                                    laajentaa
+                                    <a href="https://javascript.info/iterable" target="_blank">iteroitavan</a>, kuten
+                                    taulukon tai merkkijonon, yksittäisiksi alkioiksi (tai
+                                    merkkijonoissa merkeiksi).
+                                    <ul>
+                                        <li>
+                                            sisäänrakennettuja iteroitavia ovat esimerkiksi
+                                            <code>String</code>, <code>Array</code>,
+                                            <code>TypedArray</code>, <code>Map</code>,
+                                            <code>Set</code>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    luettelee objektin ominaisuudet ja lisää ne avain-arvopareina
+                                    uuteen luotavaan objektiin.
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            Spread-syntaksia voi käyttää, kun kaikki objektin tai
+                            iteroitavan alkioita tarvitaan uudessa taulukossa tai objektissa.
+                        </li>
+                    </ul>
+                </section>
+                
+                <section>
+                    <h3><code>...</code> Spread taulukoissa</h3>
+                    <pre><code class="language-js" data-line-numbers>// Taulukon kopiointi
+const arr = [1, 2, 3];
+const arr2 = [...arr]; // arr.slice()
+
+arr2.push(4);
+//  arr2 muuttuu: [1, 2, 3, 4]
+//  arr pysyy muuttumattomana
+
+// Vaihtoehto taulukoiden yhdistämiseen
+const evens = [2, 4, 6, 8, 10];
+const odds = [1, 3, 5, 7, 9];
+const all = [...evens, ...odds]; // evens.concat(odds)</code></pre>
+                </section>
+                
+                <section>
+                    <h3>arr.concat(arg1, arg2…)</h3>
+                    <ul>
+                        <li>
+                            <p>
+                                Metodi
+                                <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat"
+                                    target="_blank">arr.concat()</a>
+                                luo uuden taulukon, joka sisältää arvoja muista taulukoista.
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat"
+                                    target="_blank">arr.concat()</a>
+                                ei muuta mitään annetuista taulukoista, vaan palauttaa uuden matalan kopion,
+                                joka sisältää alkuperäisten taulukoiden alkioita.
+                            </p>
+                        </li>
+                    </ul>
+                </section>
+                
+                <section>
+                    <h3>Taulukoiden yhdistäminen</h3>
+                    <pre><code class="language-js" data-line-numbers>const letters = ['a', 'b', 'c'];
+const numbers = [1, 2, 3];
+const alphaNumeric = letters.concat(numbers);
+// alphaNumeric: ["a", "b", "c", 1, 2, 3]
+// "letters" ja "numbers" pysyvät muuttumattomina</code></pre>
+                </section>
+                
+                <section>
+                    <h2>
+                        <code>for..of</code> Toistorakenne taulukoille ja muille iteroitaville
+                    </h2>
+                    <ul>
+                        <li>
+                            <code>for...of</code>-lause suorittaa toistorakenteen,
+                            joka käy läpi iteroitavan objektin arvot.
+                        </li>
+                        <li>
+                            <code>for..of</code> ei anna pääsyä alkion indeksiin, vain sen arvoon.
+                        </li>
+                        <li>
+                            Sisäänrakennettuja iteroitavia ovat <code>Array</code>,
+                            <code>String</code>, <code>Map</code>, <code>Set</code>,
+                            <code>NodeList</code> (ja muut DOM-kokoelmat).
+                        </li>
+                        <li>
+                            <code>break</code> ja <code>continue</code> toimivat kuten
+                            muissakin toistorakenteissa.
+                        </li>
+                    </ul>
+                </section>
+</section>                
+            <section>
+                <section>
+
+                    <h2>Funktiot JavaScriptissä</h2>
+                    <ul style="font-size:80%">
+                        <li> Yksinkertainen funktio luvun neliöimiseksi</li>
+                    </ul>
+                    <pre style="width:80%;font-size:60%"><code class= "language-js" contenteditable="false">function square(value) {
+                        return value * value;
+                    }</code></pre>
+                    <ul style="font-size:80%">
+                        <li> Voi kutsua osana lauseketta</li>
+                    </ul>
+                    <pre style="width:80%;font-size:60%"><code class= "language-js" contenteditable="false">const radius = 6;
+                    const area1 = 3.1459 * square(radius);
+                    const someNumber = 3 + square(6 * radius);</code></pre>
+                </section>
+
+                <section>
+                    <h2>Määrittelyt vs. lausekkeet</h2>
+
+                    <!-- Funktion määrittely -->
+                    <ul style="font-size: 80%;">
+                        <li><strong>Funktion määrittely</strong></li>
+                    </ul>
+                    <pre style="width: 60%; font-size: 50%;">
+                            <code class="language-js" contenteditable="false">function square(value) {return value * value;}</code>
+                        </pre>
+
+                    <!-- Funktion ilmaiseminen lausekkeena -->
+                    <ul style="font-size: 80%;">
+                        <li><strong>Funktio lausekkeena</strong></li>
+                    </ul>
+                    <pre style="width: 60%; font-size: 60%;">
+                            <code class="language-js" contenteditable="false">let square = function(value) {
+                        return value * value;
+                    }; // Huomaa puolipiste!</code>
+                        </pre>
+
+                    <ul style="font-size: 80%;">
+                        <li>Funktiolauseke on <em>anonyymi</em>, koska sillä ei ole nimeä.</li>
+                        <li>Funktion voi kirjoittaa myös <strong>nuolifunktiosyntaksilla</strong>:</li>
+                    </ul>
+
+                    <!-- Nuolifunktion vaihtoehto -->
+                    <pre style="width: 60%; font-size: 60%;">
+                            <code class="language-js" contenteditable="false">const square = (value) => value * value;</code>
+                        </pre>
+                </section>
+
+                <section>
+                    <h2>Anonyymit funktiot (lambda-funktiot)</h2>
+                    <pre style="width:60%;font-size:60%"><code class= "language-js" contenteditable="false">const z = function(value){
+    return value * value;
+} /* funktiolauseke */
+
+const side1 = 3;
+const newArea = z(side1);
+                
+const x = z;
+const myArea = x(side1 + 6);</code></pre>
+                    <ul style="font-size:80%">
+                        <li>Voimme asettaa muuttujan <code>z</code> arvoksi uuden muuttujan <code>x</code></li>
+                        <li><code>x</code> sisältää nyt kutsuttavan funktion</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Funktioiden palauttamat arvot</h2>
+                    <ul style="font-size:80%">
+                        <li>Funktio palauttaa aina arvon. Jos palautuslausetta ei ole, palauttaa se
+                            <code>undefined</code>.
+                        </li>
+                    </ul>
+                    <pre style="width:80%;font-size:60%"><code class= "language-js" contenteditable="false">function isEven(n){
+    // Funktio palauttaa totuusarvon ilmaisun
+    return (n%2 ==0);
+}
+
+let val = 6;
+if(isEven(val)){
+    // Tee jotain
+}</code></pre>
+                </section>
+
+                <section>
+                    <h2>Takaisinkutsufunktiot (callback functions)</h2>
+                    <ul style="font-size:80%">
+                        <li>Kun funktio A annetaan parametrina funktiolle B, ja B suorittaa A:n, A on
+                            'takaisinkutsufunktio'.</li>
+                        <li>Mahdollistaa muiden kirjoittamien funktioiden käyttämisen ja oman toiminnan määrittelyn.
+                        </li>
+                        <li>Esimerkiksi tapahtumankäsittelyssä.</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Kommentit JavaScriptissä</h2>
+                    <pre style="width:40%;font-size:50%"><code class= "language-js" contenteditable="false">// tämä on kommentti
+                    
+                    /* tämä on
+                    monirivinen kommentti */  
+                    </code></pre>
+                    <ul style="font-size:80%">
+                        <li>Kommentit</li>
+                        <ul style="font-size: 80%;">
+                            <li>Selittävät, mitä koodi tekee</li>
+                            <li>Koodin tilapäiseen poistamiseen virheiden etsinnässä</li>
+                        </ul>
+                        <li>JSDoc</li>
+                        <ul style="font-size: 80%;">
+                            <li>Funktioiden kuvaamiseen</li>
+                            <li>VSCode täydentää automaattisesti "/**" &lt;Enter&gt;</li>
+                            <li>Huom! JSDoc on pakollinen dokumentointimenetelmä kurssitehtävässä</li>
+                        </ul>
+                    </ul>
+                    <ul width="50%">
+                        <pre style="width:100%;font-size:55%"><code class= "language-js" contenteditable="false">/**
+* @param {string} student
+* @returns {string} greeting for a student
+* @description Return a greeting as a
+template string. For demo purposes only.
+*/
+function demoJSDocs (student){
+    return `Hello ${student}, you WebDev
+        wanna-be`;
+}</code></pre>
+                    </ul>
+
+                </section>
+
+            </section>
+        </div>
+    </div>
+    <script src="dist/reveal.js"></script>
+    <script src="plugin/zoom/zoom.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/search/search.js"></script>
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script>
+        // Als</li><li>available as an ES module, see:
+        // https://revealjs.com/initialization/
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            center: true,
+            hash: true,
+
+            // Learn about plugins: https://revealjs.com/plugins/
+            plugins: [
+                RevealZoom,
+                RevealNotes,
+                RevealSearch,
+                RevealMarkdown,
+                RevealHighlight
+            ],
+            autoAnimateEasing: 'ease-out',
+            autoAnimateDuration: 0.8,
+            autoAnimateUnmatched: false,
+        })
+    </script>
+</body>
+
+</html>

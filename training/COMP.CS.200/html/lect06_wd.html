@@ -1,0 +1,1802 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+
+    <title>WSD: lect06</title>
+
+    <meta name="description" content="A framework for easily creating beautiful presentations using HTML" />
+    <meta name="author" content="Pia Niemelä, Janne Miilunpalo, Jaakko Rajala" />
+
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="dist/reset.css" />
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="../css/deadline.css" />
+
+
+    <link rel="stylesheet" href="dist/theme/moon.css" id="theme" />
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme" />
+    <link href="https://fonts.googleapis.com/css?family=Coda" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+
+
+    <link rel="stylesheet" href="../css/infograph.css" id="theme" />
+    <style>
+        h1 {
+            font-size: 50%;
+        }
+    </style>
+</head>
+
+
+<body>
+
+  <div class="reveal">
+    <div class="slides">
+
+      <section style="text-align: center">
+        <h1>Web Development 1 2020</h1>
+        <h2>CSS, Responsive design, Accessibility</h2>
+        <p><small>
+            Pia Niemelä (pia.niemela@tuni.fi)<br>
+            Mikko Nurminen (mikko.nurminen@tuni.fi)<br>
+            Janne Miilunpalo (janne.miilunpalo@tuni.fi)
+          </small>
+        </p>
+      </section>
+
+
+      <section style="text-align: left;">
+        <h2>CSS: Cascading Style Sheets</h2>
+
+        <a href="#/html">
+          <h3 class="box" style="height:28vh;width:12vw;">CONTENT: <br> HTML</h3>
+        </a>
+        <h3 class="box css_color" style="height:28vh;width:20vw;">STYLE: <br> CSS
+          <br><small>styling, cascading, box model,<br>
+            position, float, flex, grid;</small><br><small>responsive/accessible
+            web</small></h3>
+        <h3 class="box" style="height:28vh;width:12vw;">BEHAVIOR: <br> JAVASCRIPT</h3>
+        <div style="clear: both"></div>
+      </section>
+      <section data-background="#264f4f" id="css">
+        <section data-background="img/cssLogo.png" data-background-repeat="repeat" data-background-size="100px">
+          <h1>CSS</h1>
+          <h2>Styling with selectors and combinators</h2>
+        </section>
+
+        <section>
+          <h2>CSS</h2>
+          <p><em>Cascading Style Sheets</em> or <em>CSS</em> for short defines the outlook of HTML.</p>
+          <p>It can be set in three different ways, with:</p>
+          <ul>
+            <li><code>style</code> attribute inside an element</li>
+            <li>a separate <code>&lt;style&gt;</code> element</li>
+            <li>a separate CSS file that is linked to the HTML document <code>&lt;link&gt;</code> element.</li>
+          </ul>
+          <p>Loading style sheets from separate CSS file
+            that are linked in the &lt;head&gt; element is preferred.
+            One file can be used on multiple pages - meaning that changing the style will affect all of them.</p>
+        </section>
+
+        <section>
+          <h2>CSS Examples</h2>
+          <p>1. <code>style</code> attribute:</p>
+          <pre><code id="css_load_example" contenteditable="true">&lt;p&gt;Some text and &lt;span style="color: blue;"&gt;some blue text&lt;/span&gt;&lt;/p&gt;</code></pre>
+          <p>2. <code>&lt;style&gt;</code> element:</p>
+          <pre><code>&lt;head&gt;
+    &lt;title&gt;A simple page&lt;/title&gt;
+    &lt;style&gt; h1 { border-bottom: 2px solid black; }&lt;/style&gt;
+&lt;/head&gt;</code></pre>
+          <p>3. a separate CSS file:</p>
+          <pre><code contenteditable="true">&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;A simple page&lt;/title&gt;
+        &lt;link rel="stylesheet" href="my_awesome_style.css"&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;h1&gt;Some content&lt;/h1&gt;
+    &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+        </section>
+
+        <section>
+          <h2>CSS rule syntax</h2>
+
+          <p>Syntax of a CSS rule is <code>SelectorList {declaration}</code>.</p>
+
+          <pre><code>/* General rule */
+selector[, selector] {
+  [property: value;]
+}
+
+/* The same rule targeted at several elements */
+// Headers blue
+h1, h2 {
+  color: blue;
+}
+
+/* Several rules targeted at the same element */
+// Page with black text on yellow background
+body {
+  color: black;
+  background-color: yellow;
+}</code></pre>
+        </section>
+
+
+        <section>
+          <h2>CSS as a list of style rules</h2>
+          <p>Style declaration for all
+
+          <ul>
+            <li><code>p</code> elements:</p>
+              <pre style="width: 50%; float: left"><code>p {
+    font-family: serif;
+    color: #0000FF;
+}</code></pre>
+            </li>
+            <li>
+              <p style="clear: both;"><code>a</code> elements that have a class
+                <code>main</code>:</p>
+              <pre style="width: 30%; float: left"><code>a.main {
+    font-size: 20px;
+    padding: 10px;
+}</code></pre>
+              <pre style="width: 69%; float: left; margin-left: 1%"><code>&lt;a href="index.html" class="main"&gt;Home page&lt;/a&gt;
+&lt;a href="about.html" class="main"&gt;About us&lt;/a&gt;
+&lt;a href="other.html" class="other">Other Links&lt;/a&gt;
+&lt;!-- last link will not be affected --&gt;</code></pre>
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Selectors: class, id, and tag type</h2>
+          <table style="font-size: 80%;">
+            <tr>
+              <td>
+                <p><code>class</code><br>attribute
+              </td>
+              <td>'.' precedes the class name in CSS</td>
+              <td style="width:60%;">
+                <pre><code>/* paragraphs with info class are italic */
+p.info { font-style: italic; }</code></pre>
+              </td>
+            </tr>
+            <tr>
+              <td><code>id</code><br>attribute<br></td>
+              <td>'#'' precedes <code>id</code> in CSS</td>
+              <td>
+                <pre><code>/* div with the id 'notice' has red borders */
+div#notice { border: 1px solid red; }
+/* Since only one element with id 'notice' exists
+leaving div out of the selector is preferred. */
+#notice { border: 1px solid red; } </code></pre>
+                <p>&nbsp;&nbsp;id should be <em>unique</em> in a page</p>
+              </td>
+            </tr>
+            <tr>
+              <td>tag type</td>
+              <td></td>
+              <td>
+                <pre><code>/* Add underline to all h1 elements */
+h1 { text-decoration: underline }</code></pre>
+              </td>
+            </tr>
+
+          </table>
+        </section>
+
+        <section>
+          <h2>Classes as selectors</h2>
+          <p>Also class selectors can be used without an element.</p>
+          <p><em>Any</em> element with the class is then affected.</p>
+          <p>With the rule</p>
+          <pre><code>.green_text { color: green } </code></pre>
+          <p>both <em>h1</em> and <em>span</em>, and any other element with the class of
+            <code>green_text</code> will be
+            affected.</p>
+          <pre><code contenteditable="true" id="class_selector_example">&lt;h1 class="green_text"&gt;Ugly Heading&lt;/h1&gt;
+&lt;p&gt;Lorem ipsum &lt;span class="green_text"&gt;sit dolor&lt;/span&gt; amet.&lt;/p&gt;</code></pre>
+
+        </section>
+
+        <section>
+          <h2>Selector chaining</h2>
+          <p>dot-concatenated classes target elements having <em>all</em> the listed classes defined, e.g.:</p>
+          <pre><code>p.old.python_code { text-decoration:line-through; }</code></pre>
+          <pre><code>&lt;p class="old python_code"&gt;print "Hello world!"&lt;/p&gt; &lt;!-- affected --&gt;
+&lt;p class="new python_code"&gt; print("Hello world!")&lt;/p&gt; &lt;!-- not affected --&gt;</code></pre>
+          <p style="font-size: 80%;">Note the space between <em>old</em> and <em>python_code</em> in HTML.</p>
+          <p>Multiple tag types, classes and ids can be selected with comma:</p>
+          <pre><code>/* Affects all h1, h2, and h3 elements */
+h1, h2, h3 { font-family: serif; }</code></pre>
+        </section>
+
+        <section>
+          <h2 style="font-size: 1.5em;">Combinators</h2>
+          <p class="dense" style="font-size: 80%;">Descendant combinator (" ") selects all elements contained inside the
+            parent.</p>
+          <pre><code>/* All li elements inside element with "important" id */
+#important li { font-weight: bold; }</code></pre>
+          <p class="dense" style="font-size: 80%;">Child combinator ("&gt") selects
+            <em>immediate</em> children of the parent element.</p>
+          <pre><code>/* All h2 that are immediate children of element with id of content */
+#content > h2 { font-weight: bold; }</code></pre>
+          <p class="dense" style="font-size: 80%;">Sibling combinator ("~") selects any elements that share the same
+            parent after the first selector.</p>
+          <pre><code>/* Any p that share the same h1 parent with h1 that are after h1 */
+h1 ~ p { font-weight: bold; }</code></pre>
+          <p class="dense" style="font-size: 80%;">Next sibling combinator ("+") selects the element which is
+            immediately
+            after the defined sibling.</p>
+          <pre><code>/* Selects p elements that are immediately after h1 */
+h1 + p { font-weight: bold; }</code></pre>
+        </section>
+
+
+
+        <section>
+          <h2>Pseudo-elements</h2>
+          <p>Pseudo-elements may be appended to a selector.</p>
+          <p>They affect specific parts of the elements in target, e.g., <code>p::first-line</code> will affect
+            the first lines of paragraphs.</p>
+          <p>In CSS3 (CSS has versions too), double colons ("::") are used to distinguish pseudo-elements from -classes
+            (":"), coming next.</p>
+          <p>The pseudo-elements are: </p>
+          <div style="display:flex;">
+            <ul style="font-size: 60%;">
+              <li><code>::first-letter</code></li>
+              <li><code>::first-line</code></li>
+              <li><code>::after</code></li>
+              <li><code>::before</code></li>
+              <li><code>::selection</code> (non-standard)</li>
+            </ul>
+            <div style="font-size: 60%; width:70%;">
+              <h4>Content</h4>
+              <p>A <code>content</code> property that can be used to insert new content into a page in combination with
+                pseudo-elements:</p>
+              <pre><code>/* Will insert the word Chapter and a
+  space before any text inside h1-element */
+  h1::before  { content: "Chapter "; }</code></pre>
+            </div>
+          </div>
+          <p class="extra">See MDN for more <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/content"
+              target="_blanc">examples and details.</a></p>
+        </section>
+
+
+        <section>
+          <h2>Pseudo-classes</h2>
+          <p>Pseudo-classes affect elements with a specific state. They are marked with single colon, e.g.
+            <code>:hover</code>.</p>
+          <pre><code>/* this one is applied to the link at the bottom of the slide */
+a.special_link:hover { background-color: white; }</code></pre>
+
+          <p>Some selected ones:</p>
+          <ul class="dense">
+            <li><code>:active</code></li>
+            <li><code>:visited</code></li>
+            <li><code>:hover</code></li>
+            <li><code>:enabled</code></li>
+            <li><code>:first-child</code></li>
+            <li><code>:nth-child(aN+b)</code><br>
+              &lt;!-- an order number or formula, (4N) every forth --&gt;</li>
+          </ul>
+          <p>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes" class="special_link"
+              target="_blanc">
+              All pseudo-classes listed at MDN</a></p>
+        </section>
+
+        <section>
+          <h2>Style declarations</h2>
+          <h3>colors, fonts, text decorations</h3>
+        </section>
+
+
+
+
+        <section>
+          <h2>Color values</h2>
+          <p>There are multiple ways to define colors in CSS. The following are all the ways to color an element's text
+            (the same) red.</p>
+          <pre><code>element { color: red }
+element { color: #f00 }
+element { color: #ff0000 }
+element { color: rgb(255,0,0) }
+element { color: rgb(100%, 0%, 0%) }
+element { color: hsl(0, 100%, 50%) }
+
+/* 50% translucent */
+element { color: rgba(255, 0, 0, 0.5) }
+element { color: hsla(0, 100%, 50%, 0.5) }</code></pre>
+          <p>As per usual the list is from <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color"
+              target="_blanc">MDN about color</a></p>
+          <p class="extra"><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color_value" target="_blanc">MDN on
+              color Values</a> is also worth checking. <small>There you can also discover the only new named color
+              proposed for CSS4.</small></p>
+        </section>
+
+        <section>
+          <h2>Fonts, font-family</h2>
+          <p><code>font-family</code> declarations control what fonts are used for the selector. Its value is comma
+            separated list of fonts (a font stack) that should have a generic family as the last item.
+          <p>If the first font on the list is not found, the next one is tried until a font is found. The generic
+            families for the fonts are: serif, sans-serif, monospace, cursive, and fantasy.</p>
+          <pre><code>p.ingress {
+    font-family: "Gill Sans", Georgia, "Times New Roman", serif;
+}</code></pre>
+          <p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/font-family" target="_blanc">MDN font-family</a>
+          </p>
+
+        </section>
+
+        <section>
+          <h2>Font styles, variants, weights</h2>
+          <p>Other aspects of fonts that can be declared:</p>
+          <ul>
+            <li><code>font-style</code>
+              <ul>
+                <li><code>normal, italic, oblique</code></li>
+              </ul>
+            </li>
+            <li><code>font-variant</code>
+              <ul>
+                <li>e.g. <code>normal, small-caps</code></li>
+              </ul>
+            </li>
+            <li><code>font-weight</code>
+              <ul>
+                <li><code>normal, bold, bolder, lighter, 100-900</code></li>
+              </ul>
+            </li>
+            <li><code>text-decoration</code>
+              <ul>
+                <li>e.g. <code>none, underline, line-through</code></li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Font Sizes</h2>
+          <p>There are various ways for defining <code>font-size</code></p>
+          <ul>
+            <li>Absolute sizes:
+              <ul>
+                <li><code>xx-small, x-small, small, medium, large, x-large, xx-large</code></li>
+              </ul>
+            </li>
+            <li>Relative sizes:
+              <ul>
+                <li><code>smaller, larger</code> (relative to parent font size)</li>
+              </ul>
+            </li>
+            <li>Length values
+              <ul>
+                <li>Either in pixels <code>px</code> or in points <code>pt</code></li>
+              </ul>
+            </li>
+            <li>Percentage:
+              <ul>
+                <li>e.g. <code>font-size: 80%</code></li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Text Formatting</h2>
+          <p>How text is formatted is controlled by <code>text-align, text-indent, line-height</code>, and
+            <code>vertical-align</code></p>
+          <ul class="dense">
+            <li><code>text-align</code>
+              <ul>
+                <li><code>left, right, center, justify</code></li>
+              </ul>
+            </li>
+            <li><code>text-indent</code>
+              <ul>
+                <li><code>&lt;length&gt;, &lt;percentage&gt;</code></li>
+              </ul>
+            </li>
+            <li><code>line-height</code>
+              <ul>
+                <li><code>normal, &lt;number&gt;,&lt;length&gt;, &lt;percentage&gt;</code></li>
+              </ul>
+            </li>
+            <li><code>vertical-align</code>
+              <ul>
+                <li>
+                  <code>baseline, sub, super, top, text-top, middle, bottom, text-bottom, &lt;length&gt;, &lt;percentage&gt;</code>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Text styling example</h2>
+          <pre><code>p.ingress {
+  font-family: "Gill Sans", Georgia, "Times New Roman", serif;
+  font-style: italic;
+  font-variant: normal;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 12pt;
+  text-align: justify;
+  line-height: 1.2;
+  vertical-align: baseline;
+}</code></pre>
+        </section>
+
+
+
+
+      </section>
+
+
+
+
+      <section>
+        <section>
+          <h1>Specificity/cascading</h1>
+        </section>
+        <section>
+          <h2>Rules to solve style conflicts</h2>
+          <ul>
+            <li><b>Specificity</b>
+              selectors have a certain specificity value
+              the rule with the most specific selector "wins"
+            </li>
+            <li>
+              <b>Cascading (location)</b>
+              when several rules have same specificity value, the "last" rule wins
+            </li>
+            <li>
+              <b>Inheritance</b>
+              some properties are inherited from their parent (not all)
+            </li>
+          </ul>
+        </section>
+
+
+        <section>
+          <h2>Specificity formula</h2>
+          <p class="dense" style="font-size: 80%;">When multiple styles overlap,
+            the ascending order of specificity defines the end result (the strongest last):</p>
+
+          <table style="font-size:80%;">
+            <tr>
+              <th>Selector</th>
+              <th>Specificity</th>
+            </tr>
+            <tr>
+              <td>Type, pseudo-element selectors</td>
+              <td>1</td>
+            </tr>
+            <tr>
+              <td>Class, pseudo-class, attribute selectors</td>
+              <td>10</td>
+            </tr>
+            <tr>
+              <td>Id selector</td>
+              <td>100</td>
+            </tr>
+            <tr>
+              <td style="color:gray;">inline style attributes</td>
+              <td style="color:gray;">1000</td>
+            </tr>
+          </table>
+
+
+
+          <p>The specificity is a sum of the specificity values, e.g.:</p>
+          <pre><code>p::after                          //1(type)+1(pseudo-element) = 2
+[type=email]                      //10(attrib. selector)      = 10
+p.important                       //1(type)+10(class)         = 11     
+aside.chart:first-child           //1 + 10 + 10               = 21
+</code></pre>
+          <p class="dense" style="font-size: 80%"><code>!important</code> overrides the cascading
+            properties. To be used if no better way, e.g., in case of an external CSS you cannot control.</p>
+
+        </section>
+
+
+        <section>
+          <h2>Cascading order</h2>
+          <table class="dense" id="css-table">
+            <thead>
+              <tr>
+                <th scope="col">&nbsp;</th>
+                <th scope="col">Origin</th>
+                <th scope="col">Importance (the strongest last)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>user agent (same as browser defaults)</td>
+                <td>normal</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>user agent</td>
+                <td><code>!important</code></td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>user</td>
+                <td>normal</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>author</td>
+                <td>normal</td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>CSS Animations</td>
+                <td>(refer to links below)</td>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td>author</td>
+                <td><code>!important</code></td>
+              </tr>
+              <tr>
+                <td>7</td>
+                <td>user</td>
+                <td><code>!important</code></td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="dense" style="font-size: 80%;">In case of equal specificity, the latest declaration applies.</p>
+          <p class="font-size:80%">Caution needed not to override, e.g., font-families with
+            comic-sans by !important, thus obsoleting the hard work of a CSS designer.</p>
+          <p style="font-size: 80%;">[This and the previous slide based heavily on MDN <a
+              href="https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity" target="_blanc">Specificity</a>, and
+            <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Cascade" target="_blanc">Cascading</a>
+            articles, do check them out.]</p>
+
+
+
+        </section>
+
+        <section>
+          <h2>inherit</h2>
+          <p><code>inherit</code>-value in declarations means that the value is the same as it is in the parent element.
+          <blockquote style="font-size:80%;">For example, border is not inherited but color is:
+            when you want the text on a page to be blue one rule for the body suffices,
+            whereas border for a list (&lt;ul&gt; element) does not influence its children.
+            However, a property can be changed to be inherited.
+            Notice that properties can have initial values
+            (for color, it can be transparent)
+          </blockquote>
+          </p>
+
+          <p><code>inherit</code> is an allowed value for every CSS property.</p>
+          <p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/inherit" target="_blanc">MDN inherit</a></p>
+
+        </section>
+        <section>
+          <h2>important!</h2>
+          <p>All the rules previously assigned to an element can be overridden by writing !important after a rule
+            To be used in special situations only, for example
+            visually impaired users may write a rule in the user style sheet (browser file userContent.css)</p>
+
+          <pre><code>body { 
+  font-size: large; !important 
+}
+</code></pre>
+
+          <p>Should not be used as a quick work-around, even if tempted to do so.</p>
+        </section>
+
+        <section>
+          <h2>How to Approach CSS</h2>
+          <p>Take advantage of the cascading and do not try to be too clever.</p>
+          <blockquote>"Debugging is twice as hard as writing the code in the first place. Therefore, if you write the
+            code as cleverly as possible, you are, by definition, not smart enough to debug it." –Brian Kernighan
+          </blockquote>
+          <pre><code>.article #comments ul > li > a.button {
+    /* Crazy town */
+}</code></pre>
+          <p>CSS gets easily scattered, thus:</p>
+          <div class="dense" style="font-size:60%;">
+            <p>Keep selectors general and use specific selectors only when they really are needed</p>
+            <ul>
+              <li>the higher specificity selectors you use, the more difficult maintaining your style sheet becomes
+              </li>
+            </ul>
+          </div>
+          <p class="extra"><a href="http://css-tricks.com/judging-css-spotting-bad-code/" target="_blanc">From
+              CSS-Tricks on spotting bad CSS</a></p>
+        </section>
+
+
+      </section>
+      <section>
+        <section>
+          <h1>Box Model</h1>
+          <h2>Four edges</h2>
+        </section>
+        <section>
+          <h2>Box Model</h2>
+          <p>Every element in an HTML document is represented as a box that has four edges: <em>content edge</em>,
+            <em>padding edge</em>, <em>border edge</em>, and <em>margin edge</em>.</p>
+          <object type="image/svg+xml" data="../img/boxModel.svg"></object>
+
+        </section>
+
+        <section>
+          <h2>CSS - Box Model</h2>
+          <p>In the box model, the children try to be as wide as the parent allows them to be...</p>
+          <p>...while the parent element aims for minimum height that fits all children</p>
+          <style>
+            p.box_model_example {
+              width: 20%;
+              height: 20%;
+              padding: 1%;
+              margin: 2%;
+              border: 5px;
+            }
+          </style>
+          <p class="box_model_example">
+          <pre><code>p.box_model_example {
+    width: 20%;
+    height: 20%;
+    padding: 1%;
+    margin: 2%;
+    border: 5px;
+}</code></pre>
+          </p>
+
+        </section>
+
+        <section>
+          <h2>Content, Padding, Border, Margin</h2>
+          <p>Margins are always transparent. Horizontal margins don't overlap (collapse) while vertical (top and
+            bottom)
+            margins can collapse.</p>
+          <pre><code>h2 { margin-bottom: 10px; }
+p { margin-top: 5px;}</code></pre>
+          <pre><code>&lt;h2&gt;Collapsing Margins&lt;/h2&gt;
+&lt;p&gt;The margin between this paragraphs and
+the heading above would be 10 pixels&lt;/p&gt;</code></pre>
+          <p>Padding is the area surrounding the content box that shares its background.</p>
+          <p>Border is between padding and margin and has: <code>color</code>, <code>width</code>, and
+            <code>style</code>:</p>
+          <pre><code>/* These two are equivalent */
+h2 { border: 3px solid #FF0000; }
+h2 { border-width: 3px; border-style: solid; border-color: #FF0000; }</code></pre>
+        </section>
+        <section>
+          <h3>Vertical margins collapse, horizontal sum up</h3>
+          <object type="image/svg+xml" width="80%" data="../img/boxModels.svg"></object>
+        </section>
+      </section>
+      <section data-background="#264f4f" id="css">
+        <section data-background="img/cssLogo.png" data-background-repeat="repeat" data-background-size="100px">
+          <h1>Css</h1>
+          <h2>The positioning of the page</h2>
+        </section>
+
+
+        <section>
+          <h2>Normal flow</h2>
+          <p>Without position or display declarations, the content flows from
+            left to right, and from up to down. Elements are put laid out as densily
+            as they fit by their default behaviour:</p>
+          <ul>
+            <li>Inline elements go with the flow</li>
+            <li>Block elements assist in grouping the flow in separate sections</li>
+            <li>Elements are positioned static by default (z-index of zero)</li>
+          </ul>
+
+          <p><em>position</em>, <em>z-index</em>, <em>float</em> and <em>display</em> attributes distrupt the flow.</p>
+
+
+        </section>
+
+        <!-- <section>
+            <section>CSS Positioning with Float, Flex and Grids</section> -->
+        <section>
+          <h2>Inline &amp; Block</h2>
+          <p>Elements are divided into inline and block elements.</p>
+          <p><b>Inline</b> elements, such as <code>span</code> and
+            <code>a</code>, occupy only the space needed and flow "like text" from left to right without line breaks.
+          </p>
+          <p><b>Block</b> elements (such as <code>div</code> and <code>p</code>) inhabit the entire width of parent
+            element
+            (remember box model from couple slides ago?). Typically, there is a new line inserted before and after them.
+            Height can be set more or less than the elements occupy; overflow is controlled with options
+          </p>
+          <p>Elements can be changed from inline to block by <code>display</code> declarations.</p>
+          <pre><code>/* Would insert line breaks before and
+after links with the class menu_item */
+a.menu_item { display: block; }</code></pre>
+        </section>
+
+        <section>
+          <h2>Position</h2>
+          <p style="font-size: 80%">The position of an element can be set with a <code>position</code> attribute</p>
+          <p style="font-size: 80%">It can be set as:</p>
+          <div>
+            <ul class="dense" style="font-size: 60%" width="60%;" style="display:inline;">
+              <li><code>static</code> - The element is positioned as in normal flow</li>
+              <li><code>relative</code> - Element is positioned relative to its "normal" position</li>
+              <li><code>absolute</code> - Element is positioned relative to <em>the nearest positioned ancestor</em>
+                or if
+                there is no positioned ancestor to the container of the document</li>
+              <li><code>fixed</code> - Element is positioned relative to the viewport. It has the effect of keeping
+                the
+                element in the same position in the window even when scrolling.</li>
+              <li><code>sticky</code> - Mixture of relative and fixed positioning. Not yet widely supported.</li>
+            </ul>
+          </div>
+          <div style="display: flex;">
+            <div>
+              <p style="font-size: 80%;">accompanied with<br> <em>top</em>, <em>bottom</em>, <em>left</em>,
+                <em>right</em> to
+                tell the new location.</p>
+              <p style="font-size: 80%"><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/position"
+                  target="_blanc">MDN on Position</a></p>
+            </div>
+            <img style="background-color: white" src="../img/positions.png" alt-text="position illustration">
+
+          </div>
+        </section>
+
+        <section>
+          <h2>Position Example</h2>
+          <pre><code>/* Will always stay at the top left corner of the viewport */
+p.annoying_notice {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+}</code></pre>
+          <pre><code>/* Will be 20 pixels lower and 20 pixels to
+the right of where it would be without this style */
+p.side_note {
+    position: relative;
+    top: 20px;
+    left: 20px;
+}</code></pre>
+        </section>
+
+        <section>
+          <h2>z-index</h2>
+          <p>When location (x,y) is forced, elements may overlap</p>
+          <ul style="font-size: 80%;">
+            <li>z-index comes to the rescue; elements can be layered</li>
+            <li>with equal z-indices, the latest is the foremost</li>
+            <li><em>static</em> implies z-index zero, other positions z-index one</li>
+            <li>the greater the number, the nearer to the user the element is</li>
+            <li>z-index must be an integer and it can be also negative</li>
+          </ul>
+        </section>
+
+
+        <section>
+          <h2>Floats</h2>
+          <pre><code>float: left|right|none;
+clear: left|right|both;</code></pre>
+          <blockquote>"A float is a box that is shifted to the left or right on the current line. The most interesting
+            characteristic of a float is that content may flow along its side (or be
+            prohibited from doing so by the <em>clear</em> property)."
+            <a href="http://www.w3.org/TR/CSS2/visuren.html#floats">CSS2 specification on floats</a></blockquote>
+          <pre><code contenteditable="true" id="css_float_example">&lt;p style="float: right;"&gt;These&lt;/p&gt;&lt;p style="float: right;"&gt;are&lt;/p&gt;
+&lt;p style="float: right;"&gt;all&lt;/p&gt;&lt;p style="float: right;"&gt;paragraphs.&lt;/p&gt;</code></pre>
+          <button id="css_float_example_btn">Try it</button>
+          <div id="css_float_example_target"></div>
+          <p><em>float</em> also enables nicely wrapped-around images (content flowing along their side),
+            <a href="https://www.youtube.com/watch?v=-qdr9D9VZiM&t=200">check the video</a></p>
+
+        </section>
+
+        <section>
+          <h2>Flexbox</h2>
+          <h5><small><code>display: flex</code></small></h5>
+          <p>Easier way to implement flexible layouts.</p>
+          <p>Elements are laid out within their parent: <em>flex container</em>. Its display is set as flex. Both
+            horizontal and vertical
+            directions are possible.</p>
+
+          <pre style="width: 50%; float: left"><code>&lt;div class="container"&gt;
+  &lt;!–- flex-items, the elements 
+  which we want to lay out --&gt;
+&lt;/div&gt;</code></pre>
+
+          <pre style="width: 30%; float: left; margin-left: 1%;"><code>div.container { 
+  display: flex; 
+}</code></pre>
+        </section>
+
+        <section>
+          <h2>Flexbox</h2>
+
+          <p>Width and height are not used. Instead, directions are main and cross axis. Direction is changed with
+            <em>flex-direction</em>.</p>
+
+          <img src="img/flexbox.png" alt="main and cross axis in flexbox" style="width: 700px;">
+        </section>
+
+        <section>
+          <h2>Flex directions row and column</h2>
+
+          <h5><small><code>flex-direction: row|row-reverse|column|column-reverse</code></small></h5>
+
+          <pre style="width: 50%; float: left;"><code>&lt;div class="container"&gt;
+  &lt;div class="flex-item"&gt;Yyy&lt;/div&gt;
+  &lt;div class="flex-item"&gt;Kaa&lt;/div&gt;
+  &lt;div class="flex-item"&gt;Koo&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+          <pre style="width: 40%; float: left; margin-left: 1%;"><code>div.container { 
+  display: flex; 
+}</code></pre>
+
+          <img src="img/display-flex.png" alt="An example of display: flex"
+            style="width: 40%; float: left; margin: 0; margin-left: 1%; border: none;">
+
+          <pre style="width: 45%; float: left; margin-top: 2%;"><code>div.container { 
+  display: flex;
+  flex-direction: row-reverse;
+}</code></pre>
+
+          <pre style="width: 45%; float: left; margin-top: 2%; margin-left: 1%;"><code>div.container { 
+  display: flex;
+  flex-direction: column;
+}</code></pre>
+
+          <img src="img/flex-rowReverse.png" alt="An example of flex-direction: row-reverse"
+            style="width: 45%; float: left; margin: 0; border: none;">
+          <img src="img/flex-column.png" alt="An example of flex-direction: column"
+            style="width: 45%; float: left; margin: 0; margin-left: 1%; border: none;">
+        </section>
+
+        <section>
+          <h2>Justify-content vs. align-items</h2>
+
+          <p>Along main-axis with
+            <code>justify-content: flex-start|center|flex-end|space-around|space-between|...</code></p>
+
+          <p class="extra"><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content"
+              target="_blanc">More of justify-content here!</a></p>
+
+          <p>Justifying content along with cross-axis is done with
+            <code>align-items: stretch|flex-start|flex-end|center| ...</code></p>
+          <p class="extra"><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/align-items" target="_blanc">More
+              of align-items here!</a></p>
+        </section>
+
+
+        <section>
+          <h2>Grid</h2>
+          <h5><small><code>display: grid</code></small></h5>
+
+          <p>Flexbox defines layouts in 1D, grid in 2D. Thus,
+            CSS Grid is suited for the layout of entire web pages.</p>
+          <p>Grid layout definition:</p>
+
+          <pre style="float: left; width: 45%;"><code>&lt;elem class="container"&gt;
+  &lt;!–- grid items --&gt; 
+&lt;/elem&gt;</code></pre>
+
+          <pre style="float: left; width: 45%; margin-left: 1%; margin-right: 2%;"><code>elem.container { 
+  display: grid; 
+  . . . 
+}</code></pre>
+
+          <p style="clear:left"><em>Grid container</em> contains <em>grid items</em>.</p>
+
+          <br>
+          <p>More on: <a href="http://www.youtube.com/watch?v=z-TXKGF9B-0&feature=youtu.be" target="_blanc">YouTube</a>,
+            <a href="https://css-tricks.com/snippets/css/complete-guide-grid/" target="_blanc">CSS tricks</a>,
+            <a href="https://gridbyexample.com/video/" target="_blanc">Grid by example</a></p>
+        </section>
+
+
+        <section>
+          <h2>grid-template-rows and -columns</h2>
+          <p>Similar features with flex positioning include:</p>
+          <ul>
+            <li>main- and cross-axes</li>
+            <li><em>justify-content</em> and <em>align-items</em></li>
+            <li>stretching and shrinking items flexibly to fill the space as desired</li>
+          </ul>
+          <p>Grid adds to this rows, columns and areas, that expand the control to 2D:</p>
+          <pre><code>grid-template-rows: auto auto;      //two rows occupy space available
+grid-template-columns: 1em 2em 3em; //three columns with given sizes
+          </code></pre>
+          <p>Together, rows and columns define a grid.</p>
+
+          <!-- auto is a keyword that is identical to maximal content if it's a maximum. 
+            As a minimum it represents the largest minimum size (as specified by min-width/min-height) of the grid items occupying the grid track. -->
+
+        </section>
+        <section>
+          <h2>grid-template-areas</h2>
+
+          <p><em>grid-template-areas</em> can be understood as an "ascii-art", in particular, if one-char names are
+            used, e.g.</p>
+          <pre><code>grid-area: a;</code></pre>
+
+          <p>Next demo visualizes this "ascii-art". Press the buttons to set
+            <em>grid-template-areas</em>, you can also modify the settings yourself,
+            note the sensitivity to ambiguous declarations.
+            Note also that "." represents an empty area:
+            </pre>
+
+          <div id="container">
+            <div id="container1">
+              <span id="a" style="background-color: peru;">a</span>
+              <span id="b" style="background-color: brown">b</span>
+              <span id="c" style="background-color: rosybrown">c</span>
+              <span id="d" style="background-color: coral">d</span>
+              <span id="e" style="background-color: gray">e</span>
+              <span id="f" style="background-color: lavender">f</span>
+              <span id="g" style="background-color: cornflowerblue">g</span>
+              <span id="h" style="background-color: lightskyblue;">h</span>
+              <span id="i" style="background-color:  royalblue ">i</span>
+            </div>
+
+            <form id="container2">
+              <textarea id="tmpl2" cols="10" rows="3" style="font-size: 80%;">"a b c"
+"d e f"
+"g h i";</textarea>
+              <button id="setGrid2">Press to set</button>
+            </form>
+
+            <form id="container3">
+              <textarea id="tmpl3" cols="10" rows="3" style="font-size: 80%;">"a b . c"
+"d e f ."
+"g . h i";</textarea>
+              <button id="setGrid3">Press to set</button>
+            </form>
+
+            <br><br>
+          </div>
+          <style>
+            #tmpl2,
+            #tmpl3 {
+              font-family: Consolas, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
+
+              font-size: 2em;
+              overflow: hidden;
+              resize: none;
+            }
+
+            #container {
+              width: 30vw;
+              display: grid;
+              grid-template-areas:
+                "c1 c2 c3";
+
+            }
+
+            #container1 {
+              padding: 20px;
+              display: grid;
+              font-size: 2em;
+              height: 150px;
+              width: 200px;
+
+              grid-template-areas: "";
+              grid-area: c1;
+            }
+
+            #a {
+              grid-area: a
+            }
+
+            #b {
+              grid-area: b
+            }
+
+            #c {
+              grid-area: c
+            }
+
+            #d {
+              grid-area: d
+            }
+
+            #e {
+              grid-area: e
+            }
+
+            #f {
+              grid-area: f
+            }
+
+            #g {
+              grid-area: g
+            }
+
+            #h {
+              grid-area: h
+            }
+
+            #i {
+              grid-area: i
+            }
+
+            #container2 {
+              padding: 20px;
+              height: 100%;
+              grid-area: c2;
+            }
+
+            #container3 {
+              padding: 20px;
+              height: 100%;
+              grid-area: c3;
+            }
+          </style>
+
+          <script>
+            const setGrid = () => {
+              event.preventDefault();
+              const target = event.target;
+              // console.log("target=",target);
+              const id = target.id;
+              // console.log("id",id)
+              const tmpl = id == "setGrid3" ? "#tmpl3" : "#tmpl2";
+              const value = document.querySelector(tmpl).value;
+              document.querySelector("#container1").style = 'grid-template-areas: ' + value + ';';
+
+            }
+            document.getElementById("setGrid2").addEventListener("click", setGrid);
+            document.getElementById("setGrid3").addEventListener("click", setGrid);
+          </script>
+
+        </section>
+
+      </section>
+      <!-- CSS ends -->
+
+
+      <section data-background="#264f4f">
+
+        <section style="text-align: center">
+          <h1>Responsive Design</h1>
+          <h2>CSS grids</h2>
+        </section>
+
+        <section>
+          <h3>Demo: responsiveness with grid-template-columns</h3>
+          <p>The last column shows the setting - hover to examine.</p>
+          <p>Note that auto*-option elements wrap nicely
+            instead of disappearing or overflowing.
+          </p>
+
+
+          <div id="divFrame">
+            <template id="tmpl">
+              <div id="colors">
+                <span id="k" style="background-color: lavender">k</span>
+                <span id="j" style="background-color:  royalblue ">j</span>
+                <span id="l" style="background-color:  purple ">l</span>
+                <span id="m" style="background-color:  lightgray ">m</span>
+              </div>
+            </template>
+          </div>
+
+        </section>
+
+        <script>
+          const cols = [
+            "repeat( 3, 1fr) 250px;",
+            "repeat( 3, minmax( 100px, 1fr)) 250px;",
+            "repeat( auto-fill, minmax( 100px, 1fr)) 250px;",
+            "repeat( auto-fit, minmax( 100px, 1fr)) 250px;"];
+
+          const container = document.querySelector("#divFrame");
+          cols.forEach(col => {
+            let div = document.createElement('div');
+            // Clone the template content to reuse it multiple times
+            div.append(tmpl.content.cloneNode(true));
+            const colors = div.querySelector("#colors")
+            colors.style = `grid-template-columns: ${col}`;
+            div.querySelector("#m").innerHTML = col;
+            container.append(div);
+          });
+
+        </script>
+
+
+        <style>
+          #divFrame {
+            width: 100%;
+            transition: width 3s;
+          }
+
+          #divFrame:hover {
+            width: 10%;
+          }
+
+          #colors {
+            padding-right: 20px;
+            display: grid;
+            font-size: 0.5em;
+            color: black;
+          }
+        </style>
+
+
+        <section>
+
+          <h2>Fraction as a unit</h2>
+
+          <p>
+            <em>fr</em> is short for fraction.
+            Let us practice with setting colums:</p>
+          <pre class="terminal">
+grid-template-columns: 1fr 1fr 1fr 1fr 3fr;
+</pre>
+          <p>The width of each column comes as a ratio:</p>
+          <pre><code>1fr/(1+1+1+1+3)fr = 1/7  //e.g. the 1st col is one seventh of the whole.</code></pre>
+
+          <div id="call">
+            <div id="c4">
+              <span id="x" style="background-color: peru;">x</span>
+              <span id="y" style="background-color: brown">y</span>
+              <span id="z" style="background-color: rosybrown">z</span>
+              <span id="å" style="background-color: coral">å</span>
+              <span id="ä" style="background-color: gray">ä</span>
+              <span id="ö" style="background-color: lavender">ö</span>
+            </div>
+
+            <form id="c5">
+              <textarea id="tmpl5" cols="20" rows="3">
+5fr 2fr 1fr 1fr 1fr;
+</textarea>
+              <button id="setCol5">Press to set<br> grid-template-columns</button>
+            </form>
+
+
+          </div>
+
+          <p>You can try your own settings, also the combination with absolute values
+            is possible. For example:
+          </p>
+          <pre class="terminal">
+grid-template-columns: 250px 100px 100px 3fr 1fr;
+</pre>
+
+
+
+          <style>
+            #call {
+              width: 100vw;
+              display: grid;
+              grid-template-columns: 2fr 1fr 3fr;
+              grid-template-areas: "c4 c5  .";
+
+            }
+
+            #c4 {
+              padding-right: 40px;
+              display: grid;
+              font-size: 2em;
+
+              grid-template-columns: 1fr 1fr 1fr 1fr 3fr;
+              grid-area: c4;
+            }
+
+            #c5 {
+              height: 100% grid-area: c5;
+            }
+
+            #c6 {
+              height: 100% grid-area: c6;
+            }
+
+            .site-footer {
+              display: none;
+            }
+
+            table,
+            th,
+            td {
+              border: 1px solid black;
+            }
+          </style>
+          <script>
+            const setCol = () => {
+              event.preventDefault();
+              const target = event.target;
+              const id = target.id;
+              const tmpl = "#tmpl5";
+
+              const value = document.querySelector(tmpl).value;
+              console.log("setCol id ", id, tmpl, value)
+              const style = 'grid-template-columns: ' + value;
+              console.log(style)
+              document.querySelector("#c4").style = style;
+
+            }
+
+
+            document.getElementById("setCol5").addEventListener("click", setCol);
+
+
+
+          </script>
+
+        </section>
+
+
+        <section>
+          <h2>Responsiveness in grids with enablers</h2>
+
+          <p>
+            <em>fr</em> prompts responsiveness being flexible in nature, -<quote><i>I occupy space what is left and do
+                not cause trouble by flowing over,</i>
+            </quote>, but <em>fr</em> alone does not do the trick, there are three more steps to take - the steps are:
+          </p>
+          <ol>
+            <li>repeat()</li>
+            <li>minmax()</li>
+            <li>auto-fill/auto-fit</li>
+          </ol>
+        </section>
+
+        <section>
+          <h3>Pippa L. needed!</h3>
+          <figure class="well">
+            <img style="background-color: white" ;="repeat" class="img-responsive" src="../img/niiloCropped.png"
+              width="60%" />
+            <figcaption><em style="font-size: 60%;">Fig. A fraction triggers a responsive repeat(auto-fill,
+                minmax(empty, full)) loop..<br>
+                Niilo simply cannot live off the nerdy grid!</em>
+            </figcaption>
+          </figure>
+
+
+        </section>
+        <section>
+          <h2>1. repeat()</h2>
+
+          First, let us be reminded of <kbd>grid-template-columns</kbd>.
+          Column widths can be defined as follows:
+          <pre><code>grid-template-columns: 1fr 1f 1fr 250px;</code></pre>
+          <p>1fr tautology can be removed
+            with:</p>
+          <pre><code>repeat(3, 1fr)</code></pre>
+          .. altogether:
+          <pre><code>grid-template-columns: repeat(3, 1fr) 250px;</code></pre>
+          <h4 class="css_color box">
+            The 1<small>st</small> parameter (3) is the multiplier - the 2<small>nd</small>, 1 fr, is the size.</p>
+          </h4>
+          <p>
+            Either or both of these parameters can
+            be made more negotiable, more space-savvy.
+          </p>
+        </section>
+        <section>
+          <h2>2. minmax()</h2>
+
+          <p>Let us start from the latter parameter of size, in this case <kbd>1fr</kbd>.
+            To make the size more adjustable, we can define a range for it
+            by setting min- and max-widths. Let us define the range as a mix of
+            absolute and fraction values: <kbd>minmax(100px, 1fr)</kbd>.
+            Thus, we have:</p>
+          <pre>
+<code>
+  grid-template-columns: repeat(3, minmax(100px, 1fr)) 250px;
+</code></pre>
+        </section>
+        <section>
+          <h3>The logic of minmax:</h3>
+          <ul>
+            <li><i>1fr &lt; 100px</i>, then the width is min-width: 100px; <br>
+              <em>minmax()</em> attempts to guarantee a decent space for the content
+            </li>
+            <li><i>1fr &gt; 100px</i>, the width is 1fr</li>
+          </ul>
+          <p>Based on the chosen strategy, elements overflow or wrap, and if space is very limited,
+            also min-widths are compromised.</p>
+
+          <p style="font-size: 80%;">The last part (250px) adds to the "flexibility buffer".
+            It takes what is left from <i>3 * minmax()</i>, if space <i>&lt the calculated width</i>.
+          </p>
+        </section>
+        <section>
+          <h2>3. auto-fill/auto-fit</h2>
+
+          <p>In lack of space, elements start to overflow.
+            In the worst case, they are not visible anymore,
+            nothing we desired.
+          </p>
+
+          <p>To make a grid container truly responsive,
+            the first repeat() parameter, a multiplier, must be "flexified" as well in addition to minmax()
+            flexification.
+            For the purpose we introduce the needed last step: auto-fill/auto-fit.
+          </p>
+
+          <pre><code>grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)) 250px;</code></pre>
+          versus
+          <pre><code>grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)) 250px;</code></pre>
+        </section>
+        <section>
+          <h2 style="font-size: 170%;">In excess of space, auto-fill vs. -fit signifies</h2>
+          The difference becomes visible
+          the clearest in the excess of space, for example, in case of minmax(100px, 1fr):
+
+
+          <p class="info">
+            <kbd><strong>auto-fill</strong></kbd>: the min of 100px is used,
+          </p>
+
+          <p class="info">
+            <kbd><strong>auto-fit</strong></kbd>: the max of 1fr is used instead.
+          </p>
+
+
+        </section>
+
+        <section>
+          <h2>New tools for front-end</h2>
+
+          <ul>
+            <li>Implementing layouts with CSS used to be laborious:
+              <ul>
+                <li>CSS flex, grid and other new properties change this</li>
+                <li>Useful tools for more advanced layouts:</li>
+                <ul>
+                  <li>stylesheet languages: SASS, LESS, Stylus, SMIL, …</li>
+                  <li>front-end frameworks: Bootstrap, Foundation, Semantic UI, Materialize, Material UI…</li>
+                </ul>
+              </ul>
+            </li>
+            <li>For testing different screen sizes, <kdb>Ctrl</kdb>-<kbd>Shift</kbd>-<kbd>M</kbd> opens <em>Toggle Device Toolbar</em> in Chrome 
+              <img src="../img/toggleDeviceToolbar.png" alt="Toggle Device Toolbar view" width="60%">
+            </li>
+          </ul>
+
+
+
+        </section>
+      </section>
+
+
+
+
+      <section data-background="#264f4f">
+
+
+        <section style="text-align: center">
+          <h1>Responsive Design</h1>
+          <h2>Media queries</h2>
+        </section>
+
+        <section>
+          <h2>Media queries</h2>
+
+          <p>for adapting to different devices with CSS3 media queries:</p>
+
+          <img src="img/mediaQuery-figure.png" alt="figure of media query"
+            style="border: none; padding: 1%; background: lightgrey;">
+
+          <p style="font-size: 80%;">
+            <a href="https://www.w3.org/TR/mediaqueries-4/#pointer">Media Query</a>
+            specification supports features grids are not capable of handling,
+            such as pointer types, resolutions, aspect-ratios. Adaptation
+            to display capabilities/user-preferences can be done
+            in a fine-grained manner.</p>
+
+          <p style="font-size: 80%;">During this course, practice with grids and
+            use media queries only as a complementing technique, where
+            grids prove to be inadequate.</p>
+
+        </section>
+
+        <section>
+          <h2>@-rules</h2>
+          <p>@media in CSS defines how CSS styles behave in
+            specified media-types or conditions.</p>
+          <p> @media belongs to so-called <a
+              href="https://developer.mozilla.org/en-US/docs/Web/CSS/At-rule">at-rules</a>.
+            at-rules may be conditional - like @media.</p>
+
+          <p>
+            The rule is followed by <em>media-queries</em>, namely the conditions
+            that specify when certain rules are to be applied.
+            The query consists of either media-type (screen, paper, speech or all)
+            or certain display sizes, e.g. (min-width: 900px).
+            The queries are enclosed in parentheses and combined with <em>and</em>, <em>or</em>, <em>not</em> and
+            special <em>only</em>.
+          </p>
+
+        </section>
+        <section>
+          <h2>Media query: media-features</h2>
+
+          <h5>
+            <small><code>width | min-width | max-width  | height | min-height | max-height| aspect-ratio | color | resolution | orientation | scan ...</code></small>
+          </h5>
+
+          <pre><code>@media (min-width: 768px)  { css-rule }</code></pre>
+
+          <pre><code>@media (min-width: 768px)  and (max-width: 991px) { css-rule }</code></pre>
+        </section>
+
+        <section>
+          <h2>Media query: media-type</h2>
+          <h5>
+            <small><code>all | aural | braille | handheld | print | projection | screen | tty | tv | embossed | speech ...</code></small>
+          </h5>
+
+          <pre><code>@media (print)  { css-rule }</code></pre>
+          <pre><code>@media (min-width: 700px), handheld and (orientation: landscape)
+{  css-rule  }</code></pre>
+
+          <p>For more, check, e.g., the site <a href="https://www.w3schools.com/cssref/css3_pr_mediaquery.asp">W3Schools
+              material</a></p>
+
+        </section>
+
+        <section>
+          <h2>Typical media query</h2>
+
+          <ul>
+            <li>Basic style rules and special style rules for certain screen widths.</li>
+            <ul>
+              <li>First we define the rules that apply regardless of the window width.</li>
+              <li>With media queries we change the basic style rules, or add new rules for certain situations.</li>
+            </ul>
+          </ul>
+
+          <pre style="margin-top: 1%;"><code>p { 
+    color: blue; 
+}
+/* Remember, non-overlapping widths!*/
+@media (min-width: 1200px)  { 
+        rules for wide screens only
+}
+@media (min-width: 992px) and (max-width: 1199px)  { 
+    rules for laptop sized screens
+}</code></pre>
+        </section>
+
+
+
+
+        <section>
+          <h2>Typical viewport widths</h2>
+
+          <table style="font-size: 80%; float: left;">
+            <tr>
+              <td>Small phone</td>
+              <td>&lt; 600px</td>
+            </tr>
+            <tr>
+              <td>Phone</td>
+              <td>600px - 767px</td>
+            </tr>
+            <tr>
+              <td>Tablet</td>
+              <td>768px - 991px</td>
+            </tr>
+            <tr>
+              <td>Desktop</td>
+              <td>992px - 1199px</td>
+            </tr>
+            <tr>
+              <td>Wide desktop</td>
+              <td>&gt;= 1200px</td>
+            </tr>
+          </table>
+
+          <img src="img/viewportWidths.png" alt="typical viewport widths"
+            style="border: none; width: 50%; float: left; margin-left: 1%;">
+        </section>
+
+        <section>
+          <h2>The same with media queries</h2>
+          <pre class="terminal">
+  /* Extra small devices (phones, 600px and down) */
+  @media only screen and (<em>max-width</em>: 600px) {...}
+  
+  /* Small devices (portrait tablets and large phones, 600px and up) */
+  @media only screen and (min-width: 600px) {...}
+  
+  /* Medium devices (landscape tablets, 768px and up) */
+  @media only screen and (min-width: 768px) {...}
+  
+  /* Large devices (laptops/desktops, 992px and up) */
+  @media only screen and (min-width: 992px) {...}
+  
+  /* Extra large devices (large laptops and desktops, 1200px and up) */
+  @media only screen and (min-width: 1200px) {...} 
+</pre>
+
+          <p>These five Typical Device Breakpoints are represented<a
+              href="https://www.w3schools.com/css/css_rwd_mediaqueries.asp"> by W3Schools</a> as
+            a well-accepted de facto standard.
+          </p>
+
+        </section>
+
+        <section>
+          <h2>Queries in action</h2>
+          <p>Inspiration got from <a href="https://css-tricks.com/css-media-queries/">the css-tricks demo</a>.
+            Media queries have three different ranges:</p>
+          <ul style="font-size: 60%;">
+            <li>&lt; 768px</li>
+            <li>768px&lt;= and &lt;=992px</li>
+            <li>&gt; 992px</li>
+          </ul>
+
+
+
+          <iframe id="mqFrame" src="MediaQueriesSidebar/index.html"></iframe>
+
+
+          <style>
+            #mqFrame {
+              width: 85%;
+              height: 300px;
+              transition: width 3s;
+            }
+
+            #mqFrame:hover {
+              width: 10%;
+            }
+          </style>
+
+
+
+          <!-- <pre class="terminal">
+
+        @media all and (min-width: 993px) {
+          #sidebar ul li a:after {
+            content: " (" attr(data-email) ")";
+            font-size: 11px;
+            font-style: italic;
+            color: #777;
+          }
+        }
+        
+        @media all and (max-width: 992px) and (min-width: 768px) {
+          #sidebar ul li a:before {
+            content: "Email: ";
+            font-style: italic;
+            color: #777;
+          }
+        }
+        
+        @media all and (max-width: 768px) and (min-width: 600px), (min-width: 1200px) {
+          #sidebar ul li a {
+            padding-left: 21px;
+            background: url(../images/email.png) left center no-repeat;
+          }
+        }
+</pre> -->
+
+
+        </section>
+
+      </section>
+
+      <section data-background="#264f4f">
+        <section style="text-align: center">
+          <h1>Accessibility</h1>
+          <h2>Standards and tools</h2>
+        </section>
+
+        <section>
+          <h3>Equity of opportunities</h3>
+          <p>
+            Accessibility is important for giving everyone equal opportunities
+            to access information. Formal organizations are mandated to follow the
+            accessibility instructions and
+            deliver the information in such a manner that everyone
+            can read it; a few countries have even written this right to their law.
+            Moreover, accessible sites tend to rank higher on search engines and be more usable in overall.
+          </p>
+        </section>
+        <section>
+          <h3>W3C initiatives</h3>
+          <p>Several specifications and projects target better accessibility
+            for visually impaired people, such
+            as <a href="https://www.w3.org/WAI/standards-guidelines/wcag/">Web Content Accessibility Guidelines</a>,
+            and <a href="https://www.w3.org/WAI/standards-guidelines/aria/">WAI-ARIA</a> of W3C.
+            In addition, such open source projects as A11y Project
+            have joined the effort by crowd-sourcing more material, e.g., writing accessibility articles,
+            editing inaccuracies, and providing high-level information. For more information, see <a
+              href="https://a11yproject.com/">https://a11yproject.com/</a>.
+          </p>
+
+          <p>
+            [A11y is the short form way of writing accessibility. It is known as a "numeronym", where 11 denotes the
+            missing 11
+            letters between 'a' and 'y']
+          </p>
+        </section>
+        <section>
+          <figure class="well">
+
+            <img alt="WAI ARIA" id="gitUrlImage" width="50%"
+              src="https://www.w3.org/WAI/assets/images/social-sharing-default.jpg">
+            <figcaption>WAI-ARIA, the Accessible Rich Internet Applications suite of web standards produced by W3C.
+            </figcaption>
+          </figure>
+
+
+
+        </section>
+        <section>
+          <h2>HTML Accessibility</h2>
+
+          <ul>
+            <li>Write HTML with accessibility in mind</li>
+            <li>Provide the usera good way to navigate and interact with your site: the main things should be easily
+              accessible</li>
+            <li>Make your HTML code as semantic as possible, so that the code is easy to understand for visitors and
+              screenreaders.</li>
+
+          </ul>
+          <p class="extra"><a href="https://www.w3schools.com/html/html_accessibility.asp"
+              target="_blanc">https://www.w3schools.com/html/html_accessibility.asp</a></p>
+        </section>
+
+
+        <section>
+          <h2>Accessibility guidelines</h2>
+
+          <p class="dense" style="font-size: 80%;">Navigation with the keyboard should always be possible:
+            the consistent order of switching focus, the most important first, no non-navigable parts.</p>
+          <p class="dense" style="font-size: 80%;">When using screenreaders, the correct use of different header
+            levels is important.</p>
+          <p class="dense" style="font-size: 80%;">The visual design of the web page is also important. Contrasts and
+            colors
+            should be thought about color-blind (and other) in mind.</p>
+          <p class="dense" style="font-size: 80%;">Good validators for contranst and colors are:</p>
+          <ul class="dense" style="font-size: 80%;">
+            <li><a href="https://webaim.org/resources/contrastchecker/" target="_blanc">color contrast checker for
+                low visibility and color blindness</a></li>
+            <li>WAVE Web Accessibility evaluation tool - Firefox and Chrome plugin: <a
+                href="https://chrome.google.com/webstore/detail/wave-evaluation-tool/jbbplnpkjmmeebjpijfedlgcdilocofh"
+                target="_blanc">Chrome plugin can be found here</a></li>
+            <li>To test a whole page in browser <a href="https://color.a11y.com" target="_blanc">here</a></li>
+          </ul>
+        </section>
+        <section>
+          <h2>Accessibility standards and tools</h2>
+
+          <p>WAI-ARIA stands for “Web Accessibility Initiative – Accessible Rich Internet Applications”. See more
+            from <a href="https://www.w3.org/WAI/standards-guidelines/aria/" target="_blanc">W3C</a>.</p>
+
+          <p>Test with screenreaders</p>
+          <ul class="dense">
+            <li><a href="https://www.nvaccess.org/" target="_blanc">NVDA</a> (Windows, freeware)</li>
+            <li>Jaws (Windows, commercial)</li>
+            <li>VoiceOver (Apple)</li>
+            <li><a href="chrome://settings/accessibility" target="_blanc">ChromeVox</a> (Text-to-speech)</li>
+            <li>TalkBack (Android)</li>
+            <li><a href="https://help.gnome.org/users/orca/stable/" target="_blanc">Orca</a> (Linux)</li>
+            <li>Survey about the current screen readers: <a href="https://webaim.org/projects/screenreadersurvey8/"
+                target="_blanc">https://webaim.org/projects/screenreadersurvey8/</a> </li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Accessibility "linting" integrated in the tool chain</h3>
+          <p>In the weekly exercises and assignment, we exploit various tools, such as
+            plugins axes, pa11y and a11y that are capable of checking both HTML and JavaScript, for example:</p>
+          <ul>
+            <li><em>alt-text</em>: Enforce all elements that require alternative text have meaningful information to
+              relay back
+              to end user.</li>
+            <li><em>anchor-is-valid</em>: Enforce all anchors are valid, navigable elements.</li>
+            <li><em>aria-props</em>: Enforce all aria-* props are valid.</li>
+          </ul>
+
+          <p>More information about the available rules
+            <a href="https://github.com/jsx-eslint/eslint-plugin-jsx-a11y#supported-rules">checkable here</a>.</p>
+
+          </p>
+        </section>
+
+      </section>
+
+
+    </div>
+  </div>
+
+
+
+
+
+
+  <script src="dist/reveal.js"></script>
+  <script src="plugin/zoom/zoom.js"></script>
+  <script src="plugin/notes/notes.js"></script>
+  <script src="plugin/search/search.js"></script>
+  <script src="plugin/markdown/markdown.js"></script>
+  <script src="plugin/highlight/highlight.js"></script>
+  <script>
+      // Also  available as an ES module, see:
+      // https://revealjs.com/initialization/
+      Reveal.initialize({
+          controls: true,
+          progress: true,
+          center: true,
+          hash: true,
+
+          // Learn about plugins: https://revealjs.com/plugins/
+          plugins: [
+              RevealZoom,
+              RevealNotes,
+              RevealSearch,
+              RevealMarkdown,
+              RevealHighlight
+          ]
+      });
+  </script>
+  <script src="lib/jquery-1.11.1.min.js"></script>
+
+  <script>
+
+
+    function htmlExample(source, target) {
+      "use strict";
+      $(target).html($(source).text());
+    }
+
+    $("#html_first_demo-btn").click(function () {
+      htmlExample("#html_first_demo", "#html_first_demo-target");
+    });
+    $("#css_first_demo-btn").click(function () {
+      htmlExample("#css_first_demo", "#css_first_demo-target");
+    });
+
+    $("#js_first_demo-btn").click(function () {
+      eval($("#js_first_demo").text());
+    });
+
+    $("#white_space_btn").click(function () {
+      htmlExample("#white_space_example", "#white_space_target");
+    });
+    $("#h1_example_btn").click(function () {
+      htmlExample("#h1_example", "#h1_example_target");
+    });
+    $("#table_example_btn").click(function () {
+      htmlExample("#table_example", "#table_example_target");
+    });
+    $("#form_example_btn").click(function () {
+      htmlExample("#form_example", "#form_example_target");
+    });
+    $("#div_span_example_btn").click(function () {
+      htmlExample("#div_span_example", "#div_span_example_target");
+    });
+    $("#css_float_example_btn").click(function () {
+      htmlExample("#css_float_example", "#css_float_example_target");
+    });
+
+    $("#dom-demo-btn").click(function () {
+      eval($("#dom-demo").text());
+    });
+    $("#handler-demo-btn").click(function () {
+      eval($("#handler-demo").text());
+    });
+
+  </script>
+</body>
+
+</html>

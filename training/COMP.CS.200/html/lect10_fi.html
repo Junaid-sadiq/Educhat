@@ -1,0 +1,1973 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+
+  <title>WSD : lect10</title>
+
+  <meta name="description" content="A framework for easily creating beautiful presentations using HTML" />
+  <meta name="author" content="Pia Niemelä" />
+
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" href="dist/reset.css" />
+  <link rel="stylesheet" href="dist/reveal.css" />
+  <link rel="stylesheet" href="../css/deadline.css" />
+
+  <link rel="stylesheet" href="dist/theme/moon.css" id="theme" />
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"> -->
+
+  <!-- Theme used for syntax highlighting of code -->
+  <link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme" />
+  <link href="https://fonts.googleapis.com/css?family=Coda" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+
+  <link rel="stylesheet" href="../css/infograph.css" id="theme" />
+  <style>
+    h1 {
+      font-size: 50%;
+    }
+
+    /* table{
+      border: #ddd solid 1px;
+    } */
+  </style>
+</head>
+
+<body>
+  <div class="reveal">
+    <!-- Any section element inside of this container is displayed as a slide -->
+    <div class="slides">
+      <section id="TABLE_OF_CONTENTS" data-background="#81237F">
+        <h1>Luennon 10 - Oliot</h1>
+        <div style="display: flex;width: 90%;justify-content: space-around;">
+          <ul style="width:60%">
+            <li><a href="#object">Olio</a>
+              <ul>
+                <li>ominaisuudet</li>
+                <li><a href="#methods">metodit</a></li>
+                <li><a href="#manipulation">olioiden käsittely</a></li>
+                <li><a href="#creation">luonti</a></li>
+              </ul>
+            </li>
+            <li><a href="#class">Luokka</a>
+              <ul>
+                <li><a href="#inheritance">periytyminen</a></li>
+                <li><a href="#data_hiding">datan piilottaminen</a></li>
+                <li><a href="#security">turvallisuus</a></li>
+              </ul>
+            </li>
+          </ul>
+          <ul>
+            <li><a href="#sec_prototype">Prototyyppi</a>
+              <ul>
+                <li>jokaisen olion taustalla on proto</li>
+                <li>prototyyppiketju</li>
+                <li>dynaaminen periytyminen</li>
+              </ul>
+            </li>
+            <li><a href="#this">this</a>
+              <ul>
+                <li>konteksti</li>
+                <li>sidonta</li>
+                <li>funktioiden uudelleenkäyttö</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <img style="position: absolute; top:-100px;right: -100px;width:20%;" src="../img/face-inverted-small.png" />
+      </section>
+
+      <section>
+        <section id="object">
+          <h1 class="r-fit-text">Olio</h1>
+        </section>
+
+        <section>
+          <h2>JavaScript-oliot</h2>
+          <p>Olioita käytetään tiedon tallentamiseen ja järjestämiseen. Ne ovat avain-arvo -pareista koostuvia
+            kokoelmia.</p>
+          <p>Avaimet ovat merkkijonoja (tai symboleja), ja arvot voivat olla mitä tahansa JavaScriptin tietotyyppejä.
+          </p>
+          <h3>Keskeiset käsitteet</h3>
+          <ul style="font-size: 60%;">
+            <li><strong>Avain-arvo -parit:</strong> Olioihin tallennetaan tietoa avain-arvo -pareina. Vastaavat
+              sanakirjoja.</li>
+            <li><strong>Ominaisuudet:</strong> Avain tunnetaan myös nimellä "ominaisuus".</li>
+            <li><strong>Metodit:</strong> Jos ominaisuuden arvo on funktio, sitä kutsutaan metodiksi.</li>
+            <li><strong>Dynaamisuus:</strong> Ominaisuuksia ja metodeja voi lisätä, muokata ja poistaa ajon aikana.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Olio</h3>
+          <ul>
+            <li>
+              Olio on dynaaminen kokoelma liittyvää dataa
+              <ul>
+                <li>ominaisuus on yhteys <code>nimen</code> (tai <code>avaimen</code>) ja <code>arvon</code> välillä
+                </li>
+                <li>jos ominaisuuden arvo on funktio, sitä kutsutaan <code>metodiksi</code> (lisää tästä myöhemmin)</li>
+                <li><strong>ominaisuuksia voi lisätä ja poistaa olion luomisen jälkeen</strong></li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Olio (jatkuu)</h3>
+          <ul>
+            <li>
+              Vain kaksi primitiivityyppiä voi toimia ominaisuuden avaimina:
+              <ul>
+                <li><code>string</code></li>
+                <li>
+                  <a href="https://javascript.info/symbol" target="_blank"><code>symbol</code></a> (ei käsitellä tässä
+                  kurssissa)
+                </li>
+                <li>
+                  Muut tyypit muunnetaan automaattisesti merkkijonoiksi:
+                  <ul>
+                    <li><code>obj[1] === obj["1"]</code></li>
+                    <li><code>obj[true] === obj["true"]</code></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>
+              Seitsemän <code>primitiivityyppiä</code> (<code>string</code>, <code>number</code>, <code>bigint</code>,
+              <code>boolean</code>, <code>symbol</code>, <code>null</code> ja <code>undefined</code>) – <strong>kaikki
+                muu on olioita</strong>
+            </li>
+            <li><strong>Taulukot ja funktiot ovat myös olioita</strong></li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Oliot avain-arvo -pareina</h3>
+          <ul>
+            <li>
+              Muita nimiä muissa ohjelmointikielissä:
+              <ul>
+                <li><code>map</code> (JavaScriptissä on myös erillinen <code>Map</code>-olio, joka on samankaltainen
+                  mutta eri)</li>
+                <li><code>hash-taulu</code></li>
+                <li><code>tietue</code></li>
+                <li><code>rakenne</code></li>
+                <li><code>assosiatiivinen taulukko</code></li>
+                <li><code>sanakirja</code></li>
+                <li><code>dict</code></li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Esimerkki: Yksinkertainen olio</h3>
+          <pre><code>const person = {
+        firstName: "Alice",
+        lastName: "Smith",
+        age: 30,
+        greet: function() {
+          console.log(`Hei, nimeni on ${this.firstName} ${this.lastName}`);
+        }
+      };
+      
+      console.log(person.firstName); // Tulostaa: Alice
+      person.greet(); // Tulostaa: Hei, nimeni on Alice Smith</code></pre>
+          <p>Esimerkissä olio luotiin oliolitteraalilla. Oliot auttavat jäsentämään monimutkaista dataa JavaScriptissä.
+          </p>
+        </section>
+
+        <section style="font-size: 80%;">
+          <h2>Taulukko vs. Olio (assosiatiivinen taulukko)</h2>
+          <ul>
+            <li><strong>Taulukko:</strong> Indeksoidaan numeroilla (0 .. N)</li>
+            <pre><code>const myArr = ['punainen', 'sininen', 'keltainen', 'violetti'];</code></pre>
+            <li>Visuaalinen esitys:</li>
+          </ul>
+          <table>
+            <tr>
+              <th>Avaimen</th>
+              <th>Arvo</th>
+            </tr>
+            <tr>
+              <td>0</td>
+              <td>'punainen'</td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>'sininen'</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>'keltainen'</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>'violetti'</td>
+            </tr>
+          </table>
+        </section>
+      </section>
+
+
+
+
+      <section>
+        <section id="methods">
+          <h1 class="r-fit-text">Metodit olioissa</h1>
+        </section>
+        <section>
+          <h2>Metodi: lambda ominaisuuden arvona</h2>
+          <ul>
+            <li>Olioiden käyttäytyminen (metodit) luodaan funktioiden avulla</li>
+          </ul>
+          <pre><code>const person = {
+firstName: "Mickey",
+lastName: "Mouse",
+isFiction: true,
+numberOfFriends: 63,
+fullName: function() {
+    return this.firstName + " " + this.lastName;
+}
+};
+
+const p1 = person.fullName();</code></pre>
+        </section>
+
+        <section>
+          <h2>Funktio-ilmaisu kutsuttuna <code>()</code> kanssa</h2>
+          <ul>
+            <li>Ilman sulkeita funktion viittaus tallennetaan arvona</li>
+          </ul>
+          <pre><code>let p2 = person.fullName;
+console.log("p2 = " + p2);
+
+// Tulostaa: function (){ return this.firstName + " " + this.lastName; }
+
+// Kutsutaan () kanssa, oikein!
+p2 = person.fullName();
+// Tämä ei kuitenkaan toimi, miksi?
+const name = p2();</code></pre>
+        </section>
+        <section>
+          <h2>Välittömästi kutsuttava funktioilmaisu (IIFE)</h2>
+          <ul>
+            <li>IIFE suoritetaan välittömästi sen määrittelyn jälkeen.</li>
+            <li>Sitä käytetään usein paikallisen alueen (scope) luomiseen ja globaalin nimitilan saastuttamisen
+              estämiseen.</li>
+            <li>Mahdollistaa moduulimallin, mikä sallii yksityiset muuttujat ja julkiset metodit.</li>
+            <li>Esimerkki IIFE:stä:</li>
+          </ul>
+          <pre><code>
+(function sayHi() {
+    console.log("..muista minut?");
+})(); // Sulkeet lopussa kutsuvat funktion heti
+  </code></pre>
+        </section>
+
+        <section>
+          <h3>Metodiesimerkkejä</h3>
+          <ul>
+            <li>
+              Opetetaan ensin <code>secretAgent</code> sanomaan "Hello"
+            </li>
+          </ul>
+          <pre><code class="language-js" data-line-numbers>const secretAgent = {
+  firstName: 'James',
+  lastName: 'Bond'
+};
+
+secretAgent.sayHello = function () {
+  console.log('Hello');
+};
+
+secretAgent.sayHello(); // "Hello"
+</code></pre>
+        </section>
+
+        <section>
+          <h3>Metodiesimerkkejä (jatkuu)</h3>
+          <ul>
+            <li>
+              Tässä käytämme <em>funktioilmaisua</em> luodaksemme funktion ja määritämme sen ominaisuudeksi
+              <code>secretAgent.sayHello</code> oliossa.
+            </li>
+            <li>
+              Sen jälkeen voimme kutsua sitä kuten <code>secretAgent.sayHello()</code>.
+              Nyt <code>secretAgent</code> osaa puhua!
+            </li>
+            <li>
+              Funktio, joka on olion ominaisuus, on sen <strong>metodi</strong>.
+            </li>
+            <li>
+              Tässä tapauksessa meillä on metodi <code>sayHello</code>, joka kuuluu oliolle <code>secretAgent</code>.
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Metodiesimerkkejä (jatkuu)</h3>
+          <ul>
+            <li>
+              Ennalta määritellyn funktion lisääminen olioon <em>metodina</em>
+            </li>
+            <pre><code class="language-js" data-line-numbers>const salainenAgentti = {
+              // ...
+            };
+            
+            // ensin, määritellään funktio
+            function sanoHei() {
+              console.log('Hei');
+            }
+            
+            // sitten lisätään se metodiksi
+            salainenAgentti.sanoHei = sanoHei;
+            
+            salainenAgentti.sanoHei(); // "Hei"
+            </code></pre>
+        </section>
+
+        <section>
+          <h3>Metodien lyhennetty syntaksi</h3>
+          <ul>
+            <li>Lyhyempi tapa määritellä metodeja olioissa:</li>
+          </ul>
+          <pre><code class="language-js" data-line-numbers>const salainenAgentti = {
+  etunimi: 'James',
+  sukunimi: 'Bond',
+  sanoHei: function () {
+    console.log('Hei');
+  }
+};
+
+// metodien lyhennetty syntaksi
+const salainenAgentti = {
+  etunimi: 'James',
+  sukunimi: 'Bond',
+  sanoHei() {         
+    console.log('Hei'); 
+  } //suositeltava tapa!
+};</code></pre>
+        </section>
+
+        <section>
+          <h3>Metodien lyhennetty syntaksi (jatkuu)</h3>
+          <ul>
+            <li>
+              Voimme jättää <code>function</code>-avainsanan pois ja käyttää vain <code>sanoHei()</code>.
+            </li>
+            <li>
+              Notaatioilla on pieniä eroja, jotka liittyvät periytymiseen:
+              <ul>
+                <li>Lyhennetty versio mahdollistaa <code>super</code>-kutsut</li>
+                <li>Paremmin optimoitu sisäinen metodi</li>
+              </ul>
+            </li>
+            <li>
+              <strong>Siksi lähes kaikissa tapauksissa lyhyempi syntaksi on parempi</strong>
+            </li>
+          </ul>
+        </section>
+      </section>
+
+
+      <section>
+
+        <section id="manipulation">
+          <h2 class="r-fit-text">Olioiden käsittely</h2>
+        </section>
+        <section>
+          <h3>Ominaisuuksiin pääsy</h3>
+          <blockquote>
+            <ul>
+              <li>
+                Kaksi tapaa käyttää ominaisuuksia
+                <ul>
+                  <li>Pistenotaatiolla (<code>obj.ominaisuus</code>)</li>
+                  <li>
+                    Hakasulkunotaatiolla (<code>obj["ominaisuus"]</code>)
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </blockquote>
+          <ul>
+            <li>
+              Hakasulkunotaatiota on käytettävä, jos ominaisuuden nimi:
+              <ul>
+                <li>sisältää välilyönnin tai yhdysmerkin</li>
+                <li>alkaa numerolla</li>
+                <li>on <code>symboli</code></li>
+              </ul>
+            </li>
+            <li>Kun käytetään muuttujaa ominaisuuden haussa</li>
+          </ul>
+        </section>
+
+        <section>
+          <pre><code class="language-js" data-line-numbers="1-3|5-7|9-13">// pistenotaatio
+let nimi = henkilo.etunimi; // haetaan ominaisuus
+henkilo.sukunimi = 'Virtanen'; // asetetaan ominaisuus
+
+// hakasulkunotaatio
+let ika = henkilo['ika']; // haetaan ominaisuus
+henkilo['naimisissa'] = true; // asetetaan ominaisuus
+
+// hakasulkunotaatio muuttujan kanssa
+let ominaisuus1 = 'ika';
+let ominaisuus2 = 'naimisissa';
+let naimisissa = henkilo[ominaisuus2]; // haetaan ominaisuus
+henkilo[ominaisuus1] = 36; // asetetaan ominaisuus</code></pre>
+        </section>
+
+        <section>
+          <h3>Ominaisuuksien lisääminen ja poistaminen</h3>
+          <pre><code class="language-js" data-line-numbers>// pistenotaatio
+henkilo.lastenlkm = 3; // uusi ominaisuus
+
+// hakasulkunotaatio
+henkilo['ammatti'] = 'opettaja'; // uusi ominaisuus
+
+// ominaisuuden poistaminen
+delete henkilo.lastenlkm;
+delete henkilo['ammatti'];</code></pre>
+        </section>
+      </section>
+
+      <section>
+        <section id="luonti">
+          <h2 class="r-fit-text" id="luonti">Luonti</h2>
+        </section>
+
+        <section style="font-size: 60%;">
+          <h2>Erilaisia tapoja luoda olioita</h2>
+          <blockquote>
+            <ol>
+              <li>olio-literal</li>
+              <li>JSON-jäsennys</li>
+              <li>funktiokonstruktori</li>
+              <li>kopiointi</li>
+              <li>luokat (käsitellään tarkemmin myöhemmissä luvuissa)</li>
+              <li>Object.create()</li>
+            </ol>
+          </blockquote>
+        </section>
+
+        <section style="font-size: 80%;">
+          <h2>Funktio- vs. luokkapohjainen luonti</h2>
+          <ul>
+            <li>Funktiokonstruktori soveltuu funktionaaliseen tyyliin, mutta periytyminen on hankalampaa</li>
+            <li>Luokat ovat saatavilla ES6:sta lähtien helpottamaan oliopohjaista ohjelmointia; näyttää ensi
+              silmäyksellä perinteiseltä OOP:lta</li>
+            <li>JavaScript-olio eroaa perinteisestä luokasta:
+              <ul>
+                <li>voi muuttua dynaamisesti, eli ominaisuuksia ja metodeja voi lisätä tai muuttaa, ja jopa periytymistä
+                  voi muokata</li>
+                <li>käyttää käyttäytymisen delegointia kysyäkseen prototyypiltään (tai sen prototyypin prototyypiltä
+                  jne.) puuttuvia ominaisuuksia tai metodeja</li>
+                <li>mahdollistaa <strong>differenssiperiytymisen</strong>, eli olio perii ominaisuuksia vasta
+                  tarvittaessa, jos niitä ei löydy omista ominaisuuksista</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Olioiden luonti (literal notation)</h2>
+          <ul>
+            <li>Koostuu ominaisuuksista pilkulla eroteltuina <code>nimi-arvo</code>-pareina</li>
+            <li>Olio luodaan <code>{}</code>-suilla, kun taas taulukot käyttävät <code>[]</code>-sulkuja</li>
+          </ul>
+          <div style="display:flex">
+            <pre><code>const myObject = {
+  firstName: "Elon",
+  lastName: "Musk",
+  isFiction: false
+};</code></pre>
+            <table>
+              <tr>
+                <th>Nimi</th>
+                <th>Arvo</th>
+              </tr>
+              <tr>
+                <td>firstName</td>
+                <td>"Elon"</td>
+              </tr>
+              <tr>
+                <td>lastName</td>
+                <td>"Musk"</td>
+              </tr>
+              <tr>
+                <td>isFiction</td>
+                <td>false</td>
+              </tr>
+            </table>
+          </div>
+        </section>
+
+        <section>
+          <h2>Sisäkkäiset oliot literal notation -merkinnällä</h2>
+          <ul>
+            <li>Olio voi sisältää muita olioita ominaisuuksina</li>
+            <li>Sisäkkäinen notaatiotapa on mahdollinen pilkkuerottelulla</li>
+          </ul>
+          <pre><code>const kolmio = {
+p1: { x: 0, y: 3 },
+p2: { x: 1, y: 4 },
+p3: { x: 2, y: 5 }
+};
+console.log(kolmio.p1.y); // tulostaa 3</code></pre>
+          <p><code>kolmio</code>-olio koostuu kolmesta pisteestä, jotka määritellään (x,y)-koordinaateilla.</p>
+          <p>Ovatko p1-p3 omia olioitaan? Miten kopioida?</p>
+        </section>
+
+        <section>
+          <h3>Konstruktori-funktiot</h3>
+          <p>Ne ovat tavallisia funktioita, mutta noudattavat kahta pääsääntöä:</p>
+          <ol>
+            <li>Niiden nimi alkaa isolla kirjaimella (esim. <code>Henkilö</code>).</li>
+            <li>Ne tulisi kutsua vain <code>new</code>-operaattorin avulla, jotta uusi olio luodaan ja <code>this</code>
+              osoittaa siihen oikein.</li>
+          </ol>
+        </section>
+
+        <section>
+          <h3>Konstruktori-funktio (esimerkki)</h3>
+          <pre><code class="language-js">function Kayttaja(nimi) {
+  this.nimi = nimi;
+  this.onYllapitaja = false;
+}
+
+let kayttaja = new Kayttaja('Matti');
+
+console.log(kayttaja.nimi); // "Matti"
+console.log(kayttaja.onYllapitaja); // false</code></pre>
+        </section>
+      </section>
+
+
+
+      <section>
+        <section id="class">
+          <h2 class="r-fit-text">Luokka</h2>
+        </section>
+
+        <section>
+          <h2>Monimutkaiset oliot ja luokat</h2>
+          <ul>
+            <li>luokkien määrittely</li>
+            <li>olioiden luominen luokasta</li>
+            <li>getterit ja setterit, tietojen piilottaminen ja yksityiset ominaisuudet</li>
+            <li>muokkauksen estäminen (vain getter, ei setteriä)</li>
+            <li>virtuaaliset/lasketut ominaisuudet ja getterit</li>
+            <li>
+              periytyminen (alikategoriat)
+              <ul>
+                <li><code>super()</code></li>
+              </ul>
+            </li>
+            <li><code>this</code> ja metodiketjutus suunnittelumallina</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Luokat</h3>
+          <blockquote>
+            <p>
+              Oliopohjaisessa ohjelmoinnissa luokka on laajennettava ohjelmakoodin malli, jonka avulla voidaan luoda
+              olioita, määrittää niiden alkutila (jäsenmuuttujat) ja toteuttaa niiden käyttäytyminen (jäsenfunktiot tai
+              -metodit). - Wikipedia
+            </p>
+          </blockquote>
+        </section>
+
+        <section>
+          <h3>Luokat (jatkuu)</h3>
+          <ul>
+            <li>
+              Usein tarvitsemme luoda useita samanlaisia olioita, kuten käyttäjiä, tuotteita, valikkokohteita jne.
+            </li>
+            <li>
+              Kuten tiedämme, <em>rakentajafunktiot</em> ja <code>new</code>-operaattori voivat auttaa tässä.
+            </li>
+            <li>
+              Modernissa JavaScriptissä on kehittyneempi
+              <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_Classes"
+                target="_blank"><code>class</code></a>-rakenne, joka tuo uusia hyödyllisiä ominaisuuksia oliopohjaiseen
+              ohjelmointiin.
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Luokat (jatkuu)</h3>
+          <ul>
+            <li>
+              <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_Classes"
+                target="_blank"><code>class</code></a> kokoaa ominaisuudet ja metodit yhteen
+              <ul>
+                <li>
+                  <code>class</code> voidaan ajatella <em>mallina</em>
+                </li>
+              </ul>
+            </li>
+            <li>
+              Mahdollistaa useiden olioiden helpon luomisen samasta <code>class</code>-rakenteesta
+              <ul>
+                <li>oliot omaavat samat ominaisuudet eri arvoilla</li>
+                <li>metodit voivat muuttaa arvoja</li>
+              </ul>
+            </li>
+            <li>
+              Rakentajafunktio kutsutaan automaattisesti <code>new</code>-operaattorilla
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h3><code>class</code>-syntaksi</h3>
+          <pre><code class="language-js" data-line-numbers>
+      // Luokan määrittely
+      class MyClass {
+        // Luokan metodit
+        constructor() { ... }
+        method1() { ... }
+        method2() { ... }
+        method3() { ... }
+        ...
+      }
+      </code></pre>
+          <blockquote>
+            <p><strong>HUOM</strong></p>
+            <ul>
+              <li>Luokan metodien välissä ei ole pilkkua</li>
+              <li>
+                <strong>Luokkadefinitiot eivät ole nostettuina (hoisted)</strong>
+                <ul>
+                  <li>luokkaa ei voi käyttää ennen sen määrittelyä</li>
+                </ul>
+              </li>
+            </ul>
+          </blockquote>
+        </section>
+
+        <section>
+          <h3>Luokan määrittely (esimerkki)</h3>
+          <pre><code class="language-js" data-line-numbers="1-9|11-13">
+      class User {
+        constructor(name) {
+          this.name = name;
+        }
+      
+        sayHello() {
+          console.log('Hei! Nimeni on', this.name);
+        }
+      }
+      
+      // Käyttö:
+      let user = new User('John');
+      user.sayHello(); // "Hei! Nimeni on John"
+      </code></pre>
+          <ul>
+            <li>
+              Kun <code>new User("John")</code> kutsutaan:
+              <ol>
+                <li>Uusi olio luodaan.</li>
+                <li>
+                  Rakentajafunktio suoritetaan annetulla parametrilla ja se tallennetaan <a
+                    href="http://this.name">this.name</a>-muuttujaan.
+                </li>
+              </ol>
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Luokkailmaisu</h3>
+          <ul>
+            <li>
+              Kuten funktiot, myös luokat voidaan määritellä toisessa ilmaisussa, välittää eteenpäin, palauttaa,
+              määrittää muuttujaksi jne.
+            </li>
+          </ul>
+          <pre><code class="language-js" data-line-numbers>// Esimerkki luokkailmaisusta
+let User = class {
+  sayHello() {
+    console.log('Hei');
+  }
+};</code></pre>
+        </section>
+
+        <section>
+          <h3><code>extends</code> ja periytyminen</h3>
+          <ul>
+            <li>
+              Uusi <code>class</code> (alikategoria) voidaan määrittää aiemman <code>class</code>-rakenteen pohjalta
+              <ul>
+                <li>
+                  aliluokka "lainaa" suurimman osan vanhemman <code>class</code>-rakenteen toiminnoista
+                </li>
+                <li>
+                  aliluokka voi lisätä uusia toimintoja ja muokata olemassa olevia
+                </li>
+              </ul>
+            </li>
+            <li>
+              <code>extends</code>-avainsanaa käytetään <code>class</code>-määrittelyissä tai ilmaisemaan periytymistä
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h3><code>extends</code> (jatkuu)</h3>
+          <ul>
+            <li>
+              Aliluokan rakentajafunktion täytyy kutsua vanhemman <code>class</code>-rakentajaa
+              <ul>
+                <li>
+                  täytyy kutsua ensimmäisenä asiana aliluokan rakentajassa
+                </li>
+                <li>
+                  kutsussa <code>super()</code> täytyy välittää parametrit, jotka vanhemman rakentaja tarvitsee
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h3><code>extends</code> (esimerkki)</h3>
+          <pre><code class="language-js" data-line-numbers="|8-15|10">class Henkilo {
+  constructor(etunimi, sukunimi) {
+    this.etunimi = etunimi;
+    this.sukunimi = sukunimi;
+  }
+}
+
+class Opettaja extends Henkilo {
+  constructor(etunimi, sukunimi, aine, patevyys) {
+    super(etunimi, sukunimi);
+    this.aine = aine;
+    this.patevyys = patevyys;
+  }
+}</code></pre>
+        </section>
+
+        <section style="font-size: 50%;margin-left: -5em;">
+          <table style="width: 100%;border: 1px solid white;">
+            <thead>
+              <tr>
+                <th style="width:10%">Ominaisuus</th>
+                <th style="width:40%">Prototyyppinen periytyminen (JavaScript)</th>
+                <th style="width:40%">Klassinen periytyminen (Java, C++)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Mekanismi</strong></td>
+                <td>oliot perivät suoraan toisiltaan (prototyypit)</td>
+                <td>oliot ovat luokkien ilmentymiä</td>
+              </tr>
+              <tr>
+                <td><strong>Periytymisen tyyli</strong></td>
+                <td>käytöksen delegointi: oliot delegoivat toimintoja prototyypeilleen</td>
+                <td>tyyppiperiytyminen: oliot perivät ominaisuuksia ja metodeja luokiltaan</td>
+              </tr>
+              <tr style="background-color: yellowgreen;">
+                <td><strong>Dynaaminen vs. staattinen</strong></td>
+                <td>erittäin dynaaminen: prototyyppejä voidaan muuttaa ajon aikana</td>
+                <td>yleensä staattinen: luokkahierarkiat määritellään yleensä kääntöhetkellä</td>
+              </tr>
+              <tr>
+                <td><strong>Olioiden luonti</strong></td>
+                <td>luodaan suoraan toisista olioista käyttämällä Object.create() tai asettamalla __proto__
+                  (suositellaan vältettäväksi modernissa koodissa)</td>
+                <td>luodaan new-avainsanalla käyttäen luokan konstruktoria</td>
+              </tr>
+              <tr>
+                <td><strong>Joustavuus</strong></td>
+                <td>erittäin joustava: esimerkiksi differentiaaliperiytyminen</td>
+                <td>vähemmän joustava: tiukka luokkahierarkioiden noudattaminen</td>
+              </tr>
+              <tr>
+                <td><strong>Toteutus</strong></td>
+                <td>perustuu prototyyppiketjuihin</td>
+                <td>perustuu luokkahierarkioihin</td>
+              </tr>
+              <tr>
+                <td><strong>Suhde</strong></td>
+                <td>"prototyyppi on" -suhde olioiden välillä</td>
+                <td>"on" -suhde olioiden ja luokkien välillä</td>
+              </tr>
+              <tr>
+                <td><strong>Muokkaaminen</strong></td>
+                <td>prototyyppejä voidaan muokata milloin tahansa</td>
+                <td>luokan muutokset vaativat yleensä uudelleenkääntämisen</td>
+              </tr>
+              <tr>
+                <td><strong>Esimerkki</strong></td>
+                <td>JavaScript, Lua, Self: oliot perivät prototyyppiketjun kautta</td>
+                <td>Java, C++, C#: oliot ovat luokkien ilmentymiä</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+      </section>
+      <section>
+        <section>
+          <h2 class="r-fit-text">Tietojen piilottaminen</h2>
+        </section>
+        <section>
+          <h3>Tietojen piilottaminen - getterit ja setterit</h3>
+          <ul>
+            <li>
+              Estetään tietojen korruptoituminen (tahallisesti tai vahingossa)
+            </li>
+            <li>
+              Varmistetaan, että vain tietyt metodit voivat muuttaa ominaisuuksien arvoja
+              <ul>
+                <li>
+                  tarjoamalla pääsy ominaisuuteen <code>get</code>- ja <code>set</code>-metodeilla
+                </li>
+              </ul>
+            </li>
+            <li>
+              Alaviiva (_nimi) on <em>konventio</em>, joka <em>merkitsee</em> yksityistä ominaisuutta
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Getterit ja setterit (esimerkki)</h3>
+          <pre><code class="language-js" data-line-numbers="|6-9|11-14">class User {
+  constructor(name) {
+    this.name = name; // kutsuu setteriä
+  }
+
+  get name() {
+    return this._name;
+  }
+
+  set name(value) {
+    this._name = value;
+  }
+}</code></pre>
+        </section>
+
+        <section style="font-size: 80%;">
+          <h3>Getterit ja setterit tietojen käsittelyyn</h3>
+          <div style="display: flex; gap: 1rem; justify-content: space-between">
+            <div>
+              <pre><code>get name() {
+  return this._name;
+}</code></pre>
+              <ul>
+                <li>
+                  Luokan ulkopuolella <strong><code>name</code></strong> näyttää edelleen ominaisuudelta
+                </li>
+                <li>
+                  Luokan sisällä se on toteutettu <strong><code>get</code></strong>-metodina
+                </li>
+              </ul>
+            </div>
+            <div>
+              <pre><code>set name(value) {
+          this._name = value;
+        }</code></pre>
+              <ul>
+                <li>
+                  Luokan ulkopuolella <strong><code>name</code></strong> näyttää edelleen ominaisuudelta
+                </li>
+                <li>
+                  Luokan sisällä se on toteutettu <strong><code>set</code></strong>-metodina
+                </li>
+              </ul>
+            </div>
+          </div>
+          <pre><code class="language-js" data-line-numbers>// Esimerkki käytöstä
+let user = new User('John');
+console.log(user.name); // "John" (getter käytössä)
+user.name = 'Jack'; // (setter käytössä)</code></pre>
+        </section>
+
+        <section>
+          <h3>Getterit ja setterit (toinen esimerkki)</h3>
+          <pre><code class="language-js" data-line-numbers="|9-11|12-14">// Hotelli-luokka laskettavalla arvolla
+class Hotel {
+  constructor(name, address, rooms) {
+    this.name = name;
+    this._address = address;
+    this._rooms = rooms;
+    this._bookings = 0;
+  }
+  get numberOfAvailableRooms() {
+    return this._rooms - this._bookings;
+  }
+  get address() {
+    return this._address;
+  }
+}</code></pre>
+        </section>
+
+        <section>
+          <h3>Vain luku -ominaisuudet gettereillä</h3>
+          <ul>
+            <li>
+              Vain luku -ominaisuuksien luominen on helppoa
+              <ul>
+                <li>
+                  Piilota <code>osoite</code>-ominaisuus jättämällä sille määrittelemättä setter-metodi
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <pre><code class="language-js">// Osoitteen asettaminen estetty, koska setter puuttuu
+const hotelli = new Hotelli('Hilton', 'Pääskyläntie 1', 15);
+console.log(hotelli.osoite); // (OK, käyttää getteriä)
+hotelli.osoite = 'Maalaistie 10'; // (ei setter-metodia)
+console.log(hotelli.osoite); // "Pääskyläntie 1" (pysyy muuttumattomana, käyttää getteriä)</code></pre>
+        </section>
+
+        <section>
+          <h3>Ongelma alaviivan (“_”) kanssa</h3>
+          <ul>
+            <li>
+              Miksi alaviivaa (“_”) käytetään tietojen piilottamiseen?
+              <ul>
+                <li>
+                  Alun perin olioilla ei ollut sisäänrakennettua tapaa piilottaa ominaisuuksia
+                </li>
+                <li>
+                  Käyttöön otettiin nimeämiskäytäntö yksityisten ominaisuuksien merkitsemiseksi
+                </li>
+                <li>
+                  <strong>Ominaisuus on silti julkisesti luettavissa ja muokattavissa</strong>
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <pre><code class="language-js">// HUOM: Tämä on edelleen mahdollista
+const hotelli = new Hotelli('Hilton', 'Pääskyläntie 1', 15);
+// (käytetään _osoite suoraan, ohittaen getterin)
+hotelli._osoite = 'Takakatu';
+console.log(hotelli.osoite); // "Takakatu" (arvo muuttui)</code></pre>
+        </section>
+
+        <section>
+          <h3>Yksityiset luokkakentät</h3>
+          <ul>
+            <li>
+              <em>Inkarnaatio</em> olio-ohjelmoinnissa
+              <ul>
+                <li>Ei suoraa pääsyä sisäiseen toteutukseen</li>
+                <li>
+                  Käytetään hyvin määriteltyjä rajapintoja (metodeja) olion käsittelyyn
+                </li>
+              </ul>
+            </li>
+            <li>
+              Nimeämiskäytäntö ei riitä
+              <ul>
+                <li>Ulkopuolinen koodi voi yhä käyttää ominaisuuksia suoraan</li>
+                <li>
+                  Muutokset <code>class</code>-sisäiseen toteutukseen voivat rikkoa sitä käyttävää koodia
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Yksityiset luokkakentät (esimerkki)</h3>
+          <pre><code class="language-js">class Kayttaja {
+  #nimi; // Määritellään yksityinen kenttä
+
+  constructor(nimi) {
+    this.#nimi = nimi;
+  }
+
+  get nimi() {
+    return this.#nimi;
+  }
+
+  sanoHei() {
+    console.log('Hei! Nimeni on', this.#nimi);
+  }
+}</code></pre>
+        </section>
+
+        <section>
+          <h3>Yksityiset luokkakentät (jatkuu)</h3>
+          <ul>
+            <li>
+              Nyt käyttäjän nimi on todella yksityinen ominaisuus
+            </li>
+            <li>
+              Nimen muuttaminen olion luonnin jälkeen ei ole mahdollista, koska setter-metodia ei ole määritelty
+            </li>
+          </ul>
+          <pre><code class="language-js">const kayttaja = new Kayttaja('Matti');
+console.log(kayttaja.nimi); // "Matti"
+console.log(kayttaja.#nimi); // SyntaxError
+// (ei voi käyttää yksityistä ominaisuutta luokan ulkopuolella)
+
+kayttaja.#nimi = 'Jussi'; // SyntaxError
+// (ei voi muuttaa yksityistä ominaisuutta luokan ulkopuolella)</code></pre>
+        </section>
+
+
+        <section>
+          <h3>Yksityiset luokkakentät (oletusarvot)</h3>
+          <pre><code class="language-js" data-line-numbers>class Counter {
+  #value = 0; // Yksityinen kenttä, jonka oletusarvo on 0
+
+  reset() {
+    this.#value = 0;
+  }
+
+  increment() {
+    this.#value++;
+  }
+
+  get value() {
+    return this.#value;
+  }
+}</code></pre>
+          <ul>
+            <li>
+              Jokaisella uudella Counter-oliolla on <code>#value</code> asetettuna
+              <code>0</code>
+              <ul>
+                <li>ei vaadi erillistä alustusta</li>
+                <li><code>constructor()</code> ei ole tarpeen</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Yksityiset luokkakentät (oletusarvot)</h3>
+          <pre><code class="language-js" data-line-numbers>// Counter-esimerkki
+const counter1 = new Counter();
+const counter2 = new Counter();
+
+// Molemmat laskurit alkavat arvosta 0
+console.log(counter1.value); // 0
+console.log(counter2.value); // 0
+
+// counter1:n kasvattaminen ei muuta counter2:n arvoa
+// Molemmilla on omat erilliset arvonsa
+counter1.increment();
+console.log(counter1.value); // 1
+console.log(counter2.value); // 0</code></pre>
+        </section>
+
+        <section>
+          <h3>Yksityiset luokkakentät (yhteenveto)</h3>
+          <ul>
+            <li>
+              Suojaa käyttäjiä, jotta he eivät vahingossa aiheuta ongelmia
+              <ul>
+                <li>estää ominaisuuksien tahattoman muuttamisen</li>
+              </ul>
+            </li>
+            <li>
+              Ylläpidettävät luokat
+              <ul>
+                <li>
+                  Sisäisiä ominaisuuksia ja metodeja voidaan muuttaa ilman, että käyttäjien tarvitsee tietää siitä,
+                  kunhan toiminta pysyy samana
+                </li>
+              </ul>
+            </li>
+            <li>
+              Piilottaa monimutkaisuuden
+              <ul>
+                <li>
+                  Toteutuksen yksityiskohdat ovat piilossa, ja saatavilla on yksinkertainen, hyvin dokumentoitu ulkoinen
+                  rajapinta.
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Julkiset luokkakentät</h3>
+          <ul>
+            <li>Yksityisillä kentillä on myös julkiset vastineensa</li>
+            <li>
+              Julkisten luokkakenttien syntaksi on samanlainen kuin yksityisten kenttien
+              <ul>
+                <li>ei <code>#</code>-merkkiä nimen edessä</li>
+              </ul>
+            </li>
+          </ul>
+          <pre><code class="language-js" data-line-numbers>class User {
+  name;
+
+  constructor(name) {
+    this.name = name;
+  }
+}
+
+const user = new User('John');
+user.name = 'James'; // setter ei ole tarpeen (name on julkinen)
+console.log(user.name); // "James" (arvo muuttui, ei tarvetta getterille)</code></pre>
+        </section>
+
+      </section>
+
+      <section>
+        <section id="sec_prototype">
+          <h2 class="r-fit-text">Prototyypit</h2>
+        </section>
+        <section style="font-size: 60%;">
+          <h2>Prototyyppinen periytyminen</h2>
+          <ul>
+            <li>
+              Miksi voimme käyttää sisäänrakennettuja menetelmiä kuten <code>.length</code>, <code>.split()</code> ja
+              <code>.join()</code> esimerkiksi merkkijonoissa ja taulukoissa?
+              <ul>
+                <li>nämä metodit eivät ole suoraan yksittäisissä arvoissa</li>
+                <li>vaan ne periytyvät yhteisestä prototyyppioliosta</li>
+              </ul>
+            </li>
+            <li>
+              Toisin kuin staattisesti tyypitetyissä kielissä kuten Java tai C++, JavaScript ei vaadi ennalta
+              määriteltyjä
+              luokkarakenteita. Oliot voivat dynaamisesti periä ominaisuuksia ja metodeja muilta olioilta:
+              <ul>
+                <li>jokaisella oliolla on sisäinen linkki toiseen olioon, jota kutsutaan sen
+                  <strong>prototyypiksi</strong>
+                </li>
+                <li>esimerkiksi kun kutsut <code>"hello".toUpperCase()</code>, JavaScript etsii ensin
+                  <code>toUpperCase()</code> -metodia itse merkkijonosta
+                </li>
+                <li>koska primitiiviset merkkijonot eivät tallenna metodeja, JavaScript seuraa prototyyppiketjua ja
+                  löytää
+                  <code>toUpperCase()</code> -metodin <code>String.prototype</code>-oliosta
+                </li>
+                <li>tämä delegointimekanismi mahdollistaa sen, että oliot voivat "lainata" yhteisiä toimintoja ilman,
+                  että
+                  metodeja kopioidaan jokaiselle instanssille erikseen</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Prototyyppinen periytyminen (jatkuu)</h3>
+          <ul>
+            <li>
+              <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prototype_chain"
+                target="_blank">
+                Prototyyppinen periytyminen
+              </a>
+              voi olla tehokkaampi kuin "klassinen" periytyminen
+              <ul>
+                <li>
+                  JavaScriptin luokat on toteutettu prototyyppimallin päälle
+                </li>
+              </ul>
+            </li>
+            <li>
+              Vaikka luokat piilottavat suurimman osan prototyyppimekanismista, on silti hyödyllistä ymmärtää, miten
+              prototyypit toimivat pinnan alla
+            </li>
+          </ul>
+        </section>
+
+
+        <section>
+          <h3>Prototyyppiketju</h3>
+          <ul>
+            <li>Ketju muodostuu, koska jokaisella <em>oliolla</em> on yksityinen ominaisuus, joka sisältää linkin
+              toiseen olioon, jota kutsutaan sen <em>prototyypiksi</em>
+              <ul>
+                <li>Seuraava
+                  <em>prototyyppiolio</em> voi puolestaan sisältää oman prototyypin ja niin edelleen, kunnes saavutetaan
+                  olio, jonka prototyyppi on <code>null</code>
+                </li>
+                <li>
+                  <code>null</code> toimii viimeisenä linkkinä prototyyppiketjussa
+                </li>
+                <li>
+                  <strong>Mikä tahansa prototyyppiketjun jäsen</strong> voidaan muuttaa tai jopa vaihtaa ajonaikaisesti
+                  <ul>
+                    <li>
+                      Käsitteet kuten
+                      <a href="https://en.wikipedia.org/wiki/Static_dispatch" target="_blank">staattinen lähetys</a>
+                      eivät ole olemassa JavaScriptissä
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Prototyyppiketju (jatkuu)</h3>
+          <ul>
+            <li>
+              JavaScript-oliot ovat dynaamisia ominaisuuskokoelmia (kutsutaan <strong>omia ominaisuuksia</strong>)
+            </li>
+            <li>
+              Kun yritetään käyttää olion ominaisuutta, ja sitä ei löydy
+              <ul>
+                <li>
+                  ominaisuutta etsitään prototyyppiketjusta, kunnes joko löytyy vastaava ominaisuus tai
+                  prototyyppiketjun loppu saavutetaan
+                </li>
+              </ul>
+            </li>
+            <li>
+              Prototyyppien voima on siinä, että voimme uudelleenkäyttää ominaisuuksia, jotka pitäisi olla läsnä
+              jokaisessa instanssissa
+            </li>
+          </ul>
+        </section>
+
+
+
+        <section>
+          <h3><code>[[Prototype]]</code>-ominaisuus</h3>
+          <div style="display: grid; gap: 1rem; grid-template-columns: auto 1fr">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMUAAACUCAYAAAAj6u2iAAAABHNCSVQICAgIfAhkiAAAABl0RVh0U29mdHdhcmUAZ25vbWUtc2NyZWVuc2hvdO8Dvz4AABUiSURBVHic7d17XFR1/sfx11wYYLgrKCgKoiKmkmKr4iVdyy5WWpnZbd3abbdtK+vRmvYzc+3XrtV22bZtW3cra0ur/dlu3sLEjLxQaqUpgqEiAnKTmwgzwzCX7+8PcnSOCEOhoHye//iYc/l+P+c4b77fOcM56JRSCiGEh76jCxCis5FQCKEhoeiEDm95l48fT2HLy7N82t7laOCTRRPIWffiOa6sa+h0oSjLzqDiwJc/qo28zW9jqylpp4rOv4TLf0bKHc/5vL3e4EfPpPGE9R58Tuq50M9nW3W6UBR9tYoTJd/9qDYObFxKo/V4O1XU+en0Bkbc8Qy9R0w9J+13ufPpy9WnXSvmUfTNOi6d8SRF36yl/lg+eqMffX5yI4OvfRid3kDOuhco2P4hDmsdl85czNFda6krP0xQZBzjH3wHnd6ApbKQrP/+kZqiLNyOBnoMvpzkm5/EP6Q75fu3sGvFPBy2OvQGPwymAE//4x94l5CYgQBU5GaSs+4lLJWF6AxG4lNvJemaB9EZ/Nif9jJH...
+            ">
+            <ul>
+              <li>
+                <ul>
+                  <li>joko <code>null</code> tai</li>
+                  <li>
+                    viittaa toiseen olioon, jota kutsutaan
+                    <em>prototyypiksi</em>
+                  </li>
+                  <li>"vanhempi" nykyiselle oliolle</li>
+                </ul>
+              </li>
+            </ul>
+            <ul style="grid-column: span 2">
+              <li>
+                <code>[[Prototype]]</code> on sisäinen ja piilotettu, ns. internal slot, mutta sen voi asettaa:
+                <ul>
+                  <li>konstruktori-funktioilla</li>
+                  <li>luokilla ja <code>extends</code>-avainsanalla</li>
+                  <li>
+                    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create"
+                      target="_blank"><code>Object.create()</code></a>
+                  </li>
+                  <li>
+                    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/setPrototypeOf"
+                      target="_blank"><code>Object.setPrototypeOf()</code></a>
+                  </li>
+                  <li>
+                    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/proto"
+                      target="_blank"><code>__proto__</code>-asettajalla</a>
+                    <strong>(ei suositella)</strong>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <section>
+          <h3><code>Object.setPrototypeOf()</code></h3>
+          <ul>
+            <li>
+              Kaikki yllä mainitut menetelmät asettavat prototyyppiketjun olion
+              luomishetkellä
+            </li>
+            <li>
+              <code>Object.setPrototypeOf()</code> mahdollistaa olemassa olevan olion
+              <code>[[Prototype]]</code>-sisäisen ominaisuuden muuttamisen
+            </li>
+          </ul>
+          <pre><code class="language-js" data-line-numbers>const obj = { a: 1 };
+            const anotherObj = { b: 2 };
+            Object.setPrototypeOf(obj, anotherObj);
+            // obj ---&gt; anotherObj ---&gt; Object.prototype ---&gt; null
+            </code></pre>
+        </section>
+
+        <section>
+          <h3><code>Object.setPrototypeOf()</code> (jatkuu)</h3>
+          <ul>
+            <li>
+              Rakentaaksemme pidempiä prototyyppiketjuja voimme asettaa
+              <code>[[Prototype]]</code>:n
+              <code>Constructor.prototype</code>:lle käyttäen
+              <code>Object.setPrototypeOf()</code>-funktiota
+            </li>
+          </ul>
+          <pre><code class="language-js" data-line-numbers>function Base() {}
+            function Derived() {}
+            // Aseta `[[Prototype]]` kohteelle `Derived.prototype`
+            // niin, että se osoittaa `Base.prototype`
+            Object.setPrototypeOf(Derived.prototype, Base.prototype);
+            
+            const obj = new Derived();
+            // obj --&gt; Derived.prototype --&gt; Base.prototype
+            //     --&gt; Object.prototype --&gt; null
+            </code></pre>
+        </section>
+
+        <section>
+          <h3><code>Object.setPrototypeOf()</code> (jatkuu)</h3>
+          <ul>
+            <li>
+              Edellinen esimerkki on sama kuin käyttämällä
+              <code>class</code>-rakennetta ja <code>extends</code>-syntaksia
+            </li>
+          </ul>
+          <pre><code class="language-js" data-line-numbers>class Base {}
+            class Derived extends Base {}
+            
+            const obj = new Derived();
+            // obj --&gt; Derived.prototype --&gt; Base.prototype
+            //     --&gt; Object.prototype --&gt; null
+            </code></pre>
+        </section>
+
+        <section>
+
+          <style>
+            #prototype {
+              width: 100%;
+              border-collapse: collapse;
+              font-size: 80%;
+              border: 1px solid #ddd;
+            }
+
+            #prototype th,
+            td {
+              border: 1px solid #ddd;
+              padding: 8px;
+              text-align: left;
+            }
+
+            th {
+              background: #f2f2f2;
+            }
+
+            button {
+              padding: 5px 10px;
+              margin: 2px;
+              cursor: pointer;
+            }
+
+            .modal {
+              display: none;
+              position: fixed;
+              z-index: 1000;
+              left: 50%;
+              top: 50%;
+              transform: translate(-50%, -50%);
+              background: white;
+              padding: 15px;
+              border-radius: 5px;
+              box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            }
+
+            .modal-content {
+              max-height: 400px;
+              overflow-y: auto;
+            }
+
+            .close {
+              float: right;
+              font-size: 20px;
+              cursor: pointer;
+            }
+
+            pre {
+              background: #f0f0f0;
+              padding: 10px;
+              border-radius: 5px;
+              white-space: pre-wrap;
+            }
+
+            #codeBlock {
+              font-size: small;
+              font-family: 'Courier New', Courier, monospace;
+            }
+          </style>
+
+
+          <h2>[[Prototype]]-arvon asettaminen JavaScriptissä (yhteenveto)</h2>
+
+          <table id="prototype">
+            <thead>
+              <tr>
+                <th>Menetelmä</th>
+                <th>Koodiesimerkki</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Konstruktori-funktiot (työlästä!)</td>
+                <td><button onclick="showCode(0)">Näytä koodi</button></td>
+              </tr>
+              <tr>
+                <td>Class <code>extends</code> (OOP-tyylinen)</td>
+                <td><button onclick="showCode(1)">Näytä koodi</button></td>
+              </tr>
+              <tr>
+                <td><code>Object.create()</code></td>
+                <td><button onclick="showCode(2)">Näytä koodi</button></td>
+              </tr>
+              <tr>
+                <td><code>Object.setPrototypeOf()</code></td>
+                <td><button onclick="showCode(3)">Näytä koodi</button></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <!-- Modal-ikkuna -->
+          <div id="codeModal" class="modal">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div class="modal-content">
+              <pre id="codeBlock"></pre>
+            </div>
+          </div>
+
+          <script>
+            const codes = [
+              `function Animal(name) { this.name = name; }
+    Animal.prototype.speak = function() { console.log(this.name + ' pitää ääntä.'); };
+    
+    function Dog(name, breed) { Animal.call(this, name); this.breed = breed; }
+    Dog.prototype = Object.create(Animal.prototype);
+    Dog.prototype.constructor = Dog;
+    Dog.prototype.bark = function() { console.log(this.name + ' haukkuu!'); };
+    
+    const myDog = new Dog('Buddy', 'Kultainennoutaja');
+    myDog.speak(); // Buddy pitää ääntä.
+    myDog.bark();  // Buddy haukkuu!`,
+
+              `class Animal {
+    constructor(name) { this.name = name; }
+    speak() { console.log(this.name + ' pitää ääntä.'); }
+    }
+    class Dog extends Animal {
+    constructor(name, breed) { super(name); this.breed = breed; }
+    bark() { console.log(this.name + ' haukkuu!'); }
+    }
+    const myDog = new Dog('Buddy', 'Kultainennoutaja');
+    myDog.speak(); // Buddy pitää ääntä.
+    myDog.bark();  // Buddy haukkuu!`,
+
+              `const animal = { speak() { console.log(this.name + ' pitää ääntä.'); } };
+    const dog = Object.create(animal);
+    dog.name = 'Buddy';
+    dog.bark = function() { console.log(this.name + ' haukkuu!'); };
+    
+    dog.speak(); // Buddy pitää ääntä.
+    dog.bark();  // Buddy haukkuu!`,
+
+              `const animal = { speak() { console.log(this.name + ' pitää ääntä.'); } };
+    const dog = { name: 'Buddy', bark() { console.log(this.name + ' haukkuu!'); } };
+    Object.setPrototypeOf(dog, animal);
+    
+    dog.speak(); // Buddy pitää ääntä.
+    dog.bark();  // Buddy haukkuu!`,
+
+              `const animal = { speak() { console.log(this.name + ' pitää ääntä.'); } };
+    const dog = { name: 'Buddy', bark() { console.log(this.name + ' haukkuu!'); } };
+    dog.__proto__ = animal; // Ei suositella
+    
+    dog.speak(); // Buddy pitää ääntä.
+    dog.bark();  // Buddy haukkuu!`
+            ];
+
+            function showCode(index) {
+              document.getElementById('codeBlock').textContent = codes[index];
+              document.getElementById('codeModal').style.display = 'block';
+            }
+
+            function closeModal() {
+              document.getElementById('codeModal').style.display = 'none';
+            }
+
+            window.onclick = function (event) {
+              if (event.target === document.getElementById('codeModal')) closeModal();
+            };
+          </script>
+        </section>
+      </section>
+
+      <section>
+        <section id="this">
+          <h2 class="r-fit-text">this</h2>
+        </section>
+        <section>
+          <h3><code>this</code> nykyisenä kontekstina</h3>
+          <ul>
+            <li>määrittää funktion suoritusympäristön, viitaten objektiin, joka kutsuu sen</li>
+            <li>mahdollistaa funktion uudelleenkäytön eri objekteissa sitomalla dynaamisesti <code>this</code></li>
+            <li>toiminta riippuu siitä, miten funktio kutsutaan:
+              <ul>
+                <li>metodissa: <code>this</code> viittaa objektiin</li>
+                <li>tavallisessa funktiossa: <code>this</code> viittaa <code>undefined</code>:iin tiukassa tilassa
+                  (strict mode) tai globaaliin objektiin muuten</li>
+                <li><code>new</code>-operaattorilla: <code>this</code> viittaa juuri luotuun objektiin</li>
+                <li>eksplisiittinen sitominen: metodit kuten <code>call()</code>, <code>apply()</code> ja
+                  <code>bind()</code> voivat asettaa <code>this</code></li>
+                <li>nuolifunktiot: <code>this</code> perii arvonsa leksikaalisesti ympäröivästä kontekstista</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h2><code>this</code>-avainsana eri konteksteissa</h2>
+          <pre><code>let student = {
+  name: "Pasi",
+  sayName: function() {
+    console.log("Hei " + this.name);
+  }
+};</code></pre>
+          <ul>
+            <li>Metodissa <code>this</code> viittaa omistajaobjektiin.</li>
+            <li>Funktiona <code>this</code> viittaa globaaliin objektiin.</li>
+            <li>Tiukassa tilassa <code>this</code> on <code>undefined</code> funktion sisällä.</li>
+            <li>Tapahtumankäsittelijässä <code>this</code> viittaa elementtiin, joka vastaanottaa tapahtuman.</li>
+            <li><code>call()</code>, <code>bind()</code> ja <code>apply()</code> voivat eksplisiittisesti asettaa
+              <code>this</code>:n.</li>
+          </ul>
+          <p>Lisätietoja: <a href="https://web.dev/javascript-this/" target="_blank">JavaScript <code>this</code></a>
+          </p>
+        </section>
+
+        <section>
+          <h3><code>this</code> metodeissa</h3>
+          <ul>
+            <li>
+              Usein metodi tarvitsee käyttää olion itsensä tallentamaa tietoa suorittaakseen tehtävänsä.
+            </li>
+            <li>
+              Esimerkiksi <code>secretAgent.sayHello()</code>-metodi saattaa tarvita agentin nimeä.
+            </li>
+            <li>
+              Päästäkseen käsiksi olioon, metodi voi käyttää <code>this</code>-avainsanaa.
+            </li>
+            <li>
+              <code>this</code>-avainsanan arvo on olio, joka on ennen pistettä, eli se, jota käytettiin metodin
+              kutsuun.
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h3><code>this</code> metodeissa (jatkuu)</h3>
+          <ul>
+            <li>
+              Esimerkiksi suoritettaessa <code>secretAgent.sayHello()</code>, <code>this</code>-arvona
+              on <code>secretAgent</code>-olio itse.
+            </li>
+          </ul>
+          <pre><code class="language-js" data-line-numbers>const secretAgent = {
+  firstName: 'James',
+  lastName: 'Bond',
+  sayHello() {
+    // &quot;this&quot; viittaa &quot;nykyiseen olioon&quot;
+    console.log(
+      this.lastName + ', ' + this.firstName + ' ' + this.lastName + '.'
+    );
+    // &quot;Bond, James Bond.&quot;
+  }
+};</code></pre>
+        </section>
+
+        <section>
+          <h3><code>this</code> ei ole sidottu</h3>
+          <ul>
+            <li>
+              JavaScriptissä <code>this</code>-avainsana käyttäytyy eri tavoin kuin useimmissa muissa
+              ohjelmointikielissä.
+            </li>
+            <li>
+              <code>this</code>-avainsanaa voidaan käyttää missä tahansa funktiossa, vaikka se ei olisi olion metodi.
+            </li>
+            <li>
+              <strong>HUOM: <code>this</code>-arvo määritetään ajon aikana riippuen kontekstista.</strong>
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h3><code>this</code> ei ole sidottu (jatkuu)</h3>
+          <ul>
+            <li>Seuraavassa esimerkissä ei ole syntaksivirhettä:</li>
+          </ul>
+          <pre><code class="language-js" data-line-numbers>let user = { name: 'John' };
+let admin = { name: 'Admin' };
+
+function sayName() {
+  console.log(this.name);
+}
+
+// käytetään samaa funktiota kahdessa oliossa
+user.f = sayName;
+admin.f = sayName;
+
+// näillä kutsuilla on eri this
+user.f(); // &quot;John&quot;  (this == user)
+admin.f(); // &quot;Admin&quot;  (this == admin)
+admin['f'](); // (myös hakasulkunotaatio toimii)</code></pre>
+        </section>
+
+
+        <section>
+          <h3>Kutsu ilman oliota</h3>
+          <pre><code class="language-js" data-line-numbers>function sayHello() {
+          console.log(this);
+        }
+        
+        sayHello(); // undefined (strict-tilassa)
+        </code></pre>
+          <ul>
+            <li>
+              Tässä <code>this</code> on <em>strict-tilassa</em> määrittelemätön (undefined).
+              Jos yritämme käyttää <code>this.name</code>-ominaisuutta tai muita, saamme virheen.
+            </li>
+            <li>
+              Ei-strict-tilassa <code>this</code> viittaa globaaliin olioon
+              (<code>window</code> selaimessa).
+            </li>
+            <li>
+              Tämä on yleensä ohjelmointivirhe. Jos funktiossa on <code>this</code>,
+              sen odotetaan olevan kutsuttu olion kontekstissa.
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Sidottamattoman <code>this</code>-avainsanan seuraukset</h3>
+          <ul>
+            <li>
+              <p>JavaScriptissä <code>this</code>-arvo:</p>
+              <ul>
+                <li>määritellään kutsuhetkellä</li>
+                <li>
+                  ei riipu siitä, missä metodi on määritelty, vaan siitä, mikä olio
+                  on "ennen pistettä" kutsuhetkellä
+                </li>
+              </ul>
+            </li>
+            <li>
+              <p>
+                Ajon aikana määriteltävän <code>this</code>-avainsanan käyttö tuo
+                sekä etuja että haittoja.
+              </p>
+              <ul>
+                <li>funktiota voidaan käyttää uudelleen eri olioille</li>
+                <li>suurempi joustavuus lisää myös virhemahdollisuuksia</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h2><code>this</code>-avainsanan asettaminen eksplisiittisesti</h2>
+          <ul>
+            <li>Metodit (funktiot olion ominaisuuksina)</li>
+            <li>
+              <code>this</code>
+              <ul>
+                <li>
+                  <code>func.call()</code>, <code>func.apply()</code>,
+                  <code>func.bind()</code>
+                </li>
+              </ul>
+            </li>
+            <li>
+              Useiden samankaltaisten olioiden luominen
+              <ul>
+                <li><code>new</code>-operaattori ja konstruktorifunktiot</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h3><code>this</code>:n sitominen itse</h3>
+          <ul>
+            <li>
+              <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call"
+                target="_blank"><code>func.call()</code></a>
+              ja
+              <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply"
+                target="_blank"><code>func.apply()</code></a>
+              - kutsu funktiota eri <code>this</code>:llä
+            </li>
+            <li>
+              <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind"
+                target="_blank"><code>func.bind()</code></a>
+              - luo uusi funktio eri <code>this</code>:llä
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h3><code>func.call()</code> ja <code>func.apply()</code></h3>
+          <ul>
+            <li>
+              <code>this</code>:n sitominen eri objektiin funktion kutsuhetkellä
+            </li>
+            <li>
+              <code>func.call()</code> - argumentit annetaan yksittäin
+            </li>
+            <li>
+              <code>func.apply()</code> - argumentit annetaan taulukossa
+            </li>
+            <li>
+              <strong>Molemmat kutsuvat funktion heti ja muokkaavat kontekstia. Ainoa ero on siinä, miten omat
+                argumenttisi välitetään.</strong>
+            </li>
+          </ul>
+          <pre><code class="language-js" data-line-numbers>// Syntaksi
+func.call(obj);
+func.call(obj, param1, ..., paramN);
+
+func.apply(obj);
+func.apply(obj, [param1, ..., paramN]); // taulukko argumenttien välittämiseksi
+</code></pre>
+        </section>
+
+        <section>
+          <h3>
+            <code>func.call()</code> ja <code>func.apply()</code> esimerkki
+          </h3>
+          <pre><code class="language-js" data-line-numbers>let user = { name: 'John' };
+let user2 = { name: 'Jane' };
+
+function greet(city, state) {
+  console.log(this.name + 'from' + city + ', ' + state);
+}
+
+greet.call(user, 'Dallas', 'Texas'); // "John from Dallas, Texas"
+greet.call(user2, 'Miami', 'Florida'); // "Jane from Miami, Florida"
+
+const args = ['Dallas', 'Texas'];
+greet.apply(user, args); // "John from Dallas, Texas"
+greet.apply(user2, ['Miami', 'Florida']); // "Jane from Miami, Florida"</code></pre>
+        </section>
+
+        <section>
+          <h3><code>func.bind()</code></h3>
+          <ul>
+            <li>
+              <code>func.bind()</code> -metodi
+              <em>luo uuden funktion</em>, jolla kutsuttaessa on <code>this</code> -avainsana asetettu annettuun arvoon,
+              ja annettu argumenttien sarja edeltää niitä, jotka annetaan, kun uutta funktiota kutsutaan.
+            </li>
+            <li>
+              <strong>Ei kutsu funktiota, se vain mahdollistaa minkä tahansa objektin sitomisen, funktio on kutsuttava
+                itse.</strong>
+            </li>
+          </ul>
+          <pre><code class="language-js" data-line-numbers>// Syntaksi
+func.bind(obj);
+func.bind(obj, param1, ..., paramN);</code></pre>
+        </section>
+
+        <section>
+          <h3><code>func.bind()</code> esimerkki</h3>
+          <pre><code class="language-js" data-line-numbers>let user = { name: 'John' };
+let user2 = { name: 'Jane' };
+
+function greet(city, state) {
+  console.log(this.name + 'from' + city + ', ' + state);
+}
+
+const introduce = greet.bind(user2, 'Miami', 'Florida');
+introduce(); // Tulostaa: "Jane from Miami, Florida"</code></pre>
+        </section>
+
+        <section>
+          <h3><code>this</code> ja metodiketjutus suunnittelumallina</h3>
+          <ul>
+            <li>
+              Tärkeää tunnistaa, mitä tapahtuu
+              <ul>
+                <li>vain yksi lause, joka ketjuttaa kaikki metodit</li>
+              </ul>
+            </li>
+          </ul>
+          <pre><code class="language-js" data-line-numbers>let student1 = new Student()
+  .setFirstName('Ahto')
+  .setLastName('Simakuutio')
+  .setCourseName('Web Site Development')
+  .setEntryYear(2025)</code></pre>
+        </section>
+
+        <section>
+          <h3>Ei-ketjutus vs. metodiketjutus</h3>
+          <div style="display: flex; gap: 1rem; justify-content: space-between">
+            <div style="flex-basis: 50%">
+              <pre><code class="language-js" data-line-numbers>class Student1 {
+  constructor() {
+    this.firstName = '';
+    this.lastName = '';
+  }
+  setFirstName(value) {
+    this.firstName = value;
+  }
+  setLastName(value) {
+    this.lastName = value;
+  }
+}</code></pre>
+              <ul>
+                <li>metodit eivät palauta mitään</li>
+                <li>metodit on kutsuttava erikseen</li>
+              </ul>
+            </div>
+            <div>
+              <pre><code class="language-js" data-line-numbers="|8|12">class Student2 {
+  constructor() {
+    this.firstName = '';
+    this.lastName = '';
+  }
+  setFirstName(value) {
+    this.firstName = value;
+    return this;
+  }
+  setLastName(value) {
+    this.lastName = value;
+    return this;
+  }
+}
+            </code></pre>
+              <ul>
+                <li>metodit palauttavat <code>this</code>:n</li>
+                <li>metodikutsuja voidaan ketjuttaa</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h3>Ei-ketjutus vs. metodiketjutus (jatkuu)</h3>
+          <div style="display: flex; gap: 1rem; justify-content: space-between">
+            <div style="flex-grow: 1">
+              <h4>Ei-ketjutus</h4>
+      <pre><code>// kutsu jokainen metodi erikseen
+let s1 = new Student1();
+s1.setFirstName('Ahto');
+s1.setLastName('Simakuutio');</code></pre>
+    </div>
+    <div style="flex-grow: 1">
+      <h4>Metodiketjutus</h4>
+      <pre><code>// ketjuta metodit
+let s2 = new Student2()
+  .setFirstName('Ahto')
+  .setLastName('Simakuutio');</code></pre>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h3>Metodiketjutus</h3>
+          <ul>
+            <li>
+              Metodi palauttaa <code>this</code>:n
+              <ul>
+                <li>objekti itse palautetaan metodista</li>
+                <li>
+                  toisen metodin kutsuminen samassa objektissa voidaan ketjuttaa
+                </li>
+              </ul>
+            </li>
+            <li>
+              <strong>Getterit ja muut metodit, jotka palauttavat muuta dataa, eivät voi olla ketjutettuja</strong>
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h3><code>this</code> yhteenveto</h3>
+          <ul>
+            <li>
+              Metodissa <code>this</code> viittaa omistavaan objektiin.
+            </li>
+            <li>
+              <code>function</code>:ssa globaaliin objektiin, mutta <em>strict mode</em>:ssa <code>this</code> on
+              <code>undefined</code>
+            </li>
+            <li>
+              Yksinään <code>this</code> viittaa globaaliin objektiin (<code>window</code> selaimessa)
+              <ul>
+                <li>
+                  <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call"
+                    target="_blank"><code>func.call()</code></a>,
+                  <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply"
+                    target="_blank"><code>func.apply()</code></a> ja
+                  <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind"
+                    target="_blank"><code>func.bind()</code></a>
+                  voivat sitoa <code>this</code>:n mihin tahansa objektiin.
+                </li>
+              </ul>
+            </li>
+            <li>this mahdollistaa metodiketjutuksen</li>
+            <li>
+              Lue lisää:
+              <ul>
+                <li>
+                  <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this"
+                    target="_blank">MDN: <code>this</code> reference</a>
+                </li>
+                <li>
+                  <a href="https://web.dev/javascript-this/">JavaScript: What is the meaning of <code>this</code>?</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+
+
+
+
+      </section>
+
+
+
+    </div>
+  </div>
+
+  <script src="dist/reveal.js"></script>
+  <script src="plugin/zoom/zoom.js"></script>
+  <script src="plugin/notes/notes.js"></script>
+  <script src="plugin/search/search.js"></script>
+  <script src="plugin/markdown/markdown.js"></script>
+  <script src="plugin/highlight/highlight.js"></script>
+  <script>
+    // Als</li><li>available as an ES module, see:
+    // https://revealjs.com/initialization/
+    Reveal.initialize({
+      controls: true,
+      progress: true,
+      center: true,
+      hash: true,
+
+      // Learn about plugins: https://revealjs.com/plugins/
+      plugins: [
+        RevealZoom,
+        RevealNotes,
+        RevealSearch,
+        RevealMarkdown,
+        RevealHighlight
+      ]
+    });
+  </script>
+</body>
+
+</html>
