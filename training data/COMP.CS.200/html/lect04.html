@@ -1,0 +1,1349 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+
+    <title>WSD: lect04</title>
+
+    <meta name="description" content="A framework for easily creating beautiful presentations using HTML" />
+    <meta name="author" content="Pia Niemelä, Janne Miilunpalo, Jaakko Rajala, Jenni Hukkanen" />
+
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="dist/reset.css" />
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="../css/deadline.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="dist/theme/moon.css" id="theme" />
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme" />
+    <link href="https://fonts.googleapis.com/css?family=Coda" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+
+
+    <link rel="stylesheet" href="../css/infograph.css" id="theme" />
+    <style>
+        h1 {
+            font-size: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="reveal">
+        <!-- Any section element inside of this container is displayed as a slide -->
+        <div class="slides">
+            <section data-background="#81237F">
+                <h1 style="font-size: 180%">Lecture 4</h1>
+                <div style="display: flex;">
+                    <ul style="width:50%">
+                        <li><a href="#/1">Form elements</a>
+                            <ul>
+                                <li>input element</li>
+                                <li>type attribute</li>
+                                <li>other attributes</li>
+                                <li>other form elements</li>
+                                <li>buttons</li>
+                            </ul>
+                        </li>
+                        <li><a href="#/2">Browser support and interoperability</a> </li>
+                    </ul>
+                    <ul style="width:50%">
+                        <li><a href="#/3">Constructing a form</a>
+                            <ul>
+                                <li>action</li>
+                                <li>method: HTTP GET and POST</li>
+                            </ul>
+
+                        <li><a href="#/4">Validation</a>
+                            <ul>
+                                <li>patterns</li>
+                                <li>regexp</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+                <img style="position: absolute; top:-100px;right:-100px;width:20%;"
+                    src="../img/face-inverted-small.png" />
+
+
+            </section>
+
+
+
+
+            <section>
+                <section>
+                    <h2>Forms</h2>
+                    <ul style="font-size: 80%;">
+                        <li>Forms serve various purposes, such as<ul>
+                                <li>facilitating transactions in web stores</li>
+                                <li>conducting searches in engines and databases</li>
+                                <li>collecting data in polls and registration sites</li>
+                            </ul>
+                        </li>
+                        <li>Information from forms is typically transmitted to a server via HTTP transactions.</li>
+                        <li>Forms can also submit data directly to the web page itself.</li>
+                        <li>A form typically consists of one or more user inputs, including<ul>
+                                <li>text fields</li>
+                                <li>checkboxes</li>
+                                <li>radio buttons</li>
+                                <li>select boxes</li>
+                                <li>..but the most versatile element is <em>&lt;input&gt;</em></li>
+
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+                <section style="font-size: 80%;">
+                    <h2>input types</h2>
+                    <pre><code><label for="idx">explicit label for the field</label>
+<input type="text" id="idx"></code></pre>
+implicit association also possible<pre><code><label>Implicit<input name="implicit" type="text"></label></code></pre>
+                    <ul>
+                        <li>type attribute defines how the element is displayed and how it behaves
+                        </li>
+                        <li>the default value of type is text.
+                        </li>
+                        <li>other types include number and more elaborate types, such as:
+                            <div style="display:flex;font-size: 50%;">
+                                <form>
+                                    <table>
+                                        <tr>
+                                            <td>password - hides the input</td>
+                                            <td>
+                                                <pre><code><input type="password"></code></pre>
+                                            </td>
+                                            <td>
+                                                <input type="password">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>email - validates the address</td>
+                                            <td>
+                                                <pre><code><input type="email"></code></pre>
+                                            </td>
+                                            <td><input type="email"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>tel - validates the phone number</td>
+                                            <td>
+                                                <pre><code><input type="tel"></code></pre>
+                                            </td>
+
+                                            <td><input type="tel"></td>
+                                        </tr>
+                                    </table>
+                                </form>
+                            </div>
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>Yet more input types</h2>
+                    <form style="width:100%">
+                        <table style="font-size: 55%;width:70vw;">
+                            <tr>
+                                <td>radio</td>
+                                <td width="30%">grouping on the basis of name attribute</td>
+                                <td>
+                                    <pre><code><input type="radio" name="hot"></code></pre>
+                                </td>
+                                <td width="30%"><input type="radio" name="h">🌶️<input type="radio" name="h">🍦</td>
+                            </tr>
+                            <tr>
+                                <td>checkbox</td>
+                                <td>allows choosing several options, by name too
+                                <td>
+                                    <pre><code><input type="checkbox"></code></pre>
+                                </td>
+                                <td><input type="checkbox" name="h">🌶️</td>
+                            </tr>
+                            <tr>
+                                <td>file</td>
+                                <td>for choosing a file from the computer
+                                <td>
+                                    <pre><code><input type="file"></code></pre>
+                                </td>
+                                <td><input type="file" style="display:inline;margin:0;padding:0;font-size:50%"></td>
+                            </tr>
+                            <tr>
+                                <td>image</td>
+                                <td>to implement a graphical button (using an image)
+                                <td>
+                                    <pre><code><input type="image"></code></pre>
+                                </td>
+                                <td> <img src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUA
+                            AAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO
+                                9TXL0Y4OHwAAAABJRU5ErkJggg==" alt="Red dot" /></td>
+                            </tr>
+                            <tr>
+                                <td>hidden </td>
+                                <td>not displayed but its value is submitted to the server
+                                <td>
+                                    <pre><code><input type="hidden" 
+                                        name="not_for_humans"></code></pre>
+                                </td>
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                </section>
+
+                <section>
+                    <h2>New HTML5 input types are handy</h2>
+                    <table style="font-size:80%">
+                        <tr>
+
+                            <td width="50%">
+                                <pre><code><input type="date"></code></pre>
+                            </td>
+                            <td>
+                                <input type="date">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <pre><code><input type="color"></code></pre>
+                            </td>
+                            <td>
+                                <input type="color"></code>
+                            </td>
+                        </tr>
+                    </table>
+                    <p>Press the fields to get the utility view to pop-up</p>
+                </section>
+                <section style="font-size:80%">
+                    <h2>Besides input, other elements exist</h2>
+
+                    <table>
+                        <tr>
+                            <td>textarea</td>
+                            <td><textarea rows="1" placeholder="Write here"></textarea></td>
+                        </tr>
+                        <tr>
+                            <td>select</td>
+                            <td><select>
+                                    <option>option 1</option>
+                                    <option>option 2</option>
+                                </select></td>
+                        </tr>
+                        <tr>
+                            <td>select multiple (SHIFT down)</td>
+                            <td><select multiple>
+                                    <option>option 1</option>
+                                    <option>option 2</option>
+                                </select></td>
+                        </tr>
+                        <tr>
+                            <td>input + datalist (autocompletion)</td>
+                            <td><input list="browsers" name="browser" id="browser">
+
+                                <datalist id="browsers">
+                                    <option value="Edge">
+                                    <option value="Firefox">
+                                    <option value="Chrome">
+                                    <option value="Opera">
+                                    <option value="Safari">
+                                </datalist>
+                            </td>
+                        </tr>
+                    </table>
+                </section>
+                <section style="font-size: 80%;">
+                    <h2>Button be button</h2>
+                    <p>form "executive", submits form to a server (to a form-handler)</p>
+                    <table>
+                        <caption>Button vs. input type="button"</caption>
+                        <thead>
+                            <tr>
+                                <th>Feature</th>
+                                <th>button</th>
+                                <th>input type="button" </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Preferred Method</td>
+                                <td>✅ </td>
+                                <td>❌ (legacy)</td>
+                            </tr>
+                            <tr>
+                                <td>Content</td>
+                                <td>flexible (text, images, HTML)</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Default Behavior</td>
+                                <td>submits form (unless type="button"|"reset")</td>
+                                <td>no default behavior</td>
+                            </tr>
+                            <tr>
+                                <td>Styling</td>
+                                <td>easier</td>
+                                <td>requires more CSS</td>
+                            </tr>
+                            <tr>
+                                <td>Common Use Cases</td>
+                                <td>general-purpose buttons</td>
+                                <td>simple buttons with JavaScript</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </section>
+
+            </section>
+            <section>
+                <section>
+                    <h2 class="r-fit-text">Browser interoperability</h2>
+                </section>
+                <section>
+                    <h2>Wufoo: input element list</h2>
+                    <div style="display:flex;font-size: 80%;align-items: center;">
+                        <ul style="width:40%;font-size: 80%;">
+                            <li>How different browsers support
+                                different type attributes
+                                of the input element</li>
+                            <li>
+                                <a href="https://www.wufoo.com/html5">
+                                    https://www.wufoo.com/html5</a>
+                            </li>
+                        </ul>
+                        <div id="tablepress-1_wrapper" style="width:60%;font-size: 50%;"
+                            class="dataTables_wrapper no-footer">
+                            <div class="dataTables_scroll">
+                                <div class="dataTables_scrollHead"
+                                    style="position: relative; border: 0px none; width: 100%;">
+                                    <div class="dataTables_scrollHeadInner"
+                                        style="box-sizing: content-box; width: 620px; padding-right: 0px;">
+                                        <table class="tablepress tablepress-id-1 dataTable no-footer"
+                                            aria-labelledby="tablepress-1-name" role="grid"
+                                            style="margin-left: 0px; width: 620px;">
+                                            <thead>
+                                                <tr class="row-1 odd" role="row">
+                                                    <th class="column-1 sorting_disabled" rowspan="1" colspan="1"
+                                                        style="width: 98.7667px;">&nbsp;</th>
+                                                    <th class="column-2 sorting_disabled" rowspan="1" colspan="1"
+                                                        style="width: 78.1px;"><img src="../img//firefox-1.png" alt=""
+                                                            class="alignnone size-full wp-image-15172" width="46"
+                                                            height="46"><br>
+                                                        Firefox</th>
+                                                    <th class="column-3 sorting_disabled" rowspan="1" colspan="1"
+                                                        style="width: 68.45px;"><img src="../img//safari-1.png" alt=""
+                                                            class="alignnone size-full wp-image-15171" width="46"
+                                                            height="46"><br>
+                                                        Safari</th>
+                                                    <th class="column-4 sorting_disabled" rowspan="1" colspan="1"
+                                                        style="width: 68.45px;"><img src="../img//mobsafari-1.png"
+                                                            alt="" class="alignnone size-full wp-image-15170" width="46"
+                                                            height="46"><br>
+                                                        Safari</th>
+                                                    <th class="column-5 sorting_disabled" rowspan="1" colspan="1"
+                                                        style="width: 85.15px;"><img src="../img//chrome-1.png" alt=""
+                                                            class="alignnone size-full wp-image-15169" width="46"
+                                                            height="46"><br>
+                                                        Chrome</th>
+                                                    <th class="column-6 sorting_disabled" rowspan="1" colspan="1"
+                                                        style="width: 69.4833px;"><img src="../img//opera-1.png" alt=""
+                                                            class="alignnone size-full wp-image-15168" width="46"
+                                                            height="46"><br>
+                                                        Opera</th>
+                                                    <th class="column-7 sorting_disabled" rowspan="1" colspan="1"
+                                                        style="width: 63.7667px;"><img src="../img//ie-1.png" alt=""
+                                                            class="alignnone size-full wp-image-15167" width="46"
+                                                            height="46"><br>
+                                                        IE</th>
+                                                    <th class="column-8 sorting_disabled" rowspan="1" colspan="1"
+                                                        style="width: 87.8333px;"><img src="../img//android-1.png"
+                                                            alt="" class="alignnone size-full wp-image-15166" width="46"
+                                                            height="46"><br>
+                                                        Android</th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="dataTables_scrollBody"
+                                    style="position: relative; overflow: auto; width: 100%;">
+                                    <table id="tablepress-1" class="tablepress tablepress-id-1 dataTable no-footer"
+                                        aria-labelledby="tablepress-1-name" role="grid" style="width: 620px;">
+                                        <thead>
+                                            <tr class="row-1 odd" role="row" style="height: 0px;">
+                                                <th class="column-1 sorting_disabled" rowspan="1" colspan="1"
+                                                    style="width: 98.7667px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;">
+                                                    <div class="dataTables_sizing"
+                                                        style="height: 0px; overflow: hidden;">&nbsp;</div>
+                                                </th>
+                                                <th class="column-2 sorting_disabled" rowspan="1" colspan="1"
+                                                    style="width: 78.1px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;">
+                                                    <div class="dataTables_sizing"
+                                                        style="height: 0px; overflow: hidden;"><img
+                                                            src="../img//firefox-1.png" alt=""
+                                                            class="alignnone size-full wp-image-15172" width="46"
+                                                            height="46"><br>
+                                                        Firefox</div>
+                                                </th>
+                                                <th class="column-3 sorting_disabled" rowspan="1" colspan="1"
+                                                    style="width: 68.45px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;">
+                                                    <div class="dataTables_sizing"
+                                                        style="height: 0px; overflow: hidden;"><img
+                                                            src="../img//safari-1.png" alt=""
+                                                            class="alignnone size-full wp-image-15171" width="46"
+                                                            height="46"><br>
+                                                        Safari</div>
+                                                </th>
+                                                <th class="column-4 sorting_disabled" rowspan="1" colspan="1"
+                                                    style="width: 68.45px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;">
+                                                    <div class="dataTables_sizing"
+                                                        style="height: 0px; overflow: hidden;"><img
+                                                            src="../img//mobsafari-1.png" alt=""
+                                                            class="alignnone size-full wp-image-15170" width="46"
+                                                            height="46"><br>
+                                                        Safari</div>
+                                                </th>
+                                                <th class="column-5 sorting_disabled" rowspan="1" colspan="1"
+                                                    style="width: 85.15px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;">
+                                                    <div class="dataTables_sizing"
+                                                        style="height: 0px; overflow: hidden;"><img
+                                                            src="../img//chrome-1.png" alt=""
+                                                            class="alignnone size-full wp-image-15169" width="46"
+                                                            height="46"><br>
+                                                        Chrome</div>
+                                                </th>
+                                                <th class="column-6 sorting_disabled" rowspan="1" colspan="1"
+                                                    style="width: 69.4833px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;">
+                                                    <div class="dataTables_sizing"
+                                                        style="height: 0px; overflow: hidden;"><img
+                                                            src="../img//opera-1.png" alt=""
+                                                            class="alignnone size-full wp-image-15168" width="46"
+                                                            height="46"><br>
+                                                        Opera</div>
+                                                </th>
+                                                <th class="column-7 sorting_disabled" rowspan="1" colspan="1"
+                                                    style="width: 63.7667px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;">
+                                                    <div class="dataTables_sizing"
+                                                        style="height: 0px; overflow: hidden;"><img
+                                                            src="../img//ie-1.png" alt=""
+                                                            class="alignnone size-full wp-image-15167" width="46"
+                                                            height="46"><br>
+                                                        IE</div>
+                                                </th>
+                                                <th class="column-8 sorting_disabled" rowspan="1" colspan="1"
+                                                    style="width: 87.8333px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;">
+                                                    <div class="dataTables_sizing"
+                                                        style="height: 0px; overflow: hidden;"><img
+                                                            src="../img//android-1.png" alt=""
+                                                            class="alignnone size-full wp-image-15166" width="46"
+                                                            height="46"><br>
+                                                        Android</div>
+                                                </th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody class="row-hover">
+
+
+                                            <tr class="row-2 even">
+                                                <td class="column-1"><a
+                                                        href="https://www.wufoo.com/html5/email-type/">Email</a></td>
+                                                <td class="column-2"><span class="yup">4+</span></td>
+                                                <td class="column-3"><span class="kinda">5+</span></td>
+                                                <td class="column-4"><span class="kinda">3.1+</span></td>
+                                                <td class="column-5"><span class="kinda">6+</span>/<span
+                                                        class="yup">10+</span></td>
+                                                <td class="column-6"><span class="yup">10.6+</span></td>
+                                                <td class="column-7"><span class="yup">10+</span></td>
+                                                <td class="column-8">4+</td>
+                                            </tr>
+                                            <tr class="row-3 odd">
+                                                <td class="column-1"><a
+                                                        href="https://www.wufoo.com/html5/tel-type/">Tel</a></td>
+                                                <td class="column-2"><span class="yup">4+</span></td>
+                                                <td class="column-3"><span class="yup">5+</span></td>
+                                                <td class="column-4"><span class="yup">3.1+</span></td>
+                                                <td class="column-5"><span class="yup">6+</span></td>
+                                                <td class="column-6"><span class="yup">10.6+</span></td>
+                                                <td class="column-7"><span class="yup">10+</span></td>
+                                                <td class="column-8"><span class="yup">2.3+</span></td>
+                                            </tr>
+                                            <tr class="row-4 even">
+                                                <td class="column-1"><a
+                                                        href="https://www.wufoo.com/html5/url-type/">Url</a></td>
+                                                <td class="column-2"><span class="yup">4+</span></td>
+                                                <td class="column-3"><span class="kinda">5+</span></td>
+                                                <td class="column-4"><span class="yup">3.1+</span></td>
+                                                <td class="column-5"><span class="kinda">6+</span>/<span
+                                                        class="yup">10+</span></td>
+                                                <td class="column-6"><span class="yup">10.6+</span></td>
+                                                <td class="column-7"><span class="yup">10+</span></td>
+                                                <td class="column-8"><span class="kinda">2.3+</span></td>
+                                            </tr>
+                                            <tr class="row-5 odd">
+                                                <td class="column-1"><a
+                                                        href="https://www.wufoo.com/html5/search-type/">Search</a></td>
+                                                <td class="column-2"><span class="yup">4+</span></td>
+                                                <td class="column-3"><span class="yup">5+</span></td>
+                                                <td class="column-4"><span class="yup">4+</span></td>
+                                                <td class="column-5"><span class="yup">6+</span></td>
+                                                <td class="column-6"><span class="yup">10.6+</span></td>
+                                                <td class="column-7"><span class="kinda">9</span>/<span
+                                                        class="yup">10+</span></td>
+                                                <td class="column-8"><span class="kinda">4+</span></td>
+                                            </tr>
+                                            <tr class="row-6 even">
+                                                <td class="column-1"><a
+                                                        href="https://www.wufoo.com/html5/color-type/">Color</a></td>
+                                                <td class="column-2"><span class="yup">29+</span></td>
+                                                <td class="column-3"><span class="yup">8+</span></td>
+                                                <td class="column-4"><span class="nope">8-</span></td>
+                                                <td class="column-5"><span class="yup">20+</span></td>
+                                                <td class="column-6"><span class="yup">11+</span></td>
+                                                <td class="column-7"><span class="nope">11-</span></td>
+                                                <td class="column-8"><span class="yup">4.4+</span></td>
+                                            </tr>
+                                            <tr class="row-7 odd">
+                                                <td class="column-1"><a
+                                                        href="https://www.wufoo.com/html5/number-type/">Number</a></td>
+                                                <td class="column-2"><span class="yup">29+</span></td>
+                                                <td class="column-3"><span class="kinda">5+</span></td>
+                                                <td class="column-4"><span class="kinda">3.2+</span></td>
+                                                <td class="column-5"><span class="yup">7+</span></td>
+                                                <td class="column-6"><span class="yup">9+</span></td>
+                                                <td class="column-7"><span class="kinda">10+</span></td>
+                                                <td class="column-8"><span class="kinda">2.3+</span></td>
+                                            </tr>
+                                            <tr class="row-8 even">
+                                                <td class="column-1"><a
+                                                        href="https://www.wufoo.com/html5/range-type/">Range</a></td>
+                                                <td class="column-2"><span class="yup">23+</span></td>
+                                                <td class="column-3"><span class="yup">4+</span></td>
+                                                <td class="column-4"><span class="yup">5+</span></td>
+                                                <td class="column-5"><span class="yup">6+</span></td>
+                                                <td class="column-6"><span class="yup">11+</span></td>
+                                                <td class="column-7"><span class="yup">10+</span></td>
+                                                <td class="column-8"><span class="yup">4.2+</span></td>
+                                            </tr>
+                                            <tr class="row-9 odd">
+                                                <td class="column-1"><a
+                                                        href="https://www.wufoo.com/html5/date-type/">Date</a></td>
+                                                <td class="column-2"><span class="nope">32-</span></td>
+                                                <td class="column-3"><span class="nope">7-</span></td>
+                                                <td class="column-4"><span class="kinda">5+</span></td>
+                                                <td class="column-5"><span class="yup">20+</span></td>
+                                                <td class="column-6"><span class="yup">9+</span></td>
+                                                <td class="column-7"><span class="nope">11+</span></td>
+                                                <td class="column-8"><span class="yup">4.4+</span></td>
+                                            </tr>
+                                            <tr class="row-10 even">
+                                                <td class="column-1"><a
+                                                        href="https://www.wufoo.com/html5/text-type/">Text</a></td>
+                                                <td class="column-2"><span class="yup">All</span></td>
+                                                <td class="column-3"><span class="yup">All</span></td>
+                                                <td class="column-4"><span class="yup">All</span></td>
+                                                <td class="column-5"><span class="yup">All</span></td>
+                                                <td class="column-6"><span class="yup">All</span></td>
+                                                <td class="column-7"><span class="yup">All</span></td>
+                                                <td class="column-8"><span class="yup">All</span></td>
+                                            </tr>
+                                            <tr class="row-11 odd">
+                                                <td class="column-1"><a
+                                                        href="https://www.wufoo.com/html5/buttons-type/">Button</a></td>
+                                                <td class="column-2"><span class="yup">All</span></td>
+                                                <td class="column-3"><span class="yup">All</span></td>
+                                                <td class="column-4"><span class="yup">All</span></td>
+                                                <td class="column-5"><span class="yup">All</span></td>
+                                                <td class="column-6"><span class="yup">All</span></td>
+                                                <td class="column-7"><span class="yup">All</span></td>
+                                                <td class="column-8"><span class="yup">All</span></td>
+                                            </tr>
+                                            <tr class="row-12 even">
+                                                <td class="column-1"><a
+                                                        href="https://www.wufoo.com/html5/hidden-type/">Hidden</a></td>
+                                                <td class="column-2"><span class="yup">All</span></td>
+                                                <td class="column-3"><span class="yup">All</span></td>
+                                                <td class="column-4"><span class="yup">All</span></td>
+                                                <td class="column-5"><span class="yup">All</span></td>
+                                                <td class="column-6"><span class="yup">All</span></td>
+                                                <td class="column-7"><span class="yup">All</span></td>
+                                                <td class="column-8"><span class="yup">All</span></td>
+                                            </tr>
+                                            <tr class="row-13 odd">
+                                                <td class="column-1"><a
+                                                        href="https://www.wufoo.com/html5/password-type/">Password</a>
+                                                </td>
+                                                <td class="column-2"><span class="yup">All</span></td>
+                                                <td class="column-3"><span class="yup">All</span></td>
+                                                <td class="column-4"><span class="yup">All</span></td>
+                                                <td class="column-5"><span class="yup">All</span></td>
+                                                <td class="column-6"><span class="yup">All</span></td>
+                                                <td class="column-7"><span class="yup">All</span></td>
+                                                <td class="column-8"><span class="yup">All</span></td>
+                                            </tr>
+                                            <tr class="row-14 even">
+                                                <td class="column-1"><a
+                                                        href="https://www.wufoo.com/html5/checkbox-type/">Checkbox</a>
+                                                </td>
+                                                <td class="column-2"><span class="yup">All</span></td>
+                                                <td class="column-3"><span class="yup">All</span></td>
+                                                <td class="column-4"><span class="yup">All</span></td>
+                                                <td class="column-5"><span class="yup">All</span></td>
+                                                <td class="column-6"><span class="yup">All</span></td>
+                                                <td class="column-7"><span class="yup">All</span></td>
+                                                <td class="column-8"><span class="yup">All</span></td>
+                                            </tr>
+                                            <tr class="row-15 odd">
+                                                <td class="column-1"><a
+                                                        href="https://www.wufoo.com/html5/radio-type/">Radio</a></td>
+                                                <td class="column-2"><span class="yup">All</span></td>
+                                                <td class="column-3"><span class="yup">All</span></td>
+                                                <td class="column-4"><span class="yup">All</span></td>
+                                                <td class="column-5"><span class="yup">All</span></td>
+                                                <td class="column-6"><span class="yup">All</span></td>
+                                                <td class="column-7"><span class="yup">All</span></td>
+                                                <td class="column-8"><span class="yup">All</span></td>
+                                            </tr>
+                                            <tr class="row-16 even">
+                                                <td class="column-1"><a
+                                                        href="https://www.wufoo.com/html5/file-type/">File</a></td>
+                                                <td class="column-2"><span class="yup">All</span></td>
+                                                <td class="column-3"><span class="yup">All</span></td>
+                                                <td class="column-4"><span class="yup">All</span></td>
+                                                <td class="column-5"><span class="yup">All</span></td>
+                                                <td class="column-6"><span class="yup">All</span></td>
+                                                <td class="column-7"><span class="yup">All</span></td>
+                                                <td class="column-8"><span class="yup">All</span></td>
+                                            </tr>
+                                            <tr class="row-17 odd">
+                                                <td class="column-1"><a
+                                                        href="https://www.wufoo.com/html5/submit-type/">Submit</a></td>
+                                                <td class="column-2"><span class="yup">All</span></td>
+                                                <td class="column-3"><span class="yup">All</span></td>
+                                                <td class="column-4"><span class="yup">All</span></td>
+                                                <td class="column-5"><span class="yup">All</span></td>
+                                                <td class="column-6"><span class="yup">All</span></td>
+                                                <td class="column-7"><span class="yup">All</span></td>
+                                                <td class="column-8"><span class="yup">All</span></td>
+                                            </tr>
+                                            <tr class="row-18 even">
+                                                <td class="column-1"><a
+                                                        href="https://www.wufoo.com/html5/reset-type/">Reset</a></td>
+                                                <td class="column-2"><span class="yup">All</span></td>
+                                                <td class="column-3"><span class="yup">All</span></td>
+                                                <td class="column-4"><span class="yup">All</span></td>
+                                                <td class="column-5"><span class="yup">All</span></td>
+                                                <td class="column-6"><span class="yup">All</span></td>
+                                                <td class="column-7"><span class="yup">All</span></td>
+                                                <td class="column-8"><span class="yup">All</span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </section>
+                <section style="font-size:60%">
+                    <h2>Input element, other attributes</h2>
+                    <table>
+                        <tbody class="row-hover" style="overflow-y:scroll;max-height:50vh; display:block;">
+                            <tr class="row-2 even">
+                                <td></td>
+                                <td><img src="../img/firefox-1.png"></td>
+                                <td><img src="../img/safari-1.png">
+                                <td>
+                                    <img src="../img/mobsafari-1.png">
+                                </td>
+
+                                </td>
+                                <td><img src="../img/chrome-1.png"></td>
+                                <td>
+                                    <img src="../img/opera-1.png">
+                                </td>
+                                <td>
+                                    <img src="../img/ie-1.png">
+
+                                </td>
+                                <td>
+                                    <img src="../img/android-1.png">
+                                </td>
+                            </tr>
+                            <tr class="row-2 even">
+                                <td class="column-1"><a
+                                        href="https://www.wufoo.com/html5/placeholder-attribute/">Placeholder</a></td>
+                                <td class="column-2"><span class="yup">4+</span></td>
+                                <td class="column-3"><span class="yup">4+</span></td>
+                                <td class="column-4"><span class="yup">4+</span></td>
+                                <td class="column-5"><span class="yup">10+</span></td>
+                                <td class="column-6"><span class="yup">11.10+</span></td>
+                                <td class="column-7"><span class="yup">10+</span></td>
+                                <td class="column-8"><span class="yup">2.3+</span></td>
+                            </tr>
+                            <tr class="row-3 odd">
+                                <td class="column-1"><a
+                                        href="https://www.wufoo.com/html5/autofocus-attribute/">Autofocus</a></td>
+                                <td class="column-2"><span class="yup">4+</span></td>
+                                <td class="column-3"><span class="yup">5+</span></td>
+                                <td class="column-4"><span class="nope">5-</span></td>
+                                <td class="column-5"><span class="yup">6+</span></td>
+                                <td class="column-6"><span class="yup">11+</span></td>
+                                <td class="column-7"><span class="yup">10+</span></td>
+                                <td class="column-8"><span class="yup">3+</span></td>
+                            </tr>
+                            <tr class="row-4 even">
+                                <td class="column-1"><a
+                                        href="https://www.wufoo.com/html5/maxlength-attribute/">Maxlength</a></td>
+                                <td class="column-2"><span class="yup">4.4+</span></td>
+                                <td class="column-3"><span class="yup">5+</span></td>
+                                <td class="column-4"><span class="yup">4+</span></td>
+                                <td class="column-5"><span class="yup">6+</span></td>
+                                <td class="column-6"><span class="yup">11+</span></td>
+                                <td class="column-7"><span class="kinda">9+</span>/<span class="yup">10</span></td>
+                                <td class="column-8"><span class="yup">2.3+</span></td>
+                            </tr>
+                            <tr class="row-5 odd">
+                                <td class="column-1"><a href="https://www.wufoo.com/html5/list-attribute/">List
+                                        (Datalist)</a></td>
+                                <td class="column-2"><span class="kinda">4+</span></td>
+                                <td class="column-3"><span class="nope">7-</span></td>
+                                <td class="column-4"><span class="yup">7-</span></td>
+                                <td class="column-5"><span class="yup">20+</span></td>
+                                <td class="column-6"><span class="yup">9+</span></td>
+                                <td class="column-7"><span class="kinda">10+</span></td>
+                                <td class="column-8"><span class="nope">4.3-</span></td>
+                            </tr>
+                            <tr class="row-6 even">
+                                <td class="column-1"><a
+                                        href="https://www.wufoo.com/html5/autocomplete-attribute/">Autocomplete</a></td>
+                                <td class="column-2"><span class="yup">4+</span></td>
+                                <td class="column-3"><span class="yup">5.2+</span></td>
+                                <td class="column-4"><span class="yup">6+</span></td>
+                                <td class="column-5"><span class="yup">14+</span></td>
+                                <td class="column-6"><span class="yup">10.6+</span></td>
+                                <td class="column-7"><span class="yup">11+</span></td>
+                                <td class="column-8"><span class="yup">4.4+</span></td>
+                            </tr>
+                            <tr class="row-7 odd">
+                                <td class="column-1"><a
+                                        href="https://www.wufoo.com/html5/required-attribute/">Required</a></td>
+                                <td class="column-2"><span class="yup">6+</span></td>
+                                <td class="column-3"><span class="kinda">5+</span></td>
+                                <td class="column-4"><span class="kinda">4+</span></td>
+                                <td class="column-5"><span class="yup">6+</span></td>
+                                <td class="column-6"><span class="yup">10.6+</span></td>
+                                <td class="column-7"><span class="yup">10+</span></td>
+                                <td class="column-8"><span class="kinda">2.3+</span></td>
+                            </tr>
+                            <tr class="row-8 even">
+                                <td class="column-1"><a
+                                        href="https://www.wufoo.com/html5/pattern-attribute/">Pattern</a></td>
+                                <td class="column-2"><span class="yup">4+</span></td>
+                                <td class="column-3"><span class="kinda">5+</span></td>
+                                <td class="column-4"><span class="kinda">4+</span></td>
+                                <td class="column-5"><span class="yup">10+</span></td>
+                                <td class="column-6"><span class="yup">11+</span></td>
+                                <td class="column-7"><span class="yup">10+</span></td>
+                                <td class="column-8"><span class="kinda">2.3+</span></td>
+                            </tr>
+                            <tr class="row-9 odd">
+                                <td class="column-1"><a
+                                        href="https://www.wufoo.com/html5/spellcheck-attribute/">Spellcheck</a></td>
+                                <td class="column-2"><span class="yup">3.6+</span></td>
+                                <td class="column-3"><span class="yup">4+</span></td>
+                                <td class="column-4"><span class="yup">7+</span></td>
+                                <td class="column-5"><span class="yup">10+</span></td>
+                                <td class="column-6"><span class="yup">11+</span></td>
+                                <td class="column-7"><span class="yup">10+</span></td>
+                                <td class="column-8"><span class="nope">4.3-</span></td>
+                            </tr>
+                            <tr class="row-10 even">
+                                <td class="column-1"><a
+                                        href="https://www.wufoo.com/html5/novalidate-attribute/">Novalidate</a></td>
+                                <td class="column-2"><span class="yup">4+</span></td>
+                                <td class="column-3"><span class="nope">7-</span></td>
+                                <td class="column-4"><span class="nope">7-</span></td>
+                                <td class="column-5"><span class="yup">10+</span></td>
+                                <td class="column-6"><span class="yup">10+</span></td>
+                                <td class="column-7"><span class="yup">10+</span></td>
+                                <td class="column-8"><span class="nope">4.2-</span></td>
+                            </tr>
+                            <tr class="row-11 odd">
+                                <td class="column-1"><a
+                                        href="https://www.wufoo.com/html5/formnovalidate-attribute/">Formnovalidate</a>
+                                </td>
+                                <td class="column-2"><span class="yup">4+</span></td>
+                                <td class="column-3"><span class="nope">7-</span></td>
+                                <td class="column-4"><span class="nope">7-</span></td>
+                                <td class="column-5"><span class="yup">6+</span></td>
+                                <td class="column-6"><span class="yup">10.6+</span></td>
+                                <td class="column-7"><span class="yup">10+</span></td>
+                                <td class="column-8"><span class="nope">4.2-</span></td>
+                            </tr>
+                            <tr class="row-12 even">
+                                <td class="column-1"><a
+                                        href="https://www.wufoo.com/html5/formaction-attribute/">Formaction</a></td>
+                                <td class="column-2"><span class="yup">4+</span></td>
+                                <td class="column-3"><span class="yup">5.2+</span></td>
+                                <td class="column-4"><span class="yup">5+</span></td>
+                                <td class="column-5"><span class="yup">10+</span></td>
+                                <td class="column-6"><span class="yup">10.6+</span></td>
+                                <td class="column-7"><span class="yup">10+</span></td>
+                                <td class="column-8"><span class="yup">4.0+</span></td>
+                            </tr>
+                            <tr class="row-13 odd">
+                                <td class="column-1"><a
+                                        href="https://www.wufoo.com/html5/formmethod-attribute/">Formmethod</a></td>
+                                <td class="column-2"><span class="yup">4+</span></td>
+                                <td class="column-3"><span class="yup">5.2+</span></td>
+                                <td class="column-4"><span class="yup">5+</span></td>
+                                <td class="column-5"><span class="yup">10+</span></td>
+                                <td class="column-6"><span class="yup">10.6+</span></td>
+                                <td class="column-7"><span class="yup">10+</span></td>
+                                <td class="column-8"><span class="yup">4.0+</span></td>
+                            </tr>
+                            <tr class="row-14 even">
+                                <td class="column-1"><a
+                                        href="https://www.wufoo.com/html5/formtarget-attribute/">Formtarget</a></td>
+                                <td class="column-2"><span class="yup">4+</span></td>
+                                <td class="column-3"><span class="yup">5.2+</span></td>
+                                <td class="column-4"><span class="yup">5+</span></td>
+                                <td class="column-5"><span class="yup">10+</span></td>
+                                <td class="column-6"><span class="yup">10.6+</span></td>
+                                <td class="column-7"><span class="yup">10+</span></td>
+                                <td class="column-8"><span class="yup">4.0+</span></td>
+                            </tr>
+                            <tr class="row-15 odd">
+                                <td class="column-1"><a
+                                        href="https://www.wufoo.com/html5/formenctype-attribute/">Formenctype</a></td>
+                                <td class="column-2"><span class="yup">4+</span></td>
+                                <td class="column-3"><span class="yup">5.2+</span></td>
+                                <td class="column-4"><span class="yup">5+</span></td>
+                                <td class="column-5"><span class="yup">10+</span></td>
+                                <td class="column-6"><span class="yup">10.6+</span></td>
+                                <td class="column-7"><span class="yup">10+</span></td>
+                                <td class="column-8"><span class="yup">4.0+</span></td>
+                            </tr>
+                            <tr class="row-16 even">
+                                <td class="column-1"><a
+                                        href="https://www.wufoo.com/html5/minlength-attribute/">minlength</a></td>
+                                <td class="column-2"><span class="nope">28-</span></td>
+                                <td class="column-3"><span class="nope">7-</span></td>
+                                <td class="column-4"><span class="nope">7-</span></td>
+                                <td class="column-5"><span class="nope">33-</span></td>
+                                <td class="column-6"><span class="nope">20-</span></td>
+                                <td class="column-7"><span class="nope">11-</span></td>
+                                <td class="column-8"><span class="nope">4.4-</span></td>
+                            </tr>
+                            <tr class="row-17 odd">
+                                <td class="column-1"><a
+                                        href="https://www.wufoo.com/html5/readonly-attribute/">readonly</a></td>
+                                <td class="column-2"><span class="yup">All</span></td>
+                                <td class="column-3"><span class="yup">All</span></td>
+                                <td class="column-4"><span class="yup">All</span></td>
+                                <td class="column-5"><span class="yup">All</span></td>
+                                <td class="column-6"><span class="yup">All</span></td>
+                                <td class="column-7"><span class="yup">All</span></td>
+                                <td class="column-8"><span class="yup">All</span></td>
+                            </tr>
+                            <tr class="row-18 even">
+                                <td class="column-1"><a
+                                        href="https://www.wufoo.com/html5/disabled-attribute/">disabled</a></td>
+                                <td class="column-2"><span class="yup">All</span></td>
+                                <td class="column-3"><span class="yup">All</span></td>
+                                <td class="column-4"><span class="yup">All</span></td>
+                                <td class="column-5"><span class="yup">All</span></td>
+                                <td class="column-6"><span class="yup">All</span></td>
+                                <td class="column-7"><span class="yup">All</span></td>
+                                <td class="column-8"><span class="yup">All</span></td>
+                            </tr>
+                            <tr class="row-19 odd">
+                                <td class="column-1"><a href="https://www.wufoo.com/html5/size-attribute/">size</a></td>
+                                <td class="column-2"><span class="yup">All</span></td>
+                                <td class="column-3"><span class="yup">All</span></td>
+                                <td class="column-4"><span class="yup">All</span></td>
+                                <td class="column-5"><span class="yup">All</span></td>
+                                <td class="column-6"><span class="yup">All</span></td>
+                                <td class="column-7"><span class="yup">All</span></td>
+                                <td class="column-8"><span class="yup">All</span></td>
+                            </tr>
+                            <tr class="row-20 even">
+                                <td class="column-1"><a href="https://www.wufoo.com/html5/name-attribute/">name</a></td>
+                                <td class="column-2"><span class="yup">All</span></td>
+                                <td class="column-3"><span class="yup">All</span></td>
+                                <td class="column-4"><span class="yup">All</span></td>
+                                <td class="column-5"><span class="yup">All</span></td>
+                                <td class="column-6"><span class="yup">All</span></td>
+                                <td class="column-7"><span class="yup">All</span></td>
+                                <td class="column-8"><span class="yup">All</span></td>
+                            </tr>
+                            <tr class="row-21 odd">
+                                <td class="column-1"><a
+                                        href="https://www.wufoo.com/html5/heightwidth-attributes/">height, width &amp;
+                                        source</a></td>
+                                <td class="column-2"><span class="yup">All</span></td>
+                                <td class="column-3"><span class="yup">All</span></td>
+                                <td class="column-4"><span class="yup">All</span></td>
+                                <td class="column-5"><span class="yup">All</span></td>
+                                <td class="column-6"><span class="yup">All</span></td>
+                                <td class="column-7"><span class="yup">All</span></td>
+                                <td class="column-8"><span class="yup">All</span></td>
+                            </tr>
+                            <tr class="row-22 even">
+                                <td class="column-1"><a
+                                        href="https://www.wufoo.com/html5/checked-attribute/">checked</a></td>
+                                <td class="column-2"><span class="yup">All</span></td>
+                                <td class="column-3"><span class="yup">All</span></td>
+                                <td class="column-4"><span class="yup">All</span></td>
+                                <td class="column-5"><span class="yup">All</span></td>
+                                <td class="column-6"><span class="yup">All</span></td>
+                                <td class="column-7"><span class="yup">All</span></td>
+                                <td class="column-8"><span class="yup">All</span></td>
+                            </tr>
+                            <tr class="row-23 odd">
+                                <td class="column-1"><a
+                                        href="https://www.wufoo.com/html5/tabindex-attribute/">tabindex</a></td>
+                                <td class="column-2"><span class="yup">All</span></td>
+                                <td class="column-3"><span class="yup">All</span></td>
+                                <td class="column-4"><span class="yup">All</span></td>
+                                <td class="column-5"><span class="yup">All</span></td>
+                                <td class="column-6"><span class="yup">All</span></td>
+                                <td class="column-7"><span class="yup">All</span></td>
+                                <td class="column-8"><span class="yup">All</span></td>
+                            </tr>
+                            <tr class="row-24 even">
+                                <td class="column-1"><a href="https://www.wufoo.com/html5/form-attribute/">form</a></td>
+                                <td class="column-2"><span class="yup">4+</span></td>
+                                <td class="column-3"><span class="yup">5.1+</span></td>
+                                <td class="column-4"><span class="yup">5+</span></td>
+                                <td class="column-5"><span class="yup">10+</span></td>
+                                <td class="column-6"><span class="yup">9.5+</span></td>
+                                <td class="column-7"><span class="yup">11+</span></td>
+                                <td class="column-8"><span class="yup">4.0+</span></td>
+                            </tr>
+                            <tr class="row-25 odd">
+                                <td class="column-1"><a
+                                        href="https://www.wufoo.com/html5/inputmode-attribute/">inputmode</a></td>
+                                <td class="column-2"><span class="kinda">FF OS</span></td>
+                                <td class="column-3"><span class="nope">7-</span></td>
+                                <td class="column-4"><span class="nope">7-</span></td>
+                                <td class="column-5"><span class="nope">34-</span></td>
+                                <td class="column-6"><span class="nope">20-</span></td>
+                                <td class="column-7"><span class="nope">10-</span></td>
+                                <td class="column-8"><span class="nope">4.4-</span></td>
+                            </tr>
+                            <tr class="row-26 even">
+                                <td class="column-1"><a
+                                        href="https://www.wufoo.com/html5/dirname-attribute/">dirname</a></td>
+                                <td class="column-2"><span class="nope">29-</span></td>
+                                <td class="column-3"><span class="yup">6+</span></td>
+                                <td class="column-4"><span class="yup">6+</span></td>
+                                <td class="column-5"><span class="yup">16+</span></td>
+                                <td class="column-6"><span class="yup">10.6+</span></td>
+                                <td class="column-7"><span class="nope">11-</span></td>
+                                <td class="column-8"><span class="yup">4.4+</span></td>
+                            </tr>
+                            <tr class="row-27 odd">
+                                <td class="column-1"><a
+                                        href="https://www.wufoo.com/html5/accept-type-attribute/">Accept</a></td>
+                                <td class="column-2"><span class="yup">11+</span></td>
+                                <td class="column-3"><span class="yup">5.2+</span></td>
+                                <td class="column-4"><span class="yup">7+</span></td>
+                                <td class="column-5"><span class="yup">10+</span></td>
+                                <td class="column-6"><span class="kinda">10.6+</span></td>
+                                <td class="column-7"><span class="yup">10+</span></td>
+                                <td class="column-8"><span class="nope">4.2-</span></td>
+                            </tr>
+                            <tr class="row-28 even">
+                                <td class="column-1"><a
+                                        href="https://www.wufoo.com/html5/multiple-attribute/">Multiple</a></td>
+                                <td class="column-2"><span class="yup">3.6+</span></td>
+                                <td class="column-3"><span class="yup">5+</span></td>
+                                <td class="column-4"><span class="yup">7+</span></td>
+                                <td class="column-5"><span class="yup">6+</span></td>
+                                <td class="column-6"><span class="yup">11+</span></td>
+                                <td class="column-7"><span class="yup">10+</span></td>
+                                <td class="column-8"><span class="yup">4.7+</span></td>
+                            </tr>
+                            <tr class="row-29 odd">
+                                <td class="column-1"><a href="https://www.wufoo.com/html5/minmaxstep-attributes/">Min /
+                                        Max / Step</a></td>
+                                <td class="column-2"><span class="yup">16+</span></td>
+                                <td class="column-3"><span class="yup">5+</span></td>
+                                <td class="column-4"><span class="yup">3.2</span></td>
+                                <td class="column-5"><span class="yup">6+</span></td>
+                                <td class="column-6"><span class="yup">10.6</span></td>
+                                <td class="column-7"><span class="yup">10+</span></td>
+                                <td class="column-8"><span class="yup">4+</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </section>
+
+                <section>
+                    <h2><a href="https://web.dev/interop-2025/">Interop</a></h2>
+                    <ul>
+                        <li>Browser vendors working together to provide better interoperability since 2019</li>
+                        <li>target: features should work similarly in every browser</li>
+                        <li>highly influential how web will develop in the future, taking the initiative from W3C</li>
+                    </ul>
+                </section>
+
+            </section>
+            <section>
+                <section class="r-fit-text">
+                    <h2>Constructing a form</h2>
+                </section>
+                <section style="font-size:80%;">
+                    <h2>action (form-handler)</h2>
+                    <pre><code>&lt;form action="form-handler" method="GET" | "POST"&gt;
+    [input widget]*  {submit button}
+&lt;/form&gt;</code></pre>
+                    <ul>
+                        <li>
+                            <b>action</b> specifies a <b>form handler</b>, often a URL
+                            <ul>
+                                <li>if left blank results in the form data being submitted back to the same page</li>
+                                <li>formruns on a separate server to process form data.</li>
+                                <li>written in server-side languages like PHP, Perl, or node.js (like WebDev1).</li>
+                                <li>server-side programming covered in this other courses</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <b>method</b> specifies how data is sent using the HTTP method (GET or POST).
+                        </li>
+                    </ul>
+                </section>
+                <section style="font-size:70%">
+                    <h2>GET method</h2>
+                    <pre><code><form action="form-handler-url" method="GET"></form></code></pre>
+                    <p>For demo purposes, this:</p>
+                    <pre><code><form id="get">
+  <input type="hidden" name="hidden" id="hidden" value="forHandler'sEyes only">
+  <button>Press (and check the URL field)</button>
+</form></code></pre>
+
+                    <form id="get2">
+                        <input type="hidden" name="hidden" id="hidden" value="forHandler'sEyes only">
+                        <button>Press (and check the URL field)</button>
+                    </form>
+
+                    <ul>
+                        <li>a browser sends a request to a server
+                        </li>
+                        <li>method defaults to GET</li>
+                        <li>the form data is attached to the address as a query string:
+                            <ul>
+                                <li>?key=value[&key=value]*</li>
+                                <li>key is connected to a value with equal sign (=)</li>
+                                <li>pairs are separated with &amp;</li>
+                            </ul>
+                        </li>
+                        <li>GET can be used, if values being visible is not an issue</li>
+                        <li>search engines often use the GET method<ul>
+                                <li>gives a possibility to save the query and send it to other users
+                                </li>
+                                <li>queries can be sent even without the form</li>
+                            </ul>
+                        </li>
+                    </ul>
+
+
+                </section>
+                <section>
+                    <h2>POST method</h2>
+                    <pre><code><form action="form-handler-url" method="POST"></form></code></pre>
+                    <ul>
+                        <li>a browser sends a request to a server
+                        </li>
+                        <li>the input data is sent in the body of HTTP request
+                        </li>
+                        <li>the data is hidden from the user and other onlookers
+                        </li>
+                        <li>yet with the POST method the data is still open (not encrypted)
+                        </li>
+                        <li>a third party is capable of reading the sent data (also the password)
+                        </li>
+                        <li>sensitive data between <b>must</b> be sent with HTTPS protocol that is SSL-encrypted</li>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2 class="r-fit-text">Form validation</h2>
+                </section>
+                <section>
+                    <h2>Form validation</h2>
+                    <ul>
+                        <li>Before submission, the data should be checked<ul>
+                                <li>check the user's input directly
+                                    on their browser to prevent invalid or incomplete data from being sent to the
+                                    server, resulting in benefits such as:
+                                    <ul style="font-size: 60%;">
+                                        <li><b>reduced server load</b>: the server only handles valid data, minimizing
+                                            processing overhead</li>
+                                        <li>
+                                            <b>improved user experience</b>: providing real-time feedback on invalid
+                                            input allows users to correct mistakes immediately
+                                        </li>
+                                        <li>
+                                            <b>reduced traffic</b>: only valid data is sent, decreasing the amount of
+                                            data transmitted between the client and server
+                                        </li>
+                                    </ul>
+                                </li>
+
+                            </ul>
+                        </li>
+                        <li>also security is crucial: proper validation and sanitization 
+                            can prevent malicious attacks like injections</li>
+                    </ul>
+                    </li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>Validation means</h2>
+                    <ul>
+                        <li>useful frontend-side checks as HTML constraint validation:<ul>
+                                <li>appropriate input field types, e.g., mail</li>
+                                <li>attributes such as <kbd>required</kbd>, <kbd>max</kbd> or <kbd>min-length</kbd></li>
+                                <li><b>pattern</b> attribute for arbitrary checks</li>
+                            </ul>
+                        </li>
+                        <li>submit button and its click event bound validation function (javascript validation)</li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>pattern with regular expressions</h2>
+                    <ul>
+                        <li>input value must match the given pattern</li>
+                        <li>pattern is given as a regular expression</li>
+                        <li>pattern is checked before sending the form</li>
+                    </ul>
+                    <pre><code><input type="text" pattern="\d{6}A\d{3}\w"></code></pre>
+                    <form>
+                        <label>Insert value with the above pattern
+                            <!-- <input type="text" pattern="\d{6}A\d{3}\w"> -->
+                            <input type="text" pattern="\d{6}A\d{3}\w"  id="pattern_field" name="pattern_field" >
+                        </label>
+                        <button class="btn btn-primary" type="submit">Send</button>
+                    </form>
+                    <p>regular expressions (regexp) is a versatile language
+                    </p>
+
+                </section>
+                <section>
+                    <div class="r-fit-text">
+                        <h2>Regular expression</h2>
+                        <p class="alert">char class [quantifier]</p>
+                        <pre><code>\d{7} //digit for seven times</code></pre>
+                    </div>
+                </section>
+                <section style="font-size:55%">
+                    <h2>Regular expression: char class [quantifier]</h2>
+                    <div style="display:flex">
+                        <table>
+                            <tr>
+                                <th>regexp</th>
+                                <th>matches..</th>
+                            </tr>
+                            <tr>
+                                <td>a</td>
+                                <td>one character that is a</td>
+                            </tr>
+                            <tr>
+                                <td>abc</td>
+                                <td>a, followed by b and c</td>
+                            </tr>
+                            <tr>
+                                <td>a*</td>
+                                <td>'a' for zero or more times</td>
+                            </tr>
+                            <tr>
+                                <td>a+</td>
+                                <td>'a' for one or more times</td>
+                            </tr>
+                            <tr>
+                                <td>a?</td>
+                                <td>'a' for one or zero times</td>
+                            </tr>
+                            <tr>
+                                <td>^a</td>
+                                <td>string starts with 'a'</td>
+                            </tr>
+                            <tr>
+                                <td>[^a]</td>
+                                <td>no 'a'. For example,<br> /c[^a]/.test("ca") false<br> /c[^a]/.test("cb") true</td>
+                            </tr>
+                        </table>
+                        <table>
+                            <tr>
+                                <td>a|b</td>
+                                <td>either 'a' or 'b'</td>
+                            </tr>
+                            <tr>
+                                <td>[abc]</td>
+                                <td>either 'a', 'b' or 'c'</td>
+                            </tr>
+                            <tr>
+                                <td>[^abc]</td>
+                                <td>neither 'a', 'b' nor 'c'</td>
+                            </tr>
+                            <tr>
+                                <td>[a-z]</td>
+                                <td>char between a-z, lowercase</td>
+                            </tr>
+                            <tr>
+                                <td>[0-9]</td>
+                                <td>number between 0-9</td>
+                            </tr>
+                            <tr>
+                                <td>[ -]</td>
+                                <td>space or dash</td>
+                            </tr>
+                            <tr>
+                                <td>/d</td>
+                                <td>digit</td>
+                            </tr>
+                            <tr>
+                                <td>/w</td>
+                                <td>alphanumeric</td>
+                            </tr>
+                            <tr>
+                                <td>a.c</td>
+                                <td>'a' followed by any char and then 'c'</td>
+                            </tr>
+                            <tr>
+                                <td>a{5}</td>
+                                <td>'a' for five times</td>
+                            </tr>
+                            <tr>
+                                <td>a{5,7}</td>
+                                <td>'a' for five, six or seven times</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                </section>
+                <section style="font-size:70%">
+                    <h2>Examples of regular expressions</h2>
+                    <table>
+                        <tr>
+                            <td width="30%">[Mm].*k</td>
+                            <td>A single character that is an upper or lowercase 'm',
+                                followed by zero or more characters of any type,
+                                followed by a single lowercase 'k'</td>
+                        </tr>
+                        <tr>
+                            <td>[A-Z][a-z]+</td>
+                            <td>A single upper case character followed by one or more
+                                lower case letters</td>
+                        </tr>
+                        <tr>
+                            <td>[0-9]{3}[ -][0-9]{7}</td>
+                            <td>A simple match for a Finnish domestic
+                                phone number — three numbers, followed by a space
+                                or a dash, followed by seven numbers
+                            </td>
+                        </tr>
+                    </table>
+
+
+                    <pre
+                        style="display:flex;justify-content: center;font-size: 60%;"><code><input type="text" id="town" pattern="[A-Z][A-Za-z' -]+" minlength="2"></code></pre>
+                    <ul>
+                        <li>Manchester ✓</li>
+                        <li>Ashton-under-lyne ✓</li>
+                        <li>Bishop's Stortford ✓</li>
+                    </ul>
+
+                </section>
+            </section>
+        </div>
+    </div>
+
+    <script>
+        function launchWin() {
+            const win = document.querySelector("#win");
+            win.window({
+                width: 600,
+                height: 400,
+                modal: true
+            });
+            win.window.open("https://www.wufoo.com/html5/#tablepress-1_wrapper");
+        }
+
+        /**
+        https://www.wufoo.com/html5
+        https://www.wufoo.com/html5/#tablepress-1_wrapper
+        */
+        function launchWin2(url, div_id) {
+            fetch("https://www.com/html5").then(function (response) {
+                // The API call was successful!
+                return response.html();
+            }).then(function (data) {
+                // This is the JSON from our response
+                console.log(data)
+                const fragment = data.querySelector("#" + div_id);
+                console.log(fragment);
+
+            }).catch(function (err) {
+                // There was an error
+                console.warn('Something went wrong.', err);
+            });
+        }
+
+        const select = document.querySelector("#wufoo");
+        if (select != null)
+            select.addEventListener("click", launchWin);
+
+        const form = document.querySelector("#get2")
+        form.addEventListener("submit", handleMe);
+
+        function handleMe() {
+            let params = (new URL(document.location)).searchParams;
+            alert(params.toString());
+        }
+
+
+
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="dist/reveal.js"></script>
+    <script src="plugin/zoom/zoom.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/search/search.js"></script>
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script>
+        // Als</li><li>available as an ES module, see:
+        // https://revealjs.com/initialization/
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            center: true,
+            hash: true,
+
+            // Learn about plugins: https://revealjs.com/plugins/
+            plugins: [
+                RevealZoom,
+                RevealNotes,
+                RevealSearch,
+                RevealMarkdown,
+                RevealHighlight
+            ]
+        })
+    </script>
+</body>
+
+</html>

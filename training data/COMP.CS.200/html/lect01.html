@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+
+  <title>WSD, lecture01</title>
+
+  <meta name="description" content="A framework for easily creating beautiful presentations using HTML" />x§§
+  <meta name="author" content="Pia Niemelä, Janne Miilunpalo, Jaakko Rajala, Jenni Hukkanen, Eerik Voimanen" />
+
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" href="dist/reset.css" />
+  <link rel="stylesheet" href="dist/reveal.css" />
+  <link rel="stylesheet" href="dist/theme/moon.css" id="theme" />
+
+  <!-- Theme used for syntax highlighting of code -->
+  <link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme" />
+  <link href="https://fonts.googleapis.com/css?family=Coda" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+
+  <link rel="stylesheet" href="../css/infograph.css" id="theme" />
+</head>
+
+<body>
+  <div class="reveal">
+    <!-- Any section element inside of this container is displayed as a slide -->
+    <div class="slides">
+      <section data-background="#81237F">
+        <div style="display:flex;justify-content: center;">
+          <div style="align-self: center;">
+            <h1>WSD</h1>
+            <h3>
+              <u>W</u>eb <u>S</u>ite <u>D</u>evelopment
+            </h3>
+          </div>
+        </div>
+        <h3>2025 Spring, period IV;5 ects (5 op)</h3>
+        <h5>Pia Niemelä &amp; the Staff</h5>
+        <h6>
+          <a href="https://plus.tuni.fi/comp.cs.200/spring2025/">All course material available in Plussa</a>
+        </h6>
+        <h6>Previously WebCAIS, TIETA9,...</h6>
+        <h6>Original slides, Aulikki Hyrskykari</h6>
+
+        <img style="position: absolute; top:-100px;right:-100px;width:20%;" src="../img/face-inverted-small.png" />
+      </section>
+
+      <section data-state="customevent">
+        <h2>Starting lecture</h2>
+        <div style="display:flex;">
+          <div style="width:50%;">
+            <ul>
+              <li><a href="#/2">Learning outcomes</a></li>
+              <li><a href="#/2/1">Prerequisites</a></li>
+              <li>
+                Course practises
+                <small>
+                <ul>
+                  <li><a href="#/2/3">Weekly exercises</a></li>
+                  <li><a href="#/2/4">Assignment</a></li>
+                  <li><a href="#/2/4">FinalAssignment</a></li>
+                  <li><a href="#/2/4">PRP</a></li>
+                  <li><a href="#/2/5">Exam</a></li>
+                </ul>
+              </small>
+              </li>
+              <li><a href="#/2/6">Course content</a></li>
+              <li><a href="#/2/7">Course tools:</a><small>Plussa, VSCode, browser dev tools</small></li>
+              <li><a href="#/2/8">Online resources</a></li>
+            </ul>
+          </div>
+          <div style="width:50%;">
+            <ul>
+              <li><a href="#/3">How the web works</a>
+                <ul>
+                <li>Front-end technologies</li>
+                <li><a href="#/4">Web standards</a>
+                  <ul>
+                    <li><a href="#/4/4">Validation</a></li>
+                  </ul>
+                </li>
+
+                </ul>
+            </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <section data-state="customevent" style="font-size:80%;">
+          <h2>Learning outcomes</h2>
+          <p>A student will be able to</p>
+          <ul>
+            <li>
+              implement websites with dynamic functionality
+            </li>
+            <li>
+              understand the underlying basic technologies, and concepts
+              <ul>
+                <li>facilitate learning modern web frameworks</li>
+              </ul>
+            </li>
+          </ul>
+          <p><b>Knowledge:</b> HTML, CSS, JavaScript</p>
+          <p>also unstrapping abbreviations such as TCP/IP, HTTP, DNS, AJAX, JSON, CORS ...
+          </p>
+        </section>
+
+        <section data-state="customevent">
+          <h2>Prerequisites</h2>
+          <ul>
+            <li>
+              Previous programming experience beneficial, but not mandatory
+            </li>
+
+            <li>
+              No previous web development skills
+              <ul>
+                <li>but self-directed attitude in info and help seeking</li>
+                <li>help available during Kooditorios</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+
+
+        <section>
+          <h2>The course practices: lectures</h2>
+          <div style="display:flex;font-size: 80%;">
+            <div>
+              <div>
+                Starting lecture in the first week
+              </div>
+              <div>
+                Hybrid lectures, both in premises and in Zoom
+              </div>
+            </div>
+            <img src="../img/lecture.svg" style="width: 50%;" />
+          </div>
+          <div>
+            <p>Lectures are optional.</p>
+            <p>Starting lecture is recorded, but no other videos.</p> 
+          </div>
+        </section>
+
+        <section>
+          <h2>The course practices: weekly exercises</h2>
+          <ul style="font-size:60%;">
+            <li>2 wks for each module</li>
+            <li>Exercises are submitted to Plussa
+              <small>
+
+              <ul>
+                <li>solve the exercises first locally</li>
+                <li>when final, submit to Plussa for auto-grading</li>
+                <li>grading happens in a few minutes and points and feedback are given</li>
+                <li>Late submissions are penalized with -50..-30%</li>
+                <li>
+                  Sick leave gives a valid reason for deviation, if the course personnel is informed before module close,
+                  preferably with a doctor's certificate
+                </li>
+                  </ul>
+                </small>
+              </li>
+              </small>
+            <li><b>Exercises are gone through in weekly exercise sessions</b>
+              <ul>
+                <li>Fill in the attendance form, if willing to show your solutions</li>
+                <li>Other points are based on activity in the session</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>The course practices: assignment/finalAssignment</h2>
+          <ul>
+            <li>
+              Voluntary part, focus on JavaScript</li>
+              <li>Self-initiated group formation
+
+              <ul style="font-size: 60%;">
+                <li>Group size: 1-3 members</li>
+                <li>Option to complete tasks individually or in groups</li>
+                <li>
+                  Course personnel helps in finding a group if you seek to have one
+                </li>
+              </ul>
+            </li>
+            <li>Assignment continues as <b>finalAssignment</b>,<ul style="font-size: 60%;">
+              <li>to get points from that, you are anticipated to do peer-reviews, too</li></li>
+            </ul>
+          </ul>
+        </section>
+
+
+        <section data-state="customevent">
+          <h2>Plussa Exam</h2>
+          <ul>
+            <li>done on-line</li>
+            <li>
+              grade:
+              <ul>
+                <li>&lt; 50%: not pass</li>
+                <li>otherwise percentage-based exam points
+                </li>
+                <li>the exam can be taken as many times as you wish during the exam period</li>
+                <li>NOTE: there is only one exam slot during office hours each day, e.g., Monday 9-10</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+
+        <section data-state="customevent">
+          <!-- partial:index.partial.html -->
+          <div id="info" style="margin-top:8rem;">
+            <style>
+              :root {
+                --n: 5;
+              }
+            </style>
+            <p style="--idx: 0">HTTP, HTML: structure<br />(Ex1-2)</p>
+            <p style="--idx: 1">
+              CSS, responsive web: Style<br />
+              (Ex3-4)
+            </p>
+            <p style="--idx: 2">JavaScript: behaviour<br />(Ex5-7)</p>
+            <p style="--idx: 3">Assignment: frontend part</p>
+            <p style="--idx: 4">Exam</p>
+            <!-- partial -->
+          </div>
+        </section>
+
+        <section data-state="customevent">
+          <h2>Course tools</h2>
+          <div style="display: flex;font-size: 80%;">
+            <div style="width: 33%;">
+              <h5>
+                <a href="https://plus.tuni.fi/comp.cs.200/spring2025/">Plussa course area</a>
+              </h5>
+              <ul>
+                <li>material, exercises, points, feedback</li>
+                <li>
+                  <a
+                    href="https://teams.microsoft.com/l/channel/19%3afgUJo7Qd5ZsU-ZXFrM4kkC2jmc6tyeldXK1SMipPv4k1%40thread.tacv2/General?groupId=a924391d-c582-4eb6-9c20-eec20aa71d4e&tenantId=fa6944af-cc7c-4cd8-9154-c01132798910">Teams,
+                    for discussions and questions in each week</a>
+                </li>
+              </ul>
+            </div>
+            <div style="width: 33%;">
+              <h5>Visual Studio Code</h5>
+              <ul>
+                <li>
+                  <a href="https://youtu.be/74g6nPYTKcs">installing and basic use</a>
+                </li>
+                <li>
+                  <a href="https://youtu.be/5qxWjAvaNxc">installing Live Server extension
+                    
+                  </a>
+                </li>
+                <li>
+                  <a href="https://youtu.be/B-UPFxQVTL0">writing the first html page with VSC</a>
+                </li>
+              </ul>
+            </div>
+            <div style="width: 33%;">
+              <h5>Developer tools</h5>
+              <div>
+                Browser (Chrome) developer tools, for testing and debugging
+              </div>
+            </div>
+          </div>
+        </section>
+        <section data-state="customevent">
+          <h2>Literature</h2>
+          <p>
+            Course literature for those who like books</p> 
+            The two, now already classic books good to start with
+          </p>
+          <ul>
+            <li><b>Jon Duckett:</b> HTML & CSS: Design and build websites</li>
+            <li>
+              <b>Jon Duckett:</b> JavaScript & jQuery: interactive frontend
+              web development
+            </li>
+          </ul>
+        </section>
+
+        <section data-state="customevent">
+          <h2>Free online material</h2>
+          <ul>
+            <li>Marijn Haverbeke: Eloquent Javascript</li>
+            <li>
+              Cody Lindley: Frontend Developer Handbook 2019 (recommended by
+              Kari Systä, the Web/Cloud domain lead)
+            </li>
+            <li><a href="https://internetingishard.com/">HTML & CSS</a></li>
+            <li><a href="https://javascript.info/">JavaScript</a></li>
+          </ul>
+        </section>
+
+        <section data-state="customevent">
+          <h2>Material</h2>
+          <div style="display:flex;">
+            <div style="width: 50%;">
+              <h5>On-line resources</h5>
+              <ul>
+                <li>
+                  Google of course, but what to choose from the result list?
+                </li>
+                <li>
+                  <a href="https://stackoverflow.com">Stackoverflow</a>
+                  -search answers to specific questions
+                </li>
+                <li>
+                  <a href="https://www.w3schools.com">W3Schools</a> (also
+                  tutorials, reference pages)
+                </li>
+              </ul>
+            </div>
+            <div style="width: 50%;">
+              <h5>Articles, snippet resources</h5>
+              <ul>
+                <li>
+                  <a href="http://smashingmagazine.com/articles/">Smashing Magazine</a>
+                </li>
+                <li><a href="css-tricks.com">Css-tricks</a></li>
+                <li><a href="https://alistapart.com">A list apart</a></li>
+                <li><a href="https://caniuse.com">Can I use it</a></li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+
+
+      </section>
+
+      <section>
+        <section>
+          <h2 class="r-fit-text">How web works</h2>
+        </section>
+
+        <section data-state="customevent">
+          <h2>Web page as a playload</h2>
+          <div style="display:flex;flex-direction: column;font-size:60%;justify-content:baseline;align-self: center;">
+            <h5 style="align-self: center;">General (HTTP/web)</h5>
+            <p>
+              familiarize with the basics
+              of web development, tools and envs,<br>
+              security concerns (e.g., CORS)</p>
+          </div>
+
+          <div style="display:flex;font-size: 60%;">
+            <div style="width: 33%;">
+              <h5>HTML</h5>
+              <ul>
+                <li>character encoding</li>
+                <li>promoted HTML5 conventions
+                  <ul>
+                    <li>e.g., semantic markup</li>
+                    <li>media: audio, video</li>
+                  </ul>
+                </li>
+                <li>content model</li>
+                <li>tables, forms</li>
+                <li>validation</li>
+              </ul>
+            </div>
+            <div style="width: 33%;">
+              <h5>CSS</h5>
+              <ul>
+                <li>selectors and combinators</li>
+                <li>box model</li>
+                <li>display property, positioning, floating</li>
+                <li>flex, grid</li>
+                <li>media queries, Bootstrap</li>
+              </ul>
+            </div>
+            <div style="width: 33%;">
+              <h5>JavaScript</h5>
+              <ul>
+                <li>interaction and manipulation of DOM</li>
+                <li>variables and arrays, functions</li>
+                <li>form interactions</li>
+                <li>
+                  classes and objects
+                  <ul>
+                    <li>get/set, hide data</li>
+                  </ul>
+                </li>
+                <li>fetch data (AJAX)</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+
+
+
+        <section data-state="customevent">
+          <h2>Web page fetched as a GET request</h2>
+
+          <div style="display: flex;font-size: 70%;margin:0rem;">
+            <div style="width: 30%;">
+              <h3>Client (browser)</h3>
+              <p>requests</p>
+              <ul style="font-size: 70%;">
+                <li>by making GET with URL</li>
+                <li>request contains also other info, such as supported HTTP
+                  version, user agent (i.e., type of a browser,...)
+                </li>
+              </ul>
+            </div>
+            <div style="background-color: #999;width: 40%;">
+              <p style="color:black;">HTTP transaction</p>
+              <img src="../svg/client_server.svg" />
+            </div>
+
+            <div style="width: 40%;">
+              <h3>Server (Apache, Nginx)</h3>
+              <p>responses</p>
+              <ul style="font-size: 70%;">
+                <li>
+                  <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status">status code</a>
+                  the most important info,
+                  <ul>
+                    <li>2XX signals success</li>
+                    <li>4XX user error, e.g.,<br> 404 not found (wrong URL)</li>
+                  </ul>
+                </li>
+                <li>
+                  response body
+                  <ul>
+                    <li>
+                      when Content-type is: application/html, the body is
+                      HTML
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+            
+          </div>
+          <div style="display:flex;">
+            <div style="width: 110%;font-size: 50%;">
+              <ul>
+                <li>
+                  A user must know the URL of a service.
+                  URL is a human-readable name, not a numeric IP address.</li> 
+                <li>
+                  The Domain Name System (DNS) solves the domain name (e.g.
+                  <em>m.yle.fi</em>) to a correct IP address. </li>
+                  <li>
+                  The IP address
+                  is used in routing (network layer) <br><small><ul>
+                    <li>In the IPv4, addresses range
+                      from 0.0.0.0 to 255.255.255.255 
+                    </li>
+                  </ul></small>
+                </li>
+                <li>On top of IP layer, TCP/UDP is used as a transport layer,
+                  <a href="https://www.youtube.com/watch?v=OTwp3xtd4dg&ab_channel=CertBros">more info</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+        </section>
+
+        <section style="font-size: 80%;">
+          <h2>OSI vs TCP/IP model</h2>
+          <div style="display:flex;flex-direction: column;font-size: 50%;">
+            <table>
+              <tr>
+                <th>OSI Layer</th>
+                <th>TCP/IP layer</th>
+                <th>Description</th>
+                <th>Examples</th>
+              </tr>
+              <tr>
+                <td>Application</td>
+                <td rowspan="3"  style="vertical-align: middle;">Application</td>
+                <td>enables apps communicate with each other, e.g., over HTTP</td>
+                <td>HTTP, FTP, SMTP, DNS</td>
+              </tr>
+              <tr>
+                <td>Presentation</td>
+                <td>en/de/crypts the content, compresses and formats data (e.g. char sets)</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td>Session</td>
+                <td>establishes connections, manages sessions between applications</td>
+                <td>RPC, SSH</td>
+              </tr>
+              <tr>
+                <td>Transport</td>
+                <td>Transport</td>
+                <td>controls network traffic, segments data, adds source and destination ports</td>
+                <td>TCP/UDP</td>
+              </tr>
+              <tr>
+                <td>Network</td>
+                <td>Network</td>
+                <td>routes packets via best path between networks</td>
+                <td>IP, ICMP (ping), routers</td>
+              </tr>
+              <tr>
+                <td>Data Link</td>
+                <td>Data Link</td>
+                <td>transfers data frames within a network</td>
+                <td>MAC addresses, Ethernet, switches</td>
+              </tr>
+              <tr>
+                <td>Physical</td>
+                <td>Physical</td>
+                <td>transmits raw bit stream</td>
+                <td>cables, hubs</td>
+              </tr>
+            </table>
+            <div class="alert alert-warning" style="font-size: 200%;">
+              Mnemonic: <u>A</u>ll <u>P</u>eople <u>S</u>eem <u>T</u>o <u>N</u>eed <u>D</u>ata <u>P</u>rotocols
+            </div>
+  
+          </div>
+
+        </section>
+
+      </section>
+      <section>
+        <section>
+          <h2 class="r-fit-text">Web standards</h2>
+
+        </section>
+        <section data-state="customevent">
+
+          <h2>Standards: history in short</h2>
+
+          <div style="display: flex;width:110%;margin-left:-5%;">
+            <span style="width:15%">W3C standardizes</span>
+            <div style="width:100%">
+              <div class="container">
+                <span class="arrow-left"></span>
+                <span class="arrow-right"></span>
+              </div>
+              <img src="../img/html-evolution.png" height="200px" style="position:relative;top:-15rem;" />
+            </div>
+            <span style="width:15%">WHATWG develops/<br />innovates</span>
+          </div>
+          <table style="font-size: 50%; margin-top:-15rem;">
+            <caption>Evolution of HTML Standards</caption>
+            <tr>
+              <th>Year</th>
+              <th>Organization</th>
+              <th>Standard</th>
+            </tr>
+            <tr>
+              <td>1989</td>
+              <td>no formal standards</td>
+              <td>HTML 1.0-2.0</td>
+            </tr>
+            <tr>
+              <td>1995  </td>
+              <td>W3C</td>
+              <td>HTML3 3.0-4.1</td>
+            </tr>
+            <tr>
+              <td>2000</td>
+              <td>W3C</td>
+              <td>XHTML 1.0</td>
+            </tr>
+            <tr>
+              <td>2003</td>
+              <td>WHATWG (Mozilla, Opera, Apple)</td>
+              <td>Cont. of HTML, DOM, fetch</td>
+            </tr>
+            <tr>
+              <td>2006-2007</td>
+              <td>W3C + WHATWG</td>
+              <td>collaboration on HTML standards=>living standards</td>
+            </tr>
+            <tr>
+              <td>2014</td>
+              <td>-"-</td>
+              <td><a href="https://html.spec.whatwg.org/multipage" target="_blank" rel="noopener noreferrer">HTML5</a></td>
+            </tr>
+            <tr>
+              <td>2016</td>
+              <td>-"-</td>
+              <td>HTML5.1</td>
+            </tr>
+          </table>
+
+          <style>
+            .container {
+              width: 60%;
+              height: 40px;
+              background: #ccc;
+              margin: 100px auto;
+            }
+
+            .arrow-right {
+              width: 0;
+              height: 0;
+              border-top: 40px solid transparent;
+              border-bottom: 40px solid transparent;
+              border-left: 40px solid #ccc;
+              float: right;
+              margin-top: -20px;
+              margin-right: -40px;
+              font-size: 1rem;
+            }
+
+            .arrow-left {
+              width: 0;
+              height: 0;
+              border-top: 40px solid transparent;
+              border-bottom: 40px solid transparent;
+              float: left;
+              border-right: 40px solid #ccc;
+              margin-top: -20px;
+              margin-left: -40px;
+              font-size: 1rem;
+            }
+
+            .right {
+              font-size: 1rem;
+              margin: 1rem;
+              padding-left: 20rem;
+              color: black;
+              font-weight: 400;
+            }
+          </style>
+        </section>
+
+
+        <section data-state="customevent">
+          <h2>W3 Consortium</h2>
+          <div style="font-size: 60%;">
+            <p>A community for free and open Web standards</p>
+            <ul>
+              <li>Member-driven organization, non-profit organization</li>
+              <li>
+                W3C's vision for "One Web"</li> 
+                <li>brings together thousands of dedicated technologists representing more than
+                400 member organizations
+                and dozens of industry sectors.
+              </li>
+              <li>W3C standards define an Open Web Platform for application development, such as
+                <ul>
+                  <li>HTML</li>
+                  <li>CSS</li>
+                  <li>Scalable vector graphics (SVG)</li>
+                  <li>Web open font format (WOFF)</li>
+                  <li>the Semantic Web stack</li>
+                  <li>XML</li>
+                  <li>and a variety of other APIs</li>
+
+                </ul>
+              </li>
+              <li>
+                developers, designers, and anyone passionate about the Web
+                have a place to hold discussions and publish ideas
+              </li>
+            </ul>
+            <a href="https://www.w3.org">For more information see https://www.w3.org/.</a>
+
+          </div>
+        </section>
+        <section data-state="customevent">
+
+          <div style="font-size: 60%;">
+            <h2>WHATWG: Driving Web Standards Evolution</h2>
+            <p><strong>WHATWG</strong>, a collaborative initiative, drives the evolution of web standards.</p>
+            <ul>
+              <li>Founded in response to <strong>disagreements over the direction of web standards</strong> by industry leaders.</li>
+              <li>WHATWG champions innovation and progress in web technologies, including:</li>
+              <ul>
+                <li>HTML, CSS, JavaScript APIs</li>
+                <li>Web APIs for multimedia, storage, and communication</li>
+                <li><a href="https://webidl.spec.whatwg.org/" target="_blank" rel="noopener noreferrer">Web Interface Definition Language (WebIDL)</a></li>
+                <li>and other emerging web technologies</li>
+              </ul>
+              <li>Active participation from developers, designers, and enthusiasts fuels the continuous evolution of web standards within WHATWG's collaborative framework.</li>
+            </ul>
+            <p><a href="https://whatwg.org" target="_blank" rel="noopener noreferrer">For more information, visit WHATWG's official website.</a></p>
+          </div>
+                  </section>
+        
+        <section data-state="customevent">
+          <h2>web.dev (for Google Developers)</h2>
+          <div style="font-size: 60%;">
+            <ul>
+              <li><strong>Purpose and Meaning:</strong></li>
+
+              <ul style="font-size: 80%;">
+                <li>educates and empowers web developers</li>
+                <li>covers a wide range of topics related to web development, including performance optimization, accessibility, security, and more</li>
+                <li><strong>Introducing INP Metric:</strong> helps developers measure and optimize their site's responsiveness for a smooth user experience.</li>
+                <li>encourages developers to adopt innovative web technologies and stay up-to-date with industry trends</li>
+              </ul>
+            </ul>
+            <a href="https://web.dev">For more information, visit web.dev.</a>
+          </div>
+        </section>
+        
+        
+        <section data-state="customevent">
+          <h2>W3C validation</h2>
+          <div style="width: 100%;font-size: 80%;">
+            <ul>
+              <li>reveals mistakes that would otherwise go unnoticed</li>
+              <li>
+                browsers render pages regardless of the mistakes in them
+              </li>
+              <li>
+                interpretation of erroneous code varies between browsers
+              </li>
+            </ul>
+          </div>
+          <div style="display:flex;font-size: 80%;">
+            <div style="width: 50%;">
+              <p>
+                HTML validation:<br />
+                <a href="http://validator.w3.org/">validator.w3.org</a>
+              </p>
+              <ul>
+                <li>
+                  copy the HTML code into the validator direct input field, or
+                </li>
+                <li>upload the code from your computer (Browse…), or</li>
+                <li>if published, just pass the address for the validator</li>
+              </ul>
+            </div>
+            <div style="width: 50%;">
+              <p>
+                CSS validation:<br />
+                <a
+                  href="http://jigsaw.w3.org/css-validator/validator.html">jigsaw.w3.org/css-validator/validator.html</a>
+              </p>
+              <ul>
+                <li>as with HTML-code, either copy, upload or</li>
+                <li>
+                  pass the address of the whole file (which is attached with
+                  CSS code)
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+      </section>
+    </div>
+  </div>
+
+  <script src="dist/reveal.js"></script>
+  <script src="plugin/zoom/zoom.js"></script>
+  <script src="plugin/notes/notes.js"></script>
+  <script src="plugin/search/search.js"></script>
+  <script src="plugin/markdown/markdown.js"></script>
+  <script src="plugin/highlight/highlight.js"></script>
+  <script>
+    // Also available as an ES module, see:
+    // https://revealjs.com/initialization/
+    Reveal.initialize({
+      controls: true,
+      progress: true,
+      center: true,
+      hash: true,
+
+      // Learn about plugins: https://revealjs.com/plugins/
+      plugins: [
+        RevealZoom,
+        RevealNotes,
+        RevealSearch,
+        RevealMarkdown,
+        RevealHighlight
+      ]
+    })
+  </script>
+</body>
+
+</html>

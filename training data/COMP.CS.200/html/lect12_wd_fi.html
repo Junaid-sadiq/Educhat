@@ -1,0 +1,1052 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+
+  <title>WD1 2020 - Asychronous JavaScript</title>
+
+  <meta name="description" content="WD1 2020 course: Async js">
+  <meta name="author" content="Pia Niemelä, Mikko Nurminen, Janne Miilunpalo, Mikko Luhtasaari">
+
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.0.1/lib/anime.min.js"></script>
+  <link href="../css/animejs.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="lib/reveal.js-3.1.0/css/reveal.css">
+  <link rel="stylesheet" href="lib/reveal.js-3.1.0/css/theme/moon.css" id="theme">
+
+  <link rel="stylesheet" href="lib/highlight/styles/monokai_sublime.css">
+
+  <link rel="stylesheet" href="extra/custom.css">
+
+  <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+  <script>
+    if (window.location.search.match(/print-pdf/gi)) {
+      var link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = 'lib/reveal.js-3.1.0/css/print/pdf.css';
+      document.getElementsByTagName('head')[0].appendChild(link);
+    }
+  </script>
+  <!--[if lt IE 9]>
+  <script src="lib/js/html5shiv.js"></script>
+  <![endif]-->
+
+
+</head>
+
+
+<body>
+
+  <div class="reveal">
+    <div class="slides">
+
+      <section style="text-align: center">
+        <style>
+          .transform-demo {
+            position: relative;
+            width: 1rem;
+            height: 1rem;
+          }
+
+          .transform-demo .dot {
+            position: absolute;
+            border-radius: 10%;
+            width: 8rem;
+            height: 2rem;
+            font-size: 1.2rem;
+            background-color: lightblue;
+            color: black;
+          }
+        </style>
+        <div style="display: flex; flex-direction: column; margin-top:-2em;">
+          <h2>Web Development 1 2020</h2>
+          <h3>Asynchronous JavaScript</h3>
+
+          <div style="display: flex;">
+            <div style="width: 40%;"></div>
+            <div style="width:30%" class="transform-demo"></div>
+            <div style="width:30%"></div>
+          </div>
+        </div>
+        <script type="module" src="../js/lect06.js"></script>
+
+      </section>
+
+
+      <section>
+        <section>
+          <div style="display:flex;flex-direction: column; align-items: center;">
+            <h2>JavaScript concurrency model</h2>
+            <h3>Single-threaded, event-driven</h3>
+            <h3>Event loop</h3>
+          </div>
+        </section>
+        <section>
+          <h2>JavaScript features</h2>
+          <ul>
+            <li>dynamically and loosely typed scripting language</li>
+            <li>prototypal inheritance, classes built on top of that</li>
+            <li><a href="http://ryanchristiani.com/functions-as-first-class-citizens-in-javascript/"
+                target="_blanc">functions are first-class citizens</a>, thus acceptable as variables and parameters,
+              making JS prone to functional paradigm</li>
+            <li>a <em>single-threaded, event-driven concurrency model</em>
+              <ul>
+                <li>which enables user-initiated events, network requests, dynamical content updates, UI rendering,
+                  multimedia, animations to be served concurrently</li>
+              </ul>
+            </li>
+          </ul>
+
+        </section>
+
+
+        <section>
+          <h2>(A)Synchronous Communication</h2>
+          <h3>Synchronous</h3>
+          <p>Alice has a question. Alice phones Bob. Bob answers the question. Alice has the answer.</p>
+          <p>But what if Bob isn't available?</p>
+          <h3>Asynchronous</h3>
+          <p>Alice has a question. Alice sends Bob an email. Some time later Bob sends the answer back via email. Alice
+            has the answer.</p>
+        </section>
+
+        <section>
+          <h2>Blocking commands</h2>
+
+          <p>In JavaScript, a command is run till the end,
+            the model referred to as <em><strong>run-to-completion</strong></em>.
+            Since other things are on-hold during its execution =&gt;
+            costly commands will result in a deteriorated user experience:</p>
+          <button id="block-btn">Try it</button>
+          <code id="block-demo" style="display:none">while(true);</code>
+          <!-- <code id="block-demo" style="display:none">const infiniteLoopNonBlocking = (i=0)=> {
+            console.log(i);
+            // stuff in loop
+            setTimeout(()=>{infiniteLoopNonBlocking(++i)}, 4);
+        }; 
+        infiniteLoopNonBlocking();</code-->
+          <p style="font-size: 80%;">To avoid blocking in a <em>single-threaded</em> system limits the means to:</p>
+          <table style="font-size: 60%;">
+            <tr>
+              <td>splitting heavy commands</td>
+              <td>async execution by using</td>
+            </tr>
+            <tr>
+              <td style="vertical-align: top;">
+                <ul>
+                  <li>to sub-programs</li>
+                  <li>by arity (i.e., currying)</li>
+                </ul>
+              </td>
+              <td>
+                <ul>
+                  <li>async versions of functions,
+                    both versions may be available, e.g., fs.readFileSync()/fs.readFile()
+                  </li>
+                  <li>event emittance/message posting</li>
+                  <li>async callbacks such as <em>setTimeout()</em> that move task to the <em>task queue</em></li>
+                  <li>promises (or async/await), move job to the <em>job queue</em></li>
+                  <li>e.g., child processes, web workers or generators (out of the scope of WebDev1)</li>
+                </ul>
+              </td>
+            </tr>
+          </table>
+        </section>
+
+        <section>
+          <h2>Being single-threaded and event-driven</h2>
+          <div style="display:flex;width:100%;font-size:80%;">
+            <div style="width:50%">
+              <h3>Pros</h3>
+              <ul>
+                <li>no threads, no tricky synchronization with semaphores, locks, mutexes</li>
+                <li>no race conditions either, thus no deadlocks, livelocks, or starvation</li>
+                <li>shared state, more deteministic behaviour</li>
+                <li>no overhead of copying shared resources or managing thread states on stack</li>
+              </ul>
+            </div>
+            <div style="width:50%">
+              <h3>Cons</h3>
+              <ul>
+                <li>free synchronization and context are gone</li>
+                <li>more flexibility, but more responsibility (inversion of control)</li>
+                <li>sync exceptions exist like <em>alert()</em> or <em>sync XHR</em>, a good practice is to avoid them
+                </li>
+                <li>fragmented code, control flow becomes obscured</li>
+                <li>..including error management</li>
+                <li>cannot fully exploit the power of multiple processors</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2>Single thread: event loop</h2>
+
+          <div id="aside" style="width: 53%;"><img src="../img/microVsmacrotask.png"
+              alt="The event loop moves callbacks from queues to call stack">
+            <div style="font-size: 50%;">
+              <caption>Fig. The event loop moves tasks from queues to callstack (in node.js, <a
+                  href="https://github.com/deenjohn/NodeRevision/blob/master/6-Concurrency%20model%20and%20event%20loop%20-part%20B.md">@deenjohn</a>)
+              </caption>
+            </div>
+          </div>
+
+
+          <div style="font-size: 80%;">
+            <p>Event loop is the main actor in the JS concurrency model.</p>
+            <p>It co-operates with the call stack that maintains
+              call frames to keep track of the current context and executes the topmost command (LIFO).</p>
+            <p>Event loop moves tasks from queues to the call stack:</p>
+            <p><strong>sync</strong> commands in the order of execution order;</p>
+            <p><strong>async</strong> callbacks are first put on a queue, implying a delayed
+              execution.</p>
+
+          </div>
+        </section>
+
+
+
+        <section>
+          <h2>Macro- and micro-task queues</h2>
+          <p>Async Web API calls are put in the task queue, these tasks are also called <em>macro-tasks</em>.
+            APIs include event emitting, timeouts and AJAX calls, see the <a
+              href="https://developer.mozilla.org/en-US/docs/Web/API">exhaustive list</a> by Mozilla developers</p>
+          <p>In frontend side, these tasks coordinate browser components and have different priorities:</p>
+          <object type="image/svg+xml" data="../img/eventloop.svg"></object>
+
+          <p>Jobs (micro-tasks) do not interact with a browser but are dedicated to the use of the JS interpreter.</p>
+        </section>
+
+
+        <section>
+          <h3>Event loop in action</h3>
+
+          <p><u><a href="http://latentflip.com/loupe">Demo by Philip Roberts</a></u> explained in YouTube</p>
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/8aGhZQkoFbQ" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+          <p>Run the demo on your own device (github account needed):</p>
+          <pre><code>git clone git@github.com:latentflip/loupe.git
+cd loupe
+npm install
+npm start
+firefox http://localhost:3051
+</code></pre>
+        </section>
+
+
+
+      </section>
+
+
+
+
+
+      <section>
+
+        <section>
+          <h1>Callback</h1>
+        </section>
+
+        <section>
+
+          <h2>Callback, a function passed as a param</h2>
+          <p>Array functions (forEach(), map(), filter(), reduce()) exploit callbacks
+            synchronously; function is called on each item.</p>
+
+          <p style="font-size:80%;">Yet being asynchrous exposes the full meaning of a callback
+            as a function that is "called back" when its time has come:
+            the desired event has been triggered (e.g., a user clicks something),
+            a client gets server's response, or the JSON parser gets lengthy JSON message parsed, for instance.
+          </p>
+
+          <p>In JS, callbacks are often event handlers, set to the listen for a trigger,
+            which explains why JS is called event-driven: nothing happens without events.</p>
+        </section>
+
+        <section>
+          <div>
+            <h2 id="callback_h2">Callbacks: either sync or async</h2>
+
+            <pre><code id="callback-demo" contenteditable="true">const fillElemSync = (newElem, str) => 
+[...str].forEach(ch => {
+  newElem.innerHTML = newElem.innerHTML + `${ch}`;
+  alert(ch);
+});
+const fillElemAsync = (newElem, str, i=0) => {
+  if (i==str.length) return;
+  newElem.innerHTML=newElem.innerHTML+str[i];
+  setTimeout(()=>fillElemAsync(newElem, str, ++i),200);
+};
+
+const elem =  document.querySelector('#callback_h2');
+const newElem = document.createElement('strong');  //new h4 elem created
+elem.parentNode.appendChild(newElem);  //added as a sibling of h2
+//set the content of the new elements
+fillElemSync(newElem, "Sync callback: forEach()");
+fillElemAsync(newElem, " vs. async callback: setTimeout()");
+</code></pre>
+            <button id="callback-demo-btn">Try it</button>
+          </div>
+          <p style="font-size:80%;"><em>alert()</em> used for blocking on purpose in sync mode.</p>
+        </section>
+
+
+        <section>
+          <h2>Callbacks as Web API macro-tasks</h2>
+
+          <strong>set to run after, e.g.:</strong>
+          <div style="display:flex;">
+            <div>
+              <ul>
+                <li>triggered event caused by a user (click, hover), a program (custom events)</li>
+                <li>network request being responded</li>
+                <li>timeout</li>
+              </ul>
+            </div>
+            <div>
+              <textarea cols="8" rows="4" id="print" placeholder='id="print"'></textarea>
+
+            </div>
+          </div>
+          <pre style="margin-top: 7px;"><code  id="cb-demo" contenteditable="true">const txt = document.querySelector("#print");
+txt.value="";
+function cb(time) {setTimeout(() => txt.value+=(`cb${time}\n`),time)};
+function cbTrigger(callback, time){callback(time)};
+txt.value+="before\n";
+cbTrigger(cb,1000);
+cbTrigger(cb,0); 
+txt.value+="after\n";
+setTimeout(()=>{txt.value="";},5000)</code></pre>
+          <button id="cb-demo-btn">Try it</button>
+
+          <p>Timeout delays the execution - even if time is set to zero.</p>
+        </section>
+
+
+
+        <section>
+          <h2>Network requests with AJAX</h2>
+          <div style="font-size: 80%;">
+            <ul class="dense">
+              <li><strong>A</strong>synchronous <strong>J</strong>avaScript <strong>A</strong>nd <strong>X</strong>ML
+              </li>
+              <li><em>JSON</em> has replaced <strong>XML</strong> as data format, but AJAX can be used to
+                retrieve any type of data, not just JSON or XML</li>
+              <li>supports protocols other than HTTP including <em>file</em> and <em>ftp</em></li>
+            </ul>
+
+
+            <p>In essence, AJAX allows a browser to send/receive data on a background without loading the whole page.
+              Major benefits are:</p>
+            <ul>
+              <li>user can still use the page whilst data is exchanged</li>
+              <li>after response is retrieved, only the necessary parts of the page (DOM) will be rendered</li>
+            </ul>
+            <p class="extra dense" style="font-size: 80%;"><a
+                href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest"
+                target="_blanc">https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest</a></p>
+
+            <p>AJAX also exemplifies the async evolution:
+              <span style="font-size: 80%;">first callback, then Promise,
+                followed by async/await and optimization with Promise.all(),
+                with independent fetches.</span></p>
+          </div>
+        </section>
+
+
+        <section>
+          <h3>AJAX with XMLHttpRequest (XHR) and a callback</h3>
+
+          <div style="display:flex;margin-left:-50px;">
+            <div style="width:30%;font-size: 70%;">
+              <ul class="dense" style="display:inline;">
+                <li> browser &harr; server communication that<br> happens "behind-the-scenes", e.g.:
+                  <ul>
+                    <li>XMLHttpRequestObject is created</li>
+                    <li>request is made using that object</li>
+                    <li>data sent/fetched from the server</li>
+                    <li>XMLHttpRequestObject receives response</li>
+                    <li>fires an ready event</li>
+                    <li>Event handler handles the response:
+                      <ul>
+                        <li><em>DOM</em> is rendered dynamically</li>
+                        <li>e.g., a table will be filled</li>
+                      </ul>
+
+                    </li>
+                  </ul>
+                </li>
+                <li>now-a-days replaced by Promise-based <em>fetch()</em></li>
+              </ul>
+            </div>
+            <div style="width: 70%;display: flex;align-items:center;justify-items: center; margin-left: 2em;">
+              <img src="img/ajax.png" alt="Fig. of AJAX architecture" style="border: none; width:100%;">
+            </div>
+          </div>
+        </section>
+
+
+        <section>
+          <h2>XHR example in more detail</h2>
+
+          <ol class="dense">
+            <li>xhr object is created<br>
+              <pre style="margin-top:1%;"><code>const xhr = new XMLHttpRequest();</code></pre>
+            </li>
+            <li>that provides onreadystatechange event handler triggered on state changes<br>
+              <pre style="margin-top:1%;"><code>xhr.onreadystatechange = handlerFunction;</code></pre>
+            </li>
+            <li>a connection to a server is opened for sending a request<br>
+              <pre style="margin-top:1%;"><code>xhr.open('GET', url, true);  
+xhr.send();</code></pre>
+              <ul>
+                <li>HTTP methods <strong>GET</strong>,
+                  <strong>POST</strong>, and also <strong>PUT</strong>,
+                  <strong>DELETE</strong>, <strong>HEAD</strong>, <strong>OPTIONS</strong> are allowed</li>
+                <li>url provides the HTTP address of the server</li>
+                <li>the third parameter, boolean value (defaults to true), defines whether the request is handled
+                  asynchronously</li>
+              </ul>
+            </li>
+          </ol>
+        </section>
+
+
+        <section>
+          <h2>AJAX call made with a callback</h2>
+
+          <pre><code>const xhr = new XMLHttpRequest();
+
+xhr.onreadystatechange = function () {   
+  // the transfer complete
+  if (xhr.readyState == 4) {
+    // the transfer successful
+    if (xhr.status == 200) {
+      // the transferred data handled here
+      fillTable(xhr.responseText);  
+    }
+    else {
+      // handle the error 
+      // error text in the property xhr.statusText
+    }
+  }
+}
+xhr.open("GET", url, true);
+xhr.send();</code></pre>
+        </section>
+
+        <section>
+          <h2>Cons of callbacks</h2>
+
+          <p>With nested callbacks, the situation quickly ends up <i class="fas fa-broadcast-tower    "></i> a "callback
+            hell" or "pyramid of doom".</p>
+
+          <img src="img/callbackCons.png" alt="Example of cons of using callback"
+            style="border: none; width: 70%; float: right;">
+
+          <p>In the example, user and user repositories are retrieved from GitHub. Imagine what the example would look
+            like with 5 nested callbacks.</p>
+
+          <p class="extra">The example can also be found <a href="https://jsfiddle.net/MikkoLuhtasaari/cdLk9s6z/"
+              target="_blanc">here</a>.</p>
+
+        </section>
+
+
+
+
+      </section>
+
+
+      <section>
+        <section>
+          <h1>Promise</h1>
+        </section>
+        <section>
+          <h2>Promises to the rescue</h2>
+          <div style="display:flex;flex-direction:column; font-size:80%">
+            <div>
+
+              <p>Promise represents an ansynchronous result that completes enventually.</p>
+              <p>Before Promise is settled it is in <em>pending</em> state.</p>
+              <div style="display:flex">
+                <div style="width: 50%; font-size:60%;">
+                  <p>When the result is got, pending Promise moves either to:</p>
+                  <ol>
+                    <li><em>fulfilled</em> state, i.e., it is successfully resolved.
+                      The promise may move to the next <code>then()</code> function.</li>
+                    <li><em>rejected</em> state, Promise jumps either to the reject section of
+                      next <code>then()</code> or to <code>catch()</code></li>
+                  </ol>
+                </div>
+                <div style="width: 100%;"><img src="../img/promises.png" alt="The promise state diagram">
+                </div>
+              </div>
+            </div>
+            <div style="font-size: 80%;">
+              <p>In addition to <code>then()</code> and <code>catch()</code>,
+                <code>finally()</code> is available as the completing last action for both branches.</p>
+            </div>
+        </section>
+        <section>
+          <div style="font-size:80%">
+            <h2>Promises in real life have a similar pattern</h2>
+
+            <div style="display:flex;">
+              <div style="width: 40%;">
+                <p>For example: Mom is happy and promises to buy you a new phone, she goes shopping (pending).</p>
+                <p>A new phone was bought, still midst of "eventual completion",
+                  because to get it in use, a protection glass (then) and a SIM card (then) has to be bought as well.
+                  After it, the promise is fulfilled.</p>
+                <p>
+              </div>
+              <div>
+                <pre><code>const isMomHappy = true;
+// Promise
+const willIGetNewPhone = new Promise(
+  function (resolve, reject) {
+    isMomHappy ? 
+      resolve({ brand: 'Jolla', color: 'yellow' }):&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      reject(new Error('mom is not happy'));
+  }
+);
+willIGetNewPhone
+  .then(data => {
+    data["accessories"] = ["protection-glass"];
+    return Promise.resolve(data);
+  })
+  .then(data => {
+    data["sim-card"] = true;
+    return Promise.resolve(data);
+  })
+  .then(data => console.log(data))
+  .catch(err => console.log(err));</code></pre>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise
+              API</a></h2>
+          <p>
+            Methods:
+          <pre><code style="font-size:80%;">// the methods of moving from pending to settled  
+Promise.resolve()            //"happy" path, Promise is fulfilled
+Promise.reject()             //"sad" path, Promise is rejected
+
+// the methods that determine what happens to a Promise after settling 
+Promise.prototype.then()     //the next phase after a resolved promise, returns a promise
+Promise.prototype.catch()    //catches any error (reject) of the promise chain
+Promise.prototype.finally()  //final actions at the end of the chain
+
+// multiple promises taken as a param
+Promise.all()                //resolves promises concurrently, if any rejects, all() rejects
+Promise.allSettled()         //like reject-permissive all(), resolves when all are settled
+Promise.any()                //returns the first fulfilled promise of an arr
+Promise.race()               //like reject-permissive any()
+            </code></pre>
+          </p>
+
+
+        </section>
+        <section>
+          <h2>Thenable</h2>
+          <p>At minimum, thenable implements <code>then()</code> method, for example:</p>
+          <pre><code>const thenable = {
+  then: function (onFulfilled) {
+    setTimeout(() => onFulfilled("it is fulfilled"), 10);
+  }
+};
+Promise.resolve(thenable)
+.then(data=>console.log(data));
+// Or
+Promise.resolve()
+.then(data=>thenable)
+.then(t=>console.log(t));
+
+</code></pre>
+          <div style="font-size: 1.5rem;">
+            <p><em>Thenable</em> serves as a simplified executor that may be reused in resolve situation.</p>
+          </div>
+
+          <div style="font-size: 1.4rem;">
+            <p>Every Promise is Thenable, but Thenable not necessarily a Promise yet easily promisifiable:
+            </p>
+          </div>
+          <pre><code>const changedAsPromise = Promise.resolve(thennable);</code></pre>
+        </section>
+
+        <section>
+          <h2>fetch(), AJAX call that returns a Promise</h2>
+          <p>To try with node, install first:
+          <pre><code>npm install node-fetch</code></pre>
+          </p>
+
+
+          <pre><code>const fetch = require('node-fetch');
+const url = "http://lissu-api.herokuapp.com/";
+const prom = fetch(url);
+console.log(prom);                  //1
+const thenProm = prom.then(response => response.json())
+  .then(data => console.log(data)); //3
+console.log(thenProm);              //2
+// Promise { &lt;pending&gt; } 
+// Promise { &lt;pending&gt; } 
+// { vehicles:[ { id: '130792',  line: '50B', ...
+</code></pre>
+          <p style="font-size:80%">The execution of the program is straight-forward, expect promises,
+            which are put in the queue of micro-tasks implying a delayed execution.
+            The first and second <code>console.log()</code> print the promise as pending.
+            After call stack is empty, the event loop starts handling the promise:</p>
+          <div style="font-size: 60%;">
+            <ul>
+              <li>fetch returns a Promise that resolves as an HTTP Response.</li>
+              <li>Response implements <a href="https://developer.mozilla.org/en-US/docs/Web/API/Body/json">Body</a>
+                which has json() method that returns json as a new Promise</li>
+              <li>Once this Promise resolves, the JSON data can printed: the last output</li>
+            </ul>
+          </div>
+          </p>
+        </section>
+
+
+
+
+
+      </section>
+
+
+
+      <section>
+        <section>
+          <h1>Async/await</h1>
+
+        </section>
+
+
+
+        <section>
+          <h2>async keyword</h2>
+          <p>Used in in a function declaration or expression</p>
+          <pre><code>// declaration:
+<strong>async</strong> function foo(){}
+// expression:
+const bar = <strong>async</strong> () =>{}
+console.log(foo() instanceof Promise, bar() instanceof Promise)</code></pre>
+
+          <p>Other than <em>async</em> keyword,
+            function may look normal, but it is anticipated to be a slow poke
+            and to <em>return a Promise</em> either explicitly or implicitly: even if
+            a plain value is returned, it will be wrapped inside a Promise.
+          </p>
+
+          <p>Adding <em>async</em> causes a chain reaction:
+            its caller must be made async, and so forth; the chain ends at the main level.
+            Alternatively, the async part may be isolated to its own block.</p>
+
+          <p class="extra fragment"><a
+              href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function"
+              target="_blanc">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function</a>
+
+          </p>
+          <p class="extra fragment"><a href="https://alligator.io/js/async-functions/"
+              target="_blanc">https://alligator.io/js/async-functions/</a>
+          </p>
+        </section>
+
+        <section>
+          <h3>async IIFE</h3>
+          <p>One means to have an async block is to use IIFE =
+            <u>I</u>mmediately <u>I</u>nvoked <u>F</u>unction <u>E</u>xpression (IIFE).</p>
+          <p>The simplest IIFEs need neither name nor arguments, e.g.:</p>
+          </p>
+          <pre><code>(async () => {
+  const res = await Promise.resolve("Go, IIFE, GO!");
+  console.log(res); // Go, IIFE, GO!
+})()
+</code></pre>
+          <p>Having parenthesis around a function declaration converts it as an expression.
+          </p>
+          <p>The expression is self-invoked by the last trailing parenthesis, discussed <a href="#/6/2">here in more
+              detail</a></p>
+        </section>
+
+        <section>
+          <h2><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/AsyncFunction"
+              target="_blanc">AsyncFunction</a> constructor</h2>
+          <p>In addition to keyword <em>async</em>, async functions
+            can be instantiated with <em>AsyncFunction</em>:</p>
+          <pre><code>new AsyncFunction([arg1[, arg2[, ...argN]],] functionBody)
+          </code></pre>
+          <p>For example:</p>
+          <pre><code style="font-size: 80%;">const AsyncFunction = Object.getPrototypeOf(async function(){}).constructor;
+function createAsync(){
+  return new AsyncFunction('a', `return new Promise((resolve) => {
+      setTimeout(() => {resolve(a)}, 1000)
+  });`);
+}
+createAsync()("WebDev1").then(data=>console.log(data));
+(async function myFunction(){
+  const res = await createAsync()(1);
+  console.log(res);
+})()</code></pre>
+          <p>The constructor enables also async testing:</p>
+          <pre><code>const isAsync = myFunction.constructor.name === "AsyncFunction";</code></pre>
+
+        </section>
+
+        <section>
+          <h2>await</h2>
+          <p><code>await</code> waits for the resolution of a Promise and pauses the execution until that.</p>
+          <p><code>async</code> function may (or may not) contain an <code>await</code> statement, whereas..</p>
+          <p><code>await</code> statement <strong>must</strong> reside inside <code>async</code> block, otherwise:</p>
+          <pre><code>  await Promise.resolve("yes!")
+    ^^^^^
+  
+  SyntaxError: await is only valid in async function</code>
+ </pre>
+        </section>
+        <section>
+          <h2>async/await</h2>
+          <p>implemented as
+            <a
+              href="https://medium.com/@matt.mcalister93/async-and-await-syntactic-sugar-for-promises-in-javascript-aee7ace36d14">syntactic
+              suger on top of Promises.</a></p>
+          <p><code>await</code> causes async function to pause until a Promise is settled.
+            Thus, async/await resembles sync mode but is less prone to blocking.</p>
+
+          <h3>Refactored fetch with async/await</h3>
+          <p>Below, the value of the first <em>await</em> expression is that of the
+            resolved response, and the second, the parsed json. Parsing may take time.</p>
+
+          <pre><code>const fetch = require('node-fetch');
+const url ='https://jsonplaceholder.typicode.com/todos/1';
+(async ()=>{                          //as IIFE            
+  let response = await fetch(url);    //the 1st
+  let parsed = await response.json(); //the 2nd
+  console.log(parsed);
+})()            
+</code></pre>
+        </section>
+
+
+      </section>
+      <section>
+        <section>
+          <h1>Promise.all()</h1>
+        </section>
+        <section>
+          <h2>Promise.all()</h2>
+
+          <p>Starts multiple Promises in parallel and waits for them all to finish.</p>
+          <p>After all the Promises are fulfilled, returns a single Promise, that
+            contains resolved values as an array:</p>
+          <pre><code>const proms = [1, 2, 3].map(val => Promise.resolve(val));
+Promise.all(proms)
+  .then(res=>console.log(res, typeof res, Array.isArray(res)));    
+// Array [1, 2, 3] 'object' true
+</code></pre>
+          <p>However, <em>Promise.all()</em> rejects if any of the Promises rejects.</p>
+          <p class="extra">More <a
+              href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all"
+              target="_blanc">here</a>.</p>
+        </section>
+        <section>
+          <h3>Promise.all() resolves Promises concurrently</h2>
+            <p>Time consumption of <em>await</em> calls inside <em>async</em> block
+              is got as a sum.</p>
+
+            <p><em>Promise.all()</em> makes the calls concurrently, thus,
+              the time approaches the time spent by the longest call:</p>
+
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/vn3tm0quoqE?start=483" frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen></iframe>
+        </section>
+
+        <section>
+          <h2>fetch() example with Promise.all()</h2>
+          <p>Here, fetching and json parsing are done in parallel. First, an iterable of Promises (<em>prom1</em> and
+            <em>prom2</em>)
+            is passed as an input parameter.</p>
+          <pre><code>const fetch = require('node-fetch');
+const url1 = 'https://jsonplaceholder.typicode.com/todos/1';
+const url2 = 'http://lissu-api.herokuapp.com/';
+const prom1 = fetch(url1);
+const prom2 = fetch(url2);
+Promise.all([prom1, prom2])
+    .then(response => {
+        Promise.all([response[0].json(), response[1].json()])
+            .then(parsed => 
+            parsed.forEach(json => console.log(JSON.stringify(json))));
+    });</code></pre>
+          <p>The iterable is returned as a resolved value: <em>response array</em>.
+            The next <em>Promise.all()</em> takes another array of Promises, this time
+            the return values of <a href="https://developer.mozilla.org/en-US/docs/Web/API/Body/json">Body.json()
+              calls</a>.
+            The innermost then() prints the resolved values.</p>
+
+        </section>
+
+      </section>
+
+      <section>
+        <section>
+          <div style="display: flex; flex-direction: column; align-items: center;">
+            <h2 style="font-size: 300%;">Async enablers</h2>
+            <h3>Function as the first-class citizen (FP)</h3>
+            <h4>closure, continuation, (currying)</h4>
+          </div>
+        </section>
+
+        <section>
+          <h3>The first-class citizenship enables</h3>
+          <p style="font-size: 80%;">
+          <ul>
+            <li>functional coding style -💡!</li>
+            <li>
+              <p>passing a function as an argument, setting it as a variable or return value. Different representation:
+              </p>
+              <ul>
+                <li><mark>declaration:</mark><br>
+                  function add(a,b){ return a+b;} //hoisted like var</li>
+                <li><mark>expression:</mark><br>
+                  const addAnom = (a,b) => a + b; </li>
+              </ul>
+
+            </li>
+            <li>Function can be invoked by 1) its name or 2) assigned variable; only declarations are hoisted, note
+              the reference error:</li>
+            <pre><code style="margin-left: -1em; width: 100%;">add(1, 2); 
+function add(a,b){ return a+b} //1: OK, because of hoisting
+addAnom(1, 2);  //2: ReferenceError: addAnom is not defined 
+const addAnom = (a,b) => a + b //defined only once the interpreter is here&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code></pre>
+          </ul>
+          </p>
+        </section>
+        <section>
+          <h2>Invocation with brackets</h2>
+
+          <pre><code>function invokeAdd(a,b){
+  return a() + b();
+}
+
+function one(){ return 1;}
+function two(){ return 2;}
+
+const answer = invokeAdd(one, two);</code></pre>
+
+          <p>one and two are bound to formal params a and b, and a() and b() are invoked with brackets ().</p>
+          <p>
+          <p>As IIFE, anonymous function is declared and executed on-a-fly, IIFE met before in the context of async
+            functions:
+          <pre><code>console.log("sum=",((a=1, b=2) => a+b)());</code></pre>
+          </p>
+        </section>
+
+
+        <section>
+          <h2>Closure</h2>
+          <p>implies lexically-scoped name binding:
+            a closure stores a function together with its environment including parameters and variables.
+            In Javascript, lexical scoping is defined by function's scope: each function creates a new scope.</p>
+          <p>
+            Closure enables encapsulation and variable scoping (private, public),
+            thus fostered, e.g., the implementation of objects.</p>
+          <p>An inner function sees the outer-function variables, not the contrary:</p>
+          <pre><code>const d = 7;
+((a=1,b=2)=>{
+  const c = a + b + d;
+  console.log("closure sum=",c)
+})()
+console.log(c); //ReferenceError: c is not defined</code></pre>
+          <p>Specificity rule: variables are searched in the descending order of specificity,
+            first the closest scope.
+          </p>
+
+        </section>
+
+        <section>
+
+          <h2>Scoping with closures</h2>
+          <pre><code>const makeCounter = function() {
+  let privateCounter = 0;
+  function changeBy(val) {
+    privateCounter += val;
+  }
+  return {
+    increment: ()=>changeBy(1),
+    decrement: ()=>changeBy(-1),
+    value: ()=> privateCounter
+  };
+};
+const counter = makeCounter();
+counter.increment();</code></pre>
+          <p>Example from <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Guide/Closures"
+              target="_blanc">MDN Closures</a> article.</p>
+
+          <p>Such like other inner functions, callback is also a closure in the context of a containing function.</p>
+          <p class="extra dense" style="font-size: 80%;"><a
+              href="http://www.cs.tut.fi/~popl/nykyinen/Ohjelmointikielet-harsu.pdf#page=136" target="_blanc">Activation
+              record (aktivaatiotietue) is the enclosing block of a callback put in the callstack, and better explained
+              here (in Fin.)</a></p>
+        </section>
+
+        <section>
+          <h2>Continuation</h2>
+
+          <p>Continuation overlaps partially with closure, but is a wider and more abstract concept bonding with a
+            control flow.</p>
+          <p>In addition to callbacks, GOTO and exception handling (try-catch-finally)
+            exploit continuations:</p>
+          <p style="margin-left: 2em; font-size: 80%;">before jumping from the current
+            point of execution to another, the execution state is reified into a callable entity
+            (similarly to enclosing lexical scope into closure in case of a callback)
+            that enables switching between contexts.
+          </p>
+
+          <p><a href="https://itnext.io/promises-continuation-monad-in-javascript-f2d70ceb24a4">E.g., promise chain of
+              then() passes the continuation.</a></p>
+
+
+        </section>
+        <section>
+          <h3>Continuation-passing style (CPS)</h3>
+          <p>In CPS, a function calls a callback instead of simply returning.</p>
+          <p>The call must be the last action: the constraint is the same
+            as in a tail recursion - and for the very reason:<br>
+            no need to return &rArr; the caller's activation record in the stack is removable,
+            the removal eliminates memory overhead.
+          </p>
+          <div style="display: flex">
+            <img src="../img/pesapallo.png">
+            <img src="../img/relayRaceSmall.png">
+            <div style="font-size: 60%; margin-left: 1em; width: 30%;">
+              <p>Normal control flow is like Finnish baseball on the left: home is like the main program, a ball
+                representing the current execution point,
+                hitting the ball is like calling callback. After its exection, the control returns to the
+                home base (main).
+                On the contrary, CPS is like a relay race, continuation being a baton passed from a runner (callback) to
+                runner, not returning home in between.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h3>CPS example</h3>
+          <pre><code>function cps(x,done){
+  done(x*x);
+}</code></pre>
+          <p>- no return, but a callback.</p>
+          <p>In the blog post<a
+              href="https://medium.com/@b.essiambre/continuation-passing-style-patterns-for-javascript-5528449d3070">"Callback
+              heaven"</a>,
+            the author points out the pitfalls of extensive Promise usage, such as vagueness of error handling.
+          </p>
+          <p>Bravely enough, the author attempts to solve the problem with his "casync":<br> <a
+              href="https://github.com/bessiambre/casync">callback-based async/await that exploits CPS</a>.
+          </p>
+        </section>
+
+        <section>
+          <h3>Currying</h3>
+          <ul style="margin-left: -1em;">
+            <li>arity splitting technique. Arity: number of arguments
+              <table>
+                <tr>
+                  <td>from:</td>
+                  <td>to:</td>
+                </tr>
+                <tr>
+                  <td>
+                    <pre><code>const product = (x, y, z) => x * y * z;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code></pre>
+                  </td>
+                  <td>
+                    <pre><code>const curriedProduct = 
+  x =>
+    y=>
+      z=> x * y * z;</code></pre>
+                  </td>
+                </tr>
+              </table>
+            </li>
+            <li>enables calls, like:
+              <pre><code>const yz=curriedProduct(5);
+console.log(yz);
+console.log("The rest ",yz(1)(2));
+console.log("Or in one shot ", curriedProduct(5)(1)(2))&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code></pre>
+            </li>
+            <li>..yes, but why?
+              <ul style="font-size: 50%;">
+                <li>makes the containing function splittable, useful with async callbacks</li>
+                <li>increases the level of abstraction, thus</li>
+                <li>enables more generic structures</li>
+              </ul>
+            </li>
+          </ul>
+          <p></p>
+        </section>
+
+        <section class="general_topic">
+          <h1>Next lecture:</h1>
+          <h2>Security</h2>
+          <h3><a href="lect07.html" id="nextSlides">Next &rarr;</a></h3>
+        </section>
+    </div>
+  </div>
+
+  <script src="lib/reveal.js-3.1.0/lib/js/head.min.js"></script>
+  <script src="lib/reveal.js-3.1.0/js/reveal.js"></script>
+  <script src="lib/jquery-1.11.1.min.js"></script>
+
+  <script>
+
+    // Full list of configuration options available here:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+      controls: true,
+      progress: true,
+      history: true,
+      center: true,
+      fragments: true,
+
+      theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+      transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/fade/none
+
+
+      // Optional libraries used to extend on reveal.js
+      dependencies: [
+        { src: 'lib/reveal.js-3.1.0/lib/js/classList.js', condition: function () { return !document.body.classList; } },
+        { src: 'lib/reveal.js-3.1.0/plugin/markdown/marked.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+        { src: 'lib/reveal.js-3.1.0/plugin/markdown/markdown.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+        { src: 'lib//highlight/highlight.pack.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } },
+        { src: 'lib/reveal.js-3.1.0/plugin/zoom-js/zoom.js', async: true, condition: function () { return !!document.body.classList; } },
+        { src: 'lib/reveal.js-3.1.0/plugin/notes/notes.js', async: true, condition: function () { return !!document.body.classList; } }
+      ]
+    });
+    $("#callback-demo-btn").click(function () {
+      eval($("#callback-demo").text());
+    });
+    $("#cb-demo-btn").click(function () {
+      eval($("#cb-demo").text());
+    });
+    $("#block-btn").click(function () {
+      eval($("#block-demo").text());
+    });
+
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,1721 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+
+    <title>WSD: lect05</title>
+
+    <meta name="description" content="A framework for easily creating beautiful presentations using HTML" />
+    <meta name="author" content="Pia Niemelä, Janne Miilunpalo, Jaakko  Rajala" />
+
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="dist/reset.css" />
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="../css/deadline.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+
+
+    <link rel="stylesheet" href="dist/theme/moon.css" id="theme" />
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme" />
+    <link href="https://fonts.googleapis.com/css?family=Coda" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+
+    <link rel="stylesheet" href="../css/tree.css">
+    <link rel="stylesheet" href="../css/timeline.css">
+
+    <link rel="stylesheet" href="../css/infograph.css" id="theme" />
+    <style>
+        h1 {
+            font-size: 50%;
+        }
+
+        #iframe-container {
+            position: relative;
+            /* Needed for proper positioning of iframe */
+        }
+
+        #iframe-container iframe {
+            border: none;
+            /* Remove default iframe border */
+        }
+
+        #iframe-container.iframe-expanded iframe {
+            width: 100%;
+            /* Expands iframe to full width of container */
+            height: 400px;
+            /* Adjust height as needed */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="reveal">
+        <!-- Any section element inside of this container is displayed as a slide -->
+        <div class="slides">
+            <section data-background="../img/hakon.jpg" class="present" style="top: 300 px; display: block;"
+                data-background-image="../img/hakon.jpg">
+                <h1>Lecture 5</h1>
+                <div style="display:flex;font-size: 80%;background-color: rgba(100, 100, 100, 0.7);color:brown">
+                    <ul width="50%">
+                        <li><a href="#/1">Basics</a>
+                            <ul style="font-size: 80%;">
+                                <li>CSS standards</li>
+                                <li>CSS rules</li>
+                                <li>DOM tree and elements as targets</li>
+                                <li><a href="#/2">Attaching styles to a page</a></li>
+                                <li> CSS rule syntax
+                                    <pre><code>selector[, selector]* {[prop: value;]+}</code></pre>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><a href="#/3">Rule priorities</a>
+                            <ul>
+                                <li>Specificity, cascading,
+                                    inheritance
+                                </li>
+                                <li> !important (to be avoided)</li>
+                                <li> A general guideline for
+                                    writing CSS</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul width="50%">
+                        <li><a href="#/4">Selectors</a>
+                            <ul style="font-size: 80%;">
+                                <li>element types
+                                </li>
+                                <li>class/id attributes
+                                </li>
+                                <li>other attributes
+                                </li>
+                                <li>pseudo-classes/elements</li>
+                            </ul>
+                        </li>
+                        <li><a href="#/5">Combinators</a></li>
+                        <li><a href="#/6">Box model</a></li>
+                        <li><a href="#/7">Units</a></li>
+                    </ul>
+                </div>
+
+
+                <div style="font-size:60%">
+                    <span>Håkon Wium Lie</span>
+                    <audio controls src="../audio/hakon.mp3"></audio>
+                </div>
+
+            </section>
+            <section>
+                <section>
+                    <h2 class="r-fit-text">CSS basics</h2>
+                </section>
+                <section>
+                    <h2>CSS: Cascading Style Sheets</h2>
+                    <p>CSS (Cascading Style Sheets) is a language that styles the presentation of HTML content on web
+                        pages. It offers a two-part system for applying styles:</p>
+                    <ul style="font-size: 80%;">
+                        <li><b>Cascading:</b> styles are applied from different sources with a specific order:
+                            <ul>
+                                <li><b>User Agent:</b> default styles defined by the web browser.</li>
+                                <li><b>Author:</b> Styles you define in your CSS files.</li>
+                                <li><b>User:</b> Styles a user can set in their browser preferences.</li>
+                            </ul>
+                        </li>
+                        <li>Styles defined for parent elements in the HTML structure can be inherited by their child
+                            elements, unless overridden by more specific styles.</li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>W3C standards</h2>
+                    <div style="display: flex;">
+                        <ul style="width:50%">
+                            <li>CSS1, CSS2, CSS2.1, CSS3 standards
+                                <ul>
+                                    <li>no CSS4 coming<ul>
+                                            <li>instead, W3C specifies
+                                                different modules</li>
+                                            <li>such as selectors, media queries and fonts</li>
+
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <img src="../img/CSS.svg" style="width: 60%;" />
+
+                    </div>
+
+                </section>
+                <section>
+                    <h2><a href="https://en.wikipedia.org/wiki/Acid2">Acid2 tests</a></h2>
+                    <div style="display:flex">
+                        <p style="font-size: 50%;width:70%">Browsers complient with the W3C specifications (HTML,
+                            CSS2.1, PNG) show the smiley correctly.
+                            Acid2 was targeted at get browser vendors, in particular Microsoft, to follow the spec:<br>
+                            <a href="https://youtu.be/PQTpsxf7rQQ?si=rLVNEq4Xk8ZuM5bf&t=1076" target="_blank">
+                                check what the inventors of CSS,
+                                Håkon and Bert think</a>
+                        </p>
+
+                        <!-- <div id="iframe-container" style="width:30%">
+                        <iframe allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" frameborder="0" 
+                        src="https://youtu.be/PQTpsxf7rQQ?si=rLVNEq4Xk8ZuM5bf&t=1076" width="100" height="100"></iframe>
+                    </div> -->
+                        <script>
+                            document.getElementById("iframe-container").addEventListener("click", function () {
+                                this.classList.toggle("iframe-expanded");
+                            });
+                        </script>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr;">
+                        <div>
+                            Reference image:
+                            <a rel="nofollow" class="external autonumber" href="http://acid2.acidtests.org/"
+                                &gt;[1]&lt;/a&gt;, screenshot taken by &lt;a
+                                href="//commons.wikimedia.org/w/index.php?title=User:SushiGeek&amp;amp;action=edit&amp;amp;redlink=1"
+                                class="new" title="User:SushiGeek (page does not exist)">
+
+                                <img src="../img/acid2.png"></a>
+                        </div>
+                        <div>
+                            Internet Explorer v.6
+                            <img src="../img/Ieacid2.png">
+                        </div>
+                    </div>
+
+
+
+                    </p>
+                </section>
+
+
+                <section class="container">
+                    <div>If timeline is not visible, adjust zoom levels (Ctrl-+ zoom-in, Ctrl-- zoom-out)</div>
+                    <div id="container"></div>
+
+                </section>
+
+                <section style="font-size: 50%;">
+                    <h2>CSS future prospects</h2>
+                    <p>
+                        Modern web frameworks construct pages using self-contained components that encapsulate styles,
+                        enhancing maintainability. Below are some emerging technologies fostering modularity in CSS:
+                    </p>
+                    <ul>
+                        <li>
+                            evolving CSS specifications: @layer and @scope introduce modularity.
+                        </li>
+                        <li>
+                            Preprocessors such as SASS, SCSS, LESS, and PostCSS provide features like variables, mixins,
+                            and nesting for more maintainable stylesheets.
+                        </li>
+                        <li>
+                            CSS modules, which pair well with JSX components. Styles are locally scoped, preventing
+                            conflicts. Example usage:
+                            <pre><code>import styles from './styles.module.css';                  
+function MyStyledComponent() {
+    return <button className={styles.button}>Click Me</button>;
+}</code></pre>
+                        </li>
+                        <li>
+                            CSS-in-JS libraries like styled-components allow defining styles directly within React
+                            components.
+                            <pre><code>import React from 'react';
+import styled from 'styled-components';
+const StyledButton = styled.button`background-color: #007bff;`;
+
+<StyledButton>Click Me</StyledButton></code></pre>
+                        </li>
+                        <li>
+                            Design methodologies for large systems promote scalable and maintainable CSS for complex
+                            projects.
+                            <table>
+                                <tr>
+                                    <th>Attribute</th>
+                                    <th>BEM</th>
+                                    <th>Atomic CSS</th>
+                                    <th>CUBE CSS</th>
+                                </tr>
+                                <tr>
+                                    <td>Usage</td>
+                                    <td>Component-based: blocks, elements, modifiers</td>
+                                    <td>Utility classes: granular, single-purpose classes</td>
+                                    <td>Component-based: composition, utility, block, extension</td>
+                                </tr>
+                            </table>
+                        </li>
+                    </ul>
+                </section>
+
+
+                <section>
+                    <h2>CSS rule syntax</h2>
+
+                    <div style="display:flex;flex-direction: column;">
+
+                        <div style="display:flex">
+                            <div>
+                                <p>
+                                    Syntax of a CSS rule
+                                    selectorList {
+                                    declaration
+                                    }
+                                </p>
+                                <p>Selector e.g. element type, class or id</p>
+                            </div>
+                            <pre><code class="grammar">selector[, selector]*
+{ [property: value;]+ }</code></pre>
+
+
+                        </div>
+                        <div style="display:flex">
+                            <p>The same rule targeted at several elements</p>
+                            <pre><code class="grammar">h1, h2 { /* headers blue */ 
+color: blue;
+}
+</code></pre>
+                        </div>
+                        <div style="display:flex">
+                            <p>Several rules targeted at the same element</p>
+
+                            <pre><code class="grammar">body { /* page with black text */
+color: black; /* on yellow background */
+background-color: yellow;
+}</code></pre>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <h2>Example rules</h2>
+                    <pre><code>* { /* unifying margins and box sizing */
+margin: 0;
+box-sizing: border-box;
+}
+h1 { /* the first level header gets a black shadow */
+text-shadow: 4px 4px 2px black;
+}
+
+p { /* text in paragraphs in red, and the width */
+color: red; /* of the paragraph and the margin around it */
+width: 240px; /* are defined */
+margin: 3rem;
+}</code></pre>
+                    * is universal selector for all types
+                </section>
+                <section>
+                    <h2>DOM tree defines where selectors, and later combinators, apply</h2>
+                    <div style="display: flex;">
+                        <div style="width:20%;font-size: 50%;">
+                            <ul>
+                                <li>DOM (document object model)
+                                </li>
+                                <li>a hierarchy of nodes: <ul>
+                                        <li>elements</li>
+                                        <li>text nodes (leaves)</li>
+                                    </ul>
+                                </li>
+                                <li>press p element on right to unfold the structure<ul style="font-size:80%">
+                                        <li>p node 8 children</li>
+                                        <li>br has 7 siblings</li>
+                                        <li>text on the left is the first child</li>
+                                        <li>em has one child (text node)</li>
+                                        <li>as well as 'a'</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div style="width:80%;font-size: 50%;">
+                            <pre><code class="grammar" id="example_code"><p>This is <em>second</em> paragraph 
+and here is an image from
+<a href="http://www.visittampere.fi">
+Tampere</a><br>
+<img src = "img/01-tampere.jpg" 
+alt="Tampereen Hämeensilta">
+</p></code></pre>
+
+                            <div id="tree_example" style="margin:0;padding:0;"></div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <!-- <h2>Demo of DOM tree</h2> -->
+                    <div style="display:flex;justify-content: flex-start;align-items: flex-start;">
+
+                        <div style="display:flex;align-items: flex-start;flex-direction: column;">
+                            <textarea id="html_code" rows="10" cols="50"></textarea>
+                            <div id="demo_in_html"
+                                style="border:1px solid hand; background-color: aquamarine;width:40vw;">
+                                <div>Write some HTML to see the changes. Click the green nodes in the tree</div>
+                            </div>
+                        </div>
+                        <div id="tree" style="height:50vh"></div>
+                    </div>
+
+                    <div id="mocha"></div>
+
+                </section>
+
+
+            </section>
+            <section>
+                <section>
+                    <h2 class="r-fit-text">Attaching styles</h2>
+                </section>
+
+                <section>
+                    <h2>Method 1: External Stylesheet (Linking a CSS File)</h2>
+                    <p>Uses a separate <code>.css</code> file (or multiple files) attached via the 
+                        <code>&lt;link&gt;</code> element in the <code>&lt;head&gt;</code> section.</p>
+                    <p>This method allows styles to be reused across multiple pages, improving maintainability.</p>
+                    <pre style="font-size:50%; width:90vw;"><code>&lt;head&gt;
+                    &lt;meta charset="UTF-8" /&gt;
+                    &lt;title&gt;Page Title&lt;/title&gt;
+                    &lt;link rel="stylesheet" type="text/css" href="path/basic.css" /&gt;
+                    &lt;link rel="stylesheet" type="text/css" href="path/navigation.css" /&gt;
+                    &lt;link rel="stylesheet" type="text/css" href="path/special.css" /&gt;
+                &lt;/head&gt;
+                </code></pre>
+                </section>
+                
+                <section>
+                    <h2>Method 2: Internal Stylesheet (Using a <code>&lt;style&gt;</code> Block)</h2>
+                    <div style="display:flex">
+                        <div>
+                            <p>Defines CSS rules inside a <code>&lt;style&gt;</code> element within the 
+                                <code>&lt;head&gt;</code> of the document.</p>
+                            <p>Styles apply only to this page and are not shared with other documents.</p>
+                            <p>Useful for quick modifications or single-page styling but harder to maintain for larger sites.</p>
+                        </div>
+                
+                        <pre><code>&lt;html lang="fi"&gt;
+                &lt;head&gt;
+                    &lt;meta charset="UTF-8" /&gt;
+                    &lt;title&gt;Page Title&lt;/title&gt;
+                    &lt;style&gt;
+                    body {
+                        background-color: maroon;
+                        margin-left: 20px;
+                    }
+                
+                    p {
+                        color: white;
+                    }
+                    &lt;/style&gt;
+                &lt;/head&gt;
+                </code></pre>
+                    </div>
+                </section>
+                                <section>
+                    <h2>Attaching styles: method 3</h2>
+                    <div style="display:flex">
+                        <p>Straight in to an element on a page
+                            using the style-attribute, so called inline style</p>
+                        <pre><code><p style="color:sienna; margin-left:20px;">
+This is a paragraph.
+</p></code></pre>
+                    </div>
+
+                    <table style="font-size:80%">
+                        <tr>
+                            <td>Method 1</td>
+                            <td>Recommended, reusable, CSS can be shared</td>
+                        </tr>
+                        <tr>
+                            <td>Method 2</td>
+                            <td>For small projects</td>
+                        </tr>
+                        <tr>
+                            <td>Method 3</td>
+                            <td>For experimenting</td>
+                        </tr>
+                    </table>
+
+                </section>
+
+
+
+
+
+
+            </section>
+            <section>
+
+                <section>
+                    <h1 class="r-fit-text">Rule priorities</h1>
+                </section>
+                <section>
+                    <h2>Several rules for the same element</h2>
+                    <p>How to decide the layout of an element? The following three
+                        concepts should be understood.
+                    </p>
+                    <div style="display:flex;font-size:80%">
+                        <div>
+                            <h3>Specificity</h3>
+                            <ul>
+                                <li>selectors have a certain specificity value
+                                </li>
+                                <li>the rule with the most specific selector "wins"
+
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3>Cascading</h3>
+                            <ul>
+                                <li>when several rules have same specificity value, the "last" rule wins
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3>Inheritance</h3>
+                            <ul>
+                                <li>some properties are inherited from their parent (not all)
+
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <h2>
+                        Specificity</h2>
+                    <p>Each selector has a specificity value as follows</p>
+
+
+                    <table style="font-size:60%;width:60%">
+                        <tr>
+                            <th>Selector</th>
+                            <th>Specificity</th>
+                        </tr>
+                        <tr>
+                            <td>element, pseudo-element</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>class, pseudo-class, attribute</td>
+                            <td>10</td>
+                        </tr>
+                        <tr>
+                            <td>id</td>
+                            <td>100</td>
+                        </tr>
+                        <tr>
+                            <td>inline</td>
+                            <td>1000</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                    <p style="font-size:80%">The specificity of a combined selectors are computed as a sum of the
+                        specificity values involved, e.g.</p>
+                    <table style="font-size:60%;width:100%">
+                        <tr>
+                            <td>p::after</td>
+                            <td>type and a pseudo-element selectors</td>
+                            <td>1+1 = 2</td>
+                        </tr>
+                        <tr>
+                            <td>[type=email]</td>
+                            <td>attribute selector</td>
+                            <td>10</td>
+                        </tr>
+                        <tr>
+                            <td>p.important</td>
+                            <td>type and class</td>
+                            <td>1+10=11</td>
+                        </tr>
+                        <tr>
+                            <td>aside.chart:first-child</td>
+                            <td>type, class, pseudo-class</td>
+                            <td>1+10+10=21</td>
+                        </tr>
+                    </table>
+                    <p><a
+                            href="https://polypane.app/css-specificity-calculator/#selector=header%20h1%23sitetitle%20%3E.logo">
+                            Try the css-specificity-calculatory by Polypane</a></p>
+                </section>
+                <section style="font-size: 75%;">
+                    <h3><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Cascade">Cascading</a></h3>
+                    <div style="display:flex">
+
+                        <div>
+                            <ol>
+
+                                <li>user-agent stylesheet, i.e., default browser styles
+                                </li>
+                                <li><a href="https://www.thoughtco.com/user-style-sheet-3469931">user stylesheet</a>,
+                                    user
+                                    defined styles, e.g., vision impaired users
+                                    (e.g. for Firefox via userContent.css -file)
+                                </li>
+                                <li>author stylesheet, i.e., styles set by web developers
+                                    in the web page itself, where styles are..<ul>
+                                        <li>linked as a separate CSS file</li>
+                                        <li>in &lt;head&gt; as a style element</li>
+                                        <li>in an element defined with a style attribute </li>
+                                        <li>cascade layers <span>💥new!</span></li>
+                                    </ul>
+                                </li>
+                            </ol>
+
+                        </div>
+                        <div>
+                            <img decoding="async" src="../img/layers-tall-outlines2.svg"
+                                alt="Illustration of the various specificity levels of the CSS cascade and where CSS Cascade Layers fit in it."
+                                width="650">
+                        </div>
+                    </div>
+                    <p><a href="">Even more nuanced (e.g., transitions), check MDN</a></p>
+                </section>
+
+                <section>
+                    <h2><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@layer">Cascade layers (emerging)</a>
+                    </h2>
+                    <ul style="font-size: 80%;">
+                        <li>More modular CSS
+                            <pre><code>@layer layer-name {rules}
+@layer layer-name;
+@layer layer-name, layer-name, layer-name;
+@layer {rules}</code></pre>
+
+                        </li>
+                        <li>better separation of concerns which improves code maintainability</li>
+                        <li>consistent use of CSS layers helps address the issue of conflicting styles</li>
+                        <li>placing related rules in the same layer, solves the interference problem
+                        </li>
+                        <li>combinations of multiple layers is possible</li>
+                    </ul>
+
+                </section>
+
+                <section>
+                    <h2>Cascade layers (emerging)</h2>
+                    <div style="display:flex">
+
+                        <ul style="width:30%;font-size:80%">
+                            <li>Web Interop 2022 in action<ul>
+                                    <li>cascade layers released at the same time by major browser vendors</li>
+                                </ul>
+                            </li>
+                            <li>more fine-grained author stylesheets</li>
+                            <li>implemented with
+                                <ul>
+                                    <li><code>@import</code></li>
+                                    <li><code>@layer</code></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <div style="width:70%;font-size:60%">
+                            <pre><code>/layers from lowest to highest priority */
+    @layer defaults, patterns, components, utilities, overrides;
+    
+    /* import stylesheets into a layer (dot syntax represents nesting) */
+    @import url('webcais.css') layer(components.framework);
+    
+    /* add styles to layers */
+    @layer utilities {
+        /* high layer priority, despite low specificity */
+        [data-color='brand'] { 
+        color: var(--brand, rebeccapurple);
+        }
+    }
+    
+    @layer defaults {
+        /* higher specificity, but lower layer priority */
+        a:any-link { color: maroon; }
+    }
+    
+    /* un-layered styles have the highest priority */
+    a {
+        color: mediumvioletred;
+    }</code></pre>
+                            <a href="https://css-tricks.com/css-cascade-layers/">see css tricks</a>
+                        </div>
+                    </div>
+
+                </section>
+
+
+ 
+
+
+                <section style="font-size:70%">
+                    <h2>Inheritance</h2>
+                    <div style="display:flex">
+                        <div style="width:50%">
+                            <p>For example, color is inherited,
+                                but border is not, e.g.,
+                                blue text color defined for whole page
+                                at once, not for
+                                each child separately:
+                                <br><code>body { color: aquamarine; }</code>
+
+                            </p>
+                        </div>
+                        <div style="width:45%">
+
+                            <table style="background-color: aquamarine;font-size: 75%;">
+                                <tr>
+                                    <td>Name</td>
+                                    <td>color</td>
+                                    <td>background-<br>color</td>
+                                    <td>border</td>
+                                </tr>
+                                <tr>
+                                    <td>Value</td>
+                                    <td>color|inherit</td>
+                                    <td>color</td>
+                                    <td>color|line-style|line-width</td>
+                                </tr>
+                                <tr>
+                                    <td>Initial</td>
+                                    <td>user agent decides</td>
+                                    <td>transparent</td>
+                                    <td>individual props</td>
+                                </tr>
+                                <tr>
+                                    <td>Inherited</td>
+                                    <td>yes</td>
+                                    <td>no</td>
+                                    <td>no</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <ul>
+                        <li><strong>However</strong> if you define a list element with borders (e.g., &lt;ul&gt;),
+                            its children (i.e., &lt;li&gt; elements) are displayed without borders, unless you
+                            define:<br>
+                            <pre>li { border: inherit; }</pre>
+                            the property is set to be inherited
+                        </li>
+                        <li>Also, some properties have initial values, for example,
+                            background-color is transparent by default</li>
+                    </ul>
+
+                </section>
+                <section>
+                    <h2>
+
+                        <h2>!important</h2>
+                        <ul>
+                            <li>overrides all rules previously assigned to an element
+                            </li>
+                            <li>used in special situations only, for example
+                                <ul>
+                                    <li>visually impaired users may write a rule in the user style sheet (browser file
+                                        userContent.css)
+                                        <pre>body { font-size: large; !important}</pre>
+
+                                    </li>
+                                    <li>should not be used in normal stylesheets, even if it sometimes feels
+                                        tempting</li>
+                                </ul>
+                </section>
+                <section>
+                    <h2>
+
+                        A general guideline when writing CSS</h2>
+                    <ul>
+                        <li>aim to keep the selectors general and simple
+                        </li>
+                        <li>you can use specific selectors, but only when really
+                            in need
+                        </li>
+                        <li>CSS gets easily scattered
+                            <ul>
+                                <li>the more high-specificity selectors you use,
+                                    the more difficult is the maintance of the stylesheets
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+
+
+            </section>
+            <section>
+
+                <section>
+                    <div class="r-fit-text">Selectors</div>
+                </section>
+
+                <section style="font-size:70%">
+                    <h2>Different selectors</h2>
+                    <table>
+                        <tr>
+                            <th></th>
+                            <th>HTML</th>
+                            <th>CSS</th>
+                            <th>Rendered</th>
+                        </tr>
+                        <tr>
+                            <td>Type</td>
+                            <td>
+                                <pre><code><p>Type</p></code></pre>
+                            </td>
+                            <td>
+                                <pre>p{color: "red"}</pre>
+                            </td>
+                            <td>
+                                <p style="color:red">Type</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Class</td>
+                            <td>
+                                <pre><code><p class="red_class">Class</p></code></pre>
+                            </td>
+                            <td>
+                                <pre>.red_class{color:red;}</pre>
+                            </td>
+                            <td>
+                                <p class="red_class">Class</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Id</td>
+                            <td>
+                                <pre><code><p id="one_of_a_kind">Id</p></code></pre>
+                            </td>
+                            <td>
+                                <pre>#one_of_a_kind{color:blue;}</pre>
+                            </td>
+                            <td>
+                                <p id="one_of_a_kind">Id</p>
+                            </td>
+                        </tr>
+                    </table>
+
+
+                </section>
+                <section>
+                    <h2>Attribute selectors</h2>
+
+                    <div style="display:flex">
+
+                        <pre style="width:33%">[attribute[="value"]?]</pre>
+                        <div style="width:33%">For example:
+                            <pre><code><p lang="en">text</p>
+<p lang="fi">teksti</p></code></pre>
+                        </div>
+                        <div style="width:33%">
+                            <style>
+                                p[lang] {
+                                    color: blue;
+                                }
+
+                                p[lang="fi"] {
+                                    background-color: yellow
+                                }
+                            </style>
+                            <p lang="en">text</p>
+                            <p lang="fi">teksti</p>
+
+                        </div>
+                    </div>
+
+                    <ul style="font-size:60%">
+                        <li> Elements may be selected
+                            on the basis of their attributes and attribute values
+
+                            <pre><code class="grammar">p[lang] {
+color: blue;
+}
+p[lang="fi"] {
+background-color: yellow
+</code></pre>
+                        </li>
+                        <li>text color in both paragraphs is blue, only if lang is Finnish then
+                            background will be yellow
+
+                        </li>
+                        <li> Another example, basic use of attribute
+                            selector
+                            <pre><code class="grammar">a[target="_blank"] {
+background-color: yellow
+}</code></pre>
+
+                        </li>
+                        <li>all the links which would open to a separate tab, are written with
+                            yellow background
+                        </li>
+                    </ul>
+
+                </section>
+
+
+
+                <section style="font-size:60%">
+                    <h2>More attribute selectors</h2>
+
+                    <div style="display:flex">
+
+                        <table style="width:40%">
+                            <tr>
+                                <th>Attribute selector (press btns)</th>
+                                <th>select elements whose attribute ... </th>
+                            </tr>
+
+                            <tr>
+                                <td><button class="attr_btn">[attribute^="value"]</button></td>
+                                <td>starts with value</td>
+                            </tr>
+                            <tr>
+                                <td><button class="attr_btn">[attribute$="value"]</button></td>
+                                <td>ends with value</td>
+                            </tr>
+                            <tr>
+                                <td><button class="attr_btn">[attribute*="value"]</button></td>
+                                <td>contains value</td>
+                            </tr>
+                            <tr>
+                                <td><button class="attr_btn">[attribute|="value"]</button></td>
+                                <td>contains exact value or value followed by hyphen (-)</td>
+                            </tr>
+                            <tr>
+                                <td><button class="attr_btn">[attribute~="value"]</button></td>
+                                <td>having one or more exact "value"s</td>
+                            </tr>
+                            <tr>
+                                <td><button class="attr_btn">[attr1][attr2]</button></td>
+                                <td>having both attributes defined</td>
+                            </tr>
+                        </table>
+                        <div style="width:40%">
+                            <pre><code><p attribute="value">Value</p>
+<p attribute="value1">value1</p>
+<p attribute="1value">1value</p>
+<p attribute="value-1">value-1/p>
+<p attribute="some_value_in_random">
+    some_value_in_random</p>
+<p attr1="joku" attr2="vaa">joku vaa</p>
+</code></pre>
+                        </div>
+                        <div style="width:20%">
+                            <pre class="attr_style">Used style</pre>
+                            <p attribute="value">value</p>
+                            <p attribute="value1">value1</p>
+                            <p attribute="1value">1value</p>
+                            <p attribute="value-1">value-1</p>
+                            <p attribute="some_value_in_random">
+                                some_value_in_random</p>
+                            <p attr1="joku" attr2="vaa">joku vaa</p>
+                            <style id="attr_style">
+                            </style>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <h2>Pseudo-class :selector</h2>
+                    <div>
+                        <p>"pseudo", because such class does not actually exist</p>
+                        <p> Pseudo-class selector starts with a colon, for example:</p>
+                        <pre>p:first-child</pre>
+                        <p> Elements are selected neither by name nor attribute,
+                            but by such properties as active or checked</p>
+                    </div>
+                </section>
+                <section style="font-size: 60%;">
+                    <h2>Hover pseudo-classes</h2>
+                    <div style="display:flex">
+                        <div>
+                            <pre class="pseudo_style"></pre>
+                        </div>
+                    </div>
+                    <div style="display:flex;width:100%">
+
+                        <div style="display:flex;width:50%">
+                            <div style="display:flex;flex-direction: column;width:33%">
+
+                                <button class="pseudo-class">:active</button>
+                                <button class="pseudo-class">:checked</button>
+                                <button class="pseudo-class">:disabled</button>
+                                <button class="pseudo-class">:empty</button>
+                                <button class="pseudo-class">:enabled</button>
+                                <button class="pseudo-class">:first</button>
+                                <button class="pseudo-class">:first-child</button>
+                                <button class="pseudo-class">:first-of-type</button>
+                                <button class="pseudo-class">:focus</button>
+                                <button class="pseudo-class">:hover</button>
+                            </div>
+                            <div style="display:flex;flex-direction: column;;width:33%">
+                                <button class="pseudo-class">:in-range</button>
+                                <button class="pseudo-class">:invalid</button>
+                                <button class="pseudo-class">:lang</button>
+                                <button class="pseudo-class">:last-child</button>
+                                <button class="pseudo-class">:last-of-type</button>
+                                <button class="pseudo-class">:link</button>
+                                <button class="pseudo-class">:not()</button>
+                                <button class="pseudo-class">:nth-child</button>
+                                <button class="pseudo-class">:nth-last-child</button>
+                                <button class="pseudo-class">:nth-last-of-type</button>
+                                <button class="pseudo-class">:nth-of-type</button>
+                            </div>
+                            <div style="display:flex;flex-direction: column;;width:33%">
+                                <button class="pseudo-class">:only-child</button>
+                                <button class="pseudo-class">:only-of-type</button>
+                                <button class="pseudo-class">:optional</button>
+                                <button class="pseudo-class">:out-of-range</button>
+                                <button class="pseudo-class">:read-only</button>
+                                <button class="pseudo-class">:read-write</button>
+                                <button class="pseudo-class">:required</button>
+                                <button class="pseudo-class">:root</button>
+                                <button class="pseudo-class">:target</button>
+                                <button class="pseudo-class">:valid</button>
+                                <button class="pseudo-class">:visited</button>
+                            </div>
+
+
+                        </div>
+                        <form style="display:flex;flex-direction:column;width:50%;border:1px solid red">
+                            <input type="text" required placeholder="text">
+                            <input type="text" disabled placeholder="disabled text">
+                            <input type="number" optional placeholder=1 min=1 max=5>
+
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes">Pseudo-classes</a>
+                            <label>Active:
+                                <input type="checkbox" checked>
+                            </label>
+                            <ul>
+                                <li>First
+                                </li>
+                                <li>Second</li>
+                                <li>Third</li>
+                            </ul>
+                            <button>Plain button</button>
+                        </form>
+                        <style id="pseudo_style"></style>
+                    </div>
+                    <div style="display:flex; justify-content: center;">
+                        <pre style="width:100%;width: auto;"><code><form>
+    <input type="text" required placeholder="text">
+    <input type="text" disabled placeholder="disabled text">
+    <input type="number" optional placeholder=1 min=1 max=5>
+    <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes">
+        Pseudo-classes</a>  
+    <label>Active:
+        <input type="checkbox" checked>
+    </label>
+        <ul>
+        <li>First</li>
+        <li>Second</li>
+        <li>Third</li>
+    </ul>
+    <button>Plain button</button>
+</form></code></pre>
+                    </div>
+
+
+                </section>
+                <section>
+                    <h2>:root</h2>
+                    <ul>
+                        <li>:root is a pseudo-class selector that targets the root element of the document</li>
+                        <li>the scope being the content inside html tags</li>
+                        <li>custom properties declared inside :root are accessible throughout the entire document</li>
+                    </ul>
+                </section>
+                <section style="font-size:60%">
+                    <h2><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-elements">Pseudo-element
+                            ::selector</a></h2>
+                    <p id="pseudo_class_vs_element">In contrast to pseudo-class selector that selects elements that
+                        exist,
+                        pseudo-element selector creates "pseudo-elements" if needed,<br> e.g., ::after and ::before
+                        by adding content</p>
+
+                    <p>Pseudo-element selector starts with a double colon</p>
+
+                    <style>
+                        #after::after {
+                            content: " <- Check!";
+                            color: red;
+                        }
+
+                        #before::before {
+                            content: '🔗'
+                        }
+
+                        #pseudo_class_vs_element::first-letter {
+                            font-size: 3em;
+                            font-weight: 500;
+                        }
+
+                        #pseudo_class_vs_element::first-line {
+                            color: red
+                        }
+                    </style>
+                    <table>
+                        <tr>
+                            <td>::after</td>
+                            <td>
+                                <pre>a::after {content: '<-Check!'; color:red}</pre>
+                            </td>
+                            </td>
+                            <td><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/::after" id="after">MDN about
+                                    after</a></td>
+                        </tr>
+
+                        <tr>
+                            <td>::before</td>
+                            <td>
+                                <pre>a::before {content: '🔗';}</pre>
+                            </td>
+                            <td><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/::before" id="before">MDN
+                                    about before</a></td>
+                        </tr>
+                        <tr>
+                            <td>::first-letter</td>
+                            <td>
+                                <pre>p::first-letter{font-size: 3em;font-weight: 500;}</pre>
+                            </td>
+                            <td>'I', in the first chapter</td>
+                        </tr>
+                        <tr>
+                            <td>::first-line</td>
+                            <td>
+                                <pre>p::first-line{color:red}</pre>
+                            </td>
+                            <td>the first line in the first chapter</td>
+                        </tr>
+                    </table>
+
+
+                </section>
+            </section>
+            <section>
+
+                <section>
+                    <h2 class="r-fit-text">Combinators</h2>
+                </section>
+
+                <section>
+                    <h2>Combinators</h2>
+                    <p>Combinators make use of the DOM tree structure by
+                        selecting subtrees
+                        or siblings at the same level
+                    </p>
+                    <style class="cmb_style"></style>
+
+                    <div
+                        style="display:flex; width:100%;font-size: 75%;align-items: flex-start; justify-content: flex-start;">
+                        <div>
+                            <table class="combinator" style="width:auto;font-size: 70%;border: 1px solid white;">
+                                <tr>
+                                    <th>Combinator</th>
+                                    <th>Description</th>
+                                </tr>
+                                <tr>
+                                    <td>e1&gt;e2</td>
+                                    <td><button class="cmb_btn">child</button></td>
+                                </tr>
+                                <tr>
+                                    <td>e1 e2</td>
+                                    <td><button class="cmb_btn">descendant</button></td>
+                                </tr>
+                                <tr>
+                                    <td>e1+e2</td>
+                                    <td><button class="cmb_btn">adjacent sibling</button> where e1 immediate older
+                                        sibling
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>e1~e2</td>
+                                    <td><button class="cmb_btn">general sibling</button> where e1 older sibling</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div>
+                            <pre><code style="width:18em;height:2em" class="cmb_style"></code></pre>
+                            <ul id="styleUL" style="font-size: 50%;width:35%">
+                                <li>First<ul>
+                                        <li>First-1</li>
+                                        <li>First-2</li>
+                                        <li>First-3</li>
+                                    </ul>
+                                </li>
+                                <li>Second<ul>
+                                        <li>Second-1</li>
+                                        <li>Second-2</li>
+                                        <li>Second-3</li>
+                                    </ul>
+                                </li>
+                                <li>Third<ul>
+                                        <li>Third-1</li>
+                                        <li>Third-2</li>
+                                        <li>Third-3</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </section>
+                <section>
+                    <h2>Chaining selectors</h2>
+                    <p>By chaining selectors together you require that all the selectors
+                        match the element.
+                        For example, to select an element that defines both classes first and third
+                        the style looks like this:
+                    <pre><code>.first.third {color: red;}</code></pre>
+                    ..whereas the element itself:
+                    <pre><code><h1 class="first third">Double Class</h1></code></pre>
+                    <p>What is the difference between these two ?
+                    <div style="display:flex">
+                        <pre><code>#header.callout {color:red;}</code></pre>&nbsp;vs.&nbsp;
+                        <pre><code>#header .callout {color:red;}</code></pre>
+                    </div>
+
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h1 style="r-fit-text">Box model and borders</h1>
+                </section>
+                <section>
+                    <h2>Box model</h2>
+                    <a href="boxmodel.html">Demo</a>
+                </section>
+                <section style="font-size:50%;">
+                    <h2>Spacing between elements: padding and
+                        margin</h2>
+                    <div style="display:flex">
+                        <ul style="width: 65%;">
+                            <li> Spacing between elements is handled with padding and margin
+                                properties
+                                <ul>
+                                    <li>padding:[auto|value]
+                                    </li>
+                                    <li>margin: [auto|value]
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>Padding separates content from border
+                                <ul>
+                                    <li>behaviour straightforward and predictable
+                                    </li>
+                                    <li>padding cannot be negative
+                                    </li>
+                                </ul>
+                            </li>
+                            <li> Margin leaves space between the
+                                border and other elements<ul>
+                                    <li>horizontally pretty predictable
+                                    </li>
+                                    <li>vertically margins of adjacent elements will collapse
+                                    </li>
+                                    <li>margin can also be negative
+                                    </li>
+                                    <li>vertical placement inside the parent: margin: auto (!)</li>
+
+                                </ul>
+                            </li>
+                        </ul>
+                        <div style="width:30%">
+
+                            <pre><code>h1, h2 {
+padding: 25px 50px;
+}
+p {
+padding: 25px 50px 5px;
+margin-left: 2em;
+}</code></pre>
+                        </div>
+                    </div>
+
+                </section>
+                <section>
+                    <h2>Margins horizontally vs vertically</h2>
+                    <div style="display: flex">
+                        <div>
+
+                            <p>Horizontally margins add up as is expected, but vertically margins collapse:</p>
+                            <pre><code>10px + 30px = 30px</code></pre>
+                        </div>
+                        <div>
+
+                            <img src="../img/margin_collapse.png">
+                        </div>
+                    </div>
+
+                </section>
+
+
+
+                <section style="font-size: 80%;">
+                    <h2>Browser wars: rendering disagreements</h2>
+
+                    <table>
+                        <tr>
+                            <th>Attribute</th>
+                            <th>Netscape</th>
+                            <th>Microsoft</th>
+                        </tr>
+                        <tr>
+                            <td>Box Model</td>
+                            <td>Content-box<br>padding and border added outside the content area
+                            </td>
+                            <td>Border-box<br>padding and border added inside the content area,
+                                current standard
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Collapsing Margins</td>
+                            <td>Yes<br>adjoining margin collapse in some occasions</td>
+                            <td>No<br>margins only collapse if one or both margins are set to 0</td>
+                        </tr>
+                    </table>
+                    <p>Other discrepancies existed in areas like font rendering, HTML element behavior, and JavaScript
+                        interpretation. Led to numerous workarounds.</p>
+                </section>
+
+
+
+                <section>
+                    <h2> Border width, style, and color</h2>
+                    <pre style="font-size:40%;">border-width: [thin|medium|thick|measure|inherit]                        
+border-style: [none|hidden|dotted|dashed|solid|double|inherit|groove|ridge|inset|outset]
+border-color: [transparent|color|inherit]</pre>
+
+                    <div style="display:flex;flex-direction: column;">
+                        <div style="display:flex">
+                            <pre>p{
+border-width: 10px;
+border-style: dashed;
+border-color: #34fade;
+}</pre>
+                            <div style="display: flex; align-items: center;">
+                                <p>==</p>
+                                <pre>p { border: 10px dashed #34fade;}</pre>
+                            </div>
+
+                        </div>
+
+                        <style>
+                            #border_p {
+                                border-width: 10px;
+                                border-style: dashed;
+                                border-color: #34fade;
+                            }
+                        </style>
+                        <div>
+                            <p id="border_p" style="font-size: 50%;">
+                                This is the result when the rules were applied to the p element containing this text.
+                            </p>
+                            <p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing">
+                                    box-sizing: border-box</a> adds padding and border in an element's width and
+                                height, the default value of it is 'content-box'
+
+                        </div>
+                    </div>
+
+                </section>
+                <section>
+                    <h2>Border properties</h2>
+                    <div style="display:flex">
+                        <div>
+                            <pre>div {
+border-width: 5px 15px 25px 35px;
+border-style: inset;
+border-color: blue;
+width: 30em;
+}
+div {
+border-width: 5px 10px;
+border-style: solid dotted;
+border-color: green;
+}
+div {
+border: 20px groove;
+border-color: green red yellow;
+}</pre>
+                            <style>
+                                #brd_div {
+                                    border-width: 5px 15px 25px 35px;
+                                    border-style: inset;
+                                    border-color: blue;
+                                    width: 80%;
+                                }
+
+                                #brd_div2 {
+                                    border-width: 5px 10px;
+                                    border-style: solid dotted;
+                                    border-color: green;
+                                }
+
+                                #brd_div3 {
+                                    border: 20px groove;
+                                    border-color: green red yellow;
+                                }
+                            </style>
+                        </div>
+                        <div style="width:50%; display: flex;flex-direction: column;justify-content: space-between;">
+                            <div id="brd_div" style="height:30%"></div>
+                            <div id="brd_div2" style="height:30%"></div>
+                            <div id="brd_div3" style="height:30%"></div>
+                        </div>
+                        <div></div>
+                    </div>
+                </section>
+                <section>
+                    <h2>Rounded corners</h2>
+
+                    <style>
+                        #example1 {
+                            border: 2px solid red;
+                            padding: 10px;
+                            border-radius: 25px;
+                        }
+
+                        #example2 {
+                            border: 10px double red;
+                            padding: 10px;
+                            border-radius: 50px 20px;
+                        }
+
+                        #example3 {
+                            border: 10px double red;
+                            padding: 10px;
+                            border-style: groove;
+                            border-radius: 50px 20px 100px;
+                        }
+
+                        #example4 {
+                            border: 10px red;
+                            padding: 10px;
+                            border-style: dotted;
+                            border-radius: 50px 20px 0px 35px;
+                        }
+                    </style>
+                    <div style="display:flex;font-size: 60%;">
+                        <div style="width:50%">
+                            <h3>border-radius: 25px:</h3>
+                            <div id="example1">
+                                <p>The border-radius property defines the radius of the element's corners.</p>
+                            </div>
+
+                            <h3>border-radius: 50px 20px:</h3>
+                            <div id="example2">
+                                <p>If two values are set; the first one is for the top-left and bottom-right corner, the
+                                    second
+                                    one for the top-right and bottom-left corner.</p>
+
+                            </div>
+                        </div>
+                        <div style="width:50%">
+                            <h3>border-radius: 50px 20px 100px</h3>
+                            <div id="example3">
+                                <p>Three values; 20px in the opposite corners: top-right, bottom-left</p>
+                            </div>
+
+                            <h3>border-radius: 50px 20px 0px 35px</h3>
+                            <div id="example4">
+                                <p>Clockwise direction starting from top-left, as in all cases</p>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h1 style="r-fit-text">Units</h1>
+                </section>
+
+                <section>
+
+                    <h2>CSS units (of length measure)</h2>
+                    <ul>
+                        <li>Used to define lengths and sizes in CSS rules.
+                            The absolute units: in, cm, mm, pt, pc
+                            <ul style="font-size: 80%;">
+                                <li>not useful on screen, might get used on some other medium
+                                </li>
+                            </ul>
+                        <li> Pixel (px) is a very commonly used one, e.g,
+                            <ul style="font-size: 80%;">
+                                <li>min-width: 200px; font-size: 16px;
+                                </li>
+                            </ul>
+                        <li> In addition to absolute, many units are relative
+                            <ul style="font-size: 80%;">
+                                <li>relative with respect to parent element or to the viewport (= visible part of
+                                    the page)
+
+
+                                </li>
+                            </ul>
+                        <li> Relative units include: %, em, rem, ex, ch, vh, vw
+                            <ul style="font-size: 80%;">
+                                <li>note: no space between the number and the unit, e.g.
+
+                                    16px, 0.75em, 1.25rem, 80%, 90vh, 85vw
+                                </li>
+                            </ul>
+
+                </section>
+                <section>
+                    <h2>Relative units</h2>
+                    <details>
+                        <summary>%</summary>
+                        relative to parent dimensions, handy when the parent's dimensions are set
+                        however often tricky in the vertical dimension
+                        if parent element doesn't have an explicit height set, the child percentage is always 0
+                    </details>
+                    <details>
+                        <summary>em</summary>
+                        relative to its parent's font-size (height of the font)
+                        usually the default font-size (for the body element) in browsers is 16px
+                    </details>
+                    <details>
+                        <summary>rem</summary>
+                        relative to the font size of the root element
+                    </details>
+                    <details>
+                        <summary>ex</summary>
+                        height of the letter "x" (small x) in the used font
+                    </details>
+                    <details>
+                        <summary>ch</summary>
+                        the width of the number "0" in the used font
+                    </details>
+
+                    </details>
+
+                </section>
+                <section>
+                    <h2>Viewport units (vw/vh) vs pixels</h2>
+                    <img style="width:80%;margin-top:-20px" src="../img/vw.gif">
+
+                    <pre style="margin-top:-20px">100 vw = 100% of viewport width</pre>
+
+                    <table style="font-size: 60%;">
+                        <tr>
+                            <th style="width:50%">viewport</th>
+                            <th style="width:50%">px</th>
+                        </tr>
+                        <tr>
+                            <td>relative, like %-unit</td>
+                            <td>for both horizontal and vertical dimensions</td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <span style="font-size:80%">instead of percentage of the parent,
+                                    it is percentage of
+
+                                    the screen (aka viewport). vh refers to one percent of viewport height, and
+                                    vw to one percent of viewport width
+                                    100 vh = 100% of viewport height</span>
+
+                            </td>
+                            <td> 1px = 1/96 of 1 inch, not relative
+                                corresponds to one device pixel
+                                high resolution (retina) displays 1px may be several device pixels
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>vh and vw do not suffer from the parent limitation that
+                                the % unit does</td>
+                            <td>a pixel wide line is always sharp
+                            </td>
+                        </tr>
+
+                    </table>
+
+
+                </section>
+                <section>
+                    <h2>Examples</h2>
+
+                    <div style="display:flex">
+
+                        <div style="width:60%;font-size: 80%;">
+                            <p>In most browsers, the default font-size (for the
+                                body element) is 16px</p>
+
+                            <p>Font size is one of the
+                                inherited properties</p>
+                            <ul style="font-size: 60%;">
+                                <li>children inherit the text size of their parent
+                                </li>
+                                <li>no need to repeat, unless text size is changed
+                                </li>
+                            </ul>
+                            <p>Which units to use?</p>
+                            <ul>
+                                <li>%-units for flexible width (changes with the window width)
+                                </li>
+                                <li>em or rem units for font-sizes
+                                </li>
+                                <li>px for fixed widths
+                                </li>
+                            </ul>
+
+
+                        </div>
+
+                        <div style="width:40%">
+                            <div class="card-big-shadow">
+                                <div class="card card-just-text" data-background="color" data-color="blue"
+                                    data-radius="none">
+                                    <div class="content">
+                                        <h6 class="category">Correspondence</h6>
+                                        <h4 class="title"><a href="#"></a></h4>
+                                        <p class="description">1em = 16px</p>
+                                        <p class="description">0.875em = 14px</p>
+                                        <p class="description">0.75em = 12px</p>
+                                    </div>
+                                </div> <!-- end card -->
+                            </div>
+
+                            <pre style="font-size: 50%;">li {
+font-size: 0.875em; 
+}
+q {
+font-size: 0.5em;
+/* quoted text will be half */
+/* as big as its parent
+*/
+}</pre>
+
+
+
+                        </div>
+                    </div>
+                </section>
+            </section>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script>
+        // Init
+        var $ = jQuery;
+        var animationTime = 20,
+            days = 7;
+
+        $(document).ready(function () {
+
+            // timer arguments: 
+            //   #1 - time of animation in mileseconds, 
+            //   #2 - days to  deadline
+
+            $('#progress-time-fill, #death-group').css({ 'animation-duration': animationTime + 's' });
+
+            var deadlineAnimation = function () {
+                setTimeout(function () {
+                    $('#designer-arm-grop').css({ 'animation-duration': '1.5s' });
+                }, 0);
+
+                setTimeout(function () {
+                    $('#designer-arm-grop').css({ 'animation-duration': '1s' });
+                }, 4000);
+
+                setTimeout(function () {
+                    $('#designer-arm-grop').css({ 'animation-duration': '0.7s' });
+                }, 8000);
+
+                setTimeout(function () {
+                    $('#designer-arm-grop').css({ 'animation-duration': '0.3s' });
+                }, 12000);
+
+                setTimeout(function () {
+                    $('#designer-arm-grop').css({ 'animation-duration': '0.2s' });
+                }, 15000);
+            };
+
+            function timer(totalTime, deadline) {
+                var time = totalTime * 1000;
+                var dayDuration = time / deadline;
+                var actualDay = deadline;
+
+                var timer = setInterval(countTime, dayDuration);
+
+                function countTime() {
+                    --actualDay;
+                    $('.deadline-days .day').text(actualDay);
+
+                    if (actualDay == 0) {
+                        clearInterval(timer);
+                        $('.deadline-days .day').text(deadline);
+                    }
+                }
+            }
+
+            var deadlineText = function () {
+                var $el = $('.deadline-days');
+                var html = '<div class="mask-red"><div class="inner">' + $el.html() + '</div></div><div class="mask-white"><div class="inner">' + $el.html() + '</div></div>';
+                $el.html(html);
+            }
+
+            deadlineText();
+
+            deadlineAnimation();
+            timer(animationTime, days);
+
+            setInterval(function () {
+                timer(animationTime, days);
+                deadlineAnimation();
+
+
+            }, animationTime * 1000);
+
+        });
+    </script>
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/d3/4.9.1/d3.min.js'></script>
+    <script src="../js/Pure-JavaScript-HTML5-Parser/htmlparser.js"></script>
+    <script src="../js/html2json.js"></script>
+    <script src="../js/script.js"></script>
+
+
+    <script src="../js/rangedata.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-core.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-timeline.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-ui.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-exports.min.js"></script>
+    <script src="../js/anychart.js"></script>
+
+
+
+
+    <script src="dist/reveal.js"></script>
+    <script src="plugin/zoom/zoom.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/search/search.js"></script>
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script>
+        // Also  available as an ES module, see:
+        // https://revealjs.com/initialization/
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            center: true,
+            hash: true,
+
+            // Learn about plugins: https://revealjs.com/plugins/
+            plugins: [
+                RevealZoom,
+                RevealNotes,
+                RevealSearch,
+                RevealMarkdown,
+                RevealHighlight
+            ]
+        });
+    </script>
+</body>
+
+</html>

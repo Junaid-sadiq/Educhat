@@ -1,0 +1,1572 @@
+<head>
+    <meta charset="utf-8" />
+
+    <title>WSD: lect06</title>
+
+    <meta name="description" content="A framework for easily creating beautiful presentations using HTML" />
+    <meta name="author" content="Pia Niemelä, Janne Miilunpalo, Jaakko Rajala" />
+
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="dist/reset.css" />
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="dist/theme/moon.css" id="theme" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme" />
+    <link href="https://fonts.googleapis.com/css?family=Coda" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+
+    <link rel="stylesheet" href="../css/infograph.css" id="theme" />
+</head>
+
+<body>
+    <div class="reveal">
+        <!-- Any         element inside of this container is displayed as a slide -->
+        <div class="slides">
+
+            <section data-background="#81237F">
+                <h2>Lecture 6</h2>
+                <div style="display:flex;font-size: 80%;">
+                    <ul style="width:55%">
+                        <li>Old-school positioning<ul>
+
+                                <li><a href="#/1">Normal flow + display: block|inline|inline-block|none</a>
+                                </li>
+                                <li><a href="#/2">Position</a>
+                                    <ul>
+                                        <li>static, relative, absolute, fixed, sticky</li>
+                                        <li>top, bottom, left, right
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li><a href="#/3">Float</a>
+                                    <ul>
+                                        <li>..and clear</li>
+                                    </ul>
+                                </li>
+                        </li>
+                    </ul>
+                    </li>
+                    </ul>
+                    <ul style="width:45%">
+                        <li>
+                            New flexible "fluid" design
+                            <ul>
+                                <li><a href="#/4">CSS Flexbox (1D)</a></li>
+                                <li><a href="#/5">CSS Grid (2D)</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#/6">Custom properties - ✨New!</a></li>
+                    </ul>
+                </div>
+                <div>"flow->float->fluid"</div>
+            </section>
+            <section>
+                <section data-background="../img/typewriter.png" data-background-repeat="repeat"
+                    data-background-size="100px" style="color: white;background-color: rgba(0,0,0,.9);">
+                    <h2 class="r-fit-text">Normal flow</h2>
+                    <h3>with inline elements and blocks</h3>
+                </section>
+                <section>
+                    <h2>CSS property display: inline</h2>
+
+                    <div style="display:flex">
+                        <div style="width:45%">
+                            <pre><code><span>xxx</span>
+<span>yyy</span>
+<span>zzz</span></code></pre>
+                        </div>
+                        <div style="width:45%">
+                            <span>xxx</span>
+                            <span>yyy</span>
+                            <span>zzz</span>
+                        </div>
+                    </div>
+
+                    <ul style="font-size: 80%;">
+                        <li>display: inline, e.g.
+                            <ul>
+                                <li>elements: span, strong, em,...</li>
+                            </ul>
+                        </li>
+                        <li>Elements have default values for the display property, but it can be changed</li>
+                        <li>in line with other inline elements<ul>
+                                <li>width and height specified by content</li>
+                                <li>padding/margin ineffective on vertical directions,
+                                    exceptions:
+                                    <ul style="font-size: 70%;">
+                                        <li>replaced elements</li>
+                                        <li>embedded elements</li>
+                                        <li>option elements where width
+                                            and height are configurable</li>
+
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                </section>
+                <section>
+                    <h2>CSS property display: block</h2>
+                    <div style="display:flex">
+                        <div style="width:45%">
+                            <pre><code><div>xxx</div>
+<div>yyy</div>
+<div>zzz</div></code></pre>
+                        </div>
+                        <div style="width:45%">
+                            <div>xxx</div>
+                            <div>yyy</div>
+                            <div>zzz</div>
+                        </div>
+                    </div>
+
+                    <ul style="font-size: 80%;">
+                        <li>elements have default values for the property but it can be changed with a CSS rule, e.g.
+                        </li>
+                        <li>block-level elements
+                            <pre>div, p, ol, li, …</pre>
+                            <ul>
+                                <li>take the whole width of the parent</li>
+                                <li>margin, padding, width, height
+                                    are all settable</li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                </section>
+
+                <section>
+                    <h2>CSS property display: inline-block</h2>
+
+                    <pre><code>#yyy {display:inline-block; margin: 3rem;}</code></pre>
+                    <div style="display:flex;font-size: 60%;">
+                        <div style="width:60%">
+                            <pre><code><span>xxx</span><div id="yyy">yyy</div><span>zzz</span><br>
+<span>xxx</span><div id="yyy">yyy</div><span>zzz</span></code></pre>
+                        </div>
+                        <div style="width:40%">
+                            <span>xxx</span>
+                            <div style="display:inline-block; margin: 3rem;">yyy</div>
+                            <span id="zzz">zzz</span><br>
+                            <span>xxx</span>
+                            <div style="display:inline-block; margin: 3rem;">yyy</div>
+                            <span id="zzz">zzz</span>
+                        </div>
+                    </div>
+
+                    <ul>
+                        <li>elements inline, but..</li>
+                        <li>margin, padding, width, height can still be set</li>
+                    </ul>
+
+
+                </section>
+                <section>
+                    <h2>CSS property, display:none</h2>
+                    <button id="hide" style="font-size: 150%;">Hide with none</button>
+                    <ul id="hideable">
+                        <li>hides an element</li>
+                        <li>the element is also taken out of the document flow</li>
+                    </ul>
+                    <ul>
+                        <li>In addition to none, visibility can be controlled with
+                            <ul style="background-color: aquamarine; opacity: 30%;">
+                                <li><a
+                                        href="https://developer.mozilla.org/en-US/docs/Web/CSS/visibility">visibility</a><button
+                                        style="font-size:120%" id="visibility">Try visibility</button></button></li>
+                                <li><a
+                                        href="https://developer.mozilla.org/en-US/docs/Web/CSS/opacity">opacity</a><button
+                                        style="font-size:120%" id="opacity">Try opacity</button></li>
+                            </ul>
+                            in which case element space remains occupied even if the
+                            element is not visible, in contrast to <code>display:none</code>.
+                        </li>
+
+                    </ul>
+                    <script>
+                        const doHide = event => {
+                            const id = event.target.id
+                            let val;
+                            switch (id) {
+                                case "hide":
+                                    val = document.querySelector("#hideable").style.display;
+                                    document.querySelector("#hideable").style.display = val === "none" ? "inline" : "none";
+                                    break;
+                                case "visibility":
+                                    val = document.querySelector("#hideable").style.visibility;
+                                    document.querySelector("#hideable").style.visibility = val === "hidden" ? "visible" : "hidden";
+                                    break;
+                                case "opacity":
+                                    val = document.querySelector("#hideable").style.opacity;
+                                    document.querySelector("#hideable").style.opacity = val === "0" ? "100" : "0";
+                                    break;
+
+                            }
+
+                        }
+                        document.querySelector("#hide").addEventListener("click", doHide);
+                        document.querySelector("#visibility").addEventListener("click", doHide);
+                        document.querySelector("#opacity").addEventListener("click", doHide);
+
+
+                    </script>
+
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2 class="r-fit-text">Position</h2>
+                </section>
+                <section class="present" style="top: 42.5px; display: block;">
+                    <h2>Position</h2>
+
+                    <p style="font-size: 80%">The position of an element can be set with a <code>position</code>
+                        attribute</p>
+                    <div style="display: flex">
+                        <div style="font-size: 40%;width:60%;">
+                            <ul class="dense">
+                                <li><code>static</code> - The element is positioned as in normal flow, default value
+                                </li>
+                                <li><code>relative</code> - Element is positioned relative to its "normal" position</li>
+                                <li><code>absolute</code> - Element is positioned relative to <em>the nearest positioned
+                                        ancestor</em>
+                                    or if
+                                    there is no positioned ancestor to the container of the document</li>
+                                <li><code>fixed</code> - Element is positioned relative to the viewport. It has the
+                                    effect of keeping
+                                    the
+                                    element in the same position in the window even when scrolling.</li>
+                                <li><code>sticky</code> - Mixture of relative and fixed positioning. Not yet widely
+                                    supported.</li>
+                            </ul>
+                            <p>accompanied with<br> <em>top</em>, <em>bottom</em>, <em>left</em>,
+                                <em>right</em> to
+                                tell the new location.
+                            </p>
+                            <p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/position" target="_blanc">MDN
+                                    on Position</a></p>
+                        </div>
+                        <div style="width:40%">
+                            <img style="background-color: white" src="../img/positions.png"
+                                alt-text="position illustration">
+                        </div>
+
+                    </div>
+                </section>
+                <section style="font-size: 80%;">
+                    <h2>Relative positioning</h2>
+                    <ul>
+                        <li>moves an element relative to its normal position</li>
+                        <li>set by properties top, bottom, left, right<ul>
+                                <li>i.e., from top, from bottom, etc.</li>
+                            </ul>
+                        </li>
+                        <li>element remains in the document flow<ul>
+                                <li>the other elements assume it is in its original place</li>
+                            </ul>
+                        </li>
+
+
+                    </ul>
+                    <div style="display:flex">
+                        <style>
+                            .parent {
+                                border: 2px solid;
+                            }
+
+                            #static {
+                                display: inline-block;
+                                width: 10vw;
+                                height: 10vh;
+                                background-color: cyan;
+                            }
+
+                            #relative {
+                                display: inline-block;
+                                width: 10vw;
+                                height: 10vh;
+                                display: inline-block;
+                                background-color: cyan;
+                                position: relative;
+                                top: 50px;
+                                left: 100px;
+
+                            }
+                        </style>
+                        <div class="parent"><span id="static"></span></div>
+                        <pre style="width:30%"><code>elem {
+position: relative;
+top: 50px;
+left: 100px;
+}</code></pre>
+                        <div class="parent"><span id="relative"></span></div>
+
+
+                    </div>
+
+
+
+                </section>
+                <section>
+                    <h2>Absolute positioning</h2>
+                    <ul>
+                        <li>
+                            Element is attached to the closest ancestor whose position is other than static</li>
+                        <li>taken out from the document flow</li>
+                    </ul>
+                    <div style="display:flex">
+                        <style>
+                            .parent {
+                                border: 2px solid;
+                                width: 30%;
+                            }
+
+                            #static2 {
+                                display: inline-block;
+                                width: 10vw;
+                                height: 10vh;
+                                background-color: rgba(0, 0, 255, 0.3);
+                                ;
+                            }
+
+                            #absolute {
+                                display: inline-block;
+                                width: 10vw;
+                                height: 10vh;
+                                display: inline-block;
+                                background-color: rgba(0, 0, 255, 0.3);
+                                ;
+                                position: absolute;
+                                top: 50px;
+                                left: 100px;
+
+                            }
+                        </style>
+                        <div class="parent"><span id="static2"></span></div>
+                        <pre style="width:30%"><code>elem {
+position: absolute;
+top: 50px;
+left: 100px;
+}</code></pre>
+                        <div class="parent"><span id="absolute"></span></div>
+
+
+                </section>
+                <section>
+                    <h2>Fixed positioning</h2>
+                    <ul>
+                        <li>Similar to absolute, but not attached to an ancestor, but
+                            to the viewport (the browser window)</li>
+                    </ul>
+
+                    <div style="display:flex">
+                        <style>
+                            .parent {
+                                border: 2px solid;
+                            }
+
+                            #static3 {
+                                display: inline-block;
+                                width: 10vw;
+                                height: 10vh;
+                                background-color: rgba(0, 0, 255, 0.3);
+                                ;
+                            }
+
+                            #fixed {
+                                display: inline-block;
+                                width: 10vw;
+                                height: 10vh;
+                                display: inline-block;
+                                background-color: rgba(0, 0, 255, 0.3);
+                                ;
+                                position: fixed;
+                                top: 50px;
+                                left: 100px;
+
+                            }
+                        </style>
+                        <div class="parent"><span id="static3"></span></div>
+                        <pre style="width:30%"><code>elem {
+position: fixed;
+top: 50px;
+left: 100px;
+}</code></pre>
+                        <div class="parent"><span id="fixed"></span></div>
+
+                </section>
+                <section>
+
+                    <h2>Sticky positioning</h2>
+                    <ul>
+                        <li>a new, experimental positioning</li>
+                        <li>kind-of-a combination of absolute and fixed positioning</li>
+                        <li>fixed till a certain threshold, after which absolute</li>
+
+                    </ul>
+                    <div style="display:flex">
+                        <style>
+                            .parent {
+                                border: 2px solid;
+                            }
+
+                            #static4 {
+                                display: inline-block;
+                                width: 10vw;
+                                height: 10vh;
+                                background-color: rgba(0, 0, 255, 0.3);
+                                ;
+                            }
+
+                            #sticky {
+                                display: inline-block;
+                                width: 10vw;
+                                height: 10vh;
+                                display: inline-block;
+                                background-color: rgba(0, 0, 255, 0.3);
+                                ;
+                                position: fixed;
+                                top: 50px;
+                                left: 100px;
+
+                            }
+                        </style>
+                        <div class="parent"><span id="static4"></span></div>
+                        <pre style="width:30%"><code>elem {
+position: sticky;
+top: 50px;
+left: 100px;
+}</code></pre>
+                        <div class="parent"><span id="fixed"></span></div>
+
+
+
+
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2 class="r-fit-text">Floats</h2>
+                </section>
+                <section>
+                    <h2>CSS float</h2>
+                    <ul style="font-size: 60%;">
+                        <li>float sets element's horizontal position: to the left or right edge of its parent
+                        </li>
+                        <pre><code>aside {
+float:left;
+}</code></pre>
+
+                        <li>if scrolled, moves with its parent</li>
+                        <li>removal from the document flow</li>
+                        <li>following elements occupy the released space</li>
+                        <li>the occupation is eliminated with clear</li>
+
+                        <li>
+                            <a href="https://youtu.be/fyWdofSeukE?t=51">A float video</a>
+                            <a href="https://peterxjang.com/blog/modern-css-explained-for-dinosaurs.html">A float
+                                article</a>
+                        </li>
+
+                    </ul>
+
+
+                </section>
+                <section style="font-size: 80%;">
+                    <h2>CSS float example</h2>
+
+                    <pre><code>float: none|left|right</code></pre>
+
+                    <div style="display:flex">
+
+                        <div style="width:40%">
+
+                            <div style="font-size:75%;">
+                                <p>Reset of float:</p>
+                                <pre><code>clear: right|left|both</code></pre>
+                                <p>For example:</p>
+                                <pre><code>aside {
+  float:left;
+}
+p.cleared {
+  clear: left;
+}</code></pre>
+
+                            </div>
+
+                        </div>
+
+                        <div style="width:60%;font-size: 40%;">
+                            Laboris esse reprehenderit adipisicing consectetur excepteur esse non sit quis exercitation
+                            officia amet.
+                            Enim ad enim mollit ullamco reprehenderit. Cillum elit adipisicing nostrud est adipisicing
+                            in labore quis
+                            sint dolore nulla aliquip aute cillum ex.
+                            <img src="https://cdn-icons-png.flaticon.com/512/4062/4062096.png"
+                                style="float: left;width: 20%;">
+                            Eu ut deserunt quis non aliquip Lorem minim officia voluptate quis enim velit. Labore et
+                            tempor irure id nulla magna dolore adipisicing culpa. Ad laborum minim magna sint.
+                            Ullamco cupidatat consequat nisi velit culpa. Minim ad aute eu fugiat voluptate cupidatat
+                            nisi adipisicing ullamco minim mollit. Proident Lorem est irure qui magna minim ea duis
+                            ullamco et id do Lorem. Consequat nulla laborum proident velit commodo officia tempor do ut
+                            consectetur. Ut non esse aute amet minim consectetur.
+                            Lorem proident excepteur nostrud ullamco enim officia eu incididunt dolore voluptate do amet
+                            cupidatat nulla. Cupidatat exercitation eiusmod voluptate in culpa mollit laborum consequat
+                            velit anim. Commodo tempor id nulla. Deserunt ut Lorem ad enim aliqua.
+                            <img src="https://cdn-icons-png.flaticon.com/512/4062/4062096.png"
+                                style="float: right;width: 20%;">
+                            Esse occaecat ut incididunt pariatur nulla voluptate pariatur elit cillum occaecat quis
+                            exercitation nostrud fugiat. Anim sit quis officia excepteur reprehenderit nostrud velit
+                            dolor do anim ad. Adipisicing laborum exercitation minim culpa velit. Mollit irure nisi
+                            laboris do quis voluptate nisi occaecat. Ut ipsum reprehenderit pariatur est. Minim mollit
+                            voluptate veniam et fugiat dolore occaecat fugiat exercitation. Aliquip nisi eiusmod aliqua
+                            mollit eu. Adipisicing laborum ex ex est aute aliqua id nisi cupidatat non consectetur minim
+                            voluptate.
+                            <p style="clear:both">
+                                <strong>clear:both in effect.</strong>
+                                Sit occaecat anim laborum Lorem in fugiat enim. Duis nostrud velit non excepteur laboris
+                                minim excepteur pariatur sunt ut laborum. Et velit laboris amet. Mollit amet non elit
+                                aliquip est excepteur dolore Lorem anim elit. Ipsum irure reprehenderit mollit excepteur
+                                nostrud incididunt do eiusmod enim nisi. Id irure exercitation adipisicing eu ea laborum
+                                pariatur id minim eu eu excepteur.
+                            </p>
+
+                        </div>
+                    </div>
+
+
+                </section>
+                <section>
+                    <h2>Remember: float must be cleared</h2>
+                    <ul style="font-size: 60%;">
+                        <li>
+                            The "cleared" element moves to the next available line below the floated elements.
+                        </li>
+                        <pre><code>.container {
+                      clear: both; /* clears left and right floats */
+                    }</code></pre>
+                        <li>Clearfix techniques can be used for more robust clearing across browsers.</li>
+                        <li>The “clearfix” hack (adding an empty element with clear: both after floated elements) was
+                            commonly employed to prevent parent containers from collapsing.</li>
+                        <li>
+                            <a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Floats">MDN reference
+                                on float clearing</a>
+                        </li>
+                    </ul>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2 class="r-fit-text">Flex</h2>
+                </section>
+                <section>
+                    <h2>CSS Flexbox</h2>
+                    <pre><code>display: flex</code></pre>
+
+                    <ul>
+                        <li>Easier way to implement flexible layouts</li>
+                        <li>Elements are laid out within their parent: flex container
+                            whose display property is flex</li>
+
+                    </ul>
+                    <div style="display:flex">
+                        <pre style="width:50%"><code><div class="container">
+    <!-- flex-items -->
+</div></code></pre>
+                        <pre style="width:50%"><code>div.container {
+  display: flex;
+}</code></pre>
+                    </div>
+
+
+                    <p>both horizontal and vertical directions are possible</p>
+
+                </section>
+                <section>
+                    <h2>Flex-directions: row and column</h2>
+                    flex-direction:<button class="btn btn-secondary">row</button>|
+                    <button class="btn btn-secondary">row-reverse</button>|<button
+                        class="btn btn-secondary">column</button>|
+                    <button class="btn btn-secondary">column-reverse</button>
+
+                    <style>
+                        .container2 {
+                            display: flex;
+                            width: 100%;
+                            height: 50vw;
+                        }
+
+                        .yyy {
+                            background-color: olive;
+                            width: 25%;
+                            height: 25%
+                        }
+
+                        .kaa {
+                            background-color: rosybrown;
+                            width: 25%;
+                            height: 25%
+                        }
+
+                        .koo {
+                            background-color: burlywood;
+                            width: 25%;
+                            height: 25%
+                        }
+                    </style>
+                    <script>
+                        const setStyle = e => {
+                            const direction = e.target.textContent;
+                            const container = document.querySelector(".container2");
+                            container.style.display = "flex";
+                            container.style.flexDirection = direction;
+
+
+                        }
+                        (() => {
+                            Array.from(document.querySelectorAll(".btn")).forEach(b => b.addEventListener("click", setStyle))
+                        })()
+                    </script>
+
+                    <div class="container2" style="width:30rem;height:20vh">
+                        <div class="flex-item yyy">Yyy</div>
+                        <div class="flex-item kaa">Kaa</div>
+                        <div class="flex-item koo">Koo</div>
+                    </div>
+
+
+                </section>
+                <section>
+                    <h2>Flex-direction sets main- and cross axes</h2>
+
+                    <div style="display:flex">
+                        <div style="width:40%">
+
+                            main and cross axes when
+                            flex-direction is
+                            <ol>
+                                <li>row</li>
+                                <li>row-reverse</li>
+                                <li>column</li>
+                                <li>column-reverse</li>
+                            </ol>
+                        </div>
+                        <div style="width:60%">
+                            <img src="../img/main_vs_cross.png">
+                        </div>
+
+                    </div>
+
+                </section>
+                <section style="font-size: 80%;">
+                    <h2>Main axis!</h2>
+
+                    <p>Justify-content along the main-axis</p>
+
+                    justify-content:<button class="btn btn-secondary">flex-start</button>|
+                    <button class="btn btn-secondary">center</button>|<button
+                        class="btn btn-secondary">flex-end</button>|
+                    <button class="btn btn-secondary">space-around</button>|<button
+                        class="btn btn-secondary">space-between</button>
+                    <br>
+                    flex-direction:<button class="btn btn-secondary">row</button>|
+                    <button class="btn btn-secondary">row-reverse</button>|<button
+                        class="btn btn-secondary">column</button>|
+                    <button class="btn btn-secondary">column-reverse</button>
+                    <style>
+                        .container3,
+                        .container4 {
+                            display: flex;
+                            width: 100%;
+                            height: 30vh;
+                        }
+                    </style>
+
+                    <script>
+                        const setStyle2 = e => {
+                            const justify = e.target.textContent;
+                            const container = document.querySelector(".container3");
+                            container.style.display = "flex";
+                            container.style.flexDirection = justify;
+                            container.style.justifyContent = justify;
+
+
+                        }
+                        (() => {
+                            Array.from(document.querySelectorAll(".btn")).forEach(b => b.addEventListener("click", setStyle2))
+                        })()
+                    </script>
+                    <div class="container3">
+                        <div class="flex-item yyy">Yyy</div>
+                        <div class="flex-item kaa">Kaa</div>
+                        <div class="flex-item koo">Koo</div>
+                    </div>
+
+
+
+
+                </section>
+                <section style="font-size: 80%;">
+                    <h2>Cross axis!</h2>
+
+                    <h2>Align-items along with cross axis</h2>
+
+                    <div style="display:flex;align-items: flex-start;">
+
+
+                        <div style="font-size: 80%;">
+                            align-items: <button class="btn btn-secondary">stretch</button>|<button
+                                class="btn btn-secondary">flex-start</button>|<button
+                                class="btn btn-secondary">flex-end</button>|<button
+                                class="btn btn-secondary">center</button>| ...</code></pre>
+                            <br>
+                            flex-direction:<button class="btn btn-secondary">row</button>|
+                            <button class="btn btn-secondary">row-reverse</button>|<button
+                                class="btn btn-secondary">column</button>|
+                            <button class="btn btn-secondary">column-reverse</button>
+                        </div>
+
+                        <div style="width:40%">
+                            <p>For example:</p>
+                            <pre style="width:100%"><code>div.container4 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}</code></pre>
+                        </div>
+                    </div>
+
+                    <style>
+                        .yyy {
+                            background-color: olive;
+                            width: auto;
+                            height: auto;
+                        }
+
+                        .kaa {
+                            background-color: rosybrown;
+                            width: auto;
+                            height: auto;
+                        }
+
+                        .koo {
+                            background-color: burlywood;
+                            width: auto;
+                            height: auto;
+                        }
+                    </style>
+                    <script>
+                        const setStyle4 = e => {
+                            const justify = e.target.textContent;
+                            const container = document.querySelector(".container4");
+                            container.style.display = "flex";
+                            container.style.flexDirection = justify;
+                            container.style.alignItems = justify;
+
+
+                        }
+                        (() => {
+                            Array.from(document.querySelectorAll(".btn")).forEach(b => b.addEventListener("click", setStyle4))
+                        })()
+                    </script>
+                    <div class="container4">
+                        <div class="flex-item yyy">Yyy</div>
+                        <div class="flex-item kaa">Kaa</div>
+                        <div class="flex-item koo">Koo</div>
+                    </div>
+
+                </section>
+                <section>
+                    <h2>Multiline flex-container with flex-wrap</h2>
+                    <pre><code>flex-wrap: nowrap|wrap</code></pre>
+                    <div style="display:flex">
+                        <div style="width: 40%; font-size: 80%;">
+                            <pre><code>div.container {
+    display: flex;
+    flex-wrap: wrap;
+}
+div.flex-item {
+    width: 150px
+}
+</code></pre>
+
+                        </div>
+                        <style>
+                            div.container {
+                                display: flex;
+                                flex-wrap: wrap;
+                            }
+
+                            div.flex-item {
+                                width: min(5rem, 1fr)
+                            }
+                        </style>
+
+                        <div class="container" style="display:flex;width:50%">
+                            <div class="flex-item yyy">YyyLongRowToDistrupt</div>
+                            <div class="flex-item kaa">Kaa</div>
+                            <div class="flex-item koo">Koo</div>
+                            <div class="flex-item yyy">Yyy</div>
+                            <div class="flex-item kaa">Kaa</div>
+                            <div class="flex-item koo">Koo</div>
+                        </div>
+
+                    </div>
+
+                </section>
+                <section class="basis">
+                    <h2>Flex item sizing</h2>
+                    flex: <button class="btn btn-secondary">1</button>|flex-shrink|flex-grow|<button
+                        class="btn btn-secondary">flex-basis: 5rem</button>
+                    <pre><code>div.container {display: flex;}
+div.flex-item {flex: 1; /* = flex: 1 1 0, default */}</code></pre>
+
+                    <dl>
+                        <dt>flex-basis</dt>
+                        <dd>sets the initial size for flex-items;
+                            the remaining space is left unused</dd>
+                    </dl>
+
+
+
+
+                    <pre><code>div.flex-item {
+    flex-basis: 5rem;
+}
+</code></pre>
+                    <script>
+                        const setStyle5 = e => {
+                            const flex = e.target.textContent;
+                            const container = document.querySelector(".container5");
+                            container.style.display = "flex";
+                            container.style.flexDirection = "row";
+                            const flexItems = Array.from(container.querySelectorAll(".flex-item"));
+                            // alert(flex+flexItems.length)
+                            if (flex.indexOf("basis") > -1) {
+                                flexItems.forEach(item => item.style.setProperty('flex-basis', "5rem"))
+                            }
+                            else {
+                                flexItems.forEach(item => {
+                                    item.style.setProperty('flex', "1")
+                                })
+                            }
+                        }
+                        (() => {
+                            Array.from(document.querySelectorAll(".basis .btn")).forEach(b => b.addEventListener("click", setStyle5))
+                        })()
+                    </script>
+
+
+                    <div class="container5" style="display:flex;">
+                        <div class="flex-item yyy">Yyy</div>
+                        <div class="flex-item kaa">Kaa</div>
+                        <div class="flex-item koo">Koo</div>
+                        <div class="flex-item yyy">Yyy</div>
+                        <div class="flex-item kaa">Kaa</div>
+                        <div class="flex-item koo">Koo</div>
+                    </div>
+
+
+                </section>
+                <section style="font-size: 80%;">
+                    <h2>flex-grow</h2>
+                    <pre><code>'flex-grow'|['flex-shrink']|['flex-basis']</code></pre>
+                    <img src="../img/flex-grow.gif">
+
+
+                    <dl>
+                        <dt>flex-grow</dt>
+                        <dd>used to allocate space proportionally and in relation to other items</dd>
+                    </dl>
+                    <div style="display:flex;font-size:70%;width:70%">
+                        <pre style="width:auto"><code>.square#three {flex-grow: 6;}</code></pre>
+                    </div>
+                    <div>that is, in excess of space (after basis) is shared so that #three gets six times more than
+                        others</div>
+
+                    <a
+                        href="https://www.freecodecamp.org/news/even-more-about-how-flexbox-works-explained-in-big-colorful-animated-gifs-a5a74812b053/">
+                        See the Animated gif explanation of freeCodeCamp
+                    </a>
+
+                </section>
+                <section>
+                    <h2>flex-shrink</h2>
+                    'flex-grow'|['flex-shrink']|['flex-basis']
+
+                    <div style="display:flex">
+                        <pre><code>
+div.container {
+display: flex;
+}
+div.flex-item {
+flex-basis: 200px;
+}
+div.flex-item:nth-child(2) {
+flex-shrink: 0; /* = flex: 1 0 150px */
+/* = do NOT shrink! */
+}</code></pre>
+                        <div>
+                            <img src="../img/flex-shrink.gif">
+                        </div>
+                    </div>
+
+                    <dl style="font-size: 50%;">
+                        <dt>flex-shrink:0</dt>
+                        <dd>does not shrink</dd>
+                        <dt>flex-shrink:2</dt>
+                        <dd>in lack of space, item shrinks twice as fast as others. (One way to think about this is that
+                            it gains twice as much minus space)</dd>
+                    </dl>
+
+
+                </section>
+                <section>
+                    <h2>order</h2>
+                    <pre><code>order: integer</code></pre>
+                    <pre><code>
+div.container {
+display: flex;
+}</code></pre>
+
+                    default is 0, the bigger number, the later in order.
+                    To ensure the first position, order can be -1, too.
+
+
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2 class="r-fit-text">Grid</h2>
+                </section>
+
+                <section>
+                    <h2>CSS Grid</h2>
+                    <pre><code>display: grid</code></pre>
+                    <ul>
+                        <li>used to layout entire web pages</li>
+                        <li>grid for 2-D, flex for 1-D layouts</li>
+
+                    </ul>
+
+                    <div style="display:flex">
+                        <pre><code><elem class="container">
+    <!-- grid items -->
+</elem>
+</code></pre>
+                        <pre><code>elem.container {
+display: grid;
+. . .
+}
+</code></pre>
+                    </div>
+
+                    <p>Grid container contains grid items</p>
+
+                </section>
+                <section style="font-size:50%">
+                    <h2>More terminology</h2>
+                    <style>
+                        .grid {
+                            display: grid;
+                            height: auto;
+                            width: 50%;
+                            grid-template: 5rem 5rem/5rem 5rem 5rem;
+                            grid-row-gap: 0;
+                        }
+
+                        .grid-item {
+                            border: 1px solid red;
+                            box-sizing: border-box;
+                        }
+
+                        .grid tr:hover {
+                            background-color: yellow;
+                        }
+
+                        .grid-item:hover:after {
+                            background-color: purple;
+                        }
+
+                        .grid-item:hover:after {
+                            color: #93c21b !important;
+                            content: "Cell!"
+                        }
+
+
+                        .grid:hover>div:first-child {
+                            background-color: orange;
+                        }
+
+                        .grid:hover>div:nth-child(2) {
+                            background-color: orange;
+                        }
+
+                        .grid:hover>div:nth-child(3) {
+                            background-color: orange;
+                        }
+
+                        .grid:hover>div:nth-child(4) {
+                            background-color: green;
+                        }
+
+                        .grid:hover>div:nth-child(5) {
+                            background-color: green;
+                        }
+
+                        .grid:hover>div:nth-child(6) {
+                            background-color: green;
+                        }
+                    </style>
+
+                    <div style="display:flex">
+                        <dl style="width:50%">
+                            <dt>line</dt>
+                            <dd>row line or column line</dd>
+                            <dt>track</dt>
+                            <dd>between adjacent lines (hover rows)</dd>
+                            <dt>cell</dt>
+                            <dd>surrounded by adjacent rows and columns (hover to see row tracks)</dd>
+                            <dt>area</dt>
+                            <dd>rectangle of one/multiple cells</dd>
+                        </dl>
+                        <div class="grid">
+                            <div class="grid-item"></div>
+                            <div class="grid-item"></div>
+                            <div class="grid-item"></div>
+                            <div class="grid-item"></div>
+                            <div class="grid-item"></div>
+                            <div class="grid-item"></div>
+                        </div>
+                    </div>
+
+                </section>
+                <section>
+                    <h2>Grid container: grid-template</h2>
+                    <pre><code style="display:inline">grid-template: [CSS unit]*/[CSS unit]*</code></pre>
+                    <style>
+                        .grid2 {
+                            width: 50%;
+                            display: grid;
+                            /* 2 x 3 grid */
+                            grid-template: 50px 50px / 150px auto 150px;
+                        }
+
+                        .item {
+                            border: 2px solid red;
+                        }
+                    </style>
+                    <div style="display:flex;align-items: center;">
+                        <div class="grid2">
+                            <div class="item"></div>
+                            <div class="item"></div>
+                            <div class="item"></div>
+                            <div class="item"></div>
+                            <div class="item"></div>
+                            <div class="item"></div>
+                        </div>
+                        <pre style="width:60%;font-size: 40%;"><code>.grid {
+    display: grid;
+    /* 2 x 3 grid */
+    grid-template: 50px 50px / 150px auto 150px;
+    }</code></pre>
+                    </div>
+                    <p>auto occupies remaining space</p>
+
+
+                </section>
+                <section style="font-size: 80%;">
+                    <h2>grid-template with fraction(fr)</h2>
+
+                    <div style="display:grid;grid-template: 1fr 1fr/1fr 1fr;">
+
+                        <div>width/3 (= 1 + 1 + 1): equal-width columns</div>
+                        <pre><code>.container {
+grid-template: 50px 50px / 1fr 1fr 1fr;
+}</code></pre>
+
+
+                        <div>width/10 (= 1 + 4 + 5): columns 1/10, 4/10 and 5/10</div>
+                        <pre><code>.container {
+grid-template: 50px 50px / 1fr 4fr 5fr;
+}</code></pre>
+
+                    </div>
+
+
+                </section>
+                <section>
+                    <h2>Grid template shorthand: repeat</h2>
+                    <pre><code>repeat(n, CSS unit value)</code></pre>
+                    <p>equals n times repeated CSS unit value, e.g.</p>
+                    <div style="display:flex;justify-content: space-between; font-size: 70%;align-items: center;">
+                        <pre><code>grid-template: 50px 50px / 1fr 1fr 1fr;</code></pre>==
+                        <pre><code>grid-template: repeat(2, 50px)/ repeat (3, 1fr);</code></pre>
+                    </div>
+
+
+                </section>
+                <section style="font-size: 80%;">
+                    <h2>Grid areas: multiple grid cells</h2>
+
+                    <pre><code>grid-column: start-value/end-value | start-value/span value</code></pre>
+                    <pre><code>grid-row: start-value/end-value | start-value/span value</code></pre>
+                    <pre><code>grid-area: row-start/col-start/row-end/col-end</code></pre>
+                    <ul>
+                        <li>grid-column and grid-row define multiple cells between specified
+                            grid lines; <a href="https://css-tricks.com/almanac/properties/g/grid-row-column/">Example
+                                in CSS tricks</a>
+                        </li>
+                    </ul>
+
+                    <div style="width:100%;height:20em;display:flex;font-size: 40%;">
+
+
+                        <div class="grid4">
+                            <div style="
+      grid-column: 1 / span 2 ;
+      grid-row: 2 / 3;
+    ">
+                            </div>
+                            <div style="
+      grid-column: 3 / 4;
+      grid-row: 1 / 2;
+    ">
+                            </div>
+                            <div style="grid-area:3/1/3/3"></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+
+                        <pre style="font-size: 80%;"><code>.grid4 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-gap: 10px;
+  padding: 10px;
+}
+
+.grid4 > div {
+  min-height: 100px;
+  background: white;
+  display: grid;
+  place-items: center;
+}
+.grid4 > div::after {content: attr(style);}</code></pre>
+                    </div>
+                    <style>
+                        .grid4 {
+                            display: grid;
+                            height: 20rem;
+                            width: 20rem;
+                            grid-template-columns: repeat(3, 1fr);
+                            grid-template-rows: repeat(3, 1fr);
+                            grid-gap: 10px;
+                            border: 1px solid red;
+                            /* padding: 10px; */
+                            width: 50%;
+                        }
+
+                        .grid4>div {
+                            min-height: 100px;
+                            background: white;
+                            display: grid;
+                            place-items: center;
+                        }
+
+                        .grid4>div::after {
+                            content: attr(style);
+                            white-space: pre-wrap;
+                        }
+                    </style>
+
+
+
+                </section>
+                <section>
+                    <h2><a href="https://w3c.github.io/csswg-drafts/css-grid/#subgrids">Nested grids as subgrids</a>
+                    </h2>
+
+                    <style>
+                        .maingrid {
+                            display: grid;
+                            width: 50%;
+                            gap: 10px;
+                            grid-template-columns: 150px 100px 150px 100px;
+                            grid-template-rows: repeat(3, minmax(100px, auto));
+                            color: #444;
+                            margin: 1em;
+                        }
+
+                        .box {
+                            background-color: #444;
+                            color: #fff;
+                            border-radius: 5px;
+                            padding: 20px;
+                            font-size: 150%;
+
+                        }
+
+                        .box .box {
+                            background-color: #ccc;
+                            color: #444;
+                        }
+
+                        .a {
+                            grid-column: 1 / 3;
+                        }
+
+                        .b {
+                            grid-column: 4;
+                        }
+
+                        .c {
+                            grid-column: 1;
+                            grid-row: 2 / 4;
+                        }
+
+                        .d {
+                            grid-column: 2 / 5;
+                            grid-row: 2 / 4;
+                            display: grid;
+                            grid-template-columns: subgrid;
+                            grid-template-rows: subgrid;
+                        }
+
+                        .e {
+                            grid-row: 1 / 3;
+                            grid-column: 1;
+                        }
+
+                        .f {
+                            grid-row: 1;
+                            grid-column: 2 / 4;
+                        }
+
+                        .g {
+                            grid-row: 2;
+                            grid-column: 3;
+                        }
+                    </style>
+                    <div style="display:flex;font-size:60%">
+                        <div class="maingrid">
+                            <div class="box a">A</div>
+                            <div class="box b">B</div>
+                            <div class="box c">C</div>
+                            <div class="box d">
+                                <span style="font-size:80%">subgrid</span>
+                                <div class="box e">E</div>
+                                <div class="box f">F</div>
+                                <div class="box g">G</div>
+                            </div>
+                        </div>
+                        <div style="height:auto;margin: 1em;">
+                            <ul>
+                                <li>first in Firefox, to other browsers via push of <a
+                                        href="https://web.dev/interop-2022/#subgrid">Web Interop</a></li>
+                                <li>subgrid aligns with the outer grid</li>
+                                <li><a href="https://www.youtube.com/watch?v=ZcE83LAmLSQ">enables new cool designs,
+                                        check the video</a></li>
+                            </ul>
+                            <pre style="height:auto;"><code>.d {grid-column: 2 / 5; grid-row: 2 / 4;
+  display: grid; 
+  grid-template-columns: subgrid;
+  grid-template-rows: subgrid;
+}</code></pre>
+                        </div>
+                    </div>
+
+                </section>
+                <section>
+                    <h2>grid-template-areas ("ascii-art")</h2>
+
+                    <div style="display:flex">
+                        <div style="display:flex;flex-direction: column;width: 50%;">
+                            <pre style="font-size: 40%;"><code><div id="grid5">
+<div style="grid-area: h">Header</div>
+<div style="grid-area: m">Menu</div>
+<div style="grid-area: a">Article</div>
+<div style="grid-area: f">Footer</div>                    
+</div>
+</code></pre>
+                            <div id="grid5">
+                                <div style="grid-area: h">Header</div>
+                                <div style="grid-area: m">Menu</div>
+                                <div style="grid-area: a">Article</div>
+                                <div style="grid-area: f">Footer</div>
+                            </div>
+                        </div>
+                        <pre style="width:50%;font-size:40%"><code id="code_grid5">#grid5 {
+height: 4em;
+display: grid;
+grid-gap: 3px;
+grid-template:
+50px auto 50px / repeat(12, 1fr);
+grid-template-areas:
+"h h h h h h h h h h h h"
+"m m a a a a a a a a a a"
+". . f f f f f f f f f f";
+}
+
+#grid5 > div {
+background-color: aliceblue;
+text-align: center;
+padding: 25px 5px;
+font-size: 18px;
+}</code></pre>
+                    </div>
+                    <style>
+                        #grid5,
+                        #grid6 {
+                            height: 4em;
+                            display: grid;
+                            grid-gap: 3px;
+                            grid-template:
+                                50px auto 50px / repeat(12, 1fr);
+                            grid-template-areas:
+                                "h h h h h h h h h h h h"
+                                "m m a a a a a a a a a a"
+                                ". . f f f f f f f f f f";
+                        }
+
+                        #grid5>div,
+                        #grid6>div {
+                            background-color: aliceblue;
+                            text-align: center;
+                            padding: 25px 5px;
+                            font-size: 18px;
+                        }
+                    </style>
+
+                    <div class="alert alert-light" role="alert">
+                        Note: grid-area name can be longer than one char
+                    </div>
+                </section>
+
+
+                <section>
+                    <h2>Same grid-areas - different layout</h2>
+
+                    <div style="display:flex">
+                        <div style="display:flex;flex-direction: column;width: 50%;">
+                            <pre style="font-size: 40%;"><code><div id="grid6">
+<div style="grid-area: h">Header</div>
+<div style="grid-area: m">Menu</div>
+<div style="grid-area: a">Article</div>
+<div style="grid-area: f">Footer</div>                    
+</div>
+</code></pre>
+                            <div id="grid6">
+                                <div style="grid-area: h">Header</div>
+                                <div style="grid-area: m">Menu</div>
+                                <div style="grid-area: a">Article</div>
+                                <div style="grid-area: f">Footer</div>
+                            </div>
+                        </div>
+                        <pre style="width:50%;font-size:40%"><code id="code_grid6">#grid6 {
+grid-template-areas:
+"h h h h h h h h h h h h"
+". . f f f f f f f f f f"
+"a a a a . . m m m m m m"
+}</code></pre>
+                    </div>
+                    <style>
+                        #grid6 {
+                            grid-template-areas:
+                                "h h h h h h h h h h h h"
+                                ". . f f f f f f f f f f"
+                                "a a a a . . m m m m m m"
+                        }
+                    </style>
+
+                </section>
+
+
+                <section style="font-size:70%">
+                    <h2>Grid and order: disrupting the normal flow</h2>
+
+                    <p>The normal document flow lays elements out in the order of appearance.Grid layout, however, can
+                        disrupt this:</p>
+
+                    <ul style="font-size: 80%;">
+                        <li>grid allows you to define a layout structure and then place items within that structure.
+                            This means items can be visually positioned differently than their order in the HTML.</li>
+                        <li>order property allows you to further control the order of grid items within a row or column.
+                            <ul>
+                                <li>by default, items have an order of 0. You can set a positive or negative value for
+                                    each item, similar to the `z-index` property.</li>
+                                <li>with a left-to-right main axis, the item with the smallest order value appears on
+                                    the left, and the largest on the right.</li>
+                            </ul>
+                        </li>
+                        <li>grid items can span multiple columns. For example,
+                            <kbd>.item { grid-column: 1 / -1; }</kbd> makes the item span from the first column (1) to
+                            the last line (indicated by `-1`).
+                        </li>
+                    </ul>
+                </section>
+
+
+
+                <section style="Color:white;font-size: 60%;">
+                    <h2>Summary of grid layout options</h2>
+
+                    <div style="display:grid;grid-template-columns: 1fr 1fr;justify-items: flex-start;">
+                        <table style="color:white;margin-top: auto;display: flex; align-items: flex-start;">
+                            <tr>
+                                <th colspan="2">Grid container</th>
+                            </tr>
+                            <tr>
+                                <td>grid-template-rows</td>
+                                <td>row heights</td>
+                            </tr>
+                            <tr>
+                                <td>grid-template-columns</td>
+                                <td>column widths, e.g., 1em 1em auto 1em</td>
+                            </tr>
+                            <tr>
+                                <td>grid-template</td>
+                                <td>rows/columns</td>
+                            </tr>
+                            <tr>
+                                <td>grid-template-areas</td>
+                                <td>"ascii-art"</td>
+                            </tr>
+                            <tr>
+                                <td>row-gap, column-gap, gap</td>
+                                <td>"margins"</td>
+                            </tr>
+                        </table>
+
+
+                        <table
+                            style="color:white; margin-top: auto;display: flex; align-items: flex-start;align-self: flex-start;">
+                            <tr>
+                                <th colspan="2">Grid items</th>
+                            </tr>
+                            <tr>
+                                <td>grid-row</td>
+                                <td>row-start/-end</td>
+                            </tr>
+                            <tr>
+                                <td>grid-column</td>
+                                <td>col-start/-end</td>
+                            </tr>
+                            <tr>
+                                <td>grid-area</td>
+                                <td>row/column (defaults to 1) or row-start/col-start/row-end/col-end</td>
+                            </tr>
+                            <tr>
+                                <td>subgrid</td>
+                                <td>nested grid as subitem to align tracks with parent</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <a href="https://css-tricks.com/snippets/css/complete-guide-grid/">For more tricks, check CSS
+                        tricks</a>
+
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2 class="r-fit-text">
+                        Custom properties
+                    </h2>
+
+                </section>
+                <section>
+                    <h2>Custom properties</h2>
+
+
+                    <ul>
+                        <li>also referred to as CSS variables</li>
+                        <li>specific values that can be reused throughout a document</li>
+                        <li>syntax:
+                            <ol>
+                                <li>double-hyphen:
+                                    <pre><code>:root { --primary-color: #3498db;}</code></pre>
+                                    the property actionable throughtout the document (:root pseudo-class)
+                                </li>
+                                <li><a
+                                        href="https://developer.mozilla.org/en-US/docs/Web/CSS/@property#browser_compatibility">@property;
+                                        not yet widely supported</a>
+                                    <pre><code>@property --item-size {
+    syntax: "&lt;percentage&gt;"; /* Allow only percentage values */
+    initial-value: 40%; /* Set an initial value */
+}</code></pre>
+                                </li>
+                            </ol>
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>Usage with var() function</h2>
+
+                    <div style="display: flex;">
+                        <ul style="width:45%;font-size: 2rem;">
+                            <li>var() is a CSS function used to insert the value of a custom property (variable)</li>
+                            <li>Syntax:
+                                <pre><code>var(--variable-name, 
+default-value)</code></pre>
+                            </li>
+                            <li>If the variable is not defined, it falls back to the default value.</li>
+                        </ul>
+                        <pre style="width:60%;font-size: 1rem;"><code>.button {
+    background-color: 
+        var(--primary-color, blue);
+    color: white;
+}    
+.container {
+    width: var(--item-size); 
+    height: var(--item-size); 
+}</code></pre>
+
+
+                    </div>
+
+
+                </section>
+            </section>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+    <script src="dist/reveal.js"></script>
+    <script src="plugin/zoom/zoom.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/search/search.js"></script>
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script>
+        // Als</li><li>available as an ES module, see:
+        // https://revealjs.com/initialization/
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            center: true,
+            hash: true,
+
+            // Learn about plugins: https://revealjs.com/plugins/
+            plugins: [
+                RevealZoom,
+                RevealNotes,
+                RevealSearch,
+                RevealMarkdown,
+                RevealHighlight
+            ]
+        })
+    </script>
+</body>
+
+</html>

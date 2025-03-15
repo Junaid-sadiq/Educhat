@@ -1,0 +1,1241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+
+    <title>WSD: lect09 - DOM </title>
+
+    <meta name="description" content="A framework for easily creating beautiful presentations using HTML" />
+    <meta name="author" content="Pia Niemelä, based on Jaakko Rajala's 2024 contribution" />
+
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="dist/reset.css" />
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="../css/deadline.css" />
+    <link rel="stylesheet" href="./css/lect09.css">
+
+
+    <link rel="stylesheet" href="dist/theme/moon.css" id="theme" />
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme" />
+    <link href="https://fonts.googleapis.com/css?family=Coda" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+
+
+    <link rel="stylesheet" href="../css/infograph.css" id="theme" />
+    <style>
+        h1 {
+            font-size: 50%;
+        }
+
+        div>iframe {
+            scale: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides" style="font-size: 60%; ">
+            <section id="TABLE_OF_CONTENTS" data-background="#81237F">
+                <h1>Luennon 9 - DOM</h1>
+                <div style="display: flex;width: 90%;justify-content: space-around;">
+                    <ul style="width:60%">
+                        <li><a href="#THE_DOM_API_INTRODUCTION">Johdanto DOM:iin</a></li>
+                        <li><a href="#how_to_use_the_dom">DOM API mahdollistaa elementtien...</a>
+                            <ul>
+                                <li>valinta</li>
+                                <li>kulku</li>
+                                <li>lisäys/poisto</li>
+                                <li>attribuuttien muokkaus</li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <ul style="width:50%">
+                        <li><a href="#EVENTS">Interaktiivisuus tapahtumien avulla</a>
+                            <ul>
+                                <li>Tapahtumaobjekti</li>
+                                <li>Tapahtumakäsittelijät</li>
+                                <li><a href="#passing_params">Parametrien välittäminen</a></li>
+                                <li>Tapahtumien leviäminen</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <img style="position: absolute; top:-100px;right: -100px;width:20%;"
+                    src="../img/face-inverted-small.png" />
+            </section>
+
+            <section id="THE_DOM_API_INTRODUCTION">
+                <section>
+                    <h2 class="r-fit-text">Johdanto DOM:iin</h2>
+                </section>
+
+                <section id="how_did_we_get_here">
+                    <div class="flex-center">
+                        <div>
+                            <h3>Miten päädyimme tähän?</h3>
+                            <ul>
+                                <li>Ongelma: staattiset verkkosivut eivät olleet interaktiivisia, dynaamisia tai
+                                    responsiivisia.</li>
+                                <li>Osittainen ratkaisu: JavaScript, jota kehittäjät voivat käyttää interaktiivisuuden
+                                    lisäämiseen.
+                                    <ul>
+                                        <li>Ongelma: JavaScript ei voi suoraan käyttää tai muokata HTML-dokumentin
+                                            sisältöä</li>
+                                        <li>Ratkaisu: <strong>DOM API</strong></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div style="position:relative;">
+                            <img src="./lect09/artVSwebpage.png"
+                                alt="yksinkertainen kaavio, joka vertaa kahta kohtausta, joissa näyttelijä ja heidän vuorovaikutuksensa taiteen ja verkkosivun kanssa. Ensimmäisessä kohtauksessa näyttelijä katsoo kehystä, jossa lukee 'ART', ja sanoo 'That is a pretty picture!' Tämä viittaa siihen, että näyttelijä katselee ja arvostaa taideteosta. Toisessa kohtauksessa näyttelijä katsoo kehystä, jossa lukee 'Web page', ja kommentoi, 'This is one pretty web page!' Tämä osoittaa, että näyttelijä katselee ja ihailee verkkosivua. Kohtaukset on todennäköisesti tarkoitettu rinnastamaan toisiaan, jotta voidaan näyttää sekä taiteen että perinteisten verkkosivujen staattinen luonne, ja näyttelijän rooli on molemmissa tapauksissa passiivinen tarkkailija."
+                                style="background-color: #fff; padding: 1em; border-radius: 1em; margin: 1em;" />
+                            <span class="fragment">
+                                <img src="./lect09/remoteVSTheDOM.png"
+                                    alt="Tämä kuva esittää kaavion, joka vertaa kahta vuorovaikutusta, joista toinen koskee televisiota ja kaukosäädintä ja toinen verkkosivua ja DOM:ia, jota edustaa JavaScript (JS). Yläosassa kaukosäädin on suunnattu televisioon. Kaukosäätimen yläpuolella on puhekupla, jossa lukee 'I want to change the channel!' Tämä viittaa siihen, että kaukosäädintä käytetään television ohjaamiseen, mikä havainnollistaa ajatusta käyttöliittymälaitteesta, joka komentaa elektronista laitetta vaihtamaan tilaa. Alhaalla JavaScript (JS) -logo on sijoitettu DOM-lyhenteen viereen, molemmat osoittavat kohti verkkosivun esitystä. Täällä JS-logosta tuleva puhekupla sanoo 'I want to change the text content of this paragraph!' Tämä edustaa sitä, kuinka JavaScript käyttää DOM:ia käyttöliittymänä vuorovaikutukseen ja verkkosivun muokkaamiseen, kuten kaukosäädintä käytetään television ohjaamiseen."
+                                    style="background-color: #fff; padding: 1em; border-radius: 1em; margin: 1em; position:absolute; top: 0px; left: 0px;" />
+                            </span>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="what_is_the_dom">
+                    <h3>Mikä on DOM?</h3>
+                    <p>
+                        <em>
+                            "W3C Document Object Model (DOM) on alusta- ja kieliriippumaton rajapinta, joka mahdollistaa
+                            ohjelmien ja skriptien dynaamisen pääsyn dokumentin sisältöön, rakenteeseen ja tyyliin sekä
+                            niiden päivittämisen."
+                        </em> - W3C
+                    </p>
+                    <ul>
+                        <li>
+                            W3C (World Wide Web Consortium) -standardi, julkaistu ensimmäisen kerran vuonna 1998.
+                            <ul>
+                                <li>Core DOM - standardimalli kaikille dokumenttityypeille - <a
+                                        href="https://www.w3.org/DOM/DOMTR" target="_blank">W3C DOM Specifications</a>
+                                </li>
+                                <li>XML DOM - erikoistunut XML-dokumenttien jäsentämiseen, validointiin ja muokkaamiseen
+                                    - <a href="https://www.w3.org/TR/xml-dom-3-core/" target="_blank">XML DOM Level 3
+                                        Core Specification</a></li>
+                            </ul>
+                        </li>
+                        <li>HTML DOM - mitä käytämme verkkosivuillamme - <a
+                                href="https://html.spec.whatwg.org/multipage/dom.html" target="_blank">HTML Living
+                                Standard - DOM</a></li>
+                    </ul>
+                    <p>
+                        HTML DOM on malli verkkosivusta, joka on rakennettu <strong>puuksi</strong>, jonka selain
+                        muodostaa sivun lataamisen yhteydessä. Tätä kutsutaan myös <strong>DOM-puuksi</strong>.
+                    </p>
+                    <h4>
+                        <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction"
+                            target="_blank">
+                            Klikkaa tästä oppiaksesi lisää </a>
+                    </h4>
+                </section>
+
+                <section id="what_is_the_dom_tree">
+                    <div class="flex-center">
+                        <div>
+                            <h3>Mikä on DOM-puu?</h3>
+                            <ul>
+                                <li>Hierarkkinen esitys verkkosivun rakenteesta
+                                    <ul>
+                                        <li>elementillä voi olla vanhempi, lapsia ja sisaruksia</li>
+                                        <li>HTML-dokumentissa juuri on aina &lt;html&gt;-elementti, ja se sisältää kaksi
+                                            pakollista lasta: head ja body</li>
+                                        <li>sisäkkäinen elementti katsotaan vanhemmaksi, sisäiset elementit ovat lapsia
+                                        </li>
+                                        <li>juurisuuntainen kulku mahdollistaa esivanhempien solmujen hakemisen</li>
+                                    </ul>
+                                </li>
+                                <li>Elementteihin pääsee käsiksi ja niitä voi muokata JavaScriptin avulla</li>
+                            </ul>
+                        </div>
+                        <span class="fragment">
+                            <img src="./lect09/table.png" alt="Näyttää yksinkertaisen HTML-taulukon DOM-puun rakenteen"
+                                style="background-color: #fff; padding: 1em; border-radius: 1em; margin: 1em; top: 0px; left: 0px;" />
+                        </span>
+                    </div>
+                </section>
+
+                <section id="example_of_a_dom_tree">
+                    <h3>Esimerkki DOM-puusta</h3>
+                    <div class="flex-center">
+                        <pre><code data-line-numbers>&lt;html lang="en"&gt;
+                &lt;head&gt;
+                    &lt;title&gt;My Document&lt;/title&gt;
+                &lt;/head&gt;
+                &lt;body&gt;
+                    &lt;h1&gt;Header&lt;/h1&gt;
+                    &lt;p&gt;Paragraph&lt;/p&gt;
+                &lt;/body&gt;
+                &lt;/html&gt;</code></pre>
+                        <span class="fragment">
+                            <img src="./lect09/doctree1.jpg"
+                                style="background-color: #fff; padding: 1em; border-radius: 1em; margin: 1em; top: 0px; left: 0px;" />
+                        </span>
+                    </div>
+                </section>
+
+                <section id="the_most_important_nodes_document">
+                    <h3>Dokumentti edustaa koko DOM-puuta</h3>
+                    <ul>
+                        <li>Hierarkia määriteltynä</li>
+                        <li>
+                            Pääsy globaaleihin ominaisuuksiin ja tietoihin
+                            <pre><code data-line-numbers>const title = document.title // palauttaa dokumentin otsikon
+                const url = document.URL // palauttaa dokumentin URL-osoitteen
+                const contentType = document.contentType // esim. 'text/html'
+                            </code></pre>
+                        </li>
+                        <li>
+                            Dokumentin rakenteen ja sisällön muokkaaminen
+                            <pre><code data-line-numbers>document.title = 'Uusi Otsikko' // asettaa dokumentin otsikon 'Uusi Otsikko'
+                // asettaa body-elementin taustavärin vaaleansiniseksi
+                document.body.style.backgroundColor = 'lightblue' 
+                // Pääsy ensimmäiseen p-elementtiin dokumentissa
+                const p = document.querySelector('p')
+                            </code></pre>
+                        </li>
+                        <li>Pääsy <code>document</code>-objektin avulla</li>
+                    </ul>
+                </section>
+
+                <section id="live_dom_viewer">
+                    <h3>Ymmärrä DOM-rakenne - Live DOM Viewer</h3>
+                    <iframe
+                        src="https://software.hixie.ch/utilities/js/live-dom-viewer/?%3C!DOCTYPE%20html%3E%0A%3Chtml%20lang%3D%22en%22%3E%0A%3Chead%3E%0A%20%20%3Ctitle%3EDocument%3C%2Ftitle%3E%0A%3C%2Fhead%3E%0A%3Cbody%3E%0A%20%20%3Ch1%20class%3D%22heading%22%20id%3D%22h1%22%3EA%20simple%20heading%3C%2Fh1%3E%0A%20%20%3Cp%20class%3D%22paragraph%22%3EA%20simple%20paragraph.%3C%2Fp%3E%0A%3C%2Fbody%3E%0A%3C%2Fhtml%3E"
+                        style="width: 100%; height: 300px; border: 0; border-radius: 4px; overflow: hidden; background-color: #fff;"
+                        sandbox="allow-scripts allow-same-origin"
+                        title="Live DOM Viewer - Työkalu HTML-dokumentin DOM-rakenteen visualisointiin."></iframe>
+                </section>
+            </section>
+
+            <section id="how_to_use_the_dom">
+                <section>
+                    <h3 class="r-fit-text">DOM API</h3>
+                </section>
+                <section>
+                    <h3>Kuinka käyttää DOM API:a</h3>
+                    <ul>
+                        <li><strong>DOM API</strong> tarjoaa joukon rajapintoja ja menetelmiä, joiden avulla
+                            ohjelmat ja skriptit voivat käyttää ja päivittää dokumentin sisältöä, rakennetta ja
+                            tyyliä DOM-puun kautta, kuten:
+                            <ul>
+                                <li>vuorovaikutus tapahtumakäsittelyn kautta, kuten klikkaukset ja lomakkeiden
+                                    lähetykset</li>
+                                <li>pääsy dokumentin rakenteeseen ja sisältöön</li>
+                                <li>dokumentin dynaaminen muokkaaminen</li>
+                            </ul>
+                        </li>
+                        <li>Esimerkki DOM:n käytöstä DOM API:n kautta:
+                            <pre><code data-line-numbers>const paragraphs = document.querySelectorAll("p");
+                console.log(paragraphs[0].nodeName); // Tulostaa 'P'</code></pre>
+                        </li>
+                    </ul>
+                </section>
+
+                <section id="ACCESSING_ELEMENTS_OLD">
+                    <h3>Elementtien käsittely (Vanha tapa)</h3>
+                    <ul>
+                        <li>
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementById"
+                                target="_blank">
+                                <code>getElementById</code>
+                            </a>: Valitsee yksittäisen elementin sen ainutlaatuisen ID:n perusteella.
+                            <pre><code data-line-numbers>const demoElement = document.getElementById("demo"); 
+                // Palauttaa yksittäisen elementin, jonka id="demo"
+                                </code></pre>
+                        </li>
+                        <li>
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/getElementsByClassName"
+                                target="_blank">
+                                <code>getElementsByClassName</code>
+                            </a>: Valitsee kaikki elementit, joilla on tietty luokan nimi.
+                            <pre><code data-line-numbers>const demoElements = document.getElementsByClassName("demo"); 
+                // Palauttaa kokoelman elementtejä, joiden luokka on "demo"
+                                </code></pre>
+                        </li>
+                        <li>
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/getElementsByTagName"
+                                target="_blank">
+                                <code>getElementsByTagName</code>
+                            </a>: Valitsee kaikki elementit, joilla on tietty tagin nimi.
+                            <pre><code data-line-numbers>const demoElements = document.getElementsByTagName("div"); 
+                // Palauttaa kokoelman kaikkia div-elementtejä
+                                </code></pre>
+                        </li>
+                    </ul>
+                </section>
+
+                <section id="ACCESS_ELEMENTS_NEW">
+                    <h3>Elementtien käsittely (Uudempi tapa)</h3>
+                    <ul>
+                        <li>
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector"
+                                target="_blank">
+                                <code>querySelector</code>
+                            </a>: Valitsee ensimmäisen elementin, joka vastaa CSS-valitsinta.
+                            <pre><code data-line-numbers>let demoElement = document.querySelector(".demo"); 
+                // Valitsee ensimmäisen elementin, jonka luokka on "demo"
+                
+                demoElement = document.querySelector("#demo"); 
+                // Valitsee elementin, jonka id on "demo"
+                
+                demoElement = document.querySelector("div"); 
+                // Valitsee ensimmäisen div-elementin
+                                </code></pre>
+                        </li>
+                        <li>
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll"
+                                target="_blank">
+                                <code>querySelectorAll</code>
+                            </a>: Valitsee kaikki elementit, jotka vastaavat CSS-valitsinta.
+                            <pre><code data-line-numbers>const demoElements = document.querySelectorAll(".demo"); 
+                // Valitsee kaikki elementit, joiden luokka on "demo"
+                
+                demoElements = document.querySelectorAll("div"); 
+                // Valitsee kaikki div-elementit
+                                </code></pre>
+                        </li>
+                    </ul>
+                </section>
+
+
+
+                <section id="ACCESS_ELEMENTS_OLD_VS_NEW">
+                    <h3>Elementtien käsittely: Vanhemmat vs. Uudemmat menetelmät</h3>
+                    <ul>
+                        <li>
+                            <strong>Tarkkuus:</strong>
+                            <ol>
+                                <li>vanhempi: Rajoitetumpi—valitsee ID:n, luokan tai tagin nimen perusteella.</li>
+                                <li>uudempi: Joustavampi—tukee täydellisiä CSS-valitsimia (samanlainen kuin jQuery).
+                                </li>
+                            </ol>
+                        </li>
+                        <li>
+                            <strong>Kokoelman tyyppi:</strong>
+                            <ol>
+                                <li>vanhempi: Palauttaa <code>HTMLCollection</code> (dynaaminen kokoelma).</li>
+                                <li>uudempi: Palauttaa <code>NodeList</code> (staattinen kokoelma).</li>
+                            </ol>
+                        </li>
+                        <li>
+                            <strong>Selainyhteensopivuus:</strong>
+                            <ol>
+                                <li>vanhempi: Tuettu kaikissa selaimissa.</li>
+                                <li>uudempi: Tuettu moderneissa selaimissa (IE9+).</li>
+                            </ol>
+                        </li>
+                    </ul>
+                </section>
+
+                <section id="ACCESS_ELEMENT_CONTENT">
+                    <h2>Elementin sisällön käsittely</h2>
+                    <pre><code data-line-numbers>&lt;div id="demo"&gt;&lt;p&gt;This is a &lt;span style="display: none;"&gt;hidden&lt;/span&gt; paragraph&lt;/p&gt;&lt;/div&gt;</code></pre>
+
+                    <ul>
+                        <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML?retiredLocale=fi"
+                                target="_blank">
+                                innerHTML
+                            </a>: Hakee tai asettaa elementin HTML-sisällön (käytä varoen!)
+                            <pre><code data-line-numbers> element = document.getElementById("demo")
+                    console.log(element.innerHTML) 
+                    // Tulostaa: '&lt;p&gt;This is a &lt;span style="display: none;"&gt;hidden&lt;/span&gt; paragraph&lt;/p&gt;'
+                                </code></pre>
+                        </li>
+                        <li>
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Node/innerText?retiredLocale=fi"
+                                target="_blank">
+                                <code>innerText</code>
+                            </a>: Hakee tai asettaa elementin näkyvän tekstisisällön
+                            <pre><code data-line-numbers> element = document.getElementById("demo")
+                    console.log(element.innerText)
+                    // Tulostaa: 'This is a paragraph' 
+                                </code></pre>
+                        </li>
+                        <li>
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent?retiredLocale=fi"
+                                target="_blank">
+                                <code>textContent</code>
+                            </a>: Hakee tai asettaa elementin tekstisisällön, mukaan lukien piilotettu teksti
+                            <pre><code data-line-numbers> element = document.getElementById("demo")
+                    console.log(element.textContent)
+                    // Tulostaa: 'This is a hidden paragraph'
+                                </code></pre>
+                        </li>
+                    </ul>
+                </section>
+
+                <section id="ACCESSING_ELEMENT_ATTRIBUTES">
+                    <h3>Elementin attribuuttien käsittely</h3>
+                    <ul>
+                        <li>
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/getAttribute?retiredLocale=fi"
+                                target="_blank">
+                                <code>getAttribute</code>
+                            </a>: Hakee määritetyn attribuutin arvon
+                            <pre><code data-line-numbers> const src = document.getElementById("myImage").getAttribute("src");
+                                </code></pre>
+                        </li>
+                        <li>
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/setAttribute?retiredLocale=fi"
+                                target="_blank">
+                                <code>setAttribute</code>
+                            </a>: Asettaa määritetyn attribuutin arvon
+                            <pre><code data-line-numbers> document.getElementById("myImage").setAttribute("src", "landscape.jpg");
+                                </code></pre>
+                        </li>
+                        <li>
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/removeAttribute?retiredLocale=fi"
+                                target="_blank">
+                                <code>removeAttribute</code>
+                            </a>: Poistaa määritetyn attribuutin
+                            <pre><code data-line-numbers> document.getElementById("myImage").removeAttribute("src");
+                                </code></pre>
+                        </li>
+                        <li>
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/hasAttribute?retiredLocale=fi"
+                                target="_blank">
+                                <code>hasAttribute</code>
+                            </a>: Tarkistaa, onko elementillä määritetty attribuutti
+                            <pre><code data-line-numbers> const hasSrc = document.getElementById("myImage").hasAttribute("src");
+                                </code></pre>
+                        </li>
+                    </ul>
+                </section>
+
+                <section id="ACCESS_ELEMENT_STYLES">
+                    <h2>Elementin tyylien käsittely</h2>
+                    <ul>
+                        <li>
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style?retiredLocale=fi"
+                                target="_blank">
+                                <code>style</code>
+                            </a>: Pääsee käsiksi elementin inline-tyyleihin ja muokkaa niitä
+                            <pre><code data-line-numbers> document.getElementById("demo").style.color = "red";
+                                </code></pre>
+                        </li>
+                        <li>
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/classList?retiredLocale=fi"
+                                target="_blank">
+                                <code>classList</code>
+                            </a>: Pääsee käsiksi elementin class-attribuuttiin ja muokkaa sitä
+                            <pre><code data-line-numbers> document.getElementById("demo").classList.add("red") // lisää luokan
+                    document.getElementById("demo").classList.remove("red") // poistaa luokan
+                    document.getElementById("demo").classList.toggle("red") // vaihtaa luokan
+                                </code></pre>
+                        </li>
+                        <li>
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/getComputedStyle"
+                                target="_blank">
+                                <code>getComputedStyle</code>
+                            </a>: Hakee elementin kaikkien CSS-ominaisuuksien arvot
+                            <pre><code data-line-numbers> const styles = window.getComputedStyle(document.getElementById("demo")); // hakee lasketut tyylit
+                    const color = styles.getPropertyValue("color"); // hakee tietyn tyylin arvon
+                                </code></pre>
+                        </li>
+                    </ul>
+                </section>
+
+                <section id="ACCESS_ELEMENT_DIMENSIONS">
+                    <h2>Elementin mittojen käsittely</h2>
+                    <ul>
+                        <li>
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect"
+                                target="_blank">
+                                <code>getBoundingClientRect</code>
+                            </a>: Hakee elementin koon ja sijainnin
+                            <pre><code data-line-numbers> const rect = document.getElementById("demo").getBoundingClientRect();
+                                </code></pre>
+                        </li>
+                        <li>
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/clientWidth"
+                                target="_blank">
+                                <code>clientWidth</code>
+                            </a> ja <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/clientHeight"
+                                target="_blank">
+                                <code>clientHeight</code>
+                            </a>: Hakee elementin leveyden/korkeuden, mukaan lukien padding mutta ei border
+                            <pre><code data-line-numbers> const width = document.getElementById("demo").clientWidth;
+                                </code></pre>
+                        </li>
+                        <li>
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/offsetWidth"
+                                target="_blank">
+                                <code>offsetWidth</code>
+                            </a> ja <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/offsetHeight"
+                                target="_blank">
+                                <code>offsetHeight</code>
+                            </a>: Hakee elementin leveyden/korkeuden, mukaan lukien padding ja border
+                            <pre><code data-line-numbers> const width = document.getElementById("demo").offsetWidth;
+                                </code></pre>
+                        </li>
+                        <li>
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/scrollWidth"
+                                target="_blank">
+                                <code>scrollWidth</code>
+                            </a> ja <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/scrollHeight"
+                                target="_blank">
+                                <code>scrollHeight</code>
+                            </a>: Hakee elementin leveyden/korkeuden, mukaan lukien padding, border ja scrollbar
+                            <pre><code data-line-numbers> const width = document.getElementById("demo").scrollWidth;
+                                </code></pre>
+                        </li>
+                    </ul>
+                </section>
+
+                <section id="CREATING_INSERTING_ELEMENTS">
+                    <h2>Elementtien luominen ja lisääminen</h2>
+                    <ul>
+                        <li>
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement"
+                                target="_blank">
+                                createElement
+                            </a>: Luo uuden elementin
+                            <pre><code data-line-numbers> const newElement = document.createElement("p");
+                                </code></pre>
+                        </li>
+                        <li>
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/append" target="_blank">
+                                append
+                            </a>: Lisää uuden elementin vanhemman elementin viimeiseksi lapseksi
+                            <pre><code data-line-numbers> document.getElementById("demo").append(newElement);
+                                </code></pre>
+                        </li>
+                        <li>
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/prepend" target="_blank">
+                                prepend
+                            </a>: Lisää uuden elementin vanhemman elementin ensimmäiseksi lapseksi
+                            <pre><code data-line-numbers> document.getElementById("demo").prepend(newElement);
+                                </code></pre>
+                        </li>
+                    </ul>
+                    <div>
+                        <p>
+                            Muita menetelmiä luomiseen ja lisäämiseen:
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild" target="_blank">
+                                appendChild,
+                            </a>
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/createTextNode">
+                                createTextNode<!--("Some-text") Result: Some text -->
+                            </a>,
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Node/insertBefore">
+                                insertBefore
+                            </a>,
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/createDocumentFragment">
+                                createDocumentFragment
+                            </a>,
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Node/cloneNode">
+                                cloneNode
+                            </a>,
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/insertAdjacentHTML">
+                                insertAdjacentHTML
+                            </a>,
+                        </p>
+                    </div>
+                </section>
+
+
+
+
+
+
+                <section id="REMOVING_REPLACING_ELEMENTS">
+                    <h2>Elementtien poistaminen ja korvaaminen</h2>
+                    <ul>
+                        <li>
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/API/ChildNode/remove" target="_blank">
+                                remove
+                            </a>: Poistaa elementin DOM:sta
+                            <pre><code data-line-numbers> document.getElementById("demo").remove();
+                                </code></pre>
+                        </li>
+                        <li>
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Node/removeChild" target="_blank">
+                                removeChild
+                            </a>: Poistaa määritetyn lapsielementin vanhemman elementistä
+                            <pre><code data-line-numbers> document.getElementById("demo").parentNode.removeChild(document.getElementById("demo"));
+                                </code></pre>
+                        </li>
+                        <li>
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Node/replaceChild"
+                                target="_blank">
+                                replaceChild
+                            </a>: Korvaa määritetyn lapsielementin uudella elementillä
+                            <pre><code data-line-numbers> const newElement = document.createElement("p");
+                    document.getElementById("demo").parentNode.replaceChild(newElement, document.getElementById("demo"));
+                                </code></pre>
+                        </li>
+                    </ul>
+                </section>
+
+                <section id="CLONING_ELEMENTS">
+                    <h2>Elementtien kloonaaminen</h2>
+                    <ul>
+                        <li>
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Node/cloneNode" target="_blank">
+                                cloneNode
+                            </a>: Luo kopion elementistä, mukaan lukien tai pois lukien lapsielementit
+                            <pre><code data-line-numbers> const clone = document.getElementById("demo").cloneNode(true); // true = syvä kopio, false = matala kopio
+                                </code></pre>
+                        </li>
+                        <li>
+                            Syvä kopio: Sisältää kaikki lapsielementit ja niiden attribuutit
+                        </li>
+                        <li>
+                            Matala kopio: Sisältää vain elementin itsensä ja sen attribuutit
+                        </li>
+                    </ul>
+                </section>
+            </section>
+            <section id="EVENTS">
+                <section>
+                    <h3 class="r-fit-text">Tapahtumat</h3>
+                </section>
+
+                <section id="TABLE_OF_CONTENTS_EVENT_HANDLING">
+                    <h2>DOM API: Tapahtumat</h2>
+                    <ul>
+                        <li>Johdanto tapahtumiin</li>
+                        <li>Tapahtumaobjekti</li>
+                        <li>Tapahtumakäsittelijät: onevent vs. eventlistener</li>
+                        <li>Edistynyt tapahtumien käsittely - ei käsitellä tässä luennossa</li>
+                    </ul>
+                </section>
+
+                <section id="INTRODUCTION_TO_EVENTS">
+                    <h3>Johdanto tapahtumiin</h3>
+                    <ul>
+                        <li>JavaScript on tapahtumapohjainen ohjelmointikieli, mikä tarkoittaa, että sen suoritusvirta
+                            määräytyy ensisijaisesti tapahtumien eikä tiukan lineaarisen järjestyksen mukaan.</li>
+                        <li>Tapahtumat laukaistaan:
+                            <ul style="font-size: 60%;">
+                                <li><strong>käyttäjän toiminnot</strong>: hoverit, vieritys, näppäinpainallukset,
+                                    lomakkeiden lähetykset, <a
+                                        href="https://developer.mozilla.org/en-US/docs/Web/Events#event_listing"
+                                        target="_blank">ja paljon muuta...</a></li>
+                                <li><strong>ohjelmat:</strong> JavaScript voi luoda tapahtumia suorilla metodikutsuilla
+                                    tai lähettämällä mukautettuja tapahtumia, mikä mahdollistaa dynaamisen
+                                    käyttäytymisen.
+                                    <pre><code data-line-numbers>// Klikkaustapahtuman laukaisu ohjelmallisesti
+                    document.getElementById("myButton").click();
+                    
+                    // Muutostapahtuman laukaisu
+                    document.getElementById("myInput").dispatchEvent(new Event("change"));</code></pre>
+                                </li>
+                                <li><strong>aikataulutetut toiminnot</strong>: ajastimet kuten `setTimeout` ja
+                                    `setInterval` aikatauluttavat tapahtumia lisättäväksi JavaScriptin tapahtumajonoon
+                                    <ul style="font-size:50%">
+                                        <li>setTimeout(callback, delay) käskee ajonaikaa odottamaan vähintään delay
+                                            millisekuntia ja sitten jonottamaan tapahtuman</li>
+                                        <li>callback on funktio, jonka annat <code>setTimeout</code> tai
+                                            <code>setInterval</code> -kutsulle</li>
+                                        <li>Huom: setTimeout(callback, 0) ei suorita callbackia välittömästi, vaan
+                                            jonottaa tapahtuman, joka laukaisee `callback`-funktion, kun synkroninen
+                                            kutsupino on tyhjä</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><strong>Tapahtumakäsittelijät:</strong> funktiot, jotka kutsutaan, kun tapahtuma tapahtuu
+                        </li>
+                    </ul>
+                </section>
+
+                <section id="EVENT_HANDLERS_EVENT_OBJECT">
+                    <h3>Tapahtumaobjekti (Osa 1)</h3>
+                    <p>Kun tapahtuma laukaistaan, luodaan <strong>tapahtumaobjekti</strong>:</p>
+                    <ul>
+                        <li>sisältää tietoa tapahtumasta</li>
+                        <li>voidaan käyttää tapahtuman käyttäytymisen hallintaan</li>
+                        <li>voidaan välittää tapahtumakäsittelijöille</li>
+                    </ul>
+
+                    <pre><code data-line-numbers>function logEvent(event) {
+                        console.log(event); // Tulostaa tapahtuman 
+                    }
+                    
+                    element.addEventListener("click", logEvent);
+                    </code></pre>
+                    <p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Event" target="_blank">Lue lisää
+                            MDN:stä</a></p>
+                </section>
+
+                <section id="EVENT_HANDLERS_EVENT_OBJECT_PART2">
+                    <h3>Tapahtumaobjekti (Osa 2)</h3>
+                    <p>Joidenkin hyödyllisten tapahtumaobjektin ominaisuuksien/metodien esittely:</p>
+                    <ul>
+                        <li>
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Event/type"
+                                target="_blank">type</a>: Tapahtuman tyyppi
+                            <pre><code data-line-numbers>function logEvent(event) {console.log(event.type); // Tulostaa "click"}
+                    element.addEventListener("click", logEvent);
+                                </code></pre>
+                        </li>
+                        <li>
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Event/target"
+                                target="_blank">target</a>: Elementti, joka laukaisi tapahtuman
+                            <pre><code data-line-numbers>function logEvent(event) {
+                        console.log(event.target.id); // tapahtuman laukaissevan elementin id}
+                    element.addEventListener("click", logEvent);
+                                </code></pre>
+                        </li>
+                    </ul>
+                    <p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Event" target="_blank">Lue lisää
+                            MDN:stä (on myös muita..)</a></p>
+                </section>
+
+                <section id="EVENT_HANDLERS_ONEVENT">
+                    <h3>Tapahtumakäsittelijät: onevent</h3>
+                    <ul>
+                        <li>HTML-attribuuttina (ei suositella)
+                            <ul>
+                                <li>
+                                    <pre><code><a onclick="attr_callback"></a></code></pre>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>lisätty elementin ominaisuutena skriptissä:
+                            <ol>
+                                <li>
+                                    <pre><code data-line-numbers>function reportClick() {
+                        console.log("Klikkaus tapahtui");
+                    }
+                    element.onclick = reportClick; // Määrittää funktion onclick-ominaisuudelle
+                                        </code></pre>
+                                </li>
+                                <li>
+                                    onchange: Kutsuu funktiota, kun elementin arvo muuttuu
+                                    <pre><code data-line-numbers><input type="text" id="myInput" onchange="function doSomething(){console.log('Jotain tapahtui');}"></code></pre>
+                                </li>
+                            </ol>
+                        </li>
+                    </ul>
+                </section>
+                <section id="EVENT_HANDLERS_EVENT_LISTENERS">
+                    <h3>Tapahtumakäsittelijät: tapahtumankuuntelijat</h3>
+
+                    <div class="alert alert-info">
+                        <code>element.addEventListener(event, callback[, Boolean])</code>
+                        <ul>
+                            <li>tapahtuma kuten 'click', 'mouseover', 'blur'</li>
+                            <li>callback funktioidentifikaattorina, ei sulkeita</li>
+                            <li>bubbling/capturing, oletusarvo false, mikä tarkoittaa bubbling</li>
+                        </ul>
+                    </div>
+                    <ul>
+                        <li>kuuntelijat lisätään/poistetaan skriptillä</li>
+                        <li>
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener"
+                                target="_blank">
+                                addEventListener
+                            </a>
+                            : Liittää tapahtumankuuntelijan elementtiin
+                            <pre><code data-line-numbers>function doSomething() {
+                        console.log("Jotain tapahtui");
+                    }
+                    element.addEventListener("click", doSomething, false); // false(oletus) = bubbling, true = capturing, optional
+                                </code></pre>
+                        </li>
+                        <li>
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/removeEventListener"
+                                target="_blank">
+                                removeEventListener:
+                            </a>
+                            Poistaa tapahtumankuuntelijan elementistä. Vaatii viittauksen samaan funktioon
+                            <pre><code data-line-numbers>element.removeEventListener("click", doSomething, false); // false = bubbling, true = capturing </code></pre>
+                        </li>
+                        <li>kohde-elementti toteuttaa <strong>EventTarget</strong>-rajapinnan tätä
+                            tapahtumankäsittelytukea varten</li>
+                    </ul>
+                    <p><a href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener"
+                            target="_blank">Lue lisää MDN:stä</a></p>
+                </section>
+
+                <section style="font-size: 60%;margin:0;">
+                    <table border="1" cellspacing="0" cellpadding="8">
+                        <tr>
+                            <th>Ominaisuus</th>
+                            <th><code>onevent</code> HTML-attribuuttina</th>
+                            <th><code>onevent</code> elementin ominaisuutena</th>
+                            <th><code>addEventListener</code> menetelmä</th>
+                        </tr>
+                        <tr>
+                            <td><strong>Määritelmä</strong></td>
+                            <td>Inline-tapahtumankäsittely HTML-attribuuttien kautta (esim.
+                                <code>&lt;button onclick="alert('Clicked!')"&gt;</code>)</td>
+                            <td>Funktion määrittäminen elementin <code>onevent</code>-ominaisuudelle (esim.
+                                <code>button.onclick = () => alert('Clicked!');</code>)</td>
+                            <td>Tapahtumankuuntelijoiden rekisteröinti <code>addEventListener</code>-menetelmällä (esim.
+                                <code>button.addEventListener('click', () => alert('Clicked!'))</code>)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Useita käsittelijöitä</strong></td>
+                            <td>❌ Vain yksi per tapahtuma (korvaa edellisen)</td>
+                            <td>❌ Vain yksi per tapahtuma (viimeksi määritetty käsittelijä korvaa edellisen)</td>
+                            <td>✅ Sallii useita tapahtumankuuntelijoita samalle tapahtumalle</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Koodin ylläpidettävyys</strong></td>
+                            <td>❌ Huono (sekoittaa HTML:ää ja JavaScriptiä)</td>
+                            <td>✅ Parempi kuin HTML, mutta silti rajoitettu</td>
+                            <td>✅ Paras (erottaa huolenaiheet, modulaarinen)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Huolenaiheiden erottelu</strong></td>
+                            <td>❌ Rikkoo erottelun (JS HTML:ssä)</td>
+                            <td>✅ Pitää JavaScriptin skriptitiedostoissa</td>
+                            <td>✅ Selkeä erottelu (suositeltu modernissa kehityksessä)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Tapahtumaobjekti (<code>event</code>)</strong></td>
+                            <td>❌ Ei suoraan käytettävissä käsittelijässä</td>
+                            <td>✅ Saatavilla käsittelijän argumenttina</td>
+                            <td>✅ Saatavilla callback-funktiossa</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Tapahtumankuuntelijoiden poistaminen</strong></td>
+                            <td>❌ Ei sovellettavissa</td>
+                            <td>✅ Mahdollista (<code>element.onevent = null</code>)</td>
+                            <td>✅ Mahdollista (<code>removeEventListener</code>, varo muistivuotoa)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Käyttö anonyymien funktioiden kanssa</strong></td>
+                            <td>❌ Vaikea käyttää inline</td>
+                            <td>❌ Ei voi pitää useita käsittelijöitä; uudet määritykset korvaavat edelliset</td>
+                            <td>✅ Sallii useita anonyymejä ja nimettyjä funktioita ilman ristiriitoja</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Tukee kaappausta</strong></td>
+                            <td>❌ Ei</td>
+                            <td>❌ Ei</td>
+                            <td>✅ Kyllä (antamalla <code>{ capture: true }</code>)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Useita tapahtumia samassa elementissä</strong></td>
+                            <td>✅ Kyllä, mutta vain yksi käsittelijä per tapahtumatyyppi (esim. <code>onclick=""</code>,
+                                <code>onmouseover=""</code>)</td>
+                            <td>✅ Kyllä, mutta vain yksi käsittelijä per tapahtumatyyppi (korvaa edellisen määrityksen)
+                            </td>
+                            <td>✅ Kyllä, tukee useita käsittelijöitä per tapahtumatyyppi (esim. useita
+                                <code>click</code>-käsittelijöitä)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Suorituskyky</strong></td>
+                            <td>✅ Kevyt mutta ei joustava</td>
+                            <td>✅ Tehokas, mutta vain yksi kuuntelija per tapahtuma</td>
+                            <td>✅ Hieman enemmän ylikuormitusta, mutta tukee useita käsittelijöitä</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Joustavuus</strong></td>
+                            <td>❌ Rajoitettu</td>
+                            <td>❌ Rajoitettu</td>
+                            <td>✅ Täysi hallinta (esim. <code>once</code>, <code>passive</code>, <code>capture</code>
+                                -vaihtoehdot)</td>
+                        </tr>
+                    </table>
+                </section>
+
+                <section id="EVENT_HANDLERS_EVENT_LISTENERS_EXAMPLE_MEMORY_LEAK">
+                    <h3>Tapahtumankuuntelijoiden esimerkki: Muistivuoto</h3>
+                    <pre><code data-line-numbers>function handleClick() {
+                        console.log('Nappia klikattiin');
+                    }
+                    
+                    const button = document.getElementById('myButton');
+                    button.addEventListener('click', handleClick);
+                    
+                    // Myöhemmin koodissa...
+                    button.parentNode.removeChild(button); // Poistaa napin DOM:sta
+                    </code></pre>
+                    <p>Vaikka nappi poistetaan DOM:sta, tapahtumankuuntelija on edelleen kiinnitetty nappiin. Tämä voi
+                        aiheuttaa muistivuodon.</p>
+
+                    <p>Välttääksesi muistivuodot, poista aina tapahtumankuuntelijat, kun niitä ei enää tarvita.
+                    <pre><code>button.removeEventListener("click", handleClick);
+                    button.parentNode.removeChild(button);</code></pre>
+                    </p>
+                </section>
+            </section>
+            <section>
+
+                <section data-background="#81237F">
+                    <h1 class="r-fit-text">Parametrien välittäminen</h1>
+                </section>
+                <section>
+                    <h3>Parametrien välittäminen tapahtumakäsittelijöille</h3>
+                    <p>
+                        Useita vaihtoehtoja parametrien välittämiseen tapahtumakäsittelijöille:
+                    </p>
+                    <div style="max-height: 400px; overflow: auto;">
+                        <ul>
+                            <li>
+                                <p>Anonyymi funktio parametrien välittämiseen tapahtumakäsittelijöille:</p>
+                                <pre><code data-line-numbers> element.addEventListener('click', function(event) {
+                     myFunction(event, param1, param2);
+                     });
+                     </code></pre>
+                                <p><a href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener#using_an_anonymous_function_as_a_wrapper"
+                                        target="_blank">Lue lisää MDN:stä</a></p>
+                            </li>
+                            <li>
+                                <p>Käytä <code>Function.prototype.bind()</code>-menetelmää parametrien välittämiseen
+                                    (edistynyt)</p>
+                                <pre><code data-line-numbers>function myFunction(param1, param2) {
+                        console.log(param1 + ' ' + param2);
+                    }
+                    
+                    document.getElementById('myButton').addEventListener('click', myFunction.bind(null, 'param1', 'param2')); 
+                    // null tarkoittaa, ettei 'this'-arvoa ole callbackissa</code></pre>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+                <section style="font-size: 60%;">
+                    <table border="1">
+                        <thead>
+                            <tr>
+                                <th>Menetelmä</th>
+                                <th>Koodiesimerkki</th>
+                                <th>Plussat</th>
+                                <th>Miinukset</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>anonyymi funktio<br>(suositeltu)</strong></td>
+                                <td width="35%">
+                                    <pre>button.addEventListener("click", function () {
+                        handleClick(42, "Hello!");
+                    });
+                    
+                    function handleClick(num, text) {
+                        console.log(num, text);
+                    }</pre>
+                                </td>
+                                <td>✅ yksinkertainen ja selkeä</td>
+                                <td>❌ luo uuden funktion joka kerta</td>
+                            </tr>
+                            <tr>
+                                <td><strong>nuolifunktio</strong></td>
+                                <td>
+                                    <pre>button.addEventListener("click", 
+                        () => handleClick(42, "Hello!"));</pre>
+                                </td>
+                                <td>✅ lyhyempi syntaksi<br>✅ toimii kuten anonyymi funktio, this-käsittely eroaa</td>
+                                <td>❌ luo silti uuden funktion jokaisella kutsulla</td>
+                            </tr>
+                            <tr>
+                                <td><strong>.bind()</strong></td>
+                                <td>
+                                    <pre>button.addEventListener("click", 
+                        handleClick.bind(null, 42, "Hello!"));
+                                        
+                    function handleClick(num, text, event) {
+                        console.log(num, text, event);
+                    }</pre>
+                                </td>
+                                <td>✅ säilyttää funktion viittauksen<br>✅ välittää automaattisesti tapahtuman viimeisenä
+                                    argumenttina</td>
+                                <td>❌ vähemmän luettava<br>❌ ylimääräinen funktion sitominen</td>
+                            </tr>
+                            <tr>
+                                <td><strong>kääre</strong></td>
+                                <td>
+                                    <pre>function createHandler(num, text) {
+                        return function (event) {
+                            console.log("Numero:", num);
+                            console.log("Teksti:", text);
+                            console.log("Tapahtuma:", event);
+                        };
+                    }
+                    
+                    button.addEventListener("click", 
+                        createHandler(42, "Hello!"));</pre>
+                                </td>
+                                <td>✅ paras uudelleenkäytettäville käsittelijöille<br>✅ hyvä tapahtumien
+                                    delegointiin<br>✅ modulaarinen</td>
+                                <td>❌ monimutkaisempi syntaksi</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <section>
+                    <h2>Lähempi tarkastelu kääreen sulkemiseen</h2>
+                    <pre><code>function createHandler(num, text) {
+                        return function (event) {  //closure!!!
+                            console.log("Numero:", num, "Teksti:", text);
+                            console.log("Tapahtumaobjekti:", event);
+                        };
+                    }
+                    
+                    document.getElementById("myButton")
+                        .addEventListener("click", createHandler(42, "Hello!"));
+                        </code></pre>
+                    <ul>
+                        <p>Sulku on funktio, joka "muistaa" ulomman laajuutensa muuttujat, vaikka kyseinen laajuus olisi
+                            jo suoritettu.</p>
+                        <li>Sisäinen funktio on <strong>sulku</strong>, joka muistaa ulomman funktion <code>num</code>
+                            ja <code>text</code></li>
+                        <li>Sulut säilyttävät pääsyn ulomman funktion muuttujille</li>
+                        <li>Kun <code>createHandler(42, "Hello!")</code> suoritetaan, se palauttaa funktion, joka
+                            tallentaa nämä arvot.</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Mistä wrapperin <code>event</code> tulee?</h2>
+                    <ul>
+                        <li>Palautettu anonyymi funktio määritetään <code>addEventListener</code>-kutsuun, mutta se ei
+                            vielä suoritu</li>
+                        <li><code>event</code>-objekti välitetään automaattisesti ensimmäisenä parametrina
+                            tapahtumankuuntelijoille.</li>
+                        <li>Kun tapahtuma tapahtuu, tapahtumankuuntelija antaa <code>event</code>-objektin
+                            callback-funktiolle.</li>
+                        <li>Tämä mahdollistaa pääsyn sekä säilytettyihin muuttujiin (<code>num</code>,
+                            <code>text</code>) että tapahtumatietoihin.</li>
+                    </ul>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h1 class="r-fit-text">Tapahtumien kulkeutuminen</h1>
+                </section>
+                <section>
+                    <h2>Tapahtumien kulkeutuminen: bubbling ja capturing</h2>
+
+                    <p>Tapahtumat kulkeutuvat DOM:ssa kolmessa vaiheessa:</p>
+                    <ol>
+                        <li>
+                            <div style="display:flex">
+                                <p style="width:50%">Capturing-vaihe: Tapahtuma kulkee alas juuresta kohde-elementtiin
+                                </p>
+                                <svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+                                    <g transform="translate(100, 100)">
+                                        <circle r="80" fill="#e0f7fa" id="div1" />
+                                        <text x="0" y="-90" text-anchor="middle" dominant-baseline="middle"
+                                            font-size="16" fill="black">div1⬇️</text>
+                                        <g transform="scale(0.8)">
+                                            <circle r="80" fill="#b2ebf2" id="div2" />
+                                            <text x="0" y="-90" text-anchor="middle" dominant-baseline="middle"
+                                                font-size="16" fill="black">div2⬇️</text>
+                                            <g transform="scale(0.8)">
+                                                <circle r="80" fill="#81d4fa" id="div3" />
+                                                <text x="0" y="-90" text-anchor="middle" dominant-baseline="middle"
+                                                    font-size="16" fill="black">div3⬇️</text>
+                                                <g transform="scale(0.7)">
+                                                    <circle r="80" fill="#4fc3f7" id="div4" />
+                                                    <text x="0" y="-90" text-anchor="middle" dominant-baseline="middle"
+                                                        font-size="22" fill="black">div4⬇️</text>
+                                                    <g transform="scale(0.6)">
+                                                        <circle r="80" fill="#29b6f6" id="form1" />
+                                                        <text x="0" y="-90" text-anchor="middle"
+                                                            dominant-baseline="middle" font-size="26"
+                                                            fill="black">form⬇️</text>
+                                                    </g>
+                                                </g>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </svg>
+                            </div>
+                        </li>
+                        <li>Tavoitteessa: tapahtuma saavuttaa kohteen</li>
+                        <li>
+                            <div style="display:flex">
+
+                                <p style="width:50%">Bubbling-vaihe: tapahtuma lähtee etenemään takaisin juurta kohti
+                                </p>
+                                <svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+                                    <g transform="translate(100, 100)">
+                                        <circle r="80" fill="#29b6f6" id="div5" />
+                                        <text x="0" y="-90" text-anchor="middle" dominant-baseline="middle"
+                                            font-size="16" fill="black">div1⬆️</text>
+                                        <g transform="scale(0.8)">
+                                            <circle r="80" fill="#4fc3f7" id="div6" />
+                                            <text x="0" y="-90" text-anchor="middle" dominant-baseline="middle"
+                                                font-size="16" fill="black">div2⬆️</text>
+                                            <g transform="scale(0.8)">
+                                                <circle r="80" fill="#81d4fa" id="div7" />
+                                                <text x="0" y="-90" text-anchor="middle" dominant-baseline="middle"
+                                                    font-size="16" fill="black">div3⬆️</text>
+                                                <g transform="scale(0.7)">
+                                                    <circle r="80" fill="#b2ebf2" id="div8" />
+                                                    <text x="0" y="-90" text-anchor="middle" dominant-baseline="middle"
+                                                        font-size="22" fill="black">div4⬆️</text>
+                                                    <g transform="scale(0.6)">
+                                                        <circle r="80" fill="#e0f7fa" id="form2" />
+                                                        <text x="0" y="-90" text-anchor="middle"
+                                                            dominant-baseline="middle" font-size="26"
+                                                            fill="black">form⬆️</text>
+                                                    </g>
+                                                </g>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </svg>
+                            </div>
+
+                        </li>
+                    </ol>
+                    <p>Huom: Tapahtumankuuntelijat asetetaan yleensä joko bubbling- tai capturing-vaiheeseen. Jos
+                        molempia käytetään, capturing tapahtuu ensin.</p>
+                </section>
+                <section>
+                    <h2>Tapahtumien leviämisen pysäyttäminen</h2>
+                    <p><code>event.stopPropagation()</code> pysäyttää tapahtuman leviämisen ylös- tai alaspäin DOM:ssa,
+                        estäen vanhempia/esivanhempia tai lapsia/jälkeläisiä elementtejä vastaanottamasta sitä.</p>
+                    <p>Sen tarkoitus on hallita tapahtumavirtaa ja estää ei-toivotut sivuvaikutukset, eristäen
+                        tapahtumankäsittelyn tiettyihin elementteihin.</p>
+                    <h2>Käyttötapaukset</h2>
+                    <ul>
+                        <li>vanhempien käsittelijöiden estäminen (yleisempi käyttötapaus)</li>
+                        <li><strong>mukautettujen ohjainten luominen:</strong>
+                            <ul>
+                                <li>interaktiivisten komponenttien rakentaminen, jotka vaativat tarkkaa hallintaa
+                                    tapahtumavirran suhteen</li>
+                                <li>esimerkki: Mukautettu pudotusvalikko</li>
+                            </ul>
+                        </li>
+                        <li>uudelleenkäytettävien käyttöliittymäkomponenttien luomisessa, <code>stopPropagation</code>
+                            voi estää komponentin tapahtumankuuntelijoita häiritsemästä ympäröiviä sovelluksia
+                            <ul>
+                                <li>kaikki suuret JavaScript-kehykset (React, Angular, Vue.js) perustuvat pohjimmiltaan
+                                    DOM:n tapahtumajärjestelmään ja abstrahoivat suoran DOM-manipuloinnin, mutta
+                                    toimivat silti taustalla olevan tapahtumamallin kanssa.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>Tapahtumien delegointi tehokkuuden vuoksi</h2>
+
+                    <p>Sen sijaan, että liittäisit tapahtumankuuntelijoita jokaiseen yksittäiseen elementtiin,
+                        tapahtumien delegointi liittää yhden kuuntelijan vanhempaan elementtiin. Tämä kuuntelija
+                        määrittää sitten, mikä lapsielementti laukaisi tapahtuman.</p>
+
+                    <p><strong>Edut:</strong></p>
+                    <ul>
+                        <li>vähemmän tapahtumankuuntelijoita tarkoittaa vähemmän muistin käyttöä ja nopeampaa käsittelyä
+                        </li>
+                        <li>käsittelee tapahtumia elementeissä, jotka lisätään DOM:iin kuuntelijan liittämisen jälkeen
+                        </li>
+                        <li>vähentää tarvetta toistuvaan tapahtumankuuntelijoiden asettamiseen</li>
+                    </ul>
+
+                    <h3>Esimerkki: "Asiakas"-toimintojen käsittely</h3>
+
+                    <div id="customerList">
+                        <button class="customer" data-customer-id="1">Asiakas A</button>
+                        <button class="customer" data-customer-id="2">Asiakas B</button>
+                        <button class="customer" data-customer-id="3">Asiakas C</button>
+                    </div>
+                    <pre><code><button class="customer" data-customer-id="1">Asiakas A</button>...</code></pre>
+
+                    <pre><code>const customerList = document.getElementById('customerList');
+                        
+                        customerList.addEventListener('click', function(event) {
+                            if (event.target.classList.contains('customer')) {
+                            const customerId = event.target.dataset.customerId;
+                            console.log('Asiakas klikattu:', customerId);
+                            // Suorita toimenpiteitä customerId:n perusteella
+                            alert(`Asiakas ${customerId} klikattu!`);
+                            }
+                        });</code></pre>
+                    <script>
+                        const customerList = document.getElementById('customerList');
+
+                        customerList.addEventListener('click', function (event) {
+                            if (event.target.classList.contains('customer')) {
+                                const customerId = event.target.dataset.customerId;
+                                console.log('Asiakas klikattu:', customerId);
+                                // Suorita toimenpiteitä customerId:n perusteella
+                                alert(`Asiakas ${customerId} klikattu!`);
+                            }
+                        });
+                    </script>
+                </section>
+
+                <section>
+                    <h2>Oletustoiminnon estäminen</h2>
+
+                    <ul>
+                        <li>Esimerkiksi <code>button</code>-elementin oletustyyppi on <strong>submit</strong>, joka
+                            laukaistaan klikkaustapahtumalla</li>
+                        <li>Estääksesi tämän, käytä <code>event.preventDefault()</code>, joka pitää käyttäjät samalla
+                            sivulla: Ei ei-toivottuja päivityksiä.</li>
+                        <li>antaa kehittäjille paremman hallinnan päättää, milloin ja miten toiminto tapahtuu</li>
+                        <li>toimii JavaScript-ohjatuissa lomakkeissa: tarvitaan AJAX-pyyntöihin estämään koko sivun
+                            uudelleenlataus</li>
+                        <li>olennaista yksisivuisissa sovelluksissa (SPA), jotka on tehty Reactilla ja Angularilla</li>
+                    </ul>
+                    <pre><code>document.getElementById("myButton").addEventListener("click", function(event) {
+                            event.preventDefault(); // Estää oletuslomakkeen lähetyksen
+                        });</code></pre>
+
+                    <p>Estääksesi tapahtumien leviämisen (esim. estääksesi tapahtuman kuplimisen ylös DOM-puussa), käytä
+                        <code>event.stopPropagation()</code>:
+                    </p>
+                    <pre><code data-line-numbers>element.addEventListener('click', function(event) {
+                            event.stopPropagation(); // Estää tapahtuman leviämisen edelleen
+                        });</code></pre>
+
+                    <p><strong>Keskeiset erot:</strong></p>
+                    <ul>
+                        <li><code>event.preventDefault()</code> → Estää oletusselaimen toiminnan (esim. lomakkeen
+                            lähetys, linkin navigointi).</li>
+                        <li><code>event.stopPropagation()</code> → Estää tapahtuman leviämisen ylös tai alas DOM-puussa.
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <a class="r-fit-text" href="events.html" target="_blank">Kuplimisesimerkki</a>
+                    <p>Tarkista konsoli</p>
+                </section>
+            </section>
+        </div>
+    </div>
+    <script src="dist/reveal.js"></script>
+    <script src="plugin/zoom/zoom.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/search/search.js"></script>
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script>
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            center: true,
+            hash: true,
+            slideNumber: true,
+
+            // Learn about plugins: https://revealjs.com/plugins/
+            plugins: [
+                RevealZoom,
+                RevealNotes,
+                RevealSearch,
+                RevealMarkdown,
+                RevealHighlight
+            ]
+        })
+    </script>
+</body>
+
+</html>

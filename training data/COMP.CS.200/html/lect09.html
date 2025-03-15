@@ -1,0 +1,1327 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+
+    <title>WSD: lect09 - DOM </title>
+
+    <meta name="description" content="A framework for easily creating beautiful presentations using HTML" />
+    <meta name="author" content="Pia Niemelä, based on Jaakko Rajala's 2024 contribution" />
+
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="dist/reset.css" />
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="../css/deadline.css" />
+    <link rel="stylesheet" href="./css/lect09.css">
+
+
+    <link rel="stylesheet" href="dist/theme/moon.css" id="theme" />
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme" />
+    <link href="https://fonts.googleapis.com/css?family=Coda" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+
+
+    <link rel="stylesheet" href="../css/infograph.css" id="theme" />
+    <style>
+        h1 {
+            font-size: 50%;
+        }
+
+        div>iframe {
+            scale: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides" style="font-size: 60%; ">
+            <section id="TABLE_OF_CONTENTS" data-background="#81237F">
+                <h1>Lecture 9 - DOM</h1>
+                <div style="display: flex;width: 90%;justify-content: space-around;">
+                    <ul style="width:60%">
+                        <li><a href="#THE_DOM_API_INTRODUCTION">Introduction to the DOM</a></li>
+                        <li><a href="#how_to_use_the_dom">DOM API enables element..</a>
+                            <ul>
+                                <li>selection</li>
+                                <li>traversal</li>
+                                <li>addition/removal</li>
+                                <li>attribute modifications</li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <ul style="width:50%">
+                        <li><a href="#EVENTS">Interactivity with events</a>
+                            <ul>
+                                <li>Event object</li>
+                                <li>Event handlers</li>
+                                <li><a href="#passing_params">Passing parameters</a></li>
+                                <li>Event propagation</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <img style="position: absolute; top:-100px;right:   -100px;width:20%;"
+                    src="../img/face-inverted-small.png" />
+            </section>
+
+
+            <section id="THE_DOM_API_INTRODUCTION">
+
+
+                <section>
+                    <h2 class="r-fit-text">Introduction to the DOM</h2>
+
+                </section>
+
+                <section id=" how_did_we_get_here">
+
+                    <div class="flex-center">
+
+                        <div>
+
+                            <h3>
+                                How did we get here?
+                            </h3>
+                            <ul>
+                                <li>
+                                    The problem: static web pages were not interactive, dynamic, or responsive.
+                                </li>
+                                <li>
+                                    Partial fix: JavaScript that
+                                    developers can use to add interactivity.<ul>
+                                        <li>The Problem: JavaScript cannot directly access or modify the content of an
+                                            HTML document
+                                        </li>
+                                        <li>Solution: <strong>The DOM API</strong></li>
+
+                                    </ul>
+
+                            </ul>
+                        </div>
+
+                        <div style="position:relative;">
+
+                            <img src="./lect09/artVSwebpage.png"
+                                alt="a simple diagram illustrating a comparison between two scenes involving an actor and their interactions with art and a web page. In the first scene, the actor is facing a frame labeled 'ART' and saying 'That is a pretty picture!' This suggests that the actor is viewing and appreciating a piece of art. In the second scene, the actor is facing a frame labeled 'Web page' and commenting, 'This is one pretty web page!' This indicates the actor is viewing and admiring a web page. The scenes are likely meant to parallel each other to show the static nature of both art and traditional web pages, with the actor's role being one of a passive observer in both instances."
+                                style="background-color: #fff; padding: 1em; border-radius: 1em; margin: 1em;" />
+                            <span class="fragment">
+                                <img src="./lect09/remoteVSTheDOM.png"
+                                    alt="
+                                This image presents a diagram comparing two interactions, one involving a television and a remote, and the other involving a web page and the DOM, represented by JavaScript (JS). In the top scene, a remote is aimed towards a television set. Above the remote is a speech bubble with the words 'I want to change the channel!' This implies that the remote is used to control the TV, illustrating the idea of an interface device commanding an electronic appliance to change states. In the bottom scene, the JavaScript (JS) logo is placed next to the acronym 'The DOM,'' both pointing towards a representation of a web page. Here, a speech bubble from the JS logo says 'I want to change the text content of this paragraph!'' This represents how JavaScript uses the DOM as an interface to interact with and manipulate a web page, akin to how a remote is used to control a TV."
+                                    style="background-color: #fff; padding: 1em; border-radius: 1em; margin: 1em; position:absolute; top: 0px; left: 0px; " />
+                            </span>
+                        </div>
+                    </div>
+
+                </section>
+                <section id="what_is_the_dom">
+                    <h3>What is the DOM?
+                    </h3>
+                    <p>
+                        <em>
+                            "The W3C Document Object Model (DOM) is a platform and language-neutral interface that
+                            allows programs and scripts to dynamically access and update the content, structure, and
+                            style of a document."
+                        </em> - W3C
+                    </p>
+                    <ul>
+                        <li>
+                            W3C (World Wide Web Consortium) standard, first published in 1998.
+                            <ul>
+                                <li>Core DOM - standard model for all document types - <a
+                                        href="https://www.w3.org/DOM/DOMTR" target="_blank">W3C DOM Specifications</a>
+                                </li>
+                                <li>XML DOM - specializes in parsing, validating, and manipulating XML documents - <a
+                                        href="https://www.w3.org/TR/xml-dom-3-core/" target="_blank">XML DOM Level 3
+                                        Core Specification</a></li>
+                            </ul>
+                        </li>
+                        <li>HTML DOM - what we use on our webpages - <a
+                                href="https://html.spec.whatwg.org/multipage/dom.html" target="_blank">HTML Living
+                                Standard - DOM</a></li>
+                    </ul>
+                    <p>
+                        The HTML DOM is a model of a web page, structured as a <strong>tree</strong>, which the browser
+                        constructs upon loading the page. This is also known as the <strong>DOM tree</strong>.
+                    </p>
+                    <h4>
+                        <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction"
+                            target="_blank">
+                            Click here to learn more </a>
+                    </h4>
+                </section>
+
+                <section id="what_is_the_dom_tree">
+                    <div class="flex-center">
+
+                        <div>
+
+                            <h3>
+                                What is the DOM tree?
+                            </h3>
+                            <ul>
+                                <li>A hierarchical representation of the web page's structure
+                                    <ul>
+                                        <li>element can have parent, children, and siblings</li>
+                                        <li>in HTML document the root is always &lt;html&gt; element and it contains two
+                                            mandatory
+                                            children: head and body</li>
+                                        <li>the nesting element is considered as a parent, inner elements are children
+                                        </li>
+
+                                        <li>rootward traversal enables the retrieval of ancestor nodes</li>
+
+                                    </ul>
+                                </li>
+                                <li>Elements can be accessed and manipulated using JavaScript</li>
+                            </ul>
+
+                        </div>
+                        <span class="fragment">
+                            <img src="./lect09/table.png" alt="Showing the DOM tree structure of a simple HTML table"
+                                style="background-color: #fff; padding: 1em; border-radius: 1em; margin: 1em; top: 0px; left: 0px; "
+                                alt="The image depicts a visual representation of a DOM tree for a simple HTML table. At the top, there is a <table> node, representing the entire table element. It has a single child node, <tbody>, which stands for the table body and acts as a container for the rows of the table. The <tbody> node has two children, each represented by a <tr> node. These <tr> nodes symbolize table rows, which are containers for the cells. Each <tr> node has two child nodes, represented by <td> nodes. These <td> nodes are table cells, the individual data containers within the rows. Finally, the <td> nodes contain text nodes, which are the actual contents of the table cells. These text nodes contain the strings 'Shady Grove', 'Aeolian', 'Over the river, Charlie', and 'Dorian', each one representing the content of one table cell. This diagram is a typical example of how the DOM represents HTML elements and their text content in a tree structure, highlighting the parent-child relationships between the tags and illustrating how a table is structured within the DOM.
+                                " />
+                        </span>
+                    </div>
+
+                </section>
+
+                <section id="example_of_a_dom_tree">
+                    <h3>Example of a DOM tree</h3>
+                    <div class="flex-center">
+
+                        <pre><code data-line-numbers>&lt;html lang="en"&gt;
+    &lt;head&gt;
+        &lt;title&gt;My Document&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;h1&gt;Header&lt;/h1&gt;
+        &lt;p&gt;Paragraph&lt;/p&gt;
+    &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                        <span class="fragment">
+
+
+                            <img src="./lect09/doctree1.jpg"
+                                style="background-color: #fff; padding: 1em; border-radius: 1em; margin: 1em; top: 0px; left: 0px; " />
+                        </span>
+                    </div>
+                </section>
+
+
+                <section id="the_most_important_nodes_document">
+                    <h3>Document represents the whole DOM tree</h3>
+                    <ul>
+                        <li>The hierarchy as defined </li>
+
+                        <li>
+                            Grants access to global properties and information
+                            <pre><code data-line-numbers>const title = document.title // returns the title of the document
+const url = document.URL // returns the URL of the document
+const contentType = document.contentType // e.g. 'text/html'
+                    </code></pre>
+                        </li>
+                        <li>
+                            manipulate the document's structure and content
+                            <pre><code data-line-numbers>document.title = 'New Title' // sets the title of the document to 'New Title'
+// sets the background color of the body element to light blue
+document.body.style.backgroundColor = 'lightblue' 
+//Access the first p element in the document
+const p = document.querySelector('p')
+</code></pre>
+                        </li>
+                        <li>Can be accessed using the <code>document</code> object</li>
+
+                    </ul>
+
+                </section>
+
+
+
+                <section id="live_dom_viewer">
+                    <h3>Understanding the DOM Structure - Live DOM Viewer</h3>
+                    <iframe
+                        src="https://software.hixie.ch/utilities/js/live-dom-viewer/?%3C!DOCTYPE%20html%3E%0A%3Chtml%20lang%3D%22en%22%3E%0A%3Chead%3E%0A%20%20%3Ctitle%3EDocument%3C%2Ftitle%3E%0A%3C%2Fhead%3E%0A%3Cbody%3E%0A%20%20%3Ch1%20class%3D%22heading%22%20id%3D%22h1%22%3EA%20simple%20heading%3C%2Fh1%3E%0A%20%20%3Cp%20class%3D%22paragraph%22%3EA%20simple%20paragraph.%3C%2Fp%3E%0A%3C%2Fbody%3E%0A%3C%2Fhtml%3E"
+                        style="width: 100%; height: 300px; border: 0; border-radius: 4px; overflow: hidden; background-color: #fff;"
+                        sandbox="allow-scripts allow-same-origin"
+                        title="Live DOM Viewer - A tool for visualizing the DOM structure of an HTML document."></iframe>
+
+                </section>
+            </section>
+            <section id="how_to_use_the_dom">
+                <section>
+                    <h3 class="r-fit-text">The DOM API</h3>
+                </section>
+                <section>
+                    <h3>How to use the DOM API</h3>
+                    <ul>
+                        <li><strong>The DOM API</strong> provides a set of interfaces and methods that allow
+                            programs and scripts to access and update the content, structure, and style of a document
+                            through the DOM tree, such as:
+                            <ul>
+                                <li>interaction through event handling, like clicks and form submissions</li>
+                                <li>access to the document's structure and content</li>
+                                <li>dynamic manipulation of the document</li>
+
+                            </ul>
+                        </li>
+                        <li>Example of DOM usage through the DOM API:
+                            <pre><code data-line-numbers>const paragraphs = document.querySelectorAll("p");
+console.log(paragraphs[0].nodeName); // Outputs 'P'</code></pre>
+                        </li>
+                    </ul>
+
+                </section>
+                <section id="ACCESSING_ELEMENTS_OLD">
+                    <h3>Accessing Elements (The Older Way)</h3>
+                    <ul>
+                        <li>
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementById"
+                                target="_blank">
+                                <code>getElementById</code>
+                            </a>: Selects a single element by its unique ID.
+                            <pre><code data-line-numbers>const demoElement = document.getElementById("demo"); 
+                // Returns a single element with id="demo"
+                            </code></pre>
+                        </li>
+                        <li>
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/getElementsByClassName"
+                                target="_blank">
+                                <code>getElementsByClassName</code>
+                            </a>: Selects all elements with a specific class name.
+                            <pre><code data-line-numbers>const demoElements = document.getElementsByClassName("demo"); 
+                // Returns a collection of elements with class="demo"
+                            </code></pre>
+                        </li>
+                        <li>
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/getElementsByTagName"
+                                target="_blank">
+                                <code>getElementsByTagName</code>
+                            </a>: Selects all elements with a specific tag name.
+                            <pre><code data-line-numbers>const demoElements = document.getElementsByTagName("div"); 
+                // Returns a collection of all div elements
+                            </code></pre>
+                        </li>
+                    </ul>
+                </section>
+
+                <section id="ACCESS_ELEMENTS_NEW">
+                    <h3>Accessing Elements (The Newer Way)</h3>
+                    <ul>
+                        <li>
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector"
+                                target="_blank">
+                                <code>querySelector</code>
+                            </a>: Selects the first element that matches a CSS selector.
+                            <pre><code data-line-numbers>let demoElement = document.querySelector(".demo"); 
+                // Selects the first element with class "demo"
+                
+                demoElement = document.querySelector("#demo"); 
+                // Selects the element with id "demo"
+                
+                demoElement = document.querySelector("div"); 
+                // Selects the first div element
+                            </code></pre>
+                        </li>
+                        <li>
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll"
+                                target="_blank">
+                                <code>querySelectorAll</code>
+                            </a>: Selects all elements that match a CSS selector.
+                            <pre><code data-line-numbers>const demoElements = document.querySelectorAll(".demo"); 
+                // Selects all elements with class "demo"
+                
+                demoElements = document.querySelectorAll("div"); 
+                // Selects all div elements
+                            </code></pre>
+                        </li>
+                    </ul>
+                </section>
+
+                <section id="ACCESS_ELEMENTS_OLD_VS_NEW">
+                    <h3>Accessing Elements: Older vs. Newer Methods</h3>
+                    <ul>
+                        <li>
+                            <strong>Specificity:</strong>
+                            <ol>
+                                <li>older: More restricted—selects by ID, class, or tag name.</li>
+                                <li>newer: More flexible—supports full CSS selectors (similar to jQuery).</li>
+                            </ol>
+                        </li>
+                        <li>
+                            <strong>Collection Type:</strong>
+                            <ol>
+                                <li>older: Returns an <code>HTMLCollection</code> (live collection).</li>
+                                <li>newer: Returns a <code>NodeList</code> (static collection).</li>
+                            </ol>
+                        </li>
+                        <li>
+                            <strong>Browser Support:</strong>
+                            <ol>
+                                <li>older: Supported in all browsers.</li>
+                                <li>newer: Supported in modern browsers (IE9+).</li>
+                            </ol>
+                        </li>
+                    </ul>
+                </section>
+                <section id="ACCESS_ELEMENT_CONTENT">
+                    <h2>Accessing Element Content</h2>
+                    <pre><code data-line-numbers>&lt;div id="demo"&gt;&lt;p&gt;This is a &lt;span style="display: none;"&gt;hidden&lt;/span&gt; paragraph&lt;/p&gt;&lt;/div&gt;</code></pre>
+
+                    <ul>
+                        <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML?retiredLocale=fi"
+                                target="_blank">
+                                innerHTML
+                            </a>: Gets or sets the HTML content of an element (use with caution!)
+                            <pre><code data-line-numbers> element = document.getElementById("demo")
+console.log(element.innerHTML) 
+// Outputs: '&lt;p&gt;This is a &lt;span style="display: none;"&gt;hidden&lt;/span&gt; paragraph&lt;/p&gt;'
+ </code></pre>
+                        </li>
+                        <li>
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Node/innerText?retiredLocale=fi"
+                                target="_blank">
+                                <code>innerText</code>
+                            </a>: Gets or sets the visible text content of an element
+                            <pre><code data-line-numbers> element = document.getElementById("demo")
+console.log(element.innerText)
+// Outputs: 'This is a paragraph' 
+ </code></pre>
+                        </li>
+                        <li>
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent?retiredLocale=fi"
+                                target="_blank">
+                                <code>textContent</code>
+                            </a>
+                            : Gets or sets the text content of an element, including hidden text
+                            <pre><code data-line-numbers> element = document.getElementById("demo")
+console.log(element.textContent)
+// Outputs: 'This is a hidden paragraph'
+ </code></pre>
+                        </li>
+                    </ul>
+                </section>
+                <section id="ACCESSING_ELEMENT_ATTRIBUTES">
+                    <h3>Accessing Element Attributes</h3>
+                    <ul>
+                        <li>
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/getAttribute?retiredLocale=fi"
+                                target="_blank">
+                                <code>getAttribute</code>
+                            </a>: Retrieves the value of a specified attribute
+                            <pre><code data-line-numbers> const src = document.getElementById("myImage").getAttribute("src");
+ </code></pre>
+
+                        </li>
+                        <li>
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/setAttribute?retiredLocale=fi"
+                                target="_blank">
+                                <code>setAttribute</code>
+                            </a>: Sets the value of a specified attribute
+                            <pre><code data-line-numbers> document.getElementById("myImage").setAttribute("src", "landscape.jpg");
+ </code></pre>
+                        </li>
+                        <li>
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/removeAttribute?retiredLocale=fi"
+                                target="_blank">
+                                <code>removeAttribute</code>
+                            </a>
+                            : Removes a specified attribute
+                            <pre><code data-line-numbers> document.getElementById("myImage").removeAttribute("src");
+ </code></pre>
+
+                        </li>
+                        <li>
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/hasAttribute?retiredLocale=fi"
+                                target="_blank">
+                                <code>hasAttribute</code>
+                            </a>
+                            : Checks if an element has a specified attribute
+                            <pre><code data-line-numbers> const hasSrc = document.getElementById("myImage").hasAttribute("src");
+ </code></pre>
+                        </li>
+                    </ul>
+                </section>
+
+                <section id="ACCESS_ELEMENT_STYLES">
+                    <h2>Accessing Element Styles</h2>
+                    <ul>
+                        <li>
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style?retiredLocale=fi"
+                                target="_blank">
+                                <code>style</code>
+                            </a>
+                            : Accesses and modifies the inline styles of an element
+                            <pre><code data-line-numbers> document.getElementById("demo").style.color = "red";
+ </code></pre>
+                        </li>
+                        <li>
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/classList?retiredLocale=fi"
+                                target="_blank">
+                                <code>classList</code>
+                            </a>
+                            : Accesses and modifies the class attribute of an element
+                            <pre><code data-line-numbers> document.getElementById("demo").classList.add("red") // adds a class
+ document.getElementById("demo").classList.remove("red") // removes a class
+ document.getElementById("demo").classList.toggle("red") // toggles a class
+ </code></pre>
+                        </li>
+
+                        <li>
+
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/getComputedStyle"
+                                target="_blank">
+                                <code>getComputedStyle</code>
+                            </a>: Retrieves the values of all CSS properties of an element
+                            <pre><code data-line-numbers> const styles = window.getComputedStyle(document.getElementById("demo")); // retrieves the computed styles
+ const color = styles.getPropertyValue("color"); // retrieves the value of a specific style
+ </code></pre>
+                        </li>
+
+                    </ul>
+                </section>
+
+                <section id="ACCESS_ELEMENT_DIMENSIONS">
+                    <h2>Accessing Element Dimensions</h2>
+                    <ul>
+
+                        <li>
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect"
+                                target="_blank">
+                                <code>getBoundingClientRect</code>
+                            </a>
+                            : Retrieves the size and position of an element
+                            <pre><code data-line-numbers> const rect = document.getElementById("demo").getBoundingClientRect();
+ </code></pre>
+                        </li>
+                        <li>
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/clientWidth"
+                                target="_blank">
+                                <code>clientWidth</code>
+                            </a> and <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/clientHeight"
+                                target="_blank">
+                                <code>clientHeight</code>
+                            </a>
+                            : Retrieves the width/height of an element, including padding but not border
+                            <pre><code data-line-numbers> const width = document.getElementById("demo").clientWidth;
+ </code></pre>
+                        <li>
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/offsetWidth"
+                                target="_blank">
+                                <code>offsetWidth</code>
+                            </a> and <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/offsetHeight"
+                                target="_blank">
+                                <code>offsetHeight</code> </a>
+                            : Retrieves the width/height of an element, including padding and border
+                            <pre><code data-line-numbers> const width = document.getElementById("demo").offsetWidth;
+ </code></pre>
+                        </li>
+                        <li>
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/scrollWidth"
+                                target="_blank">
+                                <code>scrollWidth</code>
+                            </a> and <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/scrollHeight"
+                                target="_blank">
+                                <code>scrollHeight</code> </a>
+                            : Retrieves the width/height of an element, including padding, border, and scrollbar
+                            <pre><code data-line-numbers> const width = document.getElementById("demo").scrollWidth;
+ </code></pre>
+                    </ul>
+                </section>
+                <section id="CREATING_INSERTING_ELEMENTS">
+                    <h2>Creating and Inserting Elements</h2>
+                    <ul>
+                        <li>
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement"
+                                target="_blank">
+                                createElement
+                            </a>
+                            : Creates a new element
+                            <pre><code data-line-numbers> const newElement = document.createElement("p");
+    </code></pre>
+                        </li>
+                        <li>
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/append" target="_blank">
+                                append
+                            </a>
+
+                            : Inserts a new element as the last child of a parent element
+                            <pre><code data-line-numbers> document.getElementById("demo").append(newElement);
+    </code></pre>
+                        </li>
+                        <li>
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/prepend" target="_blank">
+
+                                prepend
+                            </a>
+                            : Inserts a new element as the first child of a parent element
+                            <pre><code data-line-numbers> document.getElementById("demo").prepend(newElement);
+    </code></pre>
+                        </li>
+
+                    </ul>
+                    <div>
+                        <p>
+                            Other methods for creating and inserting:
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild" target="_blank">
+                                appendChild,
+                            </a>
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/createTextNode">
+                                createTextNode<!--("Some-text") Result: Some text -->
+                            </a>,
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Node/insertBefore">
+                                insertBefore
+                            </a>
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/createDocumentFragment">
+
+                                createDocumentFragment
+                            </a>,
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Node/cloneNode">
+                                cloneNode
+                            </a>,
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/insertAdjacentHTML">
+                                insertAdjacentHTML
+                            </a>,
+
+
+                        </p>
+                    </div>
+                </section>
+                <section id="REMOVING_REPLACING_ELEMENTS">
+                    <h2>Removing and Replacing Elements</h2>
+                    <ul>
+                        <li>
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/API/ChildNode/remove" target="_blank">
+                                remove
+                            </a>
+                            : Removes an element from the DOM
+                            <pre><code data-line-numbers> document.getElementById("demo").remove();
+    </code></pre>
+                        </li>
+                        <li>
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Node/removeChild" target="_blank">
+                                removeChild
+                            </a>
+                            : Removes a specified child element from a parent element
+                            <pre><code data-line-numbers> document.getElementById("demo").parentNode.removeChild(document.getElementById("demo"));
+    </code></pre>
+                        </li>
+                        <li>
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Node/replaceChild"
+                                target="_blank">
+                                replaceChild
+                            </a>
+                            : Replaces a specified child element with a new element
+                            <pre><code data-line-numbers> const newElement = document.createElement("p");
+    document.getElementById("demo").parentNode.replaceChild(newElement, document.getElementById("demo"));
+    </code></pre>
+
+                        </li>
+                    </ul>
+                </section>
+                <section id="CLONING_ELEMENTS">
+                    <h2>Cloning Elements</h2>
+                    <ul>
+                        <li>
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Node/cloneNode" target="_blank">
+                                cloneNode
+                            </a>
+                            : Creates a copy of an element, with the option to include or exclude child elements
+                            <pre><code data-line-numbers> const clone = document.getElementById("demo").cloneNode(true); // true = deep copy, false = shallow copy
+                            </code></pre>
+                        </li>
+                        <li>
+                            Deep copy: Includes all child elements and their attributes
+                        </li>
+                        <li>
+                            Shallow copy: Only includes the element itself and its attributes
+                        </li>
+                    </ul>
+                </section>
+            </section>
+            <section id="EVENTS">
+                <section>
+                    <h3 class="r-fit-text">Events</h3>
+                </section>
+
+                <section id="TABLE_OF_CONTENTS_EVENT_HANDLING">
+                    <h2>The DOM API: Events</h2>
+                    <ul>
+                        <li>Introduction to Events</li>
+                        <li>
+                            The Event object
+                        </li>
+                        <li>Event Handlers: onevent vs. eventlistener</li>
+                        <li>
+                            Event Handling (advanced) - not covered in this lecture
+                        </li>
+                    </ul>
+                </section>
+                <section id="INTRODUCTION_TO_EVENTS">
+                    <h3>Introduction to Events</h3>
+                    <ul>
+
+                        <li>JavaScript is an event-driven programming language, meaning its execution flow is primarily
+                            determined by
+                            events rather than a strict linear sequence.</li>
+                        <li>Events are triggered by:
+                            <ul style="font-size: 60%;">
+                                <li><strong>user actions</strong>: hovers, scrolling, keypresses, form submissions, <a
+                                        href="https://developer.mozilla.org/en-US/docs/Web/Events#event_listing"
+                                        target="_blank">and many more...</a></li>
+
+                                <li><strong>programs:</strong> JavaScript can generate events through direct method
+                                    calls or by dispatching custom events, enabling dynamic behavior.
+                                    <pre><code data-line-numbers>// Triggering a click event programmatically
+document.getElementById("myButton").click();
+
+// Triggering a change event
+document.getElementById("myInput").dispatchEvent(new Event("change"));</code></pre>
+                                </li>
+                                <li><strong>scheduled actions</strong>: timers like `setTimeout` and `setInterval`
+                                    schedule events to be added to the JavaScript event queue
+                                    <ul st7le="font-size:50%">
+                                        <li>setTimeout(callback, delay) tells the runtime to wait at least delay
+                                            milliseconds and then queue an event</li>
+                                        <li>the callback is the function you provide to <code>setTimeout</code> or
+                                            <code>setInterval</code>
+                                        </li>
+                                        <li>Note: setTimeout(callback, 0) doesn't execute the callback instantly, but
+                                            but queues an event to trigger the `callback` when the sync callstack is
+                                            empty</li>
+
+                                    </ul>
+
+                                </li>
+
+                            </ul>
+                        </li>
+                        <li><strong>Event handlers:</strong> functions that are called when an event occurs</li>
+                    </ul>
+                </section>
+
+
+                <section id="EVENT_HANDLERS_EVENT_OBJECT">
+                    <h3>The Event object (Part 1)</h3>
+                    <p>When an event is triggered, an <strong>event object</strong> is created:</p>
+                    <ul>
+                        <li>contains information about the event</li>
+                        <li>can be used to control the event's behavior</li>
+                        <li>can be passed to event handlers</li>
+                    </ul>
+
+                    <pre><code data-line-numbers>function logEvent(event) {
+    console.log(event); // Outputs the event 
+}
+
+element.addEventListener("click", logEvent);
+</code></pre>
+                    <p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Event" target="_blank">Learn more
+                            on
+                            MDN</a>
+                    </p>
+                </section>
+                <section id="EVENT_HANDLERS_EVENT_OBJECT_PART2">
+                    <h3>The Event object (Part 2)</h3>
+                    <p>Some useful event object properties/methods:</p>
+                    <ul>
+                        <li>
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Event/type" target="_blank">
+                                type </a>: The type of event
+                            <pre><code data-line-numbers>function logEvent(event) {console.log(event.type); // Outputs "click"}
+element.addEventListener("click", logEvent);
+    </code></pre>
+                        </li>
+                        <li>
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Event/target" target="_blank">
+
+                                target:
+                            </a>
+                            The element that triggered the event
+
+                            <pre><code data-line-numbers>function logEvent(event) {
+    console.log(event.target.id); // id of the element that triggered the event}
+element.addEventListener("click", logEvent);
+    </code></pre>
+                        </li>
+                    </ul>
+                    <p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Event" target="_blank">Learn more
+                            on
+                            MDN (there are others..)</a></p>
+                </section>
+
+
+
+                <section id="EVENT_HANDLERS_ONEVENT">
+                    <h3>Event Handlers: onevent</h3>
+                    <ul>
+                        <li>as html attribute (not recommended)
+                            <ul>
+                                <li>
+                                    <pre><code><a onclick="attr_callback"></a></code></pre>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>added as element property in script:
+                            <ol>
+                                <li>
+
+                                    <pre><code data-line-numbers>function reportClick() {
+    console.log("Click happened");
+}
+element.onclick = reportClick; // Assigns the function to the onclick property
+    </code></pre>
+                                </li>
+                                <li>
+
+                                    onchange
+
+                                    : Calls a function when the value of an element changes
+                                    <pre><code data-line-numbers><input type="text" id="myInput" onchange="function doSomething() 
+{console.log('Something happened');}">
+                            </code></pre>
+                                </li>
+                            </ol>
+
+                        </li>
+                    </ul>
+
+
+                </section>
+                <section id="EVENT_HANDLERS_EVENT_LISTENERS">
+                    <h3>Event Handlers: event listeners</h3>
+
+                    <div class="alert alert-info">
+                        <code>element.addEventListener(event, callback[, Boolean])</code>
+                        <ul>
+                            <li>event like 'click', 'mouseover', 'blur'</li>
+                            <li>callback as function identifier, no braces</li>
+                            <li>bubbling/capturing, default value false which implies bubbling</li>
+                        </ul>
+                    </div>
+                    <ul>
+                        <li>listeners are added/removed by the script</li>
+                        <li>
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener"
+                                target="_blank">
+                                addEventListener
+                            </a>
+                            : Attaches an event listener to an element
+                            <pre><code data-line-numbers>function doSomething() {
+ console.log("Something happened");
+ }
+ element.addEventListener("click", doSomething, false); // false(default) = bubbling, true = capturing, optional
+ </code></pre>
+                        </li>
+                        <li>
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/removeEventListener"
+                                target="_blank">
+                                removeEventListener:
+                            </a>
+                            Removes an event listener from an element. Requires a reference to the
+                            same
+                            function
+                            <pre><code data-line-numbers>element.removeEventListener("click", doSomething, false); // false = bubbling, true = capturing </code></pre>
+
+                        </li>
+                        <li>the target element implements the <strong>EventTarget</strong> interface for this event
+                            handling support</li>
+
+                    </ul>
+                    <p><a href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener"
+                            target="_blank">Learn more on MDN</a></p>
+                </section>
+
+                <section style="font-size: 60%;margin:0;">
+                    <table border="1" cellspacing="0" cellpadding="8">
+                        <tr>
+                            <th>Feature</th>
+                            <th><code>onevent</code> as HTML Attribute</th>
+                            <th><code>onevent</code> as Element Property</th>
+                            <th><code>addEventListener</code> Method</th>
+                        </tr>
+                        <tr>
+                            <td><strong>Definition</strong></td>
+                            <td>Inline event handling via HTML attributes (e.g.,
+                                <code>&lt;button onclick="alert('Clicked!')"&gt;</code>)
+                            </td>
+                            <td>Assigning a function to an element’s <code>onevent</code> property (e.g.,
+                                <code>button.onclick = () => alert('Clicked!');</code>)
+                            </td>
+                            <td>Using <code>addEventListener</code> to register event listeners (e.g.,
+                                <code>button.addEventListener('click', () => alert('Clicked!'))</code>)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Multiple handlers</strong></td>
+                            <td>❌ Only one per event (overwrites previous)</td>
+                            <td>❌ Only one per event (last assigned handler overwrites previous)</td>
+                            <td>✅ Allows multiple event listeners for the same event</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Code maintainability</strong></td>
+                            <td>❌ Poor (mixes HTML and JavaScript)</td>
+                            <td>✅ Better than HTML, but still limited</td>
+                            <td>✅ Best (separates concerns, modular)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Separation of concerns</strong></td>
+                            <td>❌ Violates separation (JS in HTML)</td>
+                            <td>✅ Keeps JavaScript in script files</td>
+                            <td>✅ Clean separation (preferred in modern development)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Event object (<code>event</code>)</strong></td>
+                            <td>❌ Not accessible directly in the handler</td>
+                            <td>✅ Available as the handler argument</td>
+                            <td>✅ Available in the callback function</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Removing event listeners</strong></td>
+                            <td>❌ Not applicable</td>
+                            <td>✅ Possible (<code>element.onevent = null</code>)</td>
+                            <td>✅ Possible (<code>removeEventListener</code>, beware memory leak)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Use with anonymous functions</strong></td>
+                            <td>❌ Hard to use inline</td>
+                            <td>❌ Cannot keep multiple handlers; new assignments overwrite previous ones</td>
+                            <td>✅ Allows multiple anonymous and named functions without conflicts</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Supports capturing</strong></td>
+                            <td>❌ No</td>
+                            <td>❌ No</td>
+                            <td>✅ Yes (by passing <code>{ capture: true }</code>)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Multiple events on same element</strong></td>
+                            <td>✅ Yes, but only one handler per event type (e.g., <code>onclick=""</code>,
+                                <code>onmouseover=""</code>)
+                            </td>
+                            <td>✅ Yes, but only one handler per event type (overwrites previous assignment)</td>
+                            <td>✅ Yes, supports multiple handlers per event type (e.g., multiple <code>click</code>
+                                handlers)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Performance</strong></td>
+                            <td>✅ Lightweight but not flexible</td>
+                            <td>✅ Efficient, but only one listener per event</td>
+                            <td>✅ Slightly more overhead but supports multiple handlers</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Flexibility</strong></td>
+                            <td>❌ Limited</td>
+                            <td>❌ Limited</td>
+                            <td>✅ Full control (e.g., <code>once</code>, <code>passive</code>, <code>capture</code>
+                                options)</td>
+                        </tr>
+                    </table>
+
+                </section>
+                <section id="EVENT_HANDLERS_EVENT_LISTENERS_EXAMPLE_MEMORY_LEAK">
+                    <h3>Event Listeners Example: Memory Leak</h3>
+                    <pre><code data-line-numbers>function handleClick() {
+    console.log('Button clicked');
+}
+
+const button = document.getElementById('myButton');
+button.addEventListener('click', handleClick);
+
+// Later in the code...
+button.parentNode.removeChild(button); // Removes the button from the DOM
+</code></pre>
+                    <p>Even though the button is removed from the DOM, the event listener is still attached to the
+                        button. This can cause a memory leak.</p>
+
+                    <p>
+                        To avoid memory leaks, always remove event listeners when they are no longer needed.
+                    <pre><code>button.removeEventListener("click", handleClick);
+button.parentNode.removeChild(button);</code></pre>
+                    </p>
+                </section>
+            </section>
+            <section>
+
+                <section data-background="#81237F">
+                    <h1 class="r-fit-text">Passing params</h1>
+                </section>
+                <section>
+                    <h3>Passing Parameters to Event Handlers</h3>
+                    <p>
+                        Several alternatives to pass parameters to event handlers:
+                    </p>
+                    <div style="max-height: 400px; 
+ overflow: auto;
+ ">
+                        <ul>
+                            <li>
+                                <p>an anonymous function to pass parameters to event handlers:</p>
+                                <pre><code data-line-numbers> element.addEventListener('click', function(event) {
+ myFunction(event, param1, param2);
+ });
+ </code></pre>
+                                <p><a href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener#using_an_anonymous_function_as_a_wrapper"
+                                        target="_blank">Learn more on MDN</a></p>
+
+                            </li>
+                            <li>
+                                <p>Use the <code>Function.prototype.bind()</code> method to pass parameters (advanced)
+                                </p>
+                                <pre><code data-line-numbers>function myFunction(param1, param2) {
+    console.log(param1 + ' ' + param2);
+}
+
+document.getElementById('myButton').addEventListener('click', myFunction.bind(null, 'param1', 'param2')); 
+// null indicates no 'this' in the callback</code></pre>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+                <section style="font-size: 60%;">
+                    <table border="1">
+                        <thead>
+                            <tr>
+                                <th>Method</th>
+                                <th>Code Example</th>
+                                <th>Pros</th>
+                                <th>Cons</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>anonymous function<br>(recommended)</strong></td>
+                                <td width="35%">
+                                    <pre>button.addEventListener("click", function () {
+    handleClick(42, "Hello!");
+});
+
+function handleClick(num, text) {
+    console.log(num, text);
+}</pre>
+                                </td>
+                                <td>✅ simple & clear</td>
+                                <td>❌ creates a new function every time</td>
+                            </tr>
+                            <tr>
+                                <td><strong>arrow function</strong></td>
+                                <td>
+                                    <pre>button.addEventListener("click", 
+    () => handleClick(42, "Hello!"));</pre>
+                                </td>
+                                <td>✅ shorter syntax<br>✅ works like an anonymous function, this handling differs</td>
+                                <td>❌ still creates a new function on each call</td>
+                            </tr>
+                            <tr>
+                                <td><strong>.bind()</strong></td>
+                                <td>
+                                    <pre>button.addEventListener("click", 
+    handleClick.bind(null, 42, "Hello!"));
+                    
+function handleClick(num, text, event) {
+    console.log(num, text, event);
+}</pre>
+                                </td>
+                                <td>✅ preserves function reference<br>✅ automatically passes event as last argument</td>
+                                <td>❌ less readable<br>❌ extra function binding</td>
+                            </tr>
+                            <tr>
+                                <td><strong>wrapper</strong></td>
+                                <td>
+                                    <pre>function createHandler(num, text) {
+    return function (event) {
+        console.log("Number:", num);
+        console.log("Text:", text);
+        console.log("Event:", event);
+    };
+}
+
+button.addEventListener("click", 
+    createHandler(42, "Hello!"));</pre>
+                                </td>
+                                <td>✅ best for reusable handlers<br>✅ good for event delegation<br>✅ modular</td>
+                                <td>❌ more complex syntax</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </section>
+
+                <section>
+                    <h2>Closer look to a closure in wrapper</h2>
+                    <pre><code>function createHandler(num, text) {
+    return function (event) {  //closure!!!
+        console.log("Number:", num, "Text:", text);
+        console.log("Event object:", event);
+    };
+}
+
+document.getElementById("myButton")
+    .addEventListener("click", createHandler(42, "Hello!"));
+    </code></pre>
+                    <ul>
+                        <p>A closure is a function that "remembers" variables from its outer scope even after that scope
+                            has finished executing.</p>
+                        <li>The inner function is a <strong>closure</strong> that remembers <code>num</code> and
+                            <code>text</code> of outer function
+                        </li>
+                        <li>Closures retain access to their outer function's variables</li>
+                        <li>Then, when <code>createHandler(42, "Hello!")</code> runs, it returns a function that stores
+                            these values.</li>
+
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Where does the wrapper's <code>event</code> come from?</h2>
+                    <ul>
+                        <li>The returned anon. function is assigned to <code>addEventListener</code>, but it does not
+                            execute yet</li>
+                        <li>The <code>event</code> object is automatically passed as the first parameter to event
+                            listeners.</li>
+                        <li>When the event occurs, the event listener provides the <code>event</code> object to the
+                            callback function.</li>
+                        <li>This allows access to both the preserved variables (<code>num</code>, <code>text</code>) and
+                            the event data.</li>
+                    </ul>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h1 class="r-fit-text">Event propagation</h1>
+                </section>
+                <section>
+                    <h2>Event Propagation: bubbling and capturing</h2>
+
+                    <p>Events propagate through the DOM in three phases:</p>
+                    <ol>
+                        <li>
+                            <div style="display:flex">
+
+                                <p style="width:50%">Capturing phase: The event travels down from the root to the target
+                                    element</p>
+
+                                <svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+                                    <g transform="translate(100, 100)">
+                                        <circle r="80" fill="#e0f7fa" id="div1" />
+                                        <text x="0" y="-90" text-anchor="middle" dominant-baseline="middle"
+                                            font-size="16" fill="black">div1⬇️</text>
+                                        <g transform="scale(0.8)">
+                                            <circle r="80" fill="#b2ebf2" id="div2" />
+                                            <text x="0" y="-90" text-anchor="middle" dominant-baseline="middle"
+                                                font-size="16" fill="black">div2⬇️</text>
+                                            <g transform="scale(0.8)">
+                                                <circle r="80" fill="#81d4fa" id="div3" />
+                                                <text x="0" y="-90" text-anchor="middle" dominant-baseline="middle"
+                                                    font-size="16" fill="black">div3⬇️</text>
+                                                <g transform="scale(0.7)">
+                                                    <circle r="80" fill="#4fc3f7" id="div4" />
+                                                    <text x="0" y="-90" text-anchor="middle" dominant-baseline="middle"
+                                                        font-size="22" fill="black">div4⬇️</text>
+                                                    <g transform="scale(0.6)">
+                                                        <circle r="80" fill="#29b6f6" id="form1" />
+                                                        <text x="0" y="-90" text-anchor="middle"
+                                                            dominant-baseline="middle" font-size="26"
+                                                            fill="black">form⬇️</text>
+                                                    </g>
+                                                </g>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </svg>
+                            </div>
+                        </li>
+                        <li>Target phase: the event reaches the target</li>
+                        <li>
+                            <div style="display:flex">
+
+                                <p style="width:50%">Bubbling phase: The event bubbles up from the target element to the
+                                    root</p>
+                                <svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+                                    <g transform="translate(100, 100)">
+                                        <circle r="80" fill="#29b6f6" id="div5" />
+                                        <text x="0" y="-90" text-anchor="middle" dominant-baseline="middle"
+                                            font-size="16" fill="black">div1⬆️</text>
+                                        <g transform="scale(0.8)">
+                                            <circle r="80" fill="#4fc3f7" id="div6" />
+                                            <text x="0" y="-90" text-anchor="middle" dominant-baseline="middle"
+                                                font-size="16" fill="black">div2⬆️</text>
+                                            <g transform="scale(0.8)">
+                                                <circle r="80" fill="#81d4fa" id="div7" />
+                                                <text x="0" y="-90" text-anchor="middle" dominant-baseline="middle"
+                                                    font-size="16" fill="black">div3⬆️</text>
+                                                <g transform="scale(0.7)">
+                                                    <circle r="80" fill="#b2ebf2" id="div8" />
+                                                    <text x="0" y="-90" text-anchor="middle" dominant-baseline="middle"
+                                                        font-size="22" fill="black">div4⬆️</text>
+                                                    <g transform="scale(0.6)">
+                                                        <circle r="80" fill="#e0f7fa" id="form2" />
+                                                        <text x="0" y="-90" text-anchor="middle"
+                                                            dominant-baseline="middle" font-size="26"
+                                                            fill="black">form⬆️</text>
+                                                    </g>
+                                                </g>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </svg>
+                            </div>
+
+                        </li>
+                    </ol>
+                    <p>Note: Event listeners are usually set for either bubbling or capturing. If both are used,
+                        capturing occurs first.</p>
+                </section>
+                <section>
+                    <h2>Stopping event propagation</h2>
+                    <p><code>event.stopPropagation()</code> stops an event from traveling further up or down the DOM,
+                        preventing parent/ancestor or child/descendant elements from receiving it.</p>
+                    <p>Its purpose is to control event flow and prevent unintended side effects, isolating event
+                        handling within specific elements.</p>
+                    <h2>Use Cases</h2>
+                    <ul>
+                        <li>preventing parent handlers (more usual use case)</li>
+                        <li><strong>creating custom controls:</strong>
+                            <ul>
+                                <li>building interactive components requiring precise control over event flow</li>
+                                <li>example: A custom dropdown</li>
+                            </ul>
+                        </li>
+                        <li>in creating reusable UI components,
+                            <code>stopPropagation</code> can prevent the component's event listeners from interfering
+                            with the surrounding applications
+                            <ul>
+
+                                <li>all major JavaScript frameworks (React, Angular, Vue.js) fundamentally rely on the
+                                    DOM's event system and abstract away direct DOM manipulation but still work with the
+                                    underlying event model.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>Event delegation for efficiency</h2>
+                  
+                    <p>Instead of attaching event listeners to every individual element, event delegation attaches a single listener to a parent element. This listener then determines which child element triggered the event.</p>
+                  
+                    <p><strong>Benefits:</strong></p>
+                    <ul>
+                      <li>fewer event listeners mean less memory usage and faster processing</li>
+                      <li>handles events on elements added to the DOM after the listener is attached</li>
+                      <li>reduces the need for repetitive event listener setup</li>
+                    </ul>
+                  
+                    <h3>Example: Handling "Customer" Actions</h3>
+                  
+                    <div id="customerList">
+                      <button class="customer" data-customer-id="1">Customer A</button>
+                      <button class="customer" data-customer-id="2">Customer B</button>
+                      <button class="customer" data-customer-id="3">Customer C</button>
+                      </div>
+                      <pre><code><button class="customer" data-customer-id="1">Customer A</button>...</code></pre>
+                  
+<pre><code>const customerList = document.getElementById('customerList');
+
+customerList.addEventListener('click', function(event) {
+    if (event.target.classList.contains('customer')) {
+    const customerId = event.target.dataset.customerId;
+    console.log('Customer clicked:', customerId);
+    // Perform actions based on customerId
+    alert(`Customer ${customerId} clicked!`);
+    }
+});</code></pre>
+<script>
+    const customerList = document.getElementById('customerList');
+
+customerList.addEventListener('click', function(event) {
+    if (event.target.classList.contains('customer')) {
+    const customerId = event.target.dataset.customerId;
+    console.log('Customer clicked:', customerId);
+    // Perform actions based on customerId
+    alert(`Customer ${customerId} clicked!`);
+    }
+});
+</script>
+                  
+                  
+                  </section>
+
+                  <section>
+                    <h2>Prevent default</h2>
+
+                    <ul>
+                        <li>For example, a <code>button</code>'s default type is <strong>submit</strong> triggered by click event</li>
+                        <li>To prevent this, use <code>event.preventDefault()</code> which
+                        keeps users on the same page: No unwanted refreshes.
+                        <li>gives developers better control to decide when and how the action happens</li>
+                        <li>works with JavaScript-driven forms: needed for AJAX requests to prevents from full page reload</li>
+                        <li>essential for SPAs (Single Page Applications) done with React and Angular</li>
+                        
+
+                    </ul>
+    <pre><code>document.getElementById("myButton").addEventListener("click", function(event) {
+    event.preventDefault(); // Prevents the default form submission
+});</code></pre>
+
+                    <p>To prevent event propagation (e.g., stopping an event from bubbling up the DOM tree), use
+                        <code>event.stopPropagation()</code>:
+                    </p>
+    <pre><code data-line-numbers>element.addEventListener('click', function(event) {
+    event.stopPropagation(); // Stops the event from propagating further
+});</code></pre>
+
+                    <p><strong>Key Differences:</strong></p>
+                    <ul>
+                        <li><code>event.preventDefault()</code> → Prevents the default browser behavior (e.g., form
+                            submission, link navigation).</li>
+                        <li><code>event.stopPropagation()</code> → Stops the event from traveling up or down the DOM
+                            tree.</li>
+                    </ul>
+                </section>
+                <section>
+                    <a class="r-fit-text" href="events.html" target="_blank">Bubbling example</a>
+                    <p>Check the console</p>
+                </section>
+
+            </section>
+        </div>
+    </div>
+    <script src="dist/reveal.js"></script>
+    <script src="plugin/zoom/zoom.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/search/search.js"></script>
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script>
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            center: true,
+            hash: true,
+            slideNumber: true,
+
+            // Learn about plugins: https://revealjs.com/plugins/
+            plugins: [
+                RevealZoom,
+                RevealNotes,
+                RevealSearch,
+                RevealMarkdown,
+                RevealHighlight
+            ]
+        })
+    </script>
+</body>
+
+</html>

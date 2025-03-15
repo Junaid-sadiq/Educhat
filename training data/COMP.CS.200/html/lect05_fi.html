@@ -1,0 +1,1590 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+
+    <title>WSD: lect05</title>
+
+    <meta name="description" content="A framework for easily creating beautiful presentations using HTML" />
+    <meta name="author" content="Pia Niemelä, Janne Miilunpalo, Jaakko  Rajala" />
+
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="dist/reset.css" />
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="../css/deadline.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+
+
+    <link rel="stylesheet" href="dist/theme/moon.css" id="theme" />
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme" />
+    <link href="https://fonts.googleapis.com/css?family=Coda" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+
+    <link rel="stylesheet" href="../css/tree.css">
+    <link rel="stylesheet" href="../css/timeline.css">
+
+    <link rel="stylesheet" href="../css/infograph.css" id="theme" />
+    <style>
+        h1 {
+            font-size: 50%;
+        }
+
+        #iframe-container {
+            position: relative;
+            /* Needed for proper positioning of iframe */
+        }
+
+        #iframe-container iframe {
+            border: none;
+            /* Remove default iframe border */
+        }
+
+        #iframe-container.iframe-expanded iframe {
+            width: 100%;
+            /* Expands iframe to full width of container */
+            height: 400px;
+            /* Adjust height as needed */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="reveal">
+        <!-- Any section element inside of this container is displayed as a slide -->
+        <div class="slides">
+            <section data-background="../img/hakon.jpg" class="present" style="top: 307px; display: block;"
+                data-background-image="../img/hakon.jpg">
+                <h1>Lecture 5</h1>
+                <div style="display:flex;font-size: 80%;background-color: rgba(100, 100, 100, 0.7);color:brown">
+                    <ul width="50%">
+                        <li><a href="#/1">Perusteet</a>
+                            <ul style="font-size: 80%;">
+                                <li>CSS-standardit</li>
+                                <li>CSS-säännöt</li>
+                                <li>DOM-puu ja elementit kohteina</li>
+                                <li><a href="#/2">Tyylien liittäminen sivulle</a></li>
+                                <li>CSS-säännön syntaksi
+                                    <pre><code>valitsin[, valitsin]* {[ominaisuus: arvo;]+}</code></pre>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><a href="#/3">Sääntöjen prioriteetit</a>
+                            <ul>
+                                <li>Spesifisyys, kaskadisuus, periytyminen</li>
+                                <li>!important (vältettävä)</li>
+                                <li>Yleinen ohje CSS:n kirjoittamiseen</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul width="50%">
+                        <li><a href="#/4">Valitsimet</a>
+                            <ul style="font-size: 80%;">
+                                <li>elementtityypit</li>
+                                <li>class/id-attribuutit</li>
+                                <li>muut attribuutit</li>
+                                <li>pseudoluokat/-elementit</li>
+                            </ul>
+                        </li>
+                        <li><a href="#/5">Kombinaattorit</a></li>
+                        <li><a href="#/6">Laatikkomalli</a></li>
+                        <li><a href="#/7">Yksiköt</a></li>
+                    </ul>
+                </div>
+
+                <div style="font-size:60%">
+                    <span>Håkon Wium Lie</span>
+                    <audio controls src="../audio/hakon.mp3"></audio>
+                </div>
+
+            </section>
+            <section>
+                <section>
+                    <h2 class="r-fit-text">CSS:n perusteet</h2>
+                </section>
+                <section>
+                    <h2>CSS: Cascading Style Sheets</h2>
+                    <p>CSS (Cascading Style Sheets) on kieli, joka määrittää HTML-sisällön esitystyylin verkkosivuilla.
+                        Se tarjoaa kaksiosaisen järjestelmän tyylien soveltamiseen
+                    </p>
+                </section>
+                <section>
+                    <h2>W3C standards</h2>
+                    <div style="display: flex;">
+                        <ul style="width:50%">
+                            <li>CSS1, CSS2, CSS2.1, CSS3 standards
+                                <ul>
+                                    <li>no CSS4 coming<ul>
+                                            <li>instead, W3C specifies
+                                                different modules</li>
+                                            <li>such as selectors, media queries and fonts</li>
+
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <img src="../img/CSS.svg" style="width: 60%;" />
+
+                    </div>
+
+                </section>
+                <section>
+                    <h2><a href="https://en.wikipedia.org/wiki/Acid2">Acid2 tests</a></h2>
+                    <div style="display:flex">
+                        <p style="font-size: 50%;width:70%">Browsers complient with the W3C specifications (HTML,
+                            CSS2.1, PNG) show the smiley correctly.
+                            Acid2 was targeted at get browser vendors, in particular Microsoft, to follow the
+                            spec:<br>
+                            <a href="https://youtu.be/PQTpsxf7rQQ?si=rLVNEq4Xk8ZuM5bf&t=1076" target="_blank">
+                                check what the inventors of CSS,
+                                Håkon and Bert think</a>
+                        </p>
+
+                        <!-- <div id="iframe-container" style="width:30%">
+                        <iframe allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" frameborder="0" 
+                        src="https://youtu.be/PQTpsxf7rQQ?si=rLVNEq4Xk8ZuM5bf&t=1076" width="100" height="100"></iframe>
+                    </div> -->
+                        <script>
+                            document.getElementById("iframe-container").addEventListener("click", function () {
+                                this.classList.toggle("iframe-expanded");
+                            });
+                        </script>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr;">
+                        <div>
+                            Reference image:
+                            <a rel="nofollow" class="external autonumber" href="http://acid2.acidtests.org/"
+                                &gt;[1]&lt;/a&gt;, screenshot taken by &lt;a
+                                href="//commons.wikimedia.org/w/index.php?title=User:SushiGeek&amp;amp;action=edit&amp;amp;redlink=1"
+                                class="new" title="User:SushiGeek (page does not exist)">
+
+                                <img src="../img/acid2.png"></a>
+                        </div>
+                        <div>
+                            Internet Explorer v.6
+                            <img src="../img/Ieacid2.png">
+                        </div>
+                    </div>
+
+
+
+                    </p>
+                </section>
+
+
+                <section class="container">
+                    <div>If timeline is not visible, adjust zoom levels (Ctrl-+ zoom-in, Ctrl-- zoom-out)</div>
+                    <div id="container"></div>
+
+                </section>
+
+                <section style="font-size: 50%;">
+                    <H2> CSS:n näkymät </H2>
+                    <p>
+                        Nykyaikaiset verkkokehys rakentaa sivuja käyttämällä kapseloituja itsenäisiä komponentteja
+                        Tyylit,
+                        Ylläpitävyyden parantaminen. Alla on joitain nousevia tekniikoita, jotka edistävät
+                        modulaarisuutta CSS: ssä:
+                    </p>
+                    <ul>
+                        <Li>
+                            Kehittyvät CSS -tekniset tiedot: @layer ja @scope esittävät modulaarisuuden.
+                        </li>
+                        <Li>
+                            Esiprosessorit, kuten SASS, SCSS, Vähemmän ja POSTCSS, tarjoavat ominaisuuksia, kuten
+                            muuttujia,
+                            sekoitus,
+                            ja pesimä ylläpidettäviä tyylitaulukoita varten.
+                        </li>
+                        <Li>
+                            CSS -moduulit, jotka pariutuvat hyvin JSX -komponentteihin. Tyylit ovat paikallisesti
+                            laajuuksia, estävät
+                            konfliktit. Esimerkki käyttö:
+                            <pre><code>import styles from './styles.module.css';                  
+function MyStyledComponent() {
+    return <button className={styles.button}>Click Me</button>;
+}</code></pre>
+                        </li>
+                        <li>
+                            CSS-in-JS-kirjastot, kuten tyyliset komponentit, sallivat tyylien määrittelemisen suoraan
+                            Reactin sisällä
+                            komponentit.
+                            <pre><code>import React from 'react';
+import styled from 'styled-components';
+const StyledButton = styled.button`background-color: #007bff;`;
+
+<StyledButton>Click Me</StyledButton></code></pre>
+                        </li>
+                        <li>
+                            Suurten järjestelmien suunnittelumenetelmät edistävät skaalautuvia ja ylläpidettäviä CSS: ää
+                            kompleksista
+                            projektit.
+                            <table>
+                                <tr>
+                                    <Th> attribuutti </th>
+                                    <th>BEM</th>
+                                    <th>Atomic CSS</th>
+                                    <th>CUBE CSS</th>
+                                </tr>
+                                <tr>
+                                    <td> käyttö </td>
+                                    <td>Komponenttipohjainen: blocks, elements, modifiers</td>
+                                    <td>Utility classes: granular, single-purpose classes</td>
+                                    <td>Komponenttipohjainen: composition, utility, block, extension</td>
+                                </tr>
+                            </table>
+                        </li>
+                    </ul>
+                </section>
+
+
+                <section>
+                    <h2> CSS-sääntösyntaksi </h2>
+
+                    <div style="display:flex;flex-direction: column;">
+
+                        <div style="display:flex">
+                            <div>
+                                <p>
+                                    CSS-syntaksi
+                                    selectorList {
+                                    declaration
+                                    }
+                                </p>
+                                <p>Valitsin (selector), esim. elementin tyyppi, class tai id</p>
+                            </div>
+                            <pre><code class="grammar">selector[, selector]*
+{ [property: value;]+ }</code></pre>
+
+
+                        </div>
+                        <div style="display:flex">
+                            <p> Sama sääntö pätee useisiin elementteihin </p>
+                            <pre><code class="grammar">h1, h2 { /* headers blue */ 
+color: blue;
+}
+</code></pre>
+                        </div>
+                        <div style="display:flex">
+                            <p> Useat samaan elementtiin kohdistetut säännöt </p>
+
+                            <pre><code class="grammar">body { /* page with black text */
+color: black; /* on yellow background */
+background-color: yellow;
+}</code></pre>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <H2> Esimerkkisäännöt </h2>
+                    <pre><code>* { /* unifying margins and box sizing */
+margin: 0;
+box-sizing: border-box;
+}
+h1 { /* the first level header gets a black shadow */
+text-shadow: 4px 4px 2px black;
+}
+
+p { /* text in paragraphs in red, and the width */
+color: red; /* of the paragraph and the margin around it */
+width: 240px; /* are defined */
+margin: 3rem;
+}</code></pre>
+                    * on "universal selector" kaikille tyypeille
+                </section>
+                <section>
+                    <h2> DOM -puu määrittelee missä valitsijoita ja yhdistelmiä sovelletaan </h2>
+                    <div style="display: flex;">
+                        <div style="width:20%;font-size: 50%;">
+                            <ul>
+                                <li>DOM (document object model)
+                                </li>
+                                <li> Solmujen hierarkia: <ul>
+                                        <li> elementit </li>
+                                        <li> Tekstisolmut (lehdet) </li>
+                                    </ul>
+                                </li>
+                                <li> Paina p-elementtiä avataksesi puun rakenne <ul style="font-size: 80%">
+                                        <li> p-solmulla on 8 lasta </li>
+                                        <li> br:llä on 7 sisarusta </li>
+                                        <li> teksti vasemmalla on ensimmäinen lapsi </li>
+                                        <li> em:llä on yksi lapsi (tekstisolmu) </li>
+                                        <li> samoin kuin 'a' anchor tag </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div style="width:80%;font-size: 50%;">
+                            <pre><code class="grammar" id="example_code"><p>Tämä on <em>toinen</em> paragraafi 
+ja tässä kuva
+<a href="http://www.visittampere.fi">
+Tampereen Hämeensillalta</a><br>
+<img src = "img/01-tampere.jpg" 
+alt="Tampereen Hämeensilta">
+</p></code></pre>
+
+                            <div id="tree_example" style="margin:0;padding:0;"></div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <!-- <h2>Demo of DOM tree</h2> -->
+                    <div style="display:flex;justify-content: flex-start;align-items: flex-start;">
+
+                        <div style="display:flex;align-items: flex-start;flex-direction: column;">
+                            <textarea id="html_code" rows="10" cols="50"></textarea>
+                        </div>
+                        <div id="demo_in_html" style="border:1px solid hand; background-color: aquamarine;width:40vw;">
+                            <div> Editoi HTML:ää nähdäksesi muutoksia.<br> Napsauta puun vihreitä solmuja </div>
+                        </div>
+                    </div>
+                    <div id="tree" style="height:50vh;width:100vw;text-align: left;"></div>
+
+                    <div id="mocha"></div>
+
+                </section>
+
+
+            </section>
+            <section style="font-size: 80%;">
+                <section>
+                    <h2>Menetelmä 1: Ulkoinen tyylitiedosto (linkitetty CSS-tiedosto)</h2>
+                    <p>Käyttää erillistä <code>.css</code>-tiedostoa (tai useampia tiedostoja), jotka liitetään
+                        <code>&lt;link&gt;</code>-elementillä <code>&lt;head&gt;</code>-osioon.
+                    </p>
+                    <p>Tämä menetelmä mahdollistaa tyylien uudelleenkäytön useilla sivuilla, mikä parantaa
+                        ylläpidettävyyttä.</p>
+                    <pre style="font-size:50%; width:90vw;"><code>&lt;head&gt;
+    &lt;meta charset="UTF-8" /&gt;
+    &lt;title&gt;Sivun otsikko&lt;/title&gt;
+    &lt;link rel="stylesheet" type="text/css" href="polku/perustyyli.css" /&gt;
+    &lt;link rel="stylesheet" type="text/css" href="polku/navigaatio.css" /&gt;
+    &lt;link rel="stylesheet" type="text/css" href="polku/erityinen.css" /&gt;
+&lt;/head&gt;</code></pre>
+                </section>
+
+                <section>
+                    <h2>Menetelmä 2: Sisäinen tyylitiedosto (<code>&lt;style&gt;</code>-lohko)</h2>
+                    <div style="display:flex">
+                        <div>
+                            <p>Määrittää CSS-säännöt suoraan <code>&lt;style&gt;</code>-elementissä
+                                <code>&lt;head&gt;</code>-osiossa.
+                            </p>
+                            <p>Tyylit vaikuttavat vain tähän sivuun eikä niitä jaeta muiden sivujen kesken.</p>
+                            <p>Hyödyllinen nopeisiin muokkauksiin tai yksittäisen sivun tyylien määrittelyyn,
+                                mutta vaikeammin ylläpidettävä suuremmissa projekteissa.</p>
+                        </div>
+
+                        <pre><code>&lt;html lang="fi"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8" /&gt;
+    &lt;title&gt;Sivun otsikko&lt;/title&gt;
+    &lt;style&gt;
+    body {
+        background-color: maroon;
+        margin-left: 20px;
+    }
+
+    p {
+        color: white;
+    }
+    &lt;/style&gt;
+&lt;/head&gt;
+</code></pre>
+                    </div>
+                </section>
+                <section>
+                    <h2>Menetelmä 3: Sisäinen tyyli (inline-tyyli)</h2>
+                    <div style="display:flex">
+                        <p>Suoraan elementtiin sivulla käyttämällä <code>style</code>-attribuuttia,
+                            eli niin kutsuttua sisäistä tyyliä (inline style).</p>
+                        <pre><code><p style="color:sienna; margin-left:20px;">
+                    Tämä on kappale.
+                    </p></code></pre>
+                    </div>
+
+                    <table style="font-size:80%">
+                        <tr>
+                            <td>Menetelmä 1</td>
+                            <td>Suositeltava, uudelleenkäytettävä, CSS voidaan jakaa</td>
+                        </tr>
+                        <tr>
+                            <td>Menetelmä 2</td>
+                            <td>Sopii pieniin projekteihin</td>
+                        </tr>
+                        <tr>
+                            <td>Menetelmä 3</td>
+                            <td>Hyödyllinen kokeiluun</td>
+                        </tr>
+                    </table>
+                </section>
+
+
+
+
+            </section>
+            <section>
+
+                <section>
+                    <h1 class="r-fit-text">Sääntöjen prioriteetit</h1>
+                </section>
+                <section>
+                    <h2>Ristiriitaisten ja päällekkäisten sääntojen käsittely</h2>
+                    <p>Seuraavat kolme käsitettä vaikuttavat tyylien lopulliseen määräytymiseen.</p>
+                    <div style="display:flex;font-size:80%">
+                        <div>
+                            <h3>Tarkkuus (Specificity)</h3>
+                            <ul>
+                                <li>Valitsimilla on tietty tarkkuusarvo.</li>
+                                <li>Se sääntö, jolla on tarkin valitsin, "voittaa".</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3>Periytyminen (Inheritance)</h3>
+                            <ul>
+                                <li>Jotkin ominaisuudet periytyvät vanhemmalta elementiltä (mutta eivät kaikki).</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3>Kaskadoituminen (Cascading)</h3>
+                            <ul>
+                                <li>Jos useilla säännöillä on sama tarkkuusarvo, viimeisenä määritelty sääntö "voittaa".
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>Tarkkuus (Specificity)</h2>
+                    <p>Jokaisella valitsimella on tietty tarkkuusarvo seuraavasti:</p>
+
+                    <table style="font-size:60%;width:60%">
+                        <tr>
+                            <th>Valitsin</th>
+                            <th>Tarkkuusarvo</th>
+                        </tr>
+                        <tr>
+                            <td>Elementti, pseudo-elementti</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>Luokka, pseudo-luokka, attribuutti</td>
+                            <td>10</td>
+                        </tr>
+                        <tr>
+                            <td>ID</td>
+                            <td>100</td>
+                        </tr>
+                        <tr>
+                            <td>Inline-tyyli</td>
+                            <td>1000</td>
+                        </tr>
+                    </table>
+
+                    <p style="font-size:80%">Yhdistettyjen valitsimien tarkkuusarvo lasketaan summana, esim.</p>
+
+                    <table style="font-size:60%;width:100%">
+                        <tr>
+                            <td>p::after</td>
+                            <td>Elementti ja pseudo-elementti</td>
+                            <td>1+1 = 2</td>
+                        </tr>
+                        <tr>
+                            <td>[type=email]</td>
+                            <td>Attribuuttivalitsin</td>
+                            <td>10</td>
+                        </tr>
+                        <tr>
+                            <td>p.important</td>
+                            <td>Elementti ja luokka</td>
+                            <td>1+10=11</td>
+                        </tr>
+                        <tr>
+                            <td>aside.chart:first-child</td>
+                            <td>Elementti, luokka, pseudo-luokka</td>
+                            <td>1+10+10=21</td>
+                        </tr>
+                    </table>
+
+                    <p>
+                        <a
+                            href="https://polypane.app/css-specificity-calculator/#selector=header%20h1%23sitetitle%20%3E.logo">
+                            Kokeile Polypane-sivuston CSS-tarkkuuslaskuria
+                        </a>
+                    </p>
+                </section>
+
+                <section style="font-size: 75%;">
+                    <h3><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Cascade">Kaskadoituminen
+                            (Cascading)</a></h3>
+                    <div style="display:flex">
+                        <div>
+                            <ol>
+                                <li>Selainkohtaiset oletustyylit (user-agent stylesheet).</li>
+                                <li>
+                                    <a href="https://www.thoughtco.com/user-style-sheet-3469931">Käyttäjän
+                                        tyylitiedosto</a>,
+                                    käyttäjän itse määrittelemät tyylit, esim. näkövammaisille käyttäjille
+                                    (esim. Firefoxissa userContent.css-tiedoston kautta).
+                                </li>
+                                <li>
+                                    Sivuston kehittäjän määrittelemät tyylit (author stylesheet), jotka voivat olla...
+                                    <ul>
+                                        <li>erillisenä CSS-tiedostona linkitettynä</li>
+                                        <li>HTML-tiedoston &lt;head&gt;-osiossa style-elementtinä</li>
+                                        <li>suoraan elementissä style-attribuuttina</li>
+                                        <li>kaskadointikerroksina <span>💥 uusi ominaisuus!</span></li>
+                                    </ul>
+                                </li>
+                            </ol>
+                        </div>
+                        <div>
+                            <img decoding="async" src="../img/layers-tall-outlines2.svg"
+                                alt="Kaavio CSS-kaskadoitumisen eri tasoista ja kaskadointikerrosten sijainnista."
+                                width="650">
+                        </div>
+                    </div>
+                    <p><a href="">Lisätietoa monimutkaisemmista asioista (esim. siirtymät), katso MDN</a></p>
+                </section>
+
+                <section>
+                    <h2><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@layer">
+                            Kaskadointikerrokset (uusi ominaisuus)</a>
+                    </h2>
+                    <ul style="font-size: 80%;">
+                        <li>Modulaarisempi CSS
+                            <pre><code>@layer kerroksen-nimi { sääntöjä }
+                @layer layer-name;
+                @layer layer1, layer2, layer3;
+                @layer { rules }</code></pre>
+                        </li>
+                        <li>Parantaa koodin ylläpidettävyyttä erottelemalla vastuualueet selkeästi</li>
+                        <li>Vähentää ristiriitaisia tyylejä</li>
+                        <li>Samat aihepiirit voi sijoittaa yhteen kerrokseen</li>
+                        <li>Useiden kerrosten yhdistäminen on mahdollista</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Demo: CSS-kaskadointikerrokset</h2>
+                    <p>Tämän kappaleen värin määräävät CSS-kerrokset</p>
+                </section>
+                <section>
+                    <h2>Cascade layers (emerging)</h2>
+                    <div style="display:flex">
+
+                        <ul style="width:30%;font-size:80%">
+                            <li>Web Interop 2022 in action<ul>
+                                    <li>cascade layers released at the same time by major browser vendors</li>
+                                </ul>
+                            </li>
+                            <li>more fine-grained author stylesheets</li>
+                            <li>implemented with
+                                <ul>
+                                    <li><code>@import</code></li>
+                                    <li><code>@layer</code></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <div style="width:70%;font-size:60%">
+                            <pre><code>/*kerrokset alimmasta korkeimpaan prioriteettiin */
+    @layer defaults, patterns, components, utilities, overrides;
+    
+    /* import stylesheets into a layer (dot syntax represents nesting) */
+    @import url('webcais.css') layer(components.framework);
+    
+    /* lisää tyylit kerroksiin */
+    @layer utilities {
+        /* high layer priority, despite low specificity */
+        [data-color='brand'] { 
+        color: var(--brand, rebeccapurple);
+        }
+    }
+    
+    @layer defaults {
+        /* higher specificity, but lower layer priority */
+        a:any-link { color: maroon; }
+    }
+    
+    /* kerroksettomilla tyyleillä (un-layered styles) on korkein prioriteetti */
+    a {
+        color: mediumvioletred;
+    }</code></pre>
+                            <a href="https://css-tricks.com/css-cascade-layers/">see css tricks</a>
+                        </div>
+                    </div>
+
+                </section>
+
+
+
+
+
+                <section style="font-size:70%">
+                    <h2>Periytyminen</h2>
+                    <div style="display:flex">
+                        <div style="width:50%">
+                            <p>Esimerkiksi väri periytyy,
+                                mutta reunus ei. Esimerkiksi
+                                sininen tekstiväri voidaan määrittää
+                                koko sivulle kerrallaan, jolloin sitä ei tarvita erikseen
+                                jokaiselle lapsielementille:
+                                <br><code>body { color: aquamarine; }</code>
+                            </p>
+                        </div>
+                        <div style="width:45%">
+
+                            <table style="background-color: aquamarine;font-size: 75%;">
+                                <tr>
+                                    <td>Name</td>
+                                    <td>color</td>
+                                    <td>background-<br>color</td>
+                                    <td>border</td>
+                                </tr>
+                                <tr>
+                                    <td>Value</td>
+                                    <td>color|inherit</td>
+                                    <td>color</td>
+                                    <td>color|line-style|line-width</td>
+                                </tr>
+                                <tr>
+                                    <td>Initial</td>
+                                    <td>user agent decides</td>
+                                    <td>transparent</td>
+                                    <td>individual props</td>
+                                </tr>
+                                <tr>
+                                    <td>Inherited</td>
+                                    <td>yes</td>
+                                    <td>no</td>
+                                    <td>no</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <ul>
+                        <li> <strong> </strong> Jos määrität listaelementin (esim. <ul>) border-attribuutin,
+                                sen lapset (ts. <li> elementit) esitetään silti ilman rajoja, ellet
+                                    määritä: <br>
+                                    <pre> li {border: inherit; } </pre>
+                                    jolloin ominaisuus on asetettu perimään vanhemman arvo
+                                </li>
+                        </li>
+                        <li> Joillakin ominaisuuksilla on myös alkuperäiset arvot, esimerkiksi
+                            Taustaväri (background-color) on oletusarvoisesti läpinäkyvä </li>
+                    </ul>
+
+                </section>
+                <section>
+                    <h2>
+
+                        <h2>!important</h2>
+                        <ul>
+                            <li>ohittaa kaikki aiemmin elementille määritetyt säännöt</li>
+                            <li>käytetään vain erityistilanteissa, esimerkiksi
+                                <ul>
+                                    <li>näkörajoitteiset käyttäjät voivat kirjoittaa säännön käyttäjän tyylitiedostoon
+                                        (selaimen
+                                        tiedosto userContent.css)
+                                        <pre>body { font-size: large; !important}</pre>
+                                    </li>
+                                    <li>ei tulisi käyttää normaaleissa tyylitiedostoissa, vaikka se joskus saattaa
+                                        tuntua
+                                        houkuttelevalta</li>
+                                </ul>
+                            </li>
+                        </ul>
+                </section>
+                <section>
+                    <h2>
+                        Yleinen ohje CSS:n kirjoittamiseen
+                    </h2>
+                    <ul>
+                        <li>pyri pitämään selektorit yleisinä ja yksinkertaisina</li>
+                        <li>voit käyttää tarkkoja selektoreita, mutta vain todelliseen tarpeesenn</li>
+                        <li>CSS menee muuten helposti "tukkoon"
+                            <ul>
+                                <li>mitä enemmän käytät korkean spesifisyyden selektoreita, sitä vaikeampaa
+                                    tyylitiedostojen
+                                    ylläpito on</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+
+
+            </section>
+            <section>
+
+                <section>
+                    <div class="r-fit-text">Selektorit</div>
+                </section>
+
+                <section style="font-size:70%">
+                    <h2>Erilaisia selektoreja</h2>
+                    <table>
+                        <tr>
+                            <th></th>
+                            <th>HTML</th>
+                            <th>CSS</th>
+                            <th>Renderöity</th>
+                        </tr>
+                        <tr>
+                            <td>Type</td>
+                            <td>
+                                <pre><code><p>Tyyppi</p></code></pre>
+                            </td>
+                            <td>
+                                <pre>p{color: "red"}</pre>
+                            </td>
+                            <td>
+                                <p style="color:red">Type</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Luokka</td>
+                            <td>
+                                <pre><code><p class="red_class">Class</p></code></pre>
+                            </td>
+                            <td>
+                                <pre>.red_class{color:red;}</pre>
+                            </td>
+                            <td>
+                                <p class="red_class">Class</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Id</td>
+                            <td>
+                                <pre><code><p id="one_of_a_kind">Id</p></code></pre>
+                            </td>
+                            <td>
+                                <pre>#one_of_a_kind{color:blue;}</pre>
+                            </td>
+                            <td>
+                                <p id="one_of_a_kind">Id</p>
+                            </td>
+                        </tr>
+                    </table>
+
+
+                </section>
+                <section>
+                    <h2>Attribuuttivalitsin</h2>
+
+                    <div style="display:flex">
+
+                        <pre style="width:33%">[attribute[="value"]?]</pre>
+                        <div style="width:33%">For example:
+                            <pre><code><p lang="en">text</p>
+<p lang="fi">teksti</p></code></pre>
+                        </div>
+                        <div style="width:33%">
+                            <style>
+                                p[lang] {
+                                    color: blue;
+                                }
+
+                                p[lang="fi"] {
+                                    background-color: yellow
+                                }
+                            </style>
+                            <p lang="en">text</p>
+                            <p lang="fi">teksti</p>
+
+                        </div>
+                    </div>
+
+                    <ul style="font-size:60%">
+                        <li> Elementit voidaan valita
+                            niiden ominaisuuksien ja attribuutin arvojen perusteella
+
+                            <pre><code class="grammar">p[lang] {
+color: blue;
+}
+p[lang="fi"] {
+background-color: yellow;
+}
+</code></pre>
+                        </li>
+                        <li> Tekstiväri molemmissa kappaleissa on sininen, vain jos lang on fi
+                            Tausta on keltainen
+
+                        </li>
+                        <li> Toinen esimerkki, ominaisuuden peruskäyttö
+                            valitsin
+                            <pre><code class="grammar">a[target="_blank"] {
+background-color: yellow
+}</code></pre>
+
+                        </li>
+                        <li> Kaikki linkit, jotka avataan erilliselle välilehdelle, renderöidään
+                            keltaisella taustalla
+                        </li>
+                    </ul>
+
+                </section>
+
+
+
+                <section style="font-size:60%">
+                    <h2>Lisää valitsimia ominaisuuksien perusteella </h2>
+
+                    <div style="display:flex">
+
+                        <table style="width:40%;font-size:60%">
+                            <tr>
+                                <th> Attribuutin valitsin (kokeile eri vaihtoehtoja painikkeella) </th>
+                                <th> Valitse elementit, joiden ominaisuus ... </th>
+                            </tr>
+
+                            <tr>
+                                <td><button class="attr_btn">[attribute^="value"]</button></td>
+                                <td>alkaa arvolla value</td>
+                            </tr>
+                            <tr>
+                                <td><button class="attr_btn">[attribute$="value"]</button></td>
+                                <td>loppuu arvoon value</td>
+                            </tr>
+                            <tr>
+                                <td><button class="attr_btn">[attribute*="value"]</button></td>
+                                <td>sisältää arvon "value"</td>
+                            </tr>
+                            <tr>
+                                <td><button class="attr_btn">[attribute|="value"]</button></td>
+                                <td>sisältää tarkan arvon "value" tai "value"-arvon, jota seuraa tavuviiva(-) </td>
+                            </tr>
+                            <tr>
+                                <td><button class="attr_btn">[attribute~="value"]</button></td>
+                                <td>sisältää yhden tai useamman täsmällisen "value"-arvon</td>
+                            </tr>
+                            <tr>
+                                <td><button class="attr_btn">[attr1][attr2]</button></td>
+                                <td>elementti määrittelee molemmat attribuutit: attr1 ja attr2</td>
+                            </tr>
+                        </table>
+                        <div style="width:40%">
+                            <pre><code><p attribute="value">Arvo</p>
+                    <p attribute="value1">arvo1</p>
+                    <p attribute="1value">1arvo</p>
+                    <p attribute="value-1">arvo-1</p>
+                    <p attribute="some_value_in_random">
+                        some_value_in_random</p>
+                    <p attr1="joku" attr2="vaa">joku vaa</p>
+                    </code></pre>
+                        </div>
+                        <div style="width:20%">
+                            <pre class="attr_style">Käytetty tyyli</pre>
+                            <p attribute="value">value</p>
+                            <p attribute="value1">value1</p>
+                            <p attribute="1value">1value</p>
+                            <p attribute="value-1">value-1</p>
+                            <p attribute="some_value_in_random">
+                                some_value_in_random</p>
+                            <p attr1="joku" attr2="vaa">joku vaa</p>
+                            <style id="attr_style">
+                            </style>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <h2>Pseudo-luokka :selector</h2>
+                    <div>
+                        <p>"pseudo", koska tällaista luokkaa ei tosiasiassa ole</p>
+                        <p> Pseudo-luokka alkaa kaksoispisteellä, esim.:</p>
+                        <pre>p:first-child</pre>
+                        <p>Pseudoluokan tapauksessa elementtiä ei valita nimen tai attribuutin perusteella,
+                            vaan esim. onko elementti aktiivinen tai valittu (checked)</p>
+                    </div>
+                </section>
+                <section style="font-size: 60%;">
+                    <h2>Kokeile mennä hiirellä eri pseudo-luokkien päälle</h2>
+                    <div style="display:flex">
+                        <div>
+                            <pre class="pseudo_style"></pre>
+                        </div>
+                    </div>
+                    <div style="display:flex;width:100%">
+
+                        <div style="display:flex;width:50%">
+                            <div style="display:flex;flex-direction: column;width:33%">
+
+                                <button class="pseudo-class">:active</button>
+                                <button class="pseudo-class">:checked</button>
+                                <button class="pseudo-class">:disabled</button>
+                                <button class="pseudo-class">:empty</button>
+                                <button class="pseudo-class">:enabled</button>
+                                <button class="pseudo-class">:first</button>
+                                <button class="pseudo-class">:first-child</button>
+                                <button class="pseudo-class">:first-of-type</button>
+                                <button class="pseudo-class">:focus</button>
+                                <button class="pseudo-class">:hover</button>
+                            </div>
+                            <div style="display:flex;flex-direction: column;;width:33%">
+                                <button class="pseudo-class">:in-range</button>
+                                <button class="pseudo-class">:invalid</button>
+                                <button class="pseudo-class">:lang</button>
+                                <button class="pseudo-class">:last-child</button>
+                                <button class="pseudo-class">:last-of-type</button>
+                                <button class="pseudo-class">:link</button>
+                                <button class="pseudo-class">:not()</button>
+                                <button class="pseudo-class">:nth-child</button>
+                                <button class="pseudo-class">:nth-last-child</button>
+                                <button class="pseudo-class">:nth-last-of-type</button>
+                                <button class="pseudo-class">:nth-of-type</button>
+                            </div>
+                            <div style="display:flex;flex-direction: column;;width:33%">
+                                <button class="pseudo-class">:only-child</button>
+                                <button class="pseudo-class">:only-of-type</button>
+                                <button class="pseudo-class">:optional</button>
+                                <button class="pseudo-class">:out-of-range</button>
+                                <button class="pseudo-class">:read-only</button>
+                                <button class="pseudo-class">:read-write</button>
+                                <button class="pseudo-class">:required</button>
+                                <button class="pseudo-class">:root</button>
+                                <button class="pseudo-class">:target</button>
+                                <button class="pseudo-class">:valid</button>
+                                <button class="pseudo-class">:visited</button>
+                            </div>
+
+
+                        </div>
+                        <form style="display:flex;flex-direction:column;width:50%;border:1px solid red">
+                            <input type="text" required placeholder="text">
+                            <input type="text" disabled placeholder="disabled text">
+                            <input type="number" optional placeholder=1 min=1 max=5>
+
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes">Pseudo-luokat</a>
+                            <label>Active:
+                                <input type="checkbox" checked>
+                            </label>
+                            <ul>
+                                <li>First
+                                </li>
+                                <li>Second</li>
+                                <li>Third</li>
+                            </ul>
+                            <button>Pelkkä painike</button>
+                        </form>
+                        <style id="pseudo_style"></style>
+                    </div>
+                    <div style="display:flex; justify-content: center;">
+                        <pre style="width:100%;width: auto;"><code><form>
+    <input type="text" required placeholder="text">
+    <input type="text" disabled placeholder="disabled text">
+    <input type="number" optional placeholder=1 min=1 max=5>
+    <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes">
+        Pseudo-classes</a>  
+    <label>Active:
+        <input type="checkbox" checked>
+    </label>
+        <ul>
+        <li>First</li>
+        <li>Second</li>
+        <li>Third</li>
+    </ul>
+    <button>Plain button</button>
+</form></code></pre>
+                    </div>
+
+
+                </section>
+                <section>
+                    <h2>:root</h2>
+                    <ul>
+                        <li>:root on pseudoluokka, joka valitsee asiakirjan juurielementin</li>
+                        <li>sen vaikutusalue kattaa kaiken HTML-tägien sisällön</li>
+                        <li>:root:iin määritellyt mukautetut muuttujat ovat käytettävissä koko asiakirjassa</li>
+                    </ul>
+                </section>
+                <section style="font-size:60%">
+                    <h2><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-elements">Pseudoelementti
+                            ::valitsin</a></h2>
+                    <p id="pseudo_class_vs_element">Toisin kuin pseudoluokkavalitsin, joka valitsee jo olemassa olevia
+                        elementtejä,
+                        pseudoelementtivalitsin luo tarvittaessa "pseudoelementtejä",<br> esimerkiksi ::after ja
+                        ::before
+                        lisäämällä sisältöä</p>
+
+                    <p>Pseudoelementtivalitsin alkaa kaksoispisteillä (::)</p>
+
+                    <style>
+                        #after::after {
+                            content: " <- Tarkista!";
+                            color: red;
+                        }
+
+                        #before::before {
+                            content: '🔗'
+                        }
+
+                        #pseudo_class_vs_element::first-letter {
+                            font-size: 3em;
+                            font-weight: 500;
+                        }
+
+                        #pseudo_class_vs_element::first-line {
+                            color: red
+                        }
+                    </style>
+                    <table>
+                        <tr>
+                            <td>::after</td>
+                            <td>
+                                <pre>a::after {content: '<-Tarkista!'; color:red}</pre>
+                            </td>
+                            <td><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/::after" id="after">MDN
+                                    ::after</a></td>
+                        </tr>
+
+                        <tr>
+                            <td>::before</td>
+                            <td>
+                                <pre>a::before {content: '🔗';}</pre>
+                            </td>
+                            <td><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/::before" id="before">MDN
+                                    ::before</a></td>
+                        </tr>
+                        <tr>
+                            <td>::first-letter</td>
+                            <td>
+                                <pre>p::first-letter{font-size: 3em;font-weight: 500;}</pre>
+                            </td>
+                            <td>'I', ensimmäisessä luvussa</td>
+                        </tr>
+                        <tr>
+                            <td>::first-line</td>
+                            <td>
+                                <pre>p::first-line{color:red}</pre>
+                            </td>
+                            <td>ensimmäinen rivi ensimmäisessä luvussa</td>
+                        </tr>
+                    </table>
+                </section>
+
+                <section>
+                    <h2 class="r-fit-text">Kombinaattorit</h2>
+                </section>
+
+                <section>
+                    <h2>Kombinaattorit</h2>
+                    <p>Kombinaattorit hyödyntävät DOM-puurakennetta valitsemalla alipuustot tai samantasoiset
+                        sisarelementit</p>
+                    <style class="cmb_style"></style>
+
+                    <div
+                        style="display:flex; width:100%;font-size: 75%;align-items: flex-start; justify-content: flex-start;">
+                        <div>
+                            <table class="combinator" style="width:auto;font-size: 70%;border: 1px solid white;">
+                                <tr>
+                                    <th>Kombinaattori</th>
+                                    <th>Kuvaus</th>
+                                </tr>
+                                <tr>
+                                    <td>e1&gt;e2</td>
+                                    <td><button class="cmb_btn">lapsi</button></td>
+                                </tr>
+                                <tr>
+                                    <td>e1 e2</td>
+                                    <td><button class="cmb_btn">jälkeläinen</button></td>
+                                </tr>
+                                <tr>
+                                    <td>e1+e2</td>
+                                    <td><button class="cmb_btn">viereinen sisar</button>, jossa e1 on välitön vanhempi
+                                        sisar</td>
+                                </tr>
+                                <tr>
+                                    <td>e1~e2</td>
+                                    <td><button class="cmb_btn">yleinen sisar</button>, jossa e1 on vanhempi sisar</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div>
+                            <pre><code style="width:18em;height:2em" class="cmb_style"></code></pre>
+                            <ul id="styleUL" style="font-size: 50%;width:35%">
+                                <li>Ensimmäinen<ul>
+                                        <li>Ensimmäinen-1</li>
+                                        <li>Ensimmäinen-2</li>
+                                        <li>Ensimmäinen-3</li>
+                                    </ul>
+                                </li>
+                                <li>Toinen<ul>
+                                        <li>Toinen-1</li>
+                                        <li>Toinen-2</li>
+                                        <li>Toinen-3</li>
+                                    </ul>
+                                </li>
+                                <li>Kolmas<ul>
+                                        <li>Kolmas-1</li>
+                                        <li>Kolmas-2</li>
+                                        <li>Kolmas-3</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <h2>Valitsimien ketjuttaminen</h2>
+                    <p>Ketjuttamalla valitsimia yhteen vaadit, että kaikki valitsimet vastaavat elementtiä.
+                        Esimerkiksi, jos haluat valita elementin, jolla on sekä `first`- että `third`-luokka,
+                        tyyli näyttää tältä:</p>
+                    <pre><code>.first.third {color: red;}</code></pre>
+                    <p>...kun taas itse elementti:</p>
+                    <pre><code><h1 class="first third">Kaksoisluokka</h1></code></pre>
+                    <p>Mikä ero näillä kahdella on?</p>
+                    <div style="display:flex">
+                        <pre><code>#header.callout {color:red;}</code></pre>&nbsp;vs.&nbsp;
+                        <pre><code>#header .callout {color:red;}</code></pre>
+                    </div>
+
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h1 class="r-fit-text">Laatikkomalli (box model)</h1>
+                </section>
+                <section>
+                    <h2>Laatikkomalli</h2>
+                    <a href="boxmodel.html">Demo</a>
+                </section>
+                <section style="font-size:50%;">
+                    <h2>Elementtien välinen tila: padding ja margin</h2>
+                    <div style="display:flex">
+                        <ul style="width: 65%;">
+                            <li> Elementtien välistä tilaa hallitaan padding- ja margin-ominaisuuksilla
+                                <ul>
+                                    <li>padding: [auto|arvo]</li>
+                                    <li>margin: [auto|arvo]</li>
+                                </ul>
+                            </li>
+                            <li>Padding erottaa sisällön reunuksesta
+                                <ul>
+                                    <li>käyttäytyy suoraviivaisesti ja ennustettavasti</li>
+                                    <li>padding ei voi olla negatiivinen</li>
+                                </ul>
+                            </li>
+                            <li>Margin jättää tilaa reunuksen ja muiden elementtien väliin
+                                <ul>
+                                    <li>vaakasuunnassa ennustettavissa</li>
+                                    <li>pystysuunnassa vierekkäisten elementtien marginaalit yhdistyvät</li>
+                                    <li>margin voi olla myös negatiivinen</li>
+                                    <li>pystysuora sijoittelu vanhemman sisällä: margin: auto (!)</li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <div style="width:30%">
+                            <pre><code>h1, h2 {
+                padding: 25px 50px;
+                }
+                p {
+                padding: 25px 50px 5px;
+                margin-left: 2em;
+                }</code></pre>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <h2>Marginaalit vaakasuunnassa vs pystysuunnassa</h2>
+                    <div style="display: flex">
+                        <div>
+                            <p>Vaakasuunnassa marginaalit lasketaan yhteen odotetusti, mutta pystysuunnassa marginaalit
+                                yhdistyvät:</p>
+                            <pre><code>10px + 30px = 30px</code></pre>
+                        </div>
+                        <div>
+                            <img src="../img/margin_collapse.png">
+                        </div>
+                    </div>
+                </section>
+                <section style="font-size: 80%;">
+                    <h2>Selainsodat: renderöintierot</h2>
+                    <table>
+                        <tr>
+                            <th>Ominaisuus</th>
+                            <th>Netscape</th>
+                            <th>Microsoft</th>
+                        </tr>
+                        <tr>
+                            <td>Laatikkomalli</td>
+                            <td>Content-box<br>padding ja border lisätään sisällön ulkopuolelle</td>
+                            <td>Border-box<br>padding ja border sisällytetään elementin leveyteen, nykyinen standardi
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Marginaalien yhdistyminen</td>
+                            <td>Kyllä<br>vierekkäiset marginaalit yhdistyvät joissain tapauksissa</td>
+                            <td>Ei<br>marginaalit yhdistyvät vain, jos toinen tai molemmat marginaaleista ovat 0</td>
+                        </tr>
+                    </table>
+                    <p>Muita eroja esiintyi esimerkiksi fonttien renderöinnissä, HTML-elementtien käyttäytymisessä ja
+                        JavaScriptin
+                        tulkinnassa. Johti moniin kiertoratkaisuihin.</p>
+                </section>
+                <section>
+                    <h2>Reunuksen leveys, tyyli ja väri</h2>
+                    <pre style="font-size:40%;">border-width: [thin|medium|thick|mitta|inherit]                        
+                border-style: [none|hidden|dotted|dashed|solid|double|inherit|groove|ridge|inset|outset]
+                border-color: [transparent|väri|inherit]</pre>
+                    <div style="display:flex;flex-direction: column;">
+                        <div style="display:flex">
+                            <pre>p {
+                border-width: 10px;
+                border-style: dashed;
+                border-color: #34fade
+                                    <div style="display:flex">
+                        <div>
+                            <pre>div {
+border-width: 5px 15px 25px 35px;
+border-style: inset;
+border-color: blue;
+width: 30em;
+}
+div {
+border-width: 5px 10px;
+border-style: solid dotted;
+border-color: green;
+}
+div {
+border: 20px groove;
+border-color: green red yellow;
+}</pre>
+                            <style>
+                                #brd_div {
+                                    border-width: 5px 15px 25px 35px;
+                                    border-style: inset;
+                                    border-color: blue;
+                                    width: 80%;
+                                }
+
+                                #brd_div2 {
+                                    border-width: 5px 10px;
+                                    border-style: solid dotted;
+                                    border-color: green;
+                                }
+
+                                #brd_div3 {
+                                    border: 20px groove;
+                                    border-color: green red yellow;
+                                }
+                            </style>
+                        </div>
+                        <div style="width:50%; display: flex;flex-direction: column;justify-content: space-between;">
+                            <div id="brd_div" style="height:30%"></div>
+                            <div id="brd_div2" style="height:30%"></div>
+                            <div id="brd_div3" style="height:30%"></div>
+                        </div>
+                        <div></div>
+                    </div>
+                </section>
+                <section>
+                    <h2>Rounded corners</h2>
+
+                    <style>
+                        #example1 {
+                            border: 2px solid red;
+                            padding: 10px;
+                            border-radius: 25px;
+                        }
+
+                        #example2 {
+                            border: 10px double red;
+                            padding: 10px;
+                            border-radius: 50px 20px;
+                        }
+
+                        #example3 {
+                            border: 10px double red;
+                            padding: 10px;
+                            border-style: groove;
+                            border-radius: 50px 20px 100px;
+                        }
+
+                        #example4 {
+                            border: 10px red;
+                            padding: 10px;
+                            border-style: dotted;
+                            border-radius: 50px 20px 0px 35px;
+                        }
+                    </style>
+                    <div style="display:flex;font-size: 60%;">
+                        <div style="width:50%">
+                            <h3>border-radius: 25px:</h3>
+                            <div id="example1">
+                                <p>border-radius-määre määrittää elementin kulmien pyöristyssäteen.</p>
+                            </div>
+
+                            <h3>border-radius: 50px 20px:</h3>
+                            <div id="example2">
+                                <p>Jos asetetaan kaksi arvoa, ensimmäinen koskee vasenta yläkulmaa ja oikeaa alakulmaa,
+                                    toinen oikeaa yläkulmaa ja vasenta alakulmaa.</p>
+                            </div>
+                        </div>
+                        <div style="width:50%">
+                            <h3>border-radius: 50px 20px 100px</h3>
+                            <div id="example3">
+                                <p>Kolme arvoa; 20px vastakkaisissa kulmissa: oikea yläkulma ja vasen alakulma.</p>
+                            </div>
+
+                            <h3>border-radius: 50px 20px 0px 35px</h3>
+                            <div id="example4">
+                                <p>Arvot asetetaan myötäpäivään alkaen vasemmasta yläkulmasta, kuten kaikissa
+                                    tapauksissa.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </section>
+            <section style="font-size: 80%;">
+                <section>
+                    <h1 class="r-fit-text">Yksiköt</h1>
+                </section>
+
+                <section>
+                    <h2>CSS-yksiköt (pituusmitat)</h2>
+                    <ul>
+                        <li>Käytetään määrittämään pituuksia ja kokoja CSS-säännöissä.
+                            Absoluuttiset yksiköt: in, cm, mm, pt, pc
+                            <ul style="font-size: 80%;">
+                                <li>Eivät yleensä sovellu näytölle, mutta voivat olla hyödyllisiä muissa
+                                    medioissa.</li>
+                            </ul>
+                        <li>Pikseli (px) on hyvin yleisesti käytetty yksikkö, esim.
+                            <ul style="font-size: 80%;">
+                                <li>min-width: 200px; font-size: 16px;</li>
+                            </ul>
+                        <li>Absoluuttisten yksiköiden lisäksi monet yksiköt ovat suhteellisia
+                            <ul style="font-size: 80%;">
+                                <li>Suhteessa vanhemman elementin tai näkymäalueen kokoon.</li>
+                            </ul>
+                        <li>Suhteellisia yksiköitä ovat: %, em, rem, ex, ch, vh, vw
+                            <ul style="font-size: 80%;">
+                                <li>Esimerkkejä: 16px, 0.75em, 1.25rem, 80%, 90vh, 85vw.</li>
+                            </ul>
+                    </ul>
+                </section>
+                <section>
+                    <h2>Suhteelliset yksiköt</h2>
+                    <details>
+                        <summary>%</summary>
+                        Suhteessa vanhemman elementin mittoihin. Kätevä, jos vanhemman mitat on määritelty,
+                        mutta voi olla hankala pystysuunnassa.
+                        Jos vanhemmalla ei ole asetettua korkeutta, lapsen korkeusprosentti on aina 0.
+                    </details>
+                    <details>
+                        <summary>em</summary>
+                        Suhteessa vanhemman fonttikokoon (fontin korkeuteen). Useimmissa selaimissa
+                        oletusfonttikoko (body-elementille) on 16px.
+                    </details>
+                    <details>
+                        <summary>rem</summary>
+                        Suhteessa juurielementin (html) fonttikokoon.
+                    </details>
+                    <details>
+                        <summary>ex</summary>
+                        Määrittää käytetyn fontin pienen "x"-kirjaimen korkeuden.
+                    </details>
+                    <details>
+                        <summary>ch</summary>
+                        Määrittää käytetyn fontin numeron "0" leveyden.
+                    </details>
+                </section>
+                <section>
+                    <h2>Näkymäalueen yksiköt (vw/vh) vs. pikselit</h2>
+                    <img style="width:80%;margin-top:-20px" src="../img/vw.gif">
+                    <pre style="margin-top:-20px">100 vw = 100% näkymän leveydestä</pre>
+                    <table style="font-size: 60%;">
+                        <tr>
+                            <th style="width:50%">Näkymäalue</th>
+                            <th style="width:50%">Pikselit</th>
+                        </tr>
+                        <tr>
+                            <td>Suhteellinen, kuten %-yksikkö</td>
+                            <td>Käytettävissä sekä vaaka- että pystysuunnassa</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span style="font-size:80%">Sen sijaan, että prosenttiosuus laskettaisiin
+                                    vanhemmasta,
+                                    se lasketaan näkymäalueesta (viewport).
+                                    vh tarkoittaa prosenttia näkymän korkeudesta, vw leveyden prosenttia.
+                                    100vh = 100% näkymän korkeudesta.</span>
+                            </td>
+                            <td>1px = 1/96 tuumasta, ei suhteellinen. Vastaa yhtä laitteen pikseliä.
+                                Korkean resoluution näytöillä (esim. Retina) 1px voi vastata useita laitteen
+                                pikseleitä.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>vh ja vw eivät kärsi prosenttiyksiköiden rajoituksista.</td>
+                            <td>Pikselin levyinen viiva pysyy aina terävänä.</td>
+                        </tr>
+                    </table>
+                </section>
+                <section>
+                    <h2>Esimerkkejä</h2>
+                    <div style="display:flex;width: 80vw;">
+                        <div style="width:40%;font-size: 80%;">
+                            <p>Useimmissa selaimissa oletusfonttikoko (body-elementille) on 16px.</p>
+                            <p>Fonttikoko on yksi periytyvistä ominaisuuksista:</p>
+                            <ul style="font-size: 60%;">
+                                <li>Lapsielementit perivät vanhemman tekstikoon.</li>
+                                <li>Ei tarvitse erikseen määrittää, ellei haluta muuttaa kokoa.</li>
+                            </ul>
+                            <p>Mitä yksiköitä kannattaa käyttää?</p>
+                            <ul>
+                                <li>px kiinteille leveyksille (ei responsiivinen)</li>
+                                <li>%-yksiköt joustaville leveyksille (muuttuvat selainikkunan mukaan)</li>
+                                <li>em tai rem fonttikokoihin.</li>
+                            </ul>
+                        </div>
+
+                        <div style="width:60%; font-size: 60%;">
+                            <div class="card-big-shadow">
+                                <div class="card card-just-text" data-background="color" data-color="blue"
+                                    data-radius="none">
+                                        <pre style="font-size: 50%;width: 100%;">body {
+    font-size: 16px; /* Base font size */
+}
+
+article {
+    font-size: 1.25em; 
+    /* 25% larger than body (16px * 1.25 = 20px) */
+}</pre>
+                                </div> <!-- end card -->
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </section>
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+        <script>
+            // Init
+            var $ = jQuery;
+            var animationTime = 20,
+                days = 7;
+
+            $(document).ready(function () {
+
+                // timer arguments: 
+                //   #1 - time of animation in mileseconds, 
+                //   #2 - days to  deadline
+
+                $('#progress-time-fill, #death-group').css({ 'animation-duration': animationTime + 's' });
+
+                var deadlineAnimation = function () {
+                    setTimeout(function () {
+                        $('#designer-arm-grop').css({ 'animation-duration': '1.5s' });
+                    }, 0);
+
+                    setTimeout(function () {
+                        $('#designer-arm-grop').css({ 'animation-duration': '1s' });
+                    }, 4000);
+
+                    setTimeout(function () {
+                        $('#designer-arm-grop').css({ 'animation-duration': '0.7s' });
+                    }, 8000);
+
+                    setTimeout(function () {
+                        $('#designer-arm-grop').css({ 'animation-duration': '0.3s' });
+                    }, 12000);
+
+                    setTimeout(function () {
+                        $('#designer-arm-grop').css({ 'animation-duration': '0.2s' });
+                    }, 15000);
+                };
+
+                function timer(totalTime, deadline) {
+                    var time = totalTime * 1000;
+                    var dayDuration = time / deadline;
+                    var actualDay = deadline;
+
+                    var timer = setInterval(countTime, dayDuration);
+
+                    function countTime() {
+                        --actualDay;
+                        $('.deadline-days .day').text(actualDay);
+
+                        if (actualDay == 0) {
+                            clearInterval(timer);
+                            $('.deadline-days .day').text(deadline);
+                        }
+                    }
+                }
+
+                var deadlineText = function () {
+                    var $el = $('.deadline-days');
+                    var html = '<div class="mask-red"><div class="inner">' + $el.html() + '</div></div><div class="mask-white"><div class="inner">' + $el.html() + '</div></div>';
+                    $el.html(html);
+                }
+
+                deadlineText();
+
+                deadlineAnimation();
+                timer(animationTime, days);
+
+                setInterval(function () {
+                    timer(animationTime, days);
+                    deadlineAnimation();
+
+
+                }, animationTime * 1000);
+
+            });
+        </script>
+
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/d3/4.9.1/d3.min.js'></script>
+        <script src="../js/Pure-JavaScript-HTML5-Parser/htmlparser.js"></script>
+        <script src="../js/html2json.js"></script>
+        <script src="../js/script.js"></script>
+
+
+        <script src="../js/rangedata.js"></script>
+        <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-core.min.js"></script>
+        <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-timeline.min.js"></script>
+        <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-ui.min.js"></script>
+        <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-exports.min.js"></script>
+        <script src="../js/anychart.js"></script>
+
+
+
+
+        <script src="dist/reveal.js"></script>
+        <script src="plugin/zoom/zoom.js"></script>
+        <script src="plugin/notes/notes.js"></script>
+        <script src="plugin/search/search.js"></script>
+        <script src="plugin/markdown/markdown.js"></script>
+        <script src="plugin/highlight/highlight.js"></script>
+        <script>
+            // Also  available as an ES module, see:
+            // https://revealjs.com/initialization/
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                center: true,
+                hash: true,
+
+                // Learn about plugins: https://revealjs.com/plugins/
+                plugins: [
+                    RevealZoom,
+                    RevealNotes,
+                    RevealSearch,
+                    RevealMarkdown,
+                    RevealHighlight
+                ]
+            });
+        </script>
+</body>
+
+</html>

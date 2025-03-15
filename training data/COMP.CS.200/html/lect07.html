@@ -1,0 +1,1265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+
+    <title>WSD: lect07</title>
+
+    <meta name="description" content="A framework for easily creating beautiful presentations using HTML" />
+    <meta name="author" content="Pia Niemelä, Janne Miilunpalo, Jaakko Rajala" />
+
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="dist/reset.css" />
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="../css/deadline.css" />
+
+
+    <link rel="stylesheet" href="dist/theme/moon.css" id="theme" />
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme" />
+    <link href="https://fonts.googleapis.com/css?family=Coda" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+
+
+    <link rel="stylesheet" href="../css/infograph.css" id="theme" />
+    <style>
+        h1 {
+            font-size: 50%;
+        }
+    </style>
+    <link rel="stylesheet" href="../css/responsive.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
+
+</head>
+
+<body>
+    <div class="reveal">
+        <!-- Any section element inside of this container is displayed as a slide -->
+        <div class="slides">
+            <section data-background="#81237F">
+                <h1>Lecture 7</h1>
+                <div style="display: flex;font-size: clamp(1rem,80%,2rem);">
+                    <ul style="width:60%">
+                        <li><a href="#/1">Responsive design</a>
+                            <ul>
+                                <li><a href="#/2">intrinsic design</a>
+                                    <ul>
+                                        <li>let the browser decide</li>
+                                    </ul>
+                                </li>
+                                <li>responsive css units<ul style="font-size: clamp(1.1rem,60%,1.2rem)">
+                                        <li>min, max, minmax, clamp</li>
+                                        <li>fr over %</li>
+                                    </ul>
+                                </li>
+                                <li>flex and grid</li>
+                            </ul>
+                        </li>
+                        <li><a href="#/3">media queries</a></li>
+                        <li><a href="#/4">front-end frameworks, such as Bootstrap</a>
+                        </li>
+
+                    </ul>
+                    </li>
+                    </ul>
+
+                    <ul style="width:40%">
+                        <li><a href="#/5">Accessibility</a>
+                            <ul>
+                                <li>general guidelines</li>
+                                <li>ARIA labels</li>
+                                <li>user and developer tools (e.g., axes, pa11y and a11y)</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+                <img style="position: absolute; top:-100px;right:-100px;width:20%;"
+                    src="../img/face-inverted-small.png" />
+
+
+            </section>
+
+
+            <section data-background="#264f4f">
+                <section>
+                    <h2 class="r-fit-text">Responsive design</h2>
+                </section>
+                <section>
+                    <h2>The problems responsive design solves</h2>
+
+                    <div style="display: flex;flex-direction: row;width:50%; align-items: center;">
+                        <img src="../img/fish.png">
+                        <span style="font-size: 200%;">&rarr;</span>
+                        <img src="../img/sushi.png">
+                    </div>
+                    <ul>
+                        <li>
+                            <a
+                                href="https://dequeuniversity.com/library/responsive/1-non-responsive">https://dequeuniversity.com/library/responsive/1-non-responsive</a>
+                        </li>
+                    </ul>
+
+                </section>
+                <section>
+                    <h2>Features of a bad design</h2>
+                    <div style="display:flex">
+                        <ul style="width: 30%;">
+                            <li>
+                                Problem come especially with absolute positioning, pixel widths, extensive nesting.
+                            </li>
+
+                        </ul>
+                        <iframe id="nonresponsive" src="nonresponsive.html" style="width: 30%;"></iframe>
+                        <iframe id="nonresponsivecss" src="../css/nonresponsive.css" style="width: 30%;"></iframe>
+                    </div>
+
+                </section>
+
+                <section>
+                    <h2>Responsive design</h2>
+                    <ul style="font-size: 80%;">
+                        <li>decent user experience even if..<ul>
+                                <li>device size varies</li>
+                                <li>user resizes the window</li>
+                            </ul>
+                        <li>the target is
+                            <ul>
+                                <li>no invisible contents</li>
+                                <li>no messed-up UIs</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>Toggle Device Toolbar</h2>
+                    <div style="display:flex;flex-direction: column;">
+                        <ul>
+                            <li>called "device mode", also "responsive inspector"</li>
+                            <li>to test different screen sizes</li>
+                            <li>open in Chrome with <kdb>Ctrl</kdb>-<kbd>Shift</kbd>-<kbd>M</kbd></li>
+                        </ul>
+                        <div>
+                            <img src="../img/toggleDeviceToolbar.png" alt="Toggle Device Toolbar view" width="60%">
+                        </div>
+
+                    </div>
+                </section>
+                <section>
+                    <h2>Progress!</h2>
+                    <ul>
+                        <li>Implementing layouts used to be laborious</li>
+                        <li>Not anymore!
+                            <ul>
+                                <li>flex and grid</li>
+                                <li>min(), max(), minmax(), clamp()</li>
+                                <li>other libraries</li>
+                                <ul>
+                                    <li>stylesheet languages: SASS, LESS, Stylus, SMIL, …</li>
+                                    <li>front-end frameworks: Bootstrap, Foundation, Semantic UI, Materialize,
+                                        Material
+                                        UI…</li>
+                                </ul>
+                            </ul>
+                        </li>
+                    </ul>
+
+
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2 class="r-fit-text"><a href="https://talks.jensimmons.com/videos/h0XWcf">Intrinsic and fluid
+                            design</a></h2>
+                </section>
+                <section style="font-size:60%">
+                    <h2>Responsive functions to set sizes</h2>
+                    <div style="display:flex">
+                        <table>
+                            <tr>
+                                <td>min(val1, val2)</td>
+                                <td>the smaller value of the two</td>
+                            </tr>
+                            <tr>
+                                <td>max(val1, val2)</td>
+                                <td>the greater value of the two relative values, e.g., fractions</td>
+                            </tr>
+                            <tr>
+                                <td>minmax(min, max)</td>
+                                <td>a fit value between min and max</td>
+                            </tr>
+                            <tr>
+                                <td>clamp(min, val, max)</td>
+                                <td>the middle value is in effect, until hit by limits</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <p>Not only for width, but, e.g., for font-sizes</p>
+
+                </section>
+
+                <section>
+                    <h2>flex-wrap and flex-grow</h2>
+                    <p>Flex makes the trick by wrapping, growing and shrinking where needed</p>
+                    <div style="display:flex; width:100%; font-size: 80%;">
+
+                        <div class="parent">
+                            <div class="cluster">
+                                <div class="cluster-item">heippa</div>
+                                <div class="cluster-item">responsive</div>
+                                <div class="cluster-item">web</div>
+                                <div class="cluster-item">design!</div>
+                            </div>
+                        </div>
+                        <pre><code id="responsive-flex">.cluster{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    transition: width 3s;
+    width: 100%;
+}
+.cluster:hover {
+    width: 10%;
+}
+.cluster-item{
+    background-color: rgba(0,0,255,0.3);
+    border: 1px solid blue;
+    flex-grow: 1; #equal share, space occupied proportionally
+}</code></pre>
+                    </div>
+
+                    <script></script>
+                </section>
+
+                <section style="text-align: center">
+                    <h1>Responsive grid</h2>
+                </section>
+
+                <section>
+                    <h3>Demo: responsiveness with grid-template-columns</h3>
+                    <ul>
+
+                        <li>auto* repeat elements wrap neatly</li>
+                        <li>no cut lines or overflows</li>
+
+
+                    </ul>
+
+                    <p>Hover to examine, the last column shows the respective settings:</p>
+
+                    <div class="divFrame">
+                        <template id="tmpl">
+                            <div class="colors">
+                                <span id="k" style="background-color: lavender">k</span>
+                                <span id="j" style="background-color:  royalblue ">j</span>
+                                <span id="l" style="background-color:  purple ">l</span>
+                                <span id="m" style="background-color:  lightgray ">m</span>
+                            </div>
+                        </template>
+                    </div>
+
+                </section>
+
+                <script>
+                    const cols = [
+                        "repeat( 3, 1fr) 250px;",
+                        "repeat( 3, minmax( 100px, 1fr)) 250px;",
+                        "repeat( auto-fill, minmax( 100px, 1fr)) 250px;",
+                        "repeat( auto-fit, minmax( 100px, 1fr)) 250px;"];
+
+                    const container = document.querySelector(".divFrame");
+                    cols.forEach(col => {
+                        let div = document.createElement('div');
+                        // Clone the template content to reuse it multiple times
+                        div.append(tmpl.content.cloneNode(true));
+                        const colors = div.querySelector(".colors")
+                        colors.style = `grid-template-columns: ${col}`;
+                        div.querySelector("#m").innerHTML = col;
+                        container.append(div);
+                    });
+
+                </script>
+
+
+                <section style="font-size: clamp(1rem, 60%, 1.5rem)">
+
+                    <h2>Fraction as a unit</h2>
+
+                    <ul>
+                        <li><em>fr</em> is short for fraction</li>
+                        <li>the width of a column as a ratio, i.e., fraction:</li>
+                        <li>uses available space, takes also gaps into account in flex and grid</li>
+                        <li></li>
+                    </ul>
+                    <pre class="terminal">grid-template-columns: 1fr 1fr 1fr 1fr 3fr;</pre>
+                    <math display="block">
+                        <mfrac>
+                            <mn>1fr</mn>
+                            <mn>(1+1+1+1+3)fr</mn>
+                        </mfrac>
+                        <mo>=</mo>
+                        <mfrac>
+                            <mn>1</mn>
+                            <mn>7</mn>
+                        </mfrac>
+                        <mo> //1fr is one seventh of the row</mo>
+                    </math>
+
+                    <ul>
+                        <li>Let us practice with setting colums,<ul>
+                                <li>such as fractions and the combination with absolute values, e.g.,
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <pre class="terminal">
+        grid-template-columns: 250px 100px 100px 3fr 1fr;
+        </pre>
+
+                    <div id="call">
+                        <div id="c4">
+                            <span id="x" style="background-color: peru;">x</span>
+                            <span id="y" style="background-color: brown">y</span>
+                            <span id="z" style="background-color: rosybrown">z</span>
+                            <span id="å" style="background-color: coral">å</span>
+                            <span id="ä" style="background-color: gray">ä</span>
+                            <span id="ö" style="background-color: lavender">ö</span>
+                        </div>
+
+                        <form id="c5">
+                            <textarea id="tmpl5" cols="20" rows="3">5fr 2fr 1fr 1fr 1fr;</textarea>
+                            <button id="setCol5">Press to set<br> grid-template-columns</button>
+                        </form>
+                    </div>
+
+                    <script>
+                        const setCol = () => {
+                            event.preventDefault();
+                            const target = event.target;
+                            const id = target.id;
+                            const tmpl = "#tmpl5";
+
+                            const value = document.querySelector(tmpl).value;
+                            console.log("setCol id ", id, tmpl, value)
+                            const style = 'grid-template-columns: ' + value;
+                            console.log(style)
+                            document.querySelector("#c4").style = style;
+
+                        }
+
+
+                        document.getElementById("setCol5").addEventListener("click", setCol);
+
+
+
+                    </script>
+
+                </section>
+
+
+                <section>
+                    <h2>Responsiveness in grids with enablers</h2>
+
+                    <ul>
+                        <li>
+                            <em>fr</em> prompts responsiveness, <cite><em>I occupy space what is
+                                    and flow no over unlike percentages</em>
+                            </cite>
+                        </li>
+                        <li>there are three more responsive steps to take:<ol>
+                                <li>repeat()</li>
+                                <li>minmax()</li>
+                                <li>auto-fill/auto-fit</li>
+                            </ol>
+                        </li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>1. repeat()</h2>
+
+                    <ul>
+
+                        <li>Column widths can be defined as follows:</li>
+                        <li>
+                            <pre><code>grid-template-columns: 1fr 1f 1fr 250px;</code></pre>
+                        </li>
+                        <li>1fr tautology can be removed
+                            with:</li>
+                        <li>
+                            <pre><code>repeat(3, 1fr)</code></pre>
+                        </li>
+
+                    </ul>
+
+                    <div class="alert alert-info" role="alert"
+                        style="display:flex;font-size:clamp(1rem, 100%, 2rem);background-color: rgba(10,10,10,0.1);">
+                        <div style="width:50%">
+
+                            <h4 class="alert-heading">Multiplier</h4>
+                            <p>The first parameter is multiplier, in this context, the number of columns</h4>
+                            </p>
+                        </div>
+                        <div style="width:50%">
+                            <h4 class="alert-heading">Size</h4>
+                            <p class="mb-0">The second parameter tells the size of each column</p>
+
+                        </div>
+                    </div>
+
+                    .. altogether:
+                    <pre><code>grid-template-columns: repeat(3, 1fr) 250px;</code></pre>
+                </section>
+                <section>
+                    <h2>2. repeat: size as minmax()</h2>
+                    <ul>
+                        <li>size can be made even more flexible</li>
+                        <li>minmax() defines a range<ul>
+                                <li>can be a mix of absolute and fraction values, e.g.<ul>
+                                        <li><kbd>minmax(100px, 1fr)</kbd></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>In summary:</li>
+                    </ul>
+
+                    <pre><code>grid-template-columns: repeat(3, minmax(100px, 1fr)) 250px;</code></pre>
+                </section>
+                <section>
+                    <h3>The logic of minmax:</h3>
+                    <ul>
+                        <li><i>1fr &lt; 100px</i>, then the width is min-width: 100px; <br>
+                            <em>minmax()</em> attempts to guarantee a decent space for the content
+                        </li>
+                        <li><i>1fr &gt; 100px</i>, then 1fr it be</li>
+                    </ul>
+
+                    <p style="font-size: 80%;">The last part (250px) adds to the "flexibility buffer".
+                        It takes what is left from <i>3 * minmax()</i>, if space <i>&lt the calculated width</i>.
+                    </p>
+                </section>
+                <section>
+                    <h2>3. auto-fill/auto-fit</h2>
+
+                    <ul>
+                        <li>In lack of space, elements start to overflow<ul>
+                                <li>in the worst case they are not visible anymore</li>
+                            </ul>
+                        </li>
+                        <li>to make a grid truly responsive also the multiplier must be "fluidified"</li>
+                        <li>auto-fill/auto-fit moves the decision to a browser</li>
+                    </ul>
+
+
+                    <pre><code>grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)) 250px;</code></pre>
+                    vs.
+                    <pre><code>grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)) 250px;</code></pre>
+                </section>
+                <section>
+                    <h2 style="font-size: 170%;">In excess of space, auto-fill vs. -fit signifies</h2>
+                    <ul>
+                        <li>in case of extra space and minmax(100px, 1fr)</li>
+                        <p class="info">
+                            <kbd><strong>auto-fill</strong></kbd>: the min of 100px is used,
+                        </p>
+
+                        <p class="info">
+                            <kbd><strong>auto-fit</strong></kbd>: the max of 1fr is used instead.
+                        </p>
+
+
+                    </ul>
+
+                </section>
+                <section>
+                    <h3>Responsive mnemonic</h3>
+                    <figure class="well">
+                        <img style="background-color: white" ;="repeat" class="img-responsive"
+                            src="../img/niiloCropped.png" width="60%" />
+                        <figcaption><em style="font-size: 60%;">Fig. Only one fraction triggers a responsive
+                                repeat(auto-fill,
+                                minmax(empty, full))..<br>
+                                Niilo simply cannot live off the nerdy grid!</em>
+                        </figcaption>
+                    </figure>
+
+
+                </section>
+
+            </section>
+
+
+
+
+            <section data-background="#264f4f">
+
+
+                <section style="text-align: center">
+                    <h2 class="r-fit-text">Media queries</h2>
+                </section>
+
+                <section>
+                    <h2>Media queries</h2>
+
+                    <div style="display:flex">
+                        <div style="width:50%;font-size: 60%;">
+                            <ul>
+                                <li>enable responsive design, and more..</li>
+                                <li>
+                                    support, e.g., <a href="https://www.w3.org/TR/mediaqueries-4/#pointer">pointer
+                                        types</a>, resolutions, aspect-ratios
+                                </li>
+                                <li>adaptation to display capabilities/user-preferences can be done
+                                    in a fine-grained manner
+                                </li>
+
+                                <li>during this course, flex/grid are the primary means of
+                                    implementing responsive designs
+                                    and media queries only a complementing technique</li>
+
+
+                            </ul>
+                        </div>
+
+                        <div style="width:50%">
+
+                            <img src="../img/mediaQuery-figure.png" alt="figure of media query"
+                                style="border: none; padding: 1%; background: lightgrey;">
+
+                        </div>
+                    </div>
+
+                </section>
+
+                <section style="font-size:60%">
+                    <h2>@media in CSS</h2>
+                    <ul>
+                        <li>@media belongs to so-called <a
+                                href="https://developer.mozilla.org/en-US/docs/Web/CSS/At-rule">at-rules (other rules
+                                are e.g. @import, @property, @supports, ...)</a></li>
+                        </li>
+                        <li>inside the @media rule, you define a media query that specifies when the following styles
+                            should be applied.
+                        </li>
+                        <li>media queries are written within parentheses ()</li>
+                    </ul>
+
+                    <h3>Media query options</h3>
+
+                    <ol>
+                        <li><strong>media features</strong> are conditions that check device capabilities, such as
+                            screen size
+                            (min-width: 900px), resolution (resolution: 720dpi), or orientation (orientation:
+                            landscape)
+                        </li>
+                        <li><strong>media types</strong> define the target device or environment, like screen (for
+                            desktops and
+                            laptops), print (for printing), speech (for screen readers), or even a generic all.
+                        </li>
+                        <li><strong>combinations</strong> of these using logical operators like and, or (comma),
+                            not, or only to create more complex conditions
+
+                    </ol>
+
+
+                    </ul>
+
+                </section>
+                <section>
+                    <h2>Media query: media-features</h2>
+
+                    <h5>
+                        <small><code>width | min-width | max-width  | height | min-height | max-height| aspect-ratio | color | resolution | orientation | scan ...</code></small>
+                    </h5>
+
+                    <pre><code>@media (min-width: 768px)  { css-rule }</code></pre>
+
+                    <pre><code>@media (min-width: 768px)  and (max-width: 991px) { css-rule }</code></pre>
+                </section>
+
+                <section>
+                    <h2>Media query: media-type</h2>
+                    <h5>
+                        <code>all | aural | braille | handheld | print | projection | screen | tty | tv | embossed | speech ...</code>
+                    </h5>
+
+                    <pre><code>@media (print)  { css-rule }</code></pre>
+                    <pre><code>@media (min-width: 700px), handheld and (orientation: landscape){  css-rule  }</code></pre>
+
+                    <p>For more, check this site <a
+                            href="https://www.w3schools.com/cssref/css3_pr_mediaquery.asp">W3Schools
+                            material</a></p>
+
+                </section>
+
+                <section style="font-size: 80%;">
+                    <h2>Typical media query</h2>
+
+                    <ul>
+                        <li>Basic style rules and special style rules for certain screen widths.</li>
+                        <ul>
+                            <li>First we define the rules that apply regardless of the window width.</li>
+                            <li>With media queries we change the basic style rules, or add new rules for certain
+                                situations.</li>
+                        </ul>
+                    </ul>
+
+                    <pre style="margin-top: 1%;"><code>p { 
+color: blue; 
+}
+/* Remember, non-overlapping widths!*/
+@media (min-width: 1200px)  { 
+rules for wide screens only
+}
+@media (min-width: 992px) and (max-width: 1199px)  { 
+rules for laptop sized screens
+}</code></pre>
+                </section>
+
+
+
+
+                <section>
+                    <h2>Typical viewport widths</h2>
+
+                    <div style="display:flex">
+                        <table style="font-size: 80%;">
+                            <tr>
+                                <td>Small phone</td>
+                                <td>&lt; 600px</td>
+                            </tr>
+                            <tr>
+                                <td>Phone</td>
+                                <td>600px - 767px</td>
+                            </tr>
+                            <tr>
+                                <td>Tablet</td>
+                                <td>768px - 991px</td>
+                            </tr>
+                            <tr>
+                                <td>Desktop</td>
+                                <td>992px - 1199px</td>
+                            </tr>
+                            <tr>
+                                <td>Wide desktop</td>
+                                <td>&gt;= 1200px</td>
+                            </tr>
+                        </table>
+
+                        <img src="../img/viewportWidths.png" alt="typical viewport widths"
+                            style="border: none; width: 50%; float: left; margin-left: 1%;">
+                    </div>
+
+                </section>
+
+                <section>
+                    <h2>The same with media queries</h2>
+                    <pre class="terminal">
+          /* Extra small devices (phones, 600px and down) */
+          @media only screen and (<em>max-width</em>: 600px) {...}
+          
+          /* Small devices (portrait tablets and large phones, 600px and up) */
+          @media only screen and (min-width: 600px) {...}
+          
+          /* Medium devices (landscape tablets, 768px and up) */
+          @media only screen and (min-width: 768px) {...}
+          
+          /* Large devices (laptops/desktops, 992px and up) */
+          @media only screen and (min-width: 992px) {...}
+          
+          /* Extra large devices (large laptops and desktops, 1200px and up) */
+          @media only screen and (min-width: 1200px) {...} 
+        </pre>
+
+                    <p>These five Typical Device Breakpoints are represented<a
+                            href="https://www.w3schools.com/css/css_rwd_mediaqueries.asp"> by W3Schools</a> as
+                        a well-accepted de facto standard.
+                    </p>
+
+                </section>
+
+                <section>
+                    <h2>Queries in action</h2>
+                    <ul style="font-size: 60%;">
+                        <li>&lt; 768px</li>
+                        <li>768px&lt;= and &lt;=992px</li>
+                        <li>&gt; 992px</li>
+                    </ul>
+
+
+
+                    <iframe id="mqFrame" src="MediaQueriesSidebar/index.html"></iframe>
+
+                    <p>Inspiration got from <a href="https://css-tricks.com/css-media-queries/">the css-tricks demo</a>.
+                        Media queries have three different ranges:</p>
+
+                    <style>
+                        #mqFrame {
+                            width: 85%;
+                            height: 300px;
+                            transition: width 3s;
+                        }
+
+                        #mqFrame:hover {
+                            width: 10%;
+                        }
+                    </style>
+
+
+
+                    <!-- <pre class="terminal">
+        
+                @media all and (min-width: 993px) {
+                  #sidebar ul li a:after {
+                    content: " (" attr(data-email) ")";
+                    font-size: 11px;
+                    font-style: italic;
+                    color: #777;
+                  }
+                }
+                
+                @media all and (max-width: 992px) and (min-width: 768px) {
+                  #sidebar ul li a:before {
+                    content: "Email: ";
+                    font-style: italic;
+                    color: #777;
+                  }
+                }
+                
+                @media all and (max-width: 768px) and (min-width: 600px), (min-width: 1200px) {
+                  #sidebar ul li a {
+                    padding-left: 21px;
+                    background: url(../images/email.png) left center no-repeat;
+                  }
+                }
+        </pre> -->
+
+
+                </section>
+
+            </section>
+            <section>
+                <section>
+                    <h1 class="r-fit-text">Bootstrap</h1>
+                </section>
+                <section style="font-size: 70%;">
+                    <h2><a href="https://getbootstrap.com/" target="_blank">Bootstrap (getbootstrap.com)</a><img
+                            style="width:10%;" src="../img/Bootstrap_logo.svg.png">
+                    </h2>
+                    <div class="alert alert-light" role="alert">
+                        Powerful, extensible, and feature-packed frontend toolkit. Utilize prebuilt grid system and
+                        components, and bring projects to life with powerful JavaScript
+                        plugins.
+                    </div>
+
+                    <div id="Bootstrap" style="display:flex">
+
+                        <ul style="width:50%">
+                            <li>Bootstrap is a popular open-source front-end development framework</li>
+                            <li>Developed by Twitter and released in 2011</li>
+                            <li>Used to design responsive, mobile-first web pages by utilizing
+                                pre-defined classes
+                            </li>
+
+                        </ul>
+                        <div style="width:50%;display:flex;flex-direction: column;flex-basis: auto;">
+                            <picture>
+                                <source
+                                    srcset="https://w3techs.com/diagram/history_comparison/javascript_library/js-bootstrap,js-react">
+                                <img src="https://w3techs.com/diagram/history_comparison/javascript_library/js-bootstrap,js-react"
+                                    alt="Comparison of JavaScript Library Usage Over Time (Source: W3Techs)"
+                                    title="JavaScript Library Usage Comparison (Bootstrap vs. React)" />
+                            </picture>
+                            <figcaption>Comparison of JavaScript Library Usage Over Time (Source: W3Techs)</figcaption>
+                        </div>
+                </section>
+                <section style="font-size:60%">
+                    <h2><a href="https://getbootstrap.com/docs/5.3/getting-started/introduction/#quick-start">Bootstrap
+                            - starter template</a></h2>
+                    <pre><code>&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+    &lt;head&gt;
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" 
+    rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+    &lt;/head&gt;
+    &lt;body&gt;
+    <h1>Hello, world!</h1>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" 
+    integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
+    &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                </section>
+
+                <section style="font-size:60%">
+                    <h2>Responsiveness with grid system</h2>
+
+                    <ul>
+                        <li>the grid system uses a 12-column layout built with flexboxes</li>
+                        <li>components, such as navigation bars, forms, and buttons, are designed to be mobile-first and
+                            responsive</li>
+                        <li>grid has six responsive breakpoints as multiples of 12
+                            <ul>
+                                <li>None, sm, md, lg, xl, xxl
+
+                                    <table>
+                                        <tr>
+                                            <th>breakpoints</th>
+                                            <th>minimum width</th>
+                                        </tr>
+                                        <tr>
+                                            <td>xs</td>
+                                            <td>not defined</td>
+                                        </tr>
+                                        <tr>
+                                            <td>sm</td>
+                                            <td>576px</td>
+                                        </tr>
+                                        <tr>
+                                            <td>md</td>
+                                            <td>768px</td>
+                                        </tr>
+                                        <tr>
+                                            <td>lg</td>
+                                            <td>992px</td>
+                                        </tr>
+                                    </table>
+
+
+
+                                </li>
+                                <li>viewport width expanded =&gt; layout changes from e.g. "sm" to the "md"<ul>
+                                        <li>col-md-* rules become effective</li>
+                                    </ul>
+                                </li>
+
+                            </ul>
+                        </li>
+                        </li>
+                        <li>includes such responsive utilities as visibility classes and spacing classes</li>
+                        <li>accessibility features with built-in ARIA attributes</li>
+                    </ul>
+                </section>
+                <section style="font-size: 50%;">
+                    <h2><a href="https://mdbootstrap.com/docs/standard/layout/grid/">Grid visualization and
+                            breakpoints</a></h2>
+
+                    <p>Bootstrap 5 (Current Version)</p>
+                    <img src="../img/grid.webp">
+                    <ul>
+                        <li>for example, .col-md-* definitions kick in on medium-sized screens.<br>
+                            Here, "md" signifies screen widths ranging from 768 to 991 pixels.
+                        </li>
+                        <li>* specifies the number of columns between 1 and 12</li>
+                    </ul>
+
+
+                </section>
+
+                <section style="font-size: 50%;">
+                    <h2>12-col grid system in action</h2>
+
+                    <p>d-sm-none makes the middle column to disappear in small displays (resize the window to see the
+                        effect) and reappears in extra small displays</p>
+
+                    <div style="display:flex">
+                        <pre><code><div class="container">    
+<div class="jumbotron text-center">
+  Jumbo
+</div>
+
+<div class="row justify-content-md-center">
+    <div class="col col-md-3 col-lg-2">
+        1 of 3
+    </div>
+    <div class="d-sm-none d-md-block  col-md-auto">
+        Variable width content
+    </div>
+    <div class="col col-md-3  col-lg-2">
+        3 of 3
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        1 of 3
+    </div>
+    <div class="d-sm-none d-md-block col-md-auto">
+        Variable width content
+    </div>
+    <div class="col col-sm-4 col-md-3 col-lg-2">
+        3 of 3
+    </div>
+</div>
+</div>
+</code></pre>
+
+                        <div class="container">
+                            <div class="jumbotron text-center">
+                                Jumbo
+                            </div>
+
+                            <div class="row justify-content-md-center">
+                                <div class="col col-md-3 col-lg-2">
+                                    1 of 3
+                                </div>
+                                <div class="d-sm-none d-md-block  col-md-auto">
+                                    Variable width content
+                                </div>
+                                <div class="col col-md-3  col-lg-2">
+                                    3 of 3
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    1 of 3
+                                </div>
+                                <div class="d-sm-none d-md-block col-md-auto">
+                                    Variable width content
+                                </div>
+                                <div class="col col-sm-4 col-md-3 col-lg-2">
+                                    3 of 3
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </section>
+                <section style="font-size: 60%;">
+                    <h2>Bootstrap and accessibility</h2>
+
+                    <ul>
+
+                        <li>Bootstrap provides built-in support for several ARIA attributes to improve accessibility<ul>
+
+                                <li><strong>aria-label</strong>: a label for an element that is not associated with a
+                                    visible label, provides context and information to assistive technologies for
+                                    various components such as buttons, navigation, and forms.
+                                </li>
+                                <li><strong>aria-describedby</strong>: a description for an element that helps users
+                                    understand its purpose or function.
+                                </li>
+                                <li>
+                                    <strong>aria-expanded</strong>: indicates the state of an element that expands or
+                                    collapses content
+                                </li>
+                                <li>
+                                    <strong>aria-haspopup</strong>: indicates whether an element has a popup or menu
+                                </li>
+                                <li>
+                                    <strong>aria-hidden</strong>: used to hide an element from assistive technologies,
+                                    such as screen readers
+
+                                </li>
+
+                            </ul>
+                        </li>
+
+
+                        <li>By using these ARIA attributes, Bootstrap ensures that its components are accessible to all
+                            users, including those with disabilities</li>
+                    </ul>
+                </section>
+            </section>
+
+            <section data-background="#264f4f">
+                <section style="text-align: center">
+                    <h1 class="r-fit-text">Accessibility</h1>
+                    <h2>Standards and tools</h2>
+                </section>
+
+                <section>
+                    <h3>Equity of opportunities</h3>
+                    <ul>
+                        <li>equal opportunity
+                            to access information for everyone</li>
+                        <li>formal organizations mandated to follow the
+                            accessibility instructions
+                        </li>
+                        <li>a few countries have even written this right to their law
+                            <ul>
+                                <li>In Finland, <a
+                                        href="https://www.webaccessibility.fi/requirements-of-the-act-on-the-provision-of-digital-services/">Web
+                                        Accessibility Legislation (2019)</a></a></li>
+                            </ul>
+
+                        </li>
+                        <li>
+                            moreover, accessible sites tend to rank higher on search engines and be more usable in
+                            overall.
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>W3C initiatives</h3>
+                    <ul>
+
+                        <li>Several specifications and projects target better accessibility<ol>
+
+                                <li> <a href="https://www.w3.org/WAI/standards-guidelines/wcag/">Web Content
+                                        Accessibility
+                                        Guidelines</a></li>
+                                <li><a href="https://www.w3.org/WAI/standards-guidelines/aria/">WAI-ARIA</a> of W3C</li>
+                                <li><a href="https://a11yproject.com/">https://a11yproject.com/</a>
+
+                                    provides crowd-sourced accessibility articles and information
+
+                                </li>
+                            </ol>
+                        </li>
+                    </ul>
+
+                    <footer style="font-size: 50%;">
+                        A11y is the short form way of writing accessibility. It is known as a "numeronym", where 11
+                        denotes the
+                        missing 11
+                        letters between 'a' and 'y'
+                    </footer>
+                    </ul>
+
+                </section>
+                <section>
+                    <figure class="well">
+
+                        <img alt="WAI ARIA" id="gitUrlImage" width="50%"
+                            src="https://www.w3.org/WAI/assets/images/social-sharing-default.jpg">
+                        <figcaption>WAI-ARIA, the Accessible Rich Internet Applications suite of web standards produced
+                            by W3C.
+                        </figcaption>
+                    </figure>
+
+
+
+                </section>
+                <section>
+                    <h2>HTML Accessibility</h2>
+
+                    <ul>
+                        <li>write HTML with accessibility in mind</li>
+                        <li>provide the user a good way to navigate and interact with your site: the main things should
+                            be easily accessible</li>
+                        <li>make your HTML code as semantic as possible, so that the code is easy to understand for
+                            visitors and
+                            screenreaders</li>
+                        <li>Yet note that no ARIA is better that wrong ARIA, you can do a lot with semantic tagging</li>
+
+                    </ul>
+                    <p class="extra"><a href="https://www.w3schools.com/html/html_accessibility.asp"
+                            target="_blanc">https://www.w3schools.com/html/html_accessibility.asp</a></p>
+                </section>
+
+
+                <section style="font-size: 60%;">
+                    <h2>Accessibility guidelines</h2>
+
+                    <ul>
+
+                        <li>Navigation with the keyboard should always be possible<ul>
+                                <li>logical and consistent order of elements
+
+                                    <ul>
+                                        <li>especially with headers         
+                                            <ul>
+                                                <li>the most important first</li>
+                                            </ul>                      
+                                             
+                                    </li>
+                                        <li><a href="https://web.dev/articles/control-focus-with-tabindex">focus control
+                                                with tabindex</a>: <pre><code>tabindex=0</code></pre> makes the element focusable.
+                                                
+                                            <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/Understanding_WCAG/Keyboard?utm_source=devtools&utm_medium=a11y-panel-checks-keyboard#avoid_using_tabindex_attribute_greater_than_zero">Do not use tabindices greater than zero</a></li>
+                                    </ul>
+                                </li>
+                                <li>hide hidden (aria-hidden="true")</li>
+                            </ul>
+                        </li>
+
+                        <li>the visual design important, such as contrast and colors (color-blinds)
+                            validators available:</p>
+                            <ul class="dense" style="font-size: 80%;">
+                                <li>Dev Tools: color picker or <a href="https://superuser.com/questions/1585491/chrome-dev-tools-color-picker-contrast-ratio-not-showing-up">CSS overview panel (three dots/More tools/CSS overview panel)</a></a></li>
+                                <li><a href="https://webaim.org/resources/contrastchecker/" target="_blanc">color
+                                        contrast
+                                        checker for
+                                        low visibility and color blindness</a></li>
+                                <li>WAVE Web Accessibility evaluation tool - Firefox and Chrome plugin:<br> <a
+                                        href="https://chrome.google.com/webstore/detail/wave-evaluation-tool/jbbplnpkjmmeebjpijfedlgcdilocofh"
+                                        target="_blanc">Chrome plugin can be found here</a></li>
+                                <li>To test a whole page in browser <a href="https://color.a11y.com"
+                                        target="_blanc">here</a>
+                                </li>
+                            </ul>
+                    </ul>
+
+                </section>
+                <section style="font-size:60%">
+                    <h2>Accessibility standards and tools</h2>
+
+                    <ul>
+
+                        <li>WAI-ARIA stands for “Web Accessibility Initiative – Accessible Rich Internet Applications”.
+                            See
+                            more
+                            from <a href="https://www.w3.org/WAI/standards-guidelines/aria/" target="_blanc">W3C</a>
+                        </li>
+
+                        <li>Test with screenreaders
+                            <ul class="dense">
+                                <li><a href="https://www.nvaccess.org/" target="_blanc">NVDA</a> (Windows, freeware)
+                                </li>
+                                <li>Jaws (Windows, commercial)</li>
+                                <li>VoiceOver (Apple)</li>
+                                <li><a href="chrome://settings/accessibility" target="_blanc">ChromeVox</a>
+                                    (Text-to-speech)
+                                </li>
+                                <li>TalkBack (Android)</li>
+                                <li><a href="https://help.gnome.org/users/orca/stable/" target="_blanc">Orca</a> (Linux)
+                                </li>
+                                <li>Survey about the current screen readers: <a
+                                        href="https://webaim.org/projects/screenreadersurvey8/"
+                                        target="_blanc">https://webaim.org/projects/screenreadersurvey8/</a> </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+  
+                <section style="font-size:80%">
+                    <h3>Accessibility "linting" integrated in the tool chain</h3>
+                    <ul>
+
+                        <li><a href="https://marketplace.visualstudio.com/items?itemName=deque-systems.vscode-axe-linter">axe</a>, 
+                            <a href="https://pa11y.org/">pa11y</a> 
+                            and 
+                            <a href="https://www.digitala11y.com/free-accessibility-linters-to-automate-accessibility-workflow/">DigitalA11Y</a> 
+                            are capable of checking accessibility of both HTML and JavaScript,
+                            e.g.:
+
+                            <ul>
+                                <li><em>alt-text</em>: enforce all elements that require alternative text have
+                                    meaningful
+                                    information to
+                                    relay back
+                                    to end user</li>
+                                <li><em>anchor-is-valid</em>: enforce valid, navigable anchors</li>
+                                <li><em>aria-props</em>: enforce valid aria-* props</li>
+                            </ul>
+                        </li>
+
+                        <li>More information about the available rules
+                            <a href="https://github.com/jsx-eslint/eslint-plugin-jsx-a11y#supported-rules">checkable
+                                here</a>.
+                        </li>
+                        <li>Chrome dev tools: accessibility tab + tree</li>
+
+                    </ul>
+
+
+                </section>
+                <section style="font-size:80%"  data-background-image="../img/a11y.png">
+                    </section>
+  
+
+
+            </section>
+
+
+        </div>
+    </div>
+
+    <script src="lib/reveal.js-3.1.0/lib/js/head.min.js"></script>
+    <script src="lib/reveal.js-3.1.0/js/reveal.js"></script>
+    <script src="lib/jquery-1.11.1.min.js"></script>
+
+    <script>
+
+        function htmlExample(source, target) {
+            "use strict";
+            $(target).html($(source).text());
+        }
+
+        $("#html_first_demo-btn").click(function () {
+            htmlExample("#html_first_demo", "#html_first_demo-target");
+        });
+        $("#css_first_demo-btn").click(function () {
+            htmlExample("#css_first_demo", "#css_first_demo-target");
+        });
+
+        $("#js_first_demo-btn").click(function () {
+            eval($("#js_first_demo").text());
+        });
+
+        $("#white_space_btn").click(function () {
+            htmlExample("#white_space_example", "#white_space_target");
+        });
+        $("#h1_example_btn").click(function () {
+            htmlExample("#h1_example", "#h1_example_target");
+        });
+        $("#table_example_btn").click(function () {
+            htmlExample("#table_example", "#table_example_target");
+        });
+        $("#form_example_btn").click(function () {
+            htmlExample("#form_example", "#form_example_target");
+        });
+        $("#div_span_example_btn").click(function () {
+            htmlExample("#div_span_example", "#div_span_example_target");
+        });
+        $("#css_float_example_btn").click(function () {
+            htmlExample("#css_float_example", "#css_float_example_target");
+        });
+
+        $("#dom-demo-btn").click(function () {
+            eval($("#dom-demo").text());
+        });
+        $("#handler-demo-btn").click(function () {
+            eval($("#handler-demo").text());
+        });
+
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
+
+
+
+    <script src="dist/reveal.js"></script>
+    <script src="plugin/zoom/zoom.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/search/search.js"></script>
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script>
+        // Als</li><li>available as an ES module, see:
+        // https://revealjs.com/initialization/
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            center: true,
+            hash: true,
+
+            // Learn about plugins: https://revealjs.com/plugins/
+            plugins: [
+                RevealZoom,
+                RevealNotes,
+                RevealSearch,
+                RevealMarkdown,
+                RevealHighlight
+            ]
+        })
+    </script>
+</body>
+
+</html>
