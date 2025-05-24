@@ -1,0 +1,15 @@
+--2025-02-11 13:56:42--  https://teams.microsoft.com/l/channel/19%3Aa56d1d1415274c8a98efd55d40b0b682%40thread.tacv2/wk01_pseudo?groupId=360a3ea4-1d46-45aa-b8f6-c38ae29ada54
+Resolving teams.microsoft.com (teams.microsoft.com)... 52.123.129.14, 52.123.128.14, 2603:1063:27:2::14, ...
+Connecting to teams.microsoft.com (teams.microsoft.com)|52.123.129.14|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: /dl/launcher/launcher.html?url=%2F_%23%2Fl%2Fchannel%2F19%3Aa56d1d1415274c8a98efd55d40b0b682%40thread.tacv2%2Fwk01_pseudo%3FgroupId%3D360a3ea4-1d46-45aa-b8f6-c38ae29ada54&type=channel&deeplinkId=1226a562-e5b8-4c8d-840f-fb0fbb9216f8&directDl=true&msLaunch=true&enableMobilePage=true [following]
+--2025-02-11 13:56:42--  https://teams.microsoft.com/dl/launcher/launcher.html?url=%2F_%23%2Fl%2Fchannel%2F19%3Aa56d1d1415274c8a98efd55d40b0b682%40thread.tacv2%2Fwk01_pseudo%3FgroupId%3D360a3ea4-1d46-45aa-b8f6-c38ae29ada54&type=channel&deeplinkId=1226a562-e5b8-4c8d-840f-fb0fbb9216f8&directDl=true&msLaunch=true&enableMobilePage=true
+Reusing existing connection to teams.microsoft.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: 17875 (17K) [text/html]
+Saving to: ‘wk01_pseudo?groupId=360a3ea4-1d46-45aa-b8f6-c38ae29ada54’
+
+wk01_pseudo?groupId=360a3ea4-1d46-45aa-b8f6-c38ae29ada54        0%[                                                                                                                                                  ]       0  --.-KB/s               wk01_pseudo?groupId=360a3ea4-1d46-45aa-b8f6-c38ae29ada54      100%[=================================================================================================================================================>]  17.46K  --.-KB/s    in 0.006s  
+
+2025-02-11 13:56:42 (2.66 MB/s) - ‘wk01_pseudo?groupId=360a3ea4-1d46-45aa-b8f6-c38ae29ada54’ saved [17875/17875]
+

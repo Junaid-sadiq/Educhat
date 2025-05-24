@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Lecture Notes on MIT OpenCourseWare</title>
+    <link>/resources/lecture-notes/</link>
+    <description>Recent content in Lecture Notes on MIT OpenCourseWare</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="/resources/lecture-notes/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>14.15 / 6.207 Networks, Lecture 13: Game Theory 1: Static Games with Complete Information</title>
+      <link>/resources/mit14_15s22_lec13/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/resources/mit14_15s22_lec13/data.json</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>14.15 / 6.207 Networks, Lecture 15: Network Effects in Markets and Games</title>
+      <link>/resources/mit14_15s22_lec15/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/resources/mit14_15s22_lec15/data.json</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>14.15 / 6.207 Networks, Lecture 19: Cooperation in Repeated Games, Communities, and Networks</title>
+      <link>/resources/mit14_15s22_lec19/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/resources/mit14_15s22_lec19/data.json</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Lecture 1: Introduction to Social and Economic Networks (PDF)</title>
+      <link>/resources/mit14_15s22_lec1/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/resources/mit14_15s22_lec1/data.json</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Lecture 11: Strategic Aspects of Diffusion and Contagion (PDF)</title>
+      <link>/resources/mit14_15s22_lec11/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/resources/mit14_15s22_lec11/data.json</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Lecture 14: Network Traffic, Congestion, and Potential Games (PDF)</title>
+      <link>/resources/mit14_15s22_lec14/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/resources/mit14_15s22_lec14/data.json</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Lecture 16: Competitive Pricing in Networks (PDF)</title>
+      <link>/resources/mit14_15s22_lec16/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/resources/mit14_15s22_lec16/data.json</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Lecture 18: Bargaining and Intermediation in Networks (PDF)</title>
+      <link>/resources/mit14_15s22_lec18/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/resources/mit14_15s22_lec18/data.json</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Lecture 2: Graph Theory and Social Networks (PDF)</title>
+      <link>/resources/mit14_15s22_lec2/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/resources/mit14_15s22_lec2/data.json</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Lecture 21: Auctions and Incomplete Information (PDF)</title>
+      <link>/resources/mit14_15s22_lec21/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/resources/mit14_15s22_lec21/data.json</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Lecture 22: Information Aggregation and the Wisdom of Crowds (PDF)</title>
+      <link>/resources/mit14_15s22_lec22/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/resources/mit14_15s22_lec22/data.json</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Lecture 23: Observational Learning and Herd Behavior (PDF)</title>
+      <link>/resources/mit14_15s22_lec23/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/resources/mit14_15s22_lec23/data.json</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Lecture 3: Eigenvector Centrality Measures (PDF)</title>
+      <link>/resources/mit14_15s22_lec3/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/resources/mit14_15s22_lec3/data.json</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Lecture 4: Production Networks (PDF)</title>
+      <link>/resources/mit14_15s22_lec4/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/resources/mit14_15s22_lec4/data.json</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Lecture 5: The DeGroot Learning Model (PDF)</title>
+      <link>/resources/mit14_15s22_lec5/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/resources/mit14_15s22_lec5/data.json</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Lecture 8: Network Formation: Dynamic Models and Preferential Attachment (PDF)</title>
+      <link>/resources/mit14_15s22_lec8/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/resources/mit14_15s22_lec8/data.json</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Lecture 9: Diffusion through Networks and Societies (PDF)</title>
+      <link>/resources/mit14_15s22_lec9/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/resources/mit14_15s22_lec9/data.json</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Lectures 6–7: Network Formation: Static Models</title>
+      <link>/resources/mit14_15s22_lec6-7/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/resources/mit14_15s22_lec6-7/data.json</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

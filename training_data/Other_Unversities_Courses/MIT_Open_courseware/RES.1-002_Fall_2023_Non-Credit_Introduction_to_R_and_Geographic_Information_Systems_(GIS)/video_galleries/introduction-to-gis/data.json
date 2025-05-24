@@ -1,0 +1,25 @@
+
+{ 
+  "title":"Introduction to GIS",
+  "description":"", 
+  "videos": [{
+          "description": null,
+          "file": "/courses/introduction-to-r-and-gis-fall-2023/res1-002-gis-2a-key-concepts_360p_16_9.mp4"
+        },{
+          "description": null,
+          "file": "/courses/introduction-to-r-and-gis-fall-2023/res1-002-gis-2b-vectorial-maps_360p_16_9.mp4"
+        },{
+          "description": null,
+          "file": "/courses/introduction-to-r-and-gis-fall-2023/res1-002-gis-2c-projection_360p_16_9.mp4"
+        },{
+          "description": null,
+          "file": "/courses/introduction-to-r-and-gis-fall-2023/res1-002-gis-2d-stack-brick-crop-mask_360p_16_9.mp4"
+        },{
+          "description": null,
+          "file": "/courses/introduction-to-r-and-gis-fall-2023/res1-002-gis-2e-extraction-info-from-maps_360p_16_9.mp4"
+        },{
+          "description": null,
+          "file": "/courses/introduction-to-r-and-gis-fall-2023/res1-002-gis-2f-plotting-maps-with-ggplot2_360p_16_9.mp4"
+        }]}
+
+

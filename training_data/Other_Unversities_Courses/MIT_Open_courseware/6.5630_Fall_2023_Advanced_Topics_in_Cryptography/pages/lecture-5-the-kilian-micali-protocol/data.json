@@ -1,0 +1,6 @@
+
+{
+  "title":"Lecture 5: The Kilian-Micali Protocol",
+  "content":" Topics Cryptographic building block: collision-resistant hash (CRH) functions with local opening: definition and construction. The Kilian-Micali protocol, given a CRH and PCP. Analysis Readings S. Micali, \u0026ldquo;Computationally Sound Proofs (PDF).\u0026rdquo; SIAM J. COMPUT. Vol. 30, No. 4, pp. 1253–1298.\nLecture Videos Part 1 Viewing videos requires an internet connection View video page Download video Download transcript Part 2 Viewing videos requires an internet connection View video page Download video Download transcript "}
+
+

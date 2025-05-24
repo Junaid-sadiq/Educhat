@@ -1,0 +1,660 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:05.748 align:middle line:84%
+[SQUEAKING]
+[RUSTLING] [CLICKING]
+
+00:00:05.748 --> 00:00:09.425 align:middle line:90%
+
+
+00:00:09.425 --> 00:00:11.050 align:middle line:84%
+HELENA VAILLICROSA:
+During this course,
+
+00:00:11.050 --> 00:00:14.590 align:middle line:84%
+when we've had the
+need to plot a map,
+
+00:00:14.590 --> 00:00:19.000 align:middle line:84%
+we use the code that is
+provided by default by R.
+
+00:00:19.000 --> 00:00:22.870 align:middle line:84%
+But there are other ways to plot
+maps and make them easy to be
+
+00:00:22.870 --> 00:00:25.000 align:middle line:90%
+tuned according on our taste.
+
+00:00:25.000 --> 00:00:31.180 align:middle line:84%
+So now, I'm going to show you
+how to display nice maps that
+
+00:00:31.180 --> 00:00:33.970 align:middle line:90%
+are easy to tune using ggplot.
+
+00:00:33.970 --> 00:00:36.850 align:middle line:84%
+And to do that,
+I'm going to charge
+
+00:00:36.850 --> 00:00:39.490 align:middle line:84%
+the map that we've been using,
+our friend, this temperature
+
+00:00:39.490 --> 00:00:40.990 align:middle line:90%
+map.
+
+00:00:40.990 --> 00:00:44.620 align:middle line:84%
+Also, to make the process
+easier, faster for R,
+
+00:00:44.620 --> 00:00:48.370 align:middle line:84%
+I'm going to aggregate this
+map, so make it coarser.
+
+00:00:48.370 --> 00:00:51.250 align:middle line:84%
+In this case, I'm going
+to use a factor of 5.
+
+00:00:51.250 --> 00:00:57.280 align:middle line:84%
+So it means that from each five
+pixels I'm just creating one.
+
+00:00:57.280 --> 00:00:59.390 align:middle line:84%
+It's going to affect the
+result. In this case,
+
+00:00:59.390 --> 00:01:04.450 align:middle line:84%
+it's going to make the
+image to be less defined.
+
+00:01:04.450 --> 00:01:09.410 align:middle line:84%
+But this is just because
+we aggregated the data.
+
+00:01:09.410 --> 00:01:13.470 align:middle line:84%
+And we also need to transform
+this map into a data frame.
+
+00:01:13.470 --> 00:01:19.310 align:middle line:84%
+This is a requirement to be
+able to plot it with ggplot.
+
+00:01:19.310 --> 00:01:22.400 align:middle line:84%
+So that's what I'm doing
+here, as data frame.
+
+00:01:22.400 --> 00:01:25.260 align:middle line:84%
+By default, this
+command is not included.
+
+00:01:25.260 --> 00:01:29.690 align:middle line:84%
+So this means that when
+transforming the map into a data
+
+00:01:29.690 --> 00:01:32.570 align:middle line:84%
+frame, we are maintaining
+latitude and longitude
+
+00:01:32.570 --> 00:01:33.590 align:middle line:90%
+as a variable.
+
+00:01:33.590 --> 00:01:35.270 align:middle line:90%
+By default, this is false.
+
+00:01:35.270 --> 00:01:37.430 align:middle line:90%
+So it wouldn't be--
+
+00:01:37.430 --> 00:01:43.160 align:middle line:84%
+well, I'm just going to show
+you how it is by default.
+
+00:01:43.160 --> 00:01:45.060 align:middle line:90%
+See, we only have one variable.
+
+00:01:45.060 --> 00:01:48.650 align:middle line:84%
+But in this case, if we
+would give this to ggplot,
+
+00:01:48.650 --> 00:01:50.600 align:middle line:84%
+that wouldn't be able
+to provide us a map
+
+00:01:50.600 --> 00:01:52.580 align:middle line:84%
+because x and y
+would be lacking.
+
+00:01:52.580 --> 00:01:56.730 align:middle line:84%
+So we need to include
+this chunk of code here
+
+00:01:56.730 --> 00:02:00.420 align:middle line:84%
+that's going to give us
+the latitude and longitude.
+
+00:02:00.420 --> 00:02:02.990 align:middle line:84%
+So now, we have three
+variables instead of one.
+
+00:02:02.990 --> 00:02:06.930 align:middle line:84%
+And if we click on here,
+we have the x, the y.
+
+00:02:06.930 --> 00:02:09.080 align:middle line:84%
+And that's the name of
+the map that we've used.
+
+00:02:09.080 --> 00:02:12.450 align:middle line:84%
+Just because it's very long
+and not easy to work with,
+
+00:02:12.450 --> 00:02:16.910 align:middle line:84%
+I decided to change that
+name into temp, temperature.
+
+00:02:16.910 --> 00:02:19.340 align:middle line:90%
+So that's what I'm doing here.
+
+00:02:19.340 --> 00:02:21.530 align:middle line:84%
+And I'm going to charge
+the packages we're
+
+00:02:21.530 --> 00:02:24.140 align:middle line:84%
+going to need to do
+this process, which
+
+00:02:24.140 --> 00:02:27.080 align:middle line:84%
+is the map tools that is
+related to working with maps.
+
+00:02:27.080 --> 00:02:32.990 align:middle line:84%
+Then we have the ggplot2,
+which is the main package
+
+00:02:32.990 --> 00:02:34.290 align:middle line:90%
+we're going to be using here.
+
+00:02:34.290 --> 00:02:37.700 align:middle line:84%
+And then we have this BDDs that
+is about the color palette we're
+
+00:02:37.700 --> 00:02:40.430 align:middle line:90%
+going to use to create the map.
+
+00:02:40.430 --> 00:02:43.370 align:middle line:84%
+And I'm going to
+also charge this map
+
+00:02:43.370 --> 00:02:47.630 align:middle line:84%
+that we've been using, which is
+the one that separates the water
+
+00:02:47.630 --> 00:02:48.510 align:middle line:90%
+bodies.
+
+00:02:48.510 --> 00:02:50.990 align:middle line:90%
+So it's the shape of the ground.
+
+00:02:50.990 --> 00:02:57.050 align:middle line:84%
+And this would be the most
+simple code that would give us
+
+00:02:57.050 --> 00:02:58.670 align:middle line:90%
+a map using ggplot.
+
+00:02:58.670 --> 00:03:02.270 align:middle line:84%
+So this part here
+would not be necessary.
+
+00:03:02.270 --> 00:03:03.390 align:middle line:90%
+We could erase it.
+
+00:03:03.390 --> 00:03:09.050 align:middle line:84%
+But in this case, I am storing
+this code into this object.
+
+00:03:09.050 --> 00:03:13.190 align:middle line:84%
+So I am saying to R that I'm
+going to be using ggplot.
+
+00:03:13.190 --> 00:03:17.410 align:middle line:84%
+And our base, it's going
+to be this data frame.
+
+00:03:17.410 --> 00:03:18.470 align:middle line:90%
+I'm going to add a plus.
+
+00:03:18.470 --> 00:03:23.300 align:middle line:84%
+I'm going to say to
+ggplot, what do I want me--
+
+00:03:23.300 --> 00:03:25.220 align:middle line:84%
+what do I want
+ggplot to provide.
+
+00:03:25.220 --> 00:03:29.570 align:middle line:84%
+In this case, I want
+to have a gmraster.
+
+00:03:29.570 --> 00:03:35.420 align:middle line:84%
+So I want ggplot to give me a
+raster based on this as an x,
+
+00:03:35.420 --> 00:03:37.070 align:middle line:90%
+this as a y.
+
+00:03:37.070 --> 00:03:43.370 align:middle line:84%
+So we could type it here and
+it would work equal weight.
+
+00:03:43.370 --> 00:03:45.650 align:middle line:84%
+Just if x or y would
+have different names,
+
+00:03:45.650 --> 00:03:48.650 align:middle line:84%
+we would have to specify
+these names right here.
+
+00:03:48.650 --> 00:03:54.890 align:middle line:84%
+And then in fill, I want
+ggplot to fill this x and y
+
+00:03:54.890 --> 00:03:57.710 align:middle line:84%
+with the temperature, which
+is the third column that we
+
+00:03:57.710 --> 00:03:59.280 align:middle line:90%
+have in that data frame.
+
+00:03:59.280 --> 00:04:03.590 align:middle line:84%
+So let's just run this piece of
+code and see how it looks like.
+
+00:04:03.590 --> 00:04:06.020 align:middle line:90%
+
+
+00:04:06.020 --> 00:04:06.520 align:middle line:90%
+OK.
+
+00:04:06.520 --> 00:04:08.710 align:middle line:84%
+This is clearly not
+the most beautiful plot
+
+00:04:08.710 --> 00:04:11.830 align:middle line:90%
+you could have ever seen.
+
+00:04:11.830 --> 00:04:14.320 align:middle line:90%
+But this is just the basic.
+
+00:04:14.320 --> 00:04:17.660 align:middle line:84%
+And we're going to keep
+improving this map line by line.
+
+00:04:17.660 --> 00:04:20.560 align:middle line:84%
+So you can see how
+each piece of code
+
+00:04:20.560 --> 00:04:24.500 align:middle line:84%
+changes the result of the
+map we're going to have.
+
+00:04:24.500 --> 00:04:26.680 align:middle line:84%
+First of all, what I
+want to include here
+
+00:04:26.680 --> 00:04:28.480 align:middle line:90%
+is the shape of the Earth.
+
+00:04:28.480 --> 00:04:31.180 align:middle line:84%
+So I want to include
+that map that we just
+
+00:04:31.180 --> 00:04:34.550 align:middle line:84%
+uploaded on top of
+this one to make
+
+00:04:34.550 --> 00:04:38.720 align:middle line:84%
+a good differentiation between
+what's the sea and what's not.
+
+00:04:38.720 --> 00:04:43.960 align:middle line:84%
+So that's why I included
+this piece of code here.
+
+00:04:43.960 --> 00:04:48.070 align:middle line:84%
+I'm going to erase this plus to
+make the code to stop right here
+
+00:04:48.070 --> 00:04:49.615 align:middle line:90%
+and see how that looks like.
+
+00:04:49.615 --> 00:04:56.020 align:middle line:90%
+
+
+00:04:56.020 --> 00:04:57.100 align:middle line:90%
+OK.
+
+00:04:57.100 --> 00:05:01.990 align:middle line:84%
+Now, we have this nice
+black line around.
+
+00:05:01.990 --> 00:05:03.880 align:middle line:84%
+But now, it turns
+out that I don't
+
+00:05:03.880 --> 00:05:06.910 align:middle line:90%
+want this black shape here.
+
+00:05:06.910 --> 00:05:08.830 align:middle line:84%
+And I want to change
+the color palette.
+
+00:05:08.830 --> 00:05:12.190 align:middle line:84%
+So to do that, I'm going to
+include this piece of code
+
+00:05:12.190 --> 00:05:17.920 align:middle line:90%
+as well, right here.
+
+00:05:17.920 --> 00:05:21.400 align:middle line:84%
+And I'm saying that the NA
+values are going to be NA.
+
+00:05:21.400 --> 00:05:26.440 align:middle line:84%
+So I'm asking this code
+not to show me the NA's.
+
+00:05:26.440 --> 00:05:30.400 align:middle line:84%
+So that's going to erase
+this gray area here.
+
+00:05:30.400 --> 00:05:34.090 align:middle line:84%
+Also, I'm going to change the
+direction of the color palette,
+
+00:05:34.090 --> 00:05:39.550 align:middle line:84%
+meaning that now
+the black color is
+
+00:05:39.550 --> 00:05:41.530 align:middle line:90%
+related to lower temperatures.
+
+00:05:41.530 --> 00:05:43.360 align:middle line:84%
+And I want it the
+other way around.
+
+00:05:43.360 --> 00:05:46.030 align:middle line:84%
+And also, I am changing
+the color palette
+
+00:05:46.030 --> 00:05:48.140 align:middle line:90%
+to have this shape.
+
+00:05:48.140 --> 00:05:53.740 align:middle line:84%
+So if we go to the
+Help with Fn and F1,
+
+00:05:53.740 --> 00:06:00.190 align:middle line:84%
+here we see that this is the
+beginning of the Help section.
+
+00:06:00.190 --> 00:06:04.270 align:middle line:84%
+If we scroll down, we get
+to the different options
+
+00:06:04.270 --> 00:06:06.260 align:middle line:90%
+we have for color palette.
+
+00:06:06.260 --> 00:06:07.960 align:middle line:84%
+These are the different
+options we have.
+
+00:06:07.960 --> 00:06:11.950 align:middle line:84%
+So if instead of this letter
+here, I put an A, B, or C.
+
+00:06:11.950 --> 00:06:15.130 align:middle line:84%
+We would have different
+color palettes as an outcome.
+
+00:06:15.130 --> 00:06:18.100 align:middle line:90%
+I chose this one just because.
+
+00:06:18.100 --> 00:06:22.200 align:middle line:90%
+
+
+00:06:22.200 --> 00:06:25.725 align:middle line:90%
+This is how our map has changed.
+
+00:06:25.725 --> 00:06:30.370 align:middle line:90%
+
+
+00:06:30.370 --> 00:06:32.110 align:middle line:84%
+Oh, I have to run
+it first, of course.
+
+00:06:32.110 --> 00:06:39.080 align:middle line:90%
+
+
+00:06:39.080 --> 00:06:42.620 align:middle line:84%
+And I have to put a plus because
+otherwise it wouldn't read
+
+00:06:42.620 --> 00:06:44.795 align:middle line:90%
+this new line that I added.
+
+00:06:44.795 --> 00:06:51.400 align:middle line:90%
+
+
+00:06:51.400 --> 00:06:52.630 align:middle line:90%
+OK.
+
+00:06:52.630 --> 00:06:55.330 align:middle line:84%
+I have changed the direction
+of the color palette,
+
+00:06:55.330 --> 00:06:56.320 align:middle line:90%
+as you can see.
+
+00:06:56.320 --> 00:07:02.440 align:middle line:84%
+Now, this gray area
+around has disappeared.
+
+00:07:02.440 --> 00:07:05.410 align:middle line:84%
+And the color palette
+also has changed.
+
+00:07:05.410 --> 00:07:07.810 align:middle line:84%
+I still want to keep
+improving this map
+
+00:07:07.810 --> 00:07:10.780 align:middle line:84%
+because I don't like
+this background here.
+
+00:07:10.780 --> 00:07:13.700 align:middle line:84%
+That's something called
+the theme of the map.
+
+00:07:13.700 --> 00:07:15.920 align:middle line:90%
+You can change the theme.
+
+00:07:15.920 --> 00:07:19.210 align:middle line:84%
+And in this case, I
+want the theme minimal.
+
+00:07:19.210 --> 00:07:23.570 align:middle line:84%
+And I also don't like this
+chunk to be displayed.
+
+00:07:23.570 --> 00:07:29.320 align:middle line:84%
+So I decided to reduce the
+y limits of the y-axis.
+
+00:07:29.320 --> 00:07:31.990 align:middle line:84%
+And instead of being
+their total extent,
+
+00:07:31.990 --> 00:07:34.270 align:middle line:84%
+I'm just going to
+cut it at minus 60.
+
+00:07:34.270 --> 00:07:38.020 align:middle line:84%
+So it's going to be cut
+somewhere like here.
+
+00:07:38.020 --> 00:07:45.670 align:middle line:84%
+To do so, I'm just going to
+include the plus this out,
+
+00:07:45.670 --> 00:07:48.840 align:middle line:90%
+make it nicer and close.
+
+00:07:48.840 --> 00:07:52.425 align:middle line:84%
+But just run it and see
+how these affect our map.
+
+00:07:52.425 --> 00:07:56.530 align:middle line:90%
+
+
+00:07:56.530 --> 00:07:57.030 align:middle line:90%
+OK.
+
+00:07:57.030 --> 00:08:00.330 align:middle line:84%
+Now, we changed
+that gray area we
+
+00:08:00.330 --> 00:08:01.990 align:middle line:90%
+had in the background as well.
+
+00:08:01.990 --> 00:08:07.410 align:middle line:84%
+And we are no longer displaying
+the southern latitudes.
+
+00:08:07.410 --> 00:08:13.470 align:middle line:84%
+Now, I want this
+to have a title.
+
+00:08:13.470 --> 00:08:19.570 align:middle line:84%
+And I want this to have also
+not display this or that.
+
+00:08:19.570 --> 00:08:21.690 align:middle line:84%
+And I want to change
+the legend position.
+
+00:08:21.690 --> 00:08:25.020 align:middle line:84%
+Instead of being on the right,
+I want it to be on the left.
+
+00:08:25.020 --> 00:08:29.340 align:middle line:84%
+So all these changes are the
+ones that are implemented here.
+
+00:08:29.340 --> 00:08:35.760 align:middle line:84%
+This is not displaying
+x and y labs here.
+
+00:08:35.760 --> 00:08:41.280 align:middle line:84%
+This is going to be to change
+the position of the legend.
+
+00:08:41.280 --> 00:08:42.480 align:middle line:90%
+This is the title.
+
+00:08:42.480 --> 00:08:46.590 align:middle line:84%
+And this is going
+to change this here.
+
+00:08:46.590 --> 00:08:50.400 align:middle line:84%
+Instead of temp, I want it to
+explain that it's the January
+
+00:08:50.400 --> 00:08:52.355 align:middle line:90%
+temperature.
+
+00:08:52.355 --> 00:08:54.105 align:middle line:84%
+So I'm going to include
+them all together.
+
+00:08:54.105 --> 00:09:04.770 align:middle line:90%
+
+
+00:09:04.770 --> 00:09:08.540 align:middle line:84%
+And this is an example
+of how we can create
+
+00:09:08.540 --> 00:09:11.600 align:middle line:90%
+and tune outcomes in a nice way.
+
+00:09:11.600 --> 00:09:17.510 align:middle line:84%
+So we can use this outcome
+as a graphic representation
+
+00:09:17.510 --> 00:09:21.030 align:middle line:90%
+in our scientific projects.
+
+00:09:21.030 --> 00:09:21.530 align:middle line:90%
+OK.
+
+00:09:21.530 --> 00:09:23.880 align:middle line:84%
+This looks kind of
+nice and tidy here.
+
+00:09:23.880 --> 00:09:26.360 align:middle line:84%
+But what if we want
+to extract this image
+
+00:09:26.360 --> 00:09:28.610 align:middle line:90%
+and store it in our computer?
+
+00:09:28.610 --> 00:09:32.900 align:middle line:84%
+A nice way to do it is
+using TIF extension.
+
+00:09:32.900 --> 00:09:36.440 align:middle line:84%
+What I have to do is just
+to write TIF, write the file
+
+00:09:36.440 --> 00:09:43.520 align:middle line:84%
+name, where I want to create
+or generate this outcome,
+
+00:09:43.520 --> 00:09:45.890 align:middle line:90%
+how big I want this image to be.
+
+00:09:45.890 --> 00:09:48.020 align:middle line:84%
+The resolution by
+default is 100.
+
+00:09:48.020 --> 00:09:52.110 align:middle line:84%
+I just put 200 here to make
+everything appear bigger.
+
+00:09:52.110 --> 00:09:54.200 align:middle line:84%
+And then you have
+to include here
+
+00:09:54.200 --> 00:09:57.680 align:middle line:84%
+what's the object you
+want to store in that
+
+00:09:57.680 --> 00:09:59.390 align:middle line:90%
+object you just created.
+
+00:09:59.390 --> 00:10:03.080 align:middle line:84%
+And then click on
+this part, which
+
+00:10:03.080 --> 00:10:07.580 align:middle line:84%
+is giving the order to E to
+close that file and give it
+
+00:10:07.580 --> 00:10:11.570 align:middle line:84%
+as an outcome, so you can
+consult in your computer
+
+00:10:11.570 --> 00:10:16.240 align:middle line:90%
+and use it at your convenience.
+
+00:10:16.240 --> 00:10:20.000 align:middle line:90%

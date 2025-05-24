@@ -1,0 +1,7274 @@
+1
+00:00:04,000 --> 00:00:05,000
+[CLICK]
+
+2
+00:00:16,000 --> 00:00:18,680
+DAVID SONTAG: So welcome
+to spring 2019 Machine
+
+3
+00:00:18,680 --> 00:00:20,200
+Learning for Healthcare.
+
+4
+00:00:20,200 --> 00:00:21,280
+My name is David Sontag.
+
+5
+00:00:21,280 --> 00:00:22,988
+I'm a professor in
+computer science.
+
+6
+00:00:22,988 --> 00:00:25,030
+Also I'm in the Institute
+for Medical Engineering
+
+7
+00:00:25,030 --> 00:00:26,563
+and Science.
+
+8
+00:00:26,563 --> 00:00:28,480
+My co-instructor today
+will be Pete Szolovits,
+
+9
+00:00:28,480 --> 00:00:31,360
+who I'll introduce more towards
+the end of today's lecture,
+
+10
+00:00:31,360 --> 00:00:33,430
+along with the rest
+of the course staff.
+
+11
+00:00:33,430 --> 00:00:38,660
+So the problem.
+
+12
+00:00:38,660 --> 00:00:41,050
+The problem is that healthcare
+in the United States
+
+13
+00:00:41,050 --> 00:00:42,820
+costs too much.
+
+14
+00:00:42,820 --> 00:00:46,660
+Currently, we're spending
+$3 trillion a year,
+
+15
+00:00:46,660 --> 00:00:50,800
+and we're not even necessarily
+doing a very good job.
+
+16
+00:00:50,800 --> 00:00:53,650
+Patients who have
+chronic disease
+
+17
+00:00:53,650 --> 00:00:56,910
+often find that these chronic
+diseases are diagnosed late.
+
+18
+00:00:56,910 --> 00:01:00,460
+They're often not managed well.
+
+19
+00:01:00,460 --> 00:01:03,490
+And that happens even
+in a country with some
+
+20
+00:01:03,490 --> 00:01:06,250
+of the world's best clinicians.
+
+21
+00:01:06,250 --> 00:01:09,640
+Moreover, medical
+errors are happening
+
+22
+00:01:09,640 --> 00:01:13,240
+all of the time,
+errors that if caught,
+
+23
+00:01:13,240 --> 00:01:15,800
+would have prevented
+needless deaths,
+
+24
+00:01:15,800 --> 00:01:22,022
+needless worsening
+of disease, and more.
+
+25
+00:01:22,022 --> 00:01:24,780
+And healthcare
+impacts all of us.
+
+26
+00:01:24,780 --> 00:01:27,150
+So I imagine that almost
+everyone here in this room
+
+27
+00:01:27,150 --> 00:01:32,970
+have had a family member,
+a loved one, a dear friend,
+
+28
+00:01:32,970 --> 00:01:38,160
+or even themselves suffer
+from a health condition which
+
+29
+00:01:38,160 --> 00:01:42,210
+impacts your quality of
+life, which has affected
+
+30
+00:01:42,210 --> 00:01:46,800
+your work, your
+studies, and possibly
+
+31
+00:01:46,800 --> 00:01:50,410
+has led to a needless death.
+
+32
+00:01:50,410 --> 00:01:53,470
+And so the question that we're
+asking in this course today
+
+33
+00:01:53,470 --> 00:01:55,340
+is how can we use
+machine learning,
+
+34
+00:01:55,340 --> 00:01:58,360
+artificial intelligence, as
+one piece of a bigger puzzle
+
+35
+00:01:58,360 --> 00:02:02,570
+to try to transform healthcare.
+
+36
+00:02:02,570 --> 00:02:04,532
+So all of us have
+some personal stories.
+
+37
+00:02:04,532 --> 00:02:05,990
+I myself have
+personal stories that
+
+38
+00:02:05,990 --> 00:02:08,430
+have led me to be
+interested in this area.
+
+39
+00:02:08,430 --> 00:02:11,210
+My grandfather, who had
+Alzheimer's disease,
+
+40
+00:02:11,210 --> 00:02:14,763
+was diagnosed quite late
+in his Alzheimer's disease.
+
+41
+00:02:14,763 --> 00:02:17,180
+There aren't good treatments
+today for Alzheimer's, and so
+
+42
+00:02:17,180 --> 00:02:19,490
+it's not that I would
+have expected the outcome
+
+43
+00:02:19,490 --> 00:02:20,480
+to be different.
+
+44
+00:02:20,480 --> 00:02:22,790
+But had he been
+diagnosed earlier,
+
+45
+00:02:22,790 --> 00:02:24,980
+our family would have
+recognized that many
+
+46
+00:02:24,980 --> 00:02:26,840
+of the erratic things
+that he was doing
+
+47
+00:02:26,840 --> 00:02:29,340
+towards the later years of his
+life were due to this disease
+
+48
+00:02:29,340 --> 00:02:32,580
+and not due to
+some other reason.
+
+49
+00:02:32,580 --> 00:02:36,150
+My mother, who had multiple
+myeloma, a blood cancer, who
+
+50
+00:02:36,150 --> 00:02:40,930
+was diagnosed five
+years ago now,
+
+51
+00:02:40,930 --> 00:02:43,240
+never started treatment
+for her cancer
+
+52
+00:02:43,240 --> 00:02:47,570
+before she died one year ago.
+
+53
+00:02:47,570 --> 00:02:48,640
+Now, why did she die?
+
+54
+00:02:48,640 --> 00:02:53,140
+Well, it was believed
+that her cancer was still
+
+55
+00:02:53,140 --> 00:02:56,250
+in its very early stages.
+
+56
+00:02:56,250 --> 00:02:58,320
+Her blood markers that
+were used to track
+
+57
+00:02:58,320 --> 00:03:01,950
+the progress of the cancer put
+her in a low risk category.
+
+58
+00:03:01,950 --> 00:03:04,560
+She didn't yet have
+visible complications
+
+59
+00:03:04,560 --> 00:03:06,795
+of the disease that
+would, according
+
+60
+00:03:06,795 --> 00:03:09,750
+to today's standard
+guidelines, require treatment
+
+61
+00:03:09,750 --> 00:03:11,310
+to be initiated.
+
+62
+00:03:11,310 --> 00:03:14,700
+And as a result, the belief
+was the best strategy
+
+63
+00:03:14,700 --> 00:03:16,980
+was to wait and see.
+
+64
+00:03:16,980 --> 00:03:21,480
+But unbeknownst to her and
+to my family, her blood
+
+65
+00:03:21,480 --> 00:03:25,350
+cancer, which was caused
+by light chains which
+
+66
+00:03:25,350 --> 00:03:30,270
+were accumulating, ended
+up leading to organ damage.
+
+67
+00:03:30,270 --> 00:03:32,940
+In this case, the light chains
+were accumulating in her heart,
+
+68
+00:03:32,940 --> 00:03:35,540
+and she died of heart failure.
+
+69
+00:03:35,540 --> 00:03:39,400
+Had we recognized that her
+disease was further along,
+
+70
+00:03:39,400 --> 00:03:40,880
+she might have
+initiated treatment.
+
+71
+00:03:40,880 --> 00:03:44,150
+And there are now over 20
+treatments for multiple myeloma
+
+72
+00:03:44,150 --> 00:03:49,640
+which are believed to have
+life-lengthening effect.
+
+73
+00:03:49,640 --> 00:03:51,670
+And I can give you four
+or five other stories
+
+74
+00:03:51,670 --> 00:03:54,592
+from my own personal
+family and my friends,
+
+75
+00:03:54,592 --> 00:03:56,050
+where similar things
+have happened.
+
+76
+00:03:56,050 --> 00:03:59,180
+And I have no doubt that
+all of you have as well.
+
+77
+00:03:59,180 --> 00:04:00,940
+So what can we do about
+it is the question
+
+78
+00:04:00,940 --> 00:04:04,180
+that we want to try to
+understand in today's course.
+
+79
+00:04:04,180 --> 00:04:05,490
+And don't get me wrong.
+
+80
+00:04:05,490 --> 00:04:07,240
+Machine learning,
+artificial intelligence,
+
+81
+00:04:07,240 --> 00:04:09,430
+will only be one
+piece of the puzzle.
+
+82
+00:04:09,430 --> 00:04:11,680
+There's so many other
+systematic changes
+
+83
+00:04:11,680 --> 00:04:14,450
+that we're going to have to
+make into our healthcare system.
+
+84
+00:04:14,450 --> 00:04:18,555
+But let's try to understand
+what those AI elements might be.
+
+85
+00:04:18,555 --> 00:04:19,930
+So let's start in
+today's lecture
+
+86
+00:04:19,930 --> 00:04:23,030
+by giving a bit of a background
+on artificial intelligence
+
+87
+00:04:23,030 --> 00:04:25,020
+and machine learning
+in healthcare.
+
+88
+00:04:25,020 --> 00:04:28,960
+And I'll tell you why I think
+the time is right now, in 2019,
+
+89
+00:04:28,960 --> 00:04:32,575
+to really start to make a
+big dent at this problem.
+
+90
+00:04:32,575 --> 00:04:34,160
+And then I'll tell you about--
+
+91
+00:04:34,160 --> 00:04:35,260
+I'll give you a
+few examples of how
+
+92
+00:04:35,260 --> 00:04:37,343
+machine learning is likely
+to transform healthcare
+
+93
+00:04:37,343 --> 00:04:38,500
+over the next decade.
+
+94
+00:04:38,500 --> 00:04:40,130
+And of course we're
+just guessing,
+
+95
+00:04:40,130 --> 00:04:41,925
+but this is really
+guided by the latest
+
+96
+00:04:41,925 --> 00:04:45,370
+and greatest in research, a lot
+of it happening here at MIT.
+
+97
+00:04:45,370 --> 00:04:47,110
+And then we'll close
+today's lecture
+
+98
+00:04:47,110 --> 00:04:48,970
+with an overview of
+what's different,
+
+99
+00:04:48,970 --> 00:04:51,850
+what's unique about machine
+learning healthcare.
+
+100
+00:04:51,850 --> 00:04:53,980
+All of you have taken some
+machine learning course
+
+101
+00:04:53,980 --> 00:04:55,930
+in the past, and so
+you know the basics
+
+102
+00:04:55,930 --> 00:04:58,000
+of supervised prediction.
+
+103
+00:04:58,000 --> 00:05:00,760
+Many of you have studied
+things like clustering.
+
+104
+00:05:00,760 --> 00:05:02,830
+And you're certainly
+paying attention
+
+105
+00:05:02,830 --> 00:05:06,070
+to the news, where you
+see news every single day
+
+106
+00:05:06,070 --> 00:05:08,848
+about Google,
+Facebook, Microsoft's
+
+107
+00:05:08,848 --> 00:05:11,140
+latest advances in speech
+recognition, computer vision,
+
+108
+00:05:11,140 --> 00:05:11,945
+and so on.
+
+109
+00:05:11,945 --> 00:05:13,570
+So what's really
+different about trying
+
+110
+00:05:13,570 --> 00:05:16,840
+to apply these techniques
+in the healthcare domain?
+
+111
+00:05:16,840 --> 00:05:20,160
+The answer is that there's
+a huge amount of difference,
+
+112
+00:05:20,160 --> 00:05:21,910
+and there are a lot
+of subtleties to doing
+
+113
+00:05:21,910 --> 00:05:22,990
+machine learning right here.
+
+114
+00:05:22,990 --> 00:05:23,980
+And we'll talk about
+that throughout
+
+115
+00:05:23,980 --> 00:05:25,063
+the whole entire semester.
+
+116
+00:05:28,920 --> 00:05:32,050
+So to begin, this
+isn't a new field.
+
+117
+00:05:32,050 --> 00:05:35,350
+Artificial intelligence in
+medicine goes back to the 1970s
+
+118
+00:05:35,350 --> 00:05:38,600
+or sometime even in the '60s.
+
+119
+00:05:38,600 --> 00:05:40,690
+One of the earliest
+examples of trying
+
+120
+00:05:40,690 --> 00:05:42,880
+to use artificial
+intelligence for diagnosis
+
+121
+00:05:42,880 --> 00:05:50,860
+was this MYCIN system developed
+at Stanford, where the goal was
+
+122
+00:05:50,860 --> 00:05:54,540
+try to identify bacteria
+that might cause infection
+
+123
+00:05:54,540 --> 00:05:57,690
+and then to try to
+guide what would
+
+124
+00:05:57,690 --> 00:05:59,970
+be the appropriate
+therapy for that bacteria.
+
+125
+00:05:59,970 --> 00:06:03,120
+Now, it was found that this
+algorithm, this machine
+
+126
+00:06:03,120 --> 00:06:07,350
+learning, this
+simple AI algorithm
+
+127
+00:06:07,350 --> 00:06:09,870
+was able to propose a good
+therapy in 69% of cases, which
+
+128
+00:06:09,870 --> 00:06:12,945
+at the time was better
+than the best or very good
+
+129
+00:06:12,945 --> 00:06:14,070
+infectious disease experts.
+
+130
+00:06:17,160 --> 00:06:19,470
+Now, it also had some
+other elements of it
+
+131
+00:06:19,470 --> 00:06:22,360
+which were quite interesting.
+
+132
+00:06:22,360 --> 00:06:24,060
+So those of you
+who've been following
+
+133
+00:06:24,060 --> 00:06:28,510
+the latest in chat bots might
+find this a little prescient.
+
+134
+00:06:28,510 --> 00:06:31,030
+So there's a dialog interface
+where the computer says,
+
+135
+00:06:31,030 --> 00:06:31,890
+I am ready.
+
+136
+00:06:31,890 --> 00:06:35,610
+The computer clinician
+responds, this
+
+137
+00:06:35,610 --> 00:06:37,590
+is a 26-year-old male patient.
+
+138
+00:06:37,590 --> 00:06:39,598
+The computer tests
+its understanding
+
+139
+00:06:39,598 --> 00:06:40,390
+of what's going on.
+
+140
+00:06:40,390 --> 00:06:42,730
+It says, the age of
+the patient is 26.
+
+141
+00:06:42,730 --> 00:06:45,160
+The sex of the patient is male.
+
+142
+00:06:45,160 --> 00:06:47,700
+The clinician writes,
+five days ago,
+
+143
+00:06:47,700 --> 00:06:50,290
+he had respiratory
+tract infections.
+
+144
+00:06:50,290 --> 00:06:51,960
+The computer asks
+what is his name.
+
+145
+00:06:51,960 --> 00:06:53,480
+Joe.
+
+146
+00:06:53,480 --> 00:06:55,403
+The computer responds,
+my understanding
+
+147
+00:06:55,403 --> 00:06:56,820
+is the name of the
+patient is Joe.
+
+148
+00:06:56,820 --> 00:07:00,580
+Respiratory tract is one of
+the symptoms the patient had.
+
+149
+00:07:00,580 --> 00:07:02,440
+Then the clinician
+writes, a couple of days
+
+150
+00:07:02,440 --> 00:07:04,750
+before the admission,
+he had malaise,
+
+151
+00:07:04,750 --> 00:07:07,495
+which is general tiredness.
+
+152
+00:07:07,495 --> 00:07:08,960
+And the computer
+responds, please
+
+153
+00:07:08,960 --> 00:07:10,550
+give me a date of admission.
+
+154
+00:07:10,550 --> 00:07:13,820
+The clinician responds, March
+12, 1979, and the computer
+
+155
+00:07:13,820 --> 00:07:16,200
+again confirms that it's
+understood appropriately.
+
+156
+00:07:16,200 --> 00:07:21,720
+And this is the preface to
+the later diagnostic stages.
+
+157
+00:07:21,720 --> 00:07:25,040
+So the ideas of how AI
+can really impact medicine
+
+158
+00:07:25,040 --> 00:07:26,780
+have been around a long time.
+
+159
+00:07:26,780 --> 00:07:28,310
+Yet these algorithms
+which have been
+
+160
+00:07:28,310 --> 00:07:32,450
+shown to be very effective,
+even going back to the 1970s,
+
+161
+00:07:32,450 --> 00:07:35,450
+didn't translate
+into clinical care.
+
+162
+00:07:35,450 --> 00:07:38,930
+A second example, oh so equally
+impressive in its nature,
+
+163
+00:07:38,930 --> 00:07:42,900
+was work from the
+1980s in Pittsburgh,
+
+164
+00:07:42,900 --> 00:07:46,010
+developing what is known as the
+INTERNIST-1 or Quick Medical
+
+165
+00:07:46,010 --> 00:07:47,850
+Reference system.
+
+166
+00:07:47,850 --> 00:07:50,460
+This was now used not
+for infectious diseases,
+
+167
+00:07:50,460 --> 00:07:53,240
+but for primary care.
+
+168
+00:07:53,240 --> 00:07:56,730
+Here one might ask, how
+can we try to do diagnosis
+
+169
+00:07:56,730 --> 00:08:00,180
+at a much larger scale, where
+patients might come in with one
+
+170
+00:08:00,180 --> 00:08:02,280
+of hundreds of
+different diseases
+
+171
+00:08:02,280 --> 00:08:05,010
+and could report thousands of
+different symptoms, each one
+
+172
+00:08:05,010 --> 00:08:07,140
+giving you some
+view, noisy view,
+
+173
+00:08:07,140 --> 00:08:11,030
+into what may be going on
+with a patient's health.
+
+174
+00:08:11,030 --> 00:08:13,220
+And at a high level, they
+modeled this as something
+
+175
+00:08:13,220 --> 00:08:14,360
+like a Bayesian network.
+
+176
+00:08:14,360 --> 00:08:16,820
+It wasn't strictly
+a Bayesian network.
+
+177
+00:08:16,820 --> 00:08:18,650
+It was a bit more
+heuristic at the time.
+
+178
+00:08:18,650 --> 00:08:21,350
+It was later developed to be so.
+
+179
+00:08:21,350 --> 00:08:24,205
+But at a high level, there were
+a number of latent variables
+
+180
+00:08:24,205 --> 00:08:25,580
+or hidden variables
+corresponding
+
+181
+00:08:25,580 --> 00:08:27,710
+to different diseases
+the patient might have,
+
+182
+00:08:27,710 --> 00:08:30,670
+like flu or pneumonia
+or diabetes.
+
+183
+00:08:30,670 --> 00:08:32,539
+And then there were
+a number of variables
+
+184
+00:08:32,539 --> 00:08:35,735
+on the very bottom, which were
+symptoms, which are all binary,
+
+185
+00:08:35,735 --> 00:08:37,850
+so the diseases are
+either on or off.
+
+186
+00:08:37,850 --> 00:08:40,470
+And here the symptoms are
+either present or not.
+
+187
+00:08:40,470 --> 00:08:43,919
+And these symptoms can include
+things like fatigue or cough.
+
+188
+00:08:43,919 --> 00:08:47,870
+They could also be things that
+result from laboratory test
+
+189
+00:08:47,870 --> 00:08:53,280
+results, like a high
+value of hemoglobin A1C.
+
+190
+00:08:53,280 --> 00:08:57,712
+And this algorithm would
+then take this model,
+
+191
+00:08:57,712 --> 00:08:59,920
+take the symptoms that were
+reported for the patient,
+
+192
+00:08:59,920 --> 00:09:02,410
+and try to do reasoning over
+what action might be going on
+
+193
+00:09:02,410 --> 00:09:04,660
+with that patient, to figure
+out what the differential
+
+194
+00:09:04,660 --> 00:09:06,550
+diagnosis is.
+
+195
+00:09:06,550 --> 00:09:10,030
+There are over 40,000 edges
+connecting diseases to symptoms
+
+196
+00:09:10,030 --> 00:09:12,650
+that those diseases were
+believed to have caused.
+
+197
+00:09:12,650 --> 00:09:18,010
+And this knowledge base, which
+was probabilistic in nature,
+
+198
+00:09:18,010 --> 00:09:21,340
+because it captured the idea
+that some symptoms would only
+
+199
+00:09:21,340 --> 00:09:25,420
+occur with some
+probability for a disease,
+
+200
+00:09:25,420 --> 00:09:28,000
+took over 15 person
+years to elicit
+
+201
+00:09:28,000 --> 00:09:30,770
+from a large medical team.
+
+202
+00:09:30,770 --> 00:09:33,180
+And so it was a lot of effort.
+
+203
+00:09:33,180 --> 00:09:37,020
+And even in going
+forward to today's time,
+
+204
+00:09:37,020 --> 00:09:41,250
+there have been few similar
+efforts at a scale as
+
+205
+00:09:41,250 --> 00:09:43,440
+impressive as this one.
+
+206
+00:09:43,440 --> 00:09:45,240
+But again, what happened?
+
+207
+00:09:45,240 --> 00:09:48,180
+These algorithms are not
+being used anywhere today
+
+208
+00:09:48,180 --> 00:09:50,790
+in our clinical workflows.
+
+209
+00:09:50,790 --> 00:09:55,440
+And the challenges that
+have prevented them
+
+210
+00:09:55,440 --> 00:09:59,260
+from being used
+today are numerous.
+
+211
+00:09:59,260 --> 00:10:01,108
+But I used a word
+in my explanation
+
+212
+00:10:01,108 --> 00:10:02,400
+which should really hint at it.
+
+213
+00:10:02,400 --> 00:10:04,490
+I used the word
+clinical workflow.
+
+214
+00:10:04,490 --> 00:10:07,560
+And this, I think, is one
+of the biggest challenges.
+
+215
+00:10:07,560 --> 00:10:09,510
+Which is that the
+algorithms were designed
+
+216
+00:10:09,510 --> 00:10:11,370
+to solve narrow problems.
+
+217
+00:10:11,370 --> 00:10:13,800
+They weren't necessarily even
+the most important problems,
+
+218
+00:10:13,800 --> 00:10:17,920
+because clinicians generally do
+a very good job at diagnosis.
+
+219
+00:10:17,920 --> 00:10:22,350
+And there was a big gap between
+the input that they expected
+
+220
+00:10:22,350 --> 00:10:24,840
+and the current
+clinical workflow.
+
+221
+00:10:24,840 --> 00:10:30,330
+So imagine that you have
+now a mainframe computer.
+
+222
+00:10:30,330 --> 00:10:33,510
+I mean, this was the '80s.
+
+223
+00:10:33,510 --> 00:10:38,910
+And you have a clinician who
+has to talk to the patient
+
+224
+00:10:38,910 --> 00:10:40,230
+and get some information.
+
+225
+00:10:40,230 --> 00:10:41,610
+Go back to the computer.
+
+226
+00:10:41,610 --> 00:10:44,460
+Type in a structured
+data, the symptoms
+
+227
+00:10:44,460 --> 00:10:46,320
+that the patient's reporting.
+
+228
+00:10:46,320 --> 00:10:49,110
+Get information back from
+the computer and iterate.
+
+229
+00:10:49,110 --> 00:10:54,700
+As you can imagine, that takes a
+lot of time, and time is money.
+
+230
+00:10:54,700 --> 00:10:59,100
+And unfortunately, it
+prevents it from being used.
+
+231
+00:10:59,100 --> 00:11:02,430
+Moreover, despite the fact
+that it took a lot of effort
+
+232
+00:11:02,430 --> 00:11:05,290
+to use it when outside of
+existing clinical workflows,
+
+233
+00:11:05,290 --> 00:11:08,360
+these systems were also
+really difficult to maintain.
+
+234
+00:11:08,360 --> 00:11:10,440
+So I talked about
+how this was elicited
+
+235
+00:11:10,440 --> 00:11:12,180
+from 15 person years of work.
+
+236
+00:11:12,180 --> 00:11:13,920
+There was no machine
+learning here.
+
+237
+00:11:13,920 --> 00:11:15,540
+It was called
+artificial intelligence
+
+238
+00:11:15,540 --> 00:11:19,140
+because one tries to reason
+in an artificial way,
+
+239
+00:11:19,140 --> 00:11:20,910
+like humans might.
+
+240
+00:11:20,910 --> 00:11:23,737
+But there was no learning
+from data in this.
+
+241
+00:11:23,737 --> 00:11:26,070
+And so what that means is if
+you then go to a new place,
+
+242
+00:11:26,070 --> 00:11:28,410
+let's say this was
+developed in Pittsburgh,
+
+243
+00:11:28,410 --> 00:11:33,270
+and now you go to Los Angeles
+or to Beijing or to London,
+
+244
+00:11:33,270 --> 00:11:35,310
+and you want to apply
+the same algorithms,
+
+245
+00:11:35,310 --> 00:11:38,400
+you suddenly have to
+re-derive parts of this model
+
+246
+00:11:38,400 --> 00:11:39,240
+from scratch.
+
+247
+00:11:39,240 --> 00:11:42,032
+For example, the prior
+probability of the diseases
+
+248
+00:11:42,032 --> 00:11:43,740
+are going to be very
+different, depending
+
+249
+00:11:43,740 --> 00:11:46,882
+on where you are in the world.
+
+250
+00:11:46,882 --> 00:11:48,840
+Now, you might want to
+go to a different domain
+
+251
+00:11:48,840 --> 00:11:50,555
+outside of primary care.
+
+252
+00:11:50,555 --> 00:11:52,680
+And again, one has to spend
+a huge amount of effort
+
+253
+00:11:52,680 --> 00:11:54,990
+to derive such models.
+
+254
+00:11:54,990 --> 00:11:57,810
+As new medicine
+discoveries are made,
+
+255
+00:11:57,810 --> 00:11:59,550
+one has to, again,
+update these models.
+
+256
+00:11:59,550 --> 00:12:05,570
+And this has been a huge
+blocker to deployment.
+
+257
+00:12:05,570 --> 00:12:08,520
+I'll move forward to
+one more example now,
+
+258
+00:12:08,520 --> 00:12:10,330
+also from the 1980s.
+
+259
+00:12:10,330 --> 00:12:13,530
+And this is now for a
+different type of question.
+
+260
+00:12:13,530 --> 00:12:16,110
+Not one of how do you do
+diagnosis, but how do you
+
+261
+00:12:16,110 --> 00:12:18,450
+actually do discovery.
+
+262
+00:12:18,450 --> 00:12:22,060
+So this is an example
+from Stanford.
+
+263
+00:12:22,060 --> 00:12:23,730
+And it was a really
+interesting case
+
+264
+00:12:23,730 --> 00:12:27,420
+where one took a
+data-driven approach to try
+
+265
+00:12:27,420 --> 00:12:29,550
+to make medical discoveries.
+
+266
+00:12:29,550 --> 00:12:34,350
+There was a database of what's
+called a disease registry
+
+267
+00:12:34,350 --> 00:12:37,050
+from patients with
+rheumatoid arthritis, which
+
+268
+00:12:37,050 --> 00:12:37,980
+is a chronic disease.
+
+269
+00:12:37,980 --> 00:12:42,750
+It's an autoimmune
+condition, where
+
+270
+00:12:42,750 --> 00:12:46,830
+for each patient, over a
+series of different visits,
+
+271
+00:12:46,830 --> 00:12:48,690
+one would record,
+for example, here
+
+272
+00:12:48,690 --> 00:12:50,130
+it shows this is
+visit number one.
+
+273
+00:12:50,130 --> 00:12:54,880
+The date was January 17, 1979.
+
+274
+00:12:54,880 --> 00:12:57,750
+The knee pain, patient's knee
+pain, was reported as severe.
+
+275
+00:12:57,750 --> 00:12:59,070
+Their fatigue was moderate.
+
+276
+00:12:59,070 --> 00:13:02,070
+Temperatures was 38.5 Celsius.
+
+277
+00:13:02,070 --> 00:13:05,430
+The diagnosis for this
+patient was actually
+
+278
+00:13:05,430 --> 00:13:09,780
+a different autoimmune
+condition called systemic lupus.
+
+279
+00:13:09,780 --> 00:13:13,050
+We have some laboratory test
+values for their creatinine
+
+280
+00:13:13,050 --> 00:13:16,020
+and blood nitrogen,
+and we know something
+
+281
+00:13:16,020 --> 00:13:17,410
+about their medication.
+
+282
+00:13:17,410 --> 00:13:21,550
+In this case, they were
+on prednisone, a steroid.
+
+283
+00:13:21,550 --> 00:13:24,650
+And one has this data
+at every point in time.
+
+284
+00:13:24,650 --> 00:13:28,670
+This almost certainly
+was recorded on paper
+
+285
+00:13:28,670 --> 00:13:30,890
+and then later,
+these were collected
+
+286
+00:13:30,890 --> 00:13:33,050
+into a computer format.
+
+287
+00:13:33,050 --> 00:13:34,790
+But then it provides
+the possibility
+
+288
+00:13:34,790 --> 00:13:36,630
+to ask questions and
+make new discoveries.
+
+289
+00:13:36,630 --> 00:13:38,540
+So for example, in
+this work, there
+
+290
+00:13:38,540 --> 00:13:40,580
+was a discovery
+module which would
+
+291
+00:13:40,580 --> 00:13:44,630
+make causal hypotheses
+about what aspects
+
+292
+00:13:44,630 --> 00:13:47,240
+might cause other aspects.
+
+293
+00:13:47,240 --> 00:13:49,520
+It would then do
+some basic statistics
+
+294
+00:13:49,520 --> 00:13:51,620
+to check about the
+statistical validity
+
+295
+00:13:51,620 --> 00:13:53,390
+of those causal hypotheses.
+
+296
+00:13:53,390 --> 00:13:56,260
+It would then present
+those to a domain expert
+
+297
+00:13:56,260 --> 00:13:59,630
+to try to check off does
+this make sense or not.
+
+298
+00:13:59,630 --> 00:14:02,750
+For those that are accepted,
+it then uses that knowledge
+
+299
+00:14:02,750 --> 00:14:04,400
+that was just
+learned to iterate,
+
+300
+00:14:04,400 --> 00:14:06,470
+to try to make new discoveries.
+
+301
+00:14:06,470 --> 00:14:08,600
+And one of the main
+findings from this paper
+
+302
+00:14:08,600 --> 00:14:11,090
+was that prednisone
+elevates cholesterol.
+
+303
+00:14:11,090 --> 00:14:15,240
+That was published in the Annals
+of Internal Medicine in 1986.
+
+304
+00:14:15,240 --> 00:14:17,520
+So these are all
+very early examples
+
+305
+00:14:17,520 --> 00:14:21,150
+of data-driven approaches
+to improve both medicine
+
+306
+00:14:21,150 --> 00:14:23,580
+and healthcare.
+
+307
+00:14:23,580 --> 00:14:25,880
+Now flip forward to the 1990s.
+
+308
+00:14:25,880 --> 00:14:28,453
+Neural networks started
+to become popular.
+
+309
+00:14:28,453 --> 00:14:30,120
+Not quite the neural
+networks that we're
+
+310
+00:14:30,120 --> 00:14:32,040
+familiar with in
+today's day and age,
+
+311
+00:14:32,040 --> 00:14:36,240
+but nonetheless, they shared
+very much of the same elements.
+
+312
+00:14:36,240 --> 00:14:38,910
+So just in 1990, there
+were 88 published studies
+
+313
+00:14:38,910 --> 00:14:41,340
+using neural networks for
+various different medical
+
+314
+00:14:41,340 --> 00:14:42,998
+problems.
+
+315
+00:14:42,998 --> 00:14:45,540
+One of the things that really
+differentiated those approaches
+
+316
+00:14:45,540 --> 00:14:48,510
+to what we see in
+today's landscape
+
+317
+00:14:48,510 --> 00:14:50,640
+is that the number of
+features were very small.
+
+318
+00:14:50,640 --> 00:14:54,030
+So usually features which were
+similar to what I showed you
+
+319
+00:14:54,030 --> 00:14:55,420
+in the previous slide.
+
+320
+00:14:55,420 --> 00:14:58,140
+So structured data
+that was manually
+
+321
+00:14:58,140 --> 00:15:02,610
+curated for the purpose of
+using in machine learning.
+
+322
+00:15:02,610 --> 00:15:07,380
+And there was nothing
+automatic about this.
+
+323
+00:15:07,380 --> 00:15:12,720
+So one would have to have
+assistants gather the data.
+
+324
+00:15:12,720 --> 00:15:14,430
+And because of that,
+typically, there
+
+325
+00:15:14,430 --> 00:15:18,330
+were very small number of
+samples for each study that
+
+326
+00:15:18,330 --> 00:15:20,980
+were used in machine learning.
+
+327
+00:15:20,980 --> 00:15:23,590
+Now, these models,
+although very effective,
+
+328
+00:15:23,590 --> 00:15:26,050
+and I'll show you some examples
+in the next slide, also
+
+329
+00:15:26,050 --> 00:15:28,720
+suffered from the same
+challenges I mentioned earlier.
+
+330
+00:15:28,720 --> 00:15:30,940
+They didn't fit well
+into clinical workflows.
+
+331
+00:15:30,940 --> 00:15:32,920
+It was hard to get enough
+training data because
+
+332
+00:15:32,920 --> 00:15:35,440
+of the manual efforts involved.
+
+333
+00:15:35,440 --> 00:15:39,250
+And what the community found,
+even in the early 1990s,
+
+334
+00:15:39,250 --> 00:15:42,192
+is that these algorithms
+did not generalize well.
+
+335
+00:15:42,192 --> 00:15:44,650
+If you went through this huge
+effort of collecting training
+
+336
+00:15:44,650 --> 00:15:47,980
+data, learning your model, and
+validating your model at one
+
+337
+00:15:47,980 --> 00:15:50,470
+institution, and you then
+take it to a different one,
+
+338
+00:15:50,470 --> 00:15:51,980
+it just works much worse.
+
+339
+00:15:51,980 --> 00:15:52,480
+OK?
+
+340
+00:15:52,480 --> 00:15:54,280
+And that really
+prevented translation
+
+341
+00:15:54,280 --> 00:15:57,200
+of these technologies
+into clinical practice.
+
+342
+00:15:57,200 --> 00:15:59,560
+So what were these different
+domains that were studied?
+
+343
+00:15:59,560 --> 00:16:00,810
+Well, here are a few examples.
+
+344
+00:16:00,810 --> 00:16:04,160
+It's a bit small, so
+I'll read it out to you.
+
+345
+00:16:04,160 --> 00:16:08,830
+It was studied in breast cancer,
+myocardial infarction, which
+
+346
+00:16:08,830 --> 00:16:12,370
+is heart attack,
+lower back pain,
+
+347
+00:16:12,370 --> 00:16:14,620
+used to predict
+psychiatric length of stay
+
+348
+00:16:14,620 --> 00:16:19,450
+for inpatient, skin tumors,
+head injuries, prediction
+
+349
+00:16:19,450 --> 00:16:26,680
+of dementia, understanding
+progression of diabetes,
+
+350
+00:16:26,680 --> 00:16:30,430
+and a variety of other problems,
+which again are of the nature
+
+351
+00:16:30,430 --> 00:16:32,770
+that we see about, we
+read about in the news
+
+352
+00:16:32,770 --> 00:16:34,870
+today in modern
+attempts to apply
+
+353
+00:16:34,870 --> 00:16:36,970
+machine learning in healthcare.
+
+354
+00:16:36,970 --> 00:16:38,980
+The number of training
+examples, as mentioned,
+
+355
+00:16:38,980 --> 00:16:42,460
+were very few, ranging from
+39 to, in some cases, 3,000.
+
+356
+00:16:42,460 --> 00:16:45,250
+Those are individuals, humans.
+
+357
+00:16:45,250 --> 00:16:48,580
+And the networks,
+the neural networks,
+
+358
+00:16:48,580 --> 00:16:50,320
+they weren't completely
+shallow, but they
+
+359
+00:16:50,320 --> 00:16:51,550
+weren't very deep either.
+
+360
+00:16:51,550 --> 00:16:53,830
+So these were the
+architectures they
+
+361
+00:16:53,830 --> 00:16:59,070
+might be 60 neurons, then
+7, and then 6, for example,
+
+362
+00:16:59,070 --> 00:17:02,580
+in terms of each of the
+layers of the neural network.
+
+363
+00:17:02,580 --> 00:17:04,140
+By the way, that
+sort of makes, sense
+
+364
+00:17:04,140 --> 00:17:08,170
+given the type of data
+that was fed into it.
+
+365
+00:17:08,170 --> 00:17:12,040
+So none of this is new,
+in terms of the goals.
+
+366
+00:17:12,040 --> 00:17:13,270
+So what's changed?
+
+367
+00:17:13,270 --> 00:17:15,280
+Why do I think that
+despite the fact
+
+368
+00:17:15,280 --> 00:17:17,079
+that we've had
+what could arguably
+
+369
+00:17:17,079 --> 00:17:20,260
+be called a failure for
+the last 30 or 40 years,
+
+370
+00:17:20,260 --> 00:17:23,130
+that we might actually have
+some chance of succeeding now.
+
+371
+00:17:23,130 --> 00:17:25,839
+And the big differentiator, what
+I'll call now the opportunity,
+
+372
+00:17:25,839 --> 00:17:27,369
+is data.
+
+373
+00:17:27,369 --> 00:17:29,490
+So whereas in the
+past, much of the work
+
+374
+00:17:29,490 --> 00:17:34,220
+in artificial intelligence in
+medicine was not data driven.
+
+375
+00:17:34,220 --> 00:17:37,510
+It was based on trying to elicit
+as much domain knowledge as one
+
+376
+00:17:37,510 --> 00:17:41,020
+can from clinical
+domain experts.
+
+377
+00:17:41,020 --> 00:17:44,080
+In some cases, gathering
+a little bit of data.
+
+378
+00:17:44,080 --> 00:17:46,210
+Today, we have an
+amazing opportunity
+
+379
+00:17:46,210 --> 00:17:50,710
+because of the prevalence of
+electronic medical records,
+
+380
+00:17:50,710 --> 00:17:52,960
+both in the United
+States and elsewhere.
+
+381
+00:17:52,960 --> 00:17:56,080
+Now, here the United States,
+for example, the story
+
+382
+00:17:56,080 --> 00:17:58,630
+wasn't that way,
+even back in 2008,
+
+383
+00:17:58,630 --> 00:18:00,640
+when the adoption of
+electronic medical records
+
+384
+00:18:00,640 --> 00:18:04,630
+was under 10% across the US.
+
+385
+00:18:04,630 --> 00:18:08,110
+But then there wasn't an
+economic disaster in the US.
+
+386
+00:18:08,110 --> 00:18:11,710
+And as part of the economic
+stimulus package, which
+
+387
+00:18:11,710 --> 00:18:17,410
+President Obama initiated, there
+was something like $30 billion
+
+388
+00:18:17,410 --> 00:18:21,040
+allocated to
+hospitals purchasing
+
+389
+00:18:21,040 --> 00:18:23,062
+electronic medical records.
+
+390
+00:18:23,062 --> 00:18:24,520
+And this is already
+a first example
+
+391
+00:18:24,520 --> 00:18:27,520
+that we see of
+policy being really
+
+392
+00:18:27,520 --> 00:18:29,880
+influential to create the--
+
+393
+00:18:29,880 --> 00:18:32,830
+to open the stage
+to the types of work
+
+394
+00:18:32,830 --> 00:18:35,560
+that we're going to be able
+to do in this course today.
+
+395
+00:18:35,560 --> 00:18:38,410
+So money was then made available
+as incentives for hospitals
+
+396
+00:18:38,410 --> 00:18:40,480
+to purchase electronic
+medical records.
+
+397
+00:18:40,480 --> 00:18:43,780
+And as a result, the adoption
+increased dramatically.
+
+398
+00:18:43,780 --> 00:18:47,620
+This is a really old number
+from 2015 of 84% of hospitals,
+
+399
+00:18:47,620 --> 00:18:50,330
+and now today, it's
+actually much larger.
+
+400
+00:18:50,330 --> 00:18:53,638
+So data is being collected
+in an electronic form,
+
+401
+00:18:53,638 --> 00:18:56,180
+and that presents an opportunity
+to try to do research on it.
+
+402
+00:18:56,180 --> 00:18:58,180
+It presents an opportunity
+to do machine learning on it,
+
+403
+00:18:58,180 --> 00:19:00,700
+and it presents an opportunity
+to start to deploy machine
+
+404
+00:19:00,700 --> 00:19:02,230
+learning algorithms,
+where rather
+
+405
+00:19:02,230 --> 00:19:04,960
+than having to manually
+input data for a patient,
+
+406
+00:19:04,960 --> 00:19:06,850
+we can just draw
+it automatically
+
+407
+00:19:06,850 --> 00:19:11,207
+from data that's already
+available in electronic form.
+
+408
+00:19:11,207 --> 00:19:12,790
+And so there are a
+number of data sets
+
+409
+00:19:12,790 --> 00:19:16,480
+that have been made available
+for research and development
+
+410
+00:19:16,480 --> 00:19:17,860
+in this space.
+
+411
+00:19:17,860 --> 00:19:21,670
+Here at MIT, there has
+been a major effort
+
+412
+00:19:21,670 --> 00:19:27,410
+pioneered by Professor Roger
+Mark, in the ECS and Institute
+
+413
+00:19:27,410 --> 00:19:29,950
+for Medical
+Engineering department,
+
+414
+00:19:29,950 --> 00:19:34,480
+to create what's known as the
+PhysioNet or Mimic databases.
+
+415
+00:19:34,480 --> 00:19:37,600
+Mimic contains data from
+over 40,000 patients
+
+416
+00:19:37,600 --> 00:19:39,680
+and intensive care units.
+
+417
+00:19:39,680 --> 00:19:41,140
+And it's very rich data.
+
+418
+00:19:41,140 --> 00:19:42,790
+It contains basically
+everything that's
+
+419
+00:19:42,790 --> 00:19:44,800
+being collected in the
+intensive care unit.
+
+420
+00:19:44,800 --> 00:19:47,950
+Everything from notes that
+are written by both nurses
+
+421
+00:19:47,950 --> 00:19:52,390
+and by attendings, to vital
+signs that are being collected
+
+422
+00:19:52,390 --> 00:19:55,690
+by monitors that are
+attached to patients,
+
+423
+00:19:55,690 --> 00:20:01,300
+collecting their blood pressure,
+oxygen saturation, heart
+
+424
+00:20:01,300 --> 00:20:06,100
+rate, and so on,
+to imaging data,
+
+425
+00:20:06,100 --> 00:20:13,745
+to blood test results as they're
+made available, and outcomes.
+
+426
+00:20:13,745 --> 00:20:15,370
+And of course also
+medications that are
+
+427
+00:20:15,370 --> 00:20:17,590
+being prescribed as it goes.
+
+428
+00:20:17,590 --> 00:20:20,470
+And so this is a wealth
+of data that now one
+
+429
+00:20:20,470 --> 00:20:22,140
+could use to try
+to study, at least
+
+430
+00:20:22,140 --> 00:20:24,340
+study in a very narrow
+setting of an intensive care
+
+431
+00:20:24,340 --> 00:20:28,780
+unit, how machine learning
+could be used in that location.
+
+432
+00:20:28,780 --> 00:20:31,780
+And I don't want to
+under-emphasize the importance
+
+433
+00:20:31,780 --> 00:20:34,150
+of this database, both
+through this course
+
+434
+00:20:34,150 --> 00:20:35,440
+and through the broader field.
+
+435
+00:20:35,440 --> 00:20:37,690
+This is really the
+only publicly available
+
+436
+00:20:37,690 --> 00:20:39,280
+electronic medical
+record data set
+
+437
+00:20:39,280 --> 00:20:41,660
+of any reasonable size
+in the whole world,
+
+438
+00:20:41,660 --> 00:20:44,235
+and it was created here at MIT.
+
+439
+00:20:44,235 --> 00:20:45,610
+And we'll be using
+it extensively
+
+440
+00:20:45,610 --> 00:20:47,875
+in our homework
+assignments as a result.
+
+441
+00:20:47,875 --> 00:20:50,250
+There are other data sets that
+aren't publicly available,
+
+442
+00:20:50,250 --> 00:20:54,390
+but which have been
+gathered by industry.
+
+443
+00:20:54,390 --> 00:21:01,350
+And one prime example is the
+Truven Market Scan database,
+
+444
+00:21:01,350 --> 00:21:03,660
+which was created by a
+company called Truven, which
+
+445
+00:21:03,660 --> 00:21:05,640
+was later acquired by
+IBM, as I'll tell you
+
+446
+00:21:05,640 --> 00:21:08,200
+about more in a few minutes.
+
+447
+00:21:08,200 --> 00:21:11,430
+Now, this data-- and there are
+many competing companies that
+
+448
+00:21:11,430 --> 00:21:13,470
+have similar data sets--
+
+449
+00:21:13,470 --> 00:21:17,350
+is created not from
+electronic medical records,
+
+450
+00:21:17,350 --> 00:21:18,780
+but rather from--
+
+451
+00:21:18,780 --> 00:21:21,120
+typically, it's created
+from insurance claims.
+
+452
+00:21:21,120 --> 00:21:24,132
+So every time you
+go to see a doctor,
+
+453
+00:21:24,132 --> 00:21:25,590
+there's usually
+some record of that
+
+454
+00:21:25,590 --> 00:21:27,810
+that is associated to the
+billing of that visit.
+
+455
+00:21:27,810 --> 00:21:33,930
+So your provider will send a
+bill to your health insurance
+
+456
+00:21:33,930 --> 00:21:36,870
+saying basically what
+happened, so what procedures
+
+457
+00:21:36,870 --> 00:21:40,740
+were performed,
+providing diagnoses
+
+458
+00:21:40,740 --> 00:21:44,490
+that are used to justify
+the cost of those procedures
+
+459
+00:21:44,490 --> 00:21:46,740
+and tests.
+
+460
+00:21:46,740 --> 00:21:50,540
+And from that data, you
+now get a holistic view,
+
+461
+00:21:50,540 --> 00:21:52,620
+a longitudinal view,
+of what's happened
+
+462
+00:21:52,620 --> 00:21:54,450
+to that patient's health.
+
+463
+00:21:54,450 --> 00:21:56,250
+And then there is
+a lot of money that
+
+464
+00:21:56,250 --> 00:22:01,020
+passes behind the scenes
+between insurers and hospitals
+
+465
+00:22:01,020 --> 00:22:03,270
+to corporate companies,
+such as Truven,
+
+466
+00:22:03,270 --> 00:22:05,520
+which collect that
+data and then resell it
+
+467
+00:22:05,520 --> 00:22:07,655
+for research purposes.
+
+468
+00:22:07,655 --> 00:22:09,780
+And one of the biggest
+purchasers of data like this
+
+469
+00:22:09,780 --> 00:22:13,080
+is the pharmaceutical industry.
+
+470
+00:22:13,080 --> 00:22:17,220
+So this data, unfortunately, is
+not usually publicly available,
+
+471
+00:22:17,220 --> 00:22:19,460
+and that's actually a big
+problem, both in the US
+
+472
+00:22:19,460 --> 00:22:20,300
+and elsewhere.
+
+473
+00:22:20,300 --> 00:22:22,310
+It's a big obstacle to
+research in this field,
+
+474
+00:22:22,310 --> 00:22:24,530
+that only people who
+have millions of dollars
+
+475
+00:22:24,530 --> 00:22:26,120
+to pay for it really
+get access to it,
+
+476
+00:22:26,120 --> 00:22:27,320
+and it's something that
+I'm going to return to
+
+477
+00:22:27,320 --> 00:22:28,320
+throughout the semester.
+
+478
+00:22:28,320 --> 00:22:29,870
+It's something
+where I think policy
+
+479
+00:22:29,870 --> 00:22:31,680
+can make a big difference.
+
+480
+00:22:31,680 --> 00:22:34,250
+But luckily, here
+at MIT, the story's
+
+481
+00:22:34,250 --> 00:22:35,600
+going to be a bit different.
+
+482
+00:22:35,600 --> 00:22:40,430
+So thanks to the MIT
+IBM Watson AI Lab,
+
+483
+00:22:40,430 --> 00:22:42,920
+MIT has a close
+relationship with IBM.
+
+484
+00:22:42,920 --> 00:22:45,980
+And fingers crossed, it
+looks like we'll get access
+
+485
+00:22:45,980 --> 00:22:48,270
+to this database for our
+homework and projects
+
+486
+00:22:48,270 --> 00:22:49,020
+for this semester.
+
+487
+00:22:53,232 --> 00:22:54,940
+Now, there are a lot
+of other initiatives
+
+488
+00:22:54,940 --> 00:22:57,460
+that are creating
+large data sets.
+
+489
+00:22:57,460 --> 00:22:59,860
+A really important
+example here in the US
+
+490
+00:22:59,860 --> 00:23:02,650
+is President Obama's
+Precision Medicine Initiative,
+
+491
+00:23:02,650 --> 00:23:07,150
+which has since been renamed
+to the All of Us Initiative.
+
+492
+00:23:07,150 --> 00:23:09,250
+And this initiative
+is creating a data set
+
+493
+00:23:09,250 --> 00:23:13,302
+of one million patients, drawn
+in a representative manner,
+
+494
+00:23:13,302 --> 00:23:15,010
+from across the United
+States, to capture
+
+495
+00:23:15,010 --> 00:23:19,210
+patients both poor and rich,
+patients who are healthy
+
+496
+00:23:19,210 --> 00:23:21,880
+and have chronic disease,
+with the goal of trying
+
+497
+00:23:21,880 --> 00:23:23,440
+to create a research
+database where
+
+498
+00:23:23,440 --> 00:23:27,370
+all of us and other people,
+both inside and outside the US,
+
+499
+00:23:27,370 --> 00:23:29,640
+could do research to
+make medical discoveries.
+
+500
+00:23:29,640 --> 00:23:31,660
+And this will include
+data such as data
+
+501
+00:23:31,660 --> 00:23:34,720
+from a baseline health exam,
+where the typical vitals are
+
+502
+00:23:34,720 --> 00:23:37,240
+taken, blood is drawn.
+
+503
+00:23:37,240 --> 00:23:39,340
+It'll combine data of
+the previous two types
+
+504
+00:23:39,340 --> 00:23:40,900
+I've mentioned,
+including both data
+
+505
+00:23:40,900 --> 00:23:44,470
+from electronic medical records
+and health insurance claims.
+
+506
+00:23:44,470 --> 00:23:47,620
+And a lot of this work is
+also happening here in Boston.
+
+507
+00:23:47,620 --> 00:23:50,145
+So right across the street
+at the Broad Institute,
+
+508
+00:23:50,145 --> 00:23:51,520
+there is a team
+which is creating
+
+509
+00:23:51,520 --> 00:23:52,937
+all of the software
+infrastructure
+
+510
+00:23:52,937 --> 00:23:55,160
+to accommodate this data.
+
+511
+00:23:55,160 --> 00:23:58,270
+And there are a large
+number of recruitment sites
+
+512
+00:23:58,270 --> 00:24:00,190
+here in the broader
+Boston area where
+
+513
+00:24:00,190 --> 00:24:02,890
+patients or any one of you,
+really, could go and volunteer
+
+514
+00:24:02,890 --> 00:24:04,270
+to be part of this study.
+
+515
+00:24:04,270 --> 00:24:07,720
+I just got a letter in the mail
+last week inviting me to go,
+
+516
+00:24:07,720 --> 00:24:10,780
+and I was really
+excited to see that.
+
+517
+00:24:10,780 --> 00:24:12,430
+So all sorts of
+different data is
+
+518
+00:24:12,430 --> 00:24:16,210
+being created as a
+result of these trends
+
+519
+00:24:16,210 --> 00:24:17,350
+that I've been mentioning.
+
+520
+00:24:17,350 --> 00:24:20,050
+And it ranges from unstructured
+data, like clinical notes,
+
+521
+00:24:20,050 --> 00:24:23,860
+to imaging, lab
+tests, vital signs.
+
+522
+00:24:23,860 --> 00:24:27,580
+Nowadays, what we used to think
+about just as clinical data
+
+523
+00:24:27,580 --> 00:24:29,320
+now has started to
+really come to have
+
+524
+00:24:29,320 --> 00:24:33,010
+a very tight tie to what we
+think about as biological data.
+
+525
+00:24:33,010 --> 00:24:35,110
+So data from genomics
+and proteomics
+
+526
+00:24:35,110 --> 00:24:38,410
+is starting to play a major
+role in both clinical research
+
+527
+00:24:38,410 --> 00:24:40,750
+and clinical practice.
+
+528
+00:24:40,750 --> 00:24:43,150
+Of course, not everything
+that we traditionally
+
+529
+00:24:43,150 --> 00:24:46,750
+think about healthcare data--
+
+530
+00:24:46,750 --> 00:24:49,180
+there are also some
+non-traditional views
+
+531
+00:24:49,180 --> 00:24:49,910
+on health.
+
+532
+00:24:49,910 --> 00:24:53,380
+So for example, social
+media is an interesting way
+
+533
+00:24:53,380 --> 00:24:59,440
+of thinking through both
+psychiatric disorders, where
+
+534
+00:24:59,440 --> 00:25:02,140
+many of us will post things
+on Facebook and other places
+
+535
+00:25:02,140 --> 00:25:04,060
+about our mental
+health, which give
+
+536
+00:25:04,060 --> 00:25:06,490
+a lens on our mental health.
+
+537
+00:25:06,490 --> 00:25:09,630
+Your phone, which is
+tracking your activity,
+
+538
+00:25:09,630 --> 00:25:12,250
+will give us a view
+on how active we are.
+
+539
+00:25:12,250 --> 00:25:15,850
+It might help us diagnose
+early the variety of conditions
+
+540
+00:25:15,850 --> 00:25:18,560
+as well that I'll mention later.
+
+541
+00:25:18,560 --> 00:25:22,100
+So we have-- to this
+whole theme right
+
+542
+00:25:22,100 --> 00:25:24,910
+now is about what's changed
+since the previous approaches
+
+543
+00:25:24,910 --> 00:25:26,388
+at AI medicine.
+
+544
+00:25:26,388 --> 00:25:28,180
+I've just talked about
+data, but data alone
+
+545
+00:25:28,180 --> 00:25:29,960
+is not nearly enough.
+
+546
+00:25:29,960 --> 00:25:31,910
+The other major
+change is that there
+
+547
+00:25:31,910 --> 00:25:36,830
+has been decades' worth of work
+on standardizing health data.
+
+548
+00:25:36,830 --> 00:25:40,510
+So for example, when I
+mentioned to you that when
+
+549
+00:25:40,510 --> 00:25:43,332
+you go to a doctor's office,
+and they send a bill,
+
+550
+00:25:43,332 --> 00:25:45,040
+that bill is associated
+with a diagnosis.
+
+551
+00:25:45,040 --> 00:25:49,610
+And that diagnosis is coded in
+a system called ICD-9 or ICD-10,
+
+552
+00:25:49,610 --> 00:25:51,350
+which is a standardized
+system where,
+
+553
+00:25:51,350 --> 00:25:54,400
+for many, not all,
+but many diseases,
+
+554
+00:25:54,400 --> 00:25:58,680
+there is a corresponding
+code associated with it.
+
+555
+00:25:58,680 --> 00:26:01,680
+ICD-10, which was
+recently rolled
+
+556
+00:26:01,680 --> 00:26:07,200
+out nationwide about a year
+ago is much more detailed
+
+557
+00:26:07,200 --> 00:26:09,210
+than the previous
+coding system, includes
+
+558
+00:26:09,210 --> 00:26:10,450
+some interesting categories.
+
+559
+00:26:10,450 --> 00:26:14,370
+For example, bitten by a
+turtle has a code for it.
+
+560
+00:26:14,370 --> 00:26:17,640
+Bitten by sea lion,
+struck by [INAUDIBLE]..
+
+561
+00:26:17,640 --> 00:26:20,610
+So it's starting to get
+really detailed here,
+
+562
+00:26:20,610 --> 00:26:24,210
+which has its benefits and its
+disadvantages when it comes
+
+563
+00:26:24,210 --> 00:26:25,860
+to research using that data.
+
+564
+00:26:25,860 --> 00:26:28,920
+But certainly, we can do
+more with detailed data
+
+565
+00:26:28,920 --> 00:26:32,580
+than we could with
+less detailed data.
+
+566
+00:26:32,580 --> 00:26:35,220
+Laboratory test results are
+standardized using a system
+
+567
+00:26:35,220 --> 00:26:38,880
+called LOINC, here
+in the United States.
+
+568
+00:26:38,880 --> 00:26:43,740
+Every lab test order has
+an associated code for it.
+
+569
+00:26:43,740 --> 00:26:46,470
+I just want to point out briefly
+that the values associated
+
+570
+00:26:46,470 --> 00:26:48,840
+with those lab tests
+are less standardized.
+
+571
+00:26:51,700 --> 00:26:55,700
+Pharmacy, national drug codes
+should be very familiar to you.
+
+572
+00:26:55,700 --> 00:26:59,860
+If you take any medication
+that you've been prescribed,
+
+573
+00:26:59,860 --> 00:27:02,740
+and you look carefully,
+you'll see a number on it,
+
+574
+00:27:02,740 --> 00:27:08,470
+and you see 0015347911, that
+number is unique to that
+
+575
+00:27:08,470 --> 00:27:09,110
+medication.
+
+576
+00:27:09,110 --> 00:27:13,210
+In fact, it's even unique to
+the brand of that medication.
+
+577
+00:27:13,210 --> 00:27:15,260
+And there's an associated
+taxonomy with it.
+
+578
+00:27:15,260 --> 00:27:19,170
+And so one can really understand
+in a very structured way what
+
+579
+00:27:19,170 --> 00:27:21,670
+medications a patient is on and
+how those medications relate
+
+580
+00:27:21,670 --> 00:27:24,140
+to one another.
+
+581
+00:27:24,140 --> 00:27:28,830
+A lot of medical data is found
+not in the structured form,
+
+582
+00:27:28,830 --> 00:27:32,790
+but in free text, in
+notes written by doctors.
+
+583
+00:27:32,790 --> 00:27:36,090
+And these notes have,
+often, lots of mentions
+
+584
+00:27:36,090 --> 00:27:39,180
+of symptoms and
+conditions in them.
+
+585
+00:27:39,180 --> 00:27:41,822
+And one can try to
+standardize those
+
+586
+00:27:41,822 --> 00:27:44,280
+by mapping them to what's called
+a unified medical language
+
+587
+00:27:44,280 --> 00:27:48,450
+system, which is an
+ontology with millions
+
+588
+00:27:48,450 --> 00:27:51,610
+of different medical
+concepts in them.
+
+589
+00:27:51,610 --> 00:27:54,400
+So I'm not going to go
+too much more into these.
+
+590
+00:27:54,400 --> 00:27:58,150
+They'll be the subject of much
+discussion in this semester,
+
+591
+00:27:58,150 --> 00:28:01,750
+but particularly in the
+next two lectures by Pete.
+
+592
+00:28:01,750 --> 00:28:05,800
+But I want to talk very briefly
+about what you can do once you
+
+593
+00:28:05,800 --> 00:28:09,460
+have a standardized vocabulary.
+
+594
+00:28:09,460 --> 00:28:10,990
+So one thing you
+can do is you could
+
+595
+00:28:10,990 --> 00:28:14,710
+build APIs, or Application
+Programming Interfaces,
+
+596
+00:28:14,710 --> 00:28:18,520
+for now sending that
+data from place to place.
+
+597
+00:28:18,520 --> 00:28:23,770
+And FHIR, F-H-I-R,
+is a new standard,
+
+598
+00:28:23,770 --> 00:28:28,380
+which has widespread adoption
+now here in the United States
+
+599
+00:28:28,380 --> 00:28:36,610
+for hospitals to provide data
+both for downstream clinical
+
+600
+00:28:36,610 --> 00:28:38,990
+purposes but also
+directly to patients.
+
+601
+00:28:38,990 --> 00:28:41,470
+And in this
+standard, it will use
+
+602
+00:28:41,470 --> 00:28:43,240
+many of the
+vocabularies I mentioned
+
+603
+00:28:43,240 --> 00:28:51,220
+to you in the previous slides to
+encode diagnoses, medications,
+
+604
+00:28:51,220 --> 00:28:54,640
+allergies, problems, and
+even financial aspects
+
+605
+00:28:54,640 --> 00:28:57,160
+that are relevant to the
+care of this patient.
+
+606
+00:28:57,160 --> 00:28:59,970
+And for those of you who have
+an Apple phone, for example,
+
+607
+00:28:59,970 --> 00:29:03,010
+and if you open up a
+Apple Health Records,
+
+608
+00:29:03,010 --> 00:29:05,680
+it makes use of this
+standard to receive data
+
+609
+00:29:05,680 --> 00:29:07,975
+from over 50
+different hospitals.
+
+610
+00:29:07,975 --> 00:29:09,850
+And you should expect
+to see many competitors
+
+611
+00:29:09,850 --> 00:29:11,600
+to them in the future,
+because of the fact
+
+612
+00:29:11,600 --> 00:29:13,997
+that it's now an open standard.
+
+613
+00:29:13,997 --> 00:29:16,080
+Now other types of data,
+like the health insurance
+
+614
+00:29:16,080 --> 00:29:17,940
+claims I mentioned
+earlier, is often
+
+615
+00:29:17,940 --> 00:29:20,970
+encoded in a slightly
+different data model.
+
+616
+00:29:20,970 --> 00:29:24,930
+One which my lab works quite
+a bit with is called OMOP,
+
+617
+00:29:24,930 --> 00:29:28,860
+and it's being maintained by a
+nonprofit organization called
+
+618
+00:29:28,860 --> 00:29:32,940
+the Observational Health Data
+Sciences Initiative Odyssey.
+
+619
+00:29:32,940 --> 00:29:36,360
+And this common data
+model gives a standard way
+
+620
+00:29:36,360 --> 00:29:38,970
+of taking data from
+an institution which
+
+621
+00:29:38,970 --> 00:29:41,520
+might have its own intricacies
+and really mapping it
+
+622
+00:29:41,520 --> 00:29:44,490
+to this common language, so that
+if you write a machine learning
+
+623
+00:29:44,490 --> 00:29:46,260
+algorithm once, then
+that machine learning
+
+624
+00:29:46,260 --> 00:29:48,420
+algorithm reads in
+data in this format,
+
+625
+00:29:48,420 --> 00:29:50,850
+you can then apply it
+somewhere else very easily.
+
+626
+00:29:50,850 --> 00:29:52,470
+And the portions
+of these standards
+
+627
+00:29:52,470 --> 00:29:55,410
+really can't be
+understated, the importance
+
+628
+00:29:55,410 --> 00:29:57,600
+for translating what
+we're doing in this class
+
+629
+00:29:57,600 --> 00:29:58,690
+into clinical practice.
+
+630
+00:29:58,690 --> 00:30:00,398
+And so we'll be
+returning to these things
+
+631
+00:30:00,398 --> 00:30:03,130
+throughout the semester.
+
+632
+00:30:03,130 --> 00:30:04,390
+So we've talked about data.
+
+633
+00:30:04,390 --> 00:30:05,940
+We've talked about standards.
+
+634
+00:30:05,940 --> 00:30:09,937
+And the third wheel
+is breakthroughs
+
+635
+00:30:09,937 --> 00:30:10,770
+in machine learning.
+
+636
+00:30:10,770 --> 00:30:13,258
+And this should be no surprise
+to anyone in this room.
+
+637
+00:30:13,258 --> 00:30:15,300
+All right, we've been
+seeing time and time again,
+
+638
+00:30:15,300 --> 00:30:19,920
+over the last five years,
+benchmark after benchmark being
+
+639
+00:30:19,920 --> 00:30:23,040
+improved upon and human
+performance beaten
+
+640
+00:30:23,040 --> 00:30:25,350
+by state-of-the-art machine
+learning algorithms.
+
+641
+00:30:25,350 --> 00:30:28,020
+Here I'm just
+showing you a figure
+
+642
+00:30:28,020 --> 00:30:29,850
+that I imagine many
+of you have seen,
+
+643
+00:30:29,850 --> 00:30:33,210
+on the error rates on the image
+net competition for object
+
+644
+00:30:33,210 --> 00:30:34,200
+recognition.
+
+645
+00:30:34,200 --> 00:30:37,290
+The error rates
+in 2011 were 25%.
+
+646
+00:30:37,290 --> 00:30:39,330
+And even just a few
+years ago, it already
+
+647
+00:30:39,330 --> 00:30:44,430
+surpassed human
+level to under 5%.
+
+648
+00:30:44,430 --> 00:30:48,930
+Now, the changes that have led
+to those advances in object
+
+649
+00:30:48,930 --> 00:30:52,860
+recognition are going to have
+some parallels in healthcare,
+
+650
+00:30:52,860 --> 00:30:54,850
+but only up to some point.
+
+651
+00:30:54,850 --> 00:30:59,070
+For example, there was big
+data, large training sets
+
+652
+00:30:59,070 --> 00:31:01,230
+that were critical for this.
+
+653
+00:31:01,230 --> 00:31:03,510
+There were algorithmic
+advances, in
+
+654
+00:31:03,510 --> 00:31:05,610
+particular convolutional
+neural networks,
+
+655
+00:31:05,610 --> 00:31:07,650
+that played a huge role.
+
+656
+00:31:07,650 --> 00:31:10,770
+And there was open source
+software that was created,
+
+657
+00:31:10,770 --> 00:31:14,010
+things like TensorFlow
+and PyTorch,
+
+658
+00:31:14,010 --> 00:31:19,650
+which allow a researcher or
+industry worker in one place
+
+659
+00:31:19,650 --> 00:31:23,400
+to very, very quickly
+build upon successes
+
+660
+00:31:23,400 --> 00:31:25,530
+from other researchers
+in other places
+
+661
+00:31:25,530 --> 00:31:29,310
+and then release the code,
+so that one can really
+
+662
+00:31:29,310 --> 00:31:33,400
+accelerate the rate of
+progress in this field.
+
+663
+00:31:33,400 --> 00:31:35,530
+Now, in terms of those
+algorithmic advances that
+
+664
+00:31:35,530 --> 00:31:37,030
+have made a big
+difference, the ones
+
+665
+00:31:37,030 --> 00:31:39,250
+that I would really
+like to point out
+
+666
+00:31:39,250 --> 00:31:41,620
+because of their
+relevance to this course
+
+667
+00:31:41,620 --> 00:31:43,690
+are learning with high
+dimensional features.
+
+668
+00:31:43,690 --> 00:31:46,570
+So this was really the
+advances in the early 2000s,
+
+669
+00:31:46,570 --> 00:31:47,410
+for example.
+
+670
+00:31:47,410 --> 00:31:51,040
+And support vector machines and
+learning with L1 regularization
+
+671
+00:31:51,040 --> 00:31:53,140
+as a type of sparsity.
+
+672
+00:31:53,140 --> 00:31:56,350
+And then more recently,
+in the last six years,
+
+673
+00:31:56,350 --> 00:32:00,790
+on stochastic gradient
+descent, like methods
+
+674
+00:32:00,790 --> 00:32:04,083
+for very rapidly solving these
+convex optimization problems,
+
+675
+00:32:04,083 --> 00:32:05,500
+that will play a
+huge role in what
+
+676
+00:32:05,500 --> 00:32:07,445
+we'll be doing in this course.
+
+677
+00:32:07,445 --> 00:32:08,820
+In the last few
+years, there have
+
+678
+00:32:08,820 --> 00:32:10,300
+been a huge amount
+of progress in
+
+679
+00:32:10,300 --> 00:32:12,640
+unsupervised and semi-supervised
+learning algorithms.
+
+680
+00:32:12,640 --> 00:32:14,410
+And as I'll tell you
+about much later,
+
+681
+00:32:14,410 --> 00:32:16,360
+one of the major
+challenges in healthcare
+
+682
+00:32:16,360 --> 00:32:20,050
+is that despite the fact that
+we have a large amount of data,
+
+683
+00:32:20,050 --> 00:32:22,480
+we have very little
+labeled data.
+
+684
+00:32:22,480 --> 00:32:24,845
+And so these semi-supervised
+learning algorithms
+
+685
+00:32:24,845 --> 00:32:26,470
+are going to play a
+major role in being
+
+686
+00:32:26,470 --> 00:32:29,650
+able to really take advantage
+of the data that we do have.
+
+687
+00:32:29,650 --> 00:32:32,485
+And then of course the modern
+deep learning algorithms.
+
+688
+00:32:32,485 --> 00:32:34,860
+Convolutional neural networks,
+recurrent neural networks,
+
+689
+00:32:34,860 --> 00:32:37,180
+and ways of trying
+to train them.
+
+690
+00:32:37,180 --> 00:32:40,600
+So those played a major
+role in the advances
+
+691
+00:32:40,600 --> 00:32:41,832
+in the tech industry.
+
+692
+00:32:41,832 --> 00:32:44,290
+And to some extent, they'll
+play a major role in healthcare
+
+693
+00:32:44,290 --> 00:32:45,520
+as well.
+
+694
+00:32:45,520 --> 00:32:47,230
+And I'll point out a
+few examples of that
+
+695
+00:32:47,230 --> 00:32:50,720
+in the rest of today's lecture.
+
+696
+00:32:50,720 --> 00:32:56,470
+So all of this coming together,
+the data availability,
+
+697
+00:32:56,470 --> 00:32:59,530
+the advances in other
+fields of machine learning,
+
+698
+00:32:59,530 --> 00:33:04,276
+and the huge amount of potential
+financial gain in healthcare
+
+699
+00:33:04,276 --> 00:33:07,300
+and the potential social
+impact it could have
+
+700
+00:33:07,300 --> 00:33:08,668
+has not gone unnoticed.
+
+701
+00:33:08,668 --> 00:33:10,210
+And there's a huge
+amount of industry
+
+702
+00:33:10,210 --> 00:33:11,800
+interested in this field.
+
+703
+00:33:11,800 --> 00:33:15,260
+These are just some examples
+from names I think many of you
+
+704
+00:33:15,260 --> 00:33:18,150
+are familiar with, like
+DeepMind Health and IBM Watson
+
+705
+00:33:18,150 --> 00:33:20,250
+to startup companies
+like Bay Labs
+
+706
+00:33:20,250 --> 00:33:23,650
+and PathAI, which is here
+in Boston, all of which
+
+707
+00:33:23,650 --> 00:33:27,190
+are really trying to build
+the next generation of tools
+
+708
+00:33:27,190 --> 00:33:30,550
+for healthcare, now based on
+machine learning algorithms.
+
+709
+00:33:30,550 --> 00:33:35,610
+There's been billions
+of dollars of funding
+
+710
+00:33:35,610 --> 00:33:39,130
+in the recent quarters towards
+digital health efforts,
+
+711
+00:33:39,130 --> 00:33:40,990
+with hundreds of
+different startups
+
+712
+00:33:40,990 --> 00:33:44,590
+that are focused specifically
+on using artificial intelligence
+
+713
+00:33:44,590 --> 00:33:46,870
+and healthcare.
+
+714
+00:33:46,870 --> 00:33:49,990
+And there's the
+recognition that data
+
+715
+00:33:49,990 --> 00:33:52,030
+is so essential to
+this process has
+
+716
+00:33:52,030 --> 00:33:55,330
+led to an all-out purchasing
+effort to try to get as much
+
+717
+00:33:55,330 --> 00:33:56,710
+of that data as you can.
+
+718
+00:33:56,710 --> 00:34:00,850
+So for example, IBM
+purchased a company
+
+719
+00:34:00,850 --> 00:34:04,870
+called Merge, which made
+medical imaging software
+
+720
+00:34:04,870 --> 00:34:07,990
+and thus had accumulated a large
+amount of medical imaging data
+
+721
+00:34:07,990 --> 00:34:10,480
+for $1 billion in 2015.
+
+722
+00:34:10,480 --> 00:34:14,480
+They purchased Truven
+for $2.6 billion in 2016.
+
+723
+00:34:14,480 --> 00:34:16,900
+Flatiron Health, which
+is a company in New York
+
+724
+00:34:16,900 --> 00:34:20,230
+City focused on oncology, was
+purchased for almost $2 billion
+
+725
+00:34:20,230 --> 00:34:23,230
+by Roche, a pharmaceutical
+company, just last year.
+
+726
+00:34:23,230 --> 00:34:25,627
+And there's several more
+of these industry moves.
+
+727
+00:34:25,627 --> 00:34:28,210
+Again, I'm just tying to get you
+thinking about what it really
+
+728
+00:34:28,210 --> 00:34:30,969
+takes in this field, and
+getting access to data
+
+729
+00:34:30,969 --> 00:34:35,280
+is actually a really
+important one, obviously.
+
+730
+00:34:35,280 --> 00:34:39,570
+So let's now move
+on to some examples
+
+731
+00:34:39,570 --> 00:34:44,340
+of how machine learning
+will transform healthcare.
+
+732
+00:34:44,340 --> 00:34:47,170
+To begin with, I want to really
+lay out the landscape here
+
+733
+00:34:47,170 --> 00:34:49,260
+and define some language.
+
+734
+00:34:49,260 --> 00:34:51,120
+There are a number
+of different players
+
+735
+00:34:51,120 --> 00:34:53,340
+when it comes to the
+healthcare space.
+
+736
+00:34:53,340 --> 00:34:56,790
+They're us, patients, consumers.
+
+737
+00:34:56,790 --> 00:34:59,012
+They are the doctors
+that we go to,
+
+738
+00:34:59,012 --> 00:35:00,720
+which you could think
+about as providers.
+
+739
+00:35:00,720 --> 00:35:02,345
+But of course they're
+not just doctors,
+
+740
+00:35:02,345 --> 00:35:08,250
+they're also nurses and
+community health workers
+
+741
+00:35:08,250 --> 00:35:10,200
+and so on.
+
+742
+00:35:10,200 --> 00:35:14,457
+There are payers, which
+provide the-- where there is--
+
+743
+00:35:14,457 --> 00:35:16,290
+these edges are really
+showing relationships
+
+744
+00:35:16,290 --> 00:35:19,770
+between the different
+players, so our consumers, we
+
+745
+00:35:19,770 --> 00:35:21,990
+often, either from our
+job or directly from us,
+
+746
+00:35:21,990 --> 00:35:24,900
+we will pay premiums for a
+health insurance company,
+
+747
+00:35:24,900 --> 00:35:26,785
+to a health insurance
+company, and then
+
+748
+00:35:26,785 --> 00:35:29,160
+that health insurance company
+is responsible for payments
+
+749
+00:35:29,160 --> 00:35:33,720
+to the providers to provide
+services to us patients.
+
+750
+00:35:33,720 --> 00:35:38,130
+Now, here in the US, the
+payers are both commercial
+
+751
+00:35:38,130 --> 00:35:39,150
+and governmental.
+
+752
+00:35:39,150 --> 00:35:44,760
+So many of you will know
+companies like Cigna or Aetna
+
+753
+00:35:44,760 --> 00:35:47,010
+or Blue Cross, which
+are commercial providers
+
+754
+00:35:47,010 --> 00:35:49,830
+of healthcare, of
+health insurance,
+
+755
+00:35:49,830 --> 00:35:52,170
+but there are also
+governmental ones.
+
+756
+00:35:52,170 --> 00:35:56,250
+For example, the Veterans
+Health Administration
+
+757
+00:35:56,250 --> 00:35:59,700
+runs one of the biggest health
+organizations in the United
+
+758
+00:35:59,700 --> 00:36:03,210
+States, servicing our
+veterans from the department,
+
+759
+00:36:03,210 --> 00:36:06,240
+people who have retired from
+the Department of Defense, which
+
+760
+00:36:06,240 --> 00:36:08,580
+has the one of
+the second biggest
+
+761
+00:36:08,580 --> 00:36:12,030
+health systems, the
+Defense Health Agency.
+
+762
+00:36:12,030 --> 00:36:13,763
+And that is an
+organization where--
+
+763
+00:36:13,763 --> 00:36:15,180
+both of those
+organizations, where
+
+764
+00:36:15,180 --> 00:36:18,840
+both the payer and the
+provider are really one.
+
+765
+00:36:18,840 --> 00:36:21,930
+The Center for Medicare
+and Medicaid Services
+
+766
+00:36:21,930 --> 00:36:26,070
+here in the US provides
+health insurance
+
+767
+00:36:26,070 --> 00:36:31,560
+for all retirees in
+the United States.
+
+768
+00:36:31,560 --> 00:36:34,710
+And also Medicaid, which
+is run at a state level,
+
+769
+00:36:34,710 --> 00:36:39,852
+provides health insurance
+to a variety of individuals
+
+770
+00:36:39,852 --> 00:36:41,310
+who would otherwise
+have difficulty
+
+771
+00:36:41,310 --> 00:36:44,460
+purchasing or obtaining
+their own health insurance.
+
+772
+00:36:44,460 --> 00:36:47,547
+And those are examples of
+state-run or federally run
+
+773
+00:36:47,547 --> 00:36:48,630
+health insurance agencies.
+
+774
+00:36:51,170 --> 00:36:53,390
+And then internationally,
+sometimes the lines
+
+775
+00:36:53,390 --> 00:36:54,380
+are even more blurred.
+
+776
+00:36:54,380 --> 00:36:57,290
+So of course in places
+like the United Kingdom,
+
+777
+00:36:57,290 --> 00:37:02,210
+where you have a government-run
+health system, the National
+
+778
+00:37:02,210 --> 00:37:07,940
+Health Service, you have the
+same system both paying for
+
+779
+00:37:07,940 --> 00:37:10,410
+and providing the services.
+
+780
+00:37:10,410 --> 00:37:12,560
+Now, the reason why this
+is really important for us
+
+781
+00:37:12,560 --> 00:37:14,540
+to think about
+already in lecture one
+
+782
+00:37:14,540 --> 00:37:18,500
+is because what's so
+essential about this field
+
+783
+00:37:18,500 --> 00:37:21,200
+is figuring out where the
+knob is that you can turn
+
+784
+00:37:21,200 --> 00:37:22,580
+to try to improve healthcare.
+
+785
+00:37:22,580 --> 00:37:24,770
+Where can we deploy
+machine learning algorithms
+
+786
+00:37:24,770 --> 00:37:26,420
+within healthcare?
+
+787
+00:37:26,420 --> 00:37:29,360
+So some algorithms are going
+to be better run by providers,
+
+788
+00:37:29,360 --> 00:37:31,730
+others are going to be
+better run by payers,
+
+789
+00:37:31,730 --> 00:37:34,730
+others are going to be
+directly provided to patients,
+
+790
+00:37:34,730 --> 00:37:36,870
+and some all of the above.
+
+791
+00:37:36,870 --> 00:37:39,410
+We also have to think
+about industrial questions,
+
+792
+00:37:39,410 --> 00:37:42,950
+in terms of what is it going to
+take to develop a new product.
+
+793
+00:37:42,950 --> 00:37:45,170
+Who will pay for this product?
+
+794
+00:37:45,170 --> 00:37:46,910
+Which is again an
+important question
+
+795
+00:37:46,910 --> 00:37:50,110
+when it comes to
+deploying algorithms here.
+
+796
+00:37:50,110 --> 00:37:55,300
+So I'll run through a couple of
+very high-level examples driven
+
+797
+00:37:55,300 --> 00:37:59,620
+from my own work, focused
+on the provider space,
+
+798
+00:37:59,620 --> 00:38:03,770
+and then I'll bump up to
+talk a bit more broadly.
+
+799
+00:38:03,770 --> 00:38:05,740
+So for the last
+seven or eight years,
+
+800
+00:38:05,740 --> 00:38:07,833
+I've been doing a lot
+of work in collaboration
+
+801
+00:38:07,833 --> 00:38:09,250
+with Beth Israel
+Deaconess Medical
+
+802
+00:38:09,250 --> 00:38:12,633
+Center, across the river, with
+their emergency department.
+
+803
+00:38:12,633 --> 00:38:14,800
+And the emergency department
+is a really interesting
+
+804
+00:38:14,800 --> 00:38:17,410
+clinical setting, because
+you have a very short period
+
+805
+00:38:17,410 --> 00:38:19,750
+of time from when a patient
+comes into the hospital
+
+806
+00:38:19,750 --> 00:38:23,762
+to diagnose what's going on
+with them, to initiate therapy,
+
+807
+00:38:23,762 --> 00:38:25,220
+and then to decide
+what to do next.
+
+808
+00:38:25,220 --> 00:38:26,650
+Do you keep them
+in the hospital?
+
+809
+00:38:26,650 --> 00:38:28,810
+Do you send them home?
+
+810
+00:38:28,810 --> 00:38:30,550
+If you-- for each
+one of those things,
+
+811
+00:38:30,550 --> 00:38:32,670
+what should the most
+immediate actions be?
+
+812
+00:38:32,670 --> 00:38:36,730
+And at least here in the US,
+we're always understaffed.
+
+813
+00:38:36,730 --> 00:38:40,900
+So we've got limited resources
+and very critical decisions
+
+814
+00:38:40,900 --> 00:38:42,560
+to make.
+
+815
+00:38:42,560 --> 00:38:45,295
+So this is one example
+of a setting where
+
+816
+00:38:45,295 --> 00:38:47,170
+algorithms that are
+running behind the scenes
+
+817
+00:38:47,170 --> 00:38:49,628
+could potentially really help
+with some of the challenges I
+
+818
+00:38:49,628 --> 00:38:51,460
+mentioned earlier.
+
+819
+00:38:51,460 --> 00:38:54,340
+So for example, one could
+imagine an algorithm which
+
+820
+00:38:54,340 --> 00:38:56,140
+builds on techniques
+like what I mentioned
+
+821
+00:38:56,140 --> 00:38:59,620
+to you for an internist one
+or quick medical reference,
+
+822
+00:38:59,620 --> 00:39:03,130
+try to reason about what's
+going on with the patient based
+
+823
+00:39:03,130 --> 00:39:07,628
+on the data that's available
+for the patient, the symptoms.
+
+824
+00:39:07,628 --> 00:39:09,670
+But the modern view of
+this shouldn't, of course,
+
+825
+00:39:09,670 --> 00:39:12,670
+use binary indicators
+of each symptom, which
+
+826
+00:39:12,670 --> 00:39:15,460
+have to be entered in manually,
+but rather all of these things
+
+827
+00:39:15,460 --> 00:39:16,960
+should be
+automatically extracted
+
+828
+00:39:16,960 --> 00:39:21,282
+from the electronic medical
+record or listed as necessary.
+
+829
+00:39:21,282 --> 00:39:22,990
+And then if one could
+reason about what's
+
+830
+00:39:22,990 --> 00:39:25,498
+going on with a patient,
+we wouldn't necessarily
+
+831
+00:39:25,498 --> 00:39:27,790
+want to use it for a diagnosis,
+although in some cases,
+
+832
+00:39:27,790 --> 00:39:29,832
+you might use it for
+an earlier diagnosis.
+
+833
+00:39:29,832 --> 00:39:32,290
+But it could also be used for
+a number of other more subtle
+
+834
+00:39:32,290 --> 00:39:34,900
+interventions, for
+example, better triage
+
+835
+00:39:34,900 --> 00:39:38,050
+to figure out which patients
+need to be seen first.
+
+836
+00:39:38,050 --> 00:39:40,840
+Early detection of adverse
+events or recognition
+
+837
+00:39:40,840 --> 00:39:44,230
+that there might be some unusual
+actions which might actually
+
+838
+00:39:44,230 --> 00:39:47,980
+be medical errors that you
+want to surface now and draw
+
+839
+00:39:47,980 --> 00:39:49,360
+attention to.
+
+840
+00:39:49,360 --> 00:39:53,710
+Now, you could also
+use this understanding
+
+841
+00:39:53,710 --> 00:39:55,090
+of what's going
+on with a patient
+
+842
+00:39:55,090 --> 00:39:56,590
+to change the way
+that clinicians
+
+843
+00:39:56,590 --> 00:39:59,390
+interact with patient data.
+
+844
+00:39:59,390 --> 00:40:05,560
+So for example, one can try
+to propagate best practices
+
+845
+00:40:05,560 --> 00:40:08,912
+by surfacing clinical
+decision support,
+
+846
+00:40:08,912 --> 00:40:10,870
+automatically triggering
+this clinical decision
+
+847
+00:40:10,870 --> 00:40:14,150
+support for patients that you
+think it might be relevant for.
+
+848
+00:40:14,150 --> 00:40:15,940
+And here's one
+example, where it says,
+
+849
+00:40:15,940 --> 00:40:19,210
+the ED Dashboard, the Emergency
+Department Dashboard decision
+
+850
+00:40:19,210 --> 00:40:20,860
+support algorithms
+have determined
+
+851
+00:40:20,860 --> 00:40:25,180
+this patient may be eligible for
+the atria cellulitis pathway.
+
+852
+00:40:25,180 --> 00:40:29,300
+Cellulitis is often
+caused by infections.
+
+853
+00:40:29,300 --> 00:40:30,890
+Please choose from
+one of the options.
+
+854
+00:40:30,890 --> 00:40:33,360
+Enroll in the pathway, decline--
+
+855
+00:40:33,360 --> 00:40:35,390
+and if you decline,
+you must include
+
+856
+00:40:35,390 --> 00:40:38,850
+a comment for the reviewers.
+
+857
+00:40:38,850 --> 00:40:43,410
+Now, if you clicked on enroll
+in the pathway, at that moment,
+
+858
+00:40:43,410 --> 00:40:45,240
+machine learning disappears.
+
+859
+00:40:45,240 --> 00:40:48,030
+Rather, there is a
+standardized process.
+
+860
+00:40:48,030 --> 00:40:51,240
+It's an algorithm, but it's
+a deterministic algorithm,
+
+861
+00:40:51,240 --> 00:40:55,290
+for how patients with cellulitis
+should be properly managed,
+
+862
+00:40:55,290 --> 00:40:57,660
+diagnosed, and treated.
+
+863
+00:40:57,660 --> 00:41:00,930
+That algorithm comes
+from best practices,
+
+864
+00:41:00,930 --> 00:41:07,140
+comes from clinicians coming
+together, analyzing past data,
+
+865
+00:41:07,140 --> 00:41:09,120
+understanding what
+would be good ways
+
+866
+00:41:09,120 --> 00:41:12,300
+to treat patients of this
+type, and then formalizing
+
+867
+00:41:12,300 --> 00:41:14,310
+that in a document.
+
+868
+00:41:14,310 --> 00:41:16,530
+The challenge is that there
+might be hundreds or even
+
+869
+00:41:16,530 --> 00:41:19,070
+thousands of these
+best practices.
+
+870
+00:41:19,070 --> 00:41:21,330
+And in an academic
+medical center, where
+
+871
+00:41:21,330 --> 00:41:22,770
+you have patients coming--
+
+872
+00:41:22,770 --> 00:41:26,970
+where you have medical
+students or residents who
+
+873
+00:41:26,970 --> 00:41:30,503
+are very quickly rotating
+through the system and thus
+
+874
+00:41:30,503 --> 00:41:31,920
+may not be familiar
+with which are
+
+875
+00:41:31,920 --> 00:41:35,700
+the most appropriate clinical
+guidelines to use for any one
+
+876
+00:41:35,700 --> 00:41:37,530
+patient in this institution.
+
+877
+00:41:37,530 --> 00:41:42,000
+Or if you go to a
+rural site, where
+
+878
+00:41:42,000 --> 00:41:45,000
+this academic nature of
+thinking through what
+
+879
+00:41:45,000 --> 00:41:47,250
+the right clinical guidelines
+are is a little bit less
+
+880
+00:41:47,250 --> 00:41:51,480
+of the mainstream, everyday
+activity, the question of which
+
+881
+00:41:51,480 --> 00:41:53,255
+one to use when is
+very challenging.
+
+882
+00:41:53,255 --> 00:41:55,380
+And so that's where the
+machine learning algorithms
+
+883
+00:41:55,380 --> 00:41:56,097
+can come in.
+
+884
+00:41:56,097 --> 00:41:58,180
+By reasoning about what's
+going on with a patient,
+
+885
+00:41:58,180 --> 00:41:59,340
+you might have a
+good guess of what
+
+886
+00:41:59,340 --> 00:42:00,570
+might be appropriate
+for this patient,
+
+887
+00:42:00,570 --> 00:42:02,278
+and you use that to
+automatically surface
+
+888
+00:42:02,278 --> 00:42:05,210
+the right clinical
+decisions for a trigger.
+
+889
+00:42:05,210 --> 00:42:07,130
+Another example
+is by just trying
+
+890
+00:42:07,130 --> 00:42:08,630
+to anticipate clinician needs.
+
+891
+00:42:08,630 --> 00:42:12,890
+So for example, if you think
+that this patient might
+
+892
+00:42:12,890 --> 00:42:16,790
+be coming in for a psychiatric
+condition, or maybe
+
+893
+00:42:16,790 --> 00:42:19,505
+you recognize that the
+patient came in that triage
+
+894
+00:42:19,505 --> 00:42:21,230
+and was complaining
+of chest pain,
+
+895
+00:42:21,230 --> 00:42:23,090
+then there might
+be a psych order
+
+896
+00:42:23,090 --> 00:42:26,660
+set, which includes
+laboratory test results that
+
+897
+00:42:26,660 --> 00:42:29,000
+are relevant for
+psychiatric patients,
+
+898
+00:42:29,000 --> 00:42:34,070
+or a chest pain order set, which
+includes both laboratory tests
+
+899
+00:42:34,070 --> 00:42:38,610
+and interventions, like aspirin,
+that might be suggested.
+
+900
+00:42:38,610 --> 00:42:41,325
+Now, these are also examples
+where these order sets are not
+
+901
+00:42:41,325 --> 00:42:42,950
+created by machine
+learning algorithms.
+
+902
+00:42:42,950 --> 00:42:44,950
+Although that's something
+we could discuss later
+
+903
+00:42:44,950 --> 00:42:45,890
+in the semester.
+
+904
+00:42:45,890 --> 00:42:47,243
+Rather, they're standardized.
+
+905
+00:42:47,243 --> 00:42:49,160
+But the goal of the
+machine learning algorithm
+
+906
+00:42:49,160 --> 00:42:51,950
+is just to figure out
+which ones to show when
+
+907
+00:42:51,950 --> 00:42:54,158
+directly to the clinicians.
+
+908
+00:42:54,158 --> 00:42:55,700
+I'm showing you
+these examples to try
+
+909
+00:42:55,700 --> 00:42:59,270
+to point out that diagnosis
+isn't the whole story.
+
+910
+00:42:59,270 --> 00:43:01,730
+Thinking through what are the
+more subtle interventions we
+
+911
+00:43:01,730 --> 00:43:05,180
+can do with machine learning
+and AI and healthcare
+
+912
+00:43:05,180 --> 00:43:07,890
+is going to be really
+important to having the impact
+
+913
+00:43:07,890 --> 00:43:10,650
+that it could have.
+
+914
+00:43:10,650 --> 00:43:13,770
+So other examples, now a bit
+more on the diagnosis style,
+
+915
+00:43:13,770 --> 00:43:16,050
+are reducing the need
+for specialist consults.
+
+916
+00:43:16,050 --> 00:43:17,880
+So you might have
+a patient come in,
+
+917
+00:43:17,880 --> 00:43:21,570
+and it might be really quick
+to get the patient in front
+
+918
+00:43:21,570 --> 00:43:24,570
+of an X-ray to do a
+chest X-ray, but then
+
+919
+00:43:24,570 --> 00:43:26,910
+finding the radiologist
+to review that X-ray
+
+920
+00:43:26,910 --> 00:43:29,220
+could take a lot of time.
+
+921
+00:43:29,220 --> 00:43:32,910
+And in some places,
+radiologist consults
+
+922
+00:43:32,910 --> 00:43:36,760
+could take days, depending on
+the urgency of the condition.
+
+923
+00:43:36,760 --> 00:43:39,720
+So this is an area where
+data is quite standardized.
+
+924
+00:43:39,720 --> 00:43:42,960
+In fact, MIT just
+released last week
+
+925
+00:43:42,960 --> 00:43:45,720
+a data set of
+300,000 chest x-rays
+
+926
+00:43:45,720 --> 00:43:48,240
+with associated labels on them.
+
+927
+00:43:48,240 --> 00:43:50,490
+And one could try to ask
+the question of could we
+
+928
+00:43:50,490 --> 00:43:51,960
+build machine
+learning algorithms
+
+929
+00:43:51,960 --> 00:43:54,210
+using the convolutional
+neural network type
+
+930
+00:43:54,210 --> 00:43:56,820
+techniques that we've seen
+play a big role in object
+
+931
+00:43:56,820 --> 00:43:58,500
+recognition to try
+to understand what's
+
+932
+00:43:58,500 --> 00:43:59,340
+going on with this patient.
+
+933
+00:43:59,340 --> 00:44:01,048
+For example, in this
+case, the prediction
+
+934
+00:44:01,048 --> 00:44:04,540
+is the patient has pneumonia,
+from this chest X-ray.
+
+935
+00:44:04,540 --> 00:44:06,340
+And using those
+systems, it could
+
+936
+00:44:06,340 --> 00:44:10,120
+help both reduce the load
+of radiology consults,
+
+937
+00:44:10,120 --> 00:44:13,180
+and it could allow us to really
+translate these algorithms
+
+938
+00:44:13,180 --> 00:44:14,680
+to settings which
+might be much more
+
+939
+00:44:14,680 --> 00:44:19,280
+resource poor, for example,
+in developing nations.
+
+940
+00:44:19,280 --> 00:44:20,810
+Now, the same
+sorts of techniques
+
+941
+00:44:20,810 --> 00:44:22,590
+can be used for other
+data modalities.
+
+942
+00:44:22,590 --> 00:44:27,500
+So this is an
+example of data that
+
+943
+00:44:27,500 --> 00:44:30,230
+could be obtained from an EKG.
+
+944
+00:44:30,230 --> 00:44:33,560
+And from looking
+at this EKG, one
+
+945
+00:44:33,560 --> 00:44:36,140
+can try to predict, does the
+patient have a heart condition,
+
+946
+00:44:36,140 --> 00:44:38,060
+such as an arrhythmia.
+
+947
+00:44:38,060 --> 00:44:40,880
+Now, these types of
+data used to just
+
+948
+00:44:40,880 --> 00:44:43,280
+be obtained when you go
+to a doctor's office.
+
+949
+00:44:43,280 --> 00:44:45,470
+But today, they're
+available to all of us.
+
+950
+00:44:45,470 --> 00:44:49,550
+For example, in Apple's most
+recent watch that was released,
+
+951
+00:44:49,550 --> 00:44:53,662
+it has a single-lead
+EKG built into it,
+
+952
+00:44:53,662 --> 00:44:56,120
+which can attempt to predict
+if a patient has an arrhythmia
+
+953
+00:44:56,120 --> 00:44:56,790
+or not.
+
+954
+00:44:56,790 --> 00:44:58,207
+And there are a
+lot of subtleties,
+
+955
+00:44:58,207 --> 00:45:01,192
+of course, around what it took
+to get regulatory approval
+
+956
+00:45:01,192 --> 00:45:02,900
+for that, which we'll
+be discussing later
+
+957
+00:45:02,900 --> 00:45:06,080
+in the semester, and how one
+safely deploys such algorithms
+
+958
+00:45:06,080 --> 00:45:08,060
+directly to consumers.
+
+959
+00:45:08,060 --> 00:45:10,370
+And there, there are a
+variety of techniques
+
+960
+00:45:10,370 --> 00:45:11,405
+that could be used.
+
+961
+00:45:11,405 --> 00:45:13,160
+And in a few lectures,
+I'll talk to you
+
+962
+00:45:13,160 --> 00:45:16,790
+about techniques from
+the '80s and '90s
+
+963
+00:45:16,790 --> 00:45:19,430
+which were based on trying
+to signal processing,
+
+964
+00:45:19,430 --> 00:45:22,220
+trying to detect where are
+the peaks of the signal,
+
+965
+00:45:22,220 --> 00:45:24,260
+look at a distance
+between peaks.
+
+966
+00:45:24,260 --> 00:45:26,600
+And more recently, because
+of the large wealth
+
+967
+00:45:26,600 --> 00:45:28,160
+of data that is
+available, we've been
+
+968
+00:45:28,160 --> 00:45:30,230
+using convolutional neural
+network-based approaches
+
+969
+00:45:30,230 --> 00:45:32,360
+to try to understand this
+data and predict from it.
+
+970
+00:45:35,330 --> 00:45:38,180
+Yet another example
+from the ER really
+
+971
+00:45:38,180 --> 00:45:41,420
+has to do with not how do we
+care for the patient today,
+
+972
+00:45:41,420 --> 00:45:43,940
+but how do we get
+better data, which
+
+973
+00:45:43,940 --> 00:45:45,590
+will then result
+in taking better
+
+974
+00:45:45,590 --> 00:45:47,960
+care of the patient tomorrow.
+
+975
+00:45:47,960 --> 00:45:50,690
+And so one example
+of that, which
+
+976
+00:45:50,690 --> 00:45:52,580
+my group deployed at
+Beth Israel Deaconess,
+
+977
+00:45:52,580 --> 00:45:55,220
+and it's still running there
+in the emergency department,
+
+978
+00:45:55,220 --> 00:45:58,460
+has to do with getting higher
+quality chief complaints.
+
+979
+00:45:58,460 --> 00:46:02,390
+The chief complaint is
+usually a very short,
+
+980
+00:46:02,390 --> 00:46:06,950
+two or three word quantity, like
+left knee pain, rectal pain,
+
+981
+00:46:06,950 --> 00:46:11,390
+right upper quadrant,
+RUQ, abdominal pain.
+
+982
+00:46:11,390 --> 00:46:13,220
+And it's just a
+very quick summary
+
+983
+00:46:13,220 --> 00:46:16,160
+of why did the patient
+come into the ER today.
+
+984
+00:46:16,160 --> 00:46:20,160
+And despite the fact
+that it's so few words,
+
+985
+00:46:20,160 --> 00:46:23,452
+it plays a huge role in
+the care of a patient.
+
+986
+00:46:23,452 --> 00:46:25,160
+If you look at the
+big screens in the ER,
+
+987
+00:46:25,160 --> 00:46:27,650
+which summarize who are the
+patients and on what beds,
+
+988
+00:46:27,650 --> 00:46:30,050
+they have the chief
+complaint next to it.
+
+989
+00:46:30,050 --> 00:46:34,130
+Chief complaints are used as
+criteria for enrolling patients
+
+990
+00:46:34,130 --> 00:46:35,690
+in clinical trials.
+
+991
+00:46:35,690 --> 00:46:39,500
+It's used as criteria for doing
+retrospective quality research
+
+992
+00:46:39,500 --> 00:46:42,120
+to see how do we care for
+patients in a particular type.
+
+993
+00:46:42,120 --> 00:46:43,790
+So it plays a very big role.
+
+994
+00:46:43,790 --> 00:46:46,100
+But unfortunately, the data
+that we've been getting
+
+995
+00:46:46,100 --> 00:46:47,780
+has been crap.
+
+996
+00:46:47,780 --> 00:46:50,180
+And that's because
+it was free text,
+
+997
+00:46:50,180 --> 00:46:52,070
+and it was sufficiently
+high dimensional
+
+998
+00:46:52,070 --> 00:46:54,140
+that just attempting
+to standardize it
+
+999
+00:46:54,140 --> 00:46:57,433
+with a big dropdown list,
+like you see over here,
+
+1000
+00:46:57,433 --> 00:46:59,100
+would have killed the
+clinical workflow.
+
+1001
+00:46:59,100 --> 00:47:01,010
+It would've taken
+way too much time
+
+1002
+00:47:01,010 --> 00:47:04,070
+for clinicians to try to
+find the relevant one.
+
+1003
+00:47:04,070 --> 00:47:06,037
+And so it just wouldn't
+have been used.
+
+1004
+00:47:06,037 --> 00:47:08,120
+And that's where some very
+simple machine learning
+
+1005
+00:47:08,120 --> 00:47:10,740
+algorithms turned out
+to be really valuable.
+
+1006
+00:47:10,740 --> 00:47:13,922
+So for example, we changed
+the workflow altogether.
+
+1007
+00:47:13,922 --> 00:47:16,130
+Rather than the chief
+complaint being the first thing
+
+1008
+00:47:16,130 --> 00:47:19,790
+that the triage nurse assigns
+when the patient comes in,
+
+1009
+00:47:19,790 --> 00:47:21,140
+it's the last thing.
+
+1010
+00:47:21,140 --> 00:47:24,030
+First, the nurse takes the vital
+signs, patient's temperature,
+
+1011
+00:47:24,030 --> 00:47:26,250
+heart rate, blood
+pressure, respiratory rate,
+
+1012
+00:47:26,250 --> 00:47:27,538
+and oxygen saturation.
+
+1013
+00:47:27,538 --> 00:47:28,580
+They talk to the patient.
+
+1014
+00:47:28,580 --> 00:47:31,397
+They write up a 10-word or
+30-word note about what's
+
+1015
+00:47:31,397 --> 00:47:32,480
+going on with the patient.
+
+1016
+00:47:32,480 --> 00:47:37,940
+Here it says, "69-year-old
+male patient with severe
+
+1017
+00:47:37,940 --> 00:47:40,910
+intermittent right
+upper quadrant pain.
+
+1018
+00:47:40,910 --> 00:47:42,840
+Began soon after eating.
+
+1019
+00:47:42,840 --> 00:47:44,390
+Also is a heavy drinker."
+
+1020
+00:47:44,390 --> 00:47:46,730
+So quite a bit of
+information in that.
+
+1021
+00:47:46,730 --> 00:47:47,330
+We take that.
+
+1022
+00:47:47,330 --> 00:47:49,705
+We use a machine learning
+algorithm, a supervised machine
+
+1023
+00:47:49,705 --> 00:47:52,130
+learning algorithm in
+this case, to predict
+
+1024
+00:47:52,130 --> 00:47:54,170
+a set of chief
+complaints now drawn
+
+1025
+00:47:54,170 --> 00:47:56,420
+from a standardized ontology.
+
+1026
+00:47:56,420 --> 00:47:59,113
+We show the five most likely
+ones, and the clinician,
+
+1027
+00:47:59,113 --> 00:48:01,280
+in this case, a nurse, could
+just click one of them,
+
+1028
+00:48:01,280 --> 00:48:03,950
+and it would enter
+it into there.
+
+1029
+00:48:03,950 --> 00:48:10,340
+We also allow the nurse to type
+in part of a chief complaint.
+
+1030
+00:48:10,340 --> 00:48:13,160
+But rather than just
+doing a text matching
+
+1031
+00:48:13,160 --> 00:48:16,940
+to find words that match
+what's being typed in,
+
+1032
+00:48:16,940 --> 00:48:19,190
+we do a contextual autocomplete.
+
+1033
+00:48:19,190 --> 00:48:21,290
+So we use our
+predictions to prioritize
+
+1034
+00:48:21,290 --> 00:48:23,900
+what's the most likely chief
+complaint that contains
+
+1035
+00:48:23,900 --> 00:48:25,610
+that sequence of characters.
+
+1036
+00:48:25,610 --> 00:48:28,240
+And that way it's
+way faster to enter
+
+1037
+00:48:28,240 --> 00:48:29,660
+in the relevant information.
+
+1038
+00:48:29,660 --> 00:48:31,580
+And what we found
+is that over time,
+
+1039
+00:48:31,580 --> 00:48:34,123
+we got much higher
+quality data out.
+
+1040
+00:48:34,123 --> 00:48:35,540
+And again, this
+is something we'll
+
+1041
+00:48:35,540 --> 00:48:39,860
+be talking about in one of
+our lectures in this course.
+
+1042
+00:48:39,860 --> 00:48:42,860
+So I just gave you an
+example, a few examples,
+
+1043
+00:48:42,860 --> 00:48:45,020
+of how machine learning
+and artificial tolerance
+
+1044
+00:48:45,020 --> 00:48:47,690
+will transform the
+provider space,
+
+1045
+00:48:47,690 --> 00:48:49,430
+but now I want to
+jump up a level
+
+1046
+00:48:49,430 --> 00:48:52,490
+and think through not how
+do we treat a patient today,
+
+1047
+00:48:52,490 --> 00:48:55,790
+but how do we think about the
+progression of a patient's
+
+1048
+00:48:55,790 --> 00:48:58,550
+chronic disease over
+a period of years.
+
+1049
+00:48:58,550 --> 00:49:00,920
+It could be 10 years, 20 years.
+
+1050
+00:49:00,920 --> 00:49:04,760
+And this question of how do
+we manage chronic disease
+
+1051
+00:49:04,760 --> 00:49:08,390
+is something which affects
+all aspects of the healthcare
+
+1052
+00:49:08,390 --> 00:49:09,440
+ecosystem.
+
+1053
+00:49:09,440 --> 00:49:11,510
+It'll be used by
+providers, payers,
+
+1054
+00:49:11,510 --> 00:49:15,590
+and also by patients themselves.
+
+1055
+00:49:15,590 --> 00:49:18,440
+So consider a patient with
+chronic kidney disease.
+
+1056
+00:49:18,440 --> 00:49:23,390
+Chronic kidney disease, it
+typically only gets worse.
+
+1057
+00:49:23,390 --> 00:49:26,900
+So you might start with
+the patient being healthy
+
+1058
+00:49:26,900 --> 00:49:28,790
+and then have some
+increased risk.
+
+1059
+00:49:28,790 --> 00:49:31,700
+Eventually, they have
+some kidney damage.
+
+1060
+00:49:31,700 --> 00:49:35,270
+Over time, they
+reach kidney failure.
+
+1061
+00:49:35,270 --> 00:49:37,640
+And once they reach
+kidney failure,
+
+1062
+00:49:37,640 --> 00:49:45,368
+typically, they need dialysis
+or a kidney transplant.
+
+1063
+00:49:45,368 --> 00:49:47,160
+But understanding when
+each of these things
+
+1064
+00:49:47,160 --> 00:49:48,850
+is going to happen for
+patients is actually really,
+
+1065
+00:49:48,850 --> 00:49:50,070
+really challenging.
+
+1066
+00:49:50,070 --> 00:49:53,300
+Right now, we have one way
+of trying to stage patients.
+
+1067
+00:49:53,300 --> 00:49:56,820
+The standard approach
+is known as the EGFR.
+
+1068
+00:49:56,820 --> 00:50:00,030
+It's derived predominantly from
+the patient's creatinine, which
+
+1069
+00:50:00,030 --> 00:50:03,150
+is a blood test
+result, and their age.
+
+1070
+00:50:03,150 --> 00:50:04,470
+And it gives you a number out.
+
+1071
+00:50:04,470 --> 00:50:05,640
+And from that
+number, you can get
+
+1072
+00:50:05,640 --> 00:50:07,740
+some sense of where the
+patient is in this trajectory.
+
+1073
+00:50:07,740 --> 00:50:09,330
+But it's really coarse
+grained, and it's not
+
+1074
+00:50:09,330 --> 00:50:11,122
+at all predictive about
+when the patient is
+
+1075
+00:50:11,122 --> 00:50:14,920
+going to progress to the
+next stage of the disease.
+
+1076
+00:50:14,920 --> 00:50:17,400
+Now, other conditions,
+for example,
+
+1077
+00:50:17,400 --> 00:50:19,990
+some cancers, like I'll
+tell you about next,
+
+1078
+00:50:19,990 --> 00:50:22,480
+don't follow that
+linear trajectory.
+
+1079
+00:50:22,480 --> 00:50:25,068
+Rather, patients' conditions
+and the disease burden,
+
+1080
+00:50:25,068 --> 00:50:26,860
+which is what I'm
+showing you in the y-axis
+
+1081
+00:50:26,860 --> 00:50:31,300
+here, might get worse,
+better, worse again, better
+
+1082
+00:50:31,300 --> 00:50:33,460
+again, worse again, and
+so on, and of course
+
+1083
+00:50:33,460 --> 00:50:35,560
+is a function of the
+treatment for the patient
+
+1084
+00:50:35,560 --> 00:50:37,485
+and other things that
+are going on with them.
+
+1085
+00:50:37,485 --> 00:50:40,150
+And understanding
+what influences,
+
+1086
+00:50:40,150 --> 00:50:42,670
+how a patient's disease
+is going to progress,
+
+1087
+00:50:42,670 --> 00:50:46,120
+and when is that
+progression going to happen,
+
+1088
+00:50:46,120 --> 00:50:48,790
+could be enormously valuable for
+many of those different parts
+
+1089
+00:50:48,790 --> 00:50:50,020
+of the healthcare ecosystem.
+
+1090
+00:50:54,490 --> 00:50:57,010
+So one concrete example of
+how that type of prediction
+
+1091
+00:50:57,010 --> 00:51:00,410
+could be used would be in a
+type of precision medicine.
+
+1092
+00:51:00,410 --> 00:51:04,510
+So returning back to the
+example that I mentioned
+
+1093
+00:51:04,510 --> 00:51:06,370
+in the very beginning
+of today's lecture
+
+1094
+00:51:06,370 --> 00:51:09,850
+of multiple myeloma, which
+I said my mother died of,
+
+1095
+00:51:09,850 --> 00:51:12,730
+there are a large number
+of existing treatments
+
+1096
+00:51:12,730 --> 00:51:15,280
+for multiple myeloma.
+
+1097
+00:51:15,280 --> 00:51:19,440
+And we don't really know which
+treatments work best for whom.
+
+1098
+00:51:19,440 --> 00:51:21,473
+But imagine a day where
+we have algorithms
+
+1099
+00:51:21,473 --> 00:51:23,640
+that could take what you
+know about a patient at one
+
+1100
+00:51:23,640 --> 00:51:24,840
+point in time.
+
+1101
+00:51:24,840 --> 00:51:27,510
+That might include, for
+example, blood test results.
+
+1102
+00:51:27,510 --> 00:51:30,000
+It might include RNA
+seq, which gives you
+
+1103
+00:51:30,000 --> 00:51:32,250
+some sense of the
+gene expression
+
+1104
+00:51:32,250 --> 00:51:33,990
+for the patient,
+that in this case
+
+1105
+00:51:33,990 --> 00:51:37,260
+would be derived from a sample
+taken from the patient's bone
+
+1106
+00:51:37,260 --> 00:51:39,040
+marrow.
+
+1107
+00:51:39,040 --> 00:51:40,980
+You could take that
+data and try to predict
+
+1108
+00:51:40,980 --> 00:51:44,790
+what would happen to a patient
+under two different scenarios.
+
+1109
+00:51:44,790 --> 00:51:46,770
+The blue scenario that
+I'm showing you here,
+
+1110
+00:51:46,770 --> 00:51:50,580
+if you give them treatment
+A, or this red scenario here,
+
+1111
+00:51:50,580 --> 00:51:53,090
+where you give them treatment
+B. And of course, treatment A
+
+1112
+00:51:53,090 --> 00:51:55,090
+and treatment B aren't
+just one-time treatments,
+
+1113
+00:51:55,090 --> 00:51:56,320
+but they're strategies.
+
+1114
+00:51:56,320 --> 00:51:58,530
+So they're repeated
+treatments across time,
+
+1115
+00:51:58,530 --> 00:52:01,260
+with some intervals.
+
+1116
+00:52:01,260 --> 00:52:05,910
+And if your algorithm says
+that under treatment B,
+
+1117
+00:52:05,910 --> 00:52:08,420
+this is what's going to
+happen, then you might--
+
+1118
+00:52:08,420 --> 00:52:10,340
+the clinician might think, OK.
+
+1119
+00:52:10,340 --> 00:52:12,160
+Treatment B is probably
+the way to go here.
+
+1120
+00:52:12,160 --> 00:52:15,570
+It's going to long-term
+control the patient's disease
+
+1121
+00:52:15,570 --> 00:52:17,640
+burden the best.
+
+1122
+00:52:17,640 --> 00:52:20,040
+And this is an example
+of a causal question.
+
+1123
+00:52:20,040 --> 00:52:22,380
+Because we want
+to know how do we
+
+1124
+00:52:22,380 --> 00:52:27,060
+cause a change in the
+patient's disease trajectory.
+
+1125
+00:52:27,060 --> 00:52:29,020
+And we can try to answer
+this now using data.
+
+1126
+00:52:29,020 --> 00:52:32,160
+So for example, one of the data
+sets that's available for you
+
+1127
+00:52:32,160 --> 00:52:34,710
+to use in your course projects
+is from the Multiple Myeloma
+
+1128
+00:52:34,710 --> 00:52:36,480
+Research Foundation.
+
+1129
+00:52:36,480 --> 00:52:38,220
+It's an example of
+a disease registry,
+
+1130
+00:52:38,220 --> 00:52:41,040
+just like the disease registry
+I talked to you about earlier
+
+1131
+00:52:41,040 --> 00:52:42,540
+for rheumatoid arthritis.
+
+1132
+00:52:42,540 --> 00:52:44,220
+And it follows
+about 1,000 patients
+
+1133
+00:52:44,220 --> 00:52:46,980
+across time, patients who
+have multiple myeloma.
+
+1134
+00:52:46,980 --> 00:52:49,860
+What treatments they're
+getting, what their symptoms
+
+1135
+00:52:49,860 --> 00:52:52,890
+are, and at a couple
+of different stages,
+
+1136
+00:52:52,890 --> 00:52:56,390
+very detailed biological
+data about their cancer,
+
+1137
+00:52:56,390 --> 00:52:59,170
+in this case, RNA seq.
+
+1138
+00:52:59,170 --> 00:53:01,420
+And one could attempt to use
+that data to learn models
+
+1139
+00:53:01,420 --> 00:53:03,340
+to make predictions like this.
+
+1140
+00:53:03,340 --> 00:53:06,420
+But such predictions
+are fraught with errors.
+
+1141
+00:53:06,420 --> 00:53:08,170
+And one of the things
+that Pete and I will
+
+1142
+00:53:08,170 --> 00:53:10,360
+be teaching in this
+course is that there's
+
+1143
+00:53:10,360 --> 00:53:13,090
+a very big difference between
+prediction and prediction
+
+1144
+00:53:13,090 --> 00:53:15,880
+for the purpose of
+making causal statements.
+
+1145
+00:53:15,880 --> 00:53:18,160
+And the way that you interpret
+the data that you have,
+
+1146
+00:53:18,160 --> 00:53:20,147
+when your goal is to
+do treatment suggestion
+
+1147
+00:53:20,147 --> 00:53:22,480
+or optimization, is going to
+be very different from what
+
+1148
+00:53:22,480 --> 00:53:24,313
+you were taught in your
+introductory machine
+
+1149
+00:53:24,313 --> 00:53:27,190
+learning algorithms class.
+
+1150
+00:53:27,190 --> 00:53:29,690
+So other ways that we could try
+to treat and manage patients
+
+1151
+00:53:29,690 --> 00:53:32,240
+with chronic disease
+include early diagnosis.
+
+1152
+00:53:32,240 --> 00:53:35,178
+For example, patients
+with Alzheimer's disease,
+
+1153
+00:53:35,178 --> 00:53:37,220
+there's been some really
+interesting results just
+
+1154
+00:53:37,220 --> 00:53:39,380
+in the last few years, here.
+
+1155
+00:53:39,380 --> 00:53:41,100
+Or new modalities altogether.
+
+1156
+00:53:41,100 --> 00:53:42,800
+For example, liquid
+biopsies that
+
+1157
+00:53:42,800 --> 00:53:47,000
+are able to do early
+diagnosis of cancer,
+
+1158
+00:53:47,000 --> 00:53:51,980
+even without having to do a
+biopsy of the cancer tumor
+
+1159
+00:53:51,980 --> 00:53:54,040
+itself.
+
+1160
+00:53:54,040 --> 00:53:58,220
+We can also think about how
+do we better track and measure
+
+1161
+00:53:58,220 --> 00:54:00,320
+chronic disease.
+
+1162
+00:54:00,320 --> 00:54:03,250
+So one example shown
+on the left here
+
+1163
+00:54:03,250 --> 00:54:07,180
+is from Dina Katabi's lab
+here at MIT and CSAIL,
+
+1164
+00:54:07,180 --> 00:54:09,880
+where they've developed a
+system called Emerald, which
+
+1165
+00:54:09,880 --> 00:54:12,730
+is using wireless signals,
+the same wireless signals
+
+1166
+00:54:12,730 --> 00:54:17,645
+that we have in this room
+today, to try to track patients.
+
+1167
+00:54:17,645 --> 00:54:19,270
+And they can actually
+see behind walls,
+
+1168
+00:54:19,270 --> 00:54:20,990
+which is quite impressive.
+
+1169
+00:54:20,990 --> 00:54:23,530
+So using this for
+the signal, you
+
+1170
+00:54:23,530 --> 00:54:26,200
+could install what looks
+like just a regular wireless
+
+1171
+00:54:26,200 --> 00:54:29,320
+router in an elderly
+person's home,
+
+1172
+00:54:29,320 --> 00:54:33,280
+and you could detect if
+that elderly patient falls.
+
+1173
+00:54:33,280 --> 00:54:36,133
+And of course if the patient
+has fallen, and they're elderly,
+
+1174
+00:54:36,133 --> 00:54:38,050
+it might be very hard
+for them to get back up.
+
+1175
+00:54:38,050 --> 00:54:40,180
+They might have broken
+a hip, for example.
+
+1176
+00:54:40,180 --> 00:54:43,070
+And one could then alert the
+caregivers, maybe if necessary,
+
+1177
+00:54:43,070 --> 00:54:44,440
+bring in emergency support.
+
+1178
+00:54:44,440 --> 00:54:48,110
+And that could have a long-term
+outcome for this patient which
+
+1179
+00:54:48,110 --> 00:54:50,380
+would really help them.
+
+1180
+00:54:50,380 --> 00:54:54,340
+So this is an example of what
+I mean by better tracking
+
+1181
+00:54:54,340 --> 00:54:55,940
+patients with chronic disease.
+
+1182
+00:54:55,940 --> 00:54:57,580
+Another example
+comes from patients
+
+1183
+00:54:57,580 --> 00:55:00,160
+who have type 1 diabetes.
+
+1184
+00:55:00,160 --> 00:55:03,190
+Type 1 diabetes, as
+opposed to type 2 diabetes,
+
+1185
+00:55:03,190 --> 00:55:07,810
+generally develops in
+patients at a very early age.
+
+1186
+00:55:07,810 --> 00:55:09,880
+Usually as children
+it's diagnosed.
+
+1187
+00:55:09,880 --> 00:55:14,920
+And one is typically managed by
+having an insulin pump, which
+
+1188
+00:55:14,920 --> 00:55:22,030
+is attached to a patient and
+can give injections of insulin
+
+1189
+00:55:22,030 --> 00:55:24,010
+on the fly, as necessary.
+
+1190
+00:55:24,010 --> 00:55:27,460
+But there's a really challenging
+control problem there.
+
+1191
+00:55:27,460 --> 00:55:30,445
+If you give a patient too much
+insulin, you could kill them.
+
+1192
+00:55:30,445 --> 00:55:33,790
+If you give them
+too little insulin,
+
+1193
+00:55:33,790 --> 00:55:35,223
+you could really hurt them.
+
+1194
+00:55:35,223 --> 00:55:36,640
+And how much insulin
+you give them
+
+1195
+00:55:36,640 --> 00:55:38,220
+is going to be a function
+of their activity.
+
+1196
+00:55:38,220 --> 00:55:40,512
+It's going to be a function
+of what food they're eating
+
+1197
+00:55:40,512 --> 00:55:42,920
+and various other factors.
+
+1198
+00:55:42,920 --> 00:55:46,237
+So this is a question which the
+control theory community has
+
+1199
+00:55:46,237 --> 00:55:48,070
+been thinking through
+for a number of years,
+
+1200
+00:55:48,070 --> 00:55:50,680
+and there are a number of
+sophisticated algorithms
+
+1201
+00:55:50,680 --> 00:55:52,680
+that are present in
+today's products,
+
+1202
+00:55:52,680 --> 00:55:55,180
+and I wouldn't be surprised if
+one or two people in the room
+
+1203
+00:55:55,180 --> 00:55:57,202
+today have one of these.
+
+1204
+00:55:57,202 --> 00:55:59,410
+But it also presents a really
+interesting opportunity
+
+1205
+00:55:59,410 --> 00:56:00,490
+for machine learning.
+
+1206
+00:56:00,490 --> 00:56:02,800
+Because right now, we're
+not doing a very good job
+
+1207
+00:56:02,800 --> 00:56:05,350
+at predicting future
+glucose levels, which
+
+1208
+00:56:05,350 --> 00:56:08,140
+is essential to figure out
+how to regulate insulin.
+
+1209
+00:56:08,140 --> 00:56:10,450
+And if we had algorithms
+that could, for example, take
+
+1210
+00:56:10,450 --> 00:56:13,480
+a patient's phone, take
+a picture of the food
+
+1211
+00:56:13,480 --> 00:56:16,900
+that a patient is eating,
+have that automatically
+
+1212
+00:56:16,900 --> 00:56:19,390
+feed into an algorithm that
+predicts its caloric content
+
+1213
+00:56:19,390 --> 00:56:22,270
+and how quickly that'll
+be processed by the body.
+
+1214
+00:56:22,270 --> 00:56:24,190
+And then as a result
+of that, think about
+
+1215
+00:56:24,190 --> 00:56:28,810
+when, based on this patient's
+metabolic system, when should
+
+1216
+00:56:28,810 --> 00:56:31,600
+you start increasing insulin
+levels and by how much.
+
+1217
+00:56:31,600 --> 00:56:33,600
+That could have a huge
+impact in quality of life
+
+1218
+00:56:33,600 --> 00:56:36,610
+of these types of patients.
+
+1219
+00:56:36,610 --> 00:56:38,290
+So finally, we've
+talked a lot about how
+
+1220
+00:56:38,290 --> 00:56:41,290
+do we manage healthcare,
+but equally important
+
+1221
+00:56:41,290 --> 00:56:43,520
+is about discovery.
+
+1222
+00:56:43,520 --> 00:56:45,040
+So the same data
+that we could use
+
+1223
+00:56:45,040 --> 00:56:48,040
+to try to change the way that
+algorithms are implemented
+
+1224
+00:56:48,040 --> 00:56:51,730
+could be used to think through
+what would be new treatments
+
+1225
+00:56:51,730 --> 00:56:55,160
+and make new discoveries
+about disease subtypes.
+
+1226
+00:56:55,160 --> 00:56:56,770
+So at one point later
+in the semester,
+
+1227
+00:56:56,770 --> 00:56:59,050
+we'll be talking about
+disease progression modeling,
+
+1228
+00:56:59,050 --> 00:57:01,450
+and we'll talk about how to
+use data-driven approaches
+
+1229
+00:57:01,450 --> 00:57:06,017
+to discover different
+subtypes of disease.
+
+1230
+00:57:06,017 --> 00:57:07,600
+And on the left,
+here, I'm showing you
+
+1231
+00:57:07,600 --> 00:57:11,280
+an example of a really nice
+study from back in 2008
+
+1232
+00:57:11,280 --> 00:57:13,510
+that used a k-means
+clustering algorithm
+
+1233
+00:57:13,510 --> 00:57:16,552
+to discover subtypes of asthma.
+
+1234
+00:57:16,552 --> 00:57:18,010
+One could also use
+machine learning
+
+1235
+00:57:18,010 --> 00:57:26,120
+to try to make discoveries about
+what proteins, for example,
+
+1236
+00:57:26,120 --> 00:57:29,830
+are important in
+regulating disease.
+
+1237
+00:57:29,830 --> 00:57:33,250
+How can we differentiate at a
+biological level which patients
+
+1238
+00:57:33,250 --> 00:57:35,350
+will progress quickly,
+which patients
+
+1239
+00:57:35,350 --> 00:57:37,360
+will respond to treatment.
+
+1240
+00:57:37,360 --> 00:57:41,080
+And that of course will
+then suggest new ways of--
+
+1241
+00:57:41,080 --> 00:57:46,670
+new drug targets for new
+pharmaceutical efforts.
+
+1242
+00:57:46,670 --> 00:57:49,240
+Another direction also
+studied here at MIT,
+
+1243
+00:57:49,240 --> 00:57:52,900
+by quite a few labs, actually,
+has to do with drug creation
+
+1244
+00:57:52,900 --> 00:57:54,280
+or discovery.
+
+1245
+00:57:54,280 --> 00:57:56,230
+So one could use machine
+learning algorithms
+
+1246
+00:57:56,230 --> 00:58:01,117
+to try to predict what
+would a good antibody be
+
+1247
+00:58:01,117 --> 00:58:02,950
+for trying to bind with
+a particular target.
+
+1248
+00:58:06,170 --> 00:58:09,940
+So that's all for my overview.
+
+1249
+00:58:09,940 --> 00:58:12,100
+And in the remaining
+20 minutes, I'm
+
+1250
+00:58:12,100 --> 00:58:13,930
+going to tell you a
+little bit about what's
+
+1251
+00:58:13,930 --> 00:58:15,970
+unique about machine
+learning in healthcare,
+
+1252
+00:58:15,970 --> 00:58:18,610
+and then an overview
+of the class syllabus.
+
+1253
+00:58:18,610 --> 00:58:22,180
+And I do see that it says,
+replace lamp in six minutes,
+
+1254
+00:58:22,180 --> 00:58:24,290
+or power will turn off
+and go into standby mode.
+
+1255
+00:58:24,290 --> 00:58:26,036
+AUDIENCE: We have
+that one [INAUDIBLE]..
+
+1256
+00:58:26,036 --> 00:58:27,500
+DAVID SONTAG: Ah, OK.
+
+1257
+00:58:27,500 --> 00:58:29,530
+Good.
+
+1258
+00:58:29,530 --> 00:58:31,210
+You're hired.
+
+1259
+00:58:31,210 --> 00:58:34,990
+If you didn't get into the
+class, talk to me afterwards.
+
+1260
+00:58:34,990 --> 00:58:35,490
+All right.
+
+1261
+00:58:35,490 --> 00:58:36,933
+AUDIENCE: [INAUDIBLE].
+
+1262
+00:58:36,933 --> 00:58:39,825
+DAVID SONTAG: [LAUGHS] We hope.
+
+1263
+00:58:39,825 --> 00:58:41,950
+So what's unique about
+machine learning healthcare?
+
+1264
+00:58:41,950 --> 00:58:45,160
+I gave you already
+some hints at this.
+
+1265
+00:58:45,160 --> 00:58:50,410
+So first, healthcare is
+ultimately, unfortunately,
+
+1266
+00:58:50,410 --> 00:58:53,440
+about life or death decisions.
+
+1267
+00:58:53,440 --> 00:58:59,550
+So we need robust algorithms
+that don't screw up.
+
+1268
+00:58:59,550 --> 00:59:02,220
+A prime example of this, which
+I'll tell you a little bit more
+
+1269
+00:59:02,220 --> 00:59:06,930
+about towards the
+end of the semester
+
+1270
+00:59:06,930 --> 00:59:12,210
+is from a major software
+error that occurred something
+
+1271
+00:59:12,210 --> 00:59:17,430
+like 20, 30 years ago in a--
+
+1272
+00:59:17,430 --> 00:59:21,030
+in an X-ray type
+of device, where
+
+1273
+00:59:21,030 --> 00:59:23,790
+an overwhelming
+amount of radiation
+
+1274
+00:59:23,790 --> 00:59:27,390
+was exposed to a patient just
+because of a software overflow
+
+1275
+00:59:27,390 --> 00:59:29,370
+problem, a bug.
+
+1276
+00:59:29,370 --> 00:59:33,890
+And of course that resulted
+in a number of patients dying.
+
+1277
+00:59:33,890 --> 00:59:39,020
+So that was a software
+error from decades ago,
+
+1278
+00:59:39,020 --> 00:59:41,120
+where there was no machine
+learning in the loop.
+
+1279
+00:59:41,120 --> 00:59:46,200
+And as a result of that and
+similar types of disasters,
+
+1280
+00:59:46,200 --> 00:59:50,030
+including in the space industry
+and airplanes and so on,
+
+1281
+00:59:50,030 --> 00:59:54,050
+led to a whole area of
+research in computer science
+
+1282
+00:59:54,050 --> 00:59:57,840
+in formal methods and how do we
+design computer algorithms that
+
+1283
+00:59:57,840 --> 01:00:01,440
+can check that a
+piece of software
+
+1284
+01:00:01,440 --> 01:00:03,690
+would do what it's supposed
+to do and would not make--
+
+1285
+01:00:03,690 --> 01:00:05,940
+and that there
+are no bugs in it.
+
+1286
+01:00:05,940 --> 01:00:08,610
+But now that we're going to
+start to bring data and machine
+
+1287
+01:00:08,610 --> 01:00:11,290
+learning algorithms
+into the picture,
+
+1288
+01:00:11,290 --> 01:00:15,630
+we are really suffering
+for lack of good tools
+
+1289
+01:00:15,630 --> 01:00:18,510
+for doing similar formal
+checking of our algorithms
+
+1290
+01:00:18,510 --> 01:00:20,240
+and their behavior.
+
+1291
+01:00:20,240 --> 01:00:22,260
+And so this is going
+to be really important
+
+1292
+01:00:22,260 --> 01:00:26,220
+in the future decade, as
+machine learning gets deployed
+
+1293
+01:00:26,220 --> 01:00:27,970
+not just in settings
+like healthcare,
+
+1294
+01:00:27,970 --> 01:00:30,430
+but also in other settings
+of life and death,
+
+1295
+01:00:30,430 --> 01:00:32,690
+such as in autonomous driving.
+
+1296
+01:00:32,690 --> 01:00:34,770
+And it's something
+that we'll touch on
+
+1297
+01:00:34,770 --> 01:00:36,558
+throughout the semester.
+
+1298
+01:00:36,558 --> 01:00:39,100
+So for example, when one deploys
+machine learning algorithms,
+
+1299
+01:00:39,100 --> 01:00:41,910
+we need to be thinking about
+are they safe, but also
+
+1300
+01:00:41,910 --> 01:00:44,310
+how do we check for
+safety long-term?
+
+1301
+01:00:44,310 --> 01:00:45,810
+What are checks and
+balances that we
+
+1302
+01:00:45,810 --> 01:00:48,540
+should put into the deployment
+of the algorithm to make
+
+1303
+01:00:48,540 --> 01:00:52,200
+sure that it's still
+working as it was intended?
+
+1304
+01:00:52,200 --> 01:00:54,270
+We also need fair and
+accountable algorithms.
+
+1305
+01:00:54,270 --> 01:00:57,120
+Because increasingly,
+machine learning results
+
+1306
+01:00:57,120 --> 01:00:59,430
+are being used to
+drive resources
+
+1307
+01:00:59,430 --> 01:01:02,190
+in a healthcare setting.
+
+1308
+01:01:02,190 --> 01:01:04,740
+An example that I'll discuss
+in about a week and a half,
+
+1309
+01:01:04,740 --> 01:01:06,840
+when we talk about
+risk stratification,
+
+1310
+01:01:06,840 --> 01:01:10,560
+is that algorithms are
+being used by payers
+
+1311
+01:01:10,560 --> 01:01:12,420
+to risk stratify patients.
+
+1312
+01:01:12,420 --> 01:01:14,310
+For example, to figure
+out which patients
+
+1313
+01:01:14,310 --> 01:01:17,610
+are likely to be readmitted
+to the hospital in the next 30
+
+1314
+01:01:17,610 --> 01:01:20,340
+days, or are likely
+to have undiagnosed
+
+1315
+01:01:20,340 --> 01:01:22,440
+diabetes, or are likely
+to progress quickly
+
+1316
+01:01:22,440 --> 01:01:23,545
+in their diabetes.
+
+1317
+01:01:23,545 --> 01:01:25,170
+And based on those
+predictions, they're
+
+1318
+01:01:25,170 --> 01:01:26,503
+doing a number of interventions.
+
+1319
+01:01:26,503 --> 01:01:29,820
+For example, they might send
+nurses to the patient's home.
+
+1320
+01:01:29,820 --> 01:01:35,790
+They might offer
+their members access
+
+1321
+01:01:35,790 --> 01:01:39,368
+to a weight loss program.
+
+1322
+01:01:39,368 --> 01:01:41,910
+And each of these interventions
+has money associated to them.
+
+1323
+01:01:41,910 --> 01:01:42,630
+They have a cost.
+
+1324
+01:01:42,630 --> 01:01:44,288
+And so you can't do
+them for everyone.
+
+1325
+01:01:44,288 --> 01:01:46,080
+And so one uses machine
+learning algorithms
+
+1326
+01:01:46,080 --> 01:01:50,070
+to prioritize who do you
+give those interventions to.
+
+1327
+01:01:50,070 --> 01:01:53,460
+But because health
+is so intimately tied
+
+1328
+01:01:53,460 --> 01:01:57,570
+to socioeconomic
+status, one can think
+
+1329
+01:01:57,570 --> 01:02:00,660
+about what happens if these
+algorithms are not fair.
+
+1330
+01:02:00,660 --> 01:02:04,098
+It could have really long-term
+implications for our society,
+
+1331
+01:02:04,098 --> 01:02:06,390
+and it's something that we're
+going to talk about later
+
+1332
+01:02:06,390 --> 01:02:09,460
+in the semester as well.
+
+1333
+01:02:09,460 --> 01:02:10,920
+Now, I mentioned
+earlier that many
+
+1334
+01:02:10,920 --> 01:02:14,820
+of the questions that we
+need to study in the field
+
+1335
+01:02:14,820 --> 01:02:18,190
+don't have good label data.
+
+1336
+01:02:18,190 --> 01:02:19,940
+In cases where we know
+we want to predict,
+
+1337
+01:02:19,940 --> 01:02:21,750
+there's a supervised
+prediction problem,
+
+1338
+01:02:21,750 --> 01:02:23,667
+often we just don't have
+labels for that thing
+
+1339
+01:02:23,667 --> 01:02:24,762
+we want to predict.
+
+1340
+01:02:24,762 --> 01:02:26,220
+But also, in many
+situations, we're
+
+1341
+01:02:26,220 --> 01:02:28,053
+not interested in just
+predicting something.
+
+1342
+01:02:28,053 --> 01:02:29,410
+We're interested in discovery.
+
+1343
+01:02:29,410 --> 01:02:31,770
+So for example, when I talk
+about disease subtyping
+
+1344
+01:02:31,770 --> 01:02:34,560
+or disease progression,
+it's much harder
+
+1345
+01:02:34,560 --> 01:02:36,415
+to quantify what
+you're looking for.
+
+1346
+01:02:36,415 --> 01:02:38,040
+And so unsupervised
+learning algorithms
+
+1347
+01:02:38,040 --> 01:02:40,030
+are going to be really
+important for what we do.
+
+1348
+01:02:40,030 --> 01:02:42,447
+And finally, I already mentioned
+how many of the questions
+
+1349
+01:02:42,447 --> 01:02:44,440
+we want to answer
+are causal in nature,
+
+1350
+01:02:44,440 --> 01:02:45,898
+particularly when
+you want to think
+
+1351
+01:02:45,898 --> 01:02:47,430
+about treatment strategies.
+
+1352
+01:02:47,430 --> 01:02:51,110
+And so we'll have two
+lectures on causal inference,
+
+1353
+01:02:51,110 --> 01:02:53,610
+and we'll have two lectures on
+reinforcement learning, which
+
+1354
+01:02:53,610 --> 01:02:55,890
+is increasingly being
+used to learn treatment
+
+1355
+01:02:55,890 --> 01:02:57,511
+policies in healthcare.
+
+1356
+01:03:02,810 --> 01:03:06,830
+So all of these
+different problems
+
+1357
+01:03:06,830 --> 01:03:11,150
+that we've talked about result
+in our having to rethink how
+
+1358
+01:03:11,150 --> 01:03:14,550
+do we do machine
+learning in this setting.
+
+1359
+01:03:14,550 --> 01:03:19,050
+For example, because
+driving labels
+
+1360
+01:03:19,050 --> 01:03:23,890
+for supervised
+prediction is very hard,
+
+1361
+01:03:23,890 --> 01:03:27,422
+one has to think through how
+could we automatically build
+
+1362
+01:03:27,422 --> 01:03:29,630
+algorithms to do what's
+called electronic phenotyping
+
+1363
+01:03:29,630 --> 01:03:32,148
+to discover, to figure
+out automatically,
+
+1364
+01:03:32,148 --> 01:03:34,190
+what is the relevant labels
+for a set of patients
+
+1365
+01:03:34,190 --> 01:03:37,830
+that one could then attempt
+to predict in the future.
+
+1366
+01:03:37,830 --> 01:03:40,080
+Because we often have
+very little data,
+
+1367
+01:03:40,080 --> 01:03:42,810
+for example, some
+rare diseases, there
+
+1368
+01:03:42,810 --> 01:03:44,880
+might only be a few
+hundred or a few thousand
+
+1369
+01:03:44,880 --> 01:03:48,000
+people in the nation
+that have that disease.
+
+1370
+01:03:48,000 --> 01:03:51,270
+Some common diseases
+present in very diverse ways
+
+1371
+01:03:51,270 --> 01:03:54,390
+and [INAUDIBLE] are very rare.
+
+1372
+01:03:54,390 --> 01:03:57,435
+Because of that, you have just a
+small number of patient samples
+
+1373
+01:03:57,435 --> 01:03:59,060
+that you could get,
+even if you had all
+
+1374
+01:03:59,060 --> 01:04:00,850
+of the data in the right place.
+
+1375
+01:04:00,850 --> 01:04:03,990
+And so we need to think through
+how can we bring through--
+
+1376
+01:04:03,990 --> 01:04:08,010
+how can we bring together
+domain knowledge.
+
+1377
+01:04:08,010 --> 01:04:10,740
+How can we bring together
+data from other areas--
+
+1378
+01:04:10,740 --> 01:04:14,280
+will everyone look
+over here now--
+
+1379
+01:04:14,280 --> 01:04:15,978
+from other areas,
+other diseases,
+
+1380
+01:04:15,978 --> 01:04:17,520
+in order to learn
+something that then
+
+1381
+01:04:17,520 --> 01:04:20,640
+we could refine for
+the foreground question
+
+1382
+01:04:20,640 --> 01:04:21,150
+of interest.
+
+1383
+01:04:23,890 --> 01:04:27,950
+Finally, there is a ton of
+missing data in healthcare.
+
+1384
+01:04:27,950 --> 01:04:32,880
+So raise your hand
+if you've only
+
+1385
+01:04:32,880 --> 01:04:35,310
+been seeing your current
+primary care physician
+
+1386
+01:04:35,310 --> 01:04:36,450
+for less than four years.
+
+1387
+01:04:40,370 --> 01:04:40,870
+OK.
+
+1388
+01:04:40,870 --> 01:04:42,828
+Now, this was an easy
+guess, because all of you
+
+1389
+01:04:42,828 --> 01:04:46,170
+are students, and you
+probably don't live in Boston.
+
+1390
+01:04:46,170 --> 01:04:51,420
+But here in the US, even
+after you graduate, you go out
+
+1391
+01:04:51,420 --> 01:04:54,345
+into the world, you
+have a job, and that job
+
+1392
+01:04:54,345 --> 01:04:55,470
+pays your health insurance.
+
+1393
+01:04:55,470 --> 01:04:56,110
+And you know what?
+
+1394
+01:04:56,110 --> 01:04:57,430
+Most of you are going to
+go into the tech industry,
+
+1395
+01:04:57,430 --> 01:04:59,620
+and most of you are going to
+switch jobs every four years.
+
+1396
+01:04:59,620 --> 01:05:00,670
+And so your health
+insurance is going
+
+1397
+01:05:00,670 --> 01:05:01,690
+to change every four years.
+
+1398
+01:05:01,690 --> 01:05:03,190
+And unfortunately,
+data doesn't tend
+
+1399
+01:05:03,190 --> 01:05:07,180
+to follow people when you
+change providers or payers.
+
+1400
+01:05:07,180 --> 01:05:09,478
+And so what that
+means is for any one
+
+1401
+01:05:09,478 --> 01:05:11,020
+thing we might want
+to study, we tend
+
+1402
+01:05:11,020 --> 01:05:13,150
+to not have very good
+longitudinal data
+
+1403
+01:05:13,150 --> 01:05:15,880
+on those individuals, at least
+not here in the United States.
+
+1404
+01:05:15,880 --> 01:05:18,088
+That story is a little bit
+different in other places,
+
+1405
+01:05:18,088 --> 01:05:21,060
+like the UK or
+Israel, for example.
+
+1406
+01:05:21,060 --> 01:05:26,560
+Moreover, we also
+have a very bad lens
+
+1407
+01:05:26,560 --> 01:05:28,060
+on that healthcare data.
+
+1408
+01:05:28,060 --> 01:05:31,390
+So even if you've been going
+to the same doctor for a while,
+
+1409
+01:05:31,390 --> 01:05:34,835
+we tend to only have data on you
+when something's been recorded.
+
+1410
+01:05:34,835 --> 01:05:37,210
+So if you went to a doctor,
+you had a lab test performed,
+
+1411
+01:05:37,210 --> 01:05:38,620
+we know the results of it.
+
+1412
+01:05:38,620 --> 01:05:40,810
+If you've never gotten
+your glucose tested,
+
+1413
+01:05:40,810 --> 01:05:43,420
+it's very hard,
+though not impossible,
+
+1414
+01:05:43,420 --> 01:05:46,330
+to figure out if you
+might be diabetic.
+
+1415
+01:05:46,330 --> 01:05:48,837
+So thinking about how
+do we deal with the fact
+
+1416
+01:05:48,837 --> 01:05:50,670
+that there's a large
+amount of missing data,
+
+1417
+01:05:50,670 --> 01:05:53,830
+where that missing data
+has very different patterns
+
+1418
+01:05:53,830 --> 01:05:56,560
+across patients, and
+where there might
+
+1419
+01:05:56,560 --> 01:06:00,340
+be a big difference between
+train and test distributions
+
+1420
+01:06:00,340 --> 01:06:04,030
+is going to be a major part of
+what we discuss in this course.
+
+1421
+01:06:04,030 --> 01:06:06,160
+And finally, the last
+example is censoring.
+
+1422
+01:06:06,160 --> 01:06:08,310
+I think I've said
+finally a few times.
+
+1423
+01:06:08,310 --> 01:06:11,680
+So censoring, which we'll
+talk about in two weeks,
+
+1424
+01:06:11,680 --> 01:06:14,140
+is what happens
+when you have data
+
+1425
+01:06:14,140 --> 01:06:15,800
+only for small windows of time.
+
+1426
+01:06:15,800 --> 01:06:19,520
+So for example, you have a
+data set where your goal is
+
+1427
+01:06:19,520 --> 01:06:21,640
+to predict survival.
+
+1428
+01:06:21,640 --> 01:06:24,130
+You want to know how
+long until a person dies.
+
+1429
+01:06:24,130 --> 01:06:27,700
+But a person-- you
+only have data on them
+
+1430
+01:06:27,700 --> 01:06:30,190
+up to January 2009,
+and they haven't yet
+
+1431
+01:06:30,190 --> 01:06:31,485
+died by January 2009.
+
+1432
+01:06:31,485 --> 01:06:32,860
+Then that individual
+is censored.
+
+1433
+01:06:32,860 --> 01:06:34,527
+You don't know what
+would have happened,
+
+1434
+01:06:34,527 --> 01:06:36,322
+you don't know when they died.
+
+1435
+01:06:36,322 --> 01:06:38,780
+So that doesn't mean you should
+throw away that data point.
+
+1436
+01:06:38,780 --> 01:06:40,197
+In fact, we'll
+talk about learning
+
+1437
+01:06:40,197 --> 01:06:45,540
+algorithms that can learn from
+censored data very effectively.
+
+1438
+01:06:45,540 --> 01:06:48,740
+So there are a number of also
+logistical challenges to doing
+
+1439
+01:06:48,740 --> 01:06:50,450
+machine learning in healthcare.
+
+1440
+01:06:50,450 --> 01:06:53,130
+I talked about how having
+access to data is so important,
+
+1441
+01:06:53,130 --> 01:06:54,950
+but one of the reasons--
+there are others--
+
+1442
+01:06:54,950 --> 01:06:58,070
+for why getting large amounts
+of data in the public domain
+
+1443
+01:06:58,070 --> 01:07:00,230
+is challenging is because
+it's so sensitive.
+
+1444
+01:07:00,230 --> 01:07:04,250
+And removing identifiers,
+like name and social,
+
+1445
+01:07:04,250 --> 01:07:06,980
+from data which
+includes free text notes
+
+1446
+01:07:06,980 --> 01:07:09,230
+can be very challenging.
+
+1447
+01:07:09,230 --> 01:07:12,260
+And as a result, when we
+do research here at MIT,
+
+1448
+01:07:12,260 --> 01:07:15,710
+typically, it takes us
+anywhere from a few months--
+
+1449
+01:07:15,710 --> 01:07:18,140
+which has never happened--
+to two years, which
+
+1450
+01:07:18,140 --> 01:07:21,140
+is the usual situation, to
+negotiate a data sharing
+
+1451
+01:07:21,140 --> 01:07:24,860
+agreement to get the health
+data to MIT to do research on.
+
+1452
+01:07:24,860 --> 01:07:27,260
+And of course then
+my students write
+
+1453
+01:07:27,260 --> 01:07:30,140
+code, which we're very happy to
+open source under MIT license,
+
+1454
+01:07:30,140 --> 01:07:31,640
+but that code is
+completely useless,
+
+1455
+01:07:31,640 --> 01:07:34,268
+because no one can reproduce
+their results on the same data
+
+1456
+01:07:34,268 --> 01:07:35,810
+because they don't
+have access to it.
+
+1457
+01:07:35,810 --> 01:07:39,682
+So that's a major
+challenge to this field.
+
+1458
+01:07:39,682 --> 01:07:41,390
+Another challenge is
+about the difficulty
+
+1459
+01:07:41,390 --> 01:07:46,250
+in deploying machine learning
+algorithms due to the challenge
+
+1460
+01:07:46,250 --> 01:07:47,610
+of integration.
+
+1461
+01:07:47,610 --> 01:07:48,860
+So you build a good algorithm.
+
+1462
+01:07:48,860 --> 01:07:52,370
+You want to deploy it at
+your favorite hospital,
+
+1463
+01:07:52,370 --> 01:07:53,330
+but guess what?
+
+1464
+01:07:53,330 --> 01:07:58,460
+That hospital has Epic
+or Cerner or Athena
+
+1465
+01:07:58,460 --> 01:08:00,700
+or some other commercial
+electronic medical records
+
+1466
+01:08:00,700 --> 01:08:03,500
+system, and that electronic
+medical records system
+
+1467
+01:08:03,500 --> 01:08:07,070
+is not built for your
+algorithm to plug into.
+
+1468
+01:08:07,070 --> 01:08:11,120
+So there is a big
+gap, a large amount
+
+1469
+01:08:11,120 --> 01:08:15,050
+of difficulty to getting your
+algorithms into production
+
+1470
+01:08:15,050 --> 01:08:19,520
+systems, which we'll talk about
+as well during the semester.
+
+1471
+01:08:22,970 --> 01:08:27,649
+So the goals that Pete and I
+have for you are as follows.
+
+1472
+01:08:27,649 --> 01:08:30,640
+We want you to get intuition for
+working with healthcare data.
+
+1473
+01:08:30,640 --> 01:08:33,130
+And so the next two
+lectures after today
+
+1474
+01:08:33,130 --> 01:08:38,420
+are going to focus on what
+healthcare is really like,
+
+1475
+01:08:38,420 --> 01:08:40,819
+and what is the
+healthcare data that's
+
+1476
+01:08:40,819 --> 01:08:45,229
+created by the practice
+of healthcare like.
+
+1477
+01:08:45,229 --> 01:08:46,910
+We want you to get
+intuition for how
+
+1478
+01:08:46,910 --> 01:08:49,850
+to formalize machine learning
+challenges as healthcare
+
+1479
+01:08:49,850 --> 01:08:51,279
+problems.
+
+1480
+01:08:51,279 --> 01:08:53,567
+And that formalization step
+is often the most tricky
+
+1481
+01:08:53,567 --> 01:08:55,609
+and something you'll spend
+a lot of time thinking
+
+1482
+01:08:55,609 --> 01:08:58,620
+through as part of
+your problem sets.
+
+1483
+01:08:58,620 --> 01:09:01,470
+Not all machine learning
+algorithms are equally useful.
+
+1484
+01:09:01,470 --> 01:09:03,479
+And so one theme
+that I'll return to
+
+1485
+01:09:03,479 --> 01:09:06,720
+throughout the semester
+is that despite the fact
+
+1486
+01:09:06,720 --> 01:09:09,660
+that deep learning is good
+for many speech recognition
+
+1487
+01:09:09,660 --> 01:09:12,720
+and computer vision problems,
+it actually isn't the best match
+
+1488
+01:09:12,720 --> 01:09:14,293
+to many problems in healthcare.
+
+1489
+01:09:14,293 --> 01:09:16,710
+And you'll explore that also
+as part of your problem sets,
+
+1490
+01:09:16,710 --> 01:09:18,910
+or at least one of them.
+
+1491
+01:09:18,910 --> 01:09:21,750
+And we want you to understand
+also the subtleties in robustly
+
+1492
+01:09:21,750 --> 01:09:24,520
+and safely deploying
+machine learning algorithms.
+
+1493
+01:09:24,520 --> 01:09:27,590
+Now, more broadly,
+this is a young field.
+
+1494
+01:09:27,590 --> 01:09:32,680
+So for example, just recently,
+just about three years ago,
+
+1495
+01:09:32,680 --> 01:09:35,830
+was created the first
+conference on Machine Learning
+
+1496
+01:09:35,830 --> 01:09:38,689
+in Healthcare, by that name.
+
+1497
+01:09:38,689 --> 01:09:43,210
+And new publication venues are
+being created every single day
+
+1498
+01:09:43,210 --> 01:09:48,670
+by Nature, Lancet, and also
+machine learning journals,
+
+1499
+01:09:48,670 --> 01:09:51,808
+for publishing research on
+machine learning healthcare.
+
+1500
+01:09:51,808 --> 01:09:53,850
+Because it's one of those
+issues we talked about,
+
+1501
+01:09:53,850 --> 01:09:59,610
+like access to data, not
+very good benchmarks,
+
+1502
+01:09:59,610 --> 01:10:01,515
+reproducibility has
+been a major challenge.
+
+1503
+01:10:01,515 --> 01:10:04,140
+And this is again something that
+the field is only now starting
+
+1504
+01:10:04,140 --> 01:10:05,930
+to really grapple with.
+
+1505
+01:10:05,930 --> 01:10:08,400
+And so as part of this
+course, oh so many of you
+
+1506
+01:10:08,400 --> 01:10:11,285
+are currently PhD students
+or will soon be PhD students,
+
+1507
+01:10:11,285 --> 01:10:12,660
+we're going to
+think through what
+
+1508
+01:10:12,660 --> 01:10:16,163
+are some of the challenges
+for the research field.
+
+1509
+01:10:16,163 --> 01:10:17,580
+What are some of
+the open problems
+
+1510
+01:10:17,580 --> 01:10:19,830
+that you might want to work
+on, either during your PhD
+
+1511
+01:10:19,830 --> 01:10:21,770
+or during your future career.

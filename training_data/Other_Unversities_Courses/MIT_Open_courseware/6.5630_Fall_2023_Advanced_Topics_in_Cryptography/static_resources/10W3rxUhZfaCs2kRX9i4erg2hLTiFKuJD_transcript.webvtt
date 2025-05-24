@@ -1,0 +1,4805 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:01.458 align:middle line:90%
+[SQUEAKING]
+
+00:00:01.458 --> 00:00:04.374 align:middle line:90%
+[RUSTLING]
+
+00:00:04.374 --> 00:00:07.776 align:middle line:90%
+[CLICKING]
+
+00:00:07.776 --> 00:00:12.640 align:middle line:90%
+
+
+00:00:12.640 --> 00:00:14.347 align:middle line:84%
+PROFESSOR: Next thing
+I want to do, now
+
+00:00:14.347 --> 00:00:16.430 align:middle line:84%
+that we have Fiat-Shamir--
+so now what do we know?
+
+00:00:16.430 --> 00:00:17.568 align:middle line:90%
+We have this protocol.
+
+00:00:17.568 --> 00:00:19.360 align:middle line:84%
+Again, I'm always
+thinking of this protocol
+
+00:00:19.360 --> 00:00:21.880 align:middle line:84%
+as parallel repetition--
+parallel repeated.
+
+00:00:21.880 --> 00:00:25.070 align:middle line:84%
+And we know the
+Fiat-Shamir sound on it.
+
+00:00:25.070 --> 00:00:29.150 align:middle line:84%
+Now what's really nice about
+it, that this gives us-- so now
+
+00:00:29.150 --> 00:00:32.490 align:middle line:84%
+I wanted to say two things
+in the hour or so remaining.
+
+00:00:32.490 --> 00:00:36.470 align:middle line:84%
+One thing I want to say is
+that it gives us a NIZK.
+
+00:00:36.470 --> 00:00:40.410 align:middle line:84%
+Non-Interactive
+Zero-Knowledge proof.
+
+00:00:40.410 --> 00:00:42.990 align:middle line:84%
+And the second-- and so I
+want to explain what that is.
+
+00:00:42.990 --> 00:00:44.810 align:middle line:84%
+And the second
+thing I want to say
+
+00:00:44.810 --> 00:00:48.860 align:middle line:84%
+is to mention a little bit
+what was the question here
+
+00:00:48.860 --> 00:00:51.590 align:middle line:84%
+in the beginning, which was
+why this contradicts all
+
+00:00:51.590 --> 00:00:53.030 align:middle line:84%
+this idea with
+Fiat-Shamir or not,
+
+00:00:53.030 --> 00:00:55.320 align:middle line:84%
+something weird is going on,
+so I want to talk about that.
+
+00:00:55.320 --> 00:00:56.900 align:middle line:84%
+And I want to end
+with explaining why
+
+00:00:56.900 --> 00:00:58.192 align:middle line:90%
+this technique is more general.
+
+00:00:58.192 --> 00:01:01.110 align:middle line:90%
+
+
+00:01:01.110 --> 00:01:01.630 align:middle line:90%
+OK.
+
+00:01:01.630 --> 00:01:06.790 align:middle line:84%
+So let's first see why
+are we getting a NIZK.
+
+00:01:06.790 --> 00:01:07.310 align:middle line:90%
+OK.
+
+00:01:07.310 --> 00:01:12.950 align:middle line:90%
+So-- OK.
+
+00:01:12.950 --> 00:01:14.230 align:middle line:90%
+So now, what did we get?
+
+00:01:14.230 --> 00:01:15.850 align:middle line:84%
+Once we apply the
+Fiat-Shamir, we
+
+00:01:15.850 --> 00:01:17.270 align:middle line:90%
+have a non-interactive protocol.
+
+00:01:17.270 --> 00:01:21.040 align:middle line:84%
+So let's look at
+this protocol and see
+
+00:01:21.040 --> 00:01:24.280 align:middle line:84%
+what this protocol
+becomes when we apply
+
+00:01:24.280 --> 00:01:25.935 align:middle line:90%
+the Fiat-Shamir paradigm to it.
+
+00:01:25.935 --> 00:01:30.820 align:middle line:90%
+
+
+00:01:30.820 --> 00:01:32.660 align:middle line:90%
+So let me just write it down.
+
+00:01:32.660 --> 00:01:35.046 align:middle line:84%
+Actually, I don't even
+want to write explicit--
+
+00:01:35.046 --> 00:01:38.590 align:middle line:90%
+
+
+00:01:38.590 --> 00:01:39.980 align:middle line:90%
+like everything explicitly.
+
+00:01:39.980 --> 00:01:43.420 align:middle line:84%
+Let me just say this protocol
+had, like, a public key
+
+00:01:43.420 --> 00:01:46.150 align:middle line:90%
+associated with it.
+
+00:01:46.150 --> 00:01:50.710 align:middle line:84%
+Now it also has a hash
+function associated
+
+00:01:50.710 --> 00:01:53.650 align:middle line:84%
+with a hash key, which we
+use for the Fiat-Shamir hash
+
+00:01:53.650 --> 00:01:54.670 align:middle line:90%
+function.
+
+00:01:54.670 --> 00:01:57.640 align:middle line:84%
+And now, essentially,
+the verifier,
+
+00:01:57.640 --> 00:02:01.610 align:middle line:84%
+he sends alpha, which is all
+the commitments per repetition,
+
+00:02:01.610 --> 00:02:02.870 align:middle line:90%
+like the first message.
+
+00:02:02.870 --> 00:02:05.750 align:middle line:84%
+And then he tells you
+beta-- he doesn't send it,
+
+00:02:05.750 --> 00:02:10.210 align:middle line:84%
+everybody computed, but that's
+evaluating, with a hash key,
+
+00:02:10.210 --> 00:02:10.880 align:middle line:90%
+alpha.
+
+00:02:10.880 --> 00:02:13.570 align:middle line:84%
+By the way, I abused
+notation a little bit,
+
+00:02:13.570 --> 00:02:18.490 align:middle line:90%
+and actually, every time you--
+
+00:02:18.490 --> 00:02:19.070 align:middle line:90%
+let's see.
+
+00:02:19.070 --> 00:02:23.070 align:middle line:84%
+There's also a G here, like
+the instance, the graph.
+
+00:02:23.070 --> 00:02:26.560 align:middle line:84%
+Really, what you have
+is the graph in alpha.
+
+00:02:26.560 --> 00:02:28.530 align:middle line:84%
+I kind of omitted the
+graph of the rotation
+
+00:02:28.530 --> 00:02:30.630 align:middle line:84%
+because it's kind of
+cumbersome and it's
+
+00:02:30.630 --> 00:02:31.780 align:middle line:90%
+kind of fixed in advance.
+
+00:02:31.780 --> 00:02:34.357 align:middle line:84%
+The alpha is the one
+that's not fixed,
+
+00:02:34.357 --> 00:02:35.440 align:middle line:90%
+but the G is always there.
+
+00:02:35.440 --> 00:02:37.107 align:middle line:84%
+When you apply
+Fiat-Shamir, you apply it
+
+00:02:37.107 --> 00:02:39.450 align:middle line:84%
+to the first message
+and the instance.
+
+00:02:39.450 --> 00:02:42.270 align:middle line:84%
+OK, so that's the
+beta and gamma.
+
+00:02:42.270 --> 00:02:47.130 align:middle line:84%
+This is-- that's one message
+because we applied Fiat-Shamir.
+
+00:02:47.130 --> 00:02:50.380 align:middle line:84%
+So this protocol, which consists
+of three messages, alpha, beta,
+
+00:02:50.380 --> 00:02:53.680 align:middle line:84%
+gamma, now, once we
+applied Fiat-Shamir,
+
+00:02:53.680 --> 00:02:56.485 align:middle line:84%
+we have not only the
+public key in the CRS,
+
+00:02:56.485 --> 00:02:58.110 align:middle line:84%
+we also have the hash
+key corresponding
+
+00:02:58.110 --> 00:03:00.350 align:middle line:90%
+to the Fiat-Shamir.
+
+00:03:00.350 --> 00:03:03.002 align:middle line:84%
+And now, this alpha, beta,
+gamma are sent all at once.
+
+00:03:03.002 --> 00:03:03.960 align:middle line:90%
+There's no interaction.
+
+00:03:03.960 --> 00:03:06.270 align:middle line:90%
+That's what Fiat-Shamir does.
+
+00:03:06.270 --> 00:03:08.760 align:middle line:84%
+But beta, the prover's
+hands are tied
+
+00:03:08.760 --> 00:03:12.310 align:middle line:84%
+and it should be the
+evaluation of G and alpha.
+
+00:03:12.310 --> 00:03:14.790 align:middle line:84%
+The hash function
+evaluated on G and alpha.
+
+00:03:14.790 --> 00:03:17.500 align:middle line:84%
+So this is completely
+non-interactive.
+
+00:03:17.500 --> 00:03:18.880 align:middle line:90%
+And it's sound.
+
+00:03:18.880 --> 00:03:20.470 align:middle line:84%
+Because we just
+worked hard to prove
+
+00:03:20.470 --> 00:03:25.345 align:middle line:84%
+that it's sound if we use this
+hash function under circle
+
+00:03:25.345 --> 00:03:26.210 align:middle line:90%
+circle FEG.
+
+00:03:26.210 --> 00:03:26.710 align:middle line:90%
+Yeah?
+
+00:03:26.710 --> 00:03:28.293 align:middle line:84%
+AUDIENCE: Is this a
+NIZK argument now,
+
+00:03:28.293 --> 00:03:30.630 align:middle line:84%
+then, because we used
+[INAUDIBLE] security?
+
+00:03:30.630 --> 00:03:32.110 align:middle line:90%
+PROFESSOR: Good.
+
+00:03:32.110 --> 00:03:32.930 align:middle line:90%
+We'll see.
+
+00:03:32.930 --> 00:03:35.900 align:middle line:84%
+You can make it a NIZK
+proof or argument,
+
+00:03:35.900 --> 00:03:38.742 align:middle line:84%
+so we'll talk about
+that in a second.
+
+00:03:38.742 --> 00:03:40.600 align:middle line:90%
+So this is one message.
+
+00:03:40.600 --> 00:03:44.020 align:middle line:90%
+It's sound, and it's complete.
+
+00:03:44.020 --> 00:03:46.100 align:middle line:84%
+Now what happened to
+the zero knowledge?
+
+00:03:46.100 --> 00:03:47.170 align:middle line:90%
+Let's see what happened.
+
+00:03:47.170 --> 00:03:50.060 align:middle line:84%
+Here, we said, we
+had zero knowledge.
+
+00:03:50.060 --> 00:03:53.430 align:middle line:90%
+We could simulate it.
+
+00:03:53.430 --> 00:03:56.400 align:middle line:90%
+What happens here?
+
+00:03:56.400 --> 00:03:59.970 align:middle line:84%
+And what I want to argue
+is that it's-- still,
+
+00:03:59.970 --> 00:04:01.270 align:middle line:90%
+you have zero knowledge.
+
+00:04:01.270 --> 00:04:03.323 align:middle line:84%
+Even though before we
+set future actually
+
+00:04:03.323 --> 00:04:05.190 align:middle line:84%
+routes you that
+shows it's not zero
+
+00:04:05.190 --> 00:04:08.600 align:middle line:84%
+knowledge, this
+non-interactive version,
+
+00:04:08.600 --> 00:04:11.050 align:middle line:84%
+you can prove that it's
+zero knowledge; however,
+
+00:04:11.050 --> 00:04:13.360 align:middle line:84%
+the definition of
+zero knowledge here
+
+00:04:13.360 --> 00:04:17.260 align:middle line:84%
+is a bit different because we
+have a common random string.
+
+00:04:17.260 --> 00:04:19.660 align:middle line:90%
+So now, this common--
+
+00:04:19.660 --> 00:04:22.760 align:middle line:84%
+or common reference
+string, we denote by CRS,
+
+00:04:22.760 --> 00:04:27.640 align:middle line:84%
+it consists of the
+public key, used
+
+00:04:27.640 --> 00:04:30.820 align:middle line:84%
+for the commitment--
+for the message alpha,
+
+00:04:30.820 --> 00:04:34.150 align:middle line:84%
+and the hash key
+used for the CRS.
+
+00:04:34.150 --> 00:04:39.040 align:middle line:84%
+Now, let me-- I want to
+argue that this protocol is
+
+00:04:39.040 --> 00:04:43.060 align:middle line:84%
+non-interactive zero knowledge,
+or is a NIZK, Non-Interactive
+
+00:04:43.060 --> 00:04:45.250 align:middle line:90%
+Zero Knowledge.
+
+00:04:45.250 --> 00:04:48.850 align:middle line:84%
+But to prove that, let me define
+first what non-interactive zero
+
+00:04:48.850 --> 00:04:51.610 align:middle line:84%
+knowledge is because
+the definition is
+
+00:04:51.610 --> 00:04:54.820 align:middle line:84%
+similar to the interactive
+setting, but slightly different.
+
+00:04:54.820 --> 00:04:57.020 align:middle line:84%
+So the definition
+is the following.
+
+00:04:57.020 --> 00:05:02.180 align:middle line:84%
+A NIZK for a language
+L is the following.
+
+00:05:02.180 --> 00:05:08.140 align:middle line:84%
+It says that for any PPT
+V star-- or poly size--
+
+00:05:08.140 --> 00:05:10.150 align:middle line:84%
+it can be non-- it
+can be poly-- but, OK,
+
+00:05:10.150 --> 00:05:14.100 align:middle line:84%
+let me-- for any
+PPT V star, there
+
+00:05:14.100 --> 00:05:17.700 align:middle line:84%
+exists a simulator, a PPT
+simulator, a Probablistic
+
+00:05:17.700 --> 00:05:23.460 align:middle line:84%
+Polynomial Time simulator,
+such that the simulator
+
+00:05:23.460 --> 00:05:26.910 align:middle line:84%
+can simulate everything
+that the verifier learns
+
+00:05:26.910 --> 00:05:28.250 align:middle line:90%
+in the real world.
+
+00:05:28.250 --> 00:05:30.780 align:middle line:84%
+So what if the view
+of the verifier
+
+00:05:30.780 --> 00:05:33.000 align:middle line:90%
+in the real world such that--
+
+00:05:33.000 --> 00:05:35.710 align:middle line:84%
+the view of the verifier in
+the real world, which is what?
+
+00:05:35.710 --> 00:05:38.130 align:middle line:90%
+It's the CRS.
+
+00:05:38.130 --> 00:05:40.710 align:middle line:84%
+So every NIZK is a--
+it's non-interactive
+
+00:05:40.710 --> 00:05:42.300 align:middle line:90%
+and there's a CRS.
+
+00:05:42.300 --> 00:05:44.700 align:middle line:90%
+So, the verifier learns the CRS.
+
+00:05:44.700 --> 00:05:46.390 align:middle line:90%
+And he learns what he got.
+
+00:05:46.390 --> 00:05:49.290 align:middle line:90%
+He learns such that-- sorry.
+
+00:05:49.290 --> 00:05:50.320 align:middle line:90%
+For every x in L--
+
+00:05:50.320 --> 00:05:54.030 align:middle line:84%
+I forgot to say, for every x in
+the language, he learns this.
+
+00:05:54.030 --> 00:05:57.070 align:middle line:84%
+And he learns the proof
+of the actual prover.
+
+00:05:57.070 --> 00:06:00.000 align:middle line:84%
+So I guess what the
+actual prover gives, when
+
+00:06:00.000 --> 00:06:04.950 align:middle line:90%
+he gets CRS, x and witness.
+
+00:06:04.950 --> 00:06:07.600 align:middle line:84%
+This is what the verifier
+learns in the real world.
+
+00:06:07.600 --> 00:06:10.710 align:middle line:84%
+He sees the CRS and he
+sees the actual proof
+
+00:06:10.710 --> 00:06:12.510 align:middle line:90%
+produced by the prover.
+
+00:06:12.510 --> 00:06:15.580 align:middle line:84%
+And the prover is given
+CRS, x, and a witness.
+
+00:06:15.580 --> 00:06:18.940 align:middle line:90%
+Instance and witness.
+
+00:06:18.940 --> 00:06:23.660 align:middle line:84%
+And zero knowledge says that
+the simulator can simulate this.
+
+00:06:23.660 --> 00:06:27.845 align:middle line:84%
+So I forgot to say security
+parameter-- there's also
+
+00:06:27.845 --> 00:06:28.720 align:middle line:90%
+a security parameter.
+
+00:06:28.720 --> 00:06:29.440 align:middle line:90%
+Oh.
+
+00:06:29.440 --> 00:06:30.770 align:middle line:90%
+Actually, you know what?
+
+00:06:30.770 --> 00:06:35.230 align:middle line:84%
+You don't need security
+parameter because the CRS
+
+00:06:35.230 --> 00:06:37.030 align:middle line:90%
+you can think of including--
+
+00:06:37.030 --> 00:06:40.490 align:middle line:84%
+this includes also
+security parameter.
+
+00:06:40.490 --> 00:06:43.870 align:middle line:84%
+You can always assume the CRS
+includes a security parameter.
+
+00:06:43.870 --> 00:06:47.930 align:middle line:84%
+So here, what the verifier
+learns in the real world,
+
+00:06:47.930 --> 00:06:50.680 align:middle line:84%
+he sees the CRS, which includes
+the security parameter,
+
+00:06:50.680 --> 00:06:54.590 align:middle line:84%
+and he sees the proof
+that the verifier gave.
+
+00:06:54.590 --> 00:06:57.590 align:middle line:84%
+And now I want to argue
+that the simulator can
+
+00:06:57.590 --> 00:07:00.350 align:middle line:90%
+simulate this entire thing.
+
+00:07:00.350 --> 00:07:02.910 align:middle line:84%
+Typically, we also allow
+auxiliary information.
+
+00:07:02.910 --> 00:07:11.260 align:middle line:84%
+So for any x and for every
+auxiliary information aux,
+
+00:07:11.260 --> 00:07:15.040 align:middle line:84%
+the [INAUDIBLE] also sees
+aux, and still he cannot tell
+
+00:07:15.040 --> 00:07:16.010 align:middle line:90%
+the difference.
+
+00:07:16.010 --> 00:07:18.688 align:middle line:90%
+
+
+00:07:18.688 --> 00:07:20.230 align:middle line:84%
+So when we talk
+about zero knowledge,
+
+00:07:20.230 --> 00:07:22.520 align:middle line:84%
+there's just zero
+knowledge, and then there's
+
+00:07:22.520 --> 00:07:24.680 align:middle line:90%
+auxiliary input zero knowledge.
+
+00:07:24.680 --> 00:07:25.650 align:middle line:90%
+This is stronger.
+
+00:07:25.650 --> 00:07:27.630 align:middle line:84%
+We usually want this,
+so I'm just writing it,
+
+00:07:27.630 --> 00:07:31.250 align:middle line:84%
+but there's also the--
+without auxiliary information
+
+00:07:31.250 --> 00:07:32.250 align:middle line:90%
+definition.
+
+00:07:32.250 --> 00:07:34.660 align:middle line:90%
+But again, what is zero--
+
+00:07:34.660 --> 00:07:36.020 align:middle line:90%
+NIZK?
+
+00:07:36.020 --> 00:07:37.680 align:middle line:90%
+Non-interactive zero knowledge.
+
+00:07:37.680 --> 00:07:40.870 align:middle line:84%
+It says that for any
+efficient V star,
+
+00:07:40.870 --> 00:07:42.730 align:middle line:84%
+there exists an
+efficient simulator
+
+00:07:42.730 --> 00:07:46.930 align:middle line:84%
+so that for every x in the
+language, it has a witness,
+
+00:07:46.930 --> 00:07:48.730 align:middle line:84%
+and for any
+auxiliary information
+
+00:07:48.730 --> 00:07:54.880 align:middle line:84%
+that the simulator may have
+or the verifier may have,
+
+00:07:54.880 --> 00:07:57.520 align:middle line:84%
+what the verifier
+learns in the real world
+
+00:07:57.520 --> 00:07:59.840 align:middle line:84%
+can be simulated
+by the simulator.
+
+00:07:59.840 --> 00:08:00.580 align:middle line:90%
+Yeah?
+
+00:08:00.580 --> 00:08:03.490 align:middle line:84%
+AUDIENCE: Here, we don't
+even need to V star, right?
+
+00:08:03.490 --> 00:08:04.440 align:middle line:90%
+It's non-interactive?
+
+00:08:04.440 --> 00:08:05.398 align:middle line:90%
+PROFESSOR: Yeah, sorry.
+
+00:08:05.398 --> 00:08:10.578 align:middle line:84%
+There's no V-- yeah, there's
+no V. Whatever you can learn.
+
+00:08:10.578 --> 00:08:11.120 align:middle line:90%
+You're right.
+
+00:08:11.120 --> 00:08:12.070 align:middle line:90%
+Thank you.
+
+00:08:12.070 --> 00:08:15.080 align:middle line:84%
+For every L, there exists
+a simulator for every x,
+
+00:08:15.080 --> 00:08:16.390 align:middle line:90%
+for any auxiliary, that's it.
+
+00:08:16.390 --> 00:08:20.110 align:middle line:90%
+That's the definition.
+
+00:08:20.110 --> 00:08:23.410 align:middle line:90%
+Because V doesn't send anything.
+
+00:08:23.410 --> 00:08:23.910 align:middle line:90%
+OK.
+
+00:08:23.910 --> 00:08:26.760 align:middle line:90%
+Now here is-- note what--
+
+00:08:26.760 --> 00:08:29.460 align:middle line:84%
+the reason this is
+still zero knowledge
+
+00:08:29.460 --> 00:08:37.990 align:middle line:84%
+is that now the simulator,
+he gets to choose the CRS.
+
+00:08:37.990 --> 00:08:40.330 align:middle line:90%
+The simulator, he outputs--
+
+00:08:40.330 --> 00:08:44.200 align:middle line:84%
+this simulator outputs a
+CRS and some fake proof
+
+00:08:44.200 --> 00:08:48.030 align:middle line:84%
+pi that should be
+indistinguishable
+
+00:08:48.030 --> 00:08:49.331 align:middle line:90%
+even given aux.
+
+00:08:49.331 --> 00:08:53.660 align:middle line:90%
+
+
+00:08:53.660 --> 00:09:01.016 align:middle line:84%
+So really, it's-- and the
+point is, that simulator,
+
+00:09:01.016 --> 00:09:03.730 align:middle line:84%
+he has the power
+to choose the CRS.
+
+00:09:03.730 --> 00:09:08.120 align:middle line:84%
+This is a power that the
+cheating prover does not have.
+
+00:09:08.120 --> 00:09:13.600 align:middle line:84%
+And that's why, if
+you could prove that--
+
+00:09:13.600 --> 00:09:19.190 align:middle line:84%
+the fact that Fiat-Shamir works
+for-- the fact that you have--
+
+00:09:19.190 --> 00:09:22.900 align:middle line:84%
+there's no contradiction
+with the fact that it's zero
+
+00:09:22.900 --> 00:09:27.010 align:middle line:84%
+knowledge and Fiat-Shamir-sound
+because the fact that it's zero
+
+00:09:27.010 --> 00:09:29.830 align:middle line:84%
+knowledge, the fact that
+it's Fiat-Shamir-sound--
+
+00:09:29.830 --> 00:09:33.463 align:middle line:84%
+or in other words, the fact
+that it's zero knowledge
+
+00:09:33.463 --> 00:09:35.880 align:middle line:84%
+does not mean that you can use
+the simulator as a cheating
+
+00:09:35.880 --> 00:09:36.550 align:middle line:90%
+prover.
+
+00:09:36.550 --> 00:09:39.480 align:middle line:84%
+The simulator succeeds
+in simulating because he
+
+00:09:39.480 --> 00:09:41.280 align:middle line:90%
+has the power to fake the CRS.
+
+00:09:41.280 --> 00:09:44.650 align:middle line:84%
+The cheating prover does
+not have that power.
+
+00:09:44.650 --> 00:09:47.200 align:middle line:84%
+Again, remember
+before we said, oh,
+
+00:09:47.200 --> 00:09:49.810 align:middle line:84%
+if you have Fiat-Shamir,
+then the simulator,
+
+00:09:49.810 --> 00:09:53.930 align:middle line:84%
+because it can
+simulate the view,
+
+00:09:53.930 --> 00:09:57.200 align:middle line:84%
+he can also simulate a view
+in the case of cheating,
+
+00:09:57.200 --> 00:09:59.290 align:middle line:84%
+so he can actually
+break Fiat-Shamir.
+
+00:09:59.290 --> 00:10:02.602 align:middle line:84%
+Here, he can't break
+Fiat-Shamir-- because, I mean,
+
+00:10:02.602 --> 00:10:04.810 align:middle line:84%
+the prover can't-- the
+simulator can't because he has
+
+00:10:04.810 --> 00:10:07.190 align:middle line:84%
+an additional power that a
+cheating prover does not have.
+
+00:10:07.190 --> 00:10:10.700 align:middle line:84%
+He can fake this-- he's the
+one who gets to choose the CRS.
+
+00:10:10.700 --> 00:10:13.990 align:middle line:84%
+And that's the only reason why
+we can actually get a NIZK here,
+
+00:10:13.990 --> 00:10:18.640 align:middle line:84%
+because he's going to choose
+the CRS to his liking.
+
+00:10:18.640 --> 00:10:21.850 align:middle line:84%
+In an indistinguishable
+way, of course.
+
+00:10:21.850 --> 00:10:25.730 align:middle line:84%
+But, I mean, this CRS and this
+CRS are indistinguishable.
+
+00:10:25.730 --> 00:10:27.780 align:middle line:90%
+But he can program it.
+
+00:10:27.780 --> 00:10:30.410 align:middle line:90%
+That's the idea.
+
+00:10:30.410 --> 00:10:32.410 align:middle line:84%
+So let me just tell you
+why it's zero knowledge,
+
+00:10:32.410 --> 00:10:33.210 align:middle line:84%
+and then you'll see--
+because you know
+
+00:10:33.210 --> 00:10:34.620 align:middle line:90%
+why it's Fiat-Shamir-secure.
+
+00:10:34.620 --> 00:10:36.162 align:middle line:84%
+I'll tell you why
+it's zero knowledge
+
+00:10:36.162 --> 00:10:38.610 align:middle line:84%
+and then you'll
+see how I'm abusing
+
+00:10:38.610 --> 00:10:40.090 align:middle line:90%
+the power of the simulator.
+
+00:10:40.090 --> 00:10:43.070 align:middle line:90%
+
+
+00:10:43.070 --> 00:10:47.357 align:middle line:84%
+So the way-- the
+reason why it's NIZK,
+
+00:10:47.357 --> 00:10:48.940 align:middle line:84%
+it's a non-interactive
+zero knowledge.
+
+00:10:48.940 --> 00:10:50.800 align:middle line:84%
+So I need to come
+up with a simulator.
+
+00:10:50.800 --> 00:10:55.210 align:middle line:84%
+I need to simulate the
+Fiat-Shamir protocol.
+
+00:10:55.210 --> 00:10:58.640 align:middle line:84%
+And actually, if you think
+about it, how can I simulate it?
+
+00:10:58.640 --> 00:11:00.400 align:middle line:90%
+I need to come up with an--
+
+00:11:00.400 --> 00:11:01.580 align:middle line:90%
+think what I need to do.
+
+00:11:01.580 --> 00:11:02.360 align:middle line:90%
+I'm the simulator.
+
+00:11:02.360 --> 00:11:04.470 align:middle line:84%
+It seems like a
+hard task for me.
+
+00:11:04.470 --> 00:11:07.350 align:middle line:84%
+What do I need to
+do as a simulator?
+
+00:11:07.350 --> 00:11:09.480 align:middle line:90%
+So what does the sim do?
+
+00:11:09.480 --> 00:11:13.110 align:middle line:84%
+Sim needs to-- he needs
+to generate CRS somehow.
+
+00:11:13.110 --> 00:11:13.790 align:middle line:90%
+I don't know.
+
+00:11:13.790 --> 00:11:14.290 align:middle line:90%
+OK.
+
+00:11:14.290 --> 00:11:16.320 align:middle line:84%
+I can just generate
+public key and hash key.
+
+00:11:16.320 --> 00:11:23.810 align:middle line:84%
+But then, I need to find
+alpha, beta, gamma accepting.
+
+00:11:23.810 --> 00:11:28.570 align:middle line:84%
+So I guess, first note--
+look, the simulator is given--
+
+00:11:28.570 --> 00:11:30.600 align:middle line:90%
+wait, he's given also x.
+
+00:11:30.600 --> 00:11:32.320 align:middle line:90%
+I forgot to write x.
+
+00:11:32.320 --> 00:11:37.170 align:middle line:84%
+He's given the
+instance x and aux.
+
+00:11:37.170 --> 00:11:39.450 align:middle line:90%
+Now note, I'm the simulator.
+
+00:11:39.450 --> 00:11:41.920 align:middle line:84%
+x can be in the language. x
+cannot be in the language.
+
+00:11:41.920 --> 00:11:44.060 align:middle line:90%
+I have no idea what x is.
+
+00:11:44.060 --> 00:11:47.540 align:middle line:84%
+So in some sense,
+if I succeed, I
+
+00:11:47.540 --> 00:11:50.780 align:middle line:84%
+should also succeed for some
+x that's not in the language
+
+00:11:50.780 --> 00:11:53.420 align:middle line:84%
+because I can't
+break the language.
+
+00:11:53.420 --> 00:11:56.930 align:middle line:84%
+Now, to succeed for x
+not in the language,
+
+00:11:56.930 --> 00:11:59.000 align:middle line:84%
+I need to generate
+beta that's bad.
+
+00:11:59.000 --> 00:12:01.290 align:middle line:90%
+Otherwise, I can't succeed.
+
+00:12:01.290 --> 00:12:03.990 align:middle line:84%
+But how can I generate
+beta that's bad?
+
+00:12:03.990 --> 00:12:05.610 align:middle line:90%
+Remember, the encryption?
+
+00:12:05.610 --> 00:12:06.872 align:middle line:90%
+It's a problem.
+
+00:12:06.872 --> 00:12:08.580 align:middle line:84%
+The reason it's not
+a problem because I'm
+
+00:12:08.580 --> 00:12:09.880 align:middle line:90%
+going to break the encryption.
+
+00:12:09.880 --> 00:12:10.980 align:middle line:90%
+I get to choose it.
+
+00:12:10.980 --> 00:12:12.550 align:middle line:90%
+I choose the encryption.
+
+00:12:12.550 --> 00:12:15.220 align:middle line:90%
+I chose it with a secret key.
+
+00:12:15.220 --> 00:12:19.240 align:middle line:90%
+And actually, let me be--
+
+00:12:19.240 --> 00:12:22.300 align:middle line:84%
+actually, for this
+specific hash function,
+
+00:12:22.300 --> 00:12:24.610 align:middle line:84%
+I actually don't know how
+to prove that it's an ISIC.
+
+00:12:24.610 --> 00:12:25.332 align:middle line:90%
+It may be.
+
+00:12:25.332 --> 00:12:27.290 align:middle line:84%
+I don't know, but I don't
+know how to prove it.
+
+00:12:27.290 --> 00:12:30.430 align:middle line:84%
+But if you slightly change
+that Fiat-Shamir hash function
+
+00:12:30.430 --> 00:12:32.980 align:middle line:84%
+in a way that doesn't
+affect soundness at all,
+
+00:12:32.980 --> 00:12:35.530 align:middle line:84%
+then I can prove
+that it's an ISIC.
+
+00:12:35.530 --> 00:12:38.000 align:middle line:84%
+So I'm going to slightly
+change the hash function,
+
+00:12:38.000 --> 00:12:39.640 align:middle line:90%
+the Fiat-Shamir hash function.
+
+00:12:39.640 --> 00:12:43.850 align:middle line:84%
+OK, I'm going to slightly change
+it, just add a constant to it.
+
+00:12:43.850 --> 00:12:49.340 align:middle line:84%
+I'm going to argue that it
+doesn't change the soundness,
+
+00:12:49.340 --> 00:12:51.410 align:middle line:84%
+but now I can use
+it for an ISIC.
+
+00:12:51.410 --> 00:12:54.360 align:middle line:84%
+So let me show you
+how this is done.
+
+00:12:54.360 --> 00:12:57.112 align:middle line:84%
+So how do I generate
+this alpha, beta, gamma?
+
+00:12:57.112 --> 00:12:59.320 align:middle line:84%
+So the first thing I'm going
+to do, I'm going to say,
+
+00:12:59.320 --> 00:13:04.880 align:middle line:84%
+you know what, I'm going to just
+generate beta completely random.
+
+00:13:04.880 --> 00:13:07.460 align:middle line:84%
+So I'm going to actually
+use the way-- remember,
+
+00:13:07.460 --> 00:13:08.960 align:middle line:84%
+last time we showed
+why the single--
+
+00:13:08.960 --> 00:13:11.535 align:middle line:90%
+
+
+00:13:11.535 --> 00:13:15.140 align:middle line:84%
+the one-bit protocol
+is zero knowledge?
+
+00:13:15.140 --> 00:13:16.920 align:middle line:90%
+I'm going to use that idea.
+
+00:13:16.920 --> 00:13:19.870 align:middle line:84%
+Or in other words, I'm going
+to first use a simulator.
+
+00:13:19.870 --> 00:13:25.010 align:middle line:84%
+First, I'm going to use an
+honest verifier, zk simulator.
+
+00:13:25.010 --> 00:13:27.213 align:middle line:84%
+This is just short
+for honest verifier.
+
+00:13:27.213 --> 00:13:33.980 align:middle line:90%
+
+
+00:13:33.980 --> 00:13:36.560 align:middle line:90%
+So I'm going to use a simulat--
+
+00:13:36.560 --> 00:13:38.750 align:middle line:84%
+I want to first argue this
+protocol, alpha, beta,
+
+00:13:38.750 --> 00:13:42.480 align:middle line:84%
+gamma, even repeated in
+parallel-- repeated in parallel,
+
+00:13:42.480 --> 00:13:44.982 align:middle line:84%
+so it's honest verifier,
+zero knowledge.
+
+00:13:44.982 --> 00:13:46.440 align:middle line:84%
+What does it mean,
+honest verifier?
+
+00:13:46.440 --> 00:13:49.460 align:middle line:84%
+The verifier just sends beta
+completely in random, so b1, b2,
+
+00:13:49.460 --> 00:13:52.810 align:middle line:84%
+up to b lambda,
+completely randomly.
+
+00:13:52.810 --> 00:13:55.390 align:middle line:90%
+Then it's your knowledge.
+
+00:13:55.390 --> 00:13:57.110 align:middle line:84%
+So that, we kind
+of saw last time.
+
+00:13:57.110 --> 00:14:00.685 align:middle line:84%
+So first of all, I want to argue
+that we have honest verifier
+
+00:14:00.685 --> 00:14:01.640 align:middle line:90%
+of zero knowledge.
+
+00:14:01.640 --> 00:14:03.640 align:middle line:90%
+That's the first thing.
+
+00:14:03.640 --> 00:14:06.040 align:middle line:84%
+The interactive protocol--
+the interactive but parallel
+
+00:14:06.040 --> 00:14:07.330 align:middle line:90%
+repeated--
+
+00:14:07.330 --> 00:14:09.640 align:middle line:84%
+the interactive parallel
+repeated protocol
+
+00:14:09.640 --> 00:14:12.490 align:middle line:84%
+is honest verifier,
+zero knowledge.
+
+00:14:12.490 --> 00:14:14.340 align:middle line:90%
+Why?
+
+00:14:14.340 --> 00:14:15.553 align:middle line:90%
+Well, it's very easy.
+
+00:14:15.553 --> 00:14:16.470 align:middle line:90%
+What I'm going to do--
+
+00:14:16.470 --> 00:14:17.510 align:middle line:90%
+I'm the simulator.
+
+00:14:17.510 --> 00:14:19.260 align:middle line:84%
+What I'm going to do,
+I'm going to first--
+
+00:14:19.260 --> 00:14:21.180 align:middle line:90%
+I need to generate a transcript.
+
+00:14:21.180 --> 00:14:24.780 align:middle line:84%
+What I'm going to do, I'm going
+to first generate the b's--
+
+00:14:24.780 --> 00:14:27.960 align:middle line:90%
+b1, b2 up to b lambda at random.
+
+00:14:27.960 --> 00:14:29.540 align:middle line:90%
+Now I know what I--
+
+00:14:29.540 --> 00:14:33.840 align:middle line:84%
+now I know, if b equals 0,
+I'm going to just commit to--
+
+00:14:33.840 --> 00:14:36.930 align:middle line:84%
+I'm going to commit here
+just a completely random
+
+00:14:36.930 --> 00:14:40.810 align:middle line:84%
+Hamiltonian cycle, have
+nothing to do with the graph.
+
+00:14:40.810 --> 00:14:43.420 align:middle line:84%
+If I need to open--
+if b was 1, I'm
+
+00:14:43.420 --> 00:14:45.240 align:middle line:84%
+going to just really
+commit to pi of g.
+
+00:14:45.240 --> 00:14:46.990 align:middle line:84%
+It won't have any
+Hamiltonian cycle in it,
+
+00:14:46.990 --> 00:14:50.340 align:middle line:84%
+but I'm going to
+commit to pi of g.
+
+00:14:50.340 --> 00:14:52.380 align:middle line:84%
+So that's going to
+be my simulation.
+
+00:14:52.380 --> 00:14:53.850 align:middle line:84%
+It's kind of a
+little bit of what
+
+00:14:53.850 --> 00:14:55.808 align:middle line:84%
+we did-- it's similar to
+what we did last time,
+
+00:14:55.808 --> 00:14:59.360 align:middle line:84%
+but it's even easier because the
+verifier is completely honest.
+
+00:14:59.360 --> 00:15:01.380 align:middle line:90%
+And let me repeat it.
+
+00:15:01.380 --> 00:15:04.220 align:middle line:84%
+How do I generate this
+transcript repeated lambda times
+
+00:15:04.220 --> 00:15:05.160 align:middle line:90%
+in parallel?
+
+00:15:05.160 --> 00:15:08.480 align:middle line:84%
+I need to generate alpha, beta,
+gamma that looks like real.
+
+00:15:08.480 --> 00:15:10.500 align:middle line:84%
+I'm going to first
+generate the beta.
+
+00:15:10.500 --> 00:15:11.750 align:middle line:90%
+So b1 up to b lambda.
+
+00:15:11.750 --> 00:15:13.360 align:middle line:90%
+That's the first thing.
+
+00:15:13.360 --> 00:15:15.200 align:middle line:84%
+Then I'm going to
+generate alpha.
+
+00:15:15.200 --> 00:15:17.000 align:middle line:84%
+I'm going to take
+it out of order.
+
+00:15:17.000 --> 00:15:18.620 align:middle line:90%
+How do I generate alpha?
+
+00:15:18.620 --> 00:15:21.008 align:middle line:84%
+Well, if the b
+corresponding to-- let's
+
+00:15:21.008 --> 00:15:22.050 align:middle line:90%
+say, how the first alpha.
+
+00:15:22.050 --> 00:15:27.640 align:middle line:84%
+If the b was 0, I know I need to
+open to the Hamiltonian cycle.
+
+00:15:27.640 --> 00:15:30.730 align:middle line:84%
+I'll commit to a random
+Hamiltonian cycle.
+
+00:15:30.730 --> 00:15:32.980 align:middle line:84%
+If the big b was
+1, I know that I
+
+00:15:32.980 --> 00:15:35.670 align:middle line:84%
+will need to open the
+pi and the non-edges.
+
+00:15:35.670 --> 00:15:37.802 align:middle line:84%
+Then I'll just commit
+to pi, g, honestly.
+
+00:15:37.802 --> 00:15:40.010 align:middle line:84%
+There's not going to be a
+Hamiltonian cycle in there,
+
+00:15:40.010 --> 00:15:42.130 align:middle line:84%
+but I know I'm not going
+to be asked to open it.
+
+00:15:42.130 --> 00:15:44.800 align:middle line:90%
+And that's what I do bit by bit.
+
+00:15:44.800 --> 00:15:48.260 align:middle line:84%
+So because I know beta, I
+choose alpha to be kind of--
+
+00:15:48.260 --> 00:15:54.000 align:middle line:84%
+I exactly choose alpha to
+hit the bad on purpose.
+
+00:15:54.000 --> 00:15:58.630 align:middle line:84%
+OK, so that's-- so I can choose
+alpha-- so I can choose alpha,
+
+00:15:58.630 --> 00:16:01.570 align:middle line:90%
+beta, gamma to hit the bad.
+
+00:16:01.570 --> 00:16:03.450 align:middle line:84%
+But now what do I do
+with the hash function?
+
+00:16:03.450 --> 00:16:05.540 align:middle line:84%
+How do I-- I didn't choose
+the hash function yet.
+
+00:16:05.540 --> 00:16:06.040 align:middle line:90%
+Remember?
+
+00:16:06.040 --> 00:16:09.000 align:middle line:84%
+Now I'm going to choose
+the hash function.
+
+00:16:09.000 --> 00:16:17.090 align:middle line:84%
+So now I want to be able-- now
+I want to choose hash key such
+
+00:16:17.090 --> 00:16:23.000 align:middle line:84%
+that you know eval the
+hash key and alpha--
+
+00:16:23.000 --> 00:16:26.210 align:middle line:84%
+actually, g of alpha, but I'm
+going to omit g for simplicity--
+
+00:16:26.210 --> 00:16:28.870 align:middle line:84%
+is equal to that beta,
+which is the bad beta.
+
+00:16:28.870 --> 00:16:31.780 align:middle line:90%
+
+
+00:16:31.780 --> 00:16:33.020 align:middle line:90%
+How can I do this?
+
+00:16:33.020 --> 00:16:36.750 align:middle line:84%
+Is it-- so can I choose
+hash key subject to this?
+
+00:16:36.750 --> 00:16:39.970 align:middle line:90%
+
+
+00:16:39.970 --> 00:16:42.440 align:middle line:84%
+I can choose the public key,
+the secret key, everything.
+
+00:16:42.440 --> 00:16:47.410 align:middle line:84%
+I can break the encryption,
+but can I choose a subject too?
+
+00:16:47.410 --> 00:16:49.010 align:middle line:84%
+So actually, to
+tell you the truth,
+
+00:16:49.010 --> 00:16:50.630 align:middle line:84%
+I don't really know
+if you can do it,
+
+00:16:50.630 --> 00:16:53.990 align:middle line:84%
+but let me change slightly
+the hash function,
+
+00:16:53.990 --> 00:16:55.480 align:middle line:90%
+and now I'll be able to do that.
+
+00:16:55.480 --> 00:16:57.820 align:middle line:84%
+How do I change
+the hash function?
+
+00:16:57.820 --> 00:17:03.121 align:middle line:84%
+My hash function is going to
+be the original hash function
+
+00:17:03.121 --> 00:17:06.040 align:middle line:90%
+plus some fixed kind of lambda.
+
+00:17:06.040 --> 00:17:08.890 align:middle line:84%
+So the hash function
+outputs some strings, 0,
+
+00:17:08.890 --> 00:17:12.020 align:middle line:90%
+1 to the lambda, small lambda.
+
+00:17:12.020 --> 00:17:16.849 align:middle line:84%
+I'm going to just add a random,
+completely random lambda bit
+
+00:17:16.849 --> 00:17:18.619 align:middle line:90%
+string to it.
+
+00:17:18.619 --> 00:17:22.099 align:middle line:84%
+Now, I don't like this
+letter because it sounds--
+
+00:17:22.099 --> 00:17:27.099 align:middle line:84%
+I'm going to add z in 0, 1 to
+the lambda, a random lambda bit
+
+00:17:27.099 --> 00:17:29.560 align:middle line:90%
+string.
+
+00:17:29.560 --> 00:17:32.180 align:middle line:90%
+Now I'm in business.
+
+00:17:32.180 --> 00:17:32.870 align:middle line:90%
+That's easy now.
+
+00:17:32.870 --> 00:17:35.180 align:middle line:84%
+Because now I want
+to make sure that--
+
+00:17:35.180 --> 00:17:40.130 align:middle line:84%
+OK, so now I need this
+to be equal to beta.
+
+00:17:40.130 --> 00:17:41.090 align:middle line:90%
+No problem.
+
+00:17:41.090 --> 00:17:42.860 align:middle line:90%
+I'll choose hash key honestly.
+
+00:17:42.860 --> 00:17:45.250 align:middle line:84%
+I'll compute this,
+and I'll just--
+
+00:17:45.250 --> 00:17:49.580 align:middle line:84%
+in the CRS-- so I told you how
+I simulate alpha, beta, gamma.
+
+00:17:49.580 --> 00:17:51.940 align:middle line:90%
+Now I need to simulate the CRS.
+
+00:17:51.940 --> 00:17:53.900 align:middle line:90%
+What does the CRS consist of?
+
+00:17:53.900 --> 00:17:56.740 align:middle line:84%
+It consists of the public
+key and the hash key.
+
+00:17:56.740 --> 00:17:58.700 align:middle line:84%
+I'll choose the
+public key randomly.
+
+00:17:58.700 --> 00:18:03.382 align:middle line:84%
+Now the hash key consists
+of this part and this part.
+
+00:18:03.382 --> 00:18:05.840 align:middle line:84%
+It's now two hash keys because
+it's the original hash keys,
+
+00:18:05.840 --> 00:18:08.740 align:middle line:90%
+but I also add a fixed z to it.
+
+00:18:08.740 --> 00:18:10.630 align:middle line:90%
+That's my new hash key.
+
+00:18:10.630 --> 00:18:14.110 align:middle line:84%
+My new hash function does
+the previous hash function
+
+00:18:14.110 --> 00:18:15.410 align:middle line:90%
+and add z. z is fixed.
+
+00:18:15.410 --> 00:18:18.510 align:middle line:84%
+It's part of the description
+of the hash function.
+
+00:18:18.510 --> 00:18:21.140 align:middle line:84%
+So now, how do I
+generate the CRS?
+
+00:18:21.140 --> 00:18:25.000 align:middle line:84%
+So for CRS-- so
+to generate a CRS,
+
+00:18:25.000 --> 00:18:28.650 align:middle line:84%
+I'm going to choose a random
+public key, a random hash
+
+00:18:28.650 --> 00:18:32.890 align:middle line:84%
+key, and z, such that this
+equation is satisfied.
+
+00:18:32.890 --> 00:18:36.300 align:middle line:84%
+I'm going to choose
+z, which is equal to--
+
+00:18:36.300 --> 00:18:38.850 align:middle line:90%
+I chose alpha, beta, gamma.
+
+00:18:38.850 --> 00:18:42.690 align:middle line:84%
+I chose already hash key, so
+this defines this, the eval.
+
+00:18:42.690 --> 00:18:45.660 align:middle line:84%
+So z is just going to
+be beta minus or x or--
+
+00:18:45.660 --> 00:18:49.090 align:middle line:84%
+I'm over strings--
+so x or this eval.
+
+00:18:49.090 --> 00:18:56.160 align:middle line:90%
+
+
+00:18:56.160 --> 00:18:57.670 align:middle line:90%
+And this is a good simulation.
+
+00:18:57.670 --> 00:19:06.190 align:middle line:90%
+
+
+00:19:06.190 --> 00:19:10.750 align:middle line:84%
+So now let me go back to
+your question, which was--
+
+00:19:10.750 --> 00:19:12.520 align:middle line:84%
+OK, so the question
+was, so this is going
+
+00:19:12.520 --> 00:19:14.800 align:middle line:90%
+to be it's zero knowledge.
+
+00:19:14.800 --> 00:19:17.600 align:middle line:84%
+It's computational
+zero knowledge.
+
+00:19:17.600 --> 00:19:19.090 align:middle line:84%
+It's not statistical
+zero knowledge
+
+00:19:19.090 --> 00:19:22.771 align:middle line:84%
+because the alpha
+contains actually the--
+
+00:19:22.771 --> 00:19:27.230 align:middle line:84%
+when I simulate it, I don't
+simulate it with a real pi of c.
+
+00:19:27.230 --> 00:19:28.640 align:middle line:90%
+I simulated with junk.
+
+00:19:28.640 --> 00:19:32.110 align:middle line:84%
+So it's only computational zero
+knowledge, but it's statistical.
+
+00:19:32.110 --> 00:19:35.200 align:middle line:84%
+And it's not even
+statistical soundness
+
+00:19:35.200 --> 00:19:38.245 align:middle line:84%
+because I'm using a fake
+g, so I don't get anything.
+
+00:19:38.245 --> 00:19:39.670 align:middle line:84%
+It's computation
+is zero knowledge
+
+00:19:39.670 --> 00:19:40.940 align:middle line:90%
+and computational soundness.
+
+00:19:40.940 --> 00:19:43.760 align:middle line:90%
+
+
+00:19:43.760 --> 00:19:46.350 align:middle line:84%
+There is a way to get
+statistical if you play with it,
+
+00:19:46.350 --> 00:19:50.350 align:middle line:84%
+but this way I explained it,
+everything is computational.
+
+00:19:50.350 --> 00:19:53.170 align:middle line:90%
+
+
+00:19:53.170 --> 00:19:54.370 align:middle line:90%
+Yeah?
+
+00:19:54.370 --> 00:20:00.220 align:middle line:84%
+AUDIENCE: Well something
+in the final hash key,
+
+00:20:00.220 --> 00:20:03.680 align:middle line:84%
+is obviously then you
+have that randomness.
+
+00:20:03.680 --> 00:20:07.463 align:middle line:84%
+But in the real case,
+is it will be just--
+
+00:20:07.463 --> 00:20:08.630 align:middle line:90%
+PROFESSOR: Good, good, good.
+
+00:20:08.630 --> 00:20:09.547 align:middle line:90%
+Great, great question.
+
+00:20:09.547 --> 00:20:12.070 align:middle line:84%
+So you're saying-- you're
+saying, wait, so I changed the--
+
+00:20:12.070 --> 00:20:13.610 align:middle line:90%
+I changed the hash key on you.
+
+00:20:13.610 --> 00:20:18.730 align:middle line:90%
+So before-- let me erase this.
+
+00:20:18.730 --> 00:20:23.990 align:middle line:84%
+Before, the hash key was
+exactly what we wrote there.
+
+00:20:23.990 --> 00:20:25.130 align:middle line:90%
+That was the hash key.
+
+00:20:25.130 --> 00:20:27.410 align:middle line:90%
+Now, I changed the hash key.
+
+00:20:27.410 --> 00:20:29.085 align:middle line:90%
+Now the hash key is what?
+
+00:20:29.085 --> 00:20:33.890 align:middle line:90%
+
+
+00:20:33.890 --> 00:20:34.800 align:middle line:90%
+So let me first--
+
+00:20:34.800 --> 00:20:44.120 align:middle line:84%
+now, the hash key is going
+to be this and z, random z.
+
+00:20:44.120 --> 00:20:50.470 align:middle line:84%
+So the hash key consists of
+the a public encryption--
+
+00:20:50.470 --> 00:20:53.620 align:middle line:84%
+FHE public key-- public key for
+fully homomorphic encryption
+
+00:20:53.620 --> 00:20:56.740 align:middle line:84%
+and encryption of a g that's in
+the analysis is going to be--
+
+00:20:56.740 --> 00:20:59.260 align:middle line:84%
+OK, in the analysis, we're
+going to see what it's now
+
+00:20:59.260 --> 00:21:00.590 align:middle line:90%
+changing only because of the z.
+
+00:21:00.590 --> 00:21:07.810 align:middle line:84%
+But some g of fixed size like 0
+to the t, and the random z in 0,
+
+00:21:07.810 --> 00:21:08.890 align:middle line:90%
+1 to the lambda.
+
+00:21:08.890 --> 00:21:09.800 align:middle line:90%
+That's it.
+
+00:21:09.800 --> 00:21:12.130 align:middle line:90%
+Now, I still want to argue--
+
+00:21:12.130 --> 00:21:18.560 align:middle line:84%
+I still want to argue
+that this g is not bad.
+
+00:21:18.560 --> 00:21:19.850 align:middle line:90%
+I want to argue that--
+
+00:21:19.850 --> 00:21:26.980 align:middle line:84%
+I want to say that when I
+do-- for every alpha, when
+
+00:21:26.980 --> 00:21:30.170 align:middle line:84%
+I do this fully homomorphic
+encryption, it's not bad.
+
+00:21:30.170 --> 00:21:35.650 align:middle line:84%
+So for which g-- for which
+g star, when I do this--
+
+00:21:35.650 --> 00:21:38.770 align:middle line:84%
+so now-- OK, now what
+I want to argue--
+
+00:21:38.770 --> 00:21:40.160 align:middle line:90%
+let me change this a little bit.
+
+00:21:40.160 --> 00:21:44.260 align:middle line:84%
+I guess now I want to argue
+that when I do this and I add z,
+
+00:21:44.260 --> 00:21:46.390 align:middle line:90%
+it's not bad because I add z.
+
+00:21:46.390 --> 00:21:49.810 align:middle line:84%
+So I want to argue that this
+is not equal to this minus z,
+
+00:21:49.810 --> 00:21:51.003 align:middle line:90%
+or I guess x or.
+
+00:21:51.003 --> 00:21:52.170 align:middle line:90%
+We're doing everything x or.
+
+00:21:52.170 --> 00:21:55.670 align:middle line:84%
+So minus plus--
+don't worry about it.
+
+00:21:55.670 --> 00:21:57.580 align:middle line:90%
+We'll get it later.
+
+00:21:57.580 --> 00:22:00.250 align:middle line:84%
+So I want to argue
+that this does
+
+00:22:00.250 --> 00:22:06.770 align:middle line:84%
+not equal beta, x or z because
+my hash is not just this.
+
+00:22:06.770 --> 00:22:08.840 align:middle line:90%
+It's this x or z.
+
+00:22:08.840 --> 00:22:11.620 align:middle line:90%
+That's my hash.
+
+00:22:11.620 --> 00:22:13.390 align:middle line:84%
+I want to argue that
+this x or z is not
+
+00:22:13.390 --> 00:22:16.000 align:middle line:84%
+beta, which is the same
+as saying that this
+
+00:22:16.000 --> 00:22:18.550 align:middle line:90%
+is different than beta x or z.
+
+00:22:18.550 --> 00:22:21.930 align:middle line:84%
+So now what I'm going to
+do, I'm just going to--
+
+00:22:21.930 --> 00:22:23.940 align:middle line:90%
+here, I'm going to x or--
+
+00:22:23.940 --> 00:22:26.020 align:middle line:84%
+in the analysis, I'm
+going to say sure.
+
+00:22:26.020 --> 00:22:30.360 align:middle line:84%
+Let me tell you, if
+you change g star--
+
+00:22:30.360 --> 00:22:36.510 align:middle line:84%
+if you take g star to be
+the decryption of bad x or z
+
+00:22:36.510 --> 00:22:39.630 align:middle line:84%
+and then change it a little
+bit-- x or was just 1,
+
+00:22:39.630 --> 00:22:41.580 align:middle line:90%
+like 0001--
+
+00:22:41.580 --> 00:22:44.700 align:middle line:84%
+then I can argue that you
+get statistical soundness.
+
+00:22:44.700 --> 00:22:47.340 align:middle line:84%
+So in the analysis, I'm
+going to say, OK, you started
+
+00:22:47.340 --> 00:22:48.850 align:middle line:90%
+with this g, whatever it was.
+
+00:22:48.850 --> 00:22:52.230 align:middle line:84%
+Suppose it was just
+this g, and then I
+
+00:22:52.230 --> 00:22:54.270 align:middle line:84%
+can argue that for
+this g, it's never
+
+00:22:54.270 --> 00:22:56.950 align:middle line:84%
+equal to this because
+exactly as before.
+
+00:22:56.950 --> 00:23:03.150 align:middle line:84%
+Well, if for this g
+star it was equal to a--
+
+00:23:03.150 --> 00:23:11.480 align:middle line:84%
+so now I guess if it was
+equal to beta, x, or z,
+
+00:23:11.480 --> 00:23:13.585 align:middle line:84%
+then the decryption
+would be equal,
+
+00:23:13.585 --> 00:23:15.510 align:middle line:90%
+and we got a contradiction.
+
+00:23:15.510 --> 00:23:18.130 align:middle line:84%
+So it's exactly--
+the fact that I did--
+
+00:23:18.130 --> 00:23:20.080 align:middle line:84%
+I added z has no
+significance on the proof.
+
+00:23:20.080 --> 00:23:21.247 align:middle line:90%
+It's exactly the same proof.
+
+00:23:21.247 --> 00:23:28.230 align:middle line:90%
+
+
+00:23:28.230 --> 00:23:31.630 align:middle line:84%
+So that's how I simulate,
+and now I have a simulator.
+
+00:23:31.630 --> 00:23:36.510 align:middle line:84%
+So essentially, the way I
+proved that it's zero knowledge
+
+00:23:36.510 --> 00:23:42.150 align:middle line:84%
+is by doing just the honest
+verifier, zero knowledge.
+
+00:23:42.150 --> 00:23:46.960 align:middle line:84%
+And then what I did in that
+with CRS, I chose the z.
+
+00:23:46.960 --> 00:23:51.140 align:middle line:84%
+I chose-- I programmed
+part of the hash key.
+
+00:23:51.140 --> 00:23:53.640 align:middle line:84%
+If the hash key was programmed
+by someone else ahead of time
+
+00:23:53.640 --> 00:24:00.230 align:middle line:84%
+and I couldn't touch it, I don't
+know how to prove soundness.
+
+00:24:00.230 --> 00:24:02.930 align:middle line:84%
+OK, but I don't know
+how to simulate.
+
+00:24:02.930 --> 00:24:06.380 align:middle line:84%
+But because I could do
+it, I could simulate.
+
+00:24:06.380 --> 00:24:08.870 align:middle line:90%
+So the fact that I could--
+
+00:24:08.870 --> 00:24:14.120 align:middle line:84%
+I had the freedom to
+program the hash key, that's
+
+00:24:14.120 --> 00:24:16.550 align:middle line:90%
+what allowed me to simulate.
+
+00:24:16.550 --> 00:24:20.920 align:middle line:84%
+And that's why
+there is no-- that's
+
+00:24:20.920 --> 00:24:24.760 align:middle line:84%
+what broke the tension between
+Fiat-Shamir and zero-knowledge.
+
+00:24:24.760 --> 00:24:30.790 align:middle line:84%
+Because in the interactive
+setting when there is no CRS,
+
+00:24:30.790 --> 00:24:34.790 align:middle line:84%
+then a simulator really has the
+same power as a cheating prover.
+
+00:24:34.790 --> 00:24:37.290 align:middle line:84%
+And now if there is a simulator,
+there is a cheating prover.
+
+00:24:37.290 --> 00:24:39.990 align:middle line:84%
+And when you think
+about the simulator,
+
+00:24:39.990 --> 00:24:43.550 align:middle line:84%
+think about a verifier who is
+like a Fiat-Shamir verifier,
+
+00:24:43.550 --> 00:24:48.310 align:middle line:84%
+verifier that behaves like
+a Fiat-Shamir hash function.
+
+00:24:48.310 --> 00:24:50.477 align:middle line:84%
+Then the simulator is exactly
+like a cheating proof.
+
+00:24:50.477 --> 00:24:52.560 align:middle line:84%
+And then we say, well,
+there's no cheating prover,
+
+00:24:52.560 --> 00:24:53.860 align:middle line:90%
+there can't exist a simulator.
+
+00:24:53.860 --> 00:24:56.380 align:middle line:84%
+But in the [INAUDIBLE],
+the simulator
+
+00:24:56.380 --> 00:24:58.760 align:middle line:84%
+has much more power than
+the cheating prover.
+
+00:24:58.760 --> 00:25:00.640 align:middle line:90%
+He can choose the CRS.
+
+00:25:00.640 --> 00:25:03.670 align:middle line:84%
+He can program the
+CRS to his desire.
+
+00:25:03.670 --> 00:25:05.210 align:middle line:90%
+And that's what breaks--
+
+00:25:05.210 --> 00:25:09.580 align:middle line:84%
+that's kind of what allows
+us to get both Fiat-Shamir
+
+00:25:09.580 --> 00:25:12.220 align:middle line:90%
+and non-interactive zero--
+
+00:25:12.220 --> 00:25:14.500 align:middle line:84%
+both soundness via Fiat-Shamir
+and non-interactive
+
+00:25:14.500 --> 00:25:15.410 align:middle line:90%
+zero knowledge.
+
+00:25:15.410 --> 00:25:21.200 align:middle line:90%
+
+
+00:25:21.200 --> 00:25:22.420 align:middle line:90%
+Any questions?
+
+00:25:22.420 --> 00:25:23.375 align:middle line:90%
+Yeah?
+
+00:25:23.375 --> 00:25:27.977 align:middle line:84%
+AUDIENCE: Does the random z
+help if beta bad is not unique?
+
+00:25:27.977 --> 00:25:29.310 align:middle line:90%
+PROFESSOR: OK, good, good, good.
+
+00:25:29.310 --> 00:25:31.510 align:middle line:84%
+So now the-- OK,
+so now the question
+
+00:25:31.510 --> 00:25:34.150 align:middle line:84%
+is, what if beta
+bad was not unique?
+
+00:25:34.150 --> 00:25:38.350 align:middle line:84%
+So let me-- I'll answer
+that because I have a longer
+
+00:25:38.350 --> 00:25:39.825 align:middle line:84%
+question-- a longer
+answer to that.
+
+00:25:39.825 --> 00:25:41.200 align:middle line:84%
+But are there any
+other questions
+
+00:25:41.200 --> 00:25:46.950 align:middle line:84%
+about this before I
+answer that question?
+
+00:25:46.950 --> 00:25:51.590 align:middle line:84%
+So let's step back
+and see where we are.
+
+00:25:51.590 --> 00:25:54.617 align:middle line:84%
+I'm on my way to answer your
+question because it's about how
+
+00:25:54.617 --> 00:25:55.700 align:middle line:90%
+general this technique is.
+
+00:25:55.700 --> 00:25:57.100 align:middle line:90%
+So I'll get there.
+
+00:25:57.100 --> 00:25:58.975 align:middle line:84%
+But before I go to how
+general this technique
+
+00:25:58.975 --> 00:26:01.420 align:middle line:84%
+is, let's see what
+we did today so far.
+
+00:26:01.420 --> 00:26:04.855 align:middle line:90%
+So we started by--
+
+00:26:04.855 --> 00:26:07.540 align:middle line:90%
+
+
+00:26:07.540 --> 00:26:10.870 align:middle line:84%
+we looked at this protocol,
+the parallel repeated version,
+
+00:26:10.870 --> 00:26:15.580 align:middle line:84%
+and we said, OK, this protocol,
+guess what, it's Fiat-Shamir.
+
+00:26:15.580 --> 00:26:17.973 align:middle line:84%
+We actually constructed
+a certain hash function,
+
+00:26:17.973 --> 00:26:19.390 align:middle line:84%
+very specific hash
+function-- said
+
+00:26:19.390 --> 00:26:22.390 align:middle line:84%
+that with respect to this hash
+function, we proved soundness.
+
+00:26:22.390 --> 00:26:26.410 align:middle line:84%
+And then we proved not only is
+it soundness with Fiat-Shamir.
+
+00:26:26.410 --> 00:26:28.240 align:middle line:84%
+Now that it's an
+interactive, we can also
+
+00:26:28.240 --> 00:26:30.290 align:middle line:84%
+prove that it's zero
+knowledge, zero knowledge
+
+00:26:30.290 --> 00:26:32.706 align:middle line:84%
+still maintains by
+playing with a CRS.
+
+00:26:32.706 --> 00:26:35.440 align:middle line:90%
+
+
+00:26:35.440 --> 00:26:38.630 align:middle line:84%
+So even before talking
+about generalization,
+
+00:26:38.630 --> 00:26:40.420 align:middle line:90%
+I just want to point this--
+
+00:26:40.420 --> 00:26:42.640 align:middle line:84%
+this was a huge open
+problem for a very long time
+
+00:26:42.640 --> 00:26:45.460 align:middle line:90%
+to get an ISIC under LWE.
+
+00:26:45.460 --> 00:26:48.830 align:middle line:84%
+Even though what you saw is
+only circular secure, lw,
+
+00:26:48.830 --> 00:26:50.980 align:middle line:84%
+or if you think
+under FHE, you just
+
+00:26:50.980 --> 00:26:52.640 align:middle line:90%
+saw the circular secure version.
+
+00:26:52.640 --> 00:26:55.460 align:middle line:84%
+But even with the
+circular secure version,
+
+00:26:55.460 --> 00:26:57.380 align:middle line:84%
+I still find it
+remarkable that I'm
+
+00:26:57.380 --> 00:27:02.660 align:middle line:84%
+able to teach it from
+beginning to end in one class.
+
+00:27:02.660 --> 00:27:05.670 align:middle line:84%
+I hope you understood, but it
+seems like from your question,
+
+00:27:05.670 --> 00:27:07.100 align:middle line:90%
+you were pretty good.
+
+00:27:07.100 --> 00:27:09.390 align:middle line:90%
+So I don't know.
+
+00:27:09.390 --> 00:27:12.290 align:middle line:84%
+I wish-- I could torture you
+with previous attempts that
+
+00:27:12.290 --> 00:27:14.100 align:middle line:84%
+were much worse and
+much more complicated,
+
+00:27:14.100 --> 00:27:17.240 align:middle line:84%
+so you will really
+appreciate this one.
+
+00:27:17.240 --> 00:27:23.180 align:middle line:84%
+But for me, who shed a
+lot of tears and sweat
+
+00:27:23.180 --> 00:27:25.610 align:middle line:84%
+with these previous
+approaches, I totally
+
+00:27:25.610 --> 00:27:29.180 align:middle line:84%
+appreciate the
+beauty of this one.
+
+00:27:29.180 --> 00:27:32.480 align:middle line:84%
+But now-- so far, it
+was kind of-- the focus
+
+00:27:32.480 --> 00:27:33.405 align:middle line:90%
+was on this protocol.
+
+00:27:33.405 --> 00:27:34.280 align:middle line:90%
+We had this protocol.
+
+00:27:34.280 --> 00:27:35.130 align:middle line:90%
+We saw Fiat-Shamir.
+
+00:27:35.130 --> 00:27:37.100 align:middle line:84%
+And now we have
+[INAUDIBLE] and LWE.
+
+00:27:37.100 --> 00:27:37.790 align:middle line:90%
+Great.
+
+00:27:37.790 --> 00:27:40.010 align:middle line:84%
+But how general
+is this technique?
+
+00:27:40.010 --> 00:27:41.760 align:middle line:84%
+And that's what I want
+to talk about next.
+
+00:27:41.760 --> 00:27:43.280 align:middle line:90%
+OK, how general is it?
+
+00:27:43.280 --> 00:27:47.870 align:middle line:84%
+And I want to point
+out, actually, we said--
+
+00:27:47.870 --> 00:27:51.150 align:middle line:84%
+we used this specific
+structure very little.
+
+00:27:51.150 --> 00:27:53.480 align:middle line:90%
+What did we use?
+
+00:27:53.480 --> 00:27:55.170 align:middle line:90%
+So let me actually--
+
+00:27:55.170 --> 00:27:58.425 align:middle line:90%
+
+
+00:27:58.425 --> 00:27:59.675 align:middle line:90%
+let's see what I should erase.
+
+00:27:59.675 --> 00:28:03.240 align:middle line:90%
+
+
+00:28:03.240 --> 00:28:04.030 align:middle line:90%
+Let me start here.
+
+00:28:04.030 --> 00:28:09.350 align:middle line:90%
+
+
+00:28:09.350 --> 00:28:10.980 align:middle line:90%
+We use the fact--
+
+00:28:10.980 --> 00:28:12.150 align:middle line:90%
+what did we use here?
+
+00:28:12.150 --> 00:28:17.040 align:middle line:84%
+We use the fact that
+the beta was unique.
+
+00:28:17.040 --> 00:28:18.860 align:middle line:90%
+That's one thing we used.
+
+00:28:18.860 --> 00:28:20.830 align:middle line:90%
+Can we do non-unique betas?
+
+00:28:20.830 --> 00:28:23.790 align:middle line:84%
+We can do non-unique
+betas, but we pay.
+
+00:28:23.790 --> 00:28:27.980 align:middle line:84%
+So the number of
+bad betas can be--
+
+00:28:27.980 --> 00:28:30.470 align:middle line:90%
+let me call it d.
+
+00:28:30.470 --> 00:28:34.550 align:middle line:84%
+But our assumption
+degrades with 1
+
+00:28:34.550 --> 00:28:37.920 align:middle line:84%
+over d because the way we deal
+with-- if there is many bads,
+
+00:28:37.920 --> 00:28:39.500 align:middle line:84%
+then essentially
+what I do is I'm
+
+00:28:39.500 --> 00:28:44.120 align:middle line:84%
+going to guess which bad the
+prover is going to cheat with.
+
+00:28:44.120 --> 00:28:48.050 align:middle line:84%
+And if I'm going to
+choose a random beta out
+
+00:28:48.050 --> 00:28:50.870 align:middle line:84%
+of this d bad betas
+with probability 1 over
+
+00:28:50.870 --> 00:28:54.980 align:middle line:84%
+d I guessed his beta correctly,
+and then everything else kind of
+
+00:28:54.980 --> 00:28:56.760 align:middle line:90%
+continues as if it was unique.
+
+00:28:56.760 --> 00:29:00.770 align:middle line:84%
+So we can deal with
+more betas, but we
+
+00:29:00.770 --> 00:29:03.410 align:middle line:90%
+pay with the number of betas--
+
+00:29:03.410 --> 00:29:04.530 align:middle line:90%
+number of bad betas.
+
+00:29:04.530 --> 00:29:06.775 align:middle line:84%
+So if it's really, really
+huge, then it's a problem.
+
+00:29:06.775 --> 00:29:09.366 align:middle line:90%
+
+
+00:29:09.366 --> 00:29:11.470 align:middle line:84%
+So we use the fact
+that it's unique beta,
+
+00:29:11.470 --> 00:29:15.580 align:middle line:84%
+but we also used one more thing,
+which is that we can efficiently
+
+00:29:15.580 --> 00:29:19.110 align:middle line:90%
+compute the bad beta.
+
+00:29:19.110 --> 00:29:22.650 align:middle line:84%
+And that-- actually, I
+feel like the unique beta,
+
+00:29:22.650 --> 00:29:25.050 align:middle line:84%
+as I think your
+intuition was, well, you
+
+00:29:25.050 --> 00:29:26.520 align:middle line:90%
+can get around it a little bit.
+
+00:29:26.520 --> 00:29:27.280 align:middle line:90%
+Is it unique?
+
+00:29:27.280 --> 00:29:29.190 align:middle line:84%
+Well, it can be
+more as long as--
+
+00:29:29.190 --> 00:29:33.250 align:middle line:84%
+I'll guess it as long as
+there is some degradation.
+
+00:29:33.250 --> 00:29:38.070 align:middle line:84%
+But the efficiency of the
+beta, we really used it.
+
+00:29:38.070 --> 00:29:42.040 align:middle line:84%
+And the hash function
+computes the bad beta.
+
+00:29:42.040 --> 00:29:48.390 align:middle line:84%
+So I don't know at all how to
+deal with inefficient bad betas.
+
+00:29:48.390 --> 00:29:53.310 align:middle line:84%
+But let me just
+mention that still,
+
+00:29:53.310 --> 00:29:56.880 align:middle line:90%
+this result is very general.
+
+00:29:56.880 --> 00:29:59.820 align:middle line:84%
+And actually, you
+can frame this result
+
+00:29:59.820 --> 00:30:06.210 align:middle line:84%
+in a much more general framework
+for this specific protocol.
+
+00:30:06.210 --> 00:30:09.300 align:middle line:84%
+And the general framework
+is the framework that's
+
+00:30:09.300 --> 00:30:11.110 align:middle line:90%
+called correlation intractable.
+
+00:30:11.110 --> 00:30:14.560 align:middle line:84%
+So let me give you-- let me
+just start with the definition.
+
+00:30:14.560 --> 00:30:17.230 align:middle line:84%
+What is a correlation
+intractable hash function?
+
+00:30:17.230 --> 00:30:19.140 align:middle line:84%
+So correlation
+intractable hash function
+
+00:30:19.140 --> 00:30:22.080 align:middle line:84%
+was defined in
+order-- in an attempt
+
+00:30:22.080 --> 00:30:24.090 align:middle line:90%
+to prove soundness Fiat-Shamir.
+
+00:30:24.090 --> 00:30:27.000 align:middle line:84%
+And a hash function is
+correlation intractable
+
+00:30:27.000 --> 00:30:30.820 align:middle line:84%
+essentially if
+Fiat-Shamir works with it.
+
+00:30:30.820 --> 00:30:32.050 align:middle line:90%
+That's kind of the idea.
+
+00:30:32.050 --> 00:30:34.860 align:middle line:84%
+So let me define a
+spectral relation R,
+
+00:30:34.860 --> 00:30:38.550 align:middle line:90%
+so here's a definition--
+
+00:30:38.550 --> 00:30:49.990 align:middle line:84%
+a correlation intractable
+hash function--
+
+00:30:49.990 --> 00:30:57.530 align:middle line:84%
+hash family with
+respect to a relation R.
+
+00:30:57.530 --> 00:31:03.380 align:middle line:84%
+so we have some relation,
+R. R is a relation.
+
+00:31:03.380 --> 00:31:05.095 align:middle line:90%
+It's like a subset of x, y.
+
+00:31:05.095 --> 00:31:07.620 align:middle line:90%
+
+
+00:31:07.620 --> 00:31:12.330 align:middle line:84%
+You can think of x as, let's
+say, 0, 1 to the n, and y,
+
+00:31:12.330 --> 00:31:13.920 align:middle line:90%
+n1, 0, 1 to the n.
+
+00:31:13.920 --> 00:31:18.180 align:middle line:84%
+And you can think of both n and
+m as like functions of security
+
+00:31:18.180 --> 00:31:18.910 align:middle line:90%
+parameter.
+
+00:31:18.910 --> 00:31:21.640 align:middle line:90%
+So n is like n of lambda.
+
+00:31:21.640 --> 00:31:29.610 align:middle line:84%
+So for any security parameter,
+you have a length n and m,
+
+00:31:29.610 --> 00:31:32.440 align:middle line:90%
+and you have a relation.
+
+00:31:32.440 --> 00:31:34.180 align:middle line:84%
+And the hash
+family's correlation
+
+00:31:34.180 --> 00:31:36.420 align:middle line:84%
+intractable with respect
+to this relation,
+
+00:31:36.420 --> 00:31:41.500 align:middle line:84%
+it essentially means
+that for every poly size
+
+00:31:41.500 --> 00:31:49.450 align:middle line:84%
+adversary, the probability
+that this adversary who gets
+
+00:31:49.450 --> 00:31:50.390 align:middle line:90%
+hash key--
+
+00:31:50.390 --> 00:31:52.690 align:middle line:84%
+so the adversary
+gets a hash key.
+
+00:31:52.690 --> 00:31:53.990 align:middle line:90%
+There is a hash family--
+
+00:31:53.990 --> 00:31:54.960 align:middle line:90%
+let me call it H--
+
+00:31:54.960 --> 00:31:59.780 align:middle line:90%
+
+
+00:31:59.780 --> 00:32:01.935 align:middle line:90%
+that has Gen and Eval.
+
+00:32:01.935 --> 00:32:05.140 align:middle line:90%
+
+
+00:32:05.140 --> 00:32:11.770 align:middle line:84%
+Now, the adversary gets hash
+key generated, according to Gen.
+
+00:32:11.770 --> 00:32:25.310 align:middle line:84%
+And his goal is to output
+x such that H of x is--
+
+00:32:25.310 --> 00:32:28.940 align:middle line:84%
+or such that x comma H
+of x is in the relation--
+
+00:32:28.940 --> 00:32:39.970 align:middle line:84%
+such that x comma Eval,
+hash key of x is in R.
+
+00:32:39.970 --> 00:32:44.310 align:middle line:84%
+So again, a correlation
+intractable hash family
+
+00:32:44.310 --> 00:32:47.560 align:middle line:84%
+with respect to a
+certain relation R
+
+00:32:47.560 --> 00:32:51.230 align:middle line:84%
+satisfies that for any
+poly size adversary,
+
+00:32:51.230 --> 00:32:53.250 align:middle line:84%
+he gets a hash
+key in the family.
+
+00:32:53.250 --> 00:32:57.400 align:middle line:84%
+His goal is to find an
+x that hashes to a y
+
+00:32:57.400 --> 00:33:01.870 align:middle line:84%
+so that x and y is in R. And
+we say that this probability
+
+00:33:01.870 --> 00:33:04.060 align:middle line:90%
+is negligible.
+
+00:33:04.060 --> 00:33:06.670 align:middle line:90%
+I didn't finish to write it.
+
+00:33:06.670 --> 00:33:14.110 align:middle line:84%
+So for every polysize A, there
+exists a negligible lambda such
+
+00:33:14.110 --> 00:33:19.150 align:middle line:84%
+that the probability-- so
+any poly size adversary,
+
+00:33:19.150 --> 00:33:21.240 align:middle line:84%
+he gets a random hash
+key in the family,
+
+00:33:21.240 --> 00:33:27.780 align:middle line:84%
+and he's able to find x at
+that h of x so that x, h of x
+
+00:33:27.780 --> 00:33:30.970 align:middle line:84%
+is in R only with
+ungrouped probability.
+
+00:33:30.970 --> 00:33:39.390 align:middle line:84%
+So he always kind of evades
+the y in the relation.
+
+00:33:39.390 --> 00:33:41.140 align:middle line:84%
+That's called correlation
+intractable hash
+
+00:33:41.140 --> 00:33:48.336 align:middle line:84%
+family for a specific R.
+Questions about the definition?
+
+00:33:48.336 --> 00:33:51.260 align:middle line:90%
+
+
+00:33:51.260 --> 00:33:53.360 align:middle line:90%
+So first note this makes sense.
+
+00:33:53.360 --> 00:33:56.000 align:middle line:84%
+So I want to say, do we a
+correlation intractable hash
+
+00:33:56.000 --> 00:33:59.150 align:middle line:90%
+family and for which relations.
+
+00:33:59.150 --> 00:34:02.060 align:middle line:84%
+So this is kind of a
+major open question
+
+00:34:02.060 --> 00:34:06.510 align:middle line:84%
+because this is very
+related to Fiat-Shamir.
+
+00:34:06.510 --> 00:34:08.660 align:middle line:90%
+So Fiat-Shamir, we know--
+
+00:34:08.660 --> 00:34:11.040 align:middle line:90%
+take x out of the language.
+
+00:34:11.040 --> 00:34:13.440 align:middle line:84%
+We want-- so think of
+alpha, beta, gamma.
+
+00:34:13.440 --> 00:34:14.830 align:middle line:90%
+Just think for three messages.
+
+00:34:14.830 --> 00:34:16.630 align:middle line:84%
+Everything I say
+now extends to more.
+
+00:34:16.630 --> 00:34:18.219 align:middle line:90%
+But let's think of three.
+
+00:34:18.219 --> 00:34:20.139 align:middle line:84%
+It extends the
+constant at least.
+
+00:34:20.139 --> 00:34:22.530 align:middle line:84%
+But let's think of
+three for simplicity.
+
+00:34:22.530 --> 00:34:27.239 align:middle line:84%
+So we want to evade, not
+attach, to be correlation--
+
+00:34:27.239 --> 00:34:30.250 align:middle line:84%
+so the relation in our
+case-- in Fiat-Shamir,
+
+00:34:30.250 --> 00:34:36.190 align:middle line:84%
+the relation is alpha and
+beta are in the relation
+
+00:34:36.190 --> 00:34:39.530 align:middle line:84%
+if there exists a gamma
+that will make it accept.
+
+00:34:39.530 --> 00:34:43.940 align:middle line:84%
+So the relation contains
+alpha and the bad betas.
+
+00:34:43.940 --> 00:34:46.370 align:middle line:84%
+And we want to avoid
+these bad betas.
+
+00:34:46.370 --> 00:34:49.940 align:middle line:84%
+So we want to say that any
+adversary that gets a hash key
+
+00:34:49.940 --> 00:34:56.630 align:middle line:84%
+managed to hit a bad beta only
+with negative probability.
+
+00:34:56.630 --> 00:35:02.030 align:middle line:84%
+So there may-- there may exist
+alphas, but he won't find them.
+
+00:35:02.030 --> 00:35:06.380 align:middle line:84%
+It'll be hard for him
+to find an x or an alpha
+
+00:35:06.380 --> 00:35:09.085 align:middle line:84%
+that hashes to a
+beta that is bad.
+
+00:35:09.085 --> 00:35:13.670 align:middle line:90%
+
+
+00:35:13.670 --> 00:35:15.980 align:middle line:84%
+Here, I'm-- the idea
+is to take any--
+
+00:35:15.980 --> 00:35:19.370 align:middle line:84%
+take any-- think of
+any interactive proof
+
+00:35:19.370 --> 00:35:23.140 align:middle line:90%
+of the form alpha, beta, gamma.
+
+00:35:23.140 --> 00:35:25.670 align:middle line:90%
+And I want to say the relation--
+
+00:35:25.670 --> 00:35:29.360 align:middle line:84%
+think of the relation being
+all the relations of x,
+
+00:35:29.360 --> 00:35:30.890 align:middle line:90%
+take x not in the language.
+
+00:35:30.890 --> 00:35:33.920 align:middle line:84%
+I guess now this x-- this x
+corresponds to alpha here,
+
+00:35:33.920 --> 00:35:35.740 align:middle line:84%
+but takes any x not
+in the language.
+
+00:35:35.740 --> 00:35:39.340 align:middle line:84%
+And the relation is
+all the alpha, beta so
+
+00:35:39.340 --> 00:35:43.380 align:middle line:90%
+that exists a gamma accepting.
+
+00:35:43.380 --> 00:35:45.370 align:middle line:84%
+So that alpha, beta,
+gamma is accepting.
+
+00:35:45.370 --> 00:35:48.650 align:middle line:90%
+
+
+00:35:48.650 --> 00:35:53.750 align:middle line:84%
+And I know that for every alpha,
+there's very, very few betas.
+
+00:35:53.750 --> 00:35:57.530 align:middle line:84%
+And I want to say that the
+adversary output, alpha, beta
+
+00:35:57.530 --> 00:35:59.690 align:middle line:90%
+and the relation--
+
+00:35:59.690 --> 00:36:03.530 align:middle line:84%
+alpha so that the hash of
+alpha is in the relation only
+
+00:36:03.530 --> 00:36:04.700 align:middle line:90%
+with negative probability.
+
+00:36:04.700 --> 00:36:07.094 align:middle line:84%
+Then I have soundness
+of the Fiat-Shamir.
+
+00:36:07.094 --> 00:36:13.390 align:middle line:90%
+
+
+00:36:13.390 --> 00:36:14.270 align:middle line:90%
+Was that too fast?
+
+00:36:14.270 --> 00:36:18.980 align:middle line:84%
+Should I repeat the
+connection to Fiat-Shamir?
+
+00:36:18.980 --> 00:36:20.670 align:middle line:90%
+Let me repeat it once more.
+
+00:36:20.670 --> 00:36:23.600 align:middle line:84%
+OK, so I want to
+argue that I have
+
+00:36:23.600 --> 00:36:28.310 align:middle line:84%
+correlation intractable hash
+family for a lot of relations.
+
+00:36:28.310 --> 00:36:30.560 align:middle line:84%
+Actually, before I
+go-- note, I can't hope
+
+00:36:30.560 --> 00:36:32.390 align:middle line:90%
+to have it for any relation.
+
+00:36:32.390 --> 00:36:33.692 align:middle line:90%
+The relation has to be sparse.
+
+00:36:33.692 --> 00:36:35.900 align:middle line:84%
+If the relation is everything,
+maybe not everything--
+
+00:36:35.900 --> 00:36:39.300 align:middle line:84%
+every xy is in the
+relation, then, of course,
+
+00:36:39.300 --> 00:36:42.520 align:middle line:90%
+a hash will hit a trivial.
+
+00:36:42.520 --> 00:36:44.890 align:middle line:90%
+So the most I can hope for--
+
+00:36:44.890 --> 00:36:49.120 align:middle line:84%
+so the question I really want to
+ask or the most general question
+
+00:36:49.120 --> 00:37:00.860 align:middle line:84%
+is, does there exist
+correlation intractable hash
+
+00:37:00.860 --> 00:37:03.650 align:middle line:90%
+for every evasive--
+
+00:37:03.650 --> 00:37:07.483 align:middle line:84%
+or also people sometimes
+call it sparse--
+
+00:37:07.483 --> 00:37:07.983 align:middle line:90%
+relation?
+
+00:37:07.983 --> 00:37:11.270 align:middle line:90%
+
+
+00:37:11.270 --> 00:37:12.890 align:middle line:90%
+That's the question.
+
+00:37:12.890 --> 00:37:16.670 align:middle line:84%
+And by evasive or by sparse,
+I just mean that for every x,
+
+00:37:16.670 --> 00:37:20.520 align:middle line:84%
+there are very few y's
+that are in the relation.
+
+00:37:20.520 --> 00:37:24.000 align:middle line:90%
+So sparse means-- forgot an e--
+
+00:37:24.000 --> 00:37:25.400 align:middle line:90%
+sparse means this.
+
+00:37:25.400 --> 00:37:28.330 align:middle line:90%
+
+
+00:37:28.330 --> 00:37:35.265 align:middle line:84%
+This means that for every x,
+the probability of a random y--
+
+00:37:35.265 --> 00:37:38.040 align:middle line:90%
+
+
+00:37:38.040 --> 00:37:42.190 align:middle line:90%
+that x y is in R is negligible.
+
+00:37:42.190 --> 00:37:45.870 align:middle line:90%
+
+
+00:37:45.870 --> 00:37:46.390 align:middle line:90%
+Yeah?
+
+00:37:46.390 --> 00:37:49.860 align:middle line:84%
+AUDIENCE: So Fiat-Shamir is for
+x not in the language, right?
+
+00:37:49.860 --> 00:37:51.010 align:middle line:90%
+PROFESSOR: Yes, yes.
+
+00:37:51.010 --> 00:37:51.850 align:middle line:90%
+Yes, yes, yes.
+
+00:37:51.850 --> 00:37:52.350 align:middle line:90%
+Good.
+
+00:37:52.350 --> 00:37:53.110 align:middle line:90%
+OK, good.
+
+00:37:53.110 --> 00:37:55.900 align:middle line:84%
+So now let's go to-- yeah, so
+now let's go to Fiat-Shamir.
+
+00:37:55.900 --> 00:37:56.400 align:middle line:90%
+Good.
+
+00:37:56.400 --> 00:37:58.020 align:middle line:84%
+So I want to ask,
+if there exists
+
+00:37:58.020 --> 00:38:01.170 align:middle line:84%
+a correlation intractable
+for every such evasive
+
+00:38:01.170 --> 00:38:03.820 align:middle line:90%
+or sparse language relation.
+
+00:38:03.820 --> 00:38:06.190 align:middle line:90%
+Now, if there is, I'm done.
+
+00:38:06.190 --> 00:38:07.107 align:middle line:90%
+Why?
+
+00:38:07.107 --> 00:38:09.690 align:middle line:84%
+If you can prove that there is
+a correlation. intractable hash
+
+00:38:09.690 --> 00:38:13.492 align:middle line:90%
+for every sparse language--
+
+00:38:13.492 --> 00:38:15.450 align:middle line:84%
+now I'll tell you-- now
+here's the Fiat-Shamir.
+
+00:38:15.450 --> 00:38:17.030 align:middle line:90%
+Take x not in the language.
+
+00:38:17.030 --> 00:38:21.987 align:middle line:90%
+
+
+00:38:21.987 --> 00:38:23.570 align:middle line:84%
+Take the correlation
+intractable hash.
+
+00:38:23.570 --> 00:38:25.778 align:middle line:84%
+You had said there is a
+correlation intractable hash.
+
+00:38:25.778 --> 00:38:26.850 align:middle line:90%
+Take that hash function.
+
+00:38:26.850 --> 00:38:29.030 align:middle line:84%
+Now what I'm going
+to do-- now, I
+
+00:38:29.030 --> 00:38:31.880 align:middle line:84%
+want to-- now take
+x in the language.
+
+00:38:31.880 --> 00:38:35.840 align:middle line:84%
+The evasive relation that
+I look at is this relation.
+
+00:38:35.840 --> 00:38:39.140 align:middle line:84%
+Alpha, beta is in the relation
+if there exists gamma.
+
+00:38:39.140 --> 00:38:41.690 align:middle line:84%
+Of course, it's evasive
+because it's a proof.
+
+00:38:41.690 --> 00:38:45.750 align:middle line:84%
+It means there's only negligible
+amount of betas I can answer.
+
+00:38:45.750 --> 00:38:46.820 align:middle line:90%
+So it's evasive.
+
+00:38:46.820 --> 00:38:49.670 align:middle line:84%
+And therefore, the probability
+that you hit a bad beta
+
+00:38:49.670 --> 00:38:50.790 align:middle line:90%
+is negligible.
+
+00:38:50.790 --> 00:38:51.710 align:middle line:90%
+I'm done.
+
+00:38:51.710 --> 00:38:53.890 align:middle line:90%
+Proof.
+
+00:38:53.890 --> 00:38:58.560 align:middle line:84%
+So if I have a collision
+hash that works for any--
+
+00:38:58.560 --> 00:39:01.960 align:middle line:84%
+so for any invasive relation,
+this holds for any R,
+
+00:39:01.960 --> 00:39:03.610 align:middle line:90%
+then I'm good.
+
+00:39:03.610 --> 00:39:06.020 align:middle line:90%
+So if for any R--
+
+00:39:06.020 --> 00:39:11.650 align:middle line:84%
+yes, for any R, you don't
+hit it, then I'm done.
+
+00:39:11.650 --> 00:39:14.270 align:middle line:90%
+Fiat-Shamir is sound.
+
+00:39:14.270 --> 00:39:14.770 align:middle line:90%
+OK.
+
+00:39:14.770 --> 00:39:17.430 align:middle line:84%
+So then, this was actually
+defined in an earlier
+
+00:39:17.430 --> 00:39:19.570 align:middle line:90%
+work, in 2004, maybe.
+
+00:39:19.570 --> 00:39:23.150 align:middle line:84%
+I don't really remember,
+but a while, back.
+
+00:39:23.150 --> 00:39:25.370 align:middle line:84%
+And then people say, OK,
+so we need to construct
+
+00:39:25.370 --> 00:39:27.360 align:middle line:90%
+this evasive function.
+
+00:39:27.360 --> 00:39:28.890 align:middle line:84%
+So we proved that
+the random oracle
+
+00:39:28.890 --> 00:39:31.420 align:middle line:84%
+model is-- the random oracle
+is an invasive function.
+
+00:39:31.420 --> 00:39:32.795 align:middle line:84%
+But beyond that,
+they were stuck.
+
+00:39:32.795 --> 00:39:35.730 align:middle line:90%
+
+
+00:39:35.730 --> 00:39:42.000 align:middle line:84%
+And what this result that the
+Canetti-Lombardi week's results
+
+00:39:42.000 --> 00:39:42.700 align:middle line:90%
+show--
+
+00:39:42.700 --> 00:39:48.810 align:middle line:84%
+so let me now state the
+result in more general terms.
+
+00:39:48.810 --> 00:39:56.640 align:middle line:84%
+What it shows that there exists
+a correlation intractable hash
+
+00:39:56.640 --> 00:40:00.375 align:middle line:90%
+for every relation that is--
+
+00:40:00.375 --> 00:40:05.200 align:middle line:90%
+
+
+00:40:05.200 --> 00:40:10.390 align:middle line:84%
+for any relation, that is--
+they call it searchable--
+
+00:40:10.390 --> 00:40:18.890 align:middle line:90%
+I'll explain-- in time t--
+
+00:40:18.890 --> 00:40:21.770 align:middle line:84%
+so searchable in time
+t just means that--
+
+00:40:21.770 --> 00:40:24.720 align:middle line:84%
+searchable means that for every
+alpha there is a unique beta.
+
+00:40:24.720 --> 00:40:25.680 align:middle line:90%
+It's a search problem.
+
+00:40:25.680 --> 00:40:27.770 align:middle line:84%
+It's like for every output
+there is a unique beta,
+
+00:40:27.770 --> 00:40:32.570 align:middle line:84%
+and this beta can be
+computed in time t.
+
+00:40:32.570 --> 00:40:35.870 align:middle line:84%
+So what they show is there
+exists a correlation in hash--
+
+00:40:35.870 --> 00:40:38.760 align:middle line:84%
+correlation intractable
+hash for every--
+
+00:40:38.760 --> 00:40:43.190 align:middle line:84%
+that is correlation intractable
+for every relation searchable
+
+00:40:43.190 --> 00:40:44.000 align:middle line:90%
+in time t.
+
+00:40:44.000 --> 00:40:48.570 align:middle line:84%
+And this hash-- the time to
+compute the hash grows with t.
+
+00:40:48.570 --> 00:40:52.270 align:middle line:90%
+
+
+00:40:52.270 --> 00:40:57.160 align:middle line:84%
+So essentially, what they say
+is for every polynomial t--
+
+00:40:57.160 --> 00:41:03.700 align:middle line:84%
+because the hash grows with
+t-- so for every polynomial t,
+
+00:41:03.700 --> 00:41:08.320 align:middle line:84%
+there exists a hash
+function that depends on t,
+
+00:41:08.320 --> 00:41:13.920 align:middle line:84%
+and its correlation intractable
+with respect to all relations
+
+00:41:13.920 --> 00:41:15.540 align:middle line:90%
+that are searchable in time t.
+
+00:41:15.540 --> 00:41:17.850 align:middle line:84%
+And again, relations
+searchable in time t
+
+00:41:17.850 --> 00:41:23.310 align:middle line:90%
+means that for every alpha--
+
+00:41:23.310 --> 00:41:26.100 align:middle line:84%
+let me denote the
+relation by this
+
+00:41:26.100 --> 00:41:32.410 align:middle line:84%
+and not x because x
+often denotes input,
+
+00:41:32.410 --> 00:41:34.410 align:middle line:84%
+and I want to think of
+the relation as alpha,
+
+00:41:34.410 --> 00:41:36.240 align:middle line:84%
+beta instead of
+x, y because then
+
+00:41:36.240 --> 00:41:39.780 align:middle line:84%
+there's a confusion between
+the x here and the x instance.
+
+00:41:39.780 --> 00:41:43.320 align:middle line:84%
+So it just means
+that the relation
+
+00:41:43.320 --> 00:41:49.350 align:middle line:84%
+is a set of alpha betas
+such that for every alpha
+
+00:41:49.350 --> 00:41:52.010 align:middle line:90%
+there exists a unique--
+
+00:41:52.010 --> 00:41:54.560 align:middle line:84%
+at most a unique, maybe
+less, but at most--
+
+00:41:54.560 --> 00:41:58.470 align:middle line:90%
+
+
+00:41:58.470 --> 00:42:07.470 align:middle line:84%
+at most unique beta
+such that alpha beta
+
+00:42:07.470 --> 00:42:13.290 align:middle line:84%
+is in R, and to go
+from alpha to beta--
+
+00:42:13.290 --> 00:42:15.930 align:middle line:90%
+or but if there is no beta--
+
+00:42:15.930 --> 00:42:19.370 align:middle line:90%
+is computable in time t.
+
+00:42:19.370 --> 00:42:24.440 align:middle line:90%
+
+
+00:42:24.440 --> 00:42:27.710 align:middle line:84%
+OK, so a searchable relation
+means for every alpha,
+
+00:42:27.710 --> 00:42:30.323 align:middle line:84%
+there is a unique
+beta, at most unique.
+
+00:42:30.323 --> 00:42:32.240 align:middle line:84%
+Maybe there's no beta,
+but if there is a beta,
+
+00:42:32.240 --> 00:42:36.580 align:middle line:84%
+it's unique, and from alpha to
+compute the beta corresponding
+
+00:42:36.580 --> 00:42:37.080 align:middle line:90%
+to it.
+
+00:42:37.080 --> 00:42:40.430 align:middle line:84%
+And the relation can
+be done in time t.
+
+00:42:40.430 --> 00:42:44.030 align:middle line:84%
+And what they showed is that
+there exists a single hash
+
+00:42:44.030 --> 00:42:44.700 align:middle line:90%
+family.
+
+00:42:44.700 --> 00:42:47.160 align:middle line:84%
+So first note, of
+course, of course,
+
+00:42:47.160 --> 00:42:52.350 align:middle line:84%
+if you fix a relation that's
+searchable in time t, of course,
+
+00:42:52.350 --> 00:42:54.190 align:middle line:84%
+there's a hash
+that's correlation
+
+00:42:54.190 --> 00:42:56.130 align:middle line:90%
+intractable with respect to it.
+
+00:42:56.130 --> 00:43:01.480 align:middle line:84%
+Just compute the
+beta and add one.
+
+00:43:01.480 --> 00:43:06.640 align:middle line:90%
+Again, let me move there.
+
+00:43:06.640 --> 00:43:07.640 align:middle line:90%
+So you'll have this.
+
+00:43:07.640 --> 00:43:17.310 align:middle line:90%
+
+
+00:43:17.310 --> 00:43:22.110 align:middle line:84%
+So we want to show a correlation
+intractable hash with respect
+
+00:43:22.110 --> 00:43:27.720 align:middle line:84%
+to any relation that's
+searchable in time t.
+
+00:43:27.720 --> 00:43:31.100 align:middle line:84%
+And first, I want
+to note, I want
+
+00:43:31.100 --> 00:43:36.170 align:middle line:84%
+one hash that's correlation
+intractable for all relations.
+
+00:43:36.170 --> 00:43:40.490 align:middle line:84%
+Of course, if you first choose
+a relation-- if you first--
+
+00:43:40.490 --> 00:43:43.070 align:middle line:84%
+of course this-- what I'm
+saying now is a trivial.
+
+00:43:43.070 --> 00:43:51.840 align:middle line:84%
+For any t time
+searchable relation,
+
+00:43:51.840 --> 00:43:56.420 align:middle line:84%
+there exists a correlation
+intractable hash running
+
+00:43:56.420 --> 00:44:03.470 align:middle line:90%
+in time t or close to t.
+
+00:44:03.470 --> 00:44:04.680 align:middle line:90%
+That's easy.
+
+00:44:04.680 --> 00:44:05.770 align:middle line:90%
+What is the hash?
+
+00:44:05.770 --> 00:44:10.340 align:middle line:84%
+The hash of alpha
+will just be the beta
+
+00:44:10.340 --> 00:44:14.560 align:middle line:84%
+that you're searching for
+in the relation plus 1.
+
+00:44:14.560 --> 00:44:16.000 align:middle line:90%
+Just avoid it somehow--
+
+00:44:16.000 --> 00:44:18.640 align:middle line:90%
+plus whatever, 1.
+
+00:44:18.640 --> 00:44:20.380 align:middle line:90%
+Just move out of the beta.
+
+00:44:20.380 --> 00:44:21.140 align:middle line:90%
+That's it.
+
+00:44:21.140 --> 00:44:23.060 align:middle line:90%
+That's easy.
+
+00:44:23.060 --> 00:44:25.980 align:middle line:84%
+But what they show is
+something much stronger.
+
+00:44:25.980 --> 00:44:30.140 align:middle line:84%
+They show the oppo-- they
+show the reverse order
+
+00:44:30.140 --> 00:44:31.240 align:middle line:90%
+of quantifiers.
+
+00:44:31.240 --> 00:44:37.700 align:middle line:84%
+They show that there
+exists one hash family,
+
+00:44:37.700 --> 00:44:40.100 align:middle line:84%
+and this has family
+is correlation
+
+00:44:40.100 --> 00:44:55.640 align:middle line:84%
+intractable for all t
+time searchable relations.
+
+00:44:55.640 --> 00:44:57.090 align:middle line:90%
+That's the difference.
+
+00:44:57.090 --> 00:44:59.880 align:middle line:90%
+
+
+00:44:59.880 --> 00:45:03.460 align:middle line:84%
+OK, so that's kind of
+what I want to end with.
+
+00:45:03.460 --> 00:45:05.627 align:middle line:84%
+I want to prove it to you
+because we saw this proof.
+
+00:45:05.627 --> 00:45:07.418 align:middle line:84%
+It's exactly the same
+thing, but let's just
+
+00:45:07.418 --> 00:45:08.420 align:middle line:90%
+see it in this language.
+
+00:45:08.420 --> 00:45:14.040 align:middle line:84%
+But before we go over the proof
+again, or just remind the proof,
+
+00:45:14.040 --> 00:45:18.190 align:middle line:90%
+so this is a much stronger--
+
+00:45:18.190 --> 00:45:20.646 align:middle line:84%
+this is a pretty
+general statement.
+
+00:45:20.646 --> 00:45:25.920 align:middle line:90%
+
+
+00:45:25.920 --> 00:45:31.750 align:middle line:84%
+And this statement is used
+in many follow-up works.
+
+00:45:31.750 --> 00:45:36.990 align:middle line:84%
+For example, this
+can be used almost
+
+00:45:36.990 --> 00:45:41.705 align:middle line:84%
+to prove the soundness of
+GKR, for example or sum-check.
+
+00:45:41.705 --> 00:45:43.080 align:middle line:84%
+Let's do sum-check
+for simplicity
+
+00:45:43.080 --> 00:45:45.680 align:middle line:90%
+because all the ideas are there.
+
+00:45:45.680 --> 00:45:48.710 align:middle line:84%
+How can you do-- how can you
+prove Fiat-Shamir is sound
+
+00:45:48.710 --> 00:45:49.950 align:middle line:90%
+for sum-check.
+
+00:45:49.950 --> 00:45:55.590 align:middle line:84%
+Let's just recall, just for a
+minute, what the sum-check is,
+
+00:45:55.590 --> 00:45:56.810 align:middle line:90%
+just so you see how--
+
+00:45:56.810 --> 00:45:58.260 align:middle line:90%
+it's not immediate, by the way.
+
+00:45:58.260 --> 00:45:59.310 align:middle line:90%
+It requires more crypto.
+
+00:45:59.310 --> 00:46:01.370 align:middle line:84%
+But I want to give you
+a sense a little bit
+
+00:46:01.370 --> 00:46:03.990 align:middle line:90%
+of the why this is very useful.
+
+00:46:03.990 --> 00:46:07.900 align:middle line:84%
+So it's not immediate, but
+it definitely uses this fact.
+
+00:46:07.900 --> 00:46:12.960 align:middle line:90%
+
+
+00:46:12.960 --> 00:46:15.330 align:middle line:90%
+OK, so let's see why.
+
+00:46:15.330 --> 00:46:17.190 align:middle line:84%
+As an example, let's
+look at the sum-check.
+
+00:46:17.190 --> 00:46:23.340 align:middle line:84%
+So suppose I want to prove
+that sum of gb1 up to bm
+
+00:46:23.340 --> 00:46:26.880 align:middle line:84%
+is equal to some
+value v. And I want
+
+00:46:26.880 --> 00:46:31.390 align:middle line:90%
+to do it in the Fiat-Shamir.
+
+00:46:31.390 --> 00:46:32.900 align:middle line:90%
+So what is the relation?
+
+00:46:32.900 --> 00:46:33.670 align:middle line:90%
+Let's see.
+
+00:46:33.670 --> 00:46:35.270 align:middle line:84%
+It's many rounds,
+so it's harder.
+
+00:46:35.270 --> 00:46:37.690 align:middle line:84%
+But let's just look at the
+first round for a second,
+
+00:46:37.690 --> 00:46:40.100 align:middle line:90%
+or the first three rounds.
+
+00:46:40.100 --> 00:46:43.220 align:middle line:84%
+So we have a prover
+and a verifier.
+
+00:46:43.220 --> 00:46:45.020 align:middle line:90%
+Suppose this is false.
+
+00:46:45.020 --> 00:46:48.340 align:middle line:84%
+So this is actually--
+it's actually false,
+
+00:46:48.340 --> 00:46:51.330 align:middle line:84%
+but the prover is
+trying to cheat me.
+
+00:46:51.330 --> 00:46:54.580 align:middle line:84%
+So now the first thing the
+prover does, if you remember,
+
+00:46:54.580 --> 00:46:56.770 align:middle line:84%
+he gives a univariate
+polynomial.
+
+00:46:56.770 --> 00:46:59.550 align:middle line:90%
+
+
+00:46:59.550 --> 00:47:00.990 align:middle line:90%
+Now this univariate polynomial.
+
+00:47:00.990 --> 00:47:02.420 align:middle line:90%
+Is wrong.
+
+00:47:02.420 --> 00:47:04.090 align:middle line:84%
+I'll put star
+because it's wrong.
+
+00:47:04.090 --> 00:47:04.650 align:middle line:90%
+Why?
+
+00:47:04.650 --> 00:47:08.360 align:middle line:84%
+Because I know the value
+here is actually not
+
+00:47:08.360 --> 00:47:12.590 align:middle line:84%
+v. He's proving that it's
+v. He should be giving--
+
+00:47:12.590 --> 00:47:14.600 align:middle line:84%
+the value that he
+should be giving
+
+00:47:14.600 --> 00:47:25.950 align:middle line:84%
+is g1, which is sum
+of g on b2 up to bn.
+
+00:47:25.950 --> 00:47:29.100 align:middle line:90%
+
+
+00:47:29.100 --> 00:47:31.270 align:middle line:90%
+That's what he should be giving.
+
+00:47:31.270 --> 00:47:35.530 align:middle line:84%
+And I would check that when
+you take this and sum it only
+
+00:47:35.530 --> 00:47:38.485 align:middle line:84%
+over b1, you get v.
+But of course he's
+
+00:47:38.485 --> 00:47:40.610 align:middle line:84%
+not going to give me this
+because when you sum this
+
+00:47:40.610 --> 00:47:45.520 align:middle line:84%
+over b1, it's not v. Because
+the real answer, this is not v.
+
+00:47:45.520 --> 00:47:49.340 align:middle line:84%
+So he will give me
+another one, star.
+
+00:47:49.340 --> 00:47:51.150 align:middle line:90%
+What are the bad betas?
+
+00:47:51.150 --> 00:47:58.170 align:middle line:84%
+The bad betas-- so
+now beta bad are all
+
+00:47:58.170 --> 00:48:07.020 align:middle line:84%
+the elements t in the field
+such that g1 star is equal.
+
+00:48:07.020 --> 00:48:10.440 align:middle line:90%
+Now with this, now we can cheat.
+
+00:48:10.440 --> 00:48:14.010 align:middle line:84%
+If he managed to give me
+g star that's equal to gt,
+
+00:48:14.010 --> 00:48:16.920 align:middle line:84%
+now he kind of
+continues with the good.
+
+00:48:16.920 --> 00:48:18.350 align:middle line:90%
+Now he has a true statement.
+
+00:48:18.350 --> 00:48:19.500 align:middle line:90%
+Lucky him.
+
+00:48:19.500 --> 00:48:22.290 align:middle line:84%
+So these are going to
+be really bad for me.
+
+00:48:22.290 --> 00:48:24.630 align:middle line:84%
+But there are very few
+of them, like the degree,
+
+00:48:24.630 --> 00:48:26.810 align:middle line:90%
+the univariate degree of this g.
+
+00:48:26.810 --> 00:48:28.800 align:middle line:90%
+So as long as I don't hit--
+
+00:48:28.800 --> 00:48:32.480 align:middle line:84%
+if the degree is d-- as long
+as I don't hit this d bad,
+
+00:48:32.480 --> 00:48:34.970 align:middle line:90%
+I'm good.
+
+00:48:34.970 --> 00:48:40.280 align:middle line:84%
+And it's pretty easy to compute
+this thing because I'm going--
+
+00:48:40.280 --> 00:48:44.730 align:middle line:84%
+so computing g1 may be hard,
+but I can hard wire it.
+
+00:48:44.730 --> 00:48:46.980 align:middle line:90%
+It's like a trapdoor.
+
+00:48:46.980 --> 00:48:48.090 align:middle line:90%
+I have this statement.
+
+00:48:48.090 --> 00:48:50.950 align:middle line:90%
+I can use g1 as a trapdoor.
+
+00:48:50.950 --> 00:48:55.180 align:middle line:84%
+And now, once I have g1 as
+a trap door, giving g1 star,
+
+00:48:55.180 --> 00:48:59.060 align:middle line:84%
+computing all the inputs
+that collide with my g1,
+
+00:48:59.060 --> 00:49:00.290 align:middle line:90%
+there are algorithms.
+
+00:49:00.290 --> 00:49:02.040 align:middle line:84%
+There's efficient
+algorithms for this.
+
+00:49:02.040 --> 00:49:03.400 align:middle line:90%
+So now it's efficient.
+
+00:49:03.400 --> 00:49:05.450 align:middle line:90%
+So all I need to avoid--
+
+00:49:05.450 --> 00:49:06.530 align:middle line:90%
+so it's not searchable.
+
+00:49:06.530 --> 00:49:09.230 align:middle line:84%
+It's not 1 beta
+like we have here.
+
+00:49:09.230 --> 00:49:10.480 align:middle line:90%
+It's d betas.
+
+00:49:10.480 --> 00:49:12.580 align:middle line:84%
+But to go from 1 to d, as
+I said, you just guess.
+
+00:49:12.580 --> 00:49:13.870 align:middle line:90%
+You lose a factor of d.
+
+00:49:13.870 --> 00:49:16.960 align:middle line:90%
+It really extends pretty easily.
+
+00:49:16.960 --> 00:49:20.500 align:middle line:90%
+So you apply Fiat-Shamir, done.
+
+00:49:20.500 --> 00:49:22.010 align:middle line:90%
+It's not that easy.
+
+00:49:22.010 --> 00:49:26.560 align:middle line:84%
+The reason it's not that easy
+is because now a t comes out
+
+00:49:26.560 --> 00:49:31.690 align:middle line:84%
+from the Fiat-Shamir, and
+the next g depends on this t
+
+00:49:31.690 --> 00:49:34.610 align:middle line:84%
+because the next g is going
+to be the next g star.
+
+00:49:34.610 --> 00:49:44.380 align:middle line:84%
+The next real g, g2, is going to
+be sum g, the real g here, t1,
+
+00:49:44.380 --> 00:49:47.170 align:middle line:90%
+and then b3, da, da, da, da.
+
+00:49:47.170 --> 00:49:51.910 align:middle line:84%
+So I can't hardwire
+g2 ahead of time.
+
+00:49:51.910 --> 00:49:53.050 align:middle line:90%
+I don't know what t1 is.
+
+00:49:53.050 --> 00:49:54.650 align:middle line:90%
+Things are not as simple.
+
+00:49:54.650 --> 00:49:57.280 align:middle line:84%
+So there's more--
+it's not a trivial,
+
+00:49:57.280 --> 00:50:00.110 align:middle line:90%
+but the first part is trivial.
+
+00:50:00.110 --> 00:50:03.850 align:middle line:84%
+And then you need to add to it,
+throw on it a little more crypto
+
+00:50:03.850 --> 00:50:05.660 align:middle line:90%
+and do some more work.
+
+00:50:05.660 --> 00:50:09.880 align:middle line:84%
+But this technique
+is used to prove GKR.
+
+00:50:09.880 --> 00:50:13.840 align:middle line:84%
+This technique is
+also used to prove
+
+00:50:13.840 --> 00:50:17.690 align:middle line:84%
+the result of to do
+with Zhengzhong Jin
+
+00:50:17.690 --> 00:50:23.740 align:middle line:84%
+where Zhengzhong Jin is going
+to present next class where they
+
+00:50:23.740 --> 00:50:30.130 align:middle line:84%
+use Fiat-Shamir to prove
+the existence of a batch
+
+00:50:30.130 --> 00:50:31.173 align:middle line:90%
+non-interactive argument.
+
+00:50:31.173 --> 00:50:32.840 align:middle line:84%
+So he'll explain what
+that is next time.
+
+00:50:32.840 --> 00:50:34.780 align:middle line:84%
+But again, this technique--
+so this technique
+
+00:50:34.780 --> 00:50:37.340 align:middle line:90%
+is pretty general.
+
+00:50:37.340 --> 00:50:39.700 align:middle line:90%
+OK?
+
+00:50:39.700 --> 00:50:45.295 align:middle line:84%
+Question before I just
+remind you why this holds?
+
+00:50:45.295 --> 00:50:48.830 align:middle line:90%
+
+
+00:50:48.830 --> 00:50:49.330 align:middle line:90%
+Questions?
+
+00:50:49.330 --> 00:50:49.830 align:middle line:90%
+Yeah.
+
+00:50:49.830 --> 00:50:56.250 align:middle line:84%
+AUDIENCE: So you said get all
+the keys and pick a random one?
+
+00:50:56.250 --> 00:50:57.222 align:middle line:90%
+PROFESSOR: OK, exactly.
+
+00:50:57.222 --> 00:50:59.180 align:middle line:84%
+So in the analysis, you
+can think of it-- yeah,
+
+00:50:59.180 --> 00:51:01.730 align:middle line:84%
+I'm going to-- so I
+have a cheating prover.
+
+00:51:01.730 --> 00:51:06.950 align:middle line:84%
+And it's a bit
+complicated, but yes,
+
+00:51:06.950 --> 00:51:08.990 align:middle line:84%
+in the analysis, I'm
+going to say, look,
+
+00:51:08.990 --> 00:51:11.980 align:middle line:84%
+I have a cheating prover,
+so it means he cheats
+
+00:51:11.980 --> 00:51:13.780 align:middle line:90%
+with respect to 1 random--
+
+00:51:13.780 --> 00:51:16.990 align:middle line:84%
+with a random 1 here with
+probability 1 over d.
+
+00:51:16.990 --> 00:51:18.995 align:middle line:84%
+And then I'm going to
+get a contradiction
+
+00:51:18.995 --> 00:51:20.620 align:middle line:84%
+because he's going
+to cheat with anyone
+
+00:51:20.620 --> 00:51:22.330 align:middle line:90%
+with negligible probability.
+
+00:51:22.330 --> 00:51:23.743 align:middle line:90%
+For each one, fix it.
+
+00:51:23.743 --> 00:51:25.410 align:middle line:84%
+With that, he's going
+to cheat with that
+
+00:51:25.410 --> 00:51:26.740 align:middle line:90%
+with negligible probability.
+
+00:51:26.740 --> 00:51:30.153 align:middle line:84%
+So then you're union bound
+kind of, and say, OK, so
+
+00:51:30.153 --> 00:51:32.320 align:middle line:84%
+for the probability that
+he cheats with any of these
+
+00:51:32.320 --> 00:51:33.950 align:middle line:90%
+is d times negligible.
+
+00:51:33.950 --> 00:51:37.530 align:middle line:84%
+So as long as D is
+polynomial, you're good.
+
+00:51:37.530 --> 00:51:39.897 align:middle line:84%
+AUDIENCE: What will our
+hash function look like?
+
+00:51:39.897 --> 00:51:41.230 align:middle line:90%
+PROFESSOR: It's the exact same--
+
+00:51:41.230 --> 00:51:43.330 align:middle line:90%
+OK, so actually, let me--
+
+00:51:43.330 --> 00:51:45.580 align:middle line:84%
+so the question, what was
+our hash function look like.
+
+00:51:45.580 --> 00:51:49.488 align:middle line:84%
+I'll tell you exactly what
+it is when I prove this,
+
+00:51:49.488 --> 00:51:51.530 align:middle line:84%
+and you'll see it's the
+exact same hash function.
+
+00:51:51.530 --> 00:51:54.770 align:middle line:84%
+So I say here-- and
+that's the hash function
+
+00:51:54.770 --> 00:51:55.940 align:middle line:90%
+that I'll use up there.
+
+00:51:55.940 --> 00:51:59.240 align:middle line:84%
+I say here that there exists
+a hash function that's
+
+00:51:59.240 --> 00:52:00.740 align:middle line:84%
+correlation intractable
+with respect
+
+00:52:00.740 --> 00:52:02.820 align:middle line:84%
+to any t time
+searchable relation.
+
+00:52:02.820 --> 00:52:04.410 align:middle line:90%
+What is this hash function?
+
+00:52:04.410 --> 00:52:05.190 align:middle line:90%
+I'll tell you.
+
+00:52:05.190 --> 00:52:08.870 align:middle line:84%
+So the hash function--
+so to say a hash family,
+
+00:52:08.870 --> 00:52:14.420 align:middle line:84%
+I need to say what's
+gen and what's eval.
+
+00:52:14.420 --> 00:52:22.840 align:middle line:90%
+So here is the gen. Help me out.
+
+00:52:22.840 --> 00:52:23.715 align:middle line:90%
+What does the gen do?
+
+00:52:23.715 --> 00:52:26.460 align:middle line:90%
+
+
+00:52:26.460 --> 00:52:27.890 align:middle line:90%
+AUDIENCE: Computes a public key?
+
+00:52:27.890 --> 00:52:29.300 align:middle line:90%
+PROFESSOR: Exactly.
+
+00:52:29.300 --> 00:52:32.210 align:middle line:84%
+He computes a public
+key for the FHE.
+
+00:52:32.210 --> 00:52:33.690 align:middle line:90%
+And encrypt something.
+
+00:52:33.690 --> 00:52:34.307 align:middle line:90%
+Nobody cares.
+
+00:52:34.307 --> 00:52:35.640 align:middle line:90%
+We're never going to decrypt it.
+
+00:52:35.640 --> 00:52:39.950 align:middle line:84%
+It encrypts with
+public key, just
+
+00:52:39.950 --> 00:52:41.930 align:middle line:90%
+let's say the all zero string.
+
+00:52:41.930 --> 00:52:43.490 align:middle line:90%
+So it's not exactly t.
+
+00:52:43.490 --> 00:52:45.400 align:middle line:90%
+It's a little more than t.
+
+00:52:45.400 --> 00:52:48.560 align:middle line:84%
+It's the t-- we'll see
+what-- encrypts t prime,
+
+00:52:48.560 --> 00:52:51.990 align:middle line:84%
+like 000t prime. t prime is
+going to be very similar to t,
+
+00:52:51.990 --> 00:52:53.300 align:middle line:90%
+but a tiny bit more.
+
+00:52:53.300 --> 00:52:56.400 align:middle line:84%
+t plus the decryption
+plus 1, we'll see.
+
+00:52:56.400 --> 00:53:02.120 align:middle line:84%
+But that's gen. It outputs
+a public key and encryption
+
+00:53:02.120 --> 00:53:03.000 align:middle line:90%
+of a bunch of zeros.
+
+00:53:03.000 --> 00:53:03.500 align:middle line:90%
+How many?
+
+00:53:03.500 --> 00:53:04.430 align:middle line:90%
+A little more than t.
+
+00:53:04.430 --> 00:53:05.910 align:middle line:90%
+We'll see the exact number.
+
+00:53:05.910 --> 00:53:07.460 align:middle line:90%
+That's what gen does.
+
+00:53:07.460 --> 00:53:10.700 align:middle line:90%
+What does eval do?
+
+00:53:10.700 --> 00:53:14.630 align:middle line:90%
+Eval, given this hash key--
+
+00:53:14.630 --> 00:53:16.310 align:middle line:90%
+so this is a hash key--
+
+00:53:16.310 --> 00:53:20.165 align:middle line:90%
+and given alpha-- or--
+
+00:53:20.165 --> 00:53:22.910 align:middle line:84%
+yeah, alpha-- what
+it does is simply
+
+00:53:22.910 --> 00:53:29.420 align:middle line:84%
+computes the eval of the
+FHE so FHE can be evaluated,
+
+00:53:29.420 --> 00:53:32.920 align:middle line:90%
+a new alpha, and the ciphertext.
+
+00:53:32.920 --> 00:53:37.390 align:middle line:84%
+And let me call this
+g hat because it's
+
+00:53:37.390 --> 00:53:39.940 align:middle line:90%
+kind of describes a circuit.
+
+00:53:39.940 --> 00:53:42.320 align:middle line:84%
+And g hat, which
+is what it does--
+
+00:53:42.320 --> 00:53:45.640 align:middle line:84%
+it essentially computes
+g of alpha encryption.
+
+00:53:45.640 --> 00:53:48.400 align:middle line:84%
+That's what this
+eval of FHE does.
+
+00:53:48.400 --> 00:53:50.360 align:middle line:84%
+It takes-- this is
+a universal circuit.
+
+00:53:50.360 --> 00:53:54.520 align:middle line:84%
+It takes the input, a circuit
+g, a description of a circuit g
+
+00:53:54.520 --> 00:53:56.980 align:middle line:90%
+and outputs g of alpha.
+
+00:53:56.980 --> 00:53:58.970 align:middle line:84%
+And this eval does
+this under the hood.
+
+00:53:58.970 --> 00:54:01.880 align:middle line:84%
+So he outputs whatever
+is encrypted here,
+
+00:54:01.880 --> 00:54:04.570 align:middle line:84%
+the all-zero circuit, whatever,
+a description of-- this
+
+00:54:04.570 --> 00:54:07.210 align:middle line:84%
+is-- let's say this is all
+of the all-zero circuit.
+
+00:54:07.210 --> 00:54:09.560 align:middle line:84%
+So in that case, it
+will be encryption of 0.
+
+00:54:09.560 --> 00:54:10.810 align:middle line:90%
+That's what it does.
+
+00:54:10.810 --> 00:54:14.410 align:middle line:84%
+That's the hash
+function that I'm
+
+00:54:14.410 --> 00:54:18.910 align:middle line:84%
+going to argue is correlation
+intractable for every relation,
+
+00:54:18.910 --> 00:54:21.730 align:middle line:84%
+for every t time
+searchable relation.
+
+00:54:21.730 --> 00:54:25.090 align:middle line:84%
+So now give me your favorite
+t time searchable relation,
+
+00:54:25.090 --> 00:54:27.940 align:middle line:84%
+and I'll show you why
+it's a correlation
+
+00:54:27.940 --> 00:54:29.550 align:middle line:90%
+intractable with respect to it.
+
+00:54:29.550 --> 00:54:32.510 align:middle line:84%
+So, OK, you give me
+your favorite relation.
+
+00:54:32.510 --> 00:54:36.400 align:middle line:84%
+Let me say a relation is a
+bunch of alpha and f of alpha.
+
+00:54:36.400 --> 00:54:37.190 align:middle line:90%
+It's searchable.
+
+00:54:37.190 --> 00:54:41.710 align:middle line:84%
+So there's some function
+that for every alpha,
+
+00:54:41.710 --> 00:54:42.830 align:middle line:90%
+there is a unique beta.
+
+00:54:42.830 --> 00:54:46.240 align:middle line:90%
+Find the unique beta.
+
+00:54:46.240 --> 00:54:49.660 align:middle line:84%
+If in the more general
+case where there's d--
+
+00:54:49.660 --> 00:54:52.690 align:middle line:84%
+think if there's d f's,
+so there's a few more.
+
+00:54:52.690 --> 00:54:55.150 align:middle line:84%
+But for 1, you can
+think of just 1.
+
+00:54:55.150 --> 00:55:00.040 align:middle line:84%
+OK, so now I want to argue
+there is no way you can find.
+
+00:55:00.040 --> 00:55:02.720 align:middle line:84%
+So I'm going to argue
+you can't find F1.
+
+00:55:02.720 --> 00:55:05.345 align:middle line:84%
+But if there's more, eventually,
+you also can't find F2 and F3.
+
+00:55:05.345 --> 00:55:07.970 align:middle line:84%
+But let me focus on the first F.
+Let's say if there's only one,
+
+00:55:07.970 --> 00:55:10.270 align:middle line:84%
+I'm going to show you on
+the first F. So you cannot--
+
+00:55:10.270 --> 00:55:11.180 align:middle line:90%
+there's no way.
+
+00:55:11.180 --> 00:55:12.100 align:middle line:90%
+Why?
+
+00:55:12.100 --> 00:55:19.830 align:middle line:84%
+Because suppose-- if the
+adversary given hash key could
+
+00:55:19.830 --> 00:55:24.390 align:middle line:84%
+find alpha so that the hash
+of alpha is f of alpha,
+
+00:55:24.390 --> 00:55:31.290 align:middle line:84%
+then you could also do it in
+the case where I replace alpha--
+
+00:55:31.290 --> 00:55:34.980 align:middle line:90%
+where I replace g with a fake g.
+
+00:55:34.980 --> 00:55:37.760 align:middle line:84%
+And my fake g that I'm
+going to replace it with--
+
+00:55:37.760 --> 00:55:41.830 align:middle line:90%
+
+
+00:55:41.830 --> 00:55:48.400 align:middle line:84%
+so suppose there exists
+an adversary that breaks.
+
+00:55:48.400 --> 00:55:52.610 align:middle line:90%
+
+
+00:55:52.610 --> 00:55:55.130 align:middle line:84%
+So there exists
+an adversary such
+
+00:55:55.130 --> 00:56:00.680 align:middle line:84%
+that the adversary,
+given hash key,
+
+00:56:00.680 --> 00:56:09.670 align:middle line:84%
+outputs alpha such that
+eval of h, key, and alpha
+
+00:56:09.670 --> 00:56:13.120 align:middle line:90%
+is equal to f of alpha.
+
+00:56:13.120 --> 00:56:14.410 align:middle line:90%
+That's what we want to avoid.
+
+00:56:14.410 --> 00:56:16.720 align:middle line:84%
+We say no, you shouldn't
+be able to find something
+
+00:56:16.720 --> 00:56:18.310 align:middle line:90%
+in the relation.
+
+00:56:18.310 --> 00:56:21.790 align:middle line:84%
+If you can-- if you can do that
+with probability greater than
+
+00:56:21.790 --> 00:56:24.790 align:middle line:90%
+some epsilon, then I claim--
+
+00:56:24.790 --> 00:56:29.350 align:middle line:84%
+then a succeeds--
+in the same thing--
+
+00:56:29.350 --> 00:56:35.590 align:middle line:84%
+succeeds with probability
+close to epsilon.
+
+00:56:35.590 --> 00:56:41.290 align:middle line:84%
+Also, by semantic security--
+also with HK star,
+
+00:56:41.290 --> 00:56:42.220 align:middle line:90%
+a different HK.
+
+00:56:42.220 --> 00:56:43.705 align:middle line:90%
+And what is HK star?
+
+00:56:43.705 --> 00:56:46.270 align:middle line:90%
+
+
+00:56:46.270 --> 00:56:47.960 align:middle line:84%
+It generates the
+same public key,
+
+00:56:47.960 --> 00:56:51.890 align:middle line:84%
+but it generates an encryption
+of g star, not of g.
+
+00:56:51.890 --> 00:56:54.710 align:middle line:84%
+So here I encrypted all
+zero. g was all zero.
+
+00:56:54.710 --> 00:56:56.950 align:middle line:84%
+I've encrypted an
+new g, a g star.
+
+00:56:56.950 --> 00:56:58.260 align:middle line:90%
+What is g star?
+
+00:56:58.260 --> 00:57:01.300 align:middle line:90%
+
+
+00:57:01.300 --> 00:57:15.130 align:middle line:84%
+g star-- an input alpha
+output, the decryption--
+
+00:57:15.130 --> 00:57:18.750 align:middle line:84%
+I know, weird-- it has
+secret key hardwired in it.
+
+00:57:18.750 --> 00:57:26.710 align:middle line:84%
+And it outputs the decryption
+of the bad function and alpha,
+
+00:57:26.710 --> 00:57:27.660 align:middle line:90%
+x or with one.
+
+00:57:27.660 --> 00:57:31.740 align:middle line:90%
+
+
+00:57:31.740 --> 00:57:36.590 align:middle line:84%
+And we show that actually if
+this is what you put there, you
+
+00:57:36.590 --> 00:57:37.130 align:middle line:90%
+really--
+
+00:57:37.130 --> 00:57:40.910 align:middle line:84%
+you never-- it's impossible
+to output f of x.
+
+00:57:40.910 --> 00:57:42.930 align:middle line:84%
+This is never--
+it's never the case.
+
+00:57:42.930 --> 00:57:49.550 align:middle line:84%
+So we want to say that g star,
+that the eval g star alpha
+
+00:57:49.550 --> 00:57:52.770 align:middle line:90%
+is never f of x-- f of alpha.
+
+00:57:52.770 --> 00:57:53.880 align:middle line:90%
+It's just never.
+
+00:57:53.880 --> 00:57:54.470 align:middle line:90%
+Why?
+
+00:57:54.470 --> 00:57:58.230 align:middle line:84%
+Because if it was, then if you
+decrypt this and decrypt this,
+
+00:57:58.230 --> 00:57:59.580 align:middle line:90%
+you would get the same value.
+
+00:57:59.580 --> 00:58:02.190 align:middle line:84%
+But if you decrypt this,
+you get g star alpha.
+
+00:58:02.190 --> 00:58:05.470 align:middle line:84%
+And if you decrypt this, you get
+this, and they're not the same.
+
+00:58:05.470 --> 00:58:08.890 align:middle line:90%
+
+
+00:58:08.890 --> 00:58:10.260 align:middle line:90%
+Yeah?
+
+00:58:10.260 --> 00:58:11.700 align:middle line:90%
+AUDIENCE: And what is f over?
+
+00:58:11.700 --> 00:58:13.500 align:middle line:84%
+Does the adversary--
+do you get to pick f?
+
+00:58:13.500 --> 00:58:14.850 align:middle line:90%
+PROFESSOR: No, f-- sorry.
+
+00:58:14.850 --> 00:58:18.190 align:middle line:84%
+Let me-- so we have a t
+time searchable relation.
+
+00:58:18.190 --> 00:58:20.760 align:middle line:84%
+t time searchable relation,
+it means that for every alpha,
+
+00:58:20.760 --> 00:58:22.320 align:middle line:90%
+there is a unique beta.
+
+00:58:22.320 --> 00:58:23.750 align:middle line:90%
+So I call this beta--
+
+00:58:23.750 --> 00:58:26.903 align:middle line:84%
+AUDIENCE: Sorry, sorry, so
+is this over all remaining?
+
+00:58:26.903 --> 00:58:27.570 align:middle line:90%
+PROFESSOR: Good.
+
+00:58:27.570 --> 00:58:27.930 align:middle line:90%
+Exactly.
+
+00:58:27.930 --> 00:58:28.680 align:middle line:90%
+So I want to say--
+
+00:58:28.680 --> 00:58:31.860 align:middle line:84%
+I say I constructed
+this hash family that
+
+00:58:31.860 --> 00:58:35.380 align:middle line:84%
+just has an encryption, and he
+does computation under the hood.
+
+00:58:35.380 --> 00:58:38.340 align:middle line:84%
+And I'm saying this hash
+family, it's correlation
+
+00:58:38.340 --> 00:58:41.370 align:middle line:84%
+intractable with
+respect to every t time
+
+00:58:41.370 --> 00:58:42.520 align:middle line:90%
+searchable relation.
+
+00:58:42.520 --> 00:58:43.140 align:middle line:90%
+Why?
+
+00:58:43.140 --> 00:58:45.510 align:middle line:84%
+Fix your favorite t time
+searchable relation,
+
+00:58:45.510 --> 00:58:46.630 align:middle line:90%
+your favorite one.
+
+00:58:46.630 --> 00:58:48.963 align:middle line:84%
+The fact that it's searchable
+means that for every alpha
+
+00:58:48.963 --> 00:58:51.960 align:middle line:84%
+there's a unique beta, and
+it's computable in time t.
+
+00:58:51.960 --> 00:58:55.500 align:middle line:84%
+So I call f the function
+that computes this beta.
+
+00:58:55.500 --> 00:59:01.680 align:middle line:84%
+And now I say, look, there's no
+way an adversary can find alpha
+
+00:59:01.680 --> 00:59:04.230 align:middle line:84%
+for which the hash
+function takes him
+
+00:59:04.230 --> 00:59:05.860 align:middle line:90%
+to beta, to fo of alpha.
+
+00:59:05.860 --> 00:59:08.220 align:middle line:84%
+Because if he
+could, he could also
+
+00:59:08.220 --> 00:59:12.430 align:middle line:84%
+do it where the hash
+key, which encrypts 0,
+
+00:59:12.430 --> 00:59:16.730 align:middle line:84%
+actually encrypts this
+g star, another g.
+
+00:59:16.730 --> 00:59:17.920 align:middle line:90%
+What is g star?
+
+00:59:17.920 --> 00:59:19.300 align:middle line:90%
+Now g star depends on this f.
+
+00:59:19.300 --> 00:59:20.300 align:middle line:90%
+But it's under the hood.
+
+00:59:20.300 --> 00:59:21.592 align:middle line:90%
+Nobody can tell the difference.
+
+00:59:21.592 --> 00:59:23.983 align:middle line:84%
+And this g star,
+it decrypts this f,
+
+00:59:23.983 --> 00:59:25.400 align:middle line:84%
+even though f is
+not a ciphertext.
+
+00:59:25.400 --> 00:59:26.775 align:middle line:84%
+So it's a very
+weird thing to do,
+
+00:59:26.775 --> 00:59:28.840 align:middle line:84%
+but it decrypts
+this f and changes
+
+00:59:28.840 --> 00:59:31.410 align:middle line:90%
+something, changes a bit.
+
+00:59:31.410 --> 00:59:35.100 align:middle line:84%
+And now I want to say,
+the hash gives you
+
+00:59:35.100 --> 00:59:36.630 align:middle line:90%
+encryption of g star alpha.
+
+00:59:36.630 --> 00:59:39.640 align:middle line:84%
+And encryption of g star
+alpha cannot be f of alpha.
+
+00:59:39.640 --> 00:59:40.600 align:middle line:90%
+There's no way.
+
+00:59:40.600 --> 00:59:43.330 align:middle line:84%
+Because if it was-- any
+encryption, actually--
+
+00:59:43.330 --> 00:59:45.990 align:middle line:84%
+because if it was, if you
+decrypted this and decrypted
+
+00:59:45.990 --> 00:59:47.970 align:middle line:84%
+this, you would
+get the same thing.
+
+00:59:47.970 --> 00:59:51.470 align:middle line:84%
+When you decrypt this,
+you get g star alpha.
+
+00:59:51.470 --> 00:59:53.360 align:middle line:84%
+And g star alpha
+is not decryption
+
+00:59:53.360 --> 00:59:57.160 align:middle line:90%
+of f of alpha by design.
+
+00:59:57.160 --> 01:00:00.520 align:middle line:84%
+So once you change
+the hash key to this,
+
+01:00:00.520 --> 01:00:03.510 align:middle line:90%
+you statistically can't--
+
+01:00:03.510 --> 01:00:08.840 align:middle line:84%
+an all-powerful
+adversary cannot hit f.
+
+01:00:08.840 --> 01:00:10.430 align:middle line:90%
+So there is some kind of--
+
+01:00:10.430 --> 01:00:12.390 align:middle line:90%
+you us computational assumption.
+
+01:00:12.390 --> 01:00:16.093 align:middle line:84%
+But then once we
+move to g star, we
+
+01:00:16.093 --> 01:00:17.760 align:middle line:84%
+don't care about the
+assumption anymore.
+
+01:00:17.760 --> 01:00:19.430 align:middle line:90%
+We're in statistical land.
+
+01:00:19.430 --> 01:00:21.505 align:middle line:84%
+Even an all-powerful
+adversary cannot cheat.
+
+01:00:21.505 --> 01:00:24.117 align:middle line:90%
+
+
+01:00:24.117 --> 01:00:26.450 align:middle line:84%
+AUDIENCE: Sorry, I don't mean
+to ask too many questions.
+
+01:00:26.450 --> 01:00:27.330 align:middle line:90%
+PROFESSOR: No, it's fantastic.
+
+01:00:27.330 --> 01:00:28.340 align:middle line:90%
+The questions are great.
+
+01:00:28.340 --> 01:00:31.007 align:middle line:84%
+AUDIENCE: Is this still fine if
+the adversary picks the relation
+
+01:00:31.007 --> 01:00:32.340 align:middle line:90%
+after he knows the hash key?
+
+01:00:32.340 --> 01:00:33.132 align:middle line:90%
+PROFESSOR: Exactly.
+
+01:00:33.132 --> 01:00:34.738 align:middle line:90%
+Yeah, yeah, exactly.
+
+01:00:34.738 --> 01:00:35.280 align:middle line:90%
+You're right.
+
+01:00:35.280 --> 01:00:36.150 align:middle line:90%
+So think about this.
+
+01:00:36.150 --> 01:00:39.200 align:middle line:84%
+The adversary gets a hash key,
+public key, and encryption
+
+01:00:39.200 --> 01:00:41.270 align:middle line:90%
+of something, encryption of 0.
+
+01:00:41.270 --> 01:00:43.770 align:middle line:90%
+Now he gives me f.
+
+01:00:43.770 --> 01:00:44.690 align:middle line:90%
+He tells me f.
+
+01:00:44.690 --> 01:00:47.040 align:middle line:90%
+With this f, I can cheat.
+
+01:00:47.040 --> 01:00:48.920 align:middle line:90%
+I can find-- I can--
+
+01:00:48.920 --> 01:00:52.070 align:middle line:84%
+really, OK, can you
+distinguish between encryption
+
+01:00:52.070 --> 01:00:53.840 align:middle line:90%
+of the all 0 and encryption--
+
+01:00:53.840 --> 01:00:55.560 align:middle line:90%
+assuming circular security?
+
+01:00:55.560 --> 01:00:58.070 align:middle line:84%
+Yeah, because this is
+kind of some secret key.
+
+01:00:58.070 --> 01:01:02.090 align:middle line:84%
+But let's-- so I'm
+using semantics.
+
+01:01:02.090 --> 01:01:05.690 align:middle line:84%
+This g star depends on
+f and on the secret key.
+
+01:01:05.690 --> 01:01:08.970 align:middle line:84%
+But assuming you can't break
+semantic security circle
+
+01:01:08.970 --> 01:01:13.620 align:middle line:84%
+or security, then
+even if he chooses f,
+
+01:01:13.620 --> 01:01:16.830 align:middle line:84%
+he cannot distinguish
+between encryption of g star
+
+01:01:16.830 --> 01:01:19.722 align:middle line:84%
+and encryption of 0 assuming
+circular secure FHE.
+
+01:01:19.722 --> 01:01:21.930 align:middle line:84%
+AUDIENCE: I guess what
+prevents him from just picking
+
+01:01:21.930 --> 01:01:25.770 align:middle line:90%
+FHE evaluation of alpha and--
+
+01:01:25.770 --> 01:01:30.630 align:middle line:84%
+why can't f just be
+the FHE evaluation?
+
+01:01:30.630 --> 01:01:32.037 align:middle line:90%
+Why could-- he's just said--
+
+01:01:32.037 --> 01:01:33.120 align:middle line:90%
+PROFESSOR: OK, good point.
+
+01:01:33.120 --> 01:01:33.850 align:middle line:90%
+Hold on.
+
+01:01:33.850 --> 01:01:41.110 align:middle line:90%
+You're saying why-- no.
+
+01:01:41.110 --> 01:01:44.340 align:middle line:90%
+OK, OK, OK, sorry.
+
+01:01:44.340 --> 01:01:45.220 align:middle line:90%
+No.
+
+01:01:45.220 --> 01:01:45.970 align:middle line:90%
+AUDIENCE: It's kind of a weird--
+
+01:01:45.970 --> 01:01:46.960 align:middle line:84%
+PROFESSOR: Yeah, yeah,
+yeah, yeah, yeah.
+
+01:01:46.960 --> 01:01:48.002 align:middle line:90%
+No, no, no, you're right.
+
+01:01:48.002 --> 01:01:49.740 align:middle line:90%
+OK, sorry, sorry, sorry.
+
+01:01:49.740 --> 01:01:52.540 align:middle line:84%
+He can choose f after
+he sees the hash family.
+
+01:01:52.540 --> 01:01:54.540 align:middle line:84%
+AUDIENCE: The hash family,
+not the specific key?
+
+01:01:54.540 --> 01:01:55.210 align:middle line:90%
+PROFESSOR: The hash family.
+
+01:01:55.210 --> 01:01:57.730 align:middle line:84%
+No, once you have the specific
+key, then you're right.
+
+01:01:57.730 --> 01:01:58.990 align:middle line:90%
+You'll just be the hash key.
+
+01:01:58.990 --> 01:02:02.903 align:middle line:84%
+Sorry, I-- yeah,
+there's one hash family.
+
+01:02:02.903 --> 01:02:05.320 align:middle line:84%
+After he sees the hash family,
+he can choose the relation.
+
+01:02:05.320 --> 01:02:11.140 align:middle line:84%
+But of course for the
+specific hash key, he'll--
+
+01:02:11.140 --> 01:02:11.793 align:middle line:90%
+then--
+
+01:02:11.793 --> 01:02:12.460 align:middle line:90%
+AUDIENCE: I see.
+
+01:02:12.460 --> 01:02:13.835 align:middle line:90%
+PROFESSOR: And yeah, exactly.
+
+01:02:13.835 --> 01:02:15.960 align:middle line:84%
+AUDIENCE: And that should
+just follow from the fact
+
+01:02:15.960 --> 01:02:17.668 align:middle line:84%
+that the ciphertext
+is randomized, right?
+
+01:02:17.668 --> 01:02:21.600 align:middle line:84%
+Once you have an
+encryption of the g hat,
+
+01:02:21.600 --> 01:02:24.480 align:middle line:84%
+predicting the evaluation should
+be very, very [INAUDIBLE].
+
+01:02:24.480 --> 01:02:26.040 align:middle line:90%
+PROFESSOR: Exactly, exactly.
+
+01:02:26.040 --> 01:02:29.980 align:middle line:84%
+And just going back, this
+t prime is the time--
+
+01:02:29.980 --> 01:02:32.360 align:middle line:90%
+the size of g star.
+
+01:02:32.360 --> 01:02:34.360 align:middle line:84%
+So it's a little more
+than that because you also
+
+01:02:34.360 --> 01:02:35.530 align:middle line:90%
+need to decrypt.
+
+01:02:35.530 --> 01:02:40.420 align:middle line:84%
+But it's very, very
+similar to f, just a--
+
+01:02:40.420 --> 01:02:41.723 align:middle line:90%
+question?
+
+01:02:41.723 --> 01:02:43.390 align:middle line:84%
+AUDIENCE: This is the
+same kind of issue
+
+01:02:43.390 --> 01:02:45.760 align:middle line:84%
+as to why it mattered
+that in some trek,
+
+01:02:45.760 --> 01:02:48.718 align:middle line:84%
+the later bad relations depended
+on the verifier messages.
+
+01:02:48.718 --> 01:02:49.510 align:middle line:90%
+PROFESSOR: Exactly.
+
+01:02:49.510 --> 01:02:51.505 align:middle line:84%
+AUDIENCE: If that wasn't the
+case, then this wouldn't be--
+
+01:02:51.505 --> 01:02:51.820 align:middle line:90%
+PROFESSOR: Exactly.
+
+01:02:51.820 --> 01:02:52.505 align:middle line:90%
+Exactly.
+
+01:02:52.505 --> 01:02:54.880 align:middle line:84%
+Exactly, that was the same
+issue that came in [INAUDIBLE]
+
+01:02:54.880 --> 01:02:58.000 align:middle line:84%
+that the things-- the
+t dependent-- yeah.
+
+01:02:58.000 --> 01:02:58.700 align:middle line:90%
+Yeah.
+
+01:02:58.700 --> 01:03:02.570 align:middle line:84%
+Yeah, great, great,
+great question.
+
+01:03:02.570 --> 01:03:03.240 align:middle line:90%
+Anybody else?
+
+01:03:03.240 --> 01:03:03.950 align:middle line:90%
+Yeah?
+
+01:03:03.950 --> 01:03:09.120 align:middle line:84%
+AUDIENCE: I still don't see how
+we can modify g star through--
+
+01:03:09.120 --> 01:03:11.130 align:middle line:90%
+if f is not unique.
+
+01:03:11.130 --> 01:03:12.130 align:middle line:90%
+PROFESSOR: If f is what?
+
+01:03:12.130 --> 01:03:12.720 align:middle line:90%
+AUDIENCE: Is not unique.
+
+01:03:12.720 --> 01:03:13.553 align:middle line:90%
+PROFESSOR: OK, good.
+
+01:03:13.553 --> 01:03:16.150 align:middle line:84%
+So if f is not unique,
+what I'm going to show--
+
+01:03:16.150 --> 01:03:20.220 align:middle line:84%
+suppose alpha has many f's, f1
+up to fd associated with them.
+
+01:03:20.220 --> 01:03:22.530 align:middle line:84%
+Then I'm going to say, look,
+first let me argue that
+
+01:03:22.530 --> 01:03:25.650 align:middle line:84%
+an adversary cannot-- the
+probability that he outputs f1
+
+01:03:25.650 --> 01:03:26.880 align:middle line:90%
+is negligible.
+
+01:03:26.880 --> 01:03:29.760 align:middle line:84%
+So for every-- the probability
+that the outputs alpha and f1
+
+01:03:29.760 --> 01:03:31.110 align:middle line:90%
+of alpha is negligible.
+
+01:03:31.110 --> 01:03:33.960 align:middle line:90%
+This I kind of convinced you.
+
+01:03:33.960 --> 01:03:37.173 align:middle line:84%
+But that was also
+for f2 and for f3.
+
+01:03:37.173 --> 01:03:39.090 align:middle line:84%
+AUDIENCE: Oh, so you use
+the remaining g star.
+
+01:03:39.090 --> 01:03:40.305 align:middle line:84%
+PROFESSOR: Yeah,
+I'm just using--
+
+01:03:40.305 --> 01:03:40.740 align:middle line:90%
+AUDIENCE: [INAUDIBLE].
+
+01:03:40.740 --> 01:03:41.340 align:middle line:90%
+PROFESSOR: Exactly.
+
+01:03:41.340 --> 01:03:42.510 align:middle line:84%
+In the analysis--
+exactly, so I'm
+
+01:03:42.510 --> 01:03:44.020 align:middle line:84%
+saying-- exactly,
+in the analysis,
+
+01:03:44.020 --> 01:03:45.340 align:middle line:90%
+I'm going to change my g star.
+
+01:03:45.340 --> 01:03:47.460 align:middle line:90%
+Exactly, fantastic.
+
+01:03:47.460 --> 01:03:48.150 align:middle line:90%
+Yeah?
+
+01:03:48.150 --> 01:03:50.480 align:middle line:84%
+AUDIENCE: So is a similar
+idea that you would define
+
+01:03:50.480 --> 01:03:55.350 align:middle line:84%
+[INAUDIBLE] or relations
+that have many betas instead
+
+01:03:55.350 --> 01:03:56.148 align:middle line:90%
+of few betas?
+
+01:03:56.148 --> 01:03:56.940 align:middle line:90%
+PROFESSOR: Exactly.
+
+01:03:56.940 --> 01:03:59.970 align:middle line:84%
+Doing the many betas,
+the only difference
+
+01:03:59.970 --> 01:04:03.450 align:middle line:84%
+is it's exact same
+proof, except that I'll
+
+01:04:03.450 --> 01:04:06.523 align:middle line:90%
+need to choose one of them.
+
+01:04:06.523 --> 01:04:08.940 align:middle line:84%
+I'll degrade with d because
+I'm going to show for each one
+
+01:04:08.940 --> 01:04:12.820 align:middle line:84%
+the probability that with that
+one you succeed is negligible.
+
+01:04:12.820 --> 01:04:14.843 align:middle line:84%
+And then I'll just
+do a union bound.
+
+01:04:14.843 --> 01:04:17.010 align:middle line:84%
+AUDIENCE: I guess my question
+is a little different.
+
+01:04:17.010 --> 01:04:20.070 align:middle line:84%
+I guess in CLW, they
+say [INAUDIBLE] there
+
+01:04:20.070 --> 01:04:22.530 align:middle line:84%
+exists CI hash function
+for all relations that
+
+01:04:22.530 --> 01:04:24.400 align:middle line:90%
+are searchable in time t.
+
+01:04:24.400 --> 01:04:27.450 align:middle line:84%
+And I was trying to
+ask how to extend the R
+
+01:04:27.450 --> 01:04:30.438 align:middle line:84%
+definition to handle cases
+where data isn't unique.
+
+01:04:30.438 --> 01:04:31.480 align:middle line:90%
+PROFESSOR: Yeah, exactly.
+
+01:04:31.480 --> 01:04:34.690 align:middle line:84%
+So yeah, essentially think
+of R. Instead of searchable,
+
+01:04:34.690 --> 01:04:37.400 align:middle line:90%
+it has f1.
+
+01:04:37.400 --> 01:04:42.590 align:middle line:84%
+So for each alpha, there is
+f1 of alpha up to fd of alpha.
+
+01:04:42.590 --> 01:04:44.600 align:middle line:84%
+These are the betas
+corresponding to it.
+
+01:04:44.600 --> 01:04:46.580 align:middle line:90%
+So now that's your relation.
+
+01:04:46.580 --> 01:04:47.690 align:middle line:90%
+That's-- yeah?
+
+01:04:47.690 --> 01:04:48.590 align:middle line:90%
+OK, great.
+
+01:04:48.590 --> 01:04:49.880 align:middle line:90%
+OK, we're out of time.
+
+01:04:49.880 --> 01:04:51.200 align:middle line:90%
+Guys, thank you so much.
+
+01:04:51.200 --> 01:04:55.150 align:middle line:84%
+Have a great, peaceful,
+fun Thanksgiving.
+
+01:04:55.150 --> 01:04:59.770 align:middle line:84%
+And I'll see you, not the week
+after, but the week after after.

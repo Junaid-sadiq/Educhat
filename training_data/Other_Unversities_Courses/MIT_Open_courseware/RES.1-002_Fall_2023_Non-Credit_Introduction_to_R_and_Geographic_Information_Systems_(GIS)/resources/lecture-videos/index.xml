@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Lecture Videos on MIT OpenCourseWare</title>
+    <link>/resources/lecture-videos/</link>
+    <description>Recent content in Lecture Videos on MIT OpenCourseWare</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="/resources/lecture-videos/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Introduction to GIS, Part I: Key Concepts</title>
+      <link>/resources/res1-002-gis-2a-key-concepts_mp4/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/resources/res1-002-gis-2a-key-concepts_mp4/data.json</guid>
+      <description>&lt;p&gt;Brief lecture about key concepts in GIS such as the difference between vectorial and raster maps and the importance of projection or resolution. It also introduces how top-down or bottom-up maps are done.  &lt;br&gt;&#xA; &lt;/p&gt;&#xA;&lt;p&gt;0:00 Map Types, Projection, Resolution&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Introduction to GIS, Part II: Vectorial Maps, Raster Maps, and Time Series</title>
+      <link>/resources/res1-002-gis-2b-vectorial-maps_mp4/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/resources/res1-002-gis-2b-vectorial-maps_mp4/data.json</guid>
+      <description>&lt;p&gt;In this video you will learn how to read, use, and interact with vectorial maps and rasters (.shp, .tif, and .grd formats). You will also learn how to deal with a particular map format used for time series (.nc format).&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Introduction to GIS, Part III: Projection</title>
+      <link>/resources/res1-002-gis-2c-projection_mp4/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/resources/res1-002-gis-2c-projection_mp4/data.json</guid>
+      <description>&lt;p&gt;Here you will learn how to transform the projection of a map.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Introduction to GIS, Part IV: Stack, Brick, Crop, and Mask</title>
+      <link>/resources/res1-002-gis-2d-stack-brick-crop-mask_mp4/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/resources/res1-002-gis-2d-stack-brick-crop-mask_mp4/data.json</guid>
+      <description>&lt;p&gt;In this video you will get knowledge about how to use stack and bricks to work more efficiently with your rasters, crop your maps in smaller pieces, and mask areas of the maps you are not interested in studying or displaying.  &lt;br&gt;&#xA; &lt;/p&gt;&#xA;&lt;p&gt;6:28 Crop and Mask Functions&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Introduction to GIS, Part V: Extract Information from Maps using Spatial Data Points</title>
+      <link>/resources/res1-002-gis-2e-extraction-info-from-maps_mp4/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/resources/res1-002-gis-2e-extraction-info-from-maps_mp4/data.json</guid>
+      <description>&lt;p&gt;Here you will apply all the previous learnings about R in a follow-along exercise. This exercise teaches you how to gap-fill empty slots in a map (NA’s) by extracting data from maps.  &lt;br&gt;&#xA; &lt;/p&gt;&#xA;&lt;p&gt;5:56 Practical Exercises with GIS&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Introduction to GIS, Part VI: Plotting Maps with ggplot2</title>
+      <link>/resources/res1-002-gis-2f-plotting-maps-with-ggplot2_mp4/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/resources/res1-002-gis-2f-plotting-maps-with-ggplot2_mp4/data.json</guid>
+      <description>&lt;p&gt;You will learn how to transform your maps into beautiful figures for your publication or presentation. You will use the ggplot structure and the viridis colour palettes, and you will combine vectorial and raster maps.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Introduction to R, Part I: Interface and Data Structures</title>
+      <link>/resources/res1-002-1a-intro-to-r_mp4/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/resources/res1-002-1a-intro-to-r_mp4/data.json</guid>
+      <description>&lt;p&gt;Get in touch with R from scratch using R base. You will learn the basics of the R interface, how to interact with the code, data types (numeric, integer, character…), and data structures (matrix, data frame, lists…), finishing with exercises.   &lt;br&gt;&#xA; &lt;/p&gt;&#xA;&lt;p&gt;0:00 Why R?           &lt;br&gt;&#xA;1:25 The R Interface         &lt;br&gt;&#xA;3:01 Assigning Variables                  &lt;br&gt;&#xA;7:08 Logical Questions     &lt;br&gt;&#xA;8:12 Data Types   &lt;br&gt;&#xA;10:22 Vectors      &lt;br&gt;&#xA;19:51 Summary Functions              &lt;br&gt;&#xA;21:17 Matrices    &lt;br&gt;&#xA;27:05 Data Frames           &lt;br&gt;&#xA;30:06 Lists and Exercises&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Introduction to R, Part II: Playing with the Data</title>
+      <link>/resources/res1-002-1b-playing_with_data_mp4/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/resources/res1-002-1b-playing_with_data_mp4/data.json</guid>
+      <description>&lt;p&gt;Once familiar with R, you will learn how to import and save data, how to organize and navigate your script efficiently, and how to cut and merge data.&lt;/p&gt;&#xA;&lt;p&gt;0:00 Import Data and Packages  &lt;br&gt;&#xA;5:22 Search Tool and Script Structure      &lt;br&gt;&#xA;14:15 R Databases and New Columns     &lt;br&gt;&#xA;16:45 Solution and Data Merging Options&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Introduction to R, Part III: Linear and Mixed Models in R</title>
+      <link>/resources/res1002_1b-2_linearmixed_models_in_r_mp4/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/resources/res1002_1b-2_linearmixed_models_in_r_mp4/data.json</guid>
+      <description>&lt;p&gt;Here you will learn how to apply linear models and linear mixed models in R. Special attention is given to how to read and store the results, and a brief theory section about when and why to use mixed models is also included.  &lt;br&gt;&#xA; &lt;/p&gt;&#xA;&lt;p&gt;0:00 Linear Models           &lt;br&gt;&#xA;5:50 Generalized Linear Models  &lt;br&gt;&#xA;8:22 Solution      &lt;br&gt;&#xA;9:53 Linear Mixed Models: Theory             &lt;br&gt;&#xA;12:29 Linear Mixed Models: Code&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Introduction to R, Part IV: Loops and Functions</title>
+      <link>/resources/res1-002-1c-loopsfunctions_mp4/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/resources/res1-002-1c-loopsfunctions_mp4/data.json</guid>
+      <description>&lt;p&gt;In this video you will learn how to use R in your favor. With the correct implementation of loops and functions, you will see how R can help you work more efficiently and rigorously by automatizing processes. The video ends with a real example. &lt;br&gt;&#xA; &lt;/p&gt;&#xA;&lt;p&gt;0:00 Loops (for, while, ifelse)     &lt;br&gt;&#xA;5:15 Functions  &lt;br&gt;&#xA;7:50 Good Manners and Tricks   &lt;br&gt;&#xA;12:24 Functions: Real Example&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

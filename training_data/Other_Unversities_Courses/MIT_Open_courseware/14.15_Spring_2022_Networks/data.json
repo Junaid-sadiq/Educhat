@@ -1,0 +1,23 @@
+{
+  "course_title":"Networks",
+  "course_description":"Networks are ubiquitous in our modern society. The World Wide Web that links us to the rest of the world is the most visible example. But it is only one of many networks in which we are situated. Our social life is organized around networks of friends and colleagues. These networks determine our information, influence our opinions, and shape our political attitudes. They also link us, often through weak but important ties, to everybody else in the United States and in the world. \n\nThis course will introduce the tools for the study of networks. It will show how certain common principles permeate the functioning of these diverse networks and how the same issues related to robustness, fragility, and interlinkages arise in many different types of networks.",
+  "course_description_html":"<p>Networks are ubiquitous in our modern society. The World Wide Web that links us to the rest of the world is the most visible example. But it is only one of many networks in which we are situated. Our social life is organized around networks of friends and colleagues. These networks determine our information, influence our opinions, and shape our political attitudes. They also link us, often through weak but important ties, to everybody else in the United States and in the world. </p>\n<p>This course will introduce the tools for the study of networks. It will show how certain common principles permeate the functioning of these diverse networks and how the same issues related to robustness, fragility, and interlinkages arise in many different types of networks.</p>\n",
+  "site_uid":"6dae7864-54d0-46e7-8c3c-f49ffa0ab264",
+  "legacy_uid":"","instructors": [{
+    "first_name":"Alexander",
+    "last_name":"Wolitzky",
+    "middle_initial":"",
+    "salutation":"Prof.",
+    "title":"Prof. Alexander Wolitzky"}],"department_numbers":["14","6"],
+  "learning_resource_types":["Lecture Notes","Online Textbook","Problem Sets","Exams"],
+  "topics":[["Engineering","Computer Science","Computer Networks"],["Social Science","Economics"]],
+  "mit_learn_topics":null,
+  "primary_course_number":"14.15",
+  "extra_course_numbers":"6.207, 14.150",
+  "term":"Spring",
+  "year":"2022",
+  "level":["Undergraduate","Graduate"],
+  "hide_download":null,
+  "image_src":"./static_resources/14-15s22.png",
+  "course_image_metadata":{"body":"","content_type":"resource","draft":false,"file":"/courses/14-15-networks-spring-2022/14-15s22.png","file_size":75144,"file_type":"image/png","image_metadata":{"caption":"Example of a Mitotic Cell Cycle network. (Courtesy of Simon Cockell ([sjcockell](https://www.flickr.com/photos/sjcockell/3251147920/)) on Flickr. License: CC BY.)","credit":"Courtesy of Simon Cockell ([sjcockell](https://www.flickr.com/photos/sjcockell/3251147920/)) on Flickr. License: CC BY.","image-alt":"Network graph with many lines connecting dots."},"iscjklanguage":false,"learning_resource_types":[],"license":"https://creativecommons.org/licenses/by-nc-sa/4.0/","resourcetype":"Image","title":"14-15s22.png","uid":"4fa167be-0d4e-410c-a7f9-4beb5a851d45","video_files":{"video_captions_file":"","video_thumbnail_file":"","video_transcript_file":""},"video_metadata":{"video_speakers":"","video_tags":"","youtube_description":"","youtube_id":""}}}
+

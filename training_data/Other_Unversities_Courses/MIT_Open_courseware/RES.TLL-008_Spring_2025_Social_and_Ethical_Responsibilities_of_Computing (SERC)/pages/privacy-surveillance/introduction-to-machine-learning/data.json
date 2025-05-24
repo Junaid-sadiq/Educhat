@@ -1,0 +1,6 @@
+
+{
+  "title":"6.390 Introduction to Machine Learning (Formerly 6.036)",
+  "content":"\u0026gt; Related Topics: Privacy and Surveillance, Ethical Computing and Practice\nAuthor: Leslie Kaelbling, Serena Booth, Marion Boulicault, Dheekshita Kumar, Rodrigo Ochigame, Tess Smidt\nKeywords: machine learning; bias and fairness in machine learning; data bias; model bias\nThe course has weekly labs, in which students work in pairs and have an opportunity to discuss their work with an instructor during a check-off process. Each weekly lab has an accompanying SERC question and discussion prompt. These SERC questions aim to help the students connect the technical content of the class to the social consequences of seemingly-technical design decisions. Resources: Fall 2022 Lab: Designing Markov Decision Processes and Reward Functions (PDF)\nLab: Regression and Simpson\u0026rsquo;s Paradox (PDF)\nLab: Reinforcement Learning and Value Alignment (PDF)\nFall 2021 Lab 1: Good Hypotheses: Beyond Accuracies (PDF)\nLab 2: Fairness in ML “How do we evaluate fairness of a model?” (PDF)\nLab 5: Social Utility “Benefits and Drawbacks of Intentionally Biasing a Model” (PDF)\nLab 9: Word Embeddings “Challenges with Word Embeddings in the Wild” (PDF)\n"}
+
+

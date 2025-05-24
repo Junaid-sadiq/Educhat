@@ -1,0 +1,1067 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:01.452 align:middle line:90%
+[SQUEAKING]
+
+00:00:01.452 --> 00:00:03.872 align:middle line:90%
+[RUSTLING]
+
+00:00:03.872 --> 00:00:05.808 align:middle line:90%
+[CLICKING]
+
+00:00:05.808 --> 00:00:09.295 align:middle line:90%
+
+
+00:00:09.295 --> 00:00:11.670 align:middle line:84%
+HELENA VALLICROSA: All right,
+so we are back to the code.
+
+00:00:11.670 --> 00:00:14.280 align:middle line:84%
+And now we're going to
+start applying the concepts
+
+00:00:14.280 --> 00:00:19.860 align:middle line:84%
+that we've been talking to
+on R. So the first thing
+
+00:00:19.860 --> 00:00:22.200 align:middle line:90%
+is to read vectorial maps.
+
+00:00:22.200 --> 00:00:23.790 align:middle line:90%
+How do we read vectorial maps?
+
+00:00:23.790 --> 00:00:28.380 align:middle line:84%
+Well here I included
+a web page where you
+
+00:00:28.380 --> 00:00:30.510 align:middle line:90%
+can download vectorial maps.
+
+00:00:30.510 --> 00:00:37.080 align:middle line:84%
+They are basically physical
+vectors of the global Earth,
+
+00:00:37.080 --> 00:00:41.520 align:middle line:84%
+so you can find the
+coastal barriers.
+
+00:00:41.520 --> 00:00:44.910 align:middle line:84%
+The packages we're going
+to use are these three.
+
+00:00:44.910 --> 00:00:47.410 align:middle line:90%
+I have already installed them.
+
+00:00:47.410 --> 00:00:50.820 align:middle line:84%
+But feel free to
+install them, and then
+
+00:00:50.820 --> 00:00:53.920 align:middle line:90%
+lock them into the session.
+
+00:00:53.920 --> 00:00:57.630 align:middle line:84%
+There are several ways
+to read vectorial maps.
+
+00:00:57.630 --> 00:01:01.600 align:middle line:84%
+I just include
+three of them here.
+
+00:01:01.600 --> 00:01:02.700 align:middle line:90%
+There's this one.
+
+00:01:02.700 --> 00:01:04.800 align:middle line:84%
+My personal preference
+is the second one.
+
+00:01:04.800 --> 00:01:08.680 align:middle line:84%
+There's this third one that
+I just put them in common.
+
+00:01:08.680 --> 00:01:15.540 align:middle line:84%
+So in the first one this, which
+is using this function right
+
+00:01:15.540 --> 00:01:19.330 align:middle line:84%
+here, the projection needs
+to be specified previously.
+
+00:01:19.330 --> 00:01:21.240 align:middle line:90%
+So here is what I am doing.
+
+00:01:21.240 --> 00:01:25.560 align:middle line:84%
+I'm just saying that I'm using
+the projection longlat, which
+
+00:01:25.560 --> 00:01:30.810 align:middle line:90%
+is longitude latitude, WGS84.
+
+00:01:30.810 --> 00:01:33.600 align:middle line:84%
+So I have to put
+this between commas,
+
+00:01:33.600 --> 00:01:37.240 align:middle line:84%
+and using this
+particular function here.
+
+00:01:37.240 --> 00:01:38.860 align:middle line:84%
+So this is going to
+be the projection.
+
+00:01:38.860 --> 00:01:42.000 align:middle line:84%
+And when I'm reading the
+map, what I have to do
+
+00:01:42.000 --> 00:01:45.420 align:middle line:84%
+is to specify where this map
+is located in your computer,
+
+00:01:45.420 --> 00:01:49.630 align:middle line:84%
+and then specify what
+projection do you want it to be.
+
+00:01:49.630 --> 00:01:52.590 align:middle line:90%
+So you'll have that map here.
+
+00:01:52.590 --> 00:01:54.780 align:middle line:84%
+It's giving me a warning,
+just information.
+
+00:01:54.780 --> 00:01:56.790 align:middle line:90%
+But everything worked fine.
+
+00:01:56.790 --> 00:02:00.630 align:middle line:84%
+And my personal preference is
+this one, where you don't even
+
+00:02:00.630 --> 00:02:02.550 align:middle line:90%
+have to specify the projection.
+
+00:02:02.550 --> 00:02:05.820 align:middle line:84%
+So it's going to be read
+by the package itself.
+
+00:02:05.820 --> 00:02:10.850 align:middle line:84%
+You only have to specify the
+route from your computer.
+
+00:02:10.850 --> 00:02:12.740 align:middle line:90%
+You use this.
+
+00:02:12.740 --> 00:02:14.840 align:middle line:90%
+It gives you some information--
+
+00:02:14.840 --> 00:02:17.120 align:middle line:84%
+what it has read,
+what it includes.
+
+00:02:17.120 --> 00:02:21.643 align:middle line:84%
+And then I'm just going to plot,
+just type plot, and the map
+
+00:02:21.643 --> 00:02:23.060 align:middle line:84%
+you want to plot,
+and you're going
+
+00:02:23.060 --> 00:02:26.720 align:middle line:90%
+to see how this map looks like.
+
+00:02:26.720 --> 00:02:33.080 align:middle line:84%
+You see this is the
+boundaries of the ground.
+
+00:02:33.080 --> 00:02:36.200 align:middle line:84%
+And then we move
+on to raster maps.
+
+00:02:36.200 --> 00:02:37.760 align:middle line:90%
+This is pretty simple.
+
+00:02:37.760 --> 00:02:43.690 align:middle line:84%
+The king or the best
+personal preference,
+
+00:02:43.690 --> 00:02:47.970 align:middle line:84%
+but the best package to use
+raster is the package raster.
+
+00:02:47.970 --> 00:02:51.720 align:middle line:84%
+So you can use it
+to manage everything
+
+00:02:51.720 --> 00:02:53.040 align:middle line:90%
+you need from rasters.
+
+00:02:53.040 --> 00:02:55.080 align:middle line:84%
+I'm just going to load
+it into the session.
+
+00:02:55.080 --> 00:02:57.630 align:middle line:84%
+And it's as easy
+just to put raster
+
+00:02:57.630 --> 00:03:00.120 align:middle line:90%
+here and the route of your map.
+
+00:03:00.120 --> 00:03:03.510 align:middle line:84%
+I'm going to chart a
+temperature map that I've
+
+00:03:03.510 --> 00:03:07.680 align:middle line:90%
+taken from WorldClairm.
+
+00:03:07.680 --> 00:03:12.362 align:middle line:84%
+And it's in 10
+minutes resolution.
+
+00:03:12.362 --> 00:03:14.185 align:middle line:84%
+We're just going to
+see how it looks like.
+
+00:03:14.185 --> 00:03:17.580 align:middle line:90%
+
+
+00:03:17.580 --> 00:03:20.050 align:middle line:84%
+And this is how by default
+the map is created.
+
+00:03:20.050 --> 00:03:22.200 align:middle line:84%
+Also, if you feel like
+magnifying your map,
+
+00:03:22.200 --> 00:03:24.030 align:middle line:90%
+you can just click on zoom here.
+
+00:03:24.030 --> 00:03:27.330 align:middle line:84%
+And this is going to pop
+out in an outside window.
+
+00:03:27.330 --> 00:03:30.460 align:middle line:84%
+So you will be able
+to see it bigger.
+
+00:03:30.460 --> 00:03:32.430 align:middle line:84%
+And then there is
+a particular way
+
+00:03:32.430 --> 00:03:36.700 align:middle line:84%
+of displaying maps
+which is using
+
+00:03:36.700 --> 00:03:41.070 align:middle line:84%
+NC format, which is when you
+are working on time series maps.
+
+00:03:41.070 --> 00:03:45.810 align:middle line:84%
+Just because the maps
+are pretty heavy data,
+
+00:03:45.810 --> 00:03:49.230 align:middle line:84%
+this is a particular
+way to store time series
+
+00:03:49.230 --> 00:03:51.120 align:middle line:90%
+in a pretty efficient way.
+
+00:03:51.120 --> 00:03:53.830 align:middle line:84%
+But that makes it a little
+tricky to work with.
+
+00:03:53.830 --> 00:03:56.650 align:middle line:84%
+So I'm just going to
+show you how to do that.
+
+00:03:56.650 --> 00:03:59.670 align:middle line:84%
+I'm going to clean
+my environment
+
+00:03:59.670 --> 00:04:01.660 align:middle line:90%
+to not being distracting.
+
+00:04:01.660 --> 00:04:05.198 align:middle line:90%
+
+
+00:04:05.198 --> 00:04:06.990 align:middle line:84%
+These are the packages
+you're going to need
+
+00:04:06.990 --> 00:04:09.480 align:middle line:90%
+to go through this code.
+
+00:04:09.480 --> 00:04:11.940 align:middle line:90%
+It's going to load them all.
+
+00:04:11.940 --> 00:04:14.490 align:middle line:84%
+And this is a map
+that I have obtained
+
+00:04:14.490 --> 00:04:17.160 align:middle line:90%
+based on this reference here.
+
+00:04:17.160 --> 00:04:20.130 align:middle line:84%
+If you click on
+that link, you would
+
+00:04:20.130 --> 00:04:23.400 align:middle line:84%
+be able to download this
+information from the internet.
+
+00:04:23.400 --> 00:04:26.190 align:middle line:84%
+It's a nitrogen deposition
+map that goes from,
+
+00:04:26.190 --> 00:04:31.170 align:middle line:84%
+if I remember correctly,
+from 1901 to 2020
+
+00:04:31.170 --> 00:04:32.350 align:middle line:90%
+or something like that.
+
+00:04:32.350 --> 00:04:34.740 align:middle line:84%
+So every time to
+time there is a map.
+
+00:04:34.740 --> 00:04:36.190 align:middle line:84%
+So that's why it's
+a time series.
+
+00:04:36.190 --> 00:04:39.150 align:middle line:84%
+So you have to picture,
+let's say a book.
+
+00:04:39.150 --> 00:04:41.430 align:middle line:84%
+And each page of
+the book is a map.
+
+00:04:41.430 --> 00:04:43.080 align:middle line:90%
+So you have them all together.
+
+00:04:43.080 --> 00:04:46.230 align:middle line:84%
+And they are all the same
+size, the same resolution.
+
+00:04:46.230 --> 00:04:52.110 align:middle line:84%
+But you have a repetition
+in time of the same map.
+
+00:04:52.110 --> 00:04:54.160 align:middle line:84%
+OK, first of all,
+is to open the file.
+
+00:04:54.160 --> 00:04:57.450 align:middle line:90%
+So nc_open where the map is.
+
+00:04:57.450 --> 00:04:58.890 align:middle line:90%
+You take the map.
+
+00:04:58.890 --> 00:05:02.730 align:middle line:84%
+And if that would
+be a raster, you
+
+00:05:02.730 --> 00:05:04.540 align:middle line:84%
+would be able to
+plot it right away.
+
+00:05:04.540 --> 00:05:06.110 align:middle line:90%
+So that's what I try here.
+
+00:05:06.110 --> 00:05:06.610 align:middle line:90%
+No worries.
+
+00:05:06.610 --> 00:05:09.130 align:middle line:84%
+It's not going to work,
+but it's just to show you
+
+00:05:09.130 --> 00:05:11.650 align:middle line:84%
+that it's a different
+way of organizing maps.
+
+00:05:11.650 --> 00:05:14.170 align:middle line:84%
+So how do we do
+it, to extract it
+
+00:05:14.170 --> 00:05:17.110 align:middle line:84%
+and to convert it into a map
+we can see, we can visualize,
+
+00:05:17.110 --> 00:05:19.030 align:middle line:90%
+we can understand?
+
+00:05:19.030 --> 00:05:21.490 align:middle line:84%
+The first thing we
+need to do is to see
+
+00:05:21.490 --> 00:05:24.610 align:middle line:84%
+what are the names of
+the dimension of the map.
+
+00:05:24.610 --> 00:05:28.820 align:middle line:84%
+Just click names, the
+map, and dimensions.
+
+00:05:28.820 --> 00:05:31.300 align:middle line:84%
+And this is going to
+return the three dimensions
+
+00:05:31.300 --> 00:05:33.910 align:middle line:84%
+that we need to know which is
+the longitude, the latitude,
+
+00:05:33.910 --> 00:05:34.730 align:middle line:90%
+and the time.
+
+00:05:34.730 --> 00:05:37.060 align:middle line:84%
+But sometimes, the author's
+name, this variable
+
+00:05:37.060 --> 00:05:38.030 align:middle line:90%
+is differently.
+
+00:05:38.030 --> 00:05:41.080 align:middle line:84%
+So here is longlat, but it
+could be longitude latitude,
+
+00:05:41.080 --> 00:05:43.640 align:middle line:84%
+or time could be years,
+or things like that.
+
+00:05:43.640 --> 00:05:46.510 align:middle line:84%
+So that's why we need to
+make sure how this is named.
+
+00:05:46.510 --> 00:05:48.940 align:middle line:84%
+So we're going to
+extract the longitude.
+
+00:05:48.940 --> 00:05:51.040 align:middle line:84%
+Here is where we get
+the map structure.
+
+00:05:51.040 --> 00:05:52.600 align:middle line:90%
+We have longitude.
+
+00:05:52.600 --> 00:05:55.480 align:middle line:90%
+We variable get the longitude.
+
+00:05:55.480 --> 00:05:58.480 align:middle line:90%
+OK, and we store it in a vector.
+
+00:05:58.480 --> 00:06:00.370 align:middle line:84%
+And here we want to
+extract the latitude.
+
+00:06:00.370 --> 00:06:03.880 align:middle line:84%
+We repeat the same, but
+with latitude instead.
+
+00:06:03.880 --> 00:06:10.590 align:middle line:84%
+And here we are extracting the
+information related to the time.
+
+00:06:10.590 --> 00:06:20.490 align:middle line:84%
+And now we see that the latitude
+is cut in 360 different columns
+
+00:06:20.490 --> 00:06:25.830 align:middle line:84%
+or rows, and the longitude
+likewise, but 720.
+
+00:06:25.830 --> 00:06:29.920 align:middle line:84%
+And then we want to get
+the actual information.
+
+00:06:29.920 --> 00:06:31.810 align:middle line:84%
+So what's the
+content of the cells?
+
+00:06:31.810 --> 00:06:36.730 align:middle line:90%
+So we do this like that.
+
+00:06:36.730 --> 00:06:38.430 align:middle line:90%
+So here is the content.
+
+00:06:38.430 --> 00:06:42.280 align:middle line:84%
+Something else we need to take
+into account is the NA values.
+
+00:06:42.280 --> 00:06:46.770 align:middle line:84%
+So when creating a
+map, there is a value
+
+00:06:46.770 --> 00:06:50.400 align:middle line:90%
+that you use to name your NA.
+
+00:06:50.400 --> 00:06:52.380 align:middle line:90%
+Sometimes it's NA right away.
+
+00:06:52.380 --> 00:06:56.100 align:middle line:84%
+But some other people use
+numbers like 9,999, or just
+
+00:06:56.100 --> 00:06:57.270 align:middle line:90%
+a big number.
+
+00:06:57.270 --> 00:07:01.530 align:middle line:84%
+And here what we are doing is
+to explore how the authors have
+
+00:07:01.530 --> 00:07:04.510 align:middle line:90%
+named this NA value.
+
+00:07:04.510 --> 00:07:10.240 align:middle line:90%
+So this one I want to see.
+
+00:07:10.240 --> 00:07:11.020 align:middle line:90%
+I'm curious.
+
+00:07:11.020 --> 00:07:14.090 align:middle line:84%
+This is the big number they
+named as missing value.
+
+00:07:14.090 --> 00:07:17.620 align:middle line:84%
+So to avoid this number
+to mess with our results,
+
+00:07:17.620 --> 00:07:19.990 align:middle line:84%
+I recommend you to
+change it to NA.
+
+00:07:19.990 --> 00:07:21.650 align:middle line:90%
+So that's what I'm doing here.
+
+00:07:21.650 --> 00:07:26.433 align:middle line:84%
+I'm replacing every number
+that looks like this, to an NA.
+
+00:07:26.433 --> 00:07:27.850 align:middle line:84%
+Don't worry that
+you are not going
+
+00:07:27.850 --> 00:07:29.800 align:middle line:90%
+to knock out important data.
+
+00:07:29.800 --> 00:07:32.970 align:middle line:84%
+It's just mostly
+going to be NAs.
+
+00:07:32.970 --> 00:07:36.330 align:middle line:90%
+We run this chunk of code.
+
+00:07:36.330 --> 00:07:36.960 align:middle line:90%
+Oh, yeah.
+
+00:07:36.960 --> 00:07:37.950 align:middle line:90%
+Sorry about that.
+
+00:07:37.950 --> 00:07:40.750 align:middle line:90%
+
+
+00:07:40.750 --> 00:07:41.590 align:middle line:90%
+Now, it should go.
+
+00:07:41.590 --> 00:07:44.442 align:middle line:90%
+
+
+00:07:44.442 --> 00:07:46.525 align:middle line:84%
+It's taking a while because
+there's a lot of data.
+
+00:07:46.525 --> 00:07:53.430 align:middle line:90%
+
+
+00:07:53.430 --> 00:07:55.120 align:middle line:90%
+Oh yeah, here we have it.
+
+00:07:55.120 --> 00:07:59.970 align:middle line:84%
+So now all the NAs would
+be replaced into NA value.
+
+00:07:59.970 --> 00:08:02.550 align:middle line:84%
+And now we no longer need
+to have opened them up.
+
+00:08:02.550 --> 00:08:06.051 align:middle line:84%
+So we can close it and
+it doesn't occupy space
+
+00:08:06.051 --> 00:08:07.360 align:middle line:90%
+in our session.
+
+00:08:07.360 --> 00:08:10.110 align:middle line:84%
+Just close it because we already
+have the information we need.
+
+00:08:10.110 --> 00:08:12.630 align:middle line:90%
+
+
+00:08:12.630 --> 00:08:17.610 align:middle line:84%
+And how are we going to
+transform this information we
+
+00:08:17.610 --> 00:08:19.950 align:middle line:84%
+have in different chunks
+into an organized map
+
+00:08:19.950 --> 00:08:23.160 align:middle line:84%
+that we can actually
+visualize and work with?
+
+00:08:23.160 --> 00:08:26.620 align:middle line:84%
+First of all, here I'm
+going to run an example.
+
+00:08:26.620 --> 00:08:32.789 align:middle line:84%
+I'm just going to use the
+package raster right here.
+
+00:08:32.789 --> 00:08:36.179 align:middle line:84%
+I need to include this t
+here, which means transpose,
+
+00:08:36.179 --> 00:08:38.520 align:middle line:84%
+because otherwise if
+I don't put transpose,
+
+00:08:38.520 --> 00:08:41.309 align:middle line:90%
+the image would look flipped.
+
+00:08:41.309 --> 00:08:43.240 align:middle line:90%
+Then this is the object.
+
+00:08:43.240 --> 00:08:45.300 align:middle line:84%
+These are the different
+dimensions-- longitude,
+
+00:08:45.300 --> 00:08:47.550 align:middle line:84%
+latitude, and this
+number 1 is going
+
+00:08:47.550 --> 00:08:49.450 align:middle line:90%
+to be the first time frame.
+
+00:08:49.450 --> 00:08:54.880 align:middle line:84%
+So I'm going to just get
+the first map that we have.
+
+00:08:54.880 --> 00:09:00.290 align:middle line:84%
+Then it asks us for the
+minimum of the x-axis.
+
+00:09:00.290 --> 00:09:02.350 align:middle line:84%
+I'm going to put the
+minimum of the longitude,
+
+00:09:02.350 --> 00:09:07.750 align:middle line:84%
+the maximum of the longitude,
+and just basically setting up
+
+00:09:07.750 --> 00:09:11.770 align:middle line:90%
+the format of this raster map.
+
+00:09:11.770 --> 00:09:15.260 align:middle line:84%
+You have to specify as
+well the projection.
+
+00:09:15.260 --> 00:09:17.080 align:middle line:84%
+So this is going to
+be the projection
+
+00:09:17.080 --> 00:09:21.700 align:middle line:84%
+that it's the same that we've
+used before in other maps.
+
+00:09:21.700 --> 00:09:23.965 align:middle line:84%
+And we just run
+this chunk of code.
+
+00:09:23.965 --> 00:09:26.550 align:middle line:90%
+
+
+00:09:26.550 --> 00:09:30.520 align:middle line:90%
+And we can plot our results.
+
+00:09:30.520 --> 00:09:32.460 align:middle line:90%
+This is how the map looks like.
+
+00:09:32.460 --> 00:09:37.530 align:middle line:84%
+This is the nitrogen deposition
+in, I believe in 1901.
+
+00:09:37.530 --> 00:09:39.630 align:middle line:90%
+And it includes also the sea.
+
+00:09:39.630 --> 00:09:43.710 align:middle line:84%
+So that's why it doesn't
+look like the Earth
+
+00:09:43.710 --> 00:09:45.430 align:middle line:90%
+that we're used to.
+
+00:09:45.430 --> 00:09:49.590 align:middle line:84%
+And then how can we store this
+information in our computer?
+
+00:09:49.590 --> 00:09:52.800 align:middle line:90%
+How can we write this raster?
+
+00:09:52.800 --> 00:09:56.730 align:middle line:84%
+So it's just as easy
+as write raster, put
+
+00:09:56.730 --> 00:10:00.090 align:middle line:84%
+the name of the file we
+want to store, file name,
+
+00:10:00.090 --> 00:10:02.220 align:middle line:90%
+and your route as follows.
+
+00:10:02.220 --> 00:10:07.190 align:middle line:90%
+
+
+00:10:07.190 --> 00:10:09.430 align:middle line:84%
+So now we are moving
+to the resolution.
+
+00:10:09.430 --> 00:10:12.180 align:middle line:84%
+And you might have
+paid attention
+
+00:10:12.180 --> 00:10:14.880 align:middle line:84%
+when downloading the
+data from the WorldClaim
+
+00:10:14.880 --> 00:10:17.070 align:middle line:84%
+that it allows you
+to download the maps
+
+00:10:17.070 --> 00:10:18.420 align:middle line:90%
+in different resolutions.
+
+00:10:18.420 --> 00:10:21.780 align:middle line:84%
+But in order to name the
+different resolutions,
+
+00:10:21.780 --> 00:10:24.670 align:middle line:90%
+WorldClaim, it uses time.
+
+00:10:24.670 --> 00:10:25.810 align:middle line:90%
+So why is that?
+
+00:10:25.810 --> 00:10:28.380 align:middle line:84%
+Well actually, you could
+face three different ways
+
+00:10:28.380 --> 00:10:30.370 align:middle line:90%
+to approach resolution.
+
+00:10:30.370 --> 00:10:35.040 align:middle line:84%
+The first of all is the surface
+using the surface square.
+
+00:10:35.040 --> 00:10:38.010 align:middle line:84%
+One example would is
+1 kilometer square.
+
+00:10:38.010 --> 00:10:42.630 align:middle line:84%
+That refers to the map when we
+have it in a representation.
+
+00:10:42.630 --> 00:10:44.670 align:middle line:84%
+In a gridded
+representation, we would
+
+00:10:44.670 --> 00:10:50.220 align:middle line:84%
+have each side of the grid
+calculated by the surface
+
+00:10:50.220 --> 00:10:51.120 align:middle line:90%
+that it's occupying.
+
+00:10:51.120 --> 00:10:56.290 align:middle line:84%
+So just take this
+that's 1 kilometer.
+
+00:10:56.290 --> 00:10:57.820 align:middle line:90%
+And that's 1 kilometer.
+
+00:10:57.820 --> 00:11:01.450 align:middle line:84%
+The problem of this approach is
+that it's not always accurate.
+
+00:11:01.450 --> 00:11:06.970 align:middle line:84%
+Because the part of the
+grid that's closer to
+
+00:11:06.970 --> 00:11:12.130 align:middle line:84%
+the equator is smaller than the
+one that it goes to the pole.
+
+00:11:12.130 --> 00:11:16.070 align:middle line:84%
+So it stretches when
+it goes to the edges.
+
+00:11:16.070 --> 00:11:18.400 align:middle line:84%
+And so that makes that
+this 1 kilometer is not
+
+00:11:18.400 --> 00:11:20.230 align:middle line:84%
+consistent throughout
+the whole map.
+
+00:11:20.230 --> 00:11:22.990 align:middle line:84%
+And to overcome this
+problem, it came
+
+00:11:22.990 --> 00:11:26.110 align:middle line:84%
+with the angle or the time
+approach, which treats
+
+00:11:26.110 --> 00:11:28.420 align:middle line:90%
+the Earth as a round surface.
+
+00:11:28.420 --> 00:11:33.260 align:middle line:84%
+This is not perfect because,
+the round is not 100% perfect,
+
+00:11:33.260 --> 00:11:35.720 align:middle line:84%
+but it's better than
+using the surface.
+
+00:11:35.720 --> 00:11:39.340 align:middle line:84%
+So what they do is to
+consider on one side
+
+00:11:39.340 --> 00:11:42.730 align:middle line:90%
+the angle that this opening is.
+
+00:11:42.730 --> 00:11:46.420 align:middle line:84%
+So just let's take
+this square right here.
+
+00:11:46.420 --> 00:11:49.180 align:middle line:84%
+And let's just plot
+it on top of this.
+
+00:11:49.180 --> 00:11:54.680 align:middle line:84%
+So that the angle
+that covers this part
+
+00:11:54.680 --> 00:11:57.530 align:middle line:84%
+of the surface, that would
+be displayed in the angle,
+
+00:11:57.530 --> 00:12:03.320 align:middle line:84%
+or also the time that the
+Earth needs to rotate and cover
+
+00:12:03.320 --> 00:12:04.800 align:middle line:90%
+this amount of surface.
+
+00:12:04.800 --> 00:12:06.650 align:middle line:84%
+So for you to have a
+reference, for example,
+
+00:12:06.650 --> 00:12:13.040 align:middle line:84%
+1 kilometer square resolution
+would be the same as 30 seconds
+
+00:12:13.040 --> 00:12:13.760 align:middle line:90%
+in time.
+
+00:12:13.760 --> 00:12:22.270 align:middle line:90%
+
+
+00:12:22.270 --> 00:12:23.790 align:middle line:90%
+So going back to the code.
+
+00:12:23.790 --> 00:12:27.390 align:middle line:84%
+Here I downloaded two
+different resolutions
+
+00:12:27.390 --> 00:12:30.880 align:middle line:84%
+for the temperature
+maps on WorldClaim.
+
+00:12:30.880 --> 00:12:32.880 align:middle line:90%
+One is 10 minutes.
+
+00:12:32.880 --> 00:12:35.280 align:middle line:90%
+And the other one is 30 seconds.
+
+00:12:35.280 --> 00:12:37.230 align:middle line:84%
+The 10 minutes is
+OK to download.
+
+00:12:37.230 --> 00:12:40.860 align:middle line:84%
+The 30 seconds, it
+might take a while.
+
+00:12:40.860 --> 00:12:44.820 align:middle line:84%
+If your internet
+connection is slow,
+
+00:12:44.820 --> 00:12:47.650 align:middle line:84%
+you can just believe
+what I'm saying.
+
+00:12:47.650 --> 00:12:52.080 align:middle line:84%
+But if you want to try it
+out, obviously feel free.
+
+00:12:52.080 --> 00:12:54.120 align:middle line:84%
+Just to remind you how
+the map looks like,
+
+00:12:54.120 --> 00:12:56.350 align:middle line:90%
+it's going to look like this.
+
+00:12:56.350 --> 00:13:01.500 align:middle line:84%
+Let's just check the
+resolution here on both maps.
+
+00:13:01.500 --> 00:13:03.460 align:middle line:90%
+Here we have this number here.
+
+00:13:03.460 --> 00:13:04.470 align:middle line:90%
+But what does it mean?
+
+00:13:04.470 --> 00:13:06.880 align:middle line:84%
+Here we have this
+other number here.
+
+00:13:06.880 --> 00:13:09.390 align:middle line:84%
+So when we consult the
+resolution in our maps,
+
+00:13:09.390 --> 00:13:13.200 align:middle line:84%
+it's going to be shown in
+degrees, so using the angle
+
+00:13:13.200 --> 00:13:17.110 align:middle line:84%
+approach that I
+previously mentioned.
+
+00:13:17.110 --> 00:13:20.970 align:middle line:84%
+So how can we change
+resolution in a map?
+
+00:13:20.970 --> 00:13:23.960 align:middle line:90%
+We can use the factor aggregate.
+
+00:13:23.960 --> 00:13:28.330 align:middle line:84%
+So if we have a number
+that's bigger than 1,
+
+00:13:28.330 --> 00:13:30.170 align:middle line:90%
+we are going to combine cells.
+
+00:13:30.170 --> 00:13:34.630 align:middle line:84%
+So if we have in this case,
+I'm combining in a factor of 4,
+
+00:13:34.630 --> 00:13:38.140 align:middle line:84%
+meaning that four cells
+horizontal and four cells
+
+00:13:38.140 --> 00:13:41.410 align:middle line:84%
+vertical are going to
+be combined in one.
+
+00:13:41.410 --> 00:13:46.220 align:middle line:84%
+There are different ways to
+calculate the resultant cell.
+
+00:13:46.220 --> 00:13:49.630 align:middle line:84%
+So it could be using the mode,
+or it could be using the mean,
+
+00:13:49.630 --> 00:13:52.810 align:middle line:84%
+depending on what kind of
+data you have in your map.
+
+00:13:52.810 --> 00:13:57.910 align:middle line:84%
+But you could also
+increase your resolution
+
+00:13:57.910 --> 00:14:00.880 align:middle line:84%
+by using a number
+that's lower than 1.
+
+00:14:00.880 --> 00:14:03.520 align:middle line:84%
+So let's if you
+put, let's say 0.5,
+
+00:14:03.520 --> 00:14:06.760 align:middle line:84%
+you are going to
+divide a cell in 4.
+
+00:14:06.760 --> 00:14:12.670 align:middle line:84%
+Because we're working
+in two dimensions.
+
+00:14:12.670 --> 00:14:15.080 align:middle line:84%
+I mean this is
+technically correct,
+
+00:14:15.080 --> 00:14:17.560 align:middle line:84%
+but conceptually it doesn't
+really make a lot of sense.
+
+00:14:17.560 --> 00:14:19.913 align:middle line:84%
+Because you are
+creating fake data.
+
+00:14:19.913 --> 00:14:21.580 align:middle line:84%
+It's not that you are
+actually including
+
+00:14:21.580 --> 00:14:24.460 align:middle line:84%
+the resolution of how good
+you are approaching reality.
+
+00:14:24.460 --> 00:14:31.190 align:middle line:84%
+You are just creating more
+data for no more accuracy.
+
+00:14:31.190 --> 00:14:34.720 align:middle line:84%
+So in this case, I'm
+going to aggregate the map
+
+00:14:34.720 --> 00:14:38.050 align:middle line:90%
+that we have in a factor of 4.
+
+00:14:38.050 --> 00:14:42.490 align:middle line:84%
+And I'm just going to consult
+how the resolution has changed.
+
+00:14:42.490 --> 00:14:45.670 align:middle line:84%
+So initially I
+aggregated this one.
+
+00:14:45.670 --> 00:14:47.260 align:middle line:90%
+This was the initial resolution.
+
+00:14:47.260 --> 00:14:51.100 align:middle line:84%
+And once the
+resolution was changed,
+
+00:14:51.100 --> 00:14:53.020 align:middle line:84%
+I see the degrees
+has gone bigger
+
+00:14:53.020 --> 00:14:54.950 align:middle line:90%
+because the surface is bigger.
+
+00:14:54.950 --> 00:15:01.730 align:middle line:84%
+So the time or the degree to
+cover that surface is bigger.
+
+00:15:01.730 --> 00:15:04.390 align:middle line:84%
+So if you plot
+that, you might be
+
+00:15:04.390 --> 00:15:10.920 align:middle line:84%
+able to see that the quality
+of the image is a little worse.
+
+00:15:10.920 --> 00:15:15.000 align:middle line:90%

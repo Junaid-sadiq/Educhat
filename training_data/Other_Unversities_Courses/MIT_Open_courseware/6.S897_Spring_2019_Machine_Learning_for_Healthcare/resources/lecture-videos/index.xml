@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Lecture Videos on MIT OpenCourseWare</title>
+    <link>/resources/lecture-videos/</link>
+    <description>Recent content in Lecture Videos on MIT OpenCourseWare</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="/resources/lecture-videos/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Lecture 1: What Makes Healthcare Unique?</title>
+      <link>/resources/lecture-1-what-makes-healthcare-unique/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/resources/lecture-1-what-makes-healthcare-unique/data.json</guid>
+      <description>&lt;p&gt;Prof. Sontag gives an overview of the problem of healthcare in the US. He gives an overview of the history of artificial intelligence in healthcare, reasons why to apply machine learning to healthcare today, and some examples of applied machine learning.&lt;/p&gt;&#xA;&lt;p&gt;Speaker: David Sontag&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;../../resources/mit6_s897s19_lec1/index.html&#34;&gt;Lecture 1: Introduction: What Makes Healthcare Unique? slides (PDF - 2.8MB)&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Lecture 10: Application of Machine Learning to Cardiac Imaging</title>
+      <link>/resources/lecture-10-application-of-machine-learning-to-cardiac-imaging/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/resources/lecture-10-application-of-machine-learning-to-cardiac-imaging/data.json</guid>
+      <description>&lt;p&gt;Guest lecturer Rahul Deo, the lead investigator of the One Brave Idea project at Brigham and Women&amp;rsquo;s Hospital, talks about how machine learning techniques are being used and can be used further to augment cardiac imaging.&lt;/p&gt;&#xA;&lt;p&gt;Speaker: Rahul Deo&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;../../resources/mit6_s897s19_lec10/index.html&#34;&gt;Lecture 10: Machine Learning for Cardiology slides (PDF - 5.3MB)&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Lecture 11: Differential Diagnosis</title>
+      <link>/resources/lecture-11-differential-diagnosis/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/resources/lecture-11-differential-diagnosis/data.json</guid>
+      <description>&lt;p&gt;Prof. Szolovits explains differential diagnosis, the distinguishing of a condition from others with similar features. He covers models of diagnostic reasoning: flow charts, card selection, naive Bayes, bipartite graphs, QMR DT, and reinforcement learning.&lt;/p&gt;&#xA;&lt;p&gt;Speaker: Peter Szolovits&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;../../resources/mit6_s897s19_lec11/index.html&#34;&gt;Lecture 11: Machine Learning for Differential Diagnosis slides (PDF - 1.8MB)&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Lecture 12: Machine Learning for Pathology</title>
+      <link>/resources/lecture-12-machine-learning-for-pathology/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/resources/lecture-12-machine-learning-for-pathology/data.json</guid>
+      <description>&lt;p&gt;Dr. Beck begins with a short background of pathology and his work at PathAI. He then discusses computational pathology, building image processing models, and precision immunotherapy.&lt;/p&gt;&#xA;&lt;p&gt;Speaker: Andy Beck&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;../../resources/mit6_s897s19_lec12/index.html&#34;&gt;Lecture 12: Machine Learning for Pathology slides (PDF - 6.5MB)&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Lecture 13: Machine Learning for Mammography</title>
+      <link>/resources/lecture-13-machine-learning-for-mammography/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/resources/lecture-13-machine-learning-for-mammography/data.json</guid>
+      <description>&lt;p&gt;Dr. Yala discusses deep learning models for mammogram interpretation and triaging. While many aspects of cancer detection based on mammograms are similar to those of natural image classification (ImageNet), there are some key differences.&lt;/p&gt;&#xA;&lt;p&gt;Speaker: Adam Yala&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;../../resources/mit6_s897s19_lec13/index.html&#34;&gt;Lecture 13: Machine Learning for Mammography slides (PDF - 2.5MB)&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Lecture 14: Causal Inference, Part 1</title>
+      <link>/resources/lecture-14-causal-inference-part-1/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/resources/lecture-14-causal-inference-part-1/data.json</guid>
+      <description>&lt;p&gt;Prof. Sontag discusses causal inference, examples of causal questions, and how these guide treatment decisions. He explains the Rubin-Neyman causal model as a potential outcome framework.&lt;/p&gt;&#xA;&lt;p&gt;Speaker: David Sontag&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;../../resources/mit6_s897s19_lec14/index.html&#34;&gt;Lecture 14: Causal Inference, Part 1 slides (PDF - 2.2MB)&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Lecture 15: Causal Inference, Part 2</title>
+      <link>/resources/lecture-15-causal-inference-part-2/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/resources/lecture-15-causal-inference-part-2/data.json</guid>
+      <description>&lt;p&gt;&lt;em&gt;This is the 2020 version of the lecture delivered via Zoom, due to technical difficulties in the original lecture 15 video.&lt;/em&gt;&lt;/p&gt;&#xA;&lt;p&gt;Prof. Sontag discusses a causal inference setting from a causal graphs perspective.&lt;/p&gt;&#xA;&lt;p&gt;Speaker: David Sontag&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;../../resources/mit6_s897s19_lec15-2020/index.html&#34;&gt;Lecture 15: Causal Inference, Part 2 slides (PDF)&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Lecture 16: Reinforcement Learning, Part 1</title>
+      <link>/resources/lecture-16-reinforcement-learning-part-1/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/resources/lecture-16-reinforcement-learning-part-1/data.json</guid>
+      <description>&lt;p&gt;Dr. Johansson covers an overview of treatment policies and potential outcomes, an introduction to reinforcement learning, decision processes, reinforcement learning paradigms, and learning from off-policy data.&lt;/p&gt;&#xA;&lt;p&gt;Speaker: Fredrik D. Johansson&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;../../resources/mit6_s897s19_lec16/index.html&#34;&gt;Lecture 16: Reinforcement Learning slides (PDF)&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Lecture 17: Reinforcement Learning, Part 2</title>
+      <link>/resources/lecture-17-reinforcement-learning-part-2/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/resources/lecture-17-reinforcement-learning-part-2/data.json</guid>
+      <description>&lt;p&gt;In the first half, Prof. Sontag discusses how to evaluate different policies in causal inference and how it is related to reinforcement learning. In the second half, Dr. Barbra Dickerman talks about evaluating dynamic treatment strategies.&lt;/p&gt;&#xA;&lt;p&gt;Speakers: David Sontag, Barbra Dickerman&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;../../resources/mit6_s897s19_lec17/index.html&#34;&gt;Lecture 17: Evaluating Dynamic Treatment Strategies slides (PDF)&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Lecture 18: Disease Progression Modeling and Subtyping, Part 1</title>
+      <link>/resources/lecture-18-disease-progression-modeling-and-subtyping-part-1/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/resources/lecture-18-disease-progression-modeling-and-subtyping-part-1/data.json</guid>
+      <description>&lt;p&gt;Prof. Sontag discusses aspects of disease progression modeling, including staging, subtyping, and multi-task and unsupervised learning. The goals are to determine the patient’s place in the disease trajectory and how treatment may affect progression.&lt;/p&gt;&#xA;&lt;p&gt;Speaker: David Sontag&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;../../resources/mit6_s897s19_lec18/index.html&#34;&gt;Lecture 18: Disease Progression &amp;amp; Subtyping, Part 1 slides (PDF - 1.6MB)&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Lecture 19: Disease Progression Modeling and Subtyping, Part 2</title>
+      <link>/resources/lecture-19-disease-progression-modeling-and-subtyping-part-2/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/resources/lecture-19-disease-progression-modeling-and-subtyping-part-2/data.json</guid>
+      <description>&lt;p&gt;Prof. Sontag begins with a recap of the goal of disease progression modeling and then discusses staging from cross-sectional data and simultaneous staging and subtyping.&lt;/p&gt;&#xA;&lt;p&gt;Speaker: David Sontag&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;../../resources/mit6_s897s19_lec19/index.html&#34;&gt;Lecture 19: Disease Progression &amp;amp; Subtyping, Part 2 slides (PDF - 3.2MB)&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Lecture 2: Overview of Clinical Care</title>
+      <link>/resources/lecture-2-overview-of-clinical-care/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/resources/lecture-2-overview-of-clinical-care/data.json</guid>
+      <description>&lt;p&gt;Prof. Szolovits gives an overview of clinical care from the past to the present. The main topics covered are the goals of medicine, the tasks of medicine, public health, and paying for health care.&lt;/p&gt;&#xA;&lt;p&gt;Speaker: Peter Szolovits&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;../../resources/mit6_s897s19_lec2/index.html&#34;&gt;Lecture 2: Overview of Clinical Care slides (PDF - 3.9MB)&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Lecture 20: Precision Medicine</title>
+      <link>/resources/lecture-20-precision-medicine/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/resources/lecture-20-precision-medicine/data.json</guid>
+      <description>&lt;p&gt;Prof. Szolovits gives an introduction to disease subtyping and discusses collecting genome data, precision medicine modality space (PMMS), genotypes and phenotypes, and the history of genetics and genome sequencing. He also discusses the Framingham study.&lt;/p&gt;&#xA;&lt;p&gt;Speaker: Peter Szolovits&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;../../resources/mit6_s897s19_lec20/index.html&#34;&gt;Lecture 20: Precision Medicine slides (PDF - 1.6MB)&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Lecture 21: Automating Clinical Work Flows</title>
+      <link>/resources/lecture-21-automating-clinical-work-flows/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/resources/lecture-21-automating-clinical-work-flows/data.json</guid>
+      <description>&lt;p&gt;_This video begins with the 2020 version of the lecture delivered via Zoom, due to technical difficulties in the original lecture 21 video.&lt;br&gt;&#xA;_&lt;/p&gt;&#xA;&lt;p&gt;Prof. Szolovits discusses ways of improving medical care and narrowing performance distribution through decision support from local data and change-point detection to monitor rule firings. The Clinical Pathways COWpath study is used as an example.&lt;/p&gt;&#xA;&lt;p&gt;Speaker: Peter Szolovits&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;../../resources/mit6_s897s19_lec21/index.html&#34;&gt;Lecture 21: Automating Clinical Workflows slides (PDF - 1.6MB)&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Lecture 22: Regulation of Machine Learning / Artificial Intelligence in the US</title>
+      <link>/resources/lecture-22-regulation-of-machine-learning-artificial-intelligence-in-the-us/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/resources/lecture-22-regulation-of-machine-learning-artificial-intelligence-in-the-us/data.json</guid>
+      <description>&lt;p&gt;Andy Coravos gives an overview of US regulatory agencies and their role in overseeing devices (SaMDs) and how to submit public comment to these agencies. Mark Shervy gives an overview of institutional review boards (IRBs) for research with human subjects.&lt;/p&gt;&#xA;&lt;p&gt;Speakers: Andy Coravos, Mark Shervey&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;../../resources/mit6_s897s19_lec22-1/index.html&#34;&gt;Lecture 22.1: Regulation of ML/AI in the US slides (PDF - 2.9MB)&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;../../resources/mit6_s897s19_lec22-2/index.html&#34;&gt;Lecture 22.2: Human Subjects Research slides (PDF)&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Lecture 23: Fairness</title>
+      <link>/resources/lecture-23-fairness/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/resources/lecture-23-fairness/data.json</guid>
+      <description>&lt;p&gt;In this lecture, Prof. Szolovits talks about algorithmic fairness and fairness in the way we build machine learning models. He raises the question &amp;ldquo;What do we mean by fairness in society?&amp;rdquo; and discusses how that affects prediction models.&lt;/p&gt;&#xA;&lt;p&gt;Speaker: Peter Szolovits&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;../../resources/mit6_s897s19_lec23/index.html&#34;&gt;Lecture 23: Fairness slides (PDF - 1.5MB)&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Lecture 24: Robustness to Dataset Shift</title>
+      <link>/resources/lecture-24-robustness-to-dataset-shift/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/resources/lecture-24-robustness-to-dataset-shift/data.json</guid>
+      <description>&lt;p&gt;This lecture is primarily a discussion on things that can go wrong when deploying a machine learning model, even one that may have trained and tested well prior to deployment.&lt;/p&gt;&#xA;&lt;p&gt;Speaker: David Sontag&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;../../resources/mit6_s897s19_lec24/index.html&#34;&gt;Lecture 24: Robustness to Dataset Shift slides (PDF - 2.2MB)&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Lecture 25: Interpretability</title>
+      <link>/resources/lecture-25-interpretability/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/resources/lecture-25-interpretability/data.json</guid>
+      <description>&lt;p&gt;Prof. Szolovits discusses interpretability because modern machine learning models are very difficult to understand. He discusses different methods that have been used to attempt to overcome inscrutable models.&lt;/p&gt;&#xA;&lt;p&gt;Speaker: Peter Szolovits&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;../../resources/mit6_s897s19_lec25/index.html&#34;&gt;Lecture 25: Interpretability slides (PDF - 3.2MB)&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Lecture 3: Deep Dive Into Clinical Data</title>
+      <link>/resources/lecture-3-deep-dive-into-clinical-data/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/resources/lecture-3-deep-dive-into-clinical-data/data.json</guid>
+      <description>&lt;p&gt;Prof. Szolovits gives a deep dive into clinical data, the types of data, and how the data can be standardized. MIMIC-III data is used to illustrate these points. He discusses the difficulties of medicine harmonization and interoperability.&lt;/p&gt;&#xA;&lt;p&gt;Speaker: Peter Szolovits&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;../../resources/mit6_s897s19_lec3/index.html&#34;&gt;Lecture 3: Deep Dive into Clinical Data slides (PDF - 2.1MB)&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Lecture 4: Risk Stratification, Part 1</title>
+      <link>/resources/lecture-4-risk-stratification-part-1/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/resources/lecture-4-risk-stratification-part-1/data.json</guid>
+      <description>&lt;p&gt;Prof. Sontag discusses risk stratification and works through a case study of early detection of type 2 diabetes. The second portion of the class is an interview with Leonard D’Avolio, Assistant Professor at Harvard Medical School and founder of Cyft.&lt;/p&gt;&#xA;&lt;p&gt;Speakers: David Sontag, Leonard D&amp;rsquo;Avolio&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;../../resources/mit6_s897s19_lec4/index.html&#34;&gt;Lecture 4: Risk Stratification, Part 1 slides (PDF - 1.2MB)&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Lecture 5: Risk Stratification, Part 2</title>
+      <link>/resources/lecture-5-risk-stratification-part-2/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/resources/lecture-5-risk-stratification-part-2/data.json</guid>
+      <description>&lt;p&gt;Prof. Sontag continues with the topic of risk stratification. He discusses the derivation of labels for data, evaluation of model performance, and the subtleties with machine learning-based risk stratification. The lecture finishes with survival modeling.&lt;/p&gt;&#xA;&lt;p&gt;Speaker: David Sontag&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;../../resources/mit6_s897s19_lec5/index.html&#34;&gt;Lecture 5: Risk Stratification, Part 2 slides (PDF - 2.2MB)&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Lecture 6: Physiological Time-Series</title>
+      <link>/resources/lecture-6-physiological-time-series/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/resources/lecture-6-physiological-time-series/data.json</guid>
+      <description>&lt;p&gt;Prof. Sontag gives a recap of risk stratification and then explains physiological time-series. Two scenarios are examined: monitoring babies in neonatal ICUs and detecting atrial fibrillation.&lt;/p&gt;&#xA;&lt;p&gt;Speaker: David Sontag&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;../../resources/mit6_s897s19_lec6/index.html&#34;&gt;Lecture 6: Physiological Time-Series slides (PDF - 1.5MB)&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Lecture 7: Natural Language Processing (NLP), Part 1</title>
+      <link>/resources/lecture-7-natural-language-processing-nlp-part-1/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/resources/lecture-7-natural-language-processing-nlp-part-1/data.json</guid>
+      <description>&lt;p&gt;This lecture and the next cover the role of natural language processing in machine learning in healthcare. In this lecture, Prof. Szolovits covers methods which are not based on neural networks representations.&lt;/p&gt;&#xA;&lt;p&gt;Speaker: Peter Szolovits&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;../../resources/mit6_s897s19_lec7/index.html&#34;&gt;Lecture 7: Natural Language Processing (NLP), Part 1 slides (PDF - 1.3MB)&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Lecture 8: Natural Language Processing (NLP), Part 2</title>
+      <link>/resources/lecture-8-natural-language-processing-nlp-part-2/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/resources/lecture-8-natural-language-processing-nlp-part-2/data.json</guid>
+      <description>&lt;p&gt;Prof. Szolovits covers Natural Language Processing methods including those which are not based on neural networks representations and those techniques which employ neural network architectures.&lt;/p&gt;&#xA;&lt;p&gt;Speaker: Peter Szolovits&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;../../resources/mit6_s897s19_lec8/index.html&#34;&gt;Lecture 8: Natural Language Processing (NLP), Part 2 slides (PDF - 2.0MB)&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Lecture 9: Translating Technology Into the Clinic</title>
+      <link>/resources/lecture-9-translating-technology-into-the-clinic/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/resources/lecture-9-translating-technology-into-the-clinic/data.json</guid>
+      <description>&lt;p&gt;Prof. Szolovits discusses the hype cycle as well as two examples of machine learning: Watson for Oncology and Computerized Physician Order Entry. Guest speaker Adam Wright speaks about the development of a medication-related decision support system.&lt;/p&gt;&#xA;&lt;p&gt;Speakers: Peter Szolovits, Adam Wright&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;../../resources/mit6_s897s19_lec9/index.html&#34;&gt;Lecture 9: Translating Technology into the Clinic slides (PDF)&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Lecture Videos</title>
+      <link>/video_galleries/lecture-videos/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/video_galleries/lecture-videos/data.json</guid>
+      <description>&lt;p&gt;Due to technical difficulties with the original video, lecture 15 is from the spring 2020 version of the course.&lt;/p&gt;&#xA;&lt;div class=&#34;mb-2 border-gray rounded video-gallery-card&#34;&gt;&#xA;  &lt;a class=&#34;video-link&#34; href=&#34;../../resources/lecture-1-what-makes-healthcare-unique/index.html&#34;&gt;&#xA;    &lt;div class=&#34;inner-container&#34;&gt;&#xA;      &lt;div class=&#34;left-col&#34;&gt;&lt;img class=&#34;thumbnail&#34; src=&#34;https://img.youtube.com/vi/vof7x8r_ZUA/default.jpg&#34; alt=&#34;&#34; /&gt;&lt;/div&gt;&#xA;      &lt;div class=&#34;right-col&#34;&gt;&#xA;        &lt;h5 class=&#34;video-title&#34;&gt;Lecture 1: What Makes Healthcare Unique?&lt;/h5&gt;&#xA;      &lt;/div&gt;&#xA;    &lt;/div&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;mb-2 border-gray rounded video-gallery-card&#34;&gt;&#xA;  &lt;a class=&#34;video-link&#34; href=&#34;../../resources/lecture-2-overview-of-clinical-care/index.html&#34;&gt;&#xA;    &lt;div class=&#34;inner-container&#34;&gt;&#xA;      &lt;div class=&#34;left-col&#34;&gt;&lt;img class=&#34;thumbnail&#34; src=&#34;https://img.youtube.com/vi/DS97JV_o0Fs/default.jpg&#34; alt=&#34;&#34; /&gt;&lt;/div&gt;&#xA;      &lt;div class=&#34;right-col&#34;&gt;&#xA;        &lt;h5 class=&#34;video-title&#34;&gt;Lecture 2: Overview of Clinical Care&lt;/h5&gt;&#xA;      &lt;/div&gt;&#xA;    &lt;/div&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;mb-2 border-gray rounded video-gallery-card&#34;&gt;&#xA;  &lt;a class=&#34;video-link&#34; href=&#34;../../resources/lecture-3-deep-dive-into-clinical-data/index.html&#34;&gt;&#xA;    &lt;div class=&#34;inner-container&#34;&gt;&#xA;      &lt;div class=&#34;left-col&#34;&gt;&lt;img class=&#34;thumbnail&#34; src=&#34;https://img.youtube.com/vi/0UFwGJe6ubg/default.jpg&#34; alt=&#34;&#34; /&gt;&lt;/div&gt;&#xA;      &lt;div class=&#34;right-col&#34;&gt;&#xA;        &lt;h5 class=&#34;video-title&#34;&gt;Lecture 3: Deep Dive Into Clinical Data&lt;/h5&gt;&#xA;      &lt;/div&gt;&#xA;    &lt;/div&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;mb-2 border-gray rounded video-gallery-card&#34;&gt;&#xA;  &lt;a class=&#34;video-link&#34; href=&#34;../../resources/lecture-4-risk-stratification-part-1/index.html&#34;&gt;&#xA;    &lt;div class=&#34;inner-container&#34;&gt;&#xA;      &lt;div class=&#34;left-col&#34;&gt;&lt;img class=&#34;thumbnail&#34; src=&#34;https://img.youtube.com/vi/_shuV1tJbTU/default.jpg&#34; alt=&#34;&#34; /&gt;&lt;/div&gt;&#xA;      &lt;div class=&#34;right-col&#34;&gt;&#xA;        &lt;h5 class=&#34;video-title&#34;&gt;Lecture 4: Risk Stratification, Part 1&lt;/h5&gt;&#xA;      &lt;/div&gt;&#xA;    &lt;/div&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;mb-2 border-gray rounded video-gallery-card&#34;&gt;&#xA;  &lt;a class=&#34;video-link&#34; href=&#34;../../resources/lecture-5-risk-stratification-part-2/index.html&#34;&gt;&#xA;    &lt;div class=&#34;inner-container&#34;&gt;&#xA;      &lt;div class=&#34;left-col&#34;&gt;&lt;img class=&#34;thumbnail&#34; src=&#34;https://img.youtube.com/vi/wqI_z1yumzY/default.jpg&#34; alt=&#34;&#34; /&gt;&lt;/div&gt;&#xA;      &lt;div class=&#34;right-col&#34;&gt;&#xA;        &lt;h5 class=&#34;video-title&#34;&gt;Lecture 5: Risk Stratification, Part 2&lt;/h5&gt;&#xA;      &lt;/div&gt;&#xA;    &lt;/div&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;mb-2 border-gray rounded video-gallery-card&#34;&gt;&#xA;  &lt;a class=&#34;video-link&#34; href=&#34;../../resources/lecture-6-physiological-time-series/index.html&#34;&gt;&#xA;    &lt;div class=&#34;inner-container&#34;&gt;&#xA;      &lt;div class=&#34;left-col&#34;&gt;&lt;img class=&#34;thumbnail&#34; src=&#34;https://img.youtube.com/vi/lLhfDSOwWtU/default.jpg&#34; alt=&#34;&#34; /&gt;&lt;/div&gt;&#xA;      &lt;div class=&#34;right-col&#34;&gt;&#xA;        &lt;h5 class=&#34;video-title&#34;&gt;Lecture 6: Physiological Time-Series&lt;/h5&gt;&#xA;      &lt;/div&gt;&#xA;    &lt;/div&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;mb-2 border-gray rounded video-gallery-card&#34;&gt;&#xA;  &lt;a class=&#34;video-link&#34; href=&#34;../../resources/lecture-7-natural-language-processing-nlp-part-1/index.html&#34;&gt;&#xA;    &lt;div class=&#34;inner-container&#34;&gt;&#xA;      &lt;div class=&#34;left-col&#34;&gt;&lt;img class=&#34;thumbnail&#34; src=&#34;https://img.youtube.com/vi/IiD3YZkkCmE/default.jpg&#34; alt=&#34;&#34; /&gt;&lt;/div&gt;&#xA;      &lt;div class=&#34;right-col&#34;&gt;&#xA;        &lt;h5 class=&#34;video-title&#34;&gt;Lecture 7: Natural Language Processing (NLP), Part 1&lt;/h5&gt;&#xA;      &lt;/div&gt;&#xA;    &lt;/div&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;mb-2 border-gray rounded video-gallery-card&#34;&gt;&#xA;  &lt;a class=&#34;video-link&#34; href=&#34;../../resources/lecture-8-natural-language-processing-nlp-part-2/index.html&#34;&gt;&#xA;    &lt;div class=&#34;inner-container&#34;&gt;&#xA;      &lt;div class=&#34;left-col&#34;&gt;&lt;img class=&#34;thumbnail&#34; src=&#34;https://img.youtube.com/vi/lkO2ocJBsmI/default.jpg&#34; alt=&#34;&#34; /&gt;&lt;/div&gt;&#xA;      &lt;div class=&#34;right-col&#34;&gt;&#xA;        &lt;h5 class=&#34;video-title&#34;&gt;Lecture 8: Natural Language Processing (NLP), Part 2&lt;/h5&gt;&#xA;      &lt;/div&gt;&#xA;    &lt;/div&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;mb-2 border-gray rounded video-gallery-card&#34;&gt;&#xA;  &lt;a class=&#34;video-link&#34; href=&#34;../../resources/lecture-9-translating-technology-into-the-clinic/index.html&#34;&gt;&#xA;    &lt;div class=&#34;inner-container&#34;&gt;&#xA;      &lt;div class=&#34;left-col&#34;&gt;&lt;img class=&#34;thumbnail&#34; src=&#34;https://img.youtube.com/vi/ZQu2B3GyI_k/default.jpg&#34; alt=&#34;&#34; /&gt;&lt;/div&gt;&#xA;      &lt;div class=&#34;right-col&#34;&gt;&#xA;        &lt;h5 class=&#34;video-title&#34;&gt;Lecture 9: Translating Technology Into the Clinic&lt;/h5&gt;&#xA;      &lt;/div&gt;&#xA;    &lt;/div&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;mb-2 border-gray rounded video-gallery-card&#34;&gt;&#xA;  &lt;a class=&#34;video-link&#34; href=&#34;../../resources/lecture-10-application-of-machine-learning-to-cardiac-imaging/index.html&#34;&gt;&#xA;    &lt;div class=&#34;inner-container&#34;&gt;&#xA;      &lt;div class=&#34;left-col&#34;&gt;&lt;img class=&#34;thumbnail&#34; src=&#34;https://img.youtube.com/vi/MoEaRpLNo9A/default.jpg&#34; alt=&#34;&#34; /&gt;&lt;/div&gt;&#xA;      &lt;div class=&#34;right-col&#34;&gt;&#xA;        &lt;h5 class=&#34;video-title&#34;&gt;Lecture 10: Application of Machine Learning to Cardiac Imaging&lt;/h5&gt;&#xA;      &lt;/div&gt;&#xA;    &lt;/div&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;mb-2 border-gray rounded video-gallery-card&#34;&gt;&#xA;  &lt;a class=&#34;video-link&#34; href=&#34;../../resources/lecture-11-differential-diagnosis/index.html&#34;&gt;&#xA;    &lt;div class=&#34;inner-container&#34;&gt;&#xA;      &lt;div class=&#34;left-col&#34;&gt;&lt;img class=&#34;thumbnail&#34; src=&#34;https://img.youtube.com/vi/VuKOW8d4KHw/default.jpg&#34; alt=&#34;&#34; /&gt;&lt;/div&gt;&#xA;      &lt;div class=&#34;right-col&#34;&gt;&#xA;        &lt;h5 class=&#34;video-title&#34;&gt;Lecture 11: Differential Diagnosis&lt;/h5&gt;&#xA;      &lt;/div&gt;&#xA;    &lt;/div&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;mb-2 border-gray rounded video-gallery-card&#34;&gt;&#xA;  &lt;a class=&#34;video-link&#34; href=&#34;../../resources/lecture-12-machine-learning-for-pathology/index.html&#34;&gt;&#xA;    &lt;div class=&#34;inner-container&#34;&gt;&#xA;      &lt;div class=&#34;left-col&#34;&gt;&lt;img class=&#34;thumbnail&#34; src=&#34;https://img.youtube.com/vi/PKCMH5KOcxQ/default.jpg&#34; alt=&#34;&#34; /&gt;&lt;/div&gt;&#xA;      &lt;div class=&#34;right-col&#34;&gt;&#xA;        &lt;h5 class=&#34;video-title&#34;&gt;Lecture 12: Machine Learning for Pathology&lt;/h5&gt;&#xA;      &lt;/div&gt;&#xA;    &lt;/div&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;mb-2 border-gray rounded video-gallery-card&#34;&gt;&#xA;  &lt;a class=&#34;video-link&#34; href=&#34;../../resources/lecture-13-machine-learning-for-mammography/index.html&#34;&gt;&#xA;    &lt;div class=&#34;inner-container&#34;&gt;&#xA;      &lt;div class=&#34;left-col&#34;&gt;&lt;img class=&#34;thumbnail&#34; src=&#34;https://img.youtube.com/vi/2ZXYM1h9pgY/default.jpg&#34; alt=&#34;&#34; /&gt;&lt;/div&gt;&#xA;      &lt;div class=&#34;right-col&#34;&gt;&#xA;        &lt;h5 class=&#34;video-title&#34;&gt;Lecture 13: Machine Learning for Mammography&lt;/h5&gt;&#xA;      &lt;/div&gt;&#xA;    &lt;/div&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;mb-2 border-gray rounded video-gallery-card&#34;&gt;&#xA;  &lt;a class=&#34;video-link&#34; href=&#34;../../resources/lecture-14-causal-inference-part-1/index.html&#34;&gt;&#xA;    &lt;div class=&#34;inner-container&#34;&gt;&#xA;      &lt;div class=&#34;left-col&#34;&gt;&lt;img class=&#34;thumbnail&#34; src=&#34;https://img.youtube.com/vi/gRkUhg9Wb-I/default.jpg&#34; alt=&#34;&#34; /&gt;&lt;/div&gt;&#xA;      &lt;div class=&#34;right-col&#34;&gt;&#xA;        &lt;h5 class=&#34;video-title&#34;&gt;Lecture 14: Causal Inference, Part 1&lt;/h5&gt;&#xA;      &lt;/div&gt;&#xA;    &lt;/div&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;mb-2 border-gray rounded video-gallery-card&#34;&gt;&#xA;  &lt;a class=&#34;video-link&#34; href=&#34;../../resources/lecture-15-causal-inference-part-2/index.html&#34;&gt;&#xA;    &lt;div class=&#34;inner-container&#34;&gt;&#xA;      &lt;div class=&#34;left-col&#34;&gt;&lt;img class=&#34;thumbnail&#34; src=&#34;https://img.youtube.com/vi/g5v-NvNoJQQ/default.jpg&#34; alt=&#34;&#34; /&gt;&lt;/div&gt;&#xA;      &lt;div class=&#34;right-col&#34;&gt;&#xA;        &lt;h5 class=&#34;video-title&#34;&gt;Lecture 15: Causal Inference, Part 2&lt;/h5&gt;&#xA;      &lt;/div&gt;&#xA;    &lt;/div&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;mb-2 border-gray rounded video-gallery-card&#34;&gt;&#xA;  &lt;a class=&#34;video-link&#34; href=&#34;../../resources/lecture-16-reinforcement-learning-part-1/index.html&#34;&gt;&#xA;    &lt;div class=&#34;inner-container&#34;&gt;&#xA;      &lt;div class=&#34;left-col&#34;&gt;&lt;img class=&#34;thumbnail&#34; src=&#34;https://img.youtube.com/vi/YZ5pOgY5hEE/default.jpg&#34; alt=&#34;&#34; /&gt;&lt;/div&gt;&#xA;      &lt;div class=&#34;right-col&#34;&gt;&#xA;        &lt;h5 class=&#34;video-title&#34;&gt;Lecture 16: Reinforcement Learning, Part 1&lt;/h5&gt;&#xA;      &lt;/div&gt;&#xA;    &lt;/div&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;mb-2 border-gray rounded video-gallery-card&#34;&gt;&#xA;  &lt;a class=&#34;video-link&#34; href=&#34;../../resources/lecture-17-reinforcement-learning-part-2/index.html&#34;&gt;&#xA;    &lt;div class=&#34;inner-container&#34;&gt;&#xA;      &lt;div class=&#34;left-col&#34;&gt;&lt;img class=&#34;thumbnail&#34; src=&#34;https://img.youtube.com/vi/zdotUAxiPGM/default.jpg&#34; alt=&#34;&#34; /&gt;&lt;/div&gt;&#xA;      &lt;div class=&#34;right-col&#34;&gt;&#xA;        &lt;h5 class=&#34;video-title&#34;&gt;Lecture 17: Reinforcement Learning, Part 2&lt;/h5&gt;&#xA;      &lt;/div&gt;&#xA;    &lt;/div&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;mb-2 border-gray rounded video-gallery-card&#34;&gt;&#xA;  &lt;a class=&#34;video-link&#34; href=&#34;../../resources/lecture-18-disease-progression-modeling-and-subtyping-part-1/index.html&#34;&gt;&#xA;    &lt;div class=&#34;inner-container&#34;&gt;&#xA;      &lt;div class=&#34;left-col&#34;&gt;&lt;img class=&#34;thumbnail&#34; src=&#34;https://img.youtube.com/vi/yYWyLZrdRRI/default.jpg&#34; alt=&#34;&#34; /&gt;&lt;/div&gt;&#xA;      &lt;div class=&#34;right-col&#34;&gt;&#xA;        &lt;h5 class=&#34;video-title&#34;&gt;Lecture 18: Disease Progression Modeling and Subtyping, Part 1&lt;/h5&gt;&#xA;      &lt;/div&gt;&#xA;    &lt;/div&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;mb-2 border-gray rounded video-gallery-card&#34;&gt;&#xA;  &lt;a class=&#34;video-link&#34; href=&#34;../../resources/lecture-19-disease-progression-modeling-and-subtyping-part-2/index.html&#34;&gt;&#xA;    &lt;div class=&#34;inner-container&#34;&gt;&#xA;      &lt;div class=&#34;left-col&#34;&gt;&lt;img class=&#34;thumbnail&#34; src=&#34;https://img.youtube.com/vi/aJqgO8e37_g/default.jpg&#34; alt=&#34;&#34; /&gt;&lt;/div&gt;&#xA;      &lt;div class=&#34;right-col&#34;&gt;&#xA;        &lt;h5 class=&#34;video-title&#34;&gt;Lecture 19: Disease Progression Modeling and Subtyping, Part 2&lt;/h5&gt;&#xA;      &lt;/div&gt;&#xA;    &lt;/div&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;mb-2 border-gray rounded video-gallery-card&#34;&gt;&#xA;  &lt;a class=&#34;video-link&#34; href=&#34;../../resources/lecture-20-precision-medicine/index.html&#34;&gt;&#xA;    &lt;div class=&#34;inner-container&#34;&gt;&#xA;      &lt;div class=&#34;left-col&#34;&gt;&lt;img class=&#34;thumbnail&#34; src=&#34;https://img.youtube.com/vi/kZrb6ZIwJqg/default.jpg&#34; alt=&#34;&#34; /&gt;&lt;/div&gt;&#xA;      &lt;div class=&#34;right-col&#34;&gt;&#xA;        &lt;h5 class=&#34;video-title&#34;&gt;Lecture 20: Precision Medicine&lt;/h5&gt;&#xA;      &lt;/div&gt;&#xA;    &lt;/div&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;mb-2 border-gray rounded video-gallery-card&#34;&gt;&#xA;  &lt;a class=&#34;video-link&#34; href=&#34;../../resources/lecture-21-automating-clinical-work-flows/index.html&#34;&gt;&#xA;    &lt;div class=&#34;inner-container&#34;&gt;&#xA;      &lt;div class=&#34;left-col&#34;&gt;&lt;img class=&#34;thumbnail&#34; src=&#34;https://img.youtube.com/vi/Td01vFP3uJo/default.jpg&#34; alt=&#34;&#34; /&gt;&lt;/div&gt;&#xA;      &lt;div class=&#34;right-col&#34;&gt;&#xA;        &lt;h5 class=&#34;video-title&#34;&gt;Lecture 21: Automating Clinical Work Flows&lt;/h5&gt;&#xA;      &lt;/div&gt;&#xA;    &lt;/div&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;mb-2 border-gray rounded video-gallery-card&#34;&gt;&#xA;  &lt;a class=&#34;video-link&#34; href=&#34;../../resources/lecture-22-regulation-of-machine-learning-artificial-intelligence-in-the-us/index.html&#34;&gt;&#xA;    &lt;div class=&#34;inner-container&#34;&gt;&#xA;      &lt;div class=&#34;left-col&#34;&gt;&lt;img class=&#34;thumbnail&#34; src=&#34;https://img.youtube.com/vi/k95abdkdCPk/default.jpg&#34; alt=&#34;&#34; /&gt;&lt;/div&gt;&#xA;      &lt;div class=&#34;right-col&#34;&gt;&#xA;        &lt;h5 class=&#34;video-title&#34;&gt;Lecture 22: Regulation of Machine Learning / Artificial Intelligence in the US&lt;/h5&gt;&#xA;      &lt;/div&gt;&#xA;    &lt;/div&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;mb-2 border-gray rounded video-gallery-card&#34;&gt;&#xA;  &lt;a class=&#34;video-link&#34; href=&#34;../../resources/lecture-23-fairness/index.html&#34;&gt;&#xA;    &lt;div class=&#34;inner-container&#34;&gt;&#xA;      &lt;div class=&#34;left-col&#34;&gt;&lt;img class=&#34;thumbnail&#34; src=&#34;https://img.youtube.com/vi/zYgkr0KfWM0/default.jpg&#34; alt=&#34;&#34; /&gt;&lt;/div&gt;&#xA;      &lt;div class=&#34;right-col&#34;&gt;&#xA;        &lt;h5 class=&#34;video-title&#34;&gt;Lecture 23: Fairness&lt;/h5&gt;&#xA;      &lt;/div&gt;&#xA;    &lt;/div&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;mb-2 border-gray rounded video-gallery-card&#34;&gt;&#xA;  &lt;a class=&#34;video-link&#34; href=&#34;../../resources/lecture-24-robustness-to-dataset-shift/index.html&#34;&gt;&#xA;    &lt;div class=&#34;inner-container&#34;&gt;&#xA;      &lt;div class=&#34;left-col&#34;&gt;&lt;img class=&#34;thumbnail&#34; src=&#34;https://img.youtube.com/vi/MdUnh4PaGKw/default.jpg&#34; alt=&#34;&#34; /&gt;&lt;/div&gt;&#xA;      &lt;div class=&#34;right-col&#34;&gt;&#xA;        &lt;h5 class=&#34;video-title&#34;&gt;Lecture 24: Robustness to Dataset Shift&lt;/h5&gt;&#xA;      &lt;/div&gt;&#xA;    &lt;/div&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/div&gt;&#xA;&lt;div class=&#34;mb-2 border-gray rounded video-gallery-card&#34;&gt;&#xA;  &lt;a class=&#34;video-link&#34; href=&#34;../../resources/lecture-25-interpretability/index.html&#34;&gt;&#xA;    &lt;div class=&#34;inner-container&#34;&gt;&#xA;      &lt;div class=&#34;left-col&#34;&gt;&lt;img class=&#34;thumbnail&#34; src=&#34;https://img.youtube.com/vi/wDLzLN1tArA/default.jpg&#34; alt=&#34;&#34; /&gt;&lt;/div&gt;&#xA;      &lt;div class=&#34;right-col&#34;&gt;&#xA;        &lt;h5 class=&#34;video-title&#34;&gt;Lecture 25: Interpretability&lt;/h5&gt;&#xA;      &lt;/div&gt;&#xA;    &lt;/div&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+  </channel>
+</rss>

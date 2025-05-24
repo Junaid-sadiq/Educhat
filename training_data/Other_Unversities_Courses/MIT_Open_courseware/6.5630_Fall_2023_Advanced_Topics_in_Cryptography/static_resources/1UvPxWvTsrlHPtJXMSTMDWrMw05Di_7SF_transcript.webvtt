@@ -1,0 +1,4390 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:02.440 align:middle line:90%
+[SQUEAKING]
+
+00:00:02.440 --> 00:00:04.392 align:middle line:90%
+[RUSTLING]
+
+00:00:04.392 --> 00:00:07.320 align:middle line:90%
+[CLICKING]
+
+00:00:07.320 --> 00:00:12.710 align:middle line:90%
+
+
+00:00:12.710 --> 00:00:14.160 align:middle line:90%
+PROFESSOR: Let's go back.
+
+00:00:14.160 --> 00:00:16.580 align:middle line:84%
+So I want to say-- before,
+actually, I tell you that--
+
+00:00:16.580 --> 00:00:19.970 align:middle line:84%
+just a high level idea of the
+other proof, I just want to--
+
+00:00:19.970 --> 00:00:22.020 align:middle line:84%
+I got a very good
+question in the break,
+
+00:00:22.020 --> 00:00:23.240 align:middle line:90%
+so I want to emphasize--
+
+00:00:23.240 --> 00:00:26.120 align:middle line:84%
+I want to answer
+it for the class.
+
+00:00:26.120 --> 00:00:28.500 align:middle line:84%
+So the question
+was the following.
+
+00:00:28.500 --> 00:00:32.340 align:middle line:84%
+When I talked about interactive
+proof I said sound is half.
+
+00:00:32.340 --> 00:00:36.380 align:middle line:84%
+And if you want more
+than half, do repetition.
+
+00:00:36.380 --> 00:00:37.800 align:middle line:90%
+Do parallel repetition.
+
+00:00:37.800 --> 00:00:41.900 align:middle line:84%
+And now when I talked about
+argument I went to negligible.
+
+00:00:41.900 --> 00:00:43.940 align:middle line:84%
+So the question is,
+why don't I do--
+
+00:00:43.940 --> 00:00:46.820 align:middle line:84%
+why is the change of
+language, of terminology,
+
+00:00:46.820 --> 00:00:49.920 align:middle line:84%
+why for proofs I said half
+and you can do repetition?
+
+00:00:49.920 --> 00:00:53.540 align:middle line:84%
+And for argument, I
+immediately said, no, I
+
+00:00:53.540 --> 00:00:55.400 align:middle line:90%
+want it to be negligible.
+
+00:00:55.400 --> 00:00:58.380 align:middle line:84%
+And the answer is
+actually pretty weird.
+
+00:00:58.380 --> 00:01:03.070 align:middle line:84%
+The answer is that,
+for proofs, we can do--
+
+00:01:03.070 --> 00:01:05.910 align:middle line:84%
+we can repeat-- if you
+have an interactive proof
+
+00:01:05.910 --> 00:01:08.070 align:middle line:84%
+and you repeat it in
+parallel, let's say,
+
+00:01:08.070 --> 00:01:13.110 align:middle line:84%
+lambda times, then the soundness
+goes down exponentially
+
+00:01:13.110 --> 00:01:13.690 align:middle line:90%
+with lambda.
+
+00:01:13.690 --> 00:01:16.350 align:middle line:84%
+If it was half now, it's
+1 over 2 to the lambda,
+
+00:01:16.350 --> 00:01:18.630 align:middle line:90%
+like you would expect.
+
+00:01:18.630 --> 00:01:22.860 align:middle line:84%
+With arguments, that's
+not necessarily the case.
+
+00:01:22.860 --> 00:01:24.880 align:middle line:84%
+Once we go to the
+land of crypto,
+
+00:01:24.880 --> 00:01:30.960 align:middle line:84%
+things become a little weird,
+and it's not the case that any
+
+00:01:30.960 --> 00:01:34.180 align:middle line:84%
+argument, if you repeat it
+in parallel lambda times,
+
+00:01:34.180 --> 00:01:37.300 align:middle line:84%
+if you had complete-- if
+you had the soundness half,
+
+00:01:37.300 --> 00:01:38.820 align:middle line:84%
+now it's soundness
+1 over 2 to the--
+
+00:01:38.820 --> 00:01:40.450 align:middle line:90%
+1 over 2 to the lambda.
+
+00:01:40.450 --> 00:01:42.330 align:middle line:90%
+That's not the case anymore.
+
+00:01:42.330 --> 00:01:45.190 align:middle line:84%
+Now, we have examples that
+show this is not the case,
+
+00:01:45.190 --> 00:01:46.980 align:middle line:84%
+that actually soundness
+doesn't go down.
+
+00:01:46.980 --> 00:01:50.740 align:middle line:84%
+But these examples are very
+contrived, very, very contrived.
+
+00:01:50.740 --> 00:01:55.680 align:middle line:90%
+It's not a natural argument.
+
+00:01:55.680 --> 00:01:58.530 align:middle line:84%
+My guess is for any
+natural argument,
+
+00:01:58.530 --> 00:02:01.400 align:middle line:84%
+however you define
+natural, soundness probably
+
+00:02:01.400 --> 00:02:04.400 align:middle line:84%
+does go down exponentially
+when you repeat in parallel.
+
+00:02:04.400 --> 00:02:07.500 align:middle line:84%
+Now-- but it's not
+true all the time.
+
+00:02:07.500 --> 00:02:12.330 align:middle line:84%
+So actually, this parallel
+repetition, you can rely on it.
+
+00:02:12.330 --> 00:02:15.120 align:middle line:84%
+Now, we can do
+sequential repetition.
+
+00:02:15.120 --> 00:02:17.280 align:middle line:84%
+And then the soundness
+does go down.
+
+00:02:17.280 --> 00:02:19.940 align:middle line:84%
+If you do once and
+then you do the-- so
+
+00:02:19.940 --> 00:02:21.680 align:middle line:84%
+you do the interactive
+argument once.
+
+00:02:21.680 --> 00:02:22.530 align:middle line:90%
+You are done.
+
+00:02:22.530 --> 00:02:24.800 align:middle line:84%
+Do it again, done,
+do it again, done.
+
+00:02:24.800 --> 00:02:27.710 align:middle line:84%
+Do it lambda times, and accept
+if and only if all of them
+
+00:02:27.710 --> 00:02:32.930 align:middle line:84%
+accept, then soundness
+does go down exponentially,
+
+00:02:32.930 --> 00:02:34.230 align:middle line:90%
+like you would expect.
+
+00:02:34.230 --> 00:02:37.830 align:middle line:84%
+However, then you increase the
+number of rounds by lambda.
+
+00:02:37.830 --> 00:02:40.290 align:middle line:84%
+So you went from constant
+maybe to nonconstant.
+
+00:02:40.290 --> 00:02:41.790 align:middle line:90%
+So there's a price.
+
+00:02:41.790 --> 00:02:43.962 align:middle line:90%
+So it's not like for free you--
+
+00:02:43.962 --> 00:02:46.170 align:middle line:84%
+in the interactive proof
+setting, it's like for free.
+
+00:02:46.170 --> 00:02:47.160 align:middle line:90%
+Just repeat in parallel.
+
+00:02:47.160 --> 00:02:47.952 align:middle line:90%
+It's like for free.
+
+00:02:47.952 --> 00:02:51.210 align:middle line:84%
+Here, now the round
+complexity changes.
+
+00:02:51.210 --> 00:02:52.740 align:middle line:90%
+It's not very free anymore.
+
+00:02:52.740 --> 00:02:56.430 align:middle line:84%
+So that's why we
+put here negligible.
+
+00:02:56.430 --> 00:03:01.950 align:middle line:84%
+That just explained
+the change of language,
+
+00:03:01.950 --> 00:03:06.250 align:middle line:84%
+why here we chose negligible
+before we chose 1/2, or 1/3,
+
+00:03:06.250 --> 00:03:07.180 align:middle line:90%
+2/3, whatever.
+
+00:03:07.180 --> 00:03:09.315 align:middle line:84%
+The constant didn't matter
+because you can amplify.
+
+00:03:09.315 --> 00:03:12.610 align:middle line:90%
+
+
+00:03:12.610 --> 00:03:17.898 align:middle line:84%
+OK, questions before I go back
+to say a few words about--
+
+00:03:17.898 --> 00:03:20.440 align:middle line:84%
+so the plan for our the hour,
+less than an hour we have left,
+
+00:03:20.440 --> 00:03:24.960 align:middle line:84%
+I want say a few words about the
+Barak-Goldreich proof called--
+
+00:03:24.960 --> 00:03:27.880 align:middle line:84%
+they call it "Universal
+Arguments," that paper.
+
+00:03:27.880 --> 00:03:31.320 align:middle line:84%
+And then we'll move on to
+construct hash functions.
+
+00:03:31.320 --> 00:03:31.890 align:middle line:90%
+Yeah?
+
+00:03:31.890 --> 00:03:33.910 align:middle line:84%
+OK, so let me just
+say a few words.
+
+00:03:33.910 --> 00:03:37.020 align:middle line:84%
+I don't want to go into details
+about the Barak-Goldreich,
+
+00:03:37.020 --> 00:03:40.230 align:middle line:84%
+but just to tell you
+the high-level idea.
+
+00:03:40.230 --> 00:03:42.930 align:middle line:84%
+This proof, what it
+did, what it tried to do
+
+00:03:42.930 --> 00:03:45.490 align:middle line:84%
+is to say, look, if
+there are no collisions,
+
+00:03:45.490 --> 00:03:48.150 align:middle line:84%
+I'm going to construct
+an entire PCP.
+
+00:03:48.150 --> 00:03:50.020 align:middle line:84%
+I'm going to try
+as much as I can.
+
+00:03:50.020 --> 00:03:52.270 align:middle line:84%
+And now I get a contradiction
+because there is no PCP,
+
+00:03:52.270 --> 00:03:56.620 align:middle line:84%
+and hence, I conclude that
+there was a hash function.
+
+00:03:56.620 --> 00:03:59.590 align:middle line:84%
+But for this, I needed to
+construct an entire PCP
+
+00:03:59.590 --> 00:04:01.660 align:middle line:84%
+and, therefore,
+run in time that's
+
+00:04:01.660 --> 00:04:04.510 align:middle line:90%
+proportional to the PCP size.
+
+00:04:04.510 --> 00:04:10.330 align:middle line:84%
+OK, instead, the Barak-Goldreich
+proof, what they say, they say,
+
+00:04:10.330 --> 00:04:15.980 align:middle line:84%
+let's look at each kind
+of query separately.
+
+00:04:15.980 --> 00:04:20.560 align:middle line:84%
+So in other words, the PCP,
+let's say, has length m.
+
+00:04:20.560 --> 00:04:25.360 align:middle line:84%
+Let's look at the
+PCP at location i.
+
+00:04:25.360 --> 00:04:28.760 align:middle line:84%
+And I asked the following
+query, the following question.
+
+00:04:28.760 --> 00:04:30.550 align:middle line:90%
+Here's the question they ask.
+
+00:04:30.550 --> 00:04:35.640 align:middle line:84%
+In location i, if I run the PCP,
+I have a cheating prover here,
+
+00:04:35.640 --> 00:04:36.140 align:middle line:90%
+yeah?
+
+00:04:36.140 --> 00:04:40.930 align:middle line:84%
+If I run him twice or many
+times, where all the times have
+
+00:04:40.930 --> 00:04:44.080 align:middle line:84%
+location i in their,
+one i, not all the PCP,
+
+00:04:44.080 --> 00:04:48.310 align:middle line:84%
+for a certain index i, let
+me run the PCP verifier-- let
+
+00:04:48.310 --> 00:04:55.270 align:middle line:84%
+me give the cheating prover like
+a randomness from the verifier
+
+00:04:55.270 --> 00:04:58.170 align:middle line:84%
+so that the queries
+include index i.
+
+00:04:58.170 --> 00:05:00.720 align:middle line:90%
+And let me take many of them.
+
+00:05:00.720 --> 00:05:03.300 align:middle line:84%
+Is there a collision in
+i, or is all the time
+
+00:05:03.300 --> 00:05:04.900 align:middle line:90%
+he answers the same way.
+
+00:05:04.900 --> 00:05:05.800 align:middle line:90%
+That's the question.
+
+00:05:05.800 --> 00:05:10.850 align:middle line:84%
+So for an index i, does he
+always answer with the same bit,
+
+00:05:10.850 --> 00:05:12.100 align:middle line:90%
+assuming he answers correctly?
+
+00:05:12.100 --> 00:05:13.840 align:middle line:84%
+If he doesn't answer
+correctly, if he's rejected,
+
+00:05:13.840 --> 00:05:14.715 align:middle line:90%
+then we throw it out.
+
+00:05:14.715 --> 00:05:19.950 align:middle line:84%
+But all the time that he answers
+correctly when asked location i,
+
+00:05:19.950 --> 00:05:25.320 align:middle line:84%
+does he answer consistently
+with the same bit or not?
+
+00:05:25.320 --> 00:05:32.070 align:middle line:84%
+Now, if he's answered, if not,
+if some probability, I don't
+
+00:05:32.070 --> 00:05:34.560 align:middle line:84%
+know, epsilon he answers
+with 0, and probability
+
+00:05:34.560 --> 00:05:36.700 align:middle line:84%
+epsilon he answers with
+1, we found a collision.
+
+00:05:36.700 --> 00:05:39.270 align:middle line:90%
+
+
+00:05:39.270 --> 00:05:40.960 align:middle line:90%
+And then we're happy.
+
+00:05:40.960 --> 00:05:43.530 align:middle line:84%
+If not, we didn't
+find the collision.
+
+00:05:43.530 --> 00:05:47.440 align:middle line:84%
+Now they ask, so let's
+call an index like good
+
+00:05:47.440 --> 00:05:49.620 align:middle line:84%
+if there's no collisions
+on that index.
+
+00:05:49.620 --> 00:05:52.970 align:middle line:84%
+Then he behaved like--
+the prover behaved well.
+
+00:05:52.970 --> 00:05:54.220 align:middle line:90%
+He behaved good.
+
+00:05:54.220 --> 00:05:57.940 align:middle line:84%
+So for every index
+I ask, is it good?
+
+00:05:57.940 --> 00:05:59.620 align:middle line:90%
+In the analysis, I don't yet--
+
+00:05:59.620 --> 00:06:00.938 align:middle line:90%
+I don't have an adversary yet.
+
+00:06:00.938 --> 00:06:02.980 align:middle line:84%
+I'm just saying, look,
+there's a cheating prover.
+
+00:06:02.980 --> 00:06:07.600 align:middle line:84%
+For every index, let's
+look at the probability
+
+00:06:07.600 --> 00:06:10.630 align:middle line:84%
+that when he answers
+correctly, he answers always
+
+00:06:10.630 --> 00:06:11.660 align:middle line:90%
+with the same bit.
+
+00:06:11.660 --> 00:06:15.680 align:middle line:84%
+Let's say we answer the
+same bit with probability--
+
+00:06:15.680 --> 00:06:19.900 align:middle line:84%
+he answers correctly, but
+with two different answers
+
+00:06:19.900 --> 00:06:23.380 align:middle line:84%
+with probability greater
+than, I don't know,
+
+00:06:23.380 --> 00:06:26.950 align:middle line:84%
+epsilon to the third, whatever,
+some function of epsilon that's
+
+00:06:26.950 --> 00:06:28.450 align:middle line:90%
+non-negligible.
+
+00:06:28.450 --> 00:06:30.760 align:middle line:84%
+So it's good if he
+doesn't do that.
+
+00:06:30.760 --> 00:06:33.050 align:middle line:84%
+He answers consistently
+almost always.
+
+00:06:33.050 --> 00:06:36.830 align:middle line:84%
+And it's bad if he answers
+inconsistent with probability
+
+00:06:36.830 --> 00:06:39.730 align:middle line:84%
+at least, I don't know,
+epsilon to the third.
+
+00:06:39.730 --> 00:06:47.350 align:middle line:84%
+And now what they say is, it
+must be that many i's are bad.
+
+00:06:47.350 --> 00:06:51.800 align:middle line:84%
+If almost all the i's are
+good, a significant fraction
+
+00:06:51.800 --> 00:06:53.468 align:middle line:90%
+of the i's must be bad.
+
+00:06:53.468 --> 00:06:55.260 align:middle line:84%
+Namely, there should
+be collisions on them.
+
+00:06:55.260 --> 00:06:55.910 align:middle line:90%
+Why?
+
+00:06:55.910 --> 00:07:00.230 align:middle line:84%
+If almost all of them were good,
+then and the good ones I will--
+
+00:07:00.230 --> 00:07:01.190 align:middle line:90%
+in the--
+
+00:07:01.190 --> 00:07:06.990 align:middle line:84%
+OK, so first they say many
+of the indexes i must be bad.
+
+00:07:06.990 --> 00:07:10.400 align:middle line:84%
+Once you establish that, then
+you just break collisions
+
+00:07:10.400 --> 00:07:15.180 align:middle line:84%
+by choosing a random i, hope
+it's bad, and you're done.
+
+00:07:15.180 --> 00:07:17.070 align:middle line:84%
+You're not doing
+many i's like we did.
+
+00:07:17.070 --> 00:07:19.890 align:middle line:84%
+Just one random i with some
+good probability or bad.
+
+00:07:19.890 --> 00:07:23.000 align:middle line:84%
+If it's bad, you found
+a collision, done.
+
+00:07:23.000 --> 00:07:24.830 align:middle line:84%
+OK, but one can
+say maybe there's--
+
+00:07:24.830 --> 00:07:27.180 align:middle line:84%
+maybe the number of
+bad is like 1 over n.
+
+00:07:27.180 --> 00:07:30.140 align:middle line:84%
+Maybe you need to repeat it n
+times until you find a bad one.
+
+00:07:30.140 --> 00:07:32.000 align:middle line:84%
+So they say, no, the
+number of bad ones
+
+00:07:32.000 --> 00:07:38.360 align:middle line:84%
+need to be like polynomial in at
+least non-negligible in lambda.
+
+00:07:38.360 --> 00:07:39.470 align:middle line:90%
+Why?
+
+00:07:39.470 --> 00:07:43.700 align:middle line:84%
+If almost all of them were good,
+where there's no collision,
+
+00:07:43.700 --> 00:07:45.260 align:middle line:90%
+then you can--
+
+00:07:45.260 --> 00:07:47.390 align:middle line:84%
+OK, and these
+reconstruct the PCP.
+
+00:07:47.390 --> 00:07:51.900 align:middle line:84%
+And the good ones do
+the same kind of idea
+
+00:07:51.900 --> 00:07:55.770 align:middle line:84%
+of reconstructing the PCP,
+but only on the good indices.
+
+00:07:55.770 --> 00:07:59.010 align:middle line:84%
+Then they show that if you
+have enough good indices, then
+
+00:07:59.010 --> 00:08:02.010 align:middle line:84%
+you'll be accepted with
+non-negligible probability.
+
+00:08:02.010 --> 00:08:05.130 align:middle line:84%
+So there must be
+enough bad indices,
+
+00:08:05.130 --> 00:08:09.970 align:middle line:84%
+indices that the cheating
+prover enters inconsistently.
+
+00:08:09.970 --> 00:08:13.560 align:middle line:84%
+Once you have that, then
+now, once you establish
+
+00:08:13.560 --> 00:08:16.860 align:middle line:84%
+that in your head, that we
+understand that, now here,
+
+00:08:16.860 --> 00:08:20.490 align:middle line:84%
+the adversary just
+chooses one random i.
+
+00:08:20.490 --> 00:08:24.570 align:middle line:90%
+He runs the PCP verifier twice.
+
+00:08:24.570 --> 00:08:31.290 align:middle line:84%
+He generates two randomness
+that generates two fresh index
+
+00:08:31.290 --> 00:08:32.470 align:middle line:90%
+set that include i.
+
+00:08:32.470 --> 00:08:35.700 align:middle line:84%
+So they had one assumption
+that they needed about the PCP,
+
+00:08:35.700 --> 00:08:43.140 align:middle line:84%
+that given i, it is easy to find
+r such that the PCP verifier
+
+00:08:43.140 --> 00:08:46.110 align:middle line:84%
+and input r outputs a
+set that includes i.
+
+00:08:46.110 --> 00:08:51.020 align:middle line:84%
+And turns out all PCPs we
+know, or all PCPs I know,
+
+00:08:51.020 --> 00:08:52.290 align:middle line:90%
+satisfied this property.
+
+00:08:52.290 --> 00:08:55.650 align:middle line:84%
+So that's-- it turns out
+it's a natural property.
+
+00:08:55.650 --> 00:09:03.390 align:middle line:84%
+It's easy given i to find
+randomness, true randomness that
+
+00:09:03.390 --> 00:09:07.790 align:middle line:84%
+generates a set of
+queries conditioned
+
+00:09:07.790 --> 00:09:11.288 align:middle line:90%
+on i being in that set.
+
+00:09:11.288 --> 00:09:12.830 align:middle line:84%
+Once you can do
+that, then he chooses
+
+00:09:12.830 --> 00:09:15.410 align:middle line:84%
+two R's, randomness
+that have i in the set,
+
+00:09:15.410 --> 00:09:16.740 align:middle line:90%
+and hope for collision.
+
+00:09:16.740 --> 00:09:18.620 align:middle line:84%
+And then you can argue
+that you get collision
+
+00:09:18.620 --> 00:09:20.750 align:middle line:84%
+with non-negligible probability
+because non-negligible fraction
+
+00:09:20.750 --> 00:09:21.500 align:middle line:90%
+of them are bad.
+
+00:09:21.500 --> 00:09:24.860 align:middle line:84%
+And the bad ones are
+defined so that when
+
+00:09:24.860 --> 00:09:28.230 align:middle line:84%
+you choose two random
+invocation that include i
+
+00:09:28.230 --> 00:09:29.190 align:middle line:90%
+you find a collision.
+
+00:09:29.190 --> 00:09:30.950 align:middle line:90%
+So they found a collision.
+
+00:09:30.950 --> 00:09:32.870 align:middle line:90%
+So they just did it.
+
+00:09:32.870 --> 00:09:35.250 align:middle line:84%
+The difference is they
+did it index by index.
+
+00:09:35.250 --> 00:09:37.470 align:middle line:84%
+They said, does
+he find collision?
+
+00:09:37.470 --> 00:09:39.270 align:middle line:84%
+I have a cheating
+prover, p star.
+
+00:09:39.270 --> 00:09:41.520 align:middle line:84%
+Does he find the
+collision on index 1?
+
+00:09:41.520 --> 00:09:43.370 align:middle line:84%
+Does he find the
+collision on these 2?
+
+00:09:43.370 --> 00:09:44.930 align:middle line:90%
+This isn't an analysis.
+
+00:09:44.930 --> 00:09:46.520 align:middle line:84%
+Once, and then
+they establish, he
+
+00:09:46.520 --> 00:09:48.700 align:middle line:84%
+must find collisions
+on many indices.
+
+00:09:48.700 --> 00:09:51.430 align:middle line:84%
+And now, they're ready
+to break, the collision,
+
+00:09:51.430 --> 00:09:52.530 align:middle line:90%
+the hash function.
+
+00:09:52.530 --> 00:09:56.220 align:middle line:84%
+They just choose a random i and
+break by running the cheating
+
+00:09:56.220 --> 00:09:59.040 align:middle line:90%
+prover twice.
+
+00:09:59.040 --> 00:10:04.360 align:middle line:84%
+So it's just a more
+efficient way of breaking it.
+
+00:10:04.360 --> 00:10:08.400 align:middle line:84%
+Instead of the prover running
+in time n, their prover,
+
+00:10:08.400 --> 00:10:12.400 align:middle line:84%
+instead of the adversary
+running in time n because they--
+
+00:10:12.400 --> 00:10:16.710 align:middle line:84%
+in this proof, we ran the
+cheating prover n times or size
+
+00:10:16.710 --> 00:10:21.270 align:middle line:84%
+of the PCP times, at least
+times 1 over epsilon,
+
+00:10:21.270 --> 00:10:23.340 align:middle line:84%
+they run it only
+security parameter
+
+00:10:23.340 --> 00:10:27.480 align:middle line:84%
+times divided by epsilon
+with polynomial overhead.
+
+00:10:27.480 --> 00:10:30.420 align:middle line:84%
+But independent
+of n is the point.
+
+00:10:30.420 --> 00:10:33.690 align:middle line:84%
+AUDIENCE: And that's what
+makes the argument universal?
+
+00:10:33.690 --> 00:10:34.720 align:middle line:90%
+PROFESSOR: OK, good.
+
+00:10:34.720 --> 00:10:38.530 align:middle line:84%
+You're asking what's that
+related to universal?
+
+00:10:38.530 --> 00:10:43.080 align:middle line:84%
+Yeah, because the reason they
+call it universal is because--
+
+00:10:43.080 --> 00:10:46.580 align:middle line:84%
+yeah, I guess the fact that
+it doesn't depend on n is--
+
+00:10:46.580 --> 00:10:49.310 align:middle line:84%
+because they talked about
+the universal language that
+
+00:10:49.310 --> 00:10:52.182 align:middle line:84%
+has a Turing machine
+x and t, and it's
+
+00:10:52.182 --> 00:10:54.890 align:middle line:84%
+in the language of those because
+it's a witness for-- this Turing
+
+00:10:54.890 --> 00:10:57.620 align:middle line:84%
+machine runs in time t, and they
+didn't want things to blow up
+
+00:10:57.620 --> 00:10:58.730 align:middle line:90%
+with t like they want.
+
+00:10:58.730 --> 00:11:02.120 align:middle line:84%
+So this universal language what
+they did-- so they want one hash
+
+00:11:02.120 --> 00:11:03.720 align:middle line:84%
+function that works
+for this language.
+
+00:11:03.720 --> 00:11:06.345 align:middle line:84%
+And t now is given in
+binary in this language.
+
+00:11:06.345 --> 00:11:08.720 align:middle line:84%
+So how can you have one hash
+function, one universal hash
+
+00:11:08.720 --> 00:11:09.390 align:middle line:90%
+family?
+
+00:11:09.390 --> 00:11:12.300 align:middle line:84%
+And that's why the
+name universal.
+
+00:11:12.300 --> 00:11:14.000 align:middle line:90%
+AUDIENCE: [INAUDIBLE]
+
+00:11:14.000 --> 00:11:14.750 align:middle line:90%
+PROFESSOR: Yeah.
+
+00:11:14.750 --> 00:11:17.330 align:middle line:84%
+AUDIENCE: What is the
+name also of the paper--
+
+00:11:17.330 --> 00:11:19.700 align:middle line:84%
+PROFESSOR: The name of the
+paper is Universal Argument.
+
+00:11:19.700 --> 00:11:21.578 align:middle line:90%
+I'll link to it in the website.
+
+00:11:21.578 --> 00:11:22.620 align:middle line:90%
+Yeah, it's not there yet.
+
+00:11:22.620 --> 00:11:24.510 align:middle line:84%
+I only linked to Micali
+but I'll link to it.
+
+00:11:24.510 --> 00:11:27.660 align:middle line:84%
+It's a really nice-- it's
+a really, really nice--
+
+00:11:27.660 --> 00:11:30.990 align:middle line:84%
+especially the overview
+explains it very nicely.
+
+00:11:30.990 --> 00:11:33.320 align:middle line:84%
+It explains the
+proof I gave here,
+
+00:11:33.320 --> 00:11:37.970 align:middle line:84%
+and it explains their
+proof in a very nice way.
+
+00:11:37.970 --> 00:11:40.190 align:middle line:90%
+So I'll add a link.
+
+00:11:40.190 --> 00:11:45.660 align:middle line:84%
+OK, any other questions
+before we go and construct
+
+00:11:45.660 --> 00:11:47.380 align:middle line:90%
+the hash function?
+
+00:11:47.380 --> 00:11:49.042 align:middle line:90%
+So let me-- oof.
+
+00:11:49.042 --> 00:11:55.440 align:middle line:90%
+
+
+00:11:55.440 --> 00:11:57.250 align:middle line:84%
+This is what I
+want to construct.
+
+00:11:57.250 --> 00:12:01.800 align:middle line:84%
+But any questions before we
+go ahead and construct it?
+
+00:12:01.800 --> 00:12:02.960 align:middle line:90%
+OK, let's do it.
+
+00:12:02.960 --> 00:12:06.390 align:middle line:90%
+
+
+00:12:06.390 --> 00:12:11.850 align:middle line:84%
+So what I'm going to do is
+I'm going to first construct
+
+00:12:11.850 --> 00:12:16.870 align:middle line:84%
+a hash function that's
+not quite what I want,
+
+00:12:16.870 --> 00:12:20.800 align:middle line:84%
+but it's going to be a building
+block to get what I want.
+
+00:12:20.800 --> 00:12:25.110 align:middle line:84%
+And this hash function-- first,
+it doesn't have a local opening.
+
+00:12:25.110 --> 00:12:26.860 align:middle line:90%
+So it doesn't satisfy that.
+
+00:12:26.860 --> 00:12:31.290 align:middle line:84%
+And second, it's not even
+goes from 0, 1 star to 0,
+
+00:12:31.290 --> 00:12:34.020 align:middle line:84%
+1 to the lambda,
+which is what I want.
+
+00:12:34.020 --> 00:12:38.260 align:middle line:84%
+It actually goes from 0, 1 to
+lambda to 0, 1 to the lambda.
+
+00:12:38.260 --> 00:12:39.730 align:middle line:90%
+So just shrinks a little bit.
+
+00:12:39.730 --> 00:12:42.220 align:middle line:84%
+It doesn't shrink by
+an arbitrary amount.
+
+00:12:42.220 --> 00:12:43.970 align:middle line:84%
+It just shrinks
+by a factor of 2.
+
+00:12:43.970 --> 00:12:45.340 align:middle line:90%
+That's it.
+
+00:12:45.340 --> 00:12:47.390 align:middle line:84%
+And it doesn't
+have local opening.
+
+00:12:47.390 --> 00:12:51.650 align:middle line:84%
+So it's a bit of pathetic,
+but we'll do that first.
+
+00:12:51.650 --> 00:12:54.520 align:middle line:84%
+And then we'll show how to
+use that to get what we want.
+
+00:12:54.520 --> 00:12:56.830 align:middle line:84%
+So the first-- so
+now we're going
+
+00:12:56.830 --> 00:12:58.176 align:middle line:90%
+to talk about constructions.
+
+00:12:58.176 --> 00:13:09.640 align:middle line:90%
+
+
+00:13:09.640 --> 00:13:12.560 align:middle line:84%
+So let me first show you
+a construction based--
+
+00:13:12.560 --> 00:13:16.360 align:middle line:84%
+so all of cryptography, in
+particular, the hash functions,
+
+00:13:16.360 --> 00:13:19.300 align:middle line:84%
+are based on assumptions,
+an assumption
+
+00:13:19.300 --> 00:13:21.590 align:middle line:90%
+that some math problem is hard.
+
+00:13:21.590 --> 00:13:25.210 align:middle line:84%
+And we know how to construct
+collision-resistant hash
+
+00:13:25.210 --> 00:13:27.170 align:middle line:84%
+functions from a
+bunch of assumptions,
+
+00:13:27.170 --> 00:13:28.340 align:middle line:90%
+many, many assumptions.
+
+00:13:28.340 --> 00:13:32.710 align:middle line:84%
+I'm going to show you one that's
+just very simple and based
+
+00:13:32.710 --> 00:13:34.310 align:middle line:90%
+on the discrete log problem.
+
+00:13:34.310 --> 00:13:38.900 align:middle line:84%
+So the discrete log problem just
+says that there is some group.
+
+00:13:38.900 --> 00:13:45.050 align:middle line:84%
+You can think of zp star, so
+everything multiplication mod p.
+
+00:13:45.050 --> 00:13:47.760 align:middle line:84%
+But in general, there
+is a group such that--
+
+00:13:47.760 --> 00:13:51.816 align:middle line:84%
+so this is the discrete
+log assumption.
+
+00:13:51.816 --> 00:13:54.560 align:middle line:90%
+
+
+00:13:54.560 --> 00:13:58.490 align:middle line:84%
+This is what we're relying on
+the hardness of this problem
+
+00:13:58.490 --> 00:14:10.940 align:middle line:84%
+that says that given a group
+G of order, order meaning
+
+00:14:10.940 --> 00:14:14.430 align:middle line:84%
+number of elements, let's
+say, 2 to the lambda.
+
+00:14:14.430 --> 00:14:17.040 align:middle line:84%
+So it has 2 to the
+lambda elements.
+
+00:14:17.040 --> 00:14:21.170 align:middle line:90%
+So I have a family of groups.
+
+00:14:21.170 --> 00:14:30.530 align:middle line:84%
+And given a generator,
+G, so every element--
+
+00:14:30.530 --> 00:14:33.750 align:middle line:84%
+think of multiplicative
+groups, OK?
+
+00:14:33.750 --> 00:14:39.100 align:middle line:84%
+So this group is
+like G to the x.
+
+00:14:39.100 --> 00:14:45.640 align:middle line:84%
+So for all the group is of form
+G generates the entire group.
+
+00:14:45.640 --> 00:14:49.460 align:middle line:84%
+The assumption is-- so
+given a group of order--
+
+00:14:49.460 --> 00:14:51.770 align:middle line:84%
+so it's a finite group with
+2 to the lambda elements,
+
+00:14:51.770 --> 00:14:53.900 align:middle line:90%
+so more or less to the lambdas.
+
+00:14:53.900 --> 00:14:57.670 align:middle line:84%
+And the assumption is
+that given a random, given
+
+00:14:57.670 --> 00:15:06.430 align:middle line:84%
+G to the x for a random x,
+take a random x in the group,
+
+00:15:06.430 --> 00:15:12.220 align:middle line:84%
+like in the size of the
+group, given G to the x,
+
+00:15:12.220 --> 00:15:13.470 align:middle line:90%
+it's hard to find x.
+
+00:15:13.470 --> 00:15:16.840 align:middle line:90%
+
+
+00:15:16.840 --> 00:15:18.110 align:middle line:90%
+That's the assumption.
+
+00:15:18.110 --> 00:15:27.100 align:middle line:84%
+So in other words, for any
+poly lambda adversary A,
+
+00:15:27.100 --> 00:15:28.300 align:middle line:90%
+the probability--
+
+00:15:28.300 --> 00:15:33.340 align:middle line:84%
+there exists a
+negligible function,
+
+00:15:33.340 --> 00:15:36.450 align:middle line:90%
+the probability that A--
+
+00:15:36.450 --> 00:15:39.710 align:middle line:90%
+A knows G and P and the group.
+
+00:15:39.710 --> 00:15:40.710 align:middle line:90%
+These are kind of fixed.
+
+00:15:40.710 --> 00:15:42.810 align:middle line:84%
+The generator of
+the group is fixed.
+
+00:15:42.810 --> 00:15:46.360 align:middle line:84%
+He gets G to the
+x for a random x.
+
+00:15:46.360 --> 00:15:49.880 align:middle line:90%
+
+
+00:15:49.880 --> 00:15:54.196 align:middle line:84%
+And the probability that he
+can find x is negligible.
+
+00:15:54.196 --> 00:15:57.290 align:middle line:90%
+
+
+00:15:57.290 --> 00:15:59.840 align:middle line:84%
+And usually, we think of
+these groups as-- an element
+
+00:15:59.840 --> 00:16:01.590 align:middle line:90%
+of the group is described by--
+
+00:16:01.590 --> 00:16:04.640 align:middle line:84%
+so any group-- any element
+of the group you can describe
+
+00:16:04.640 --> 00:16:11.690 align:middle line:84%
+as an element for every H and
+G, you can think of H as being
+
+00:16:11.690 --> 00:16:13.200 align:middle line:90%
+in 01 to the lambda.
+
+00:16:13.200 --> 00:16:16.920 align:middle line:84%
+You can describe it as
+efficiently in lambda bits.
+
+00:16:16.920 --> 00:16:19.565 align:middle line:84%
+And just think of zp
+star if you want as--
+
+00:16:19.565 --> 00:16:22.490 align:middle line:84%
+all the elements mod P
+with multiplication mod
+
+00:16:22.490 --> 00:16:24.950 align:middle line:90%
+P. That's an example.
+
+00:16:24.950 --> 00:16:26.550 align:middle line:90%
+So this is the assumption.
+
+00:16:26.550 --> 00:16:29.030 align:middle line:90%
+Now, some groups this holds.
+
+00:16:29.030 --> 00:16:31.152 align:middle line:90%
+Some groups it doesn't hold, OK?
+
+00:16:31.152 --> 00:16:33.110 align:middle line:84%
+For example, you can
+think of it as in a group,
+
+00:16:33.110 --> 00:16:36.870 align:middle line:84%
+in the additive group,
+mod P, this is false.
+
+00:16:36.870 --> 00:16:39.730 align:middle line:84%
+But in the multiplicative group,
+we believe that it's true.
+
+00:16:39.730 --> 00:16:40.690 align:middle line:90%
+Is it really true?
+
+00:16:40.690 --> 00:16:41.290 align:middle line:90%
+We don't know.
+
+00:16:41.290 --> 00:16:41.980 align:middle line:90%
+We don't actually know.
+
+00:16:41.980 --> 00:16:43.897 align:middle line:84%
+We believe it's true,
+and we base cryptography
+
+00:16:43.897 --> 00:16:44.940 align:middle line:90%
+on this assumption.
+
+00:16:44.940 --> 00:16:49.920 align:middle line:84%
+So we base cryptography on
+the fact that in zp star,
+
+00:16:49.920 --> 00:16:55.110 align:middle line:84%
+if you take elements in the
+multiplicative group zp star mod
+
+00:16:55.110 --> 00:16:58.560 align:middle line:90%
+p, then if I give you a random--
+
+00:16:58.560 --> 00:17:01.200 align:middle line:84%
+if you take a
+generator of this group
+
+00:17:01.200 --> 00:17:04.597 align:middle line:84%
+and you raise it to the
+power of a random element,
+
+00:17:04.597 --> 00:17:06.430 align:middle line:84%
+if I give you a random
+element in the group,
+
+00:17:06.430 --> 00:17:09.550 align:middle line:84%
+essentially, then finding the
+discrete log we believe is hard.
+
+00:17:09.550 --> 00:17:10.470 align:middle line:90%
+Yeah.
+
+00:17:10.470 --> 00:17:14.560 align:middle line:84%
+AUDIENCE: Do we
+know if quantum--
+
+00:17:14.560 --> 00:17:16.290 align:middle line:84%
+there's a easy way
+for quantum to break--
+
+00:17:16.290 --> 00:17:19.000 align:middle line:84%
+PROFESSOR: Good, yeah, so OK,
+I say we believe it's hard.
+
+00:17:19.000 --> 00:17:22.210 align:middle line:84%
+Why we believe it's
+hard, I have no idea.
+
+00:17:22.210 --> 00:17:25.290 align:middle line:84%
+I think the only reason
+we believe it's hard
+
+00:17:25.290 --> 00:17:27.400 align:middle line:84%
+is because we don't
+know how to break it.
+
+00:17:27.400 --> 00:17:30.790 align:middle line:84%
+That's really it because
+quantum computers can break it.
+
+00:17:30.790 --> 00:17:34.440 align:middle line:84%
+They're subexponential
+algorithms.
+
+00:17:34.440 --> 00:17:38.760 align:middle line:84%
+And if we didn't think
+we were that smart,
+
+00:17:38.760 --> 00:17:41.060 align:middle line:84%
+we would have think it's
+easy because every evidence
+
+00:17:41.060 --> 00:17:42.900 align:middle line:84%
+we have is that
+it's not that hard.
+
+00:17:42.900 --> 00:17:45.650 align:middle line:84%
+But because we don't know
+how to break it and we think
+
+00:17:45.650 --> 00:17:48.650 align:middle line:90%
+we're pretty smart, then we--
+
+00:17:48.650 --> 00:17:51.560 align:middle line:84%
+But no, the truth is
+really I have no evidence
+
+00:17:51.560 --> 00:17:54.780 align:middle line:90%
+for why this problem is hard.
+
+00:17:54.780 --> 00:17:56.570 align:middle line:84%
+The only evidence
+we have is that we
+
+00:17:56.570 --> 00:17:58.790 align:middle line:90%
+didn't succeed in breaking it.
+
+00:17:58.790 --> 00:18:00.560 align:middle line:90%
+There's no other evidence--
+
+00:18:00.560 --> 00:18:02.150 align:middle line:90%
+the fact that it can be broken--
+
+00:18:02.150 --> 00:18:06.890 align:middle line:84%
+it can be broken in polynomial
+time by quantum computers, yeah.
+
+00:18:06.890 --> 00:18:09.570 align:middle line:84%
+And even classically, we have
+subexponential algorithms.
+
+00:18:09.570 --> 00:18:15.890 align:middle line:84%
+So we have some nontrivial
+algorithms for doing it
+
+00:18:15.890 --> 00:18:18.170 align:middle line:90%
+but not in polynomial time.
+
+00:18:18.170 --> 00:18:20.510 align:middle line:84%
+The best algorithms are
+something like time 2 to the n
+
+00:18:20.510 --> 00:18:22.010 align:middle line:84%
+to the third or
+something like that.
+
+00:18:22.010 --> 00:18:25.410 align:middle line:90%
+
+
+00:18:25.410 --> 00:18:27.320 align:middle line:90%
+But this is the problem.
+
+00:18:27.320 --> 00:18:30.470 align:middle line:84%
+So now let me go
+to the construction
+
+00:18:30.470 --> 00:18:32.070 align:middle line:90%
+of our hash function.
+
+00:18:32.070 --> 00:18:38.980 align:middle line:84%
+So I'm going to fix a
+group of prime order.
+
+00:18:38.980 --> 00:18:41.850 align:middle line:84%
+For the construction, I'm
+going to assume that I
+
+00:18:41.850 --> 00:18:45.115 align:middle line:90%
+have a group of prime order.
+
+00:18:45.115 --> 00:18:47.490 align:middle line:84%
+I'm going to tell you how I
+find the group in prime order
+
+00:18:47.490 --> 00:18:49.890 align:middle line:84%
+in a second, but
+think of a group that
+
+00:18:49.890 --> 00:18:52.300 align:middle line:84%
+has a number of elements
+in the group is prime.
+
+00:18:52.300 --> 00:19:02.700 align:middle line:84%
+So let G be a group
+of prime order, which
+
+00:19:02.700 --> 00:19:07.410 align:middle line:84%
+just means that the number
+of elements in G is prime.
+
+00:19:07.410 --> 00:19:09.160 align:middle line:90%
+That's all it means.
+
+00:19:09.160 --> 00:19:10.900 align:middle line:90%
+And now here's my--
+
+00:19:10.900 --> 00:19:14.650 align:middle line:84%
+and now, every element except
+for the unit now is a generator.
+
+00:19:14.650 --> 00:19:16.540 align:middle line:84%
+So it's easy to find
+generators here.
+
+00:19:16.540 --> 00:19:18.250 align:middle line:90%
+And now here's my hash function.
+
+00:19:18.250 --> 00:19:28.410 align:middle line:84%
+My hash function depends on G
+and hash-- so what's the key?
+
+00:19:28.410 --> 00:19:31.450 align:middle line:84%
+OK, so we have a generator G.
+You can think of G as fixed.
+
+00:19:31.450 --> 00:19:32.606 align:middle line:90%
+That's just a generator.
+
+00:19:32.606 --> 00:19:35.207 align:middle line:90%
+
+
+00:19:35.207 --> 00:19:37.040 align:middle line:84%
+If you want, you can
+choose it also randomly
+
+00:19:37.040 --> 00:19:39.820 align:middle line:84%
+because any element
+is a generator here.
+
+00:19:39.820 --> 00:19:42.080 align:middle line:90%
+H has a key, so--
+
+00:19:42.080 --> 00:19:43.670 align:middle line:90%
+OK, so now the hash function.
+
+00:19:43.670 --> 00:19:48.500 align:middle line:90%
+So gen and 1 to the lambda.
+
+00:19:48.500 --> 00:19:50.060 align:middle line:90%
+This is like sub lambda.
+
+00:19:50.060 --> 00:19:53.620 align:middle line:84%
+What it does is
+it chooses random
+
+00:19:53.620 --> 00:19:57.057 align:middle line:90%
+H and G, a random element.
+
+00:19:57.057 --> 00:19:57.890 align:middle line:90%
+That's what it does.
+
+00:19:57.890 --> 00:19:59.660 align:middle line:90%
+That's the key, OK?
+
+00:19:59.660 --> 00:20:05.320 align:middle line:84%
+So hash key is just H,
+just the random element.
+
+00:20:05.320 --> 00:20:10.330 align:middle line:90%
+Eval, so eval takes as input--
+
+00:20:10.330 --> 00:20:16.400 align:middle line:84%
+before, we set eval takes as
+input hash key any x, any x.
+
+00:20:16.400 --> 00:20:19.040 align:middle line:90%
+Now, no-- now less.
+
+00:20:19.040 --> 00:20:20.630 align:middle line:90%
+So that's what I'm saying.
+
+00:20:20.630 --> 00:20:24.010 align:middle line:84%
+Let me denote the number
+of elements in G by q.
+
+00:20:24.010 --> 00:20:29.150 align:middle line:84%
+Now, eval takes as
+input a hash key and x.
+
+00:20:29.150 --> 00:20:30.370 align:middle line:90%
+But now, x is not everything.
+
+00:20:30.370 --> 00:20:34.740 align:middle line:90%
+It's just in zq times zq.
+
+00:20:34.740 --> 00:20:36.690 align:middle line:90%
+So it's bounded.
+
+00:20:36.690 --> 00:20:38.410 align:middle line:84%
+Later, we'll show how
+to get everything,
+
+00:20:38.410 --> 00:20:39.430 align:middle line:90%
+but for now I'm bounded.
+
+00:20:39.430 --> 00:20:41.770 align:middle line:90%
+It goes from zq to zq.
+
+00:20:41.770 --> 00:20:45.360 align:middle line:90%
+And what it does, it generates--
+
+00:20:45.360 --> 00:20:50.920 align:middle line:84%
+so let me call it x0 and
+x1 because it has a pair.
+
+00:20:50.920 --> 00:20:55.500 align:middle line:84%
+And what it does, it gives
+you G to the x0 times
+
+00:20:55.500 --> 00:21:04.488 align:middle line:84%
+H to the x1 in the group,
+multiplication in the group.
+
+00:21:04.488 --> 00:21:05.530 align:middle line:90%
+That's the hash function.
+
+00:21:05.530 --> 00:21:12.360 align:middle line:90%
+So this is an element in G.
+
+00:21:12.360 --> 00:21:13.720 align:middle line:90%
+OK, this is the hash function.
+
+00:21:13.720 --> 00:21:15.940 align:middle line:90%
+Now, why is it even shrinking?
+
+00:21:15.940 --> 00:21:21.670 align:middle line:84%
+Because this is-- the
+group has only q elements.
+
+00:21:21.670 --> 00:21:27.280 align:middle line:84%
+So it's like this is q elements,
+and this is 2Q elements.
+
+00:21:27.280 --> 00:21:28.965 align:middle line:84%
+This is 1 out of
+q, and this is--
+
+00:21:28.965 --> 00:21:33.580 align:middle line:84%
+you have one out of-- you can
+think of G as embedded in like--
+
+00:21:33.580 --> 00:21:39.270 align:middle line:84%
+you can think of G
+as isomorphic to zq.
+
+00:21:39.270 --> 00:21:42.020 align:middle line:90%
+
+
+00:21:42.020 --> 00:21:48.622 align:middle line:84%
+So if you think of q, if you
+can think of q as like in 0,
+
+00:21:48.622 --> 00:21:50.205 align:middle line:84%
+1 to the lambda,
+then here you have 2,
+
+00:21:50.205 --> 00:21:53.830 align:middle line:90%
+0, 1, like 0 to the 2 lambda.
+
+00:21:53.830 --> 00:21:56.417 align:middle line:84%
+But let me actually make
+it more concrete for you.
+
+00:21:56.417 --> 00:21:58.750 align:middle line:84%
+So it'll be just easier to
+think about it because I said
+
+00:21:58.750 --> 00:22:01.300 align:middle line:84%
+a generator-- let
+me just prime--
+
+00:22:01.300 --> 00:22:03.290 align:middle line:84%
+let me just give you
+the concrete example
+
+00:22:03.290 --> 00:22:04.250 align:middle line:90%
+you can think of.
+
+00:22:04.250 --> 00:22:09.070 align:middle line:84%
+Look at zp star, so just
+multiplication mod p,
+
+00:22:09.070 --> 00:22:11.030 align:middle line:90%
+where p is a safe prime.
+
+00:22:11.030 --> 00:22:15.390 align:middle line:84%
+Safe prime I mean it's 2q
+plus 1 where q is prime.
+
+00:22:15.390 --> 00:22:18.370 align:middle line:90%
+
+
+00:22:18.370 --> 00:22:20.090 align:middle line:90%
+OK there's a lot of safe primes.
+
+00:22:20.090 --> 00:22:24.200 align:middle line:84%
+So it's easy--
+choose one at random.
+
+00:22:24.200 --> 00:22:25.070 align:middle line:90%
+Check if it's safe.
+
+00:22:25.070 --> 00:22:26.750 align:middle line:90%
+You can check primality.
+
+00:22:26.750 --> 00:22:30.800 align:middle line:84%
+And if you choose enough
+times, you'll hit a safe one.
+
+00:22:30.800 --> 00:22:34.500 align:middle line:84%
+There are enough of them to
+hit one with good probability.
+
+00:22:34.500 --> 00:22:38.000 align:middle line:84%
+And now, G is just
+going to be the set
+
+00:22:38.000 --> 00:22:40.440 align:middle line:90%
+of quadratic residues, mod p.
+
+00:22:40.440 --> 00:22:55.070 align:middle line:84%
+So this is all the x squared mod
+p for x in 1 up to p minus 1,
+
+00:22:55.070 --> 00:22:57.560 align:middle line:90%
+all the squares.
+
+00:22:57.560 --> 00:22:59.580 align:middle line:90%
+OK, how many squares are there?
+
+00:22:59.580 --> 00:23:00.420 align:middle line:90%
+Like half.
+
+00:23:00.420 --> 00:23:04.540 align:middle line:84%
+So zp star has p minus 1
+elements, 1 up to p minus 1.
+
+00:23:04.540 --> 00:23:06.990 align:middle line:90%
+And half of them are square.
+
+00:23:06.990 --> 00:23:11.180 align:middle line:84%
+So the number of quadratic
+residues is p minus 1 over 2,
+
+00:23:11.180 --> 00:23:13.850 align:middle line:90%
+which is exactly q.
+
+00:23:13.850 --> 00:23:15.650 align:middle line:84%
+So really, one can
+think if you want
+
+00:23:15.650 --> 00:23:20.180 align:middle line:84%
+to be-- think of the
+quadratic residue as mod p.
+
+00:23:20.180 --> 00:23:24.270 align:middle line:90%
+OK, that's-- so this--
+
+00:23:24.270 --> 00:23:26.660 align:middle line:84%
+great, so now you
+can think of this
+
+00:23:26.660 --> 00:23:28.090 align:middle line:90%
+is all the quadratic residues.
+
+00:23:28.090 --> 00:23:29.970 align:middle line:84%
+This is all the
+quadratic residues.
+
+00:23:29.970 --> 00:23:33.730 align:middle line:90%
+And sorry, sorry, this is in zq.
+
+00:23:33.730 --> 00:23:34.510 align:middle line:90%
+This is in zq.
+
+00:23:34.510 --> 00:23:37.630 align:middle line:84%
+This is quadratic
+residues, mod p.
+
+00:23:37.630 --> 00:23:43.270 align:middle line:84%
+And you can embed the quadratic
+residues mod p very easily.
+
+00:23:43.270 --> 00:23:45.490 align:middle line:90%
+You can embed them in zq.
+
+00:23:45.490 --> 00:23:47.800 align:middle line:84%
+You can represent each
+element here in zq.
+
+00:23:47.800 --> 00:23:48.510 align:middle line:90%
+How?
+
+00:23:48.510 --> 00:23:50.370 align:middle line:90%
+Take any quadratic residue.
+
+00:23:50.370 --> 00:23:51.910 align:middle line:90%
+Find the two square roots.
+
+00:23:51.910 --> 00:23:54.070 align:middle line:84%
+So if you have x, it's
+a quadratic residue.
+
+00:23:54.070 --> 00:23:57.090 align:middle line:84%
+So look at plus or
+minus square root of x.
+
+00:23:57.090 --> 00:23:59.895 align:middle line:84%
+One of them is going
+to be smaller than q.
+
+00:23:59.895 --> 00:24:02.520 align:middle line:84%
+One is going to be bigger, one's
+going to be in the upper half,
+
+00:24:02.520 --> 00:24:04.085 align:middle line:84%
+one's going to be
+in the lower half.
+
+00:24:04.085 --> 00:24:05.710 align:middle line:84%
+Write the one that's
+in the lower half.
+
+00:24:05.710 --> 00:24:10.107 align:middle line:84%
+That's a way to express the
+quadratic residues as zq.
+
+00:24:10.107 --> 00:24:11.940 align:middle line:84%
+The reason I'm telling
+you that is because I
+
+00:24:11.940 --> 00:24:12.940 align:middle line:90%
+want you to think that--
+
+00:24:12.940 --> 00:24:15.900 align:middle line:84%
+you can think of it as a hash
+function that goes from zq times
+
+00:24:15.900 --> 00:24:19.740 align:middle line:84%
+zq to zq, OK, because
+you go from zq to zq
+
+00:24:19.740 --> 00:24:22.290 align:middle line:84%
+to quadratic residues,
+mod p, and then
+
+00:24:22.290 --> 00:24:27.270 align:middle line:84%
+just efficiently convert
+this to the square root.
+
+00:24:27.270 --> 00:24:28.050 align:middle line:90%
+Which one?
+
+00:24:28.050 --> 00:24:31.580 align:middle line:84%
+The one that's smaller, the
+one that's between 1 and q.
+
+00:24:31.580 --> 00:24:34.217 align:middle line:90%
+And that will be the output.
+
+00:24:34.217 --> 00:24:36.300 align:middle line:84%
+You can go from one to the
+other very efficiently.
+
+00:24:36.300 --> 00:24:39.510 align:middle line:84%
+So this is a way to represent
+the quadratic residue.
+
+00:24:39.510 --> 00:24:41.940 align:middle line:90%
+So it doesn't really matter, OK?
+
+00:24:41.940 --> 00:24:44.600 align:middle line:84%
+And the reason I'm representing
+the quadratic residue
+
+00:24:44.600 --> 00:24:47.832 align:middle line:84%
+as an element in zq is just
+so you see that it's really
+
+00:24:47.832 --> 00:24:49.790 align:middle line:84%
+shrinking, that you can
+see, OK, I have from zq
+
+00:24:49.790 --> 00:24:52.320 align:middle line:90%
+to zq, from zq times zq to zq.
+
+00:24:52.320 --> 00:24:54.560 align:middle line:90%
+That's my hash function.
+
+00:24:54.560 --> 00:24:57.740 align:middle line:84%
+OK, the fact that it
+goes from zq times
+
+00:24:57.740 --> 00:25:02.450 align:middle line:84%
+zq to zq, I'm literally going
+to use this fact to increase
+
+00:25:02.450 --> 00:25:07.400 align:middle line:90%
+the domain to 0, 1 star.
+
+00:25:07.400 --> 00:25:09.930 align:middle line:84%
+But before I
+increase the domain,
+
+00:25:09.930 --> 00:25:13.070 align:middle line:90%
+why is this a hash function?
+
+00:25:13.070 --> 00:25:16.260 align:middle line:84%
+So in other words, what do I
+need from the hash function?
+
+00:25:16.260 --> 00:25:19.020 align:middle line:84%
+Well, there's no opening here,
+so it's not a local opening.
+
+00:25:19.020 --> 00:25:19.980 align:middle line:90%
+So this doesn't hold.
+
+00:25:19.980 --> 00:25:22.860 align:middle line:84%
+But I want to make sure that
+it's collision-resistant.
+
+00:25:22.860 --> 00:25:24.270 align:middle line:90%
+Why is it collision-resistant?
+
+00:25:24.270 --> 00:25:29.080 align:middle line:84%
+So I want to argue that I cannot
+open if someone gives me--
+
+00:25:29.080 --> 00:25:35.580 align:middle line:84%
+if an adversary gave me
+a value, a hash value,
+
+00:25:35.580 --> 00:25:38.190 align:middle line:84%
+he cannot open in
+two different ways.
+
+00:25:38.190 --> 00:25:40.680 align:middle line:84%
+So let me actually try to argue
+that you cannot open in two
+
+00:25:40.680 --> 00:25:41.345 align:middle line:90%
+different ways.
+
+00:25:41.345 --> 00:25:44.310 align:middle line:90%
+
+
+00:25:44.310 --> 00:25:46.050 align:middle line:90%
+I'll do it here.
+
+00:25:46.050 --> 00:25:47.075 align:middle line:90%
+So why?
+
+00:25:47.075 --> 00:25:50.070 align:middle line:90%
+
+
+00:25:50.070 --> 00:25:51.990 align:middle line:84%
+Suppose there is a
+cheating prover that
+
+00:25:51.990 --> 00:25:53.530 align:middle line:90%
+can open in two different ways.
+
+00:25:53.530 --> 00:25:56.200 align:middle line:84%
+Then I argue that I can break
+the discrete log problem.
+
+00:25:56.200 --> 00:25:58.780 align:middle line:84%
+I can just use them to break
+the discrete log problem.
+
+00:25:58.780 --> 00:25:59.280 align:middle line:90%
+Why?
+
+00:25:59.280 --> 00:26:02.410 align:middle line:84%
+So let's say I get
+H. I'm an adversary.
+
+00:26:02.410 --> 00:26:09.810 align:middle line:84%
+There's this G,
+and I got hash key.
+
+00:26:09.810 --> 00:26:12.130 align:middle line:84%
+Sorry, I'm going to do
+adversary discrete log.
+
+00:26:12.130 --> 00:26:15.720 align:middle line:84%
+So I got H, which is
+supposedly like G to the x.
+
+00:26:15.720 --> 00:26:18.660 align:middle line:90%
+I'm going to find x.
+
+00:26:18.660 --> 00:26:20.880 align:middle line:90%
+Here's how I find x.
+
+00:26:20.880 --> 00:26:25.090 align:middle line:84%
+I got H. I'm going to give
+this adversary here the--
+
+00:26:25.090 --> 00:26:32.193 align:middle line:84%
+so if I can find a collision, so
+suppose there exists a collision
+
+00:26:32.193 --> 00:26:32.693 align:middle line:90%
+finder--
+
+00:26:32.693 --> 00:26:36.940 align:middle line:90%
+
+
+00:26:36.940 --> 00:26:38.560 align:middle line:90%
+let me call him B--
+
+00:26:38.560 --> 00:26:44.510 align:middle line:84%
+then I construct A that uses
+B to break the discrete log.
+
+00:26:44.510 --> 00:26:46.900 align:middle line:90%
+How do I break the discrete log?
+
+00:26:46.900 --> 00:26:50.080 align:middle line:90%
+He gets H. He needs to find x.
+
+00:26:50.080 --> 00:26:52.920 align:middle line:84%
+Yeah, he has G. He gets
+his input H. He needs
+
+00:26:52.920 --> 00:26:54.170 align:middle line:90%
+to find the discrete log of H.
+
+00:26:54.170 --> 00:26:55.587 align:middle line:84%
+How does he find
+the discrete log?
+
+00:26:55.587 --> 00:26:57.820 align:middle line:90%
+He goes to the collision finder.
+
+00:26:57.820 --> 00:27:00.560 align:middle line:84%
+Let me write him
+as C for collision.
+
+00:27:00.560 --> 00:27:01.390 align:middle line:90%
+That's better.
+
+00:27:01.390 --> 00:27:04.360 align:middle line:84%
+He goes to the collision finder,
+and he tells me, oh, here's
+
+00:27:04.360 --> 00:27:05.180 align:middle line:90%
+your key.
+
+00:27:05.180 --> 00:27:10.870 align:middle line:84%
+Hash key equals H. Now
+find the collision.
+
+00:27:10.870 --> 00:27:12.140 align:middle line:90%
+Now we find the collision.
+
+00:27:12.140 --> 00:27:14.510 align:middle line:90%
+It's a V and two inputs.
+
+00:27:14.510 --> 00:27:15.628 align:middle line:90%
+So I don't know.
+
+00:27:15.628 --> 00:27:19.340 align:middle line:90%
+
+
+00:27:19.340 --> 00:27:22.930 align:middle line:84%
+He gives a V and two
+openings, so two inputs.
+
+00:27:22.930 --> 00:27:29.550 align:middle line:84%
+So let me call one x0,
+x1 and other x0 prime, x1
+
+00:27:29.550 --> 00:27:33.360 align:middle line:90%
+prime, such that--
+
+00:27:33.360 --> 00:27:36.750 align:middle line:90%
+
+
+00:27:36.750 --> 00:27:38.860 align:middle line:84%
+this is a preimage and
+this is a preimage.
+
+00:27:38.860 --> 00:27:46.770 align:middle line:84%
+So g to the x0 H to the x1 is
+equal to G to the x0 prime H
+
+00:27:46.770 --> 00:27:48.870 align:middle line:90%
+to the x1 prime.
+
+00:27:48.870 --> 00:27:51.390 align:middle line:90%
+That's a collision.
+
+00:27:51.390 --> 00:27:54.190 align:middle line:84%
+Now I claim, if
+he gives me this,
+
+00:27:54.190 --> 00:27:57.600 align:middle line:84%
+I can use this to find
+the discrete log of H
+
+00:27:57.600 --> 00:27:59.970 align:middle line:90%
+with respect to G. How?
+
+00:27:59.970 --> 00:28:01.420 align:middle line:90%
+I just-- what is this?
+
+00:28:01.420 --> 00:28:09.070 align:middle line:84%
+This is just G x0 minus x0 prime
+equals H x1 prime minus x1.
+
+00:28:09.070 --> 00:28:11.670 align:middle line:90%
+I just moved arithmetic.
+
+00:28:11.670 --> 00:28:19.650 align:middle line:84%
+And now, H is nothing but G to
+the x0 minus x0 prime divided
+
+00:28:19.650 --> 00:28:22.960 align:middle line:90%
+by x1 prime minus x1.
+
+00:28:22.960 --> 00:28:26.260 align:middle line:90%
+This is the discrete log.
+
+00:28:26.260 --> 00:28:28.852 align:middle line:90%
+Done.
+
+00:28:28.852 --> 00:28:32.030 align:middle line:84%
+So what is the discrete--
+he gives me a collision.
+
+00:28:32.030 --> 00:28:35.270 align:middle line:84%
+What is the discrete log
+of H with respect to G?
+
+00:28:35.270 --> 00:28:41.250 align:middle line:84%
+It's just x0 minus x0 prime
+divided by x1 prime minus x1.
+
+00:28:41.250 --> 00:28:44.830 align:middle line:90%
+
+
+00:28:44.830 --> 00:28:48.250 align:middle line:84%
+Now, where did I use the
+fact that the G-- remember,
+
+00:28:48.250 --> 00:28:50.780 align:middle line:84%
+I said G needs to be
+a prime order group.
+
+00:28:50.780 --> 00:28:53.360 align:middle line:84%
+Where did I use the fact
+that it's a prime order?
+
+00:28:53.360 --> 00:29:00.860 align:middle line:84%
+Because this-- you compute this
+mod q, the order of the group.
+
+00:29:00.860 --> 00:29:04.690 align:middle line:84%
+If it's not a prime order,
+it's not clear you can divide.
+
+00:29:04.690 --> 00:29:06.790 align:middle line:84%
+Not every element has
+an inverse if you're not
+
+00:29:06.790 --> 00:29:08.230 align:middle line:90%
+in a prime order group.
+
+00:29:08.230 --> 00:29:10.070 align:middle line:84%
+So I want it to be in
+a prime order group
+
+00:29:10.070 --> 00:29:11.873 align:middle line:84%
+so that every element
+has an inverse.
+
+00:29:11.873 --> 00:29:13.540 align:middle line:84%
+Now, another thing
+you need to make sure
+
+00:29:13.540 --> 00:29:17.530 align:middle line:84%
+is that one can say, wait,
+x1 prime may be equal to x1.
+
+00:29:17.530 --> 00:29:20.010 align:middle line:84%
+And then again
+you're out of luck.
+
+00:29:20.010 --> 00:29:24.300 align:middle line:84%
+But if this-- if
+these are equal,
+
+00:29:24.300 --> 00:29:27.290 align:middle line:84%
+then these have to be equal
+because if these are equal means
+
+00:29:27.290 --> 00:29:28.350 align:middle line:90%
+this is 1.
+
+00:29:28.350 --> 00:29:31.160 align:middle line:84%
+And the only case
+where G to the power
+
+00:29:31.160 --> 00:29:33.930 align:middle line:84%
+is 1 if it's the power of
+0 because it's a generator.
+
+00:29:33.930 --> 00:29:37.340 align:middle line:90%
+Any other element is not 1.
+
+00:29:37.340 --> 00:29:42.440 align:middle line:84%
+So if they're different,
+if these two are different,
+
+00:29:42.440 --> 00:29:44.460 align:middle line:90%
+that's what a collision means.
+
+00:29:44.460 --> 00:29:47.670 align:middle line:84%
+Then x1 prime must
+be different from x1.
+
+00:29:47.670 --> 00:29:49.020 align:middle line:90%
+And therefore, we can divide.
+
+00:29:49.020 --> 00:29:49.780 align:middle line:90%
+And we're done.
+
+00:29:49.780 --> 00:29:53.600 align:middle line:90%
+
+
+00:29:53.600 --> 00:29:57.330 align:middle line:84%
+So this is the proof that
+this is a collision resistant.
+
+00:29:57.330 --> 00:30:02.000 align:middle line:90%
+
+
+00:30:02.000 --> 00:30:04.036 align:middle line:90%
+OK, any questions?
+
+00:30:04.036 --> 00:30:06.800 align:middle line:90%
+
+
+00:30:06.800 --> 00:30:07.760 align:middle line:90%
+Yeah.
+
+00:30:07.760 --> 00:30:13.010 align:middle line:84%
+AUDIENCE: Do you have any
+way to sample H during gen?
+
+00:30:13.010 --> 00:30:14.760 align:middle line:90%
+PROFESSOR: Do I have-- again?
+
+00:30:14.760 --> 00:30:17.150 align:middle line:84%
+AUDIENCE: A way to sample H
+during the generation of--
+
+00:30:17.150 --> 00:30:18.942 align:middle line:84%
+PROFESSOR: What do
+you-- what do you mean--
+
+00:30:18.942 --> 00:30:19.870 align:middle line:90%
+what do you mean to--
+
+00:30:19.870 --> 00:30:21.070 align:middle line:90%
+AUDIENCE: To just take H--
+
+00:30:21.070 --> 00:30:24.440 align:middle line:84%
+the element without necessarily
+learning something about.
+
+00:30:24.440 --> 00:30:26.890 align:middle line:84%
+PROFESSOR: So H is just, I
+choose it randomly from G.
+
+00:30:26.890 --> 00:30:31.150 align:middle line:84%
+The key generation algorithm
+of the hash function, H
+
+00:30:31.150 --> 00:30:34.730 align:middle line:84%
+is just a random
+element in the group.
+
+00:30:34.730 --> 00:30:40.810 align:middle line:84%
+So if you use this specific
+group, you choose zp star,
+
+00:30:40.810 --> 00:30:44.437 align:middle line:84%
+all the elements mod P,
+where P is a safe prime.
+
+00:30:44.437 --> 00:30:45.770 align:middle line:90%
+You make sure P is a safe prime.
+
+00:30:45.770 --> 00:30:49.040 align:middle line:84%
+And the way you choose h is
+a random quadratic residue.
+
+00:30:49.040 --> 00:30:52.810 align:middle line:84%
+So I choose a random x,
+and x squared is my H.
+
+00:30:52.810 --> 00:30:56.660 align:middle line:84%
+So the key gen algorithm
+is very simple.
+
+00:30:56.660 --> 00:31:01.070 align:middle line:84%
+And note, by the way, here you
+can indeed-- it's also random.
+
+00:31:01.070 --> 00:31:05.260 align:middle line:84%
+There's no secret-- going back
+to the Kilian-Micali protocol,
+
+00:31:05.260 --> 00:31:07.700 align:middle line:84%
+that the first message
+hash key is just random.
+
+00:31:07.700 --> 00:31:10.180 align:middle line:90%
+It's random quadratic residue.
+
+00:31:10.180 --> 00:31:10.930 align:middle line:90%
+There's no secret.
+
+00:31:10.930 --> 00:31:13.120 align:middle line:90%
+You can send the randomness.
+
+00:31:13.120 --> 00:31:16.030 align:middle line:84%
+There's no secrets in the hash
+key or anything like that.
+
+00:31:16.030 --> 00:31:19.168 align:middle line:84%
+It's a very, very, very
+simple construction.
+
+00:31:19.168 --> 00:31:21.710 align:middle line:84%
+This is, by the way, known as
+Pettersson Commitment for those
+
+00:31:21.710 --> 00:31:25.130 align:middle line:90%
+who studied cryptography.
+
+00:31:25.130 --> 00:31:27.420 align:middle line:84%
+It also has some hiding
+properties, which are nice,
+
+00:31:27.420 --> 00:31:30.125 align:middle line:84%
+but we only care about
+collision resistance here.
+
+00:31:30.125 --> 00:31:31.375 align:middle line:90%
+So we don't care about hiding.
+
+00:31:31.375 --> 00:31:34.070 align:middle line:90%
+
+
+00:31:34.070 --> 00:31:36.890 align:middle line:84%
+Any other questions
+about why it's collision
+
+00:31:36.890 --> 00:31:40.496 align:middle line:90%
+resistant, about a construction?
+
+00:31:40.496 --> 00:31:44.150 align:middle line:90%
+
+
+00:31:44.150 --> 00:31:47.120 align:middle line:84%
+So let me just say,
+by the way, as a side
+
+00:31:47.120 --> 00:31:49.550 align:middle line:84%
+note, these kind of
+groups of prime order,
+
+00:31:49.550 --> 00:31:53.660 align:middle line:84%
+in particular quadratic residues
+mod P, where P is a safe prime,
+
+00:31:53.660 --> 00:31:55.710 align:middle line:90%
+is a very useful of group.
+
+00:31:55.710 --> 00:31:58.670 align:middle line:90%
+We use it a lot in cryptography.
+
+00:31:58.670 --> 00:32:01.220 align:middle line:84%
+So it comes up in
+many, many primitives.
+
+00:32:01.220 --> 00:32:04.710 align:middle line:84%
+Working with groups of prime
+order is very comfortable.
+
+00:32:04.710 --> 00:32:08.300 align:middle line:84%
+And the examples we have often
+is either quadratic residues mod
+
+00:32:08.300 --> 00:32:10.020 align:middle line:84%
+P, where P is a
+prime order group,
+
+00:32:10.020 --> 00:32:14.370 align:middle line:84%
+or elliptic curves, which
+is a whole different story.
+
+00:32:14.370 --> 00:32:17.363 align:middle line:90%
+OK, so the next-- oh, yeah.
+
+00:32:17.363 --> 00:32:19.780 align:middle line:84%
+AUDIENCE: So all of [? this ?]
+prime order are isomorphic,
+
+00:32:19.780 --> 00:32:19.930 align:middle line:90%
+right?
+
+00:32:19.930 --> 00:32:20.740 align:middle line:90%
+They're all just cyclic?
+
+00:32:20.740 --> 00:32:21.407 align:middle line:90%
+PROFESSOR: Yeah.
+
+00:32:21.407 --> 00:32:24.188 align:middle line:84%
+AUDIENCE: So the special thing
+is in the actual structure
+
+00:32:24.188 --> 00:32:24.730 align:middle line:90%
+of the group.
+
+00:32:24.730 --> 00:32:27.147 align:middle line:84%
+It's like the representation
+of the elements or something.
+
+00:32:27.147 --> 00:32:29.100 align:middle line:90%
+And the way that it's like--
+
+00:32:29.100 --> 00:32:33.180 align:middle line:84%
+yeah, you can't-- even though
+it is isomorphic to the cyclic
+
+00:32:33.180 --> 00:32:36.330 align:middle line:84%
+group definition, you can't
+compute that [INAUDIBLE].
+
+00:32:36.330 --> 00:32:38.470 align:middle line:84%
+PROFESSOR: Exactly,
+exactly, exactly.
+
+00:32:38.470 --> 00:32:41.065 align:middle line:84%
+Yeah, isomorphic is an
+information theoretic term.
+
+00:32:41.065 --> 00:32:42.690 align:middle line:84%
+It's not clear that
+you can efficiently
+
+00:32:42.690 --> 00:32:44.200 align:middle line:90%
+go from one to the other.
+
+00:32:44.200 --> 00:32:45.920 align:middle line:90%
+Yeah, exactly, exactly.
+
+00:32:45.920 --> 00:32:46.420 align:middle line:90%
+Good.
+
+00:32:46.420 --> 00:32:47.230 align:middle line:90%
+Good point.
+
+00:32:47.230 --> 00:32:48.480 align:middle line:90%
+Yeah.
+
+00:32:48.480 --> 00:32:50.980 align:middle line:84%
+OK, so if there's no
+further questions,
+
+00:32:50.980 --> 00:32:54.790 align:middle line:84%
+let's just go to
+show how to go--
+
+00:32:54.790 --> 00:32:59.160 align:middle line:84%
+how to get local-- how to go
+from collision-resistant to one
+
+00:32:59.160 --> 00:33:00.100 align:middle line:90%
+with local opening.
+
+00:33:00.100 --> 00:33:02.380 align:middle line:84%
+So OK, this fell
+short in two ways.
+
+00:33:02.380 --> 00:33:08.980 align:middle line:84%
+First, this construction goes
+only from zq time zq to zq.
+
+00:33:08.980 --> 00:33:12.640 align:middle line:84%
+It doesn't go from
+0, 1 star to zq.
+
+00:33:12.640 --> 00:33:16.250 align:middle line:84%
+Second, there's no
+notion of local opening,
+
+00:33:16.250 --> 00:33:17.490 align:middle line:90%
+which is also a problem.
+
+00:33:17.490 --> 00:33:21.530 align:middle line:84%
+So what we're going to do
+now is we're going to show,
+
+00:33:21.530 --> 00:33:24.320 align:middle line:84%
+actually, a generic
+transformation
+
+00:33:24.320 --> 00:33:29.660 align:middle line:84%
+from any hash function
+that goes from zq times zq
+
+00:33:29.660 --> 00:33:34.130 align:middle line:84%
+to zq that's collision
+resistant to the one
+
+00:33:34.130 --> 00:33:36.986 align:middle line:90%
+takes to what we want.
+
+00:33:36.986 --> 00:33:38.780 align:middle line:84%
+So now we're going to
+do the construction
+
+00:33:38.780 --> 00:33:43.520 align:middle line:84%
+from with local opening
+and arbitrary domain.
+
+00:33:43.520 --> 00:33:45.070 align:middle line:90%
+And here is how it goes.
+
+00:33:45.070 --> 00:33:50.420 align:middle line:90%
+
+
+00:33:50.420 --> 00:34:04.910 align:middle line:90%
+So-- and this is from--
+
+00:34:04.910 --> 00:34:06.115 align:middle line:90%
+I'm going to assume I have--
+
+00:34:06.115 --> 00:34:10.219 align:middle line:90%
+
+
+00:34:10.219 --> 00:34:15.190 align:middle line:84%
+which is gen and
+eval like above.
+
+00:34:15.190 --> 00:34:17.010 align:middle line:90%
+But eval goes-- let's say--
+
+00:34:17.010 --> 00:34:19.150 align:middle line:90%
+I said zq times zq to zq.
+
+00:34:19.150 --> 00:34:22.530 align:middle line:84%
+Let me just write it as 0,
+1 to the lambda times 0,
+
+00:34:22.530 --> 00:34:26.050 align:middle line:84%
+1 to the lambda to
+0, 1 to the lambda.
+
+00:34:26.050 --> 00:34:28.420 align:middle line:84%
+I'm writing it because that's
+how we usually write it,
+
+00:34:28.420 --> 00:34:30.909 align:middle line:84%
+but if you want to
+think of zq, zq, zq,
+
+00:34:30.909 --> 00:34:35.260 align:middle line:84%
+that's totally fine
+because that's what we saw.
+
+00:34:35.260 --> 00:34:38.128 align:middle line:84%
+It's just that most
+constructions of hash,
+
+00:34:38.128 --> 00:34:39.670 align:middle line:84%
+we think of it as
+0, 1 to the lambda.
+
+00:34:39.670 --> 00:34:41.148 align:middle line:90%
+That's why I write it this way.
+
+00:34:41.148 --> 00:34:43.440 align:middle line:84%
+But everything I say you can
+replace 0, 1 to the lambda
+
+00:34:43.440 --> 00:34:45.540 align:middle line:90%
+with zq, and it will work.
+
+00:34:45.540 --> 00:34:47.230 align:middle line:90%
+So I have that.
+
+00:34:47.230 --> 00:34:52.020 align:middle line:84%
+I want to now get an entire
+family of hash functions from--
+
+00:34:52.020 --> 00:34:54.070 align:middle line:84%
+I want to make the
+domain much bigger,
+
+00:34:54.070 --> 00:34:56.820 align:middle line:84%
+and I want to get
+local openings.
+
+00:34:56.820 --> 00:34:57.940 align:middle line:90%
+So how do I do it?
+
+00:34:57.940 --> 00:34:59.490 align:middle line:84%
+Actually, I do it
+in one shot, OK?
+
+00:34:59.490 --> 00:35:02.740 align:middle line:84%
+I get the domain bigger and get
+local opening at the same time.
+
+00:35:02.740 --> 00:35:03.970 align:middle line:90%
+And here is the idea.
+
+00:35:03.970 --> 00:35:07.350 align:middle line:84%
+So I do it via what's
+called Merkle Hash.
+
+00:35:07.350 --> 00:35:09.720 align:middle line:90%
+It's an idea by Merkle.
+
+00:35:09.720 --> 00:35:13.540 align:middle line:84%
+It's really beautiful,
+clever, and simple.
+
+00:35:13.540 --> 00:35:15.140 align:middle line:90%
+And here's what he does.
+
+00:35:15.140 --> 00:35:18.410 align:middle line:84%
+He says, look, you
+want to hash something.
+
+00:35:18.410 --> 00:35:21.733 align:middle line:84%
+If it's less than 2
+lambda bits long, done.
+
+00:35:21.733 --> 00:35:22.400 align:middle line:90%
+You have a hash.
+
+00:35:22.400 --> 00:35:24.190 align:middle line:90%
+Use your hash.
+
+00:35:24.190 --> 00:35:27.520 align:middle line:84%
+But what if it's longer, if
+it's more than 2 lambda bits?
+
+00:35:27.520 --> 00:35:29.780 align:middle line:90%
+So do it iteratively.
+
+00:35:29.780 --> 00:35:31.040 align:middle line:90%
+What does that mean?
+
+00:35:31.040 --> 00:35:34.540 align:middle line:90%
+Take your input.
+
+00:35:34.540 --> 00:35:36.790 align:middle line:90%
+Let's say-- OK, sorry.
+
+00:35:36.790 --> 00:35:40.510 align:middle line:84%
+First gen, so let me-- the gen
+is exactly the same as gen.
+
+00:35:40.510 --> 00:35:41.740 align:middle line:90%
+It's the same thing.
+
+00:35:41.740 --> 00:35:45.340 align:middle line:84%
+Eval is-- so I need to
+give these algorithms,
+
+00:35:45.340 --> 00:35:46.795 align:middle line:90%
+gen, eval, open, and verify.
+
+00:35:46.795 --> 00:35:49.940 align:middle line:84%
+Gen is this gen. You have
+a gen for this algorithm.
+
+00:35:49.940 --> 00:35:50.720 align:middle line:90%
+Use this.
+
+00:35:50.720 --> 00:35:52.190 align:middle line:90%
+Now you have a hash key.
+
+00:35:52.190 --> 00:35:54.230 align:middle line:90%
+What about eval?
+
+00:35:54.230 --> 00:35:57.040 align:middle line:84%
+Well, if your input is
+small, smaller than 2 lambda,
+
+00:35:57.040 --> 00:35:58.400 align:middle line:90%
+you can use this eval algorithm.
+
+00:35:58.400 --> 00:35:59.710 align:middle line:90%
+You're done.
+
+00:35:59.710 --> 00:36:01.840 align:middle line:90%
+What if it's bigger?
+
+00:36:01.840 --> 00:36:05.980 align:middle line:84%
+So if it's bigger, the idea
+is, if you have only-- so
+
+00:36:05.980 --> 00:36:10.250 align:middle line:90%
+convert your input to blocks.
+
+00:36:10.250 --> 00:36:14.040 align:middle line:84%
+If you have only two blocks
+or less, you're done.
+
+00:36:14.040 --> 00:36:15.660 align:middle line:84%
+We have an eval
+algorithm for you.
+
+00:36:15.660 --> 00:36:17.900 align:middle line:90%
+We're good.
+
+00:36:17.900 --> 00:36:20.220 align:middle line:84%
+But what if you have,
+let's say, four blocks?
+
+00:36:20.220 --> 00:36:21.240 align:middle line:90%
+What do you do?
+
+00:36:21.240 --> 00:36:25.180 align:middle line:84%
+So the idea is oh, don't
+worry, apply eval to these two.
+
+00:36:25.180 --> 00:36:28.190 align:middle line:90%
+
+
+00:36:28.190 --> 00:36:29.850 align:middle line:90%
+So you have a hash key.
+
+00:36:29.850 --> 00:36:36.050 align:middle line:84%
+Compute eval with hash
+key and these two.
+
+00:36:36.050 --> 00:36:37.610 align:middle line:90%
+You get a value.
+
+00:36:37.610 --> 00:36:47.645 align:middle line:84%
+Compute eval with hash key,
+same hash key on these values.
+
+00:36:47.645 --> 00:36:48.770 align:middle line:90%
+Now, I don't want to open--
+
+00:36:48.770 --> 00:36:50.460 align:middle line:84%
+I don't want to
+output both of them.
+
+00:36:50.460 --> 00:36:52.040 align:middle line:90%
+That's 2 lambda.
+
+00:36:52.040 --> 00:36:53.840 align:middle line:90%
+I want to get lambda.
+
+00:36:53.840 --> 00:36:55.310 align:middle line:90%
+So no worries.
+
+00:36:55.310 --> 00:36:56.050 align:middle line:90%
+Apply eval.
+
+00:36:56.050 --> 00:37:04.040 align:middle line:90%
+
+
+00:37:04.040 --> 00:37:07.460 align:middle line:90%
+And this is your value.
+
+00:37:07.460 --> 00:37:09.710 align:middle line:84%
+Now you're saying, wait,
+what if I have more?
+
+00:37:09.710 --> 00:37:10.490 align:middle line:90%
+No worries.
+
+00:37:10.490 --> 00:37:11.510 align:middle line:90%
+You have two more?
+
+00:37:11.510 --> 00:37:14.380 align:middle line:90%
+Sure, apply eval.
+
+00:37:14.380 --> 00:37:15.370 align:middle line:90%
+You have more?
+
+00:37:15.370 --> 00:37:17.710 align:middle line:90%
+Apply eval.
+
+00:37:17.710 --> 00:37:23.950 align:middle line:84%
+Now you can apply eval,
+and you can apply eval.
+
+00:37:23.950 --> 00:37:28.940 align:middle line:84%
+So you can just apply eval,
+eval, eval, and you're done.
+
+00:37:28.940 --> 00:37:31.150 align:middle line:90%
+That's really the algorithm.
+
+00:37:31.150 --> 00:37:34.120 align:middle line:84%
+Now, there are two
+problems with the--
+
+00:37:34.120 --> 00:37:38.830 align:middle line:84%
+OK, I didn't tell the entire
+story for two reasons.
+
+00:37:38.830 --> 00:37:40.960 align:middle line:84%
+So first of all,
+there's an issue
+
+00:37:40.960 --> 00:37:43.760 align:middle line:84%
+of how many blocks
+are there really?
+
+00:37:43.760 --> 00:37:46.210 align:middle line:84%
+So usually, what we
+do, we say let's assume
+
+00:37:46.210 --> 00:37:50.860 align:middle line:84%
+that the number of blocks
+is 2 to the L for some L
+
+00:37:50.860 --> 00:37:53.210 align:middle line:90%
+just to make this tree complete.
+
+00:37:53.210 --> 00:37:55.900 align:middle line:84%
+So usually, what we
+say, we don't actually
+
+00:37:55.900 --> 00:37:59.090 align:middle line:90%
+do x from 0, 1 star.
+
+00:37:59.090 --> 00:38:00.580 align:middle line:84%
+We assume that
+all the inputs are
+
+00:38:00.580 --> 00:38:03.920 align:middle line:84%
+of size 2 to the L for some
+L. Now you're saying wait,
+
+00:38:03.920 --> 00:38:05.000 align:middle line:90%
+but that's not the case.
+
+00:38:05.000 --> 00:38:08.130 align:middle line:84%
+Oh, with padding, you
+can make it the case.
+
+00:38:08.130 --> 00:38:12.380 align:middle line:84%
+So the idea is,
+given x, always put--
+
+00:38:12.380 --> 00:38:14.720 align:middle line:90%
+so you want to do eval of x.
+
+00:38:14.720 --> 00:38:16.080 align:middle line:90%
+Don't do eval of x.
+
+00:38:16.080 --> 00:38:17.510 align:middle line:90%
+Put eval x.
+
+00:38:17.510 --> 00:38:20.180 align:middle line:90%
+Append with 1 and 0's.
+
+00:38:20.180 --> 00:38:23.250 align:middle line:84%
+How many zeros is
+the minimum amount
+
+00:38:23.250 --> 00:38:26.660 align:middle line:84%
+that will give you size 2
+to the alpha for some L?
+
+00:38:26.660 --> 00:38:32.660 align:middle line:84%
+It increased the length of it,
+yes, but only by a factor of 2.
+
+00:38:32.660 --> 00:38:35.090 align:middle line:90%
+So it's not that bad.
+
+00:38:35.090 --> 00:38:36.050 align:middle line:90%
+So now--
+
+00:38:36.050 --> 00:38:37.310 align:middle line:90%
+AUDIENCE: [INAUDIBLE] 1?
+
+00:38:37.310 --> 00:38:38.310 align:middle line:90%
+PROFESSOR: OK, good.
+
+00:38:38.310 --> 00:38:39.530 align:middle line:90%
+Great.
+
+00:38:39.530 --> 00:38:42.120 align:middle line:90%
+Like, why am I putting here 1?
+
+00:38:42.120 --> 00:38:44.120 align:middle line:84%
+AUDIENCE: Otherwise, you
+don't know [INAUDIBLE].
+
+00:38:44.120 --> 00:38:45.090 align:middle line:90%
+PROFESSOR: Exactly.
+
+00:38:45.090 --> 00:38:46.410 align:middle line:90%
+Otherwise, you don't know.
+
+00:38:46.410 --> 00:38:48.330 align:middle line:84%
+Is this part of
+x or [INAUDIBLE]?
+
+00:38:48.330 --> 00:38:50.720 align:middle line:84%
+So this-- so now
+when you have padding
+
+00:38:50.720 --> 00:38:53.810 align:middle line:84%
+you know all this is padding
+until the one including,
+
+00:38:53.810 --> 00:38:54.930 align:middle line:90%
+and this is the x.
+
+00:38:54.930 --> 00:38:57.540 align:middle line:84%
+So this is just
+to make it 1 to 1.
+
+00:38:57.540 --> 00:38:58.205 align:middle line:90%
+Great question.
+
+00:38:58.205 --> 00:38:58.705 align:middle line:90%
+Yes.
+
+00:38:58.705 --> 00:39:01.550 align:middle line:84%
+AUDIENCE: Does it cause
+issues if you take this tree
+
+00:39:01.550 --> 00:39:04.370 align:middle line:84%
+and you pad it this way and you
+were very close but only barely
+
+00:39:04.370 --> 00:39:05.770 align:middle line:90%
+above a power of 2?
+
+00:39:05.770 --> 00:39:08.410 align:middle line:84%
+The entire right-hand side
+will be a ton of hashed 0's.
+
+00:39:08.410 --> 00:39:09.660 align:middle line:90%
+PROFESSOR: Yeah, you're right.
+
+00:39:09.660 --> 00:39:10.870 align:middle line:90%
+So here's the thing.
+
+00:39:10.870 --> 00:39:15.180 align:middle line:84%
+If this is exactly
+power of 2, exactly, I'm
+
+00:39:15.180 --> 00:39:18.520 align:middle line:84%
+always going to add
+a 1 and append is--
+
+00:39:18.520 --> 00:39:20.470 align:middle line:90%
+so I shouldn't have added a 1.
+
+00:39:20.470 --> 00:39:22.590 align:middle line:84%
+But my algorithm is
+always append a 1,
+
+00:39:22.590 --> 00:39:23.980 align:middle line:90%
+and make it a power of 2.
+
+00:39:23.980 --> 00:39:27.040 align:middle line:84%
+So if it was originally a power
+of 2, unfortunately, I added 1.
+
+00:39:27.040 --> 00:39:27.640 align:middle line:90%
+Now I'm stuck.
+
+00:39:27.640 --> 00:39:28.780 align:middle line:90%
+I need to add a bunch of 0's.
+
+00:39:28.780 --> 00:39:30.155 align:middle line:84%
+So all these are
+going to be 0's.
+
+00:39:30.155 --> 00:39:32.490 align:middle line:90%
+Yeah, you hash that.
+
+00:39:32.490 --> 00:39:35.820 align:middle line:84%
+AUDIENCE: OK, I guess
+it just seemed--
+
+00:39:35.820 --> 00:39:36.580 align:middle line:90%
+OK, never mind.
+
+00:39:36.580 --> 00:39:39.120 align:middle line:84%
+Maybe the rest of the
+instruction will make it clear.
+
+00:39:39.120 --> 00:39:40.920 align:middle line:84%
+PROFESSOR: OK, so
+there's another part
+
+00:39:40.920 --> 00:39:43.170 align:middle line:84%
+of the construction that's
+missing, and I'll tell you.
+
+00:39:43.170 --> 00:39:45.210 align:middle line:84%
+But there was
+another question, or?
+
+00:39:45.210 --> 00:39:47.460 align:middle line:84%
+AUDIENCE: I was just
+wondering if now this will not
+
+00:39:47.460 --> 00:39:48.947 align:middle line:90%
+impact the correctness.
+
+00:39:48.947 --> 00:39:49.780 align:middle line:90%
+PROFESSOR: OK, good.
+
+00:39:49.780 --> 00:39:53.410 align:middle line:84%
+So the question was, will
+it impact the correctness?
+
+00:39:53.410 --> 00:39:56.070 align:middle line:84%
+And the answer is it won't
+impact the correctness
+
+00:39:56.070 --> 00:39:58.560 align:middle line:84%
+if the eval algorithm now--
+so let me be clear on what
+
+00:39:58.560 --> 00:39:59.560 align:middle line:90%
+the eval algorithm is.
+
+00:39:59.560 --> 00:40:03.150 align:middle line:84%
+The eval algorithm
+takes as input x.
+
+00:40:03.150 --> 00:40:06.800 align:middle line:84%
+It adds a 1 and is
+the minimum amount
+
+00:40:06.800 --> 00:40:09.380 align:middle line:90%
+of 0's to get a power of 2.
+
+00:40:09.380 --> 00:40:12.990 align:middle line:84%
+Once he has x that's the
+length is a power of 2,
+
+00:40:12.990 --> 00:40:17.540 align:middle line:84%
+like 2 to the L, then he does
+eval, eval, eval, eval, eval,
+
+00:40:17.540 --> 00:40:20.660 align:middle line:84%
+eval, eval in a
+tree-wise manner.
+
+00:40:20.660 --> 00:40:22.860 align:middle line:84%
+And now he's just
+going to have one root.
+
+00:40:22.860 --> 00:40:25.590 align:middle line:84%
+The reason I made it because
+it's not a power of 2,
+
+00:40:25.590 --> 00:40:29.070 align:middle line:84%
+then there's kind of
+dangling roots hanging out.
+
+00:40:29.070 --> 00:40:31.470 align:middle line:84%
+And I don't want to deal
+with these dangling roots.
+
+00:40:31.470 --> 00:40:33.690 align:middle line:84%
+So I'm just going to
+make it a power of 2.
+
+00:40:33.690 --> 00:40:35.580 align:middle line:90%
+Now, what is the output?
+
+00:40:35.580 --> 00:40:38.400 align:middle line:84%
+The output is the
+last hash value.
+
+00:40:38.400 --> 00:40:40.280 align:middle line:84%
+Usually, we denote it
+by root because it's
+
+00:40:40.280 --> 00:40:41.157 align:middle line:90%
+the root of the tree.
+
+00:40:41.157 --> 00:40:42.740 align:middle line:84%
+So often, if you see
+hash you'll see--
+
+00:40:42.740 --> 00:40:46.050 align:middle line:84%
+they denote the hash
+instead of V for value.
+
+00:40:46.050 --> 00:40:49.220 align:middle line:90%
+They denote it by root.
+
+00:40:49.220 --> 00:40:51.180 align:middle line:90%
+But the output is not only root.
+
+00:40:51.180 --> 00:40:53.400 align:middle line:84%
+And I think that goes back
+to maybe your concern.
+
+00:40:53.400 --> 00:40:54.920 align:middle line:90%
+The output is not only root.
+
+00:40:54.920 --> 00:40:57.920 align:middle line:90%
+It's also the depth of the tree.
+
+00:40:57.920 --> 00:41:08.070 align:middle line:84%
+So the hash value, so eval given
+hash key and x, what it does
+
+00:41:08.070 --> 00:41:16.920 align:middle line:84%
+is, one, compute, let me
+call it x prime, which is x1,
+
+00:41:16.920 --> 00:41:19.300 align:middle line:90%
+0 like the padded.
+
+00:41:19.300 --> 00:41:22.120 align:middle line:84%
+This is of length 2
+to the L for some L.
+
+00:41:22.120 --> 00:41:28.970 align:middle line:90%
+Then 2 compute root via tree.
+
+00:41:28.970 --> 00:41:31.800 align:middle line:90%
+
+
+00:41:31.800 --> 00:41:34.442 align:middle line:84%
+So you compute all these hash
+value, hash value, hash value,
+
+00:41:34.442 --> 00:41:36.150 align:middle line:84%
+hash value, hash--
+compute all these hash
+
+00:41:36.150 --> 00:41:38.790 align:middle line:90%
+until you get to the root.
+
+00:41:38.790 --> 00:41:49.120 align:middle line:84%
+And output root and
+depth of the tree.
+
+00:41:49.120 --> 00:41:50.790 align:middle line:90%
+This is very important.
+
+00:41:50.790 --> 00:41:52.710 align:middle line:90%
+You have to output the depth.
+
+00:41:52.710 --> 00:41:55.950 align:middle line:84%
+If you don't output
+the depth, then it's
+
+00:41:55.950 --> 00:41:57.340 align:middle line:90%
+easy to find collisions.
+
+00:41:57.340 --> 00:42:01.340 align:middle line:84%
+The reason it's easy to find
+collisions is I can, let's say,
+
+00:42:01.340 --> 00:42:03.370 align:middle line:90%
+generate this randomly.
+
+00:42:03.370 --> 00:42:04.510 align:middle line:90%
+Compute, compute.
+
+00:42:04.510 --> 00:42:06.790 align:middle line:84%
+And then I can either
+open to these two
+
+00:42:06.790 --> 00:42:08.980 align:middle line:84%
+and say, oh, I just
+hashed to these.
+
+00:42:08.980 --> 00:42:11.980 align:middle line:90%
+Or say I hash to this.
+
+00:42:11.980 --> 00:42:14.750 align:middle line:90%
+And it's a collision.
+
+00:42:14.750 --> 00:42:16.250 align:middle line:84%
+Both of them hash
+to the same value.
+
+00:42:16.250 --> 00:42:17.980 align:middle line:90%
+They're different sizes.
+
+00:42:17.980 --> 00:42:24.550 align:middle line:84%
+So without the depth, one can
+argue you cannot find collisions
+
+00:42:24.550 --> 00:42:27.700 align:middle line:84%
+of the same size,
+of the same length.
+
+00:42:27.700 --> 00:42:30.010 align:middle line:84%
+But it is easy to
+find collisions
+
+00:42:30.010 --> 00:42:34.220 align:middle line:84%
+for inputs of differing lengths
+by just the attack that I said.
+
+00:42:34.220 --> 00:42:35.210 align:middle line:90%
+I'm an adversary.
+
+00:42:35.210 --> 00:42:37.280 align:middle line:84%
+I'm going to choose
+a random long input.
+
+00:42:37.280 --> 00:42:39.320 align:middle line:90%
+Honestly compute the root.
+
+00:42:39.320 --> 00:42:43.070 align:middle line:84%
+And then open either
+to this layer,
+
+00:42:43.070 --> 00:42:45.830 align:middle line:84%
+say, or open to this
+layer, open to this layer.
+
+00:42:45.830 --> 00:42:49.840 align:middle line:84%
+All of them are going to
+be kind of valid openings.
+
+00:42:49.840 --> 00:42:51.520 align:middle line:90%
+So I found collisions.
+
+00:42:51.520 --> 00:42:53.710 align:middle line:84%
+Once I have the
+depth, I can't do
+
+00:42:53.710 --> 00:42:58.720 align:middle line:84%
+that anymore because it won't
+correspond if I open this, well,
+
+00:42:58.720 --> 00:43:00.340 align:middle line:84%
+it doesn't correspond
+to this depth.
+
+00:43:00.340 --> 00:43:02.800 align:middle line:84%
+This is a depth 1,
+and I output a depth--
+
+00:43:02.800 --> 00:43:04.380 align:middle line:90%
+yeah.
+
+00:43:04.380 --> 00:43:08.490 align:middle line:84%
+AUDIENCE: The problem is
+that this is no longer lambda
+
+00:43:08.490 --> 00:43:09.660 align:middle line:90%
+length [INAUDIBLE].
+
+00:43:09.660 --> 00:43:11.380 align:middle line:84%
+PROFESSOR: Good,
+OK, OK, very good.
+
+00:43:11.380 --> 00:43:16.800 align:middle line:84%
+What you're saying, yeah,
+you lied because this root
+
+00:43:16.800 --> 00:43:20.310 align:middle line:90%
+is of size lambda.
+
+00:43:20.310 --> 00:43:24.300 align:middle line:84%
+This depth can be actually
+even bigger than lambda.
+
+00:43:24.300 --> 00:43:25.780 align:middle line:90%
+Yeah, you promised lambda.
+
+00:43:25.780 --> 00:43:29.910 align:middle line:84%
+OK, so let me tell you
+how I deal with it.
+
+00:43:29.910 --> 00:43:33.340 align:middle line:84%
+If you're-- OK,
+this is a nitpicky.
+
+00:43:33.340 --> 00:43:34.300 align:middle line:90%
+I can make it lambda.
+
+00:43:34.300 --> 00:43:35.300 align:middle line:90%
+How do I make it lambda?
+
+00:43:35.300 --> 00:43:36.130 align:middle line:90%
+You know what?
+
+00:43:36.130 --> 00:43:37.330 align:middle line:90%
+I'm going to run--
+
+00:43:37.330 --> 00:43:38.920 align:middle line:90%
+here's my new gen algorithm.
+
+00:43:38.920 --> 00:43:41.520 align:middle line:84%
+The gen algorithm on
+input 1 to the lambda
+
+00:43:41.520 --> 00:43:45.290 align:middle line:84%
+will run the original gen
+algorithm with lambda over 2.
+
+00:43:45.290 --> 00:43:48.330 align:middle line:90%
+
+
+00:43:48.330 --> 00:43:53.160 align:middle line:84%
+And then, this is of
+size lambda over 2.
+
+00:43:53.160 --> 00:43:54.970 align:middle line:84%
+A root now is of
+size lambda over 2.
+
+00:43:54.970 --> 00:43:56.345 align:middle line:84%
+So now I have
+lambda over 2 t of,
+
+00:43:56.345 --> 00:43:59.390 align:middle line:84%
+I have lambda over
+2 spare to play,
+
+00:43:59.390 --> 00:44:00.833 align:middle line:84%
+and I can use this
+for the depth.
+
+00:44:00.833 --> 00:44:02.000 align:middle line:90%
+But actually, you know what?
+
+00:44:02.000 --> 00:44:03.260 align:middle line:90%
+Let me make it simpler.
+
+00:44:03.260 --> 00:44:03.950 align:middle line:90%
+You know what?
+
+00:44:03.950 --> 00:44:08.260 align:middle line:84%
+If you'll excuse me, I'll
+write V to be 2 lambda.
+
+00:44:08.260 --> 00:44:09.350 align:middle line:90%
+Make it 2 lambda.
+
+00:44:09.350 --> 00:44:11.565 align:middle line:90%
+Let me allow myself here slack.
+
+00:44:11.565 --> 00:44:17.705 align:middle line:90%
+
+
+00:44:17.705 --> 00:44:19.580 align:middle line:84%
+AUDIENCE: Can the depth
+be unbounded, though?
+
+00:44:19.580 --> 00:44:20.930 align:middle line:90%
+PROFESSOR: Good, you're right.
+
+00:44:20.930 --> 00:44:23.360 align:middle line:84%
+You're saying, wait, but
+the depth can be unbounded.
+
+00:44:23.360 --> 00:44:24.290 align:middle line:90%
+So you know what?
+
+00:44:24.290 --> 00:44:27.590 align:middle line:84%
+If it's more than
+2 to the lambda--
+
+00:44:27.590 --> 00:44:36.850 align:middle line:84%
+sorry, if the depth is more
+than lambda, I will output fail.
+
+00:44:36.850 --> 00:44:38.110 align:middle line:90%
+The point is--
+
+00:44:38.110 --> 00:44:41.993 align:middle line:90%
+OK, so-- OK.
+
+00:44:41.993 --> 00:44:44.879 align:middle line:90%
+AUDIENCE: [INAUDIBLE]
+
+00:44:44.879 --> 00:44:46.810 align:middle line:90%
+
+
+00:44:46.810 --> 00:44:50.050 align:middle line:84%
+PROFESSOR: Let's do
+2 to the lambda here.
+
+00:44:50.050 --> 00:44:53.180 align:middle line:90%
+I always think of everything.
+
+00:44:53.180 --> 00:44:55.970 align:middle line:84%
+The inputs are always at
+most size 2 to the lambda.
+
+00:44:55.970 --> 00:44:57.300 align:middle line:90%
+That's the truth.
+
+00:44:57.300 --> 00:44:58.700 align:middle line:90%
+So just think of the input.
+
+00:44:58.700 --> 00:45:00.860 align:middle line:84%
+We also have correctness
+only for inputs of size 2
+
+00:45:00.860 --> 00:45:01.730 align:middle line:90%
+to the lambda.
+
+00:45:01.730 --> 00:45:04.350 align:middle line:84%
+Our guarantees hold only for
+inputs of size 2 to the lambda.
+
+00:45:04.350 --> 00:45:07.018 align:middle line:84%
+So let's just think of it
+as size 2 to the lambda.
+
+00:45:07.018 --> 00:45:07.560 align:middle line:90%
+You're right.
+
+00:45:07.560 --> 00:45:09.935 align:middle line:84%
+If it's not 2 to the lambda,
+I don't have any guarantees.
+
+00:45:09.935 --> 00:45:13.850 align:middle line:84%
+So why even talk about
+more than 2 to the lambda?
+
+00:45:13.850 --> 00:45:16.200 align:middle line:84%
+So I guess the way
+to think about it,
+
+00:45:16.200 --> 00:45:20.300 align:middle line:84%
+you can handle any input
+length, but the security
+
+00:45:20.300 --> 00:45:22.610 align:middle line:84%
+parameter-- the
+hash function will
+
+00:45:22.610 --> 00:45:29.780 align:middle line:90%
+grow with log the input length.
+
+00:45:29.780 --> 00:45:30.748 align:middle line:90%
+So you're right.
+
+00:45:30.748 --> 00:45:31.290 align:middle line:90%
+You're right.
+
+00:45:31.290 --> 00:45:33.050 align:middle line:84%
+If you want to use
+any star, you should--
+
+00:45:33.050 --> 00:45:35.490 align:middle line:84%
+let's think of that always
+bounded by 2 to the lambda.
+
+00:45:35.490 --> 00:45:36.930 align:middle line:84%
+Anyway, we'll need
+that for completeness.
+
+00:45:36.930 --> 00:45:37.710 align:middle line:90%
+We'll need it for soundness.
+
+00:45:37.710 --> 00:45:38.793 align:middle line:90%
+We need it for everything.
+
+00:45:38.793 --> 00:45:42.283 align:middle line:84%
+So just assume that
+it's 2 to the lambda.
+
+00:45:42.283 --> 00:45:43.700 align:middle line:84%
+AUDIENCE: I think
+we can also mark
+
+00:45:43.700 --> 00:45:50.150 align:middle line:84%
+each node with a bit [INAUDIBLE]
+delete or not delete?
+
+00:45:50.150 --> 00:45:51.298 align:middle line:90%
+PROFESSOR: Uh-huh.
+
+00:45:51.298 --> 00:45:53.600 align:middle line:84%
+AUDIENCE: [INAUDIBLE]
+lambda there
+
+00:45:53.600 --> 00:45:54.890 align:middle line:90%
+and lambda plus 1 [INAUDIBLE]?
+
+00:45:54.890 --> 00:45:58.130 align:middle line:84%
+PROFESSOR: So you're saying
+you can mark each node,
+
+00:45:58.130 --> 00:45:59.030 align:middle line:90%
+but for what?
+
+00:45:59.030 --> 00:46:01.000 align:middle line:90%
+What's your purpose for--
+
+00:46:01.000 --> 00:46:03.410 align:middle line:84%
+AUDIENCE: So we mark
+[INAUDIBLE] with an extra bit.
+
+00:46:03.410 --> 00:46:04.720 align:middle line:90%
+That's 1.
+
+00:46:04.720 --> 00:46:08.770 align:middle line:84%
+And mark [INAUDIBLE] that
+are not [INAUDIBLE] an extra
+
+00:46:08.770 --> 00:46:09.570 align:middle line:90%
+[INAUDIBLE] 0.
+
+00:46:09.570 --> 00:46:10.782 align:middle line:90%
+PROFESSOR: 0, OK.
+
+00:46:10.782 --> 00:46:15.250 align:middle line:84%
+AUDIENCE: And then I think
+that's also [INAUDIBLE]?
+
+00:46:15.250 --> 00:46:17.218 align:middle line:84%
+PROFESSOR: Oh, you're
+saying there's an attack.
+
+00:46:17.218 --> 00:46:19.010 align:middle line:84%
+AUDIENCE: No, I'm saying
+that it solves it.
+
+00:46:19.010 --> 00:46:21.210 align:middle line:84%
+PROFESSOR: Oh, solves,
+solves which problem?
+
+00:46:21.210 --> 00:46:22.270 align:middle line:90%
+AUDIENCE: [INAUDIBLE]
+
+00:46:22.270 --> 00:46:24.020 align:middle line:90%
+PROFESSOR: Oh, you're saying--
+
+00:46:24.020 --> 00:46:30.442 align:middle line:84%
+OK, OK, yeah, what you're
+saying is maybe we can solve--
+
+00:46:30.442 --> 00:46:31.900 align:middle line:84%
+OK, so you're saying
+maybe we don't
+
+00:46:31.900 --> 00:46:33.290 align:middle line:90%
+need to give the depth here.
+
+00:46:33.290 --> 00:46:35.830 align:middle line:84%
+And instead, what
+we can do is you're
+
+00:46:35.830 --> 00:46:38.510 align:middle line:84%
+saying the honest truth,
+the honest person,
+
+00:46:38.510 --> 00:46:40.910 align:middle line:84%
+he will add 0 to
+everything here.
+
+00:46:40.910 --> 00:46:44.260 align:middle line:84%
+And he will add a 1
+to everything here.
+
+00:46:44.260 --> 00:46:46.240 align:middle line:84%
+AUDIENCE: [INAUDIBLE]
+lambda attack
+
+00:46:46.240 --> 00:46:50.155 align:middle line:84%
+as opposed to just a single
+bit to avoid getting unlucky
+
+00:46:50.155 --> 00:46:51.392 align:middle line:90%
+with hash [INAUDIBLE].
+
+00:46:51.392 --> 00:46:53.350 align:middle line:84%
+PROFESSOR: OK, yeah, so
+you need to make sure--
+
+00:46:53.350 --> 00:46:56.150 align:middle line:84%
+one bit is probably
+not good because--
+
+00:46:56.150 --> 00:46:59.660 align:middle line:84%
+I guess my concern
+is if you're not--
+
+00:46:59.660 --> 00:47:01.710 align:middle line:84%
+this is what I'm going
+to do if I'm honest.
+
+00:47:01.710 --> 00:47:03.620 align:middle line:90%
+But I'm not honest.
+
+00:47:03.620 --> 00:47:11.180 align:middle line:84%
+So I'm going to go ahead with
+my original crazy thing of--
+
+00:47:11.180 --> 00:47:12.690 align:middle line:90%
+OK, fine.
+
+00:47:12.690 --> 00:47:15.960 align:middle line:84%
+If you want, I'll put here
+a 0, and I won't put 1.
+
+00:47:15.960 --> 00:47:19.730 align:middle line:84%
+I'm just going to
+compute without your tags
+
+00:47:19.730 --> 00:47:21.030 align:middle line:90%
+because I'm malicious.
+
+00:47:21.030 --> 00:47:24.090 align:middle line:84%
+And now, when I open, maybe
+some of them are going to be 1,
+
+00:47:24.090 --> 00:47:26.120 align:middle line:90%
+and I'm lucky.
+
+00:47:26.120 --> 00:47:27.140 align:middle line:90%
+You see what I mean?
+
+00:47:27.140 --> 00:47:28.550 align:middle line:90%
+Or 0, and I'm lucky.
+
+00:47:28.550 --> 00:47:30.950 align:middle line:84%
+AUDIENCE: But if you add
+different tags for that,
+
+00:47:30.950 --> 00:47:33.560 align:middle line:84%
+you add tags for 0 on
+the very bottom row,
+
+00:47:33.560 --> 00:47:34.913 align:middle line:90%
+and you also add tags of 1.
+
+00:47:34.913 --> 00:47:36.330 align:middle line:84%
+PROFESSOR: Yeah,
+but you're right.
+
+00:47:36.330 --> 00:47:37.560 align:middle line:90%
+OK, but now I don't do.
+
+00:47:37.560 --> 00:47:39.770 align:middle line:84%
+That's what I should
+do, but I'm malicious.
+
+00:47:39.770 --> 00:47:42.440 align:middle line:90%
+I don't do that.
+
+00:47:42.440 --> 00:47:45.620 align:middle line:84%
+AUDIENCE: So what
+two inputs would you
+
+00:47:45.620 --> 00:47:48.240 align:middle line:90%
+give that give the same hash?
+
+00:47:48.240 --> 00:47:52.187 align:middle line:84%
+PROFESSOR: So if I'm allowed
+to put 1 or not put 1,
+
+00:47:52.187 --> 00:47:53.270 align:middle line:90%
+I'm always going to put 0.
+
+00:47:53.270 --> 00:47:56.040 align:middle line:90%
+
+
+00:47:56.040 --> 00:47:58.238 align:middle line:84%
+Oh, OK, sorry, what
+you're saying--
+
+00:47:58.238 --> 00:47:59.280 align:middle line:90%
+OK, OK, now I understand.
+
+00:47:59.280 --> 00:48:03.005 align:middle line:84%
+You're saying if I want to
+open it, this has to be a 1.
+
+00:48:03.005 --> 00:48:03.660 align:middle line:90%
+AUDIENCE: Yeah.
+
+00:48:03.660 --> 00:48:04.580 align:middle line:90%
+PROFESSOR: And therefore--
+
+00:48:04.580 --> 00:48:05.310 align:middle line:90%
+AUDIENCE: [INAUDIBLE]
+
+00:48:05.310 --> 00:48:06.820 align:middle line:84%
+PROFESSOR: Now I understand
+what you're saying.
+
+00:48:06.820 --> 00:48:07.720 align:middle line:90%
+OK, got it.
+
+00:48:07.720 --> 00:48:09.760 align:middle line:84%
+So you're saying this
+may solve the problem.
+
+00:48:09.760 --> 00:48:17.910 align:middle line:90%
+Ehm, it's a good suggestion.
+
+00:48:17.910 --> 00:48:20.050 align:middle line:90%
+You're like yeah.
+
+00:48:20.050 --> 00:48:20.550 align:middle line:90%
+Eh.
+
+00:48:20.550 --> 00:48:26.550 align:middle line:90%
+
+
+00:48:26.550 --> 00:48:28.262 align:middle line:84%
+AUDIENCE: [? Now, ?]
+I have a question.
+
+00:48:28.262 --> 00:48:29.220 align:middle line:90%
+PROFESSOR: Yeah, sorry.
+
+00:48:29.220 --> 00:48:29.720 align:middle line:90%
+Yes, Ted.
+
+00:48:29.720 --> 00:48:33.030 align:middle line:84%
+AUDIENCE: [INAUDIBLE] needing to
+increase the length of the block
+
+00:48:33.030 --> 00:48:34.380 align:middle line:90%
+at each level by 1 [INAUDIBLE]--
+
+00:48:34.380 --> 00:48:35.005 align:middle line:90%
+PROFESSOR: Yes.
+
+00:48:35.005 --> 00:48:40.020 align:middle line:84%
+AUDIENCE: --which would
+get the exact same thing?
+
+00:48:40.020 --> 00:48:41.770 align:middle line:90%
+PROFESSOR: The opening will be--
+
+00:48:41.770 --> 00:48:44.010 align:middle line:84%
+the opening will
+grow with the depth.
+
+00:48:44.010 --> 00:48:46.200 align:middle line:90%
+AUDIENCE: Well, if we're--
+
+00:48:46.200 --> 00:48:50.850 align:middle line:84%
+we need to have a
+hash function which
+
+00:48:50.850 --> 00:48:52.940 align:middle line:84%
+will allow us to walk
+in the-- this is not
+
+00:48:52.940 --> 00:48:54.417 align:middle line:90%
+a [? leaf ?] intermediate thing.
+
+00:48:54.417 --> 00:48:56.000 align:middle line:84%
+So the hash function
+needs to now take
+
+00:48:56.000 --> 00:48:59.780 align:middle line:84%
+like lambda plus 1 bits in
+at number 1 and then plus 2
+
+00:48:59.780 --> 00:49:02.210 align:middle line:90%
+and bits at level 2, et cetera.
+
+00:49:02.210 --> 00:49:03.960 align:middle line:84%
+PROFESSOR: Oh, you're
+saying it will grow.
+
+00:49:03.960 --> 00:49:04.460 align:middle line:90%
+I see.
+
+00:49:04.460 --> 00:49:07.580 align:middle line:84%
+AUDIENCE: Presumably, the hash
+function is still like k to k
+
+00:49:07.580 --> 00:49:08.490 align:middle line:90%
+goes to k.
+
+00:49:08.490 --> 00:49:10.697 align:middle line:84%
+But in order to keep
+adding additional padding--
+
+00:49:10.697 --> 00:49:12.530 align:middle line:84%
+PROFESSOR: So you're
+saying if you pad here,
+
+00:49:12.530 --> 00:49:14.220 align:middle line:90%
+this will go to k plus 1.
+
+00:49:14.220 --> 00:49:15.930 align:middle line:90%
+It'll go to lambda plus 1.
+
+00:49:15.930 --> 00:49:16.160 align:middle line:90%
+AUDIENCE: [INAUDIBLE]
+
+00:49:16.160 --> 00:49:18.330 align:middle line:84%
+PROFESSOR: And then you add
+1, it'll go to lambda plus 2.
+
+00:49:18.330 --> 00:49:20.955 align:middle line:84%
+AUDIENCE: Yeah, so you've just
+got to run the plus [INAUDIBLE].
+
+00:49:20.955 --> 00:49:24.415 align:middle line:90%
+
+
+00:49:24.415 --> 00:49:25.290 align:middle line:90%
+AUDIENCE: Can't you--
+
+00:49:25.290 --> 00:49:26.850 align:middle line:84%
+PROFESSOR: I wonder if you
+can get around this, though.
+
+00:49:26.850 --> 00:49:28.730 align:middle line:84%
+AUDIENCE: I don't have to
+power of 2, don't make it
+
+00:49:28.730 --> 00:49:29.400 align:middle line:90%
+a complete tree.
+
+00:49:29.400 --> 00:49:31.580 align:middle line:90%
+You make it like [INAUDIBLE].
+
+00:49:31.580 --> 00:49:35.847 align:middle line:90%
+
+
+00:49:35.847 --> 00:49:37.430 align:middle line:84%
+PROFESSOR: It's a
+good question if you
+
+00:49:37.430 --> 00:49:40.423 align:middle line:84%
+could do it with completeness--
+without blowing up
+
+00:49:40.423 --> 00:49:41.173 align:middle line:90%
+full completeness.
+
+00:49:41.173 --> 00:49:44.060 align:middle line:84%
+AUDIENCE: It seems [INAUDIBLE]
+like a [INAUDIBLE] domain
+
+00:49:44.060 --> 00:49:47.660 align:middle line:84%
+extension has Merkle-Damgard
+construction that can be
+
+00:49:47.660 --> 00:49:50.170 align:middle line:84%
+[? done ?] with 2
+lambda plus 2 bits.
+
+00:49:50.170 --> 00:49:53.710 align:middle line:84%
+You can still shrink it, shrink
+that into a 2 lambda bit.
+
+00:49:53.710 --> 00:49:55.420 align:middle line:84%
+And then do the
+hash [INAUDIBLE].
+
+00:49:55.420 --> 00:49:57.010 align:middle line:84%
+PROFESSOR: Yeah, yeah,
+yeah, you can probably--
+
+00:49:57.010 --> 00:49:57.610 align:middle line:90%
+that's what I was thinking.
+
+00:49:57.610 --> 00:49:59.590 align:middle line:84%
+You can go-- you
+write that it grows,
+
+00:49:59.590 --> 00:50:01.170 align:middle line:84%
+but you can maybe
+shrink a little bit
+
+00:50:01.170 --> 00:50:04.320 align:middle line:84%
+and then continue, and shrink
+a little bit and then continue.
+
+00:50:04.320 --> 00:50:09.090 align:middle line:84%
+AUDIENCE: But if you make those
+[INAUDIBLE] not have to open.
+
+00:50:09.090 --> 00:50:11.130 align:middle line:84%
+PROFESSOR: So we didn't
+talk about opening yet.
+
+00:50:11.130 --> 00:50:15.763 align:middle line:90%
+
+
+00:50:15.763 --> 00:50:17.430 align:middle line:84%
+Look, you gave a
+really interesting idea
+
+00:50:17.430 --> 00:50:19.138 align:middle line:84%
+that I'm trying to
+think if I can make it
+
+00:50:19.138 --> 00:50:20.910 align:middle line:90%
+into something in the P set.
+
+00:50:20.910 --> 00:50:23.380 align:middle line:90%
+[LAUGHTER]
+
+00:50:23.380 --> 00:50:24.085 align:middle line:90%
+
+
+00:50:24.085 --> 00:50:25.510 align:middle line:90%
+OK, I'll think about it offline.
+
+00:50:25.510 --> 00:50:28.260 align:middle line:84%
+Anyway, we have five
+minutes, so let me quickly
+
+00:50:28.260 --> 00:50:30.960 align:middle line:84%
+talk about how do you do local
+opening and about collision
+
+00:50:30.960 --> 00:50:33.390 align:middle line:90%
+resistance of this thing.
+
+00:50:33.390 --> 00:50:35.920 align:middle line:84%
+So first, we managed to
+do domain extension, OK?
+
+00:50:35.920 --> 00:50:38.650 align:middle line:84%
+So now the domain can be
+up to 2 to the lambda.
+
+00:50:38.650 --> 00:50:41.460 align:middle line:84%
+And the hash value is
+just lambda plus lambda
+
+00:50:41.460 --> 00:50:43.710 align:middle line:84%
+because we assume that the
+inputs are 2 to the lambda.
+
+00:50:43.710 --> 00:50:46.030 align:middle line:90%
+The depth is at most lambda.
+
+00:50:46.030 --> 00:50:46.530 align:middle line:90%
+Yeah?
+
+00:50:46.530 --> 00:50:48.910 align:middle line:90%
+So we're happy with the size.
+
+00:50:48.910 --> 00:50:50.950 align:middle line:90%
+How do you open?
+
+00:50:50.950 --> 00:50:54.140 align:middle line:84%
+So let's say I want to
+open to one point here.
+
+00:50:54.140 --> 00:50:56.410 align:middle line:90%
+I want to open to this bit.
+
+00:50:56.410 --> 00:50:58.490 align:middle line:90%
+How do I open to this bit only?
+
+00:50:58.490 --> 00:51:02.950 align:middle line:84%
+Well, what I do is I identify
+the block that it sits on.
+
+00:51:02.950 --> 00:51:06.770 align:middle line:84%
+So now I know what I
+want to open is this--
+
+00:51:06.770 --> 00:51:08.540 align:middle line:84%
+I'm going to open to
+this entire block.
+
+00:51:08.540 --> 00:51:10.010 align:middle line:90%
+It's only lambda bit.
+
+00:51:10.010 --> 00:51:10.900 align:middle line:90%
+So remember?
+
+00:51:10.900 --> 00:51:13.090 align:middle line:90%
+The opening is poly lambda bits.
+
+00:51:13.090 --> 00:51:15.530 align:middle line:84%
+I can allow poly lambda
+bits in my opening.
+
+00:51:15.530 --> 00:51:18.682 align:middle line:84%
+So I'm going to just
+open to the entire block.
+
+00:51:18.682 --> 00:51:20.890 align:middle line:84%
+So I can give you the block,
+but how do you know it's
+
+00:51:20.890 --> 00:51:22.900 align:middle line:90%
+the right block?
+
+00:51:22.900 --> 00:51:25.750 align:middle line:84%
+So what I do, I give
+you-- you know what?
+
+00:51:25.750 --> 00:51:30.670 align:middle line:84%
+I'm going to give you the block
+and the sibling block that is
+
+00:51:30.670 --> 00:51:31.890 align:middle line:90%
+needed to compute the parent.
+
+00:51:31.890 --> 00:51:34.600 align:middle line:90%
+
+
+00:51:34.600 --> 00:51:36.970 align:middle line:84%
+So I'm going to give
+you both of these.
+
+00:51:36.970 --> 00:51:38.720 align:middle line:90%
+Now you can compute the parent.
+
+00:51:38.720 --> 00:51:41.710 align:middle line:84%
+And then I'm going to give
+you the sibling block that is
+
+00:51:41.710 --> 00:51:43.990 align:middle line:90%
+needed to compute the parent.
+
+00:51:43.990 --> 00:51:47.720 align:middle line:84%
+And then I'm going to give
+you the sibling block that is
+
+00:51:47.720 --> 00:51:49.260 align:middle line:90%
+needed to compute the parent.
+
+00:51:49.260 --> 00:51:53.900 align:middle line:84%
+So for every layer, I
+give you the sibling block
+
+00:51:53.900 --> 00:51:56.150 align:middle line:84%
+that you need to
+compute the parent.
+
+00:51:56.150 --> 00:52:00.140 align:middle line:84%
+So the number of blocks I
+give you is like the depth.
+
+00:52:00.140 --> 00:52:03.560 align:middle line:84%
+At each layer, I give
+you a sibling block.
+
+00:52:03.560 --> 00:52:05.430 align:middle line:90%
+So its depth number of blocks.
+
+00:52:05.430 --> 00:52:07.430 align:middle line:90%
+Each block is the size lambda.
+
+00:52:07.430 --> 00:52:12.512 align:middle line:84%
+So I give you polynomial,
+lambda squared bits, OK?
+
+00:52:12.512 --> 00:52:13.470 align:middle line:90%
+So this is the opening.
+
+00:52:13.470 --> 00:52:16.040 align:middle line:84%
+The opening just
+contains the block
+
+00:52:16.040 --> 00:52:19.760 align:middle line:84%
+of the bit you want to
+open with the sibling
+
+00:52:19.760 --> 00:52:24.980 align:middle line:84%
+blocks of each layer, the
+sibling blocks of the parent,
+
+00:52:24.980 --> 00:52:30.050 align:middle line:84%
+the sibling corresponding to
+the parent all the way up.
+
+00:52:30.050 --> 00:52:31.950 align:middle line:90%
+How do you verify it?
+
+00:52:31.950 --> 00:52:34.200 align:middle line:90%
+Well-- so that's the opening.
+
+00:52:34.200 --> 00:52:36.150 align:middle line:84%
+So the opening are all
+the kind of green--
+
+00:52:36.150 --> 00:52:38.025 align:middle line:84%
+well, this green you
+can compute on your own.
+
+00:52:38.025 --> 00:52:43.970 align:middle line:84%
+So you don't need it, but think
+of it all the green blocks here.
+
+00:52:43.970 --> 00:52:45.480 align:middle line:90%
+How do you verify?
+
+00:52:45.480 --> 00:52:46.290 align:middle line:90%
+You just verify.
+
+00:52:46.290 --> 00:52:46.790 align:middle line:90%
+You check.
+
+00:52:46.790 --> 00:52:50.450 align:middle line:84%
+You check that these
+two hash to this.
+
+00:52:50.450 --> 00:52:51.950 align:middle line:90%
+These two hash to this.
+
+00:52:51.950 --> 00:52:55.060 align:middle line:84%
+These two hash to the root,
+the route of the-- that's
+
+00:52:55.060 --> 00:52:57.160 align:middle line:90%
+the hash value.
+
+00:52:57.160 --> 00:53:00.730 align:middle line:84%
+So actually, this you don't need
+to give because you can compute.
+
+00:53:00.730 --> 00:53:03.130 align:middle line:84%
+This you don't need to give
+because you can compute.
+
+00:53:03.130 --> 00:53:05.290 align:middle line:90%
+But this you need to give.
+
+00:53:05.290 --> 00:53:09.920 align:middle line:84%
+And the point is you can ask
+the verifier to recompute this,
+
+00:53:09.920 --> 00:53:10.758 align:middle line:90%
+recompute this.
+
+00:53:10.758 --> 00:53:12.550 align:middle line:84%
+But at the end he needs
+to make sure you're
+
+00:53:12.550 --> 00:53:15.645 align:middle line:84%
+consistent with the
+root, with the hash value
+
+00:53:15.645 --> 00:53:16.520 align:middle line:90%
+that he committed to.
+
+00:53:16.520 --> 00:53:18.140 align:middle line:84%
+AUDIENCE: So you're saying
+you just needs a siblings.
+
+00:53:18.140 --> 00:53:20.682 align:middle line:84%
+PROFESSOR: You just need the
+siblings, but it doesn't matter.
+
+00:53:20.682 --> 00:53:22.420 align:middle line:84%
+Yeah, you can just
+give one sibling.
+
+00:53:22.420 --> 00:53:23.890 align:middle line:90%
+You can give d instead of 2d.
+
+00:53:23.890 --> 00:53:26.530 align:middle line:90%
+
+
+00:53:26.530 --> 00:53:27.620 align:middle line:90%
+That's the opening.
+
+00:53:27.620 --> 00:53:28.640 align:middle line:90%
+That's the verification.
+
+00:53:28.640 --> 00:53:29.460 align:middle line:90%
+Yeah.
+
+00:53:29.460 --> 00:53:31.460 align:middle line:84%
+AUDIENCE: How do you
+ensure this opening doesn't
+
+00:53:31.460 --> 00:53:32.890 align:middle line:90%
+like-- it's consistent?
+
+00:53:32.890 --> 00:53:35.240 align:middle line:84%
+It doesn't-- say one
+sibling block is different.
+
+00:53:35.240 --> 00:53:37.900 align:middle line:84%
+The next time you say
+open on a different block.
+
+00:53:37.900 --> 00:53:40.450 align:middle line:90%
+PROFESSOR: So OK, there's a--
+
+00:53:40.450 --> 00:53:43.665 align:middle line:84%
+so the only thing
+I need to check
+
+00:53:43.665 --> 00:53:44.790 align:middle line:90%
+is his collision-resistant.
+
+00:53:44.790 --> 00:53:45.332 align:middle line:90%
+I don't know.
+
+00:53:45.332 --> 00:53:47.690 align:middle line:90%
+What do you mean by consistent?
+
+00:53:47.690 --> 00:53:49.430 align:middle line:84%
+AUDIENCE: Give a
+different sibling block
+
+00:53:49.430 --> 00:53:50.430 align:middle line:90%
+to the next [INAUDIBLE].
+
+00:53:50.430 --> 00:53:51.930 align:middle line:84%
+PROFESSOR: Fine, I can
+do whatever I want.
+
+00:53:51.930 --> 00:53:53.230 align:middle line:90%
+Look, I can do whatever I want.
+
+00:53:53.230 --> 00:53:55.010 align:middle line:90%
+AUDIENCE: [INAUDIBLE] block--
+
+00:53:55.010 --> 00:53:56.220 align:middle line:90%
+PROFESSOR: I can do whatever.
+
+00:53:56.220 --> 00:53:57.053 align:middle line:90%
+Look, I'm a cheater.
+
+00:53:57.053 --> 00:53:58.460 align:middle line:84%
+I'll do whatever
+I want, whatever
+
+00:53:58.460 --> 00:54:00.900 align:middle line:84%
+I can-- whatever I can
+do and get away with,
+
+00:54:00.900 --> 00:54:02.210 align:middle line:90%
+that's what I'm going to do.
+
+00:54:02.210 --> 00:54:07.940 align:middle line:84%
+The question is, I think what
+the honest prover should do.
+
+00:54:07.940 --> 00:54:10.490 align:middle line:84%
+The honest open
+algorithm, he should
+
+00:54:10.490 --> 00:54:12.093 align:middle line:90%
+give all the correct blocks.
+
+00:54:12.093 --> 00:54:13.260 align:middle line:90%
+Now you're saying, he won't.
+
+00:54:13.260 --> 00:54:14.958 align:middle line:90%
+What if he doesn't?
+
+00:54:14.958 --> 00:54:17.250 align:middle line:84%
+So now I'm going to tell--
+here's what I want to argue.
+
+00:54:17.250 --> 00:54:18.050 align:middle line:90%
+Look, he may not.
+
+00:54:18.050 --> 00:54:20.160 align:middle line:84%
+I don't know what
+he's giving, OK?
+
+00:54:20.160 --> 00:54:23.150 align:middle line:84%
+All I need to argue is
+collision resistance.
+
+00:54:23.150 --> 00:54:27.213 align:middle line:84%
+First, note completeness--
+correctness, as I said,
+
+00:54:27.213 --> 00:54:29.130 align:middle line:84%
+if you're honest, you're
+going to be accepted.
+
+00:54:29.130 --> 00:54:31.795 align:middle line:84%
+If you're honest, you
+generate this gigantic thing
+
+00:54:31.795 --> 00:54:32.670 align:middle line:90%
+like you should have.
+
+00:54:32.670 --> 00:54:34.050 align:middle line:90%
+You have the entire tree.
+
+00:54:34.050 --> 00:54:37.100 align:middle line:84%
+And when you want to open this,
+you actually give all these.
+
+00:54:37.100 --> 00:54:38.100 align:middle line:90%
+Everything should hash.
+
+00:54:38.100 --> 00:54:39.223 align:middle line:90%
+The hash is good.
+
+00:54:39.223 --> 00:54:40.140 align:middle line:90%
+It computes correctly.
+
+00:54:40.140 --> 00:54:44.280 align:middle line:84%
+And you'll accept with
+probability 1, OK?
+
+00:54:44.280 --> 00:54:45.150 align:middle line:90%
+Always.
+
+00:54:45.150 --> 00:54:46.390 align:middle line:90%
+That's not a problem.
+
+00:54:46.390 --> 00:54:49.180 align:middle line:84%
+What your concern
+is like, wait, OK,
+
+00:54:49.180 --> 00:54:53.215 align:middle line:84%
+I tell the cheating person
+who wants to find collisions,
+
+00:54:53.215 --> 00:54:54.340 align:middle line:90%
+this is what you should do.
+
+00:54:54.340 --> 00:54:55.090 align:middle line:90%
+Give the opening.
+
+00:54:55.090 --> 00:54:56.590 align:middle line:84%
+You're saying, he
+won't give this block.
+
+00:54:56.590 --> 00:54:57.690 align:middle line:90%
+He will give this block.
+
+00:54:57.690 --> 00:55:00.720 align:middle line:84%
+Or who knows what
+he's going to do?
+
+00:55:00.720 --> 00:55:03.460 align:middle line:84%
+Who says he can give
+whatever he wants?
+
+00:55:03.460 --> 00:55:05.070 align:middle line:84%
+So how do you know
+that this is--
+
+00:55:05.070 --> 00:55:07.570 align:middle line:84%
+how do you know that this
+is collision-resistant?
+
+00:55:07.570 --> 00:55:10.620 align:middle line:90%
+
+
+00:55:10.620 --> 00:55:11.860 align:middle line:90%
+You're not happy.
+
+00:55:11.860 --> 00:55:16.620 align:middle line:84%
+AUDIENCE: [INAUDIBLE]
+because probably [INAUDIBLE].
+
+00:55:16.620 --> 00:55:17.310 align:middle line:90%
+PROFESSOR: Yeah.
+
+00:55:17.310 --> 00:55:19.920 align:middle line:84%
+AUDIENCE: Yeah, I
+was more concerned
+
+00:55:19.920 --> 00:55:22.830 align:middle line:84%
+about the soundness,
+the soundness
+
+00:55:22.830 --> 00:55:24.570 align:middle line:90%
+that we get from there.
+
+00:55:24.570 --> 00:55:26.700 align:middle line:90%
+How do we know he can't--
+
+00:55:26.700 --> 00:55:28.830 align:middle line:84%
+each time you query,
+you just kind of like--
+
+00:55:28.830 --> 00:55:31.622 align:middle line:84%
+for his proofs of
+those sibling blocks,
+
+00:55:31.622 --> 00:55:33.330 align:middle line:84%
+you can just construct
+them in such a way
+
+00:55:33.330 --> 00:55:36.010 align:middle line:90%
+that it ends up at your root.
+
+00:55:36.010 --> 00:55:39.190 align:middle line:84%
+How do you make sure that
+you can't just construct them
+
+00:55:39.190 --> 00:55:42.732 align:middle line:90%
+so that in [INAUDIBLE]?
+
+00:55:42.732 --> 00:55:44.190 align:middle line:84%
+PROFESSOR: You
+should be concerned.
+
+00:55:44.190 --> 00:55:45.510 align:middle line:84%
+So first, when
+you say soundness,
+
+00:55:45.510 --> 00:55:46.380 align:middle line:90%
+you mean collision-resistant.
+
+00:55:46.380 --> 00:55:48.240 align:middle line:84%
+I wrote soundness,
+but that's the-- yeah,
+
+00:55:48.240 --> 00:55:48.780 align:middle line:90%
+that's kind of thing.
+
+00:55:48.780 --> 00:55:49.800 align:middle line:90%
+Yeah, and you're right.
+
+00:55:49.800 --> 00:55:51.500 align:middle line:90%
+You're saying, how do you know?
+
+00:55:51.500 --> 00:55:53.288 align:middle line:90%
+He does whatever he wants.
+
+00:55:53.288 --> 00:55:55.080 align:middle line:84%
+How do you know that
+at the end of the day,
+
+00:55:55.080 --> 00:55:56.880 align:middle line:90%
+somehow he doesn't manage--
+
+00:55:56.880 --> 00:55:59.747 align:middle line:84%
+maybe he manages to mix, max,
+and do it-- and magically
+
+00:55:59.747 --> 00:56:01.330 align:middle line:84%
+get to the root in
+two different ways?
+
+00:56:01.330 --> 00:56:05.060 align:middle line:90%
+
+
+00:56:05.060 --> 00:56:08.120 align:middle line:84%
+So the answer is
+he can't, actually.
+
+00:56:08.120 --> 00:56:11.330 align:middle line:84%
+The only way he can generate
+two different openings
+
+00:56:11.330 --> 00:56:14.810 align:middle line:84%
+for the root, the only
+way-- if he could generate
+
+00:56:14.810 --> 00:56:18.740 align:middle line:84%
+two different openings for this,
+one block and a different block
+
+00:56:18.740 --> 00:56:22.640 align:middle line:84%
+with the valid openings, I
+argue I can find collisions
+
+00:56:22.640 --> 00:56:25.910 align:middle line:84%
+to the original hash
+function that I started
+
+00:56:25.910 --> 00:56:30.480 align:middle line:90%
+with from 2 lambda to lambda.
+
+00:56:30.480 --> 00:56:32.480 align:middle line:84%
+The reason why I
+find collisions--
+
+00:56:32.480 --> 00:56:34.740 align:middle line:84%
+we're out of time, so we'll
+have to do it next week.
+
+00:56:34.740 --> 00:56:37.650 align:middle line:84%
+So Friday at same
+time next week.
+
+00:56:37.650 --> 00:56:40.270 align:middle line:84%
+Finally, we have
+consecutive weeks.
+
+00:56:40.270 --> 00:56:41.000 align:middle line:90%

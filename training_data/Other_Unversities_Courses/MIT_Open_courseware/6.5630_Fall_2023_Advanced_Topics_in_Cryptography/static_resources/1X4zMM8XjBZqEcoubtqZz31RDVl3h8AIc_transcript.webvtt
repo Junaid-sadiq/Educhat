@@ -1,0 +1,5254 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:01.976 align:middle line:90%
+[SQUEAKING]
+
+00:00:01.976 --> 00:00:03.952 align:middle line:90%
+[RUSTLING]
+
+00:00:03.952 --> 00:00:05.928 align:middle line:90%
+[CLICKING]
+
+00:00:05.928 --> 00:00:13.045 align:middle line:90%
+
+
+00:00:13.045 --> 00:00:13.670 align:middle line:90%
+YAEL KALAI: OK.
+
+00:00:13.670 --> 00:00:16.440 align:middle line:90%
+So should we continue?
+
+00:00:16.440 --> 00:00:18.140 align:middle line:90%
+AUDIENCE: [INAUDIBLE]
+
+00:00:18.140 --> 00:00:18.960 align:middle line:90%
+YAEL KALAI: OK.
+
+00:00:18.960 --> 00:00:21.510 align:middle line:90%
+So where are we?
+
+00:00:21.510 --> 00:00:24.680 align:middle line:84%
+So we did a little
+detour to zero knowledge,
+
+00:00:24.680 --> 00:00:27.570 align:middle line:84%
+and we even showed a
+zero-knowledge proof.
+
+00:00:27.570 --> 00:00:29.520 align:middle line:84%
+Now, I know I did it
+very, very hand-wavy.
+
+00:00:29.520 --> 00:00:31.770 align:middle line:84%
+I actually didn't plan to
+really teach zero knowledge,
+
+00:00:31.770 --> 00:00:34.580 align:middle line:84%
+even though it's hard not to
+because it's so beautiful.
+
+00:00:34.580 --> 00:00:37.070 align:middle line:90%
+But what I did want to--
+
+00:00:37.070 --> 00:00:39.230 align:middle line:84%
+the reason I'm
+pointing out this--
+
+00:00:39.230 --> 00:00:41.200 align:middle line:90%
+I mean, we will use it.
+
+00:00:41.200 --> 00:00:43.890 align:middle line:84%
+We will touch zero knowledge
+some more next time.
+
+00:00:43.890 --> 00:00:48.870 align:middle line:84%
+But this protocol is at
+least a soundness 1/2.
+
+00:00:48.870 --> 00:00:52.860 align:middle line:84%
+Now let's see what happens if
+we apply Fiat-Shamir to it.
+
+00:00:52.860 --> 00:00:55.605 align:middle line:84%
+And let's say we apply even the
+random oracle model, Fiat Shamir
+
+00:00:55.605 --> 00:00:56.730 align:middle line:90%
+in the random oracle model.
+
+00:00:56.730 --> 00:01:00.590 align:middle line:84%
+Because remember, we started
+by asking-- the Fiat-Shamir,
+
+00:01:00.590 --> 00:01:01.200 align:middle line:90%
+is it sound?
+
+00:01:01.200 --> 00:01:01.830 align:middle line:90%
+We don't know.
+
+00:01:01.830 --> 00:01:03.163 align:middle line:90%
+And then we said, you know what?
+
+00:01:03.163 --> 00:01:05.580 align:middle line:84%
+But if instead of
+actually a hash function,
+
+00:01:05.580 --> 00:01:09.840 align:middle line:84%
+you use random oracle-- like,
+a completely random function--
+
+00:01:09.840 --> 00:01:11.280 align:middle line:84%
+then of course it
+should be sound.
+
+00:01:11.280 --> 00:01:14.330 align:middle line:84%
+Because, intuitively,
+what does it
+
+00:01:14.330 --> 00:01:16.520 align:middle line:84%
+matter if the prover is
+talking with the verifier
+
+00:01:16.520 --> 00:01:20.090 align:middle line:84%
+or is talking with
+the hash function?
+
+00:01:20.090 --> 00:01:22.470 align:middle line:84%
+So if it was sound when he
+was talking to the verifier--
+
+00:01:22.470 --> 00:01:24.172 align:middle line:84%
+the verifier sends
+him random bits--
+
+00:01:24.172 --> 00:01:26.630 align:middle line:84%
+it should be sound when you're
+talking to the hash function
+
+00:01:26.630 --> 00:01:30.410 align:middle line:84%
+because the hash function
+also sends a random bit--
+
+00:01:30.410 --> 00:01:33.290 align:middle line:90%
+almost, almost true, but not.
+
+00:01:33.290 --> 00:01:34.200 align:middle line:90%
+Why?
+
+00:01:34.200 --> 00:01:36.020 align:middle line:90%
+Let's look at this example.
+
+00:01:36.020 --> 00:01:38.480 align:middle line:84%
+I'm going to tell you
+how I can easily cheat
+
+00:01:38.480 --> 00:01:40.470 align:middle line:90%
+in the random oracle model.
+
+00:01:40.470 --> 00:01:42.990 align:middle line:84%
+So I have a G. It's
+not in the language.
+
+00:01:42.990 --> 00:01:45.920 align:middle line:84%
+It does not have a
+Hamiltonian cycle.
+
+00:01:45.920 --> 00:01:47.270 align:middle line:90%
+What I'm going to do--
+
+00:01:47.270 --> 00:01:50.690 align:middle line:90%
+I'm going to hope for the best.
+
+00:01:50.690 --> 00:01:52.950 align:middle line:84%
+What do I mean,
+hope for the best?
+
+00:01:52.950 --> 00:01:54.707 align:middle line:90%
+I'm going to guess your b.
+
+00:01:54.707 --> 00:01:56.040 align:middle line:90%
+I'm going to say, you know what?
+
+00:01:56.040 --> 00:01:59.070 align:middle line:84%
+Let me try to guess what
+the b of the hash function's
+
+00:01:59.070 --> 00:01:59.620 align:middle line:90%
+going to be.
+
+00:01:59.620 --> 00:02:00.340 align:middle line:90%
+I don't know.
+
+00:02:00.340 --> 00:02:01.530 align:middle line:90%
+It's a random function.
+
+00:02:01.530 --> 00:02:03.540 align:middle line:90%
+Let me guess it's 0.
+
+00:02:03.540 --> 00:02:06.300 align:middle line:84%
+So because it's 0, I
+know I'm going to be
+
+00:02:06.300 --> 00:02:08.199 align:middle line:90%
+asked to open on the cycle.
+
+00:02:08.199 --> 00:02:11.430 align:middle line:84%
+So I'm going to commit
+to a random cycle.
+
+00:02:11.430 --> 00:02:14.050 align:middle line:90%
+This is some string, alpha.
+
+00:02:14.050 --> 00:02:17.670 align:middle line:84%
+I'm going to go to my hash
+function, give him x and alpha,
+
+00:02:17.670 --> 00:02:18.600 align:middle line:90%
+my G and alpha.
+
+00:02:18.600 --> 00:02:20.190 align:middle line:90%
+And I get back a bit b.
+
+00:02:20.190 --> 00:02:22.710 align:middle line:90%
+If it's 0, huh.
+
+00:02:22.710 --> 00:02:24.370 align:middle line:90%
+I open, I'm happy.
+
+00:02:24.370 --> 00:02:27.510 align:middle line:90%
+If it's not 0, I'll try again.
+
+00:02:27.510 --> 00:02:29.530 align:middle line:84%
+Again, I'm going to
+choose a random--
+
+00:02:29.530 --> 00:02:31.650 align:middle line:84%
+I can always choose
+0, or I can just
+
+00:02:31.650 --> 00:02:34.240 align:middle line:90%
+choose kind of a random bit.
+
+00:02:34.240 --> 00:02:35.490 align:middle line:90%
+If it's 1, I'm going to--
+
+00:02:35.490 --> 00:02:38.910 align:middle line:90%
+I can commit to the all 0's.
+
+00:02:38.910 --> 00:02:40.960 align:middle line:84%
+Because anyway, I
+just need to open 0's.
+
+00:02:40.960 --> 00:02:42.460 align:middle line:90%
+I'll just commit to the all 0's.
+
+00:02:42.460 --> 00:02:44.250 align:middle line:84%
+And then when you
+open, I give you pi,
+
+00:02:44.250 --> 00:02:47.880 align:middle line:84%
+and I'll open the
+non-edges, seeing it's 0.
+
+00:02:47.880 --> 00:02:51.330 align:middle line:90%
+The point is I can rerun you.
+
+00:02:51.330 --> 00:02:59.070 align:middle line:84%
+In the actual protocol, yeah,
+with probability 1/2, I win.
+
+00:02:59.070 --> 00:03:03.160 align:middle line:84%
+But I can't tell
+you, OK, let's try.
+
+00:03:03.160 --> 00:03:04.835 align:middle line:84%
+Oh, didn't work,
+let me try again.
+
+00:03:04.835 --> 00:03:07.030 align:middle line:90%
+You say no, you failed.
+
+00:03:07.030 --> 00:03:08.500 align:middle line:90%
+You don't get to try again.
+
+00:03:08.500 --> 00:03:11.140 align:middle line:84%
+I know that if you try again,
+again, eventually, you'll win.
+
+00:03:11.140 --> 00:03:13.425 align:middle line:90%
+So you got one try.
+
+00:03:13.425 --> 00:03:17.950 align:middle line:84%
+But with a random oracle, I have
+the oracle, so I can abuse it.
+
+00:03:17.950 --> 00:03:20.580 align:middle line:90%
+So I can try many, many times.
+
+00:03:20.580 --> 00:03:23.250 align:middle line:90%
+And that's how I break.
+
+00:03:23.250 --> 00:03:25.950 align:middle line:90%
+OK, so what did we learn?
+
+00:03:25.950 --> 00:03:29.520 align:middle line:84%
+Let's go back to the
+random oracle model.
+
+00:03:29.520 --> 00:03:39.090 align:middle line:84%
+So first, it's not
+secure or not sound
+
+00:03:39.090 --> 00:03:48.396 align:middle line:84%
+if the protocol has
+non-negligible soundness.
+
+00:03:48.396 --> 00:03:51.360 align:middle line:90%
+
+
+00:03:51.360 --> 00:03:56.900 align:middle line:84%
+If you can cheat with
+probability non-negligible,
+
+00:03:56.900 --> 00:04:00.770 align:middle line:84%
+you're going to try,
+try, try until it works.
+
+00:04:00.770 --> 00:04:04.930 align:middle line:84%
+And then you present
+that as a proof.
+
+00:04:04.930 --> 00:04:06.560 align:middle line:90%
+So that was Leo's question.
+
+00:04:06.560 --> 00:04:10.070 align:middle line:84%
+And the answer is,
+it's not sound.
+
+00:04:10.070 --> 00:04:10.570 align:middle line:90%
+OK.
+
+00:04:10.570 --> 00:04:14.770 align:middle line:90%
+So then you say, fine.
+
+00:04:14.770 --> 00:04:20.709 align:middle line:84%
+Is it sound if the protocol
+has negligible soundness?
+
+00:04:20.709 --> 00:04:23.770 align:middle line:90%
+And the answer is no.
+
+00:04:23.770 --> 00:04:28.300 align:middle line:84%
+OK, so also not
+sound if protocol
+
+00:04:28.300 --> 00:04:31.136 align:middle line:90%
+has negligible soundness.
+
+00:04:31.136 --> 00:04:34.620 align:middle line:90%
+
+
+00:04:34.620 --> 00:04:35.120 align:middle line:90%
+OK.
+
+00:04:35.120 --> 00:04:40.630 align:middle line:84%
+That seems a bit sad, but let
+me give you the counterexample.
+
+00:04:40.630 --> 00:04:45.850 align:middle line:84%
+So let's go back to our
+beautiful zero-knowledge
+
+00:04:45.850 --> 00:04:47.410 align:middle line:90%
+protocol here.
+
+00:04:47.410 --> 00:04:49.480 align:middle line:90%
+And it has only soundness 1/2.
+
+00:04:49.480 --> 00:04:51.830 align:middle line:84%
+That was kind of the
+complaint, right?
+
+00:04:51.830 --> 00:04:52.540 align:middle line:90%
+Fine.
+
+00:04:52.540 --> 00:04:55.720 align:middle line:84%
+Let me make the soundness
+negligible, even 2
+
+00:04:55.720 --> 00:04:57.520 align:middle line:90%
+to the minus lambda for you.
+
+00:04:57.520 --> 00:04:58.570 align:middle line:90%
+OK, how?
+
+00:04:58.570 --> 00:05:01.280 align:middle line:84%
+Let's repeat it
+sequentially lambda times.
+
+00:05:01.280 --> 00:05:07.780 align:middle line:84%
+OK, so we have a G. I send you
+a commitment of, supposedly,
+
+00:05:07.780 --> 00:05:08.900 align:middle line:90%
+a random cycle.
+
+00:05:08.900 --> 00:05:11.450 align:middle line:84%
+You send me a bit,
+I open accordingly.
+
+00:05:11.450 --> 00:05:13.700 align:middle line:84%
+But then you're like, OK,
+OK, wait, I'm not convinced.
+
+00:05:13.700 --> 00:05:14.660 align:middle line:90%
+Let's try again.
+
+00:05:14.660 --> 00:05:15.220 align:middle line:90%
+Fine.
+
+00:05:15.220 --> 00:05:16.820 align:middle line:90%
+I send you another commitment.
+
+00:05:16.820 --> 00:05:18.680 align:middle line:90%
+You send me another random bit.
+
+00:05:18.680 --> 00:05:20.680 align:middle line:90%
+I reveal.
+
+00:05:20.680 --> 00:05:22.520 align:middle line:84%
+Then you say, no, no,
+no, still not happy.
+
+00:05:22.520 --> 00:05:23.270 align:middle line:90%
+Let's do it again.
+
+00:05:23.270 --> 00:05:26.830 align:middle line:90%
+And we do it lambda times.
+
+00:05:26.830 --> 00:05:33.310 align:middle line:84%
+Now if all the time, every
+single time, I'm accepted,
+
+00:05:33.310 --> 00:05:34.503 align:middle line:90%
+you're pretty convinced.
+
+00:05:34.503 --> 00:05:36.920 align:middle line:84%
+Now, the probability that I
+can cheat is 1/2 to the lambda
+
+00:05:36.920 --> 00:05:38.587 align:middle line:84%
+because every time
+with probability 1/2,
+
+00:05:38.587 --> 00:05:41.090 align:middle line:84%
+you catch me if I did
+all of them correctly.
+
+00:05:41.090 --> 00:05:42.860 align:middle line:90%
+So it's very negligible.
+
+00:05:42.860 --> 00:05:44.710 align:middle line:90%
+It's exponentially small.
+
+00:05:44.710 --> 00:05:47.620 align:middle line:84%
+Now, I want to argue, I can
+cheat in the random oracle
+
+00:05:47.620 --> 00:05:48.140 align:middle line:90%
+model.
+
+00:05:48.140 --> 00:05:49.060 align:middle line:90%
+How?
+
+00:05:49.060 --> 00:05:50.450 align:middle line:90%
+Exactly the same thing.
+
+00:05:50.450 --> 00:05:52.940 align:middle line:90%
+How do I cheat?
+
+00:05:52.940 --> 00:05:57.270 align:middle line:84%
+First, do not have alpha 1, beta
+1, gamma 1, alpha 2, beta 2,
+
+00:05:57.270 --> 00:06:00.360 align:middle line:90%
+gamma 2, alpha 3, da, da, da.
+
+00:06:00.360 --> 00:06:01.140 align:middle line:90%
+Let's start.
+
+00:06:01.140 --> 00:06:03.680 align:middle line:90%
+I'm the cheating prover.
+
+00:06:03.680 --> 00:06:04.650 align:middle line:90%
+I try.
+
+00:06:04.650 --> 00:06:07.760 align:middle line:90%
+I guess b1 is going to be 0.
+
+00:06:07.760 --> 00:06:09.420 align:middle line:90%
+Alpha 1, no, fine.
+
+00:06:09.420 --> 00:06:11.730 align:middle line:84%
+I work hard, I get my
+alpha 1, beta 1, gamma 1.
+
+00:06:11.730 --> 00:06:12.230 align:middle line:90%
+Good.
+
+00:06:12.230 --> 00:06:15.260 align:middle line:90%
+Now alpha 2-- same thing.
+
+00:06:15.260 --> 00:06:16.680 align:middle line:90%
+I guess beta 2.
+
+00:06:16.680 --> 00:06:18.385 align:middle line:90%
+But I keep the first transcript.
+
+00:06:18.385 --> 00:06:19.260 align:middle line:90%
+I don't toss it away.
+
+00:06:19.260 --> 00:06:20.930 align:middle line:90%
+I keep the first transcript.
+
+00:06:20.930 --> 00:06:23.465 align:middle line:90%
+And then I guess beta 2.
+
+00:06:23.465 --> 00:06:24.590 align:middle line:90%
+If I guess correctly, good.
+
+00:06:24.590 --> 00:06:26.760 align:middle line:84%
+If I didn't, I'm going
+to redo, da, da, da.
+
+00:06:26.760 --> 00:06:28.670 align:middle line:84%
+And after a constant
+number of times,
+
+00:06:28.670 --> 00:06:30.860 align:middle line:84%
+I'm going to get the second
+transcript-- probably
+
+00:06:30.860 --> 00:06:32.550 align:middle line:90%
+after twice, but whatever.
+
+00:06:32.550 --> 00:06:36.290 align:middle line:84%
+And then I always
+keep the first--
+
+00:06:36.290 --> 00:06:39.690 align:middle line:84%
+I don't know-- as many
+transcripts as I had,
+
+00:06:39.690 --> 00:06:42.360 align:middle line:90%
+and I extend it.
+
+00:06:42.360 --> 00:06:44.450 align:middle line:90%
+So I can convince you.
+
+00:06:44.450 --> 00:06:45.180 align:middle line:90%
+Yeah?
+
+00:06:45.180 --> 00:06:47.360 align:middle line:84%
+AUDIENCE: What if I do
+parallel repetition things?
+
+00:06:47.360 --> 00:06:49.440 align:middle line:84%
+YAEL KALAI: Ah, very
+good, very good.
+
+00:06:49.440 --> 00:06:53.450 align:middle line:84%
+So the question is, what
+about parallel repetition?
+
+00:06:53.450 --> 00:06:54.200 align:middle line:90%
+OK.
+
+00:06:54.200 --> 00:06:54.930 align:middle line:90%
+Yeah?
+
+00:06:54.930 --> 00:06:56.430 align:middle line:84%
+AUDIENCE: This
+gradual thing is fine
+
+00:06:56.430 --> 00:06:59.540 align:middle line:84%
+if you hash the entire
+previous transcript.
+
+00:06:59.540 --> 00:07:00.140 align:middle line:90%
+Like--
+
+00:07:00.140 --> 00:07:01.010 align:middle line:84%
+AUDIENCE: No, because
+you can just--
+
+00:07:01.010 --> 00:07:01.470 align:middle line:90%
+YAEL KALAI: No.
+
+00:07:01.470 --> 00:07:01.860 align:middle line:90%
+AUDIENCE: No?
+
+00:07:01.860 --> 00:07:03.080 align:middle line:84%
+AUDIENCE: You can
+just get a new--
+
+00:07:03.080 --> 00:07:03.410 align:middle line:90%
+YAEL KALAI: Good.
+
+00:07:03.410 --> 00:07:05.160 align:middle line:84%
+AUDIENCE: --commitment
+until you're happy.
+
+00:07:05.160 --> 00:07:07.090 align:middle line:84%
+AUDIENCE: Ah,
+that's [INAUDIBLE].
+
+00:07:07.090 --> 00:07:09.470 align:middle line:90%
+YAEL KALAI: [LAUGHS] Yeah.
+
+00:07:09.470 --> 00:07:12.200 align:middle line:90%
+So let me emphasize, actually--
+
+00:07:12.200 --> 00:07:16.080 align:middle line:84%
+it's a good point
+that you're making.
+
+00:07:16.080 --> 00:07:23.280 align:middle line:84%
+Note, when we apply Fiat-Shamir,
+I'm applying the hash.
+
+00:07:23.280 --> 00:07:27.450 align:middle line:84%
+And what I said is, oh, I
+do the same exact attack.
+
+00:07:27.450 --> 00:07:28.980 align:middle line:90%
+I get one protocol.
+
+00:07:28.980 --> 00:07:30.980 align:middle line:84%
+Like, I get one transcript,
+another, da, da, da,
+
+00:07:30.980 --> 00:07:32.820 align:middle line:90%
+lambda transcript, and I'm done.
+
+00:07:32.820 --> 00:07:37.260 align:middle line:84%
+Note that every time, I hash
+everything from the beginning.
+
+00:07:37.260 --> 00:07:40.230 align:middle line:84%
+Like, the hash is an alpha
+1, beta 1, gamma 1, alpha 2,
+
+00:07:40.230 --> 00:07:41.150 align:middle line:90%
+beta 2--
+
+00:07:41.150 --> 00:07:43.070 align:middle line:90%
+but so what?
+
+00:07:43.070 --> 00:07:44.660 align:middle line:90%
+I'm fine.
+
+00:07:44.660 --> 00:07:46.715 align:middle line:90%
+Let's say I get the first--
+
+00:07:46.715 --> 00:07:49.230 align:middle line:84%
+let's say three
+transcripts worked out.
+
+00:07:49.230 --> 00:07:52.110 align:middle line:84%
+So I have alpha 1, beta 1, gamma
+1, alpha 2, beta, and alpha 3.
+
+00:07:52.110 --> 00:07:53.870 align:middle line:90%
+Now I'm in the fourth.
+
+00:07:53.870 --> 00:07:56.720 align:middle line:90%
+I guess beta 4.
+
+00:07:56.720 --> 00:07:58.898 align:middle line:90%
+I choose alpha 4 accordingly.
+
+00:07:58.898 --> 00:08:00.440 align:middle line:84%
+I hash everything
+from the beginning,
+
+00:08:00.440 --> 00:08:03.680 align:middle line:84%
+like the Fiat-Shamir hash,
+and I hope to see my beta 4.
+
+00:08:03.680 --> 00:08:04.970 align:middle line:90%
+I see it, I'm happy.
+
+00:08:04.970 --> 00:08:07.350 align:middle line:84%
+I can compute gamma
+4, and I continue.
+
+00:08:07.350 --> 00:08:11.120 align:middle line:84%
+I don't see it, I
+try alpha 3 again.
+
+00:08:11.120 --> 00:08:13.940 align:middle line:84%
+I don't hash my first two that
+I already did successfully.
+
+00:08:13.940 --> 00:08:15.720 align:middle line:90%
+I, every time, extend.
+
+00:08:15.720 --> 00:08:19.307 align:middle line:84%
+And the point is, I can always
+extend in constant overhead
+
+00:08:19.307 --> 00:08:19.890 align:middle line:90%
+kind of thing.
+
+00:08:19.890 --> 00:08:20.990 align:middle line:90%
+Yeah?
+
+00:08:20.990 --> 00:08:24.530 align:middle line:84%
+AUDIENCE: Shouldn't that be
+hard for this bounded power?
+
+00:08:24.530 --> 00:08:25.860 align:middle line:90%
+YAEL KALAI: So the runtime--
+
+00:08:25.860 --> 00:08:25.940 align:middle line:90%
+no.
+
+00:08:25.940 --> 00:08:28.290 align:middle line:84%
+OK, so the question-- look,
+how long does it take--
+
+00:08:28.290 --> 00:08:29.940 align:middle line:90%
+I'm a bounded, cheating prover.
+
+00:08:29.940 --> 00:08:31.770 align:middle line:90%
+How long does it take me?
+
+00:08:31.770 --> 00:08:35.090 align:middle line:90%
+Every transcript, it takes me--
+
+00:08:35.090 --> 00:08:37.880 align:middle line:90%
+
+
+00:08:37.880 --> 00:08:41.419 align:middle line:84%
+on average, I do constant number
+of tries, an average of two
+
+00:08:41.419 --> 00:08:42.059 align:middle line:90%
+tries.
+
+00:08:42.059 --> 00:08:43.760 align:middle line:84%
+So it's actually
+quite efficient.
+
+00:08:43.760 --> 00:08:48.540 align:middle line:84%
+I can generate my
+transcript quite fast.
+
+00:08:48.540 --> 00:08:50.230 align:middle line:90%
+Because how do I generate it?
+
+00:08:50.230 --> 00:08:53.920 align:middle line:84%
+Again, I have G.
+It may not have.
+
+00:08:53.920 --> 00:08:54.970 align:middle line:90%
+It may have, it may not.
+
+00:08:54.970 --> 00:08:56.470 align:middle line:84%
+It doesn't have a
+Hamiltonian cycle.
+
+00:08:56.470 --> 00:08:58.420 align:middle line:84%
+I don't even know if it
+has a Hamiltonian cycle,
+
+00:08:58.420 --> 00:09:00.670 align:middle line:84%
+neither do I care, because
+I'm never going to use it.
+
+00:09:00.670 --> 00:09:01.910 align:middle line:90%
+What do I do?
+
+00:09:01.910 --> 00:09:04.720 align:middle line:90%
+
+
+00:09:04.720 --> 00:09:07.780 align:middle line:90%
+I guess beta 1 randomly.
+
+00:09:07.780 --> 00:09:11.040 align:middle line:90%
+Very efficiently, I commit.
+
+00:09:11.040 --> 00:09:13.300 align:middle line:84%
+Because if it's 0, I just
+commit to a random cycle.
+
+00:09:13.300 --> 00:09:15.160 align:middle line:90%
+If it's 1, I commit to all 0's.
+
+00:09:15.160 --> 00:09:16.360 align:middle line:90%
+That's very easy.
+
+00:09:16.360 --> 00:09:18.300 align:middle line:90%
+And then I apply the hash.
+
+00:09:18.300 --> 00:09:21.340 align:middle line:84%
+With probability 1/2, I got
+the beta 1 that I chose.
+
+00:09:21.340 --> 00:09:26.800 align:middle line:84%
+And then I can very easily
+compute my answer, gamma 1,
+
+00:09:26.800 --> 00:09:29.850 align:middle line:90%
+which is just a trivial opening.
+
+00:09:29.850 --> 00:09:32.220 align:middle line:90%
+And I only need to repeat it--
+
+00:09:32.220 --> 00:09:34.330 align:middle line:84%
+like, it's only bad
+with probability 1/2.
+
+00:09:34.330 --> 00:09:37.410 align:middle line:84%
+So, overall, I won't need
+to repeat the same one too
+
+00:09:37.410 --> 00:09:39.600 align:middle line:90%
+many times.
+
+00:09:39.600 --> 00:09:44.250 align:middle line:84%
+AUDIENCE: So that's where
+the non-soundness comes from,
+
+00:09:44.250 --> 00:09:46.575 align:middle line:84%
+from possibly equal
+sign [INAUDIBLE]?
+
+00:09:46.575 --> 00:09:48.073 align:middle line:90%
+YAEL KALAI: That is where?
+
+00:09:48.073 --> 00:09:49.240 align:middle line:90%
+AUDIENCE: It's [INAUDIBLE]--
+
+00:09:49.240 --> 00:09:50.948 align:middle line:84%
+YAEL KALAI: That's
+why this is not sound.
+
+00:09:50.948 --> 00:09:51.900 align:middle line:90%
+Exactly.
+
+00:09:51.900 --> 00:09:54.816 align:middle line:84%
+So I have negligible soundness,
+but still it's not sound.
+
+00:09:54.816 --> 00:09:55.316 align:middle line:90%
+Exactly.
+
+00:09:55.316 --> 00:09:58.080 align:middle line:90%
+
+
+00:09:58.080 --> 00:10:00.430 align:middle line:90%
+OK, so this is bad.
+
+00:10:00.430 --> 00:10:03.250 align:middle line:84%
+But that's the only time
+when it's not sound.
+
+00:10:03.250 --> 00:10:03.870 align:middle line:90%
+That's it.
+
+00:10:03.870 --> 00:10:05.170 align:middle line:90%
+Everything else is sound.
+
+00:10:05.170 --> 00:10:07.540 align:middle line:84%
+So that goes to the question
+about parallel repetition.
+
+00:10:07.540 --> 00:10:11.850 align:middle line:84%
+So now let me actually
+give you the theorem.
+
+00:10:11.850 --> 00:10:12.395 align:middle line:90%
+Let's see.
+
+00:10:12.395 --> 00:10:41.070 align:middle line:90%
+
+
+00:10:41.070 --> 00:10:54.610 align:middle line:84%
+So the theorem is that the
+Fiat-Shamir paradigm is sound--
+
+00:10:54.610 --> 00:11:03.940 align:middle line:84%
+finally is sound-- in the random
+oracle model if the underlying
+
+00:11:03.940 --> 00:11:09.340 align:middle line:90%
+protocol is--
+
+00:11:09.340 --> 00:11:20.730 align:middle line:84%
+first, it has negligible
+soundness and constant round.
+
+00:11:20.730 --> 00:11:26.710 align:middle line:90%
+
+
+00:11:26.710 --> 00:11:29.890 align:middle line:84%
+So if it has
+negligible soundness
+
+00:11:29.890 --> 00:11:35.360 align:middle line:84%
+and it has constant number
+of rounds, then it's sound.
+
+00:11:35.360 --> 00:11:38.020 align:middle line:84%
+Before, I got
+negligible soundness
+
+00:11:38.020 --> 00:11:40.425 align:middle line:84%
+by repeating-- getting
+many, many, many rounds.
+
+00:11:40.425 --> 00:11:43.570 align:middle line:90%
+
+
+00:11:43.570 --> 00:11:44.265 align:middle line:90%
+Yeah?
+
+00:11:44.265 --> 00:11:45.640 align:middle line:84%
+AUDIENCE: In public
+[INAUDIBLE]--
+
+00:11:45.640 --> 00:11:46.060 align:middle line:90%
+YAEL KALAI: Oh.
+
+00:11:46.060 --> 00:11:47.020 align:middle line:90%
+AUDIENCE: --we run--
+
+00:11:47.020 --> 00:11:47.740 align:middle line:90%
+YAEL KALAI: Yeah.
+
+00:11:47.740 --> 00:11:50.050 align:middle line:84%
+Otherwise, you
+can't even apply--
+
+00:11:50.050 --> 00:11:53.890 align:middle line:90%
+if the public coin.
+
+00:11:53.890 --> 00:11:54.910 align:middle line:90%
+Yeah.
+
+00:11:54.910 --> 00:11:57.680 align:middle line:84%
+If it's not public coin, you
+can't even-- like, completeness,
+
+00:11:57.680 --> 00:11:59.110 align:middle line:90%
+it doesn't hold.
+
+00:11:59.110 --> 00:12:04.990 align:middle line:84%
+So I'm always talking about
+public coin protocols.
+
+00:12:04.990 --> 00:12:08.510 align:middle line:84%
+But let me say, this is
+not a characterization.
+
+00:12:08.510 --> 00:12:09.940 align:middle line:90%
+This is not an if and only if.
+
+00:12:09.940 --> 00:12:14.020 align:middle line:84%
+We do have protocols
+with many rounds
+
+00:12:14.020 --> 00:12:17.890 align:middle line:84%
+for which the random
+oracle model does apply--
+
+00:12:17.890 --> 00:12:20.200 align:middle line:90%
+in particular, GKR.
+
+00:12:20.200 --> 00:12:21.830 align:middle line:90%
+So GKR is many rounds.
+
+00:12:21.830 --> 00:12:24.020 align:middle line:84%
+So can we reduce
+interaction in GKR?
+
+00:12:24.020 --> 00:12:27.220 align:middle line:84%
+And the answer is, yes,
+we can, even though it
+
+00:12:27.220 --> 00:12:28.810 align:middle line:90%
+has many, many rounds.
+
+00:12:28.810 --> 00:12:34.870 align:middle line:84%
+And the reason why we can do
+it is because it's sound also--
+
+00:12:34.870 --> 00:12:49.190 align:middle line:84%
+or, more generally, if the
+underlying protocol has what's
+
+00:12:49.190 --> 00:12:52.830 align:middle line:90%
+called round-by-round soundness.
+
+00:12:52.830 --> 00:12:55.435 align:middle line:84%
+I'll define it later,
+maybe not today.
+
+00:12:55.435 --> 00:13:02.120 align:middle line:90%
+
+
+00:13:02.120 --> 00:13:07.100 align:middle line:84%
+And any such protocol has
+round-by-round soundness.
+
+00:13:07.100 --> 00:13:08.510 align:middle line:90%
+But this is more general.
+
+00:13:08.510 --> 00:13:10.560 align:middle line:84%
+And GKR has
+round-by-round soundness.
+
+00:13:10.560 --> 00:13:13.670 align:middle line:84%
+So this is kind
+of in parentheses
+
+00:13:13.670 --> 00:13:18.410 align:middle line:84%
+because we're not going
+to talk about it today.
+
+00:13:18.410 --> 00:13:19.230 align:middle line:90%
+Maybe we will.
+
+00:13:19.230 --> 00:13:19.940 align:middle line:90%
+We'll see.
+
+00:13:19.940 --> 00:13:25.580 align:middle line:90%
+OK, but let me first prove this.
+
+00:13:25.580 --> 00:13:27.680 align:middle line:90%
+OK.
+
+00:13:27.680 --> 00:13:31.525 align:middle line:90%
+So why is it--
+
+00:13:31.525 --> 00:13:32.275 align:middle line:90%
+let me do it here.
+
+00:13:32.275 --> 00:13:42.950 align:middle line:90%
+
+
+00:13:42.950 --> 00:13:43.450 align:middle line:90%
+OK.
+
+00:13:43.450 --> 00:13:45.980 align:middle line:90%
+
+
+00:13:45.980 --> 00:13:49.280 align:middle line:90%
+So let's do the proof.
+
+00:13:49.280 --> 00:13:52.670 align:middle line:84%
+So take a protocol, a
+public coin protocol
+
+00:13:52.670 --> 00:13:55.530 align:middle line:84%
+with constant number of rounds
+that has negligible soundness.
+
+00:13:55.530 --> 00:13:58.160 align:middle line:84%
+And I'm going to
+prove to you that it's
+
+00:13:58.160 --> 00:14:00.350 align:middle line:84%
+sound in the random oracle
+when I apply Fiat-Shamir
+
+00:14:00.350 --> 00:14:01.820 align:middle line:90%
+on the random oracle model.
+
+00:14:01.820 --> 00:14:06.787 align:middle line:90%
+OK, So fix any protocol.
+
+00:14:06.787 --> 00:14:09.920 align:middle line:90%
+
+
+00:14:09.920 --> 00:14:14.570 align:middle line:84%
+Let's call it P, V. Let's
+begin-- let's assume-- just
+
+00:14:14.570 --> 00:14:15.840 align:middle line:90%
+for simplicity of notation.
+
+00:14:15.840 --> 00:14:17.030 align:middle line:90%
+You'll see how it extends--
+
+00:14:17.030 --> 00:14:19.200 align:middle line:90%
+that it's three messages.
+
+00:14:19.200 --> 00:14:32.010 align:middle line:84%
+So suppose PV has three messages
+and negligible soundness.
+
+00:14:32.010 --> 00:14:35.610 align:middle line:90%
+
+
+00:14:35.610 --> 00:14:39.900 align:middle line:84%
+We'll later see how to
+extend it to more rounds.
+
+00:14:39.900 --> 00:14:43.120 align:middle line:84%
+So P, V-- let's say
+there are some x.
+
+00:14:43.120 --> 00:14:45.780 align:middle line:84%
+The question is in
+the language or not.
+
+00:14:45.780 --> 00:14:48.420 align:middle line:90%
+And they both have--
+
+00:14:48.420 --> 00:14:50.710 align:middle line:84%
+so before the hash,
+there's like, alpha.
+
+00:14:50.710 --> 00:14:52.720 align:middle line:90%
+He gets back a random beta.
+
+00:14:52.720 --> 00:14:54.010 align:middle line:90%
+He gets back gamma.
+
+00:14:54.010 --> 00:14:57.320 align:middle line:90%
+And he chooses to accept or not.
+
+00:14:57.320 --> 00:14:57.820 align:middle line:90%
+OK.
+
+00:14:57.820 --> 00:15:12.270 align:middle line:84%
+Now suppose there exists a
+poly-size adversary P* that
+
+00:15:12.270 --> 00:15:13.260 align:middle line:90%
+cheats.
+
+00:15:13.260 --> 00:15:14.940 align:middle line:84%
+I want to argue
+that then it means
+
+00:15:14.940 --> 00:15:17.140 align:middle line:84%
+I can cheat in the original,
+interactive protocol.
+
+00:15:17.140 --> 00:15:27.810 align:middle line:84%
+So suppose there's P* and x not
+in L such that the probability
+
+00:15:27.810 --> 00:15:34.720 align:middle line:90%
+that P* with H and V with H--
+
+00:15:34.720 --> 00:15:36.455 align:middle line:84%
+this is kind of
+the Fiat-Shamir--
+
+00:15:36.455 --> 00:15:39.330 align:middle line:90%
+
+
+00:15:39.330 --> 00:15:44.670 align:middle line:84%
+it accepts with probability
+at least, let's say, epsilon.
+
+00:15:44.670 --> 00:15:50.820 align:middle line:84%
+I'm going to argue that then I
+can cheat in the original scheme
+
+00:15:50.820 --> 00:15:54.080 align:middle line:84%
+with probability a little less
+than epsilon but not too small.
+
+00:15:54.080 --> 00:15:57.290 align:middle line:90%
+
+
+00:15:57.290 --> 00:15:57.790 align:middle line:90%
+OK.
+
+00:15:57.790 --> 00:16:00.420 align:middle line:84%
+So if there exists a
+cheating prover that
+
+00:16:00.420 --> 00:16:02.350 align:middle line:84%
+can cheat in the
+Fiat-Shamir version,
+
+00:16:02.350 --> 00:16:04.830 align:middle line:84%
+but in the random
+oracle model, then I
+
+00:16:04.830 --> 00:16:07.160 align:middle line:84%
+can use them to cheat
+in the original scheme.
+
+00:16:07.160 --> 00:16:10.260 align:middle line:90%
+
+
+00:16:10.260 --> 00:16:11.280 align:middle line:90%
+OK, so how?
+
+00:16:11.280 --> 00:16:15.970 align:middle line:84%
+So first, note, because we're
+a negligible probability,
+
+00:16:15.970 --> 00:16:17.500 align:middle line:90%
+this is large.
+
+00:16:17.500 --> 00:16:18.580 align:middle line:90%
+So beta is public coin.
+
+00:16:18.580 --> 00:16:20.128 align:middle line:90%
+It's random in--
+
+00:16:20.128 --> 00:16:21.420 align:middle line:90%
+I don't know-- let's call it k.
+
+00:16:21.420 --> 00:16:24.130 align:middle line:90%
+But k's super-logarithmic.
+
+00:16:24.130 --> 00:16:26.920 align:middle line:84%
+Because there are only
+polynomially many options,
+
+00:16:26.920 --> 00:16:28.360 align:middle line:90%
+on one of them, I can cheat.
+
+00:16:28.360 --> 00:16:33.750 align:middle line:84%
+So this is not
+statistical sound--
+
+00:16:33.750 --> 00:16:35.070 align:middle line:90%
+sorry.
+
+00:16:35.070 --> 00:16:35.890 align:middle line:90%
+Erase what I said.
+
+00:16:35.890 --> 00:16:36.640 align:middle line:90%
+Let me try again.
+
+00:16:36.640 --> 00:16:45.130 align:middle line:84%
+So these protocols-- on
+one of them, I can cheat.
+
+00:16:45.130 --> 00:16:46.800 align:middle line:84%
+Like, for any
+alpha, I can always
+
+00:16:46.800 --> 00:16:48.220 align:middle line:84%
+find a beta for
+which I can cheat.
+
+00:16:48.220 --> 00:16:50.290 align:middle line:84%
+Otherwise, if I can't
+cheat on any beta,
+
+00:16:50.290 --> 00:16:53.050 align:middle line:84%
+there's no point in doing
+interaction to begin with.
+
+00:16:53.050 --> 00:16:56.890 align:middle line:84%
+I'll just give you
+alpha and a fixed bit.
+
+00:16:56.890 --> 00:16:58.480 align:middle line:84%
+I'll give you gamma,
+and that's it.
+
+00:16:58.480 --> 00:17:00.750 align:middle line:84%
+So in these protocols,
+there's always
+
+00:17:00.750 --> 00:17:03.390 align:middle line:90%
+betas for which I can cheat on.
+
+00:17:03.390 --> 00:17:06.869 align:middle line:84%
+And therefore, because I
+have negligible soundness,
+
+00:17:06.869 --> 00:17:09.310 align:middle line:84%
+beta must come from a
+super-polynomial universe.
+
+00:17:09.310 --> 00:17:13.547 align:middle line:84%
+If it's only polynomial,
+then I can play the same game
+
+00:17:13.547 --> 00:17:15.339 align:middle line:84%
+that I did before, kind
+of hope to succeed.
+
+00:17:15.339 --> 00:17:18.849 align:middle line:90%
+It's like a-- too bad.
+
+00:17:18.849 --> 00:17:20.980 align:middle line:84%
+In Hebrew, we have a very
+good saying for this.
+
+00:17:20.980 --> 00:17:25.410 align:middle line:84%
+Like, when you cheat, the hope
+of not being caught-- there's
+
+00:17:25.410 --> 00:17:26.010 align:middle line:90%
+a word for it.
+
+00:17:26.010 --> 00:17:26.510 align:middle line:90%
+[LAUGHTER]
+
+00:17:26.510 --> 00:17:29.070 align:middle line:90%
+But yeah, Americans are too--
+
+00:17:29.070 --> 00:17:31.740 align:middle line:84%
+they don't cheat, so they
+don't have words for this.
+
+00:17:31.740 --> 00:17:32.440 align:middle line:84%
+AUDIENCE: Would be
+like a con or some--
+
+00:17:32.440 --> 00:17:33.148 align:middle line:90%
+YAEL KALAI: What?
+
+00:17:33.148 --> 00:17:34.960 align:middle line:90%
+AUDIENCE: Like a con?
+
+00:17:34.960 --> 00:17:35.975 align:middle line:90%
+It would be like--
+
+00:17:35.975 --> 00:17:37.100 align:middle line:90%
+YAEL KALAI: Is that a word?
+
+00:17:37.100 --> 00:17:37.430 align:middle line:90%
+OK.
+
+00:17:37.430 --> 00:17:38.055 align:middle line:90%
+AUDIENCE: Yeah.
+
+00:17:38.055 --> 00:17:38.770 align:middle line:90%
+YAEL KALAI: Con?
+
+00:17:38.770 --> 00:17:41.303 align:middle line:84%
+AUDIENCE: As in a
+confidence man or like--
+
+00:17:41.303 --> 00:17:42.220 align:middle line:90%
+YAEL KALAI: Oh, I see.
+
+00:17:42.220 --> 00:17:43.760 align:middle line:84%
+AUDIENCE: --you are
+lying to someone.
+
+00:17:43.760 --> 00:17:44.145 align:middle line:90%
+YAEL KALAI: Exactly.
+
+00:17:44.145 --> 00:17:44.530 align:middle line:90%
+AUDIENCE: Like--
+
+00:17:44.530 --> 00:17:44.820 align:middle line:90%
+YAEL KALAI: Yeah.
+
+00:17:44.820 --> 00:17:45.945 align:middle line:90%
+AUDIENCE: Could not be con.
+
+00:17:45.945 --> 00:17:47.500 align:middle line:90%
+YAEL KALAI: Exactly, exactly.
+
+00:17:47.500 --> 00:17:49.800 align:middle line:90%
+Yeah.
+
+00:17:49.800 --> 00:17:50.300 align:middle line:90%
+OK.
+
+00:17:50.300 --> 00:17:52.593 align:middle line:90%
+So suppose there exists--
+
+00:17:52.593 --> 00:17:54.010 align:middle line:84%
+AUDIENCE: Fake it
+til you make it.
+
+00:17:54.010 --> 00:17:55.690 align:middle line:84%
+YAEL KALAI: Fake it til
+you make it, exactly.
+
+00:17:55.690 --> 00:17:56.190 align:middle line:90%
+Totally.
+
+00:17:56.190 --> 00:17:57.550 align:middle line:90%
+[LAUGHTER]
+
+00:17:57.550 --> 00:18:00.490 align:middle line:84%
+OK, so suppose there
+exists a cheating prover.
+
+00:18:00.490 --> 00:18:02.360 align:middle line:90%
+Now, how does he cheat?
+
+00:18:02.360 --> 00:18:04.070 align:middle line:90%
+Let's see what this prover does.
+
+00:18:04.070 --> 00:18:12.800 align:middle line:84%
+This prover gives-- so this
+prover outputs some alpha, beta,
+
+00:18:12.800 --> 00:18:15.830 align:middle line:90%
+and gamma, like a transcript.
+
+00:18:15.830 --> 00:18:22.180 align:middle line:84%
+And this beta is
+hash of x and alpha.
+
+00:18:22.180 --> 00:18:23.420 align:middle line:90%
+That's how he cheats.
+
+00:18:23.420 --> 00:18:25.370 align:middle line:90%
+That's a valid transcript.
+
+00:18:25.370 --> 00:18:26.740 align:middle line:90%
+That's a transcript that will--
+
+00:18:26.740 --> 00:18:30.500 align:middle line:84%
+and such that the
+original verifier accepts.
+
+00:18:30.500 --> 00:18:34.280 align:middle line:84%
+So in the Fiat-Shamir, the
+prover, he just outputs this.
+
+00:18:34.280 --> 00:18:38.630 align:middle line:84%
+And the verifier checks that
+beta is indeed H of x and alpha
+
+00:18:38.630 --> 00:18:41.050 align:middle line:84%
+and that this is a
+valid transcript.
+
+00:18:41.050 --> 00:18:41.950 align:middle line:90%
+OK.
+
+00:18:41.950 --> 00:18:48.580 align:middle line:84%
+Now, the cheating prover,
+he sends oracle queries
+
+00:18:48.580 --> 00:18:50.000 align:middle line:90%
+to his hash function.
+
+00:18:50.000 --> 00:18:51.890 align:middle line:90%
+Now, this prover is bounded.
+
+00:18:51.890 --> 00:18:55.210 align:middle line:90%
+He's polynomially bounded.
+
+00:18:55.210 --> 00:18:57.140 align:middle line:90%
+Let's say he sends--
+
+00:18:57.140 --> 00:19:18.530 align:middle line:84%
+so suppose that P* sends q
+queries to the oracle, to H.
+
+00:19:18.530 --> 00:19:20.270 align:middle line:84%
+He's bounded, so he
+runs in poly time.
+
+00:19:20.270 --> 00:19:21.680 align:middle line:90%
+So what does he do?
+
+00:19:21.680 --> 00:19:22.700 align:middle line:90%
+He has oracle access.
+
+00:19:22.700 --> 00:19:25.670 align:middle line:90%
+He is trying to cheat for an x.
+
+00:19:25.670 --> 00:19:29.430 align:middle line:84%
+Now, he can ask his
+oracle, OK, here's alpha 1.
+
+00:19:29.430 --> 00:19:30.330 align:middle line:90%
+Give me beta 1.
+
+00:19:30.330 --> 00:19:31.230 align:middle line:90%
+Here's alpha 2.
+
+00:19:31.230 --> 00:19:32.930 align:middle line:90%
+Give me beta 2.
+
+00:19:32.930 --> 00:19:34.970 align:middle line:84%
+He says at most
+polynomially many queries
+
+00:19:34.970 --> 00:19:36.800 align:middle line:84%
+because he's
+polynomially bounded.
+
+00:19:36.800 --> 00:19:42.720 align:middle line:84%
+So there's some polynomial,
+q, queries that he sends to h.
+
+00:19:42.720 --> 00:19:46.585 align:middle line:84%
+And let's denote them by
+alpha 1 up to alpha q.
+
+00:19:46.585 --> 00:19:49.440 align:middle line:90%
+
+
+00:19:49.440 --> 00:19:49.940 align:middle line:90%
+OK.
+
+00:19:49.940 --> 00:19:54.860 align:middle line:84%
+Now, first thing, note
+that the probability
+
+00:19:54.860 --> 00:19:58.470 align:middle line:84%
+that he succeeds in
+generating alpha, beta, gamma
+
+00:19:58.470 --> 00:20:04.280 align:middle line:84%
+so that alpha is not one of
+the queries is negligible.
+
+00:20:04.280 --> 00:20:06.980 align:middle line:84%
+If he didn't ask, he
+doesn't know what beta is.
+
+00:20:06.980 --> 00:20:10.350 align:middle line:84%
+The only way he gives
+beta, which is the right H,
+
+00:20:10.350 --> 00:20:11.480 align:middle line:90%
+is by asking.
+
+00:20:11.480 --> 00:20:12.840 align:middle line:90%
+He has no idea what beta is.
+
+00:20:12.840 --> 00:20:16.760 align:middle line:84%
+And so if he didn't ask, he can
+guess with probability, like,
+
+00:20:16.760 --> 00:20:19.380 align:middle line:90%
+1/2 to the k.
+
+00:20:19.380 --> 00:20:19.880 align:middle line:90%
+OK.
+
+00:20:19.880 --> 00:20:23.030 align:middle line:90%
+
+
+00:20:23.030 --> 00:20:26.070 align:middle line:84%
+Let me-- maybe I'll go
+here, continue here.
+
+00:20:26.070 --> 00:20:35.510 align:middle line:84%
+So first thing, note, the
+probability that alpha,
+
+00:20:35.510 --> 00:20:41.330 align:middle line:84%
+beta, gamma are
+accepting with x--
+
+00:20:41.330 --> 00:20:44.810 align:middle line:84%
+so meaning the
+verifier accepts them--
+
+00:20:44.810 --> 00:20:50.070 align:middle line:90%
+and alpha is not alpha 1 up to--
+
+00:20:50.070 --> 00:20:52.370 align:middle line:90%
+it's not one of them--
+
+00:20:52.370 --> 00:20:53.836 align:middle line:90%
+this probability is negligible.
+
+00:20:53.836 --> 00:20:56.510 align:middle line:90%
+
+
+00:20:56.510 --> 00:20:58.025 align:middle line:90%
+And this is because k--
+
+00:20:58.025 --> 00:21:00.650 align:middle line:90%
+
+
+00:21:00.650 --> 00:21:03.340 align:middle line:84%
+yeah, it's something
+like, 1/2 to the k.
+
+00:21:03.340 --> 00:21:04.790 align:middle line:84%
+AUDIENCE: The x
+over [INAUDIBLE]?
+
+00:21:04.790 --> 00:21:06.192 align:middle line:90%
+YAEL KALAI: What?
+
+00:21:06.192 --> 00:21:07.276 align:middle line:90%
+AUDIENCE: x alpha--
+
+00:21:07.276 --> 00:21:08.810 align:middle line:90%
+YAEL KALAI: Ah, sorry, alpha q.
+
+00:21:08.810 --> 00:21:10.046 align:middle line:90%
+And, sorry, what did you say?
+
+00:21:10.046 --> 00:21:12.254 align:middle line:84%
+AUDIENCE: Like, x alpha has
+to be one of the queries,
+
+00:21:12.254 --> 00:21:13.730 align:middle line:90%
+not just alpha.
+
+00:21:13.730 --> 00:21:16.430 align:middle line:90%
+YAEL KALAI: Oh, no.
+
+00:21:16.430 --> 00:21:17.600 align:middle line:90%
+Sorry.
+
+00:21:17.600 --> 00:21:19.640 align:middle line:90%
+Oh, x alpha, yeah.
+
+00:21:19.640 --> 00:21:20.280 align:middle line:90%
+Right.
+
+00:21:20.280 --> 00:21:22.350 align:middle line:84%
+But alpha needs to be
+one of the alpha 1's.
+
+00:21:22.350 --> 00:21:23.260 align:middle line:90%
+Sorry, yeah.
+
+00:21:23.260 --> 00:21:30.310 align:middle line:84%
+So, OK, he sends kind of x comma
+alpha 1 up to x comma alpha k.
+
+00:21:30.310 --> 00:21:32.970 align:middle line:90%
+That's kind of what he sends.
+
+00:21:32.970 --> 00:21:35.800 align:middle line:84%
+I mean, he can send
+other ones but then--
+
+00:21:35.800 --> 00:21:37.050 align:middle line:90%
+AUDIENCE: They shouldn't help.
+
+00:21:37.050 --> 00:21:38.717 align:middle line:84%
+YAEL KALAI: Yeah, it
+shouldn't help him.
+
+00:21:38.717 --> 00:21:41.880 align:middle line:84%
+So, OK, it should be one of the
+queries he asks, first of all.
+
+00:21:41.880 --> 00:21:44.950 align:middle line:84%
+Because if he didn't ask that,
+he has no idea what the beta is.
+
+00:21:44.950 --> 00:21:48.220 align:middle line:84%
+So he guesses the beta correctly
+with probability 1/2 to the k.
+
+00:21:48.220 --> 00:21:49.560 align:middle line:90%
+That's negligible.
+
+00:21:49.560 --> 00:21:50.500 align:middle line:90%
+OK.
+
+00:21:50.500 --> 00:21:53.280 align:middle line:84%
+So this means that if he
+succeeds with probability
+
+00:21:53.280 --> 00:21:56.490 align:middle line:84%
+epsilon that's non-negligible
+almost with this probability,
+
+00:21:56.490 --> 00:21:59.010 align:middle line:84%
+or with probability
+epsilon minus negligible,
+
+00:21:59.010 --> 00:22:02.190 align:middle line:84%
+he doesn't only succeed,
+but he succeeds with alpha
+
+00:22:02.190 --> 00:22:02.975 align:middle line:90%
+that he queried.
+
+00:22:02.975 --> 00:22:06.420 align:middle line:90%
+
+
+00:22:06.420 --> 00:22:12.420 align:middle line:84%
+So now, because I know that
+he succeeds with alpha that he
+
+00:22:12.420 --> 00:22:15.990 align:middle line:84%
+queried, I'm going
+to use him to cheat
+
+00:22:15.990 --> 00:22:18.060 align:middle line:90%
+in the interactive protocol.
+
+00:22:18.060 --> 00:22:23.100 align:middle line:84%
+Again, note, I'm really abusing
+the random oracle model.
+
+00:22:23.100 --> 00:22:26.260 align:middle line:84%
+Because I'm assuming
+that the verifier,
+
+00:22:26.260 --> 00:22:28.470 align:middle line:84%
+really, the only way he
+interacts with the oracle
+
+00:22:28.470 --> 00:22:31.260 align:middle line:84%
+is by kind of queries,
+and I know the queries.
+
+00:22:31.260 --> 00:22:35.100 align:middle line:90%
+And I can use it to cheat.
+
+00:22:35.100 --> 00:22:50.730 align:middle line:84%
+So let me now construct P**
+that cheats in the interactive,
+
+00:22:50.730 --> 00:22:53.790 align:middle line:90%
+in the interactive protocol.
+
+00:22:53.790 --> 00:22:54.510 align:middle line:90%
+OK.
+
+00:22:54.510 --> 00:22:57.275 align:middle line:84%
+How do I cheat in the
+interactive protocol?
+
+00:22:57.275 --> 00:23:03.240 align:middle line:90%
+
+
+00:23:03.240 --> 00:23:03.850 align:middle line:90%
+OK.
+
+00:23:03.850 --> 00:23:10.570 align:middle line:84%
+So first, I'm going to give the
+same x-- with x, the same x.
+
+00:23:10.570 --> 00:23:13.380 align:middle line:84%
+So this P* succeeded with
+some x in the language.
+
+00:23:13.380 --> 00:23:15.150 align:middle line:90%
+I'll use the same x.
+
+00:23:15.150 --> 00:23:18.450 align:middle line:84%
+Now, first thing I
+need-- so here I am, P**.
+
+00:23:18.450 --> 00:23:19.690 align:middle line:90%
+I'm ready to go.
+
+00:23:19.690 --> 00:23:24.330 align:middle line:84%
+Here's x, V. I need to
+start sending alpha.
+
+00:23:24.330 --> 00:23:25.090 align:middle line:90%
+What do I do?
+
+00:23:25.090 --> 00:23:27.330 align:middle line:90%
+Which alpha do I send?
+
+00:23:27.330 --> 00:23:29.020 align:middle line:90%
+Now, what do I know?
+
+00:23:29.020 --> 00:23:31.360 align:middle line:84%
+I know that-- I want
+to use this guy.
+
+00:23:31.360 --> 00:23:32.020 align:middle line:90%
+I can't cheat.
+
+00:23:32.020 --> 00:23:33.190 align:middle line:90%
+I'm going to use him.
+
+00:23:33.190 --> 00:23:33.940 align:middle line:90%
+He's the cheater.
+
+00:23:33.940 --> 00:23:35.310 align:middle line:90%
+I'm going to use him.
+
+00:23:35.310 --> 00:23:37.150 align:middle line:90%
+What do I know about him?
+
+00:23:37.150 --> 00:23:40.960 align:middle line:84%
+I know he cheated with
+alpha, beta, and gamma.
+
+00:23:40.960 --> 00:23:46.980 align:middle line:84%
+And one of these alphas
+he used as a query.
+
+00:23:46.980 --> 00:23:47.920 align:middle line:90%
+OK, which one?
+
+00:23:47.920 --> 00:23:48.867 align:middle line:90%
+I don't know.
+
+00:23:48.867 --> 00:23:50.200 align:middle line:90%
+But here's what I'm going to do.
+
+00:23:50.200 --> 00:23:52.050 align:middle line:90%
+I'm going to guess randomly.
+
+00:23:52.050 --> 00:23:55.390 align:middle line:90%
+And what's the saying again?
+
+00:23:55.390 --> 00:23:57.730 align:middle line:90%
+You fake it til you make it.
+
+00:23:57.730 --> 00:23:59.640 align:middle line:90%
+[LAUGHTER]
+
+00:23:59.640 --> 00:24:02.742 align:middle line:84%
+I'm going to guess
+randomly and hope.
+
+00:24:02.742 --> 00:24:06.660 align:middle line:84%
+So what I'm going to
+do, I'm going to guess--
+
+00:24:06.660 --> 00:24:09.690 align:middle line:90%
+so what does P* do?
+
+00:24:09.690 --> 00:24:16.680 align:middle line:84%
+First, I'm going to
+guess a random i in q.
+
+00:24:16.680 --> 00:24:19.600 align:middle line:84%
+So just the index,
+which-- so I know he's
+
+00:24:19.600 --> 00:24:20.870 align:middle line:90%
+going to make q queries.
+
+00:24:20.870 --> 00:24:22.400 align:middle line:90%
+I don't know yet which queries.
+
+00:24:22.400 --> 00:24:24.500 align:middle line:84%
+But let's say I have a
+bound on his runtime.
+
+00:24:24.500 --> 00:24:25.370 align:middle line:90%
+So I have a bound.
+
+00:24:25.370 --> 00:24:30.790 align:middle line:84%
+So P* there runs in time
+at most q, let's say.
+
+00:24:30.790 --> 00:24:34.810 align:middle line:84%
+So he makes at most q
+queries to the oracle.
+
+00:24:34.810 --> 00:24:36.160 align:middle line:90%
+That, I know.
+
+00:24:36.160 --> 00:24:38.810 align:middle line:84%
+I'm going to choose
+a random index.
+
+00:24:38.810 --> 00:24:43.240 align:middle line:84%
+Like, suppose we have random
+query of one of-- the i-th query
+
+00:24:43.240 --> 00:24:45.220 align:middle line:90%
+to his oracle.
+
+00:24:45.220 --> 00:24:50.255 align:middle line:84%
+And what I'm going to do, I'm
+going to send here alpha i.
+
+00:24:50.255 --> 00:24:51.130 align:middle line:90%
+Now, what is alpha i?
+
+00:24:51.130 --> 00:24:52.480 align:middle line:90%
+I don't know what alpha i is.
+
+00:24:52.480 --> 00:24:53.980 align:middle line:90%
+But don't worry.
+
+00:24:53.980 --> 00:24:54.980 align:middle line:90%
+What I'm going to do--
+
+00:24:54.980 --> 00:24:58.420 align:middle line:84%
+I am going to simulate
+the oracle for him.
+
+00:24:58.420 --> 00:25:00.440 align:middle line:84%
+So I'm going to pretend
+I'm the random oracle.
+
+00:25:00.440 --> 00:25:00.940 align:middle line:90%
+OK.
+
+00:25:00.940 --> 00:25:04.540 align:middle line:84%
+I'm going to start by saying,
+OK, P*, I'm going to use you.
+
+00:25:04.540 --> 00:25:05.420 align:middle line:90%
+Let's start.
+
+00:25:05.420 --> 00:25:06.440 align:middle line:90%
+You gave me x.
+
+00:25:06.440 --> 00:25:08.890 align:middle line:90%
+Send me alpha.
+
+00:25:08.890 --> 00:25:09.760 align:middle line:90%
+Generate this.
+
+00:25:09.760 --> 00:25:11.195 align:middle line:90%
+Generate alpha, beta, gamma.
+
+00:25:11.195 --> 00:25:12.820 align:middle line:84%
+Now, what does P* do
+when he generates?
+
+00:25:12.820 --> 00:25:14.260 align:middle line:90%
+He's like, OK, let me think.
+
+00:25:14.260 --> 00:25:18.670 align:middle line:84%
+Alpha 1, I'll give
+him a random beta 1.
+
+00:25:18.670 --> 00:25:20.950 align:middle line:84%
+Alpha 2-- or x,
+alpha 2, I'm going
+
+00:25:20.950 --> 00:25:23.050 align:middle line:90%
+to give him a random beta 2.
+
+00:25:23.050 --> 00:25:24.310 align:middle line:90%
+Alpha 3, random.
+
+00:25:24.310 --> 00:25:27.850 align:middle line:90%
+Alpha 4, random-- until alpha i.
+
+00:25:27.850 --> 00:25:29.150 align:middle line:90%
+Once I get alpha i, I'm happy.
+
+00:25:29.150 --> 00:25:31.240 align:middle line:90%
+I'm like, ah, alpha i.
+
+00:25:31.240 --> 00:25:34.144 align:middle line:90%
+I'm ready, alpha i.
+
+00:25:34.144 --> 00:25:38.380 align:middle line:90%
+I get a random beta back.
+
+00:25:38.380 --> 00:25:40.360 align:middle line:90%
+What do I do?
+
+00:25:40.360 --> 00:25:44.175 align:middle line:84%
+I tell him, oh, your answer
+from the oracle is beta.
+
+00:25:44.175 --> 00:25:48.160 align:middle line:90%
+
+
+00:25:48.160 --> 00:25:53.170 align:middle line:84%
+OK, so I'm simulating
+P*'s oracle.
+
+00:25:53.170 --> 00:25:58.180 align:middle line:84%
+And I'm behaving like I'm the
+oracle sitting on top of P* It
+
+00:25:58.180 --> 00:25:59.180 align:middle line:90%
+gives me alpha 1.
+
+00:25:59.180 --> 00:26:00.548 align:middle line:90%
+And then, sure, here's a beta 1.
+
+00:26:00.548 --> 00:26:01.340 align:middle line:90%
+That's your answer.
+
+00:26:01.340 --> 00:26:02.420 align:middle line:90%
+Alpha 2, beta 2.
+
+00:26:02.420 --> 00:26:05.740 align:middle line:84%
+Alpha 3, beta--
+alpha i for random i.
+
+00:26:05.740 --> 00:26:06.740 align:middle line:90%
+It's beta.
+
+00:26:06.740 --> 00:26:09.960 align:middle line:90%
+Now he gives me gamma.
+
+00:26:09.960 --> 00:26:10.460 align:middle line:90%
+OK.
+
+00:26:10.460 --> 00:26:12.220 align:middle line:90%
+Now he gives the answer.
+
+00:26:12.220 --> 00:26:13.630 align:middle line:90%
+And I continue.
+
+00:26:13.630 --> 00:26:14.600 align:middle line:90%
+Alpha i plus 1, random.
+
+00:26:14.600 --> 00:26:16.590 align:middle line:84%
+Alpha i plus 2, random,
+random, random, random.
+
+00:26:16.590 --> 00:26:18.200 align:middle line:90%
+OK.
+
+00:26:18.200 --> 00:26:21.020 align:middle line:84%
+At the end, he gives
+me a transcript.
+
+00:26:21.020 --> 00:26:25.400 align:middle line:84%
+But with probability 1/q,
+it's with my alpha i.
+
+00:26:25.400 --> 00:26:28.100 align:middle line:84%
+If he use both my
+alpha i, hooray.
+
+00:26:28.100 --> 00:26:29.605 align:middle line:90%
+I'm going to give the gamma i.
+
+00:26:29.605 --> 00:26:32.870 align:middle line:90%
+
+
+00:26:32.870 --> 00:26:38.700 align:middle line:90%
+If it's not my alpha i, I'm--
+
+00:26:38.700 --> 00:26:40.860 align:middle line:90%
+well-- going to try again.
+
+00:26:40.860 --> 00:26:43.460 align:middle line:90%
+I mean, then I fail.
+
+00:26:43.460 --> 00:26:46.380 align:middle line:84%
+So what is the probability--
+so that's my protocol.
+
+00:26:46.380 --> 00:26:50.300 align:middle line:84%
+So if he didn't cheat with
+a gamma i with the alpha i--
+
+00:26:50.300 --> 00:26:54.350 align:middle line:84%
+if this alpha is not alpha
+i, I'm going to lose.
+
+00:26:54.350 --> 00:26:57.320 align:middle line:84%
+I'm going to say,
+sorry, I failed.
+
+00:26:57.320 --> 00:26:59.096 align:middle line:90%
+What is the probability--
+
+00:26:59.096 --> 00:27:04.320 align:middle line:90%
+
+
+00:27:04.320 --> 00:27:22.190 align:middle line:84%
+so guess, and then simulate
+the oracle for P* randomly,
+
+00:27:22.190 --> 00:27:28.090 align:middle line:90%
+except for alpha i--
+
+00:27:28.090 --> 00:27:31.080 align:middle line:90%
+
+
+00:27:31.080 --> 00:27:32.930 align:middle line:90%
+I simulate via the verifier.
+
+00:27:32.930 --> 00:27:39.440 align:middle line:90%
+For alpha i, answer with beta.
+
+00:27:39.440 --> 00:27:40.290 align:middle line:90%
+That's all.
+
+00:27:40.290 --> 00:27:47.300 align:middle line:84%
+And then if alpha,
+beta, gamma is such
+
+00:27:47.300 --> 00:27:51.170 align:middle line:84%
+that alpha equals
+alpha i, then--
+
+00:27:51.170 --> 00:27:57.230 align:middle line:90%
+
+
+00:27:57.230 --> 00:28:00.763 align:middle line:84%
+let's call this gamma--
+then send gamma.
+
+00:28:00.763 --> 00:28:03.470 align:middle line:90%
+
+
+00:28:03.470 --> 00:28:05.190 align:middle line:90%
+That's the protocol.
+
+00:28:05.190 --> 00:28:07.470 align:middle line:90%
+That's the cheating prover.
+
+00:28:07.470 --> 00:28:09.110 align:middle line:90%
+That's P**.
+
+00:28:09.110 --> 00:28:15.560 align:middle line:84%
+Now, what is the probability
+that P** is accepted?
+
+00:28:15.560 --> 00:28:20.160 align:middle line:90%
+
+
+00:28:20.160 --> 00:28:22.620 align:middle line:90%
+Again, what does P** do?
+
+00:28:22.620 --> 00:28:25.860 align:middle line:84%
+P stars accept with
+probability epsilon.
+
+00:28:25.860 --> 00:28:28.720 align:middle line:84%
+So with probability epsilon,
+he gives me alpha, beta, gamma.
+
+00:28:28.720 --> 00:28:31.470 align:middle line:90%
+
+
+00:28:31.470 --> 00:28:33.245 align:middle line:90%
+But he chooses alpha.
+
+00:28:33.245 --> 00:28:36.450 align:middle line:90%
+
+
+00:28:36.450 --> 00:28:39.210 align:middle line:84%
+He chooses this after
+querying the oracle q
+
+00:28:39.210 --> 00:28:43.622 align:middle line:90%
+times with different alphas.
+
+00:28:43.622 --> 00:28:45.580 align:middle line:84%
+Let's say with all of
+them, he uses the same x.
+
+00:28:45.580 --> 00:28:47.190 align:middle line:90%
+Otherwise, he's stupid.
+
+00:28:47.190 --> 00:28:48.370 align:middle line:90%
+But whatever.
+
+00:28:48.370 --> 00:28:50.250 align:middle line:90%
+It doesn't really matter.
+
+00:28:50.250 --> 00:28:54.130 align:middle line:84%
+We established that, except
+negligible probability,
+
+00:28:54.130 --> 00:28:57.770 align:middle line:84%
+one of these alpha
+is in the i-th query.
+
+00:28:57.770 --> 00:29:01.770 align:middle line:90%
+
+
+00:29:01.770 --> 00:29:04.832 align:middle line:84%
+So what is the probability
+that I succeed?
+
+00:29:04.832 --> 00:29:06.540 align:middle line:84%
+AUDIENCE: That
+probability q [INAUDIBLE].
+
+00:29:06.540 --> 00:29:08.110 align:middle line:90%
+YAEL KALAI: Very nice.
+
+00:29:08.110 --> 00:29:08.610 align:middle line:90%
+Great.
+
+00:29:08.610 --> 00:29:10.690 align:middle line:84%
+So the probability--
+I'm out of space.
+
+00:29:10.690 --> 00:29:18.540 align:middle line:84%
+So the probability that
+P** is accepted is at least
+
+00:29:18.540 --> 00:29:23.760 align:middle line:84%
+the probability that
+P* accepted over q.
+
+00:29:23.760 --> 00:29:25.750 align:middle line:84%
+He's accepted if he
+chose alpha i correctly.
+
+00:29:25.750 --> 00:29:26.447 align:middle line:90%
+But it's random.
+
+00:29:26.447 --> 00:29:28.780 align:middle line:84%
+One of them, he cheated with,
+and I choose it randomly--
+
+00:29:28.780 --> 00:29:30.900 align:middle line:84%
+so with probability
+at least 1/q--
+
+00:29:30.900 --> 00:29:38.550 align:middle line:84%
+and minus the negligible,
+which is minus 1/2 to the k,
+
+00:29:38.550 --> 00:29:42.180 align:middle line:84%
+which is kind of the probability
+that he didn't even guess--
+
+00:29:42.180 --> 00:29:46.150 align:middle line:84%
+the alpha is kind of-- he just
+didn't use one of the queries.
+
+00:29:46.150 --> 00:29:48.990 align:middle line:84%
+But that's really small,
+so it's still pretty big.
+
+00:29:48.990 --> 00:29:50.230 align:middle line:90%
+So there is a loss.
+
+00:29:50.230 --> 00:29:51.230 align:middle line:90%
+There is a loss of q.
+
+00:29:51.230 --> 00:29:56.100 align:middle line:90%
+
+
+00:29:56.100 --> 00:29:57.940 align:middle line:90%
+But q's polynomial.
+
+00:29:57.940 --> 00:30:00.690 align:middle line:84%
+And if alpha is non-negligible,
+than alpha over q's
+
+00:30:00.690 --> 00:30:01.990 align:middle line:90%
+also non-negligible.
+
+00:30:01.990 --> 00:30:03.640 align:middle line:90%
+And that's a contradiction.
+
+00:30:03.640 --> 00:30:09.220 align:middle line:90%
+
+
+00:30:09.220 --> 00:30:11.650 align:middle line:90%
+Any questions?
+
+00:30:11.650 --> 00:30:12.400 align:middle line:90%
+Yeah?
+
+00:30:12.400 --> 00:30:14.567 align:middle line:84%
+AUDIENCE: So the [INAUDIBLE]
+proof where we actually
+
+00:30:14.567 --> 00:30:18.580 align:middle line:84%
+use the random oracle model
+already, where we couldn't just
+
+00:30:18.580 --> 00:30:22.425 align:middle line:84%
+put in another hash function,
+is like, that top line there?
+
+00:30:22.425 --> 00:30:25.390 align:middle line:90%
+
+
+00:30:25.390 --> 00:30:27.140 align:middle line:84%
+YAEL KALAI: Yes, it's
+this top line there.
+
+00:30:27.140 --> 00:30:35.200 align:middle line:84%
+But also, the fact that we
+can say that there exists
+
+00:30:35.200 --> 00:30:39.640 align:middle line:90%
+alpha 1 up to alpha q--
+
+00:30:39.640 --> 00:30:42.640 align:middle line:84%
+the fact that we're
+able to observe
+
+00:30:42.640 --> 00:30:49.285 align:middle line:84%
+what he knows about the hash
+is in the random oracle model.
+
+00:30:49.285 --> 00:30:51.380 align:middle line:84%
+So the proofs in the
+random oracle model,
+
+00:30:51.380 --> 00:30:54.730 align:middle line:84%
+it really means one
+needs to be careful.
+
+00:30:54.730 --> 00:30:56.230 align:middle line:90%
+Because people want to--
+
+00:30:56.230 --> 00:31:01.270 align:middle line:90%
+
+
+00:31:01.270 --> 00:31:03.037 align:middle line:90%
+OK.
+
+00:31:03.037 --> 00:31:04.870 align:middle line:84%
+The intuition behind
+the random oracle model
+
+00:31:04.870 --> 00:31:07.760 align:middle line:84%
+is to say, what do we need
+from the hash function?
+
+00:31:07.760 --> 00:31:11.380 align:middle line:90%
+We want it to look random.
+
+00:31:11.380 --> 00:31:13.130 align:middle line:84%
+Because the verifier's
+message are random,
+
+00:31:13.130 --> 00:31:14.630 align:middle line:90%
+we want also to look random.
+
+00:31:14.630 --> 00:31:16.970 align:middle line:90%
+And now, OK, because we look--
+
+00:31:16.970 --> 00:31:18.970 align:middle line:84%
+and that was kind
+of the motivation
+
+00:31:18.970 --> 00:31:21.100 align:middle line:90%
+for this random oracle model.
+
+00:31:21.100 --> 00:31:25.090 align:middle line:84%
+And then it's tempting
+to say, so now all we
+
+00:31:25.090 --> 00:31:28.657 align:middle line:84%
+need is a hash function that
+kind of behaves randomly.
+
+00:31:28.657 --> 00:31:30.490 align:middle line:84%
+Let's try to use, I
+don't know, like, people
+
+00:31:30.490 --> 00:31:32.200 align:middle line:84%
+say-- like pseudorandom
+functions, which
+
+00:31:32.200 --> 00:31:33.117 align:middle line:90%
+were not defined here.
+
+00:31:33.117 --> 00:31:34.510 align:middle line:90%
+Whatever.
+
+00:31:34.510 --> 00:31:35.900 align:middle line:90%
+OK, but you can.
+
+00:31:35.900 --> 00:31:39.376 align:middle line:90%
+But who knows what the--
+
+00:31:39.376 --> 00:31:41.900 align:middle line:90%
+how will you prove soundness?
+
+00:31:41.900 --> 00:31:44.830 align:middle line:84%
+This proof-- unless, really,
+the prover, what it does
+
+00:31:44.830 --> 00:31:49.090 align:middle line:84%
+is really just
+runs the function.
+
+00:31:49.090 --> 00:31:52.040 align:middle line:84%
+If the cheating prover, all he
+does-- he gets the function.
+
+00:31:52.040 --> 00:31:53.990 align:middle line:84%
+He's like, ah, this
+really looks like crap.
+
+00:31:53.990 --> 00:31:54.990 align:middle line:90%
+I don't know what to do.
+
+00:31:54.990 --> 00:31:57.050 align:middle line:84%
+I'll just feed him inputs,
+see what output I get.
+
+00:31:57.050 --> 00:31:58.420 align:middle line:90%
+That's the only thing I can do.
+
+00:31:58.420 --> 00:32:01.990 align:middle line:84%
+Then this proof in the random
+oracle model makes sense.
+
+00:32:01.990 --> 00:32:04.900 align:middle line:84%
+But as long as he can do
+anything else besides, like,
+
+00:32:04.900 --> 00:32:09.582 align:middle line:84%
+blindly feed an input and an
+output, I don't have a proof.
+
+00:32:09.582 --> 00:32:10.240 align:middle line:90%
+Yeah?
+
+00:32:10.240 --> 00:32:12.725 align:middle line:84%
+AUDIENCE: What if you
+have one with [INAUDIBLE]?
+
+00:32:12.725 --> 00:32:14.060 align:middle line:90%
+YAEL KALAI: Oh, 1/2 to the k?
+
+00:32:14.060 --> 00:32:17.440 align:middle line:84%
+Yeah, the only reason I added
+this negligible fraction here
+
+00:32:17.440 --> 00:32:22.130 align:middle line:84%
+is, there's 1/2 to the k
+probability-- which is tiny--
+
+00:32:22.130 --> 00:32:26.390 align:middle line:84%
+that P* star is accepted
+with none of the alphas.
+
+00:32:26.390 --> 00:32:30.260 align:middle line:84%
+So maybe he just chose alpha
+that was not queried at all.
+
+00:32:30.260 --> 00:32:33.127 align:middle line:84%
+But he managed to
+choose beta randomly,
+
+00:32:33.127 --> 00:32:34.960 align:middle line:84%
+which happens with
+probability 1/2 to the k.
+
+00:32:34.960 --> 00:32:39.910 align:middle line:84%
+Because beta should be H.
+And if he didn't ask H,
+
+00:32:39.910 --> 00:32:42.440 align:middle line:84%
+then he doesn't know what
+beta is, and beta is random.
+
+00:32:42.440 --> 00:32:45.050 align:middle line:84%
+But there is that probability
+that he chooses alpha
+
+00:32:45.050 --> 00:32:47.350 align:middle line:90%
+that's not one of the q.
+
+00:32:47.350 --> 00:32:49.940 align:middle line:84%
+So here, if he
+chooses one of the q,
+
+00:32:49.940 --> 00:32:52.900 align:middle line:84%
+I guess the one he chooses
+correctly with probability 1/q,
+
+00:32:52.900 --> 00:32:55.420 align:middle line:90%
+so I get epsilon over q.
+
+00:32:55.420 --> 00:32:58.045 align:middle line:90%
+But I guess I should put here--
+
+00:32:58.045 --> 00:32:58.545 align:middle line:90%
+yeah.
+
+00:32:58.545 --> 00:33:01.330 align:middle line:90%
+
+
+00:33:01.330 --> 00:33:07.620 align:middle line:84%
+But if he chooses randomly,
+then I'm out of luck.
+
+00:33:07.620 --> 00:33:08.900 align:middle line:90%
+Yeah?
+
+00:33:08.900 --> 00:33:11.060 align:middle line:90%
+AUDIENCE: How do we know q?
+
+00:33:11.060 --> 00:33:11.780 align:middle line:90%
+YAEL KALAI: Good.
+
+00:33:11.780 --> 00:33:12.738 align:middle line:90%
+How do I know q?
+
+00:33:12.738 --> 00:33:13.530 align:middle line:90%
+Very good question.
+
+00:33:13.530 --> 00:33:15.080 align:middle line:90%
+I actually don't know q.
+
+00:33:15.080 --> 00:33:20.700 align:middle line:84%
+And the q even can be
+a little bit adaptive.
+
+00:33:20.700 --> 00:33:25.620 align:middle line:84%
+So maybe this cheating prover
+he gets, he sends alpha 1.
+
+00:33:25.620 --> 00:33:27.840 align:middle line:84%
+And depending on
+beta 1 that he gets,
+
+00:33:27.840 --> 00:33:32.130 align:middle line:84%
+he decides how many
+queries he wants to--
+
+00:33:32.130 --> 00:33:34.700 align:middle line:84%
+and maybe he's very happy with
+his beta 1, and he's done.
+
+00:33:34.700 --> 00:33:37.730 align:middle line:84%
+And maybe he's very
+unhappy and sends another.
+
+00:33:37.730 --> 00:33:40.950 align:middle line:84%
+So the number of
+q can be adaptive.
+
+00:33:40.950 --> 00:33:46.530 align:middle line:84%
+But since P* is fixed and I
+know it's polynomial time--
+
+00:33:46.530 --> 00:33:50.370 align:middle line:84%
+so let's say the runtime of
+P* is lambda to the third.
+
+00:33:50.370 --> 00:33:53.190 align:middle line:84%
+I know that he cannot ask more
+than lambda to the third query,
+
+00:33:53.190 --> 00:33:57.080 align:middle line:84%
+because each query takes
+one unit time to ask.
+
+00:33:57.080 --> 00:34:04.630 align:middle line:84%
+So I can upper bound the number
+of queries by the runtime of P*
+
+00:34:04.630 --> 00:34:05.130 align:middle line:90%
+star.
+
+00:34:05.130 --> 00:34:10.830 align:middle line:84%
+So really, the probability
+that is accepted--
+
+00:34:10.830 --> 00:34:13.050 align:middle line:84%
+if I have no idea what q
+is and in the worst case,
+
+00:34:13.050 --> 00:34:17.510 align:middle line:84%
+it's the runtime, it's epsilon
+over the runtime of P*--
+
+00:34:17.510 --> 00:34:18.530 align:middle line:90%
+which that, I know.
+
+00:34:18.530 --> 00:34:21.294 align:middle line:84%
+Because I'm giving P*,
+let's say, as a circuit.
+
+00:34:21.294 --> 00:34:24.110 align:middle line:90%
+
+
+00:34:24.110 --> 00:34:30.110 align:middle line:84%
+AUDIENCE: Wouldn't you have a
+circuit that doesn't halt or--
+
+00:34:30.110 --> 00:34:31.180 align:middle line:90%
+YAEL KALAI: No.
+
+00:34:31.180 --> 00:34:33.600 align:middle line:84%
+I'm promised that
+P*'s polynomial size.
+
+00:34:33.600 --> 00:34:35.030 align:middle line:90%
+I know it halts.
+
+00:34:35.030 --> 00:34:39.830 align:middle line:84%
+So my contradiction
+assumption is as follows.
+
+00:34:39.830 --> 00:34:42.920 align:middle line:84%
+Suppose there
+exists a poly size.
+
+00:34:42.920 --> 00:34:46.920 align:middle line:84%
+Poly size-- I don't know--
+lambda to the third size P*.
+
+00:34:46.920 --> 00:34:54.530 align:middle line:84%
+Now, I know that P* asks at most
+lambda to the third queries.
+
+00:34:54.530 --> 00:34:59.480 align:middle line:90%
+
+
+00:34:59.480 --> 00:35:01.165 align:middle line:90%
+AUDIENCE: [INAUDIBLE]
+
+00:35:01.165 --> 00:35:05.640 align:middle line:84%
+YAEL KALAI: I think of the
+circuit of P* as being a circuit
+
+00:35:05.640 --> 00:35:09.390 align:middle line:84%
+that has kind of H gates,
+like random oracle gates.
+
+00:35:09.390 --> 00:35:12.870 align:middle line:84%
+So you can feed it, like,
+alpha or x and alpha.
+
+00:35:12.870 --> 00:35:14.560 align:middle line:84%
+And out comes-- and
+it's like one gate.
+
+00:35:14.560 --> 00:35:17.220 align:middle line:90%
+It's like one time unit.
+
+00:35:17.220 --> 00:35:20.430 align:middle line:84%
+But he cannot have more than
+lambda to the third of them
+
+00:35:20.430 --> 00:35:23.698 align:middle line:84%
+because that's the
+size of the circuit.
+
+00:35:23.698 --> 00:35:24.240 align:middle line:90%
+AUDIENCE: OK.
+
+00:35:24.240 --> 00:35:29.023 align:middle line:84%
+So you could necessarily
+not have loops or--
+
+00:35:29.023 --> 00:35:30.190 align:middle line:90%
+YAEL KALAI: No, it doesn't--
+
+00:35:30.190 --> 00:35:30.690 align:middle line:90%
+no, no, no.
+
+00:35:30.690 --> 00:35:32.050 align:middle line:90%
+It doesn't have loops.
+
+00:35:32.050 --> 00:35:32.580 align:middle line:90%
+Yeah, no.
+
+00:35:32.580 --> 00:35:35.790 align:middle line:90%
+
+
+00:35:35.790 --> 00:35:37.620 align:middle line:90%
+The runtime is fixed.
+
+00:35:37.620 --> 00:35:42.790 align:middle line:84%
+It can compute at most
+lambda to the third gates.
+
+00:35:42.790 --> 00:35:44.623 align:middle line:84%
+It has lambda to the
+third gates in it.
+
+00:35:44.623 --> 00:35:45.290 align:middle line:90%
+AUDIENCE: Right.
+
+00:35:45.290 --> 00:35:45.790 align:middle line:90%
+I see.
+
+00:35:45.790 --> 00:35:53.048 align:middle line:90%
+
+
+00:35:53.048 --> 00:35:54.506 align:middle line:84%
+YAEL KALAI: So any
+other questions?
+
+00:35:54.506 --> 00:35:58.950 align:middle line:90%
+
+
+00:35:58.950 --> 00:36:00.678 align:middle line:90%
+OK.
+
+00:36:00.678 --> 00:36:03.990 align:middle line:90%
+This was three rounds.
+
+00:36:03.990 --> 00:36:06.570 align:middle line:90%
+What about more?
+
+00:36:06.570 --> 00:36:14.340 align:middle line:84%
+So what if you have, I
+don't know, c rounds?
+
+00:36:14.340 --> 00:36:15.520 align:middle line:90%
+What happens then?
+
+00:36:15.520 --> 00:36:20.910 align:middle line:84%
+Any guess in how the
+probability decays
+
+00:36:20.910 --> 00:36:22.800 align:middle line:90%
+with the number of rounds?
+
+00:36:22.800 --> 00:36:24.030 align:middle line:90%
+Yeah?
+
+00:36:24.030 --> 00:36:26.290 align:middle line:84%
+AUDIENCE: Epsilon
+over G to the c/2?
+
+00:36:26.290 --> 00:36:27.150 align:middle line:90%
+YAEL KALAI: Exactly.
+
+00:36:27.150 --> 00:36:28.060 align:middle line:90%
+Yeah, exactly.
+
+00:36:28.060 --> 00:36:31.230 align:middle line:84%
+So it's going to be--
+if you have c rounds--
+
+00:36:31.230 --> 00:36:34.350 align:middle line:84%
+or c messages from the
+verifier, let's say--
+
+00:36:34.350 --> 00:36:36.030 align:middle line:84%
+if you have c message
+from the verifier,
+
+00:36:36.030 --> 00:36:40.650 align:middle line:84%
+it's going to be something
+like epsilon over q to the c.
+
+00:36:40.650 --> 00:36:42.930 align:middle line:90%
+And to see why--
+
+00:36:42.930 --> 00:36:45.010 align:middle line:90%
+it's really the same argument.
+
+00:36:45.010 --> 00:36:51.870 align:middle line:84%
+What we need to do is
+suppose that in each round,
+
+00:36:51.870 --> 00:36:54.370 align:middle line:90%
+P* sends at most q queries.
+
+00:36:54.370 --> 00:37:00.760 align:middle line:84%
+So maybe he sends q queries
+of the form alpha 1,
+
+00:37:00.760 --> 00:37:02.360 align:middle line:90%
+like x comma alpha 1.
+
+00:37:02.360 --> 00:37:07.340 align:middle line:84%
+And then he sends q queries
+of the form x alpha beta.
+
+00:37:07.340 --> 00:37:08.680 align:middle line:90%
+And then he sends--
+
+00:37:08.680 --> 00:37:11.320 align:middle line:90%
+sorry-- x alpha, beta, gamma.
+
+00:37:11.320 --> 00:37:14.900 align:middle line:84%
+And then he sends q queries
+of the form x, alpha--
+
+00:37:14.900 --> 00:37:20.020 align:middle line:84%
+so for each partial
+transcript, he has q queries.
+
+00:37:20.020 --> 00:37:23.530 align:middle line:84%
+Now, if you have
+c rounds, you need
+
+00:37:23.530 --> 00:37:28.300 align:middle line:84%
+to guess correctly for
+each partial transcript
+
+00:37:28.300 --> 00:37:30.010 align:middle line:90%
+the correct i.
+
+00:37:30.010 --> 00:37:33.640 align:middle line:84%
+I'm going to guess that-- so
+I'm not going to write it down
+
+00:37:33.640 --> 00:37:37.570 align:middle line:84%
+because it's really the same,
+but let me just say it in words.
+
+00:37:37.570 --> 00:37:43.490 align:middle line:84%
+P**, what he does is, for
+every round of the verifier,
+
+00:37:43.490 --> 00:37:49.100 align:middle line:84%
+he guesses the index
+of the query of--
+
+00:37:49.100 --> 00:37:56.830 align:middle line:84%
+he gets the index of the query
+to the hash function, which is
+
+00:37:56.830 --> 00:37:59.800 align:middle line:90%
+going to be used in the proof.
+
+00:37:59.800 --> 00:38:01.090 align:middle line:90%
+So he's going to guess.
+
+00:38:01.090 --> 00:38:02.990 align:middle line:90%
+And here, we said you guess i.
+
+00:38:02.990 --> 00:38:07.770 align:middle line:84%
+Now we're actually going
+to guess i1 up to ic.
+
+00:38:07.770 --> 00:38:11.230 align:middle line:90%
+
+
+00:38:11.230 --> 00:38:11.770 align:middle line:90%
+OK.
+
+00:38:11.770 --> 00:38:14.500 align:middle line:84%
+For each message
+of the verifier,
+
+00:38:14.500 --> 00:38:16.400 align:middle line:90%
+we're going to guess an index.
+
+00:38:16.400 --> 00:38:22.100 align:middle line:84%
+And now we again just emulate
+P*, exactly as before.
+
+00:38:22.100 --> 00:38:23.770 align:middle line:90%
+So how do I emulate?
+
+00:38:23.770 --> 00:38:25.280 align:middle line:90%
+I go to P*.
+
+00:38:25.280 --> 00:38:29.890 align:middle line:84%
+He asks me just alpha 1-- like,
+if he asks me just of the form
+
+00:38:29.890 --> 00:38:32.960 align:middle line:84%
+for the first message-- like
+alpha 1, alpha 2, alpha 3--
+
+00:38:32.960 --> 00:38:36.340 align:middle line:84%
+I give him random, random,
+random, random, random
+
+00:38:36.340 --> 00:38:44.170 align:middle line:84%
+until he asks for alpha
+i, and then I give beta i.
+
+00:38:44.170 --> 00:38:48.800 align:middle line:84%
+Now, in between, he
+may ask for bigger.
+
+00:38:48.800 --> 00:38:53.004 align:middle line:84%
+He may ask all of a sudden for
+x comma alpha, beta, gamma--
+
+00:38:53.004 --> 00:38:55.580 align:middle line:90%
+oh, random, then random.
+
+00:38:55.580 --> 00:38:57.700 align:middle line:90%
+I give everything random.
+
+00:38:57.700 --> 00:38:59.920 align:middle line:84%
+But the first
+point, I get alpha,
+
+00:38:59.920 --> 00:39:03.160 align:middle line:90%
+the i-th query for the first--
+
+00:39:03.160 --> 00:39:07.510 align:middle line:84%
+corresponding to the
+transcript, the first message.
+
+00:39:07.510 --> 00:39:10.090 align:middle line:84%
+Then I'm like, aha,
+I got it, alpha i.
+
+00:39:10.090 --> 00:39:11.150 align:middle line:90%
+Thank you very much.
+
+00:39:11.150 --> 00:39:12.370 align:middle line:90%
+I put my alpha i.
+
+00:39:12.370 --> 00:39:13.730 align:middle line:90%
+I get beta.
+
+00:39:13.730 --> 00:39:19.150 align:middle line:84%
+I enter beta as the
+answer from the oracle.
+
+00:39:19.150 --> 00:39:20.360 align:middle line:90%
+And now I'm happy.
+
+00:39:20.360 --> 00:39:23.620 align:middle line:90%
+Now I start counting.
+
+00:39:23.620 --> 00:39:26.740 align:middle line:84%
+Like, for i2, I start
+counting, how many messages
+
+00:39:26.740 --> 00:39:31.120 align:middle line:84%
+are the form alpha,
+beta, and some gamma?
+
+00:39:31.120 --> 00:39:32.330 align:middle line:90%
+Alpha, beta, gamma 1.
+
+00:39:32.330 --> 00:39:33.320 align:middle line:90%
+Alpha beta, gamma 2.
+
+00:39:33.320 --> 00:39:36.070 align:middle line:90%
+Alpha, beta-- until I get to i2.
+
+00:39:36.070 --> 00:39:38.560 align:middle line:90%
+All of them, I answer randomly.
+
+00:39:38.560 --> 00:39:41.840 align:middle line:84%
+And any other queries for that
+I don't know what from-- random.
+
+00:39:41.840 --> 00:39:49.680 align:middle line:84%
+Once I get to alpha, beta,
+gamma i2-- like, the i2--
+
+00:39:49.680 --> 00:39:50.570 align:middle line:90%
+I'm happy.
+
+00:39:50.570 --> 00:39:51.450 align:middle line:90%
+I run here.
+
+00:39:51.450 --> 00:39:55.430 align:middle line:84%
+I put my gamma, I get a
+delta, I answer with delta.
+
+00:39:55.430 --> 00:40:00.030 align:middle line:84%
+Now I start counting, how many
+queries of the form alpha, beta,
+
+00:40:00.030 --> 00:40:01.580 align:middle line:90%
+gamma, delta?
+
+00:40:01.580 --> 00:40:03.260 align:middle line:90%
+Epsilon.
+
+00:40:03.260 --> 00:40:05.720 align:middle line:84%
+Sorry, epsilon's
+fixed-- next one.
+
+00:40:05.720 --> 00:40:08.600 align:middle line:90%
+I count until I get i3.
+
+00:40:08.600 --> 00:40:11.960 align:middle line:84%
+And the i3 of them, I
+give the answer, give--
+
+00:40:11.960 --> 00:40:15.060 align:middle line:84%
+I just do it for as
+many rounds as needed.
+
+00:40:15.060 --> 00:40:17.570 align:middle line:84%
+But for me to be solving, I
+need to make all these guesses
+
+00:40:17.570 --> 00:40:18.650 align:middle line:90%
+correctly.
+
+00:40:18.650 --> 00:40:22.070 align:middle line:84%
+And each guess is going
+to be probability q.
+
+00:40:22.070 --> 00:40:28.160 align:middle line:84%
+So that's why the
+probability decays a lot.
+
+00:40:28.160 --> 00:40:28.772 align:middle line:90%
+Yeah?
+
+00:40:28.772 --> 00:40:30.980 align:middle line:84%
+AUDIENCE: So does that mean
+that the number of rounds
+
+00:40:30.980 --> 00:40:33.660 align:middle line:90%
+is not security parameters?
+
+00:40:33.660 --> 00:40:34.590 align:middle line:90%
+You're still secure?
+
+00:40:34.590 --> 00:40:34.850 align:middle line:90%
+YAEL KALAI: Yeah.
+
+00:40:34.850 --> 00:40:36.350 align:middle line:90%
+Good, good, good-- no, it's not.
+
+00:40:36.350 --> 00:40:36.930 align:middle line:90%
+OK.
+
+00:40:36.930 --> 00:40:39.570 align:middle line:84%
+If the number is log,
+it's almost secure.
+
+00:40:39.570 --> 00:40:43.110 align:middle line:84%
+But then the probability
+is q to the log.
+
+00:40:43.110 --> 00:40:44.840 align:middle line:90%
+q is not 2.
+
+00:40:44.840 --> 00:40:48.540 align:middle line:84%
+So you'll get a
+little negligible.
+
+00:40:48.540 --> 00:40:52.410 align:middle line:84%
+So it will be negligible,
+but not too negligible.
+
+00:40:52.410 --> 00:40:55.010 align:middle line:84%
+It's going to be
+kind quasi-poly,
+
+00:40:55.010 --> 00:40:57.260 align:middle line:90%
+like 1 over quasi poly.
+
+00:40:57.260 --> 00:41:05.000 align:middle line:84%
+So if you have a log rounds,
+if you happen to know that
+
+00:41:05.000 --> 00:41:09.200 align:middle line:84%
+the original interactive
+protocol has soundness less than
+
+00:41:09.200 --> 00:41:12.120 align:middle line:84%
+quasi-poly, like
+subexponential--
+
+00:41:12.120 --> 00:41:15.110 align:middle line:84%
+let's say you have the guarantee
+that a cheating prover cannot
+
+00:41:15.110 --> 00:41:19.070 align:middle line:84%
+cheat except with 1 over
+subexponential probability.
+
+00:41:19.070 --> 00:41:21.860 align:middle line:90%
+Then log rounds will be good.
+
+00:41:21.860 --> 00:41:26.420 align:middle line:84%
+So the number of rounds,
+c, this is really
+
+00:41:26.420 --> 00:41:30.030 align:middle line:90%
+your probability of cheating.
+
+00:41:30.030 --> 00:41:34.820 align:middle line:84%
+And as long as your interactive
+protocol has the guarantee that
+
+00:41:34.820 --> 00:41:36.720 align:middle line:84%
+you cannot cheat with
+this probability,
+
+00:41:36.720 --> 00:41:40.590 align:middle line:90%
+then you have a proof.
+
+00:41:40.590 --> 00:41:41.090 align:middle line:90%
+Yeah.
+
+00:41:41.090 --> 00:41:41.820 align:middle line:90%
+Yeah?
+
+00:41:41.820 --> 00:41:43.880 align:middle line:84%
+AUDIENCE: Would you
+replace the formula q
+
+00:41:43.880 --> 00:41:47.070 align:middle line:84%
+to the power of c with P
+over c to the power of c
+
+00:41:47.070 --> 00:41:48.690 align:middle line:90%
+so you distribute q queries?
+
+00:41:48.690 --> 00:41:50.055 align:middle line:90%
+YAEL KALAI: Good, good, good.
+
+00:41:50.055 --> 00:41:54.150 align:middle line:84%
+Yeah, so the question
+was, can we maybe
+
+00:41:54.150 --> 00:41:57.180 align:middle line:84%
+replace this by q over
+c to the power of c
+
+00:41:57.180 --> 00:42:00.060 align:middle line:84%
+because q is the total
+number of queries?
+
+00:42:00.060 --> 00:42:07.350 align:middle line:84%
+The thing is-- so, OK,
+I'll tell you the--
+
+00:42:07.350 --> 00:42:08.550 align:middle line:90%
+it's not that simple.
+
+00:42:08.550 --> 00:42:13.240 align:middle line:84%
+Because we don't know
+exactly how many--
+
+00:42:13.240 --> 00:42:16.990 align:middle line:84%
+so suppose the prover,
+total, asks q queries.
+
+00:42:16.990 --> 00:42:18.730 align:middle line:84%
+We don't know how
+many queries he--
+
+00:42:18.730 --> 00:42:23.100 align:middle line:84%
+maybe he has all of them on the
+first message and then just one.
+
+00:42:23.100 --> 00:42:24.340 align:middle line:90%
+And it can be adaptive.
+
+00:42:24.340 --> 00:42:25.810 align:middle line:90%
+It can depend on his answers.
+
+00:42:25.810 --> 00:42:27.430 align:middle line:90%
+Maybe he asks alpha 1.
+
+00:42:27.430 --> 00:42:28.170 align:middle line:90%
+He gets beta 1.
+
+00:42:28.170 --> 00:42:28.720 align:middle line:90%
+He's happy.
+
+00:42:28.720 --> 00:42:30.040 align:middle line:90%
+He's not going to ask again.
+
+00:42:30.040 --> 00:42:32.500 align:middle line:84%
+And all the answers are going
+to be in the second messages.
+
+00:42:32.500 --> 00:42:36.940 align:middle line:84%
+Or maybe he sends
+alpha 1, beta 1.
+
+00:42:36.940 --> 00:42:41.040 align:middle line:84%
+He's so unhappy, all the q
+goes for the first message.
+
+00:42:41.040 --> 00:42:43.821 align:middle line:90%
+So how do you choose the i?
+
+00:42:43.821 --> 00:42:45.520 align:middle line:84%
+AUDIENCE: Now they
+choose [INAUDIBLE].
+
+00:42:45.520 --> 00:42:46.830 align:middle line:90%
+YAEL KALAI: How do you choose--
+
+00:42:46.830 --> 00:42:49.145 align:middle line:84%
+for me, I said, let's
+choose them randomly.
+
+00:42:49.145 --> 00:42:51.120 align:middle line:90%
+AUDIENCE: Oh, I see.
+
+00:42:51.120 --> 00:42:53.910 align:middle line:84%
+YAEL KALAI: But you may
+be able to do better.
+
+00:42:53.910 --> 00:42:56.170 align:middle line:84%
+One can think, can you
+do better than this?
+
+00:42:56.170 --> 00:42:58.380 align:middle line:90%
+Possibly.
+
+00:42:58.380 --> 00:43:01.890 align:middle line:84%
+Because you're saying, forget
+about the end, end, end.
+
+00:43:01.890 --> 00:43:03.810 align:middle line:90%
+The end, it's not going to--
+
+00:43:03.810 --> 00:43:06.250 align:middle line:84%
+most of them, you won't
+go all the way to the end,
+
+00:43:06.250 --> 00:43:10.260 align:middle line:84%
+so you can probably choose
+it more from the beginning.
+
+00:43:10.260 --> 00:43:12.930 align:middle line:84%
+Probably, you can
+improve on this.
+
+00:43:12.930 --> 00:43:14.460 align:middle line:90%
+I didn't do the calculations.
+
+00:43:14.460 --> 00:43:18.966 align:middle line:84%
+Because usually, we don't
+really care about constants.
+
+00:43:18.966 --> 00:43:20.470 align:middle line:90%
+But you're saying-- oh?
+
+00:43:20.470 --> 00:43:23.500 align:middle line:84%
+AUDIENCE: [INAUDIBLE] because
+if you make c equal to q,
+
+00:43:23.500 --> 00:43:26.490 align:middle line:84%
+then it's going
+to be [INAUDIBLE].
+
+00:43:26.490 --> 00:43:28.710 align:middle line:84%
+YAEL KALAI: That's why
+it's not true in general.
+
+00:43:28.710 --> 00:43:29.740 align:middle line:90%
+In general, you can't.
+
+00:43:29.740 --> 00:43:32.945 align:middle line:84%
+But you probably can
+improve it a little bit,
+
+00:43:32.945 --> 00:43:33.845 align:middle line:90%
+you know what I mean?
+
+00:43:33.845 --> 00:43:37.260 align:middle line:90%
+
+
+00:43:37.260 --> 00:43:38.790 align:middle line:84%
+Yeah, maybe you
+want to choose it
+
+00:43:38.790 --> 00:43:41.700 align:middle line:84%
+in a different distribution,
+not randomly, eh--
+
+00:43:41.700 --> 00:43:44.230 align:middle line:84%
+more towards the beginning
+because most of them
+
+00:43:44.230 --> 00:43:45.890 align:middle line:90%
+are not going to be at the end.
+
+00:43:45.890 --> 00:43:50.110 align:middle line:84%
+But yeah, there are probably
+optimizations that can be done.
+
+00:43:50.110 --> 00:43:51.590 align:middle line:90%
+Great, great questions.
+
+00:43:51.590 --> 00:43:54.310 align:middle line:90%
+
+
+00:43:54.310 --> 00:43:57.940 align:middle line:90%
+Any other question?
+
+00:43:57.940 --> 00:43:58.824 align:middle line:90%
+OK.
+
+00:43:58.824 --> 00:44:00.650 align:middle line:90%
+So let's see.
+
+00:44:00.650 --> 00:44:03.070 align:middle line:90%
+So maybe I will do then--
+
+00:44:03.070 --> 00:44:07.030 align:middle line:84%
+I'm debating if to go to the
+soundness in the standard model
+
+00:44:07.030 --> 00:44:08.980 align:middle line:90%
+or to do the round by round.
+
+00:44:08.980 --> 00:44:09.580 align:middle line:90%
+You know what?
+
+00:44:09.580 --> 00:44:14.230 align:middle line:84%
+I'll do the round-by-round
+soundness because I want to--
+
+00:44:14.230 --> 00:44:16.000 align:middle line:90%
+AUDIENCE: So this says Kilian.
+
+00:44:16.000 --> 00:44:16.940 align:middle line:90%
+YAEL KALAI: Oh, good.
+
+00:44:16.940 --> 00:44:18.630 align:middle line:90%
+Yeah, Thank you.
+
+00:44:18.630 --> 00:44:19.430 align:middle line:90%
+OK, good.
+
+00:44:19.430 --> 00:44:21.170 align:middle line:90%
+So what did we-- thank you.
+
+00:44:21.170 --> 00:44:22.130 align:middle line:90%
+What did we prove?
+
+00:44:22.130 --> 00:44:25.400 align:middle line:84%
+We proved that the random
+oracle model is sound.
+
+00:44:25.400 --> 00:44:27.430 align:middle line:84%
+The Fiat-Shamir applied
+to the random oracle
+
+00:44:27.430 --> 00:44:29.170 align:middle line:84%
+is sound if you
+have constant number
+
+00:44:29.170 --> 00:44:33.130 align:middle line:90%
+of rounds and negligible error.
+
+00:44:33.130 --> 00:44:37.420 align:middle line:84%
+Now, Kilian-Micali protocol
+has constant number of rounds--
+
+00:44:37.420 --> 00:44:39.220 align:middle line:90%
+four, to be precise--
+
+00:44:39.220 --> 00:44:42.280 align:middle line:84%
+and negligible error
+if you take the P, c, P
+
+00:44:42.280 --> 00:44:44.740 align:middle line:84%
+with negligible error,
+which you can by--
+
+00:44:44.740 --> 00:44:46.430 align:middle line:84%
+we have P, c, P's
+with negligible error.
+
+00:44:46.430 --> 00:44:48.680 align:middle line:84%
+You put it in and
+you have four round,
+
+00:44:48.680 --> 00:44:51.630 align:middle line:84%
+negligible error You apply
+Fiat-Shamir in the random oracle
+
+00:44:51.630 --> 00:44:52.130 align:middle line:90%
+model.
+
+00:44:52.130 --> 00:44:54.190 align:middle line:90%
+It's sound.
+
+00:44:54.190 --> 00:44:57.700 align:middle line:84%
+So Fiat-Shamir is sound
+in the random oracle
+
+00:44:57.700 --> 00:45:00.700 align:middle line:90%
+model for Kilian-Micali.
+
+00:45:00.700 --> 00:45:03.160 align:middle line:90%
+That's great.
+
+00:45:03.160 --> 00:45:07.000 align:middle line:84%
+As I said, we don't
+have-- so now you can ask,
+
+00:45:07.000 --> 00:45:10.330 align:middle line:84%
+do we have a proof
+of Fiat-Shamir
+
+00:45:10.330 --> 00:45:12.940 align:middle line:84%
+for Kilian-Micali in
+the standard model?
+
+00:45:12.940 --> 00:45:14.540 align:middle line:84%
+OK, random oracle
+model, we have.
+
+00:45:14.540 --> 00:45:16.750 align:middle line:90%
+How about standard model?
+
+00:45:16.750 --> 00:45:21.020 align:middle line:84%
+And this is important
+because, for a long time,
+
+00:45:21.020 --> 00:45:25.840 align:middle line:84%
+people believed that if we have
+a proof in the random oracle
+
+00:45:25.840 --> 00:45:31.120 align:middle line:84%
+model, it means there must be
+some hash function for which
+
+00:45:31.120 --> 00:45:33.010 align:middle line:90%
+this protocol is sound.
+
+00:45:33.010 --> 00:45:37.000 align:middle line:84%
+Namely, the belief was, if
+you have a proof in the random
+
+00:45:37.000 --> 00:45:41.390 align:middle line:84%
+oracle model, and then if
+you use it with Fiat-Shamir,
+
+00:45:41.390 --> 00:45:44.180 align:middle line:84%
+something goes wrong--
+like, someone breaks it--
+
+00:45:44.180 --> 00:45:46.080 align:middle line:84%
+we need to blame
+the hash function.
+
+00:45:46.080 --> 00:45:49.390 align:middle line:84%
+It's that you used a bad hash
+function for Fiat-Shamir.
+
+00:45:49.390 --> 00:45:49.890 align:middle line:90%
+OK.
+
+00:45:49.890 --> 00:45:52.920 align:middle line:84%
+So typically, when Fiat-Shamir's
+used in practice-- it's used,
+
+00:45:52.920 --> 00:45:54.390 align:middle line:90%
+let's say with SHA-256.
+
+00:45:54.390 --> 00:45:58.140 align:middle line:84%
+That's a standard, off-the-shelf
+hash function that's used.
+
+00:45:58.140 --> 00:46:02.480 align:middle line:84%
+And now if someone ever
+breaks your protocol,
+
+00:46:02.480 --> 00:46:06.570 align:middle line:84%
+the conclusion was, SHA-256
+is not a good hash function.
+
+00:46:06.570 --> 00:46:07.900 align:middle line:90%
+Use another hash function.
+
+00:46:07.900 --> 00:46:10.742 align:middle line:90%
+
+
+00:46:10.742 --> 00:46:15.750 align:middle line:84%
+However, this protocol is
+an example of a protocol--
+
+00:46:15.750 --> 00:46:17.720 align:middle line:90%
+it's very natural.
+
+00:46:17.720 --> 00:46:19.340 align:middle line:90%
+It's great.
+
+00:46:19.340 --> 00:46:24.710 align:middle line:84%
+It was invented not as a
+counterexample for Fiat-Shamir.
+
+00:46:24.710 --> 00:46:27.500 align:middle line:84%
+And it's secure in the
+random oracle model.
+
+00:46:27.500 --> 00:46:30.990 align:middle line:84%
+So Fiat-Shamir is secure in the
+random oracle for this protocol.
+
+00:46:30.990 --> 00:46:36.530 align:middle line:84%
+Yet, there are hash
+functions contrived--
+
+00:46:36.530 --> 00:46:39.050 align:middle line:84%
+but there are contrived
+hash function such
+
+00:46:39.050 --> 00:46:44.810 align:middle line:84%
+that this protocol is
+insecure no matter which--
+
+00:46:44.810 --> 00:46:46.280 align:middle line:84%
+it's not secure
+in the Fiat-Shamir
+
+00:46:46.280 --> 00:46:50.540 align:middle line:84%
+for any explicit hash
+function that you use.
+
+00:46:50.540 --> 00:46:52.700 align:middle line:84%
+It's a good random oracle
+model, but it's not
+
+00:46:52.700 --> 00:46:55.120 align:middle line:84%
+secure with any actual
+function family.
+
+00:46:55.120 --> 00:46:58.100 align:middle line:90%
+
+
+00:46:58.100 --> 00:47:03.080 align:middle line:84%
+So what we learned from this
+is, the random oracle model
+
+00:47:03.080 --> 00:47:06.733 align:middle line:84%
+is a nice sanity check, but
+it's really not a proof.
+
+00:47:06.733 --> 00:47:08.900 align:middle line:84%
+I mean, we knew it's not a
+proof but it doesn't even
+
+00:47:08.900 --> 00:47:14.150 align:middle line:84%
+guarantee-- it doesn't guarantee
+that there exists a proof.
+
+00:47:14.150 --> 00:47:18.440 align:middle line:84%
+It's just a minimal
+sanity check.
+
+00:47:18.440 --> 00:47:22.280 align:middle line:84%
+Yet, let me tell
+you, in practice--
+
+00:47:22.280 --> 00:47:25.337 align:middle line:84%
+actually, that's
+how people check
+
+00:47:25.337 --> 00:47:27.420 align:middle line:84%
+that things are secure in
+the random oracle model.
+
+00:47:27.420 --> 00:47:29.190 align:middle line:84%
+If it verifies this
+check, they use it.
+
+00:47:29.190 --> 00:47:32.420 align:middle line:84%
+And, as far as I
+know, things never
+
+00:47:32.420 --> 00:47:36.660 align:middle line:84%
+broke because of the random
+oracle model being insecure.
+
+00:47:36.660 --> 00:47:44.160 align:middle line:84%
+So it's more of a theoretical
+kind of interesting thing.
+
+00:47:44.160 --> 00:47:46.470 align:middle line:84%
+But actually, in practice
+it's not an issue.
+
+00:47:46.470 --> 00:47:47.060 align:middle line:90%
+Yeah?
+
+00:47:47.060 --> 00:47:50.060 align:middle line:84%
+AUDIENCE: Has anyone tried
+to break the random oracle's
+
+00:47:50.060 --> 00:47:52.025 align:middle line:90%
+[INAUDIBLE]?
+
+00:47:52.025 --> 00:47:52.650 align:middle line:90%
+YAEL KALAI: OK.
+
+00:47:52.650 --> 00:47:55.040 align:middle line:84%
+The question-- is
+anybody trying to break?
+
+00:47:55.040 --> 00:47:56.150 align:middle line:90%
+The answer is--
+
+00:47:56.150 --> 00:47:58.810 align:middle line:90%
+
+
+00:47:58.810 --> 00:48:00.470 align:middle line:90%
+OK.
+
+00:48:00.470 --> 00:48:02.670 align:middle line:90%
+Things are broken all the time.
+
+00:48:02.670 --> 00:48:04.580 align:middle line:84%
+Things are hacked and
+broken all the time.
+
+00:48:04.580 --> 00:48:09.810 align:middle line:84%
+It's very rare that what's
+broken is actually the crypto.
+
+00:48:09.810 --> 00:48:11.590 align:middle line:84%
+It's not the crypto
+that's broken.
+
+00:48:11.590 --> 00:48:13.590 align:middle line:90%
+But people do try to break--
+
+00:48:13.590 --> 00:48:15.840 align:middle line:84%
+for example, one thing
+that, often, people break--
+
+00:48:15.840 --> 00:48:17.770 align:middle line:90%
+they use to break is--
+
+00:48:17.770 --> 00:48:20.460 align:middle line:84%
+our cryptography
+uses randomness.
+
+00:48:20.460 --> 00:48:23.160 align:middle line:90%
+We use randomness in our crypto.
+
+00:48:23.160 --> 00:48:27.510 align:middle line:84%
+And in practice, people
+don't use-- like, we keys.
+
+00:48:27.510 --> 00:48:29.240 align:middle line:84%
+We assume our secret
+keys are random.
+
+00:48:29.240 --> 00:48:31.560 align:middle line:84%
+But in practice, where do
+you get this randomness?
+
+00:48:31.560 --> 00:48:35.520 align:middle line:84%
+And often, the implementations
+are not done well.
+
+00:48:35.520 --> 00:48:37.930 align:middle line:90%
+And somehow, guess what?
+
+00:48:37.930 --> 00:48:40.840 align:middle line:84%
+Things turned out not to be
+random or not random enough,
+
+00:48:40.840 --> 00:48:42.910 align:middle line:90%
+and then things are attacked.
+
+00:48:42.910 --> 00:48:45.750 align:middle line:84%
+So things are attacked a
+lot, actually, in practice.
+
+00:48:45.750 --> 00:48:48.040 align:middle line:84%
+There's a lot of breaches,
+security breaches.
+
+00:48:48.040 --> 00:48:53.740 align:middle line:84%
+But it's very rare that
+it's in the crypto itself.
+
+00:48:53.740 --> 00:48:56.935 align:middle line:84%
+Now, why is it not
+that in the crypto?
+
+00:48:56.935 --> 00:48:59.310 align:middle line:84%
+One would believe that just
+because the crypto's actually
+
+00:48:59.310 --> 00:49:03.490 align:middle line:84%
+secure and it's implementation
+that are the problem.
+
+00:49:03.490 --> 00:49:06.520 align:middle line:84%
+And how many people are
+trying to attack the crypto?
+
+00:49:06.520 --> 00:49:07.750 align:middle line:90%
+It's very hard to say.
+
+00:49:07.750 --> 00:49:09.360 align:middle line:84%
+But my guess is
+that-- and let me say,
+
+00:49:09.360 --> 00:49:11.370 align:middle line:84%
+there's a lot of people
+who are working really
+
+00:49:11.370 --> 00:49:12.460 align:middle line:90%
+hard to attack the crypto.
+
+00:49:12.460 --> 00:49:18.050 align:middle line:84%
+But these are done
+behind sealed doors so--
+
+00:49:18.050 --> 00:49:23.340 align:middle line:84%
+I remember, though, there's
+a fantastic guy [INAUDIBLE]
+
+00:49:23.340 --> 00:49:25.390 align:middle line:84%
+a student in our
+community called--
+
+00:49:25.390 --> 00:49:26.800 align:middle line:90%
+his name is Joe Killion.
+
+00:49:26.800 --> 00:49:31.630 align:middle line:84%
+And he was a professor,
+and he moved to NSA.
+
+00:49:31.630 --> 00:49:34.635 align:middle line:84%
+And I remember
+once I asked him--
+
+00:49:34.635 --> 00:49:40.740 align:middle line:84%
+a long time after he was
+already at NSA, I asked him, so,
+
+00:49:40.740 --> 00:49:42.550 align:middle line:90%
+do you guys know how to factor?
+
+00:49:42.550 --> 00:49:44.160 align:middle line:90%
+[LAUGHTER]
+
+00:49:44.160 --> 00:49:46.540 align:middle line:84%
+And he told me--
+his answer was, no,
+
+00:49:46.540 --> 00:49:48.370 align:middle line:90%
+the worst part about my job--
+
+00:49:48.370 --> 00:49:51.690 align:middle line:84%
+I'm not allowed even to
+joke about these things.
+
+00:49:51.690 --> 00:49:57.614 align:middle line:90%
+So the answer is, we don't know.
+
+00:49:57.614 --> 00:49:59.447 align:middle line:84%
+AUDIENCE: You don't
+know if they don't know.
+
+00:49:59.447 --> 00:50:00.530 align:middle line:90%
+YAEL KALAI: Yeah, exactly.
+
+00:50:00.530 --> 00:50:01.530 align:middle line:90%
+[LAUGHTER]
+
+00:50:01.530 --> 00:50:02.430 align:middle line:90%
+OK.
+
+00:50:02.430 --> 00:50:04.950 align:middle line:90%
+Any other questions?
+
+00:50:04.950 --> 00:50:05.855 align:middle line:90%
+Yeah?
+
+00:50:05.855 --> 00:50:07.480 align:middle line:84%
+AUDIENCE: This is
+just kind of general.
+
+00:50:07.480 --> 00:50:10.360 align:middle line:84%
+But in general, do
+you think private--
+
+00:50:10.360 --> 00:50:14.520 align:middle line:84%
+like, the NSA and
+private cryptography
+
+00:50:14.520 --> 00:50:18.420 align:middle line:84%
+is further than what
+is publicly known or--
+
+00:50:18.420 --> 00:50:20.745 align:middle line:84%
+YAEL KALAI: The question
+was, do I have a guess?
+
+00:50:20.745 --> 00:50:21.370 align:middle line:90%
+AUDIENCE: Yeah.
+
+00:50:21.370 --> 00:50:23.370 align:middle line:84%
+YAEL KALAI: And
+so I do not know.
+
+00:50:23.370 --> 00:50:24.570 align:middle line:90%
+So let me rephrase.
+
+00:50:24.570 --> 00:50:26.100 align:middle line:84%
+Your question is,
+do I have a guess
+
+00:50:26.100 --> 00:50:30.970 align:middle line:84%
+as to if the NSA
+knows more than we do?
+
+00:50:30.970 --> 00:50:33.490 align:middle line:90%
+My guess would be yes, because--
+
+00:50:33.490 --> 00:50:36.580 align:middle line:84%
+they know everything we know
+because we don't hide anything.
+
+00:50:36.580 --> 00:50:37.360 align:middle line:90%
+And--
+
+00:50:37.360 --> 00:50:38.920 align:middle line:90%
+[LAUGHTER]
+
+00:50:38.920 --> 00:50:40.730 align:middle line:90%
+And they have smart people.
+
+00:50:40.730 --> 00:50:44.650 align:middle line:84%
+So why won't they
+know a little more?
+
+00:50:44.650 --> 00:50:45.880 align:middle line:90%
+Do they know how to factor?
+
+00:50:45.880 --> 00:50:47.260 align:middle line:90%
+That, I don't know.
+
+00:50:47.260 --> 00:50:51.140 align:middle line:84%
+Is their world hugely
+different than ours?
+
+00:50:51.140 --> 00:50:52.220 align:middle line:90%
+That, I don't know.
+
+00:50:52.220 --> 00:50:57.637 align:middle line:84%
+But I'm sure they probably have
+something better than we do.
+
+00:50:57.637 --> 00:50:58.845 align:middle line:90%
+And we've seen it in history.
+
+00:50:58.845 --> 00:50:59.920 align:middle line:90%
+Like, I think even--
+
+00:50:59.920 --> 00:51:00.190 align:middle line:90%
+AUDIENCE: RSA.
+
+00:51:00.190 --> 00:51:02.190 align:middle line:84%
+YAEL KALAI: --RSA was
+invented, but actually, it
+
+00:51:02.190 --> 00:51:03.380 align:middle line:90%
+was privately known before.
+
+00:51:03.380 --> 00:51:07.160 align:middle line:84%
+So we know examples,
+so probably today too.
+
+00:51:07.160 --> 00:51:09.510 align:middle line:90%
+But I wish I--
+
+00:51:09.510 --> 00:51:11.135 align:middle line:90%
+it would be nice to know.
+
+00:51:11.135 --> 00:51:11.635 align:middle line:90%
+Yeah?
+
+00:51:11.635 --> 00:51:14.020 align:middle line:84%
+AUDIENCE: Do people publish
+negative reports saying,
+
+00:51:14.020 --> 00:51:18.430 align:middle line:84%
+like, we tried to break
+this random oracle protocol
+
+00:51:18.430 --> 00:51:20.125 align:middle line:90%
+with SHA-256 and [INAUDIBLE]?
+
+00:51:20.125 --> 00:51:21.500 align:middle line:84%
+YAEL KALAI: That's
+another thing.
+
+00:51:21.500 --> 00:51:22.000 align:middle line:90%
+No.
+
+00:51:22.000 --> 00:51:26.960 align:middle line:84%
+People don't tend to
+publish their failures.
+
+00:51:26.960 --> 00:51:28.760 align:middle line:90%
+So it's very hard to know--
+
+00:51:28.760 --> 00:51:30.050 align:middle line:90%
+going back to your question.
+
+00:51:30.050 --> 00:51:31.420 align:middle line:90%
+How much do people--
+
+00:51:31.420 --> 00:51:33.500 align:middle line:84%
+when we say, look,
+there's no break.
+
+00:51:33.500 --> 00:51:35.180 align:middle line:90%
+OK, what does that mean?
+
+00:51:35.180 --> 00:51:39.115 align:middle line:84%
+Are there no-- it means
+we don't know of a break.
+
+00:51:39.115 --> 00:51:40.490 align:middle line:84%
+It doesn't mean
+there's no break.
+
+00:51:40.490 --> 00:51:41.390 align:middle line:90%
+We don't know of a break.
+
+00:51:41.390 --> 00:51:41.890 align:middle line:90%
+OK.
+
+00:51:41.890 --> 00:51:44.142 align:middle line:84%
+How much did we as a
+community try to break?
+
+00:51:44.142 --> 00:51:45.100 align:middle line:90%
+It's very hard to know.
+
+00:51:45.100 --> 00:51:49.190 align:middle line:84%
+Because, like exactly-- your
+question was a very good one.
+
+00:51:49.190 --> 00:51:51.700 align:middle line:84%
+People don't say-- they don't
+report how many hours they
+
+00:51:51.700 --> 00:51:53.710 align:middle line:90%
+tried to break and fail.
+
+00:51:53.710 --> 00:51:57.140 align:middle line:90%
+So we don't know.
+
+00:51:57.140 --> 00:51:57.640 align:middle line:90%
+Yeah.
+
+00:51:57.640 --> 00:51:58.220 align:middle line:90%
+Yeah?
+
+00:51:58.220 --> 00:51:59.780 align:middle line:84%
+AUDIENCE: If you
+do break something,
+
+00:51:59.780 --> 00:52:02.030 align:middle line:84%
+are you not supposed to
+publish it and you're supposed
+
+00:52:02.030 --> 00:52:04.280 align:middle line:84%
+to-- until they edit it
+privately and then wait, like,
+
+00:52:04.280 --> 00:52:05.210 align:middle line:90%
+six months and then--
+
+00:52:05.210 --> 00:52:06.460 align:middle line:90%
+because it might be dangerous.
+
+00:52:06.460 --> 00:52:07.252 align:middle line:90%
+YAEL KALAI: Oh, oh.
+
+00:52:07.252 --> 00:52:09.010 align:middle line:84%
+You're saying, if
+you do break, maybe
+
+00:52:09.010 --> 00:52:11.150 align:middle line:84%
+you need to be
+careful to publish it.
+
+00:52:11.150 --> 00:52:13.450 align:middle line:90%
+Yeah, yeah.
+
+00:52:13.450 --> 00:52:15.770 align:middle line:84%
+AUDIENCE: Maybe people break
+something all the time,
+
+00:52:15.770 --> 00:52:16.478 align:middle line:90%
+but no one ever--
+
+00:52:16.478 --> 00:52:17.437 align:middle line:90%
+YAEL KALAI: Never know.
+
+00:52:17.437 --> 00:52:18.406 align:middle line:90%
+[LAUGHTER]
+
+00:52:18.406 --> 00:52:20.282 align:middle line:90%
+AUDIENCE: [INAUDIBLE]
+
+00:52:20.282 --> 00:52:20.990 align:middle line:90%
+YAEL KALAI: Yeah.
+
+00:52:20.990 --> 00:52:28.050 align:middle line:84%
+I actually don't-- so that's
+not the art I kind of do.
+
+00:52:28.050 --> 00:52:30.710 align:middle line:90%
+I don't usually break schemes.
+
+00:52:30.710 --> 00:52:32.960 align:middle line:90%
+I like to construct things.
+
+00:52:32.960 --> 00:52:34.410 align:middle line:90%
+I don't work on trying to break.
+
+00:52:34.410 --> 00:52:41.450 align:middle line:84%
+But I know from folks here
+that do more security work,
+
+00:52:41.450 --> 00:52:46.500 align:middle line:84%
+people get in trouble for
+publishing and breaking things.
+
+00:52:46.500 --> 00:52:47.993 align:middle line:90%
+And I don't know.
+
+00:52:47.993 --> 00:52:48.660 align:middle line:90%
+We talk to them.
+
+00:52:48.660 --> 00:52:51.035 align:middle line:84%
+They always mention the word
+jail in their conversations.
+
+00:52:51.035 --> 00:52:52.940 align:middle line:90%
+It's like, wow, OK.
+
+00:52:52.940 --> 00:52:54.200 align:middle line:90%
+Try to stay out of jail.
+
+00:52:54.200 --> 00:52:55.200 align:middle line:90%
+Try to stay out of jail.
+
+00:52:55.200 --> 00:52:56.033 align:middle line:90%
+You're like, OK, no.
+
+00:52:56.033 --> 00:53:01.220 align:middle line:84%
+And here, in theory land, it's
+pretty easy to stay out of jail.
+
+00:53:01.220 --> 00:53:03.720 align:middle line:90%
+They don't run after us.
+
+00:53:03.720 --> 00:53:05.970 align:middle line:90%
+So yeah.
+
+00:53:05.970 --> 00:53:10.210 align:middle line:84%
+But yeah, this can be
+a dangerous business.
+
+00:53:10.210 --> 00:53:13.190 align:middle line:90%
+
+
+00:53:13.190 --> 00:53:15.710 align:middle line:90%
+Any other questions?
+
+00:53:15.710 --> 00:53:16.920 align:middle line:90%
+OK.
+
+00:53:16.920 --> 00:53:22.730 align:middle line:84%
+So I'm trying to think if
+I want to-- maybe I'll end
+
+00:53:22.730 --> 00:53:25.020 align:middle line:90%
+with round-by-round soundness.
+
+00:53:25.020 --> 00:53:28.940 align:middle line:84%
+It's not as interesting, but let
+me just say a few words on it
+
+00:53:28.940 --> 00:53:30.740 align:middle line:90%
+just so I can check the box.
+
+00:53:30.740 --> 00:53:31.610 align:middle line:90%
+I think it's in--
+
+00:53:31.610 --> 00:53:31.955 align:middle line:90%
+AUDIENCE: I have a question.
+
+00:53:31.955 --> 00:53:32.300 align:middle line:90%
+YAEL KALAI: Yeah?
+
+00:53:32.300 --> 00:53:33.830 align:middle line:84%
+AUDIENCE: So what
+was the verdict
+
+00:53:33.830 --> 00:53:35.040 align:middle line:90%
+on the zero-knowledge proof?
+
+00:53:35.040 --> 00:53:36.955 align:middle line:90%
+You cannot do it in parallel?
+
+00:53:36.955 --> 00:53:37.830 align:middle line:90%
+YAEL KALAI: Good, OK.
+
+00:53:37.830 --> 00:53:40.220 align:middle line:90%
+So the question was--
+
+00:53:40.220 --> 00:53:43.100 align:middle line:84%
+going back to the
+zero knowledge.
+
+00:53:43.100 --> 00:53:47.300 align:middle line:84%
+OK, so zero knowledge, if
+you repeat it sequentially,
+
+00:53:47.300 --> 00:53:49.920 align:middle line:90%
+it still stays zero knowledge.
+
+00:53:49.920 --> 00:53:51.980 align:middle line:84%
+It still stays zero
+knowledge because-- exactly
+
+00:53:51.980 --> 00:53:53.330 align:middle line:90%
+the same reason as before.
+
+00:53:53.330 --> 00:53:55.370 align:middle line:84%
+Each time-- I mean,
+I can simulate.
+
+00:53:55.370 --> 00:53:59.090 align:middle line:84%
+Essentially, I can simulate
+this transcript exactly the way
+
+00:53:59.090 --> 00:54:04.580 align:middle line:84%
+I can attack it in the
+random oracle model.
+
+00:54:04.580 --> 00:54:06.941 align:middle line:84%
+So, remember, what is the
+definition of zero knowledge,
+
+00:54:06.941 --> 00:54:07.983 align:middle line:90%
+which I believe I erased?
+
+00:54:07.983 --> 00:54:10.580 align:middle line:90%
+
+
+00:54:10.580 --> 00:54:11.540 align:middle line:90%
+Look at this.
+
+00:54:11.540 --> 00:54:12.330 align:middle line:90%
+I didn't.
+
+00:54:12.330 --> 00:54:13.050 align:middle line:90%
+OK.
+
+00:54:13.050 --> 00:54:16.140 align:middle line:84%
+So I want to say, for
+any cheating verifier,
+
+00:54:16.140 --> 00:54:17.490 align:middle line:90%
+you can simulate the transcript.
+
+00:54:17.490 --> 00:54:19.907 align:middle line:84%
+If I repeat it in parallel, I
+can simulate the transcript.
+
+00:54:19.907 --> 00:54:20.480 align:middle line:90%
+How?
+
+00:54:20.480 --> 00:54:21.680 align:middle line:90%
+I commit.
+
+00:54:21.680 --> 00:54:22.680 align:middle line:90%
+I'm the simulator.
+
+00:54:22.680 --> 00:54:25.130 align:middle line:84%
+I'm going to simulate
+a transcript for you--
+
+00:54:25.130 --> 00:54:29.480 align:middle line:84%
+at least, a physical transcript
+with a commitment as a safe.
+
+00:54:29.480 --> 00:54:31.280 align:middle line:90%
+I commit.
+
+00:54:31.280 --> 00:54:34.050 align:middle line:90%
+I fake it till I make it.
+
+00:54:34.050 --> 00:54:36.020 align:middle line:90%
+I guess beta 1.
+
+00:54:36.020 --> 00:54:39.230 align:middle line:90%
+I commit.
+
+00:54:39.230 --> 00:54:40.760 align:middle line:90%
+I hope V*.
+
+00:54:40.760 --> 00:54:45.410 align:middle line:84%
+And then I compute V*'s
+answer on my commitment,
+
+00:54:45.410 --> 00:54:46.770 align:middle line:90%
+hope it's beta 1.
+
+00:54:46.770 --> 00:54:48.620 align:middle line:90%
+If it's beta 1, I can open.
+
+00:54:48.620 --> 00:54:50.070 align:middle line:90%
+And I continue.
+
+00:54:50.070 --> 00:54:51.810 align:middle line:90%
+If it's not beta 1, I try again.
+
+00:54:51.810 --> 00:54:54.260 align:middle line:84%
+And that's how I simulate
+the protocol exactly
+
+00:54:54.260 --> 00:54:57.770 align:middle line:84%
+as I cheat in the
+random oracle model.
+
+00:54:57.770 --> 00:55:00.120 align:middle line:84%
+What happens when
+things are sequential--
+
+00:55:00.120 --> 00:55:02.585 align:middle line:90%
+
+
+00:55:02.585 --> 00:55:03.960 align:middle line:84%
+when things are
+parallel, sorry--
+
+00:55:03.960 --> 00:55:05.220 align:middle line:90%
+when things are parallel?
+
+00:55:05.220 --> 00:55:08.510 align:middle line:84%
+Now, in the parallel
+world, you get
+
+00:55:08.510 --> 00:55:12.950 align:middle line:84%
+alpha 1 up to alpha lambda,
+so lambda parallel partition
+
+00:55:12.950 --> 00:55:13.890 align:middle line:90%
+of the commitments.
+
+00:55:13.890 --> 00:55:18.410 align:middle line:84%
+So you commit all the
+matrix, all the commitments.
+
+00:55:18.410 --> 00:55:20.360 align:middle line:90%
+Alpha 1, you commit, you commit.
+
+00:55:20.360 --> 00:55:21.750 align:middle line:90%
+You do it in parallel.
+
+00:55:21.750 --> 00:55:25.140 align:middle line:84%
+You get all the beta
+1 up to beta lambda--
+
+00:55:25.140 --> 00:55:28.090 align:middle line:84%
+tells you if to open
+with respect to 0 or 1.
+
+00:55:28.090 --> 00:55:30.450 align:middle line:84%
+And then you need to do
+all the openings, gamma 1
+
+00:55:30.450 --> 00:55:33.480 align:middle line:90%
+up to gamma lambda.
+
+00:55:33.480 --> 00:55:34.333 align:middle line:90%
+Ah.
+
+00:55:34.333 --> 00:55:36.250 align:middle line:84%
+AUDIENCE: The thing that
+helped you simulate--
+
+00:55:36.250 --> 00:55:37.440 align:middle line:90%
+YAEL KALAI: Wow.
+
+00:55:37.440 --> 00:55:41.077 align:middle line:84%
+AUDIENCE: --also helped
+you break the model.
+
+00:55:41.077 --> 00:55:41.910 align:middle line:90%
+YAEL KALAI: Exactly.
+
+00:55:41.910 --> 00:55:45.000 align:middle line:90%
+
+
+00:55:45.000 --> 00:55:47.550 align:middle line:84%
+The thing that helps me
+simulate is exactly the break
+
+00:55:47.550 --> 00:55:48.790 align:middle line:90%
+of the random oracle model.
+
+00:55:48.790 --> 00:55:51.340 align:middle line:90%
+Exactly, exactly.
+
+00:55:51.340 --> 00:55:54.060 align:middle line:84%
+Now, what happens if
+I do it in parallel?
+
+00:55:54.060 --> 00:55:57.500 align:middle line:84%
+If I do it in
+parallel, it's not--
+
+00:55:57.500 --> 00:55:58.000 align:middle line:90%
+OK.
+
+00:55:58.000 --> 00:56:01.645 align:middle line:84%
+If V* was honest, was
+completely honest, then yes,
+
+00:56:01.645 --> 00:56:03.270 align:middle line:84%
+I'll just simulate
+each one separately.
+
+00:56:03.270 --> 00:56:05.440 align:middle line:90%
+Because I can do the same thing.
+
+00:56:05.440 --> 00:56:09.390 align:middle line:84%
+I just choose each one randomly,
+simulate each one randomly,
+
+00:56:09.390 --> 00:56:10.530 align:middle line:90%
+simulate.
+
+00:56:10.530 --> 00:56:13.060 align:middle line:84%
+The thing is, V*
+may be malicious.
+
+00:56:13.060 --> 00:56:14.890 align:middle line:90%
+Here's a really problematic V*.
+
+00:56:14.890 --> 00:56:18.580 align:middle line:84%
+Suppose V* is such that I
+give him all the commitment.
+
+00:56:18.580 --> 00:56:19.683 align:middle line:90%
+So it's digital.
+
+00:56:19.683 --> 00:56:21.600 align:middle line:84%
+So I told you in a safe,
+but actually, there's
+
+00:56:21.600 --> 00:56:23.850 align:middle line:90%
+cryptography going on in there.
+
+00:56:23.850 --> 00:56:25.980 align:middle line:84%
+Let me just gloss
+over the crypto.
+
+00:56:25.980 --> 00:56:30.360 align:middle line:84%
+The safe is going to be
+digital, so there's just bits.
+
+00:56:30.360 --> 00:56:34.990 align:middle line:84%
+And now suppose V* chooses beta
+and some function of alpha.
+
+00:56:34.990 --> 00:56:37.960 align:middle line:84%
+He applies some-- he's
+a cheating verifier.
+
+00:56:37.960 --> 00:56:39.520 align:middle line:90%
+He wants to learn.
+
+00:56:39.520 --> 00:56:40.750 align:middle line:90%
+His goal is to learn.
+
+00:56:40.750 --> 00:56:41.980 align:middle line:90%
+And how does he learn?
+
+00:56:41.980 --> 00:56:43.210 align:middle line:90%
+He gets all these things.
+
+00:56:43.210 --> 00:56:47.980 align:middle line:84%
+He applies some f, some function
+f, to all of them together.
+
+00:56:47.980 --> 00:56:49.480 align:middle line:84%
+Think of it like a
+random function--
+
+00:56:49.480 --> 00:56:53.430 align:middle line:84%
+I don't know-- and gets
+beta 1 up to beta lambda.
+
+00:56:53.430 --> 00:56:54.840 align:middle line:90%
+And that's what he sends me.
+
+00:56:54.840 --> 00:56:57.330 align:middle line:90%
+That's the cheating prover.
+
+00:56:57.330 --> 00:56:59.330 align:middle line:90%
+Now, how do I simulate this?
+
+00:56:59.330 --> 00:57:02.400 align:middle line:90%
+
+
+00:57:02.400 --> 00:57:06.340 align:middle line:84%
+I can guess beta 1
+and try to get this.
+
+00:57:06.340 --> 00:57:09.180 align:middle line:84%
+I can't guess all the
+betas at the same time.
+
+00:57:09.180 --> 00:57:11.620 align:middle line:84%
+The thing is, I can
+try to guess beta 1,
+
+00:57:11.620 --> 00:57:14.230 align:middle line:84%
+give a commitment here,
+hope for the best.
+
+00:57:14.230 --> 00:57:16.240 align:middle line:84%
+But the problem is,
+if I do alpha 2,
+
+00:57:16.240 --> 00:57:18.940 align:middle line:84%
+the beta 1 may change because
+the betas are a function of all
+
+00:57:18.940 --> 00:57:21.130 align:middle line:90%
+the alphas together.
+
+00:57:21.130 --> 00:57:24.220 align:middle line:84%
+It's really not clear
+how to simulate this.
+
+00:57:24.220 --> 00:57:25.300 align:middle line:90%
+OK.
+
+00:57:25.300 --> 00:57:26.650 align:middle line:90%
+So the question holds.
+
+00:57:26.650 --> 00:57:28.630 align:middle line:90%
+Is this zero knowledge?
+
+00:57:28.630 --> 00:57:32.960 align:middle line:84%
+And this was an open problem
+for a very, very long time,
+
+00:57:32.960 --> 00:57:34.400 align:middle line:90%
+over 20 years.
+
+00:57:34.400 --> 00:57:35.800 align:middle line:90%
+We had no idea.
+
+00:57:35.800 --> 00:57:38.500 align:middle line:90%
+People really tried.
+
+00:57:38.500 --> 00:57:42.490 align:middle line:84%
+This we know because people did
+publish some partial results.
+
+00:57:42.490 --> 00:57:48.280 align:middle line:84%
+And everybody worked on
+it for a very long time.
+
+00:57:48.280 --> 00:57:50.800 align:middle line:90%
+We shared our frustration.
+
+00:57:50.800 --> 00:57:53.390 align:middle line:90%
+And then in 2019--
+
+00:57:53.390 --> 00:57:55.240 align:middle line:90%
+actually, here at MIT--
+
+00:57:55.240 --> 00:57:58.420 align:middle line:84%
+and be within in
+our neighborhood--
+
+00:57:58.420 --> 00:57:59.350 align:middle line:90%
+a bunch of people--
+
+00:57:59.350 --> 00:58:01.660 align:middle line:84%
+I'm going to tell you
+about it-- actually
+
+00:58:01.660 --> 00:58:08.080 align:middle line:84%
+proved that this is
+not zero knowledge,
+
+00:58:08.080 --> 00:58:09.500 align:middle line:90%
+not parallel zero knowledge.
+
+00:58:09.500 --> 00:58:11.230 align:middle line:84%
+And the interesting
+thing-- the way
+
+00:58:11.230 --> 00:58:13.510 align:middle line:84%
+they proved that it's
+not zero knowledge
+
+00:58:13.510 --> 00:58:18.520 align:middle line:84%
+is actually by proving
+that the Fiat-Shamir is
+
+00:58:18.520 --> 00:58:22.755 align:middle line:84%
+sound for this protocol,
+which is very weird.
+
+00:58:22.755 --> 00:58:24.850 align:middle line:90%
+[LAUGHTER]
+
+00:58:24.850 --> 00:58:29.200 align:middle line:84%
+So what they proved is
+that this protocol-- this
+
+00:58:29.200 --> 00:58:33.460 align:middle line:90%
+is a three-round protocol.
+
+00:58:33.460 --> 00:58:37.150 align:middle line:90%
+You can apply Fiat-Shamir to it.
+
+00:58:37.150 --> 00:58:40.750 align:middle line:84%
+What they proved is if you--
+so there was a question.
+
+00:58:40.750 --> 00:58:43.250 align:middle line:84%
+Is Fiat-Shamir sound
+in the standard model?
+
+00:58:43.250 --> 00:58:43.750 align:middle line:90%
+Is it sound?
+
+00:58:43.750 --> 00:58:44.250 align:middle line:90%
+Is it sound?
+
+00:58:44.250 --> 00:58:44.870 align:middle line:90%
+Nobody knew.
+
+00:58:44.870 --> 00:58:47.020 align:middle line:84%
+They gave kind of a
+breakthrough result
+
+00:58:47.020 --> 00:58:49.572 align:middle line:84%
+showing it's sound in
+the random oracle model.
+
+00:58:49.572 --> 00:58:51.530 align:middle line:84%
+So that's what I'm going
+to show you next time.
+
+00:58:51.530 --> 00:58:57.280 align:middle line:84%
+Next time, we're going to prove
+that this protocol is actually
+
+00:58:57.280 --> 00:59:03.310 align:middle line:84%
+sound if you apply
+Fiat-Shamir to it.
+
+00:59:03.310 --> 00:59:07.900 align:middle line:84%
+The interesting thing is, the
+fact that it's sound if you
+
+00:59:07.900 --> 00:59:10.580 align:middle line:90%
+apply Fiat-Shamir shows--
+
+00:59:10.580 --> 00:59:14.230 align:middle line:84%
+so we're going to
+show this is sound.
+
+00:59:14.230 --> 00:59:16.260 align:middle line:90%
+So of course it's sound.
+
+00:59:16.260 --> 00:59:20.480 align:middle line:84%
+If you just do parallel
+partition, you'll get soundness.
+
+00:59:20.480 --> 00:59:25.740 align:middle line:84%
+But it's also sound with--
+there exists a hash function--
+
+00:59:25.740 --> 00:59:32.430 align:middle line:84%
+so there exists a hash function
+such that even this hash,
+
+00:59:32.430 --> 00:59:35.780 align:middle line:84%
+under a standard cryptographic
+assumption known as learning
+
+00:59:35.780 --> 00:59:38.450 align:middle line:84%
+with error-- we'll
+talk about later--
+
+00:59:38.450 --> 00:59:41.580 align:middle line:84%
+almost learning with error
+with circular security.
+
+00:59:41.580 --> 00:59:42.180 align:middle line:90%
+Never mind.
+
+00:59:42.180 --> 00:59:44.190 align:middle line:84%
+There's a standard
+cryptographic assumption
+
+00:59:44.190 --> 00:59:49.940 align:middle line:84%
+so that under that assumption,
+there exists a hash family such
+
+00:59:49.940 --> 01:00:17.210 align:middle line:84%
+that this protocol
+is Fiat-Shamir sound.
+
+01:00:17.210 --> 01:00:22.520 align:middle line:84%
+So it's sounds even after you
+apply the Fiat-Shamir paradigm
+
+01:00:22.520 --> 01:00:23.160 align:middle line:90%
+to it.
+
+01:00:23.160 --> 01:00:23.440 align:middle line:90%
+Yeah?
+
+01:00:23.440 --> 01:00:25.520 align:middle line:84%
+AUDIENCE: So you're talking
+about the Hamiltonian path
+
+01:00:25.520 --> 01:00:26.030 align:middle line:90%
+in NP.
+
+01:00:26.030 --> 01:00:27.482 align:middle line:90%
+Is that specific protocol?
+
+01:00:27.482 --> 01:00:28.190 align:middle line:90%
+YAEL KALAI: Yeah.
+
+01:00:28.190 --> 01:00:31.140 align:middle line:84%
+AUDIENCE: And not just
+any zero knowledge?
+
+01:00:31.140 --> 01:00:33.390 align:middle line:84%
+YAEL KALAI: No,
+not any, not any.
+
+01:00:33.390 --> 01:00:34.970 align:middle line:84%
+There may be zero
+knowledge protocols
+
+01:00:34.970 --> 01:00:39.170 align:middle line:84%
+that you can repeat in
+parallel and zero knowledge--
+
+01:00:39.170 --> 01:00:40.170 align:middle line:90%
+yeah, sorry.
+
+01:00:40.170 --> 01:00:41.070 align:middle line:90%
+Let me clarify.
+
+01:00:41.070 --> 01:00:46.047 align:middle line:84%
+I'm not saying that any
+zero-knowledge protocol,
+
+01:00:46.047 --> 01:00:48.630 align:middle line:84%
+if you repeat it in parallel,
+it's not zero knowledge anymore.
+
+01:00:48.630 --> 01:00:49.940 align:middle line:90%
+I'm not saying that.
+
+01:00:49.940 --> 01:00:55.950 align:middle line:84%
+I'm saying that this specific
+protocol for graph Hamiltonian,
+
+01:00:55.950 --> 01:00:59.690 align:middle line:84%
+if you repeat this
+protocol in parallel, it's
+
+01:00:59.690 --> 01:01:01.550 align:middle line:90%
+not going to be zero knowledge.
+
+01:01:01.550 --> 01:01:05.030 align:middle line:84%
+And the reason it's not going to
+be zero knowledge, which-- this
+
+01:01:05.030 --> 01:01:07.200 align:middle line:90%
+should be really like, what?
+
+01:01:07.200 --> 01:01:09.110 align:middle line:84%
+You should not understand
+what I'm saying.
+
+01:01:09.110 --> 01:01:12.520 align:middle line:84%
+Or at least, it
+takes time to absorb.
+
+01:01:12.520 --> 01:01:15.780 align:middle line:84%
+Or at least, to me, it
+took time to absorb.
+
+01:01:15.780 --> 01:01:18.420 align:middle line:84%
+The reason it's
+not zero knowledge
+
+01:01:18.420 --> 01:01:24.870 align:middle line:84%
+is because, actually,
+this protocol is secure
+
+01:01:24.870 --> 01:01:27.120 align:middle line:84%
+if you apply the Fiat-Shamir--
+it's sound if you apply
+
+01:01:27.120 --> 01:01:30.150 align:middle line:90%
+the Fiat-Shamir paradigm to it.
+
+01:01:30.150 --> 01:01:33.570 align:middle line:84%
+And this is what
+we'll see next time.
+
+01:01:33.570 --> 01:01:34.780 align:middle line:90%
+So this is weird.
+
+01:01:34.780 --> 01:01:35.280 align:middle line:90%
+Yeah?
+
+01:01:35.280 --> 01:01:36.970 align:middle line:84%
+AUDIENCE: Is this because
+it's not simulatable?
+
+01:01:36.970 --> 01:01:38.650 align:middle line:84%
+Like, you can generate
+it in that order?
+
+01:01:38.650 --> 01:01:40.330 align:middle line:90%
+YAEL KALAI: Exactly, exactly.
+
+01:01:40.330 --> 01:01:44.306 align:middle line:90%
+So why is it not zero knowledge?
+
+01:01:44.306 --> 01:01:47.640 align:middle line:84%
+So what does it mean
+to be zero Knowledge.
+
+01:01:47.640 --> 01:01:49.600 align:middle line:84%
+What's the definition
+of zero knowledge?
+
+01:01:49.600 --> 01:01:54.090 align:middle line:84%
+Zero knowledge says, for
+any V*, you can simulate.
+
+01:01:54.090 --> 01:01:58.230 align:middle line:84%
+But now I'll be the V*
+that you cannot simulate.
+
+01:01:58.230 --> 01:01:59.620 align:middle line:90%
+My V* star--
+
+01:01:59.620 --> 01:02:01.800 align:middle line:84%
+I'm going to be
+a Fiat-Shamir V*.
+
+01:02:01.800 --> 01:02:03.610 align:middle line:90%
+I'm going to compute my beta.
+
+01:02:03.610 --> 01:02:04.230 align:middle line:90%
+I'm V*.
+
+01:02:04.230 --> 01:02:05.827 align:middle line:90%
+I want to learned something.
+
+01:02:05.827 --> 01:02:07.160 align:middle line:90%
+My goal is to learned something.
+
+01:02:07.160 --> 01:02:08.952 align:middle line:84%
+So I don't want to be
+able to simulate you.
+
+01:02:08.952 --> 01:02:10.800 align:middle line:90%
+Then I didn't learn anything.
+
+01:02:10.800 --> 01:02:12.190 align:middle line:90%
+My goal's just to learn.
+
+01:02:12.190 --> 01:02:13.540 align:middle line:90%
+So how do I learn?
+
+01:02:13.540 --> 01:02:17.650 align:middle line:84%
+I'm going to choose my
+betas as a Fiat-Shamir.
+
+01:02:17.650 --> 01:02:19.840 align:middle line:84%
+I'm going to use the
+Fiat-Shamir hash.
+
+01:02:19.840 --> 01:02:21.120 align:middle line:90%
+So you told me it's sound.
+
+01:02:21.120 --> 01:02:23.610 align:middle line:84%
+There's some hash
+family that it's sound.
+
+01:02:23.610 --> 01:02:24.370 align:middle line:90%
+Great.
+
+01:02:24.370 --> 01:02:26.980 align:middle line:84%
+I'm going to choose a random
+hash key from this family.
+
+01:02:26.980 --> 01:02:31.710 align:middle line:84%
+And my beta is going
+to be hash of alpha.
+
+01:02:31.710 --> 01:02:35.130 align:middle line:84%
+Now you're saying
+you can simulate me.
+
+01:02:35.130 --> 01:02:37.210 align:middle line:84%
+For any x, you can
+simulate to me.
+
+01:02:37.210 --> 01:02:40.590 align:middle line:84%
+If you can simulate
+me for any x,
+
+01:02:40.590 --> 01:02:42.780 align:middle line:84%
+then you should be able
+also to simulate me
+
+01:02:42.780 --> 01:02:45.393 align:middle line:84%
+for x in the language and
+for x outside the language.
+
+01:02:45.393 --> 01:02:47.560 align:middle line:84%
+Because you don't know which
+is in and which is out.
+
+01:02:47.560 --> 01:02:49.350 align:middle line:90%
+You're poly bounded.
+
+01:02:49.350 --> 01:02:53.280 align:middle line:84%
+So I want to argue
+there is no simulator.
+
+01:02:53.280 --> 01:02:54.730 align:middle line:90%
+Let me actually say this slowly.
+
+01:02:54.730 --> 01:02:58.030 align:middle line:84%
+So I'm not going to do this
+round-by-round soundness today.
+
+01:02:58.030 --> 01:02:59.970 align:middle line:90%
+It's not that interesting.
+
+01:02:59.970 --> 01:03:02.950 align:middle line:84%
+But it will come maybe
+to haunt us later.
+
+01:03:02.950 --> 01:03:08.350 align:middle line:90%
+But let me-- it's nicer to do.
+
+01:03:08.350 --> 01:03:09.730 align:middle line:90%
+And we'll just end with that.
+
+01:03:09.730 --> 01:03:10.980 align:middle line:90%
+We have a couple minutes left.
+
+01:03:10.980 --> 01:03:12.600 align:middle line:90%
+We'll just end with that.
+
+01:03:12.600 --> 01:03:13.812 align:middle line:90%
+OK.
+
+01:03:13.812 --> 01:03:20.130 align:middle line:84%
+So, again, next time, we'll
+see that parallel repetition
+
+01:03:20.130 --> 01:03:24.960 align:middle line:84%
+of this specific protocol
+with a specific commitment--
+
+01:03:24.960 --> 01:03:27.600 align:middle line:90%
+with a specific digital safe--
+
+01:03:27.600 --> 01:03:32.380 align:middle line:84%
+is sound when you apply
+the Fiat-Shamir to it.
+
+01:03:32.380 --> 01:03:34.025 align:middle line:90%
+Now here's the claim.
+
+01:03:34.025 --> 01:03:39.720 align:middle line:90%
+
+
+01:03:39.720 --> 01:03:51.040 align:middle line:84%
+Fiat-Shamir soundness implies
+that it's not zero knowledge.
+
+01:03:51.040 --> 01:03:53.820 align:middle line:90%
+
+
+01:03:53.820 --> 01:03:55.240 align:middle line:90%
+And let me argue that.
+
+01:03:55.240 --> 01:03:56.170 align:middle line:90%
+Let me argue that.
+
+01:03:56.170 --> 01:03:57.125 align:middle line:90%
+So here's the proof.
+
+01:03:57.125 --> 01:03:59.700 align:middle line:90%
+
+
+01:03:59.700 --> 01:04:01.890 align:middle line:90%
+Suppose it's zero knowledge.
+
+01:04:01.890 --> 01:04:03.160 align:middle line:90%
+OK, so suppose it's wrong.
+
+01:04:03.160 --> 01:04:05.620 align:middle line:84%
+Suppose I'm going to
+get a contradiction.
+
+01:04:05.620 --> 01:04:10.870 align:middle line:84%
+So suppose there exists
+a simulator, a PPT.
+
+01:04:10.870 --> 01:04:14.527 align:middle line:84%
+There is an efficient
+simulator such that--
+
+01:04:14.527 --> 01:04:15.860 align:middle line:90%
+I'm just copying the definition.
+
+01:04:15.860 --> 01:04:17.240 align:middle line:90%
+Suppose it's zero knowledge.
+
+01:04:17.240 --> 01:04:20.980 align:middle line:84%
+It means that there is an
+efficient simulator such that
+
+01:04:20.980 --> 01:04:30.010 align:middle line:84%
+for any poly size V*, for
+any cheating verifier,
+
+01:04:30.010 --> 01:04:36.360 align:middle line:84%
+and for every x in the
+language, you can simulate.
+
+01:04:36.360 --> 01:04:36.860 align:middle line:90%
+OK.
+
+01:04:36.860 --> 01:04:39.950 align:middle line:84%
+So for every V*,
+for every x, Sim--
+
+01:04:39.950 --> 01:04:41.950 align:middle line:90%
+what does Sim do?
+
+01:04:41.950 --> 01:04:49.420 align:middle line:84%
+Sim-- an input x, outputs
+alpha, beta, gamma
+
+01:04:49.420 --> 01:04:51.825 align:middle line:84%
+that are accepted
+with respect to x.
+
+01:04:51.825 --> 01:04:56.218 align:middle line:90%
+
+
+01:04:56.218 --> 01:04:57.850 align:middle line:90%
+Because the prover's accepted.
+
+01:04:57.850 --> 01:04:59.410 align:middle line:90%
+He's honest.
+
+01:04:59.410 --> 01:05:00.800 align:middle line:84%
+So the prover is
+always accepted.
+
+01:05:00.800 --> 01:05:03.133 align:middle line:84%
+You're talking with an honest
+prover that has a witness.
+
+01:05:03.133 --> 01:05:07.930 align:middle line:90%
+
+
+01:05:07.930 --> 01:05:09.640 align:middle line:90%
+So he should also accept.
+
+01:05:09.640 --> 01:05:10.870 align:middle line:90%
+They're indistinguishable.
+
+01:05:10.870 --> 01:05:12.100 align:middle line:90%
+Real and ideal are--
+
+01:05:12.100 --> 01:05:15.063 align:middle line:90%
+
+
+01:05:15.063 --> 01:05:17.480 align:middle line:84%
+the real view should be-- this
+is from the simulated view.
+
+01:05:17.480 --> 01:05:20.210 align:middle line:84%
+The real view outputs
+something that's accepted,
+
+01:05:20.210 --> 01:05:23.860 align:middle line:84%
+so the simulator should output
+something that's accepted.
+
+01:05:23.860 --> 01:05:25.330 align:middle line:90%
+OK.
+
+01:05:25.330 --> 01:05:32.890 align:middle line:84%
+So first, I want to argue, this
+implies that also for x not
+
+01:05:32.890 --> 01:05:35.050 align:middle line:84%
+in L-- or for random,
+I should say--
+
+01:05:35.050 --> 01:05:36.565 align:middle line:90%
+or there exists, at least--
+
+01:05:36.565 --> 01:05:39.610 align:middle line:90%
+
+
+01:05:39.610 --> 01:05:50.392 align:middle line:84%
+such that Sim and x also
+outputs alpha, beta, gamma
+
+01:05:50.392 --> 01:05:52.420 align:middle line:90%
+that are accepted.
+
+01:05:52.420 --> 01:05:54.110 align:middle line:90%
+So this is accepted.
+
+01:05:54.110 --> 01:05:55.690 align:middle line:90%
+Let me write--
+
+01:05:55.690 --> 01:05:58.435 align:middle line:84%
+I'll write it like-- and so
+this should also be accepted.
+
+01:05:58.435 --> 01:05:58.935 align:middle line:90%
+Why?
+
+01:05:58.935 --> 01:06:01.970 align:middle line:90%
+
+
+01:06:01.970 --> 01:06:02.470 align:middle line:90%
+Why?
+
+01:06:02.470 --> 01:06:07.340 align:middle line:84%
+So I want to argue if, for
+every x in the language,
+
+01:06:07.340 --> 01:06:10.820 align:middle line:84%
+this efficient simulator
+with oracle access
+
+01:06:10.820 --> 01:06:15.950 align:middle line:84%
+to an efficient verifier
+outputs an expected transcript,
+
+01:06:15.950 --> 01:06:19.170 align:middle line:84%
+there must be at least
+one x not in the language
+
+01:06:19.170 --> 01:06:21.230 align:middle line:84%
+so that he outputs
+something that's accepting.
+
+01:06:21.230 --> 01:06:23.147 align:middle line:84%
+Because he can't distinguish
+in the language--
+
+01:06:23.147 --> 01:06:24.770 align:middle line:84%
+it's hard problem,
+and he's efficient.
+
+01:06:24.770 --> 01:06:29.058 align:middle line:84%
+If all the time that it's in the
+language, he outputs accepting,
+
+01:06:29.058 --> 01:06:30.600 align:middle line:84%
+and all the time
+not in the language,
+
+01:06:30.600 --> 01:06:33.290 align:middle line:84%
+then the simulator
+broke your language.
+
+01:06:33.290 --> 01:06:35.060 align:middle line:90%
+He broke NP.
+
+01:06:35.060 --> 01:06:36.900 align:middle line:90%
+OK, so that can't be.
+
+01:06:36.900 --> 01:06:39.800 align:middle line:84%
+So there exists x
+not in the language
+
+01:06:39.800 --> 01:06:44.420 align:middle line:84%
+for which he manages to
+generate a transcript that
+
+01:06:44.420 --> 01:06:45.570 align:middle line:90%
+breaks the Fiat-Shamir.
+
+01:06:45.570 --> 01:06:47.520 align:middle line:90%
+Because what does V* do?
+
+01:06:47.520 --> 01:06:59.840 align:middle line:84%
+V*, this means that this
+is hash of x in alpha.
+
+01:06:59.840 --> 01:07:00.960 align:middle line:90%
+That's my V*.
+
+01:07:00.960 --> 01:07:02.260 align:middle line:90%
+My V* applies the Fiat-Shamir.
+
+01:07:02.260 --> 01:07:06.890 align:middle line:90%
+
+
+01:07:06.890 --> 01:07:07.940 align:middle line:90%
+OK.
+
+01:07:07.940 --> 01:07:13.160 align:middle line:84%
+The V* that I'm interested
+in is the Fiat-Shamir V*.
+
+01:07:13.160 --> 01:07:21.590 align:middle line:84%
+We assumed that the Fiat-Shamir
+is sound with respect to some H.
+
+01:07:21.590 --> 01:07:26.860 align:middle line:84%
+This V* is going to use that H.
+He's going to choose a random
+
+01:07:26.860 --> 01:07:27.360 align:middle line:90%
+hash key.
+
+01:07:27.360 --> 01:07:31.760 align:middle line:84%
+And that's how he
+chooses the beta.
+
+01:07:31.760 --> 01:07:34.420 align:middle line:90%
+Or a random hash key is fixed.
+
+01:07:34.420 --> 01:07:34.920 align:middle line:90%
+That's it.
+
+01:07:34.920 --> 01:07:36.500 align:middle line:90%
+That's the hash key.
+
+01:07:36.500 --> 01:07:37.560 align:middle line:90%
+It's fixed.
+
+01:07:37.560 --> 01:07:39.320 align:middle line:84%
+Now Sim has to
+use that hash key.
+
+01:07:39.320 --> 01:07:41.100 align:middle line:84%
+Because otherwise,
+you can distinguish.
+
+01:07:41.100 --> 01:07:44.030 align:middle line:90%
+
+
+01:07:44.030 --> 01:07:48.500 align:middle line:90%
+So he broke the Fiat-Shamir.
+
+01:07:48.500 --> 01:07:52.160 align:middle line:90%
+That means he cannot simulate.
+
+01:07:52.160 --> 01:07:53.160 align:middle line:90%
+There's no simulator.
+
+01:07:53.160 --> 01:07:55.050 align:middle line:84%
+A simulator will
+break the Fiat-Shamir.
+
+01:07:55.050 --> 01:07:56.810 align:middle line:90%
+So it's an interesting--
+
+01:07:56.810 --> 01:07:59.380 align:middle line:90%
+
+
+01:07:59.380 --> 01:08:00.960 align:middle line:84%
+It was a weird
+state of the world.
+
+01:08:00.960 --> 01:08:04.440 align:middle line:84%
+Because people
+believed, in some sense,
+
+01:08:04.440 --> 01:08:06.220 align:middle line:84%
+that parallel
+zero-knowledge should hold.
+
+01:08:06.220 --> 01:08:06.960 align:middle line:90%
+Why not, eh?
+
+01:08:06.960 --> 01:08:07.768 align:middle line:90%
+You can't learn.
+
+01:08:07.768 --> 01:08:08.560 align:middle line:90%
+What can you learn?
+
+01:08:08.560 --> 01:08:09.630 align:middle line:90%
+Try to learn, eh.
+
+01:08:09.630 --> 01:08:12.160 align:middle line:84%
+But people also learned
+that Fiat-Shamir is true.
+
+01:08:12.160 --> 01:08:15.720 align:middle line:90%
+But these two are not--
+
+01:08:15.720 --> 01:08:17.819 align:middle line:90%
+you can't believe both.
+
+01:08:17.819 --> 01:08:20.529 align:middle line:84%
+And it wasn't clear which
+one is the right thing.
+
+01:08:20.529 --> 01:08:23.369 align:middle line:84%
+And so now we know-- at
+least, for this protocol--
+
+01:08:23.369 --> 01:08:26.020 align:middle line:84%
+Fiat-Shamir is true, and
+it's not zero knowledge.
+
+01:08:26.020 --> 01:08:26.520 align:middle line:90%
+Yeah?
+
+01:08:26.520 --> 01:08:28.645 align:middle line:84%
+AUDIENCE: So actually,
+there is something stronger,
+
+01:08:28.645 --> 01:08:32.350 align:middle line:84%
+like that any non-interactive
+proof cannot be zero knowledge.
+
+01:08:32.350 --> 01:08:33.960 align:middle line:90%
+Is that basically with--
+
+01:08:33.960 --> 01:08:36.899 align:middle line:84%
+YAEL KALAI: Any interactive
+proof which Fiat-Shamir holds
+
+01:08:36.899 --> 01:08:38.050 align:middle line:90%
+cannot be zero knowledge.
+
+01:08:38.050 --> 01:08:38.970 align:middle line:90%
+Exactly.
+
+01:08:38.970 --> 01:08:39.987 align:middle line:90%
+Yeah.
+
+01:08:39.987 --> 01:08:40.529 align:middle line:90%
+AUDIENCE: OK.
+
+01:08:40.529 --> 01:08:43.130 align:middle line:84%
+Because yeah, if you use
+a specific instantiation,
+
+01:08:43.130 --> 01:08:48.742 align:middle line:84%
+like hash then it's basically
+calling him hash [INAUDIBLE].
+
+01:08:48.742 --> 01:08:49.950 align:middle line:90%
+YAEL KALAI: Exactly, exactly.
+
+01:08:49.950 --> 01:08:52.560 align:middle line:84%
+AUDIENCE: There's no interaction
+that breaks zero knowledge.
+
+01:08:52.560 --> 01:08:53.500 align:middle line:90%
+YAEL KALAI: Yeah.
+
+01:08:53.500 --> 01:08:54.000 align:middle line:90%
+Exactly.
+
+01:08:54.000 --> 01:08:56.252 align:middle line:84%
+AUDIENCE: That's
+what the proof I see.
+
+01:08:56.252 --> 01:08:57.460 align:middle line:90%
+YAEL KALAI: Yeah, yeah, yeah.
+
+01:08:57.460 --> 01:08:59.840 align:middle line:90%
+OK, we're out of time.

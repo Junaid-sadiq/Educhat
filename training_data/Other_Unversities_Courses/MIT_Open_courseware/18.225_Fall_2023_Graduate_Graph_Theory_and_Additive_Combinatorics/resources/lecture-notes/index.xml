@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Lecture Notes on MIT OpenCourseWare</title>
+    <link>/resources/lecture-notes/</link>
+    <description>Recent content in Lecture Notes on MIT OpenCourseWare</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="/resources/lecture-notes/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>18.225 F23 Full Lecture Notes: Graph Theory and Additive Combinatorics</title>
+      <link>/resources/mit18_225_f23_lec_full_pdf/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/resources/mit18_225_f23_lec_full_pdf/data.json</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>18.225 F23 Lecture 01: Appetizer: Triangles and Equations</title>
+      <link>/resources/mit18_225_f23_lec01_pdf/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/resources/mit18_225_f23_lec01_pdf/data.json</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>18.225 F23 Lecture 02-05: Forbidding a Subgraph</title>
+      <link>/resources/mit18_225_f23_lec02-05_pdf/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/resources/mit18_225_f23_lec02-05_pdf/data.json</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>18.225 F23 Lecture 06-09: Graph Regularity Method</title>
+      <link>/resources/mit18_225_f23_lec06-09_pdf/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/resources/mit18_225_f23_lec06-09_pdf/data.json</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>18.225 F23 Lecture 10-12: Pseudorandom Graphs</title>
+      <link>/resources/mit18_225_f23_lec10-12_pdf/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/resources/mit18_225_f23_lec10-12_pdf/data.json</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>18.225 F23 Lecture 13-16: Graph Limits</title>
+      <link>/resources/mit18_225_f23_lec13-16_pdf/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/resources/mit18_225_f23_lec13-16_pdf/data.json</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>18.225 F23 Lecture 17–18: Graph Homomorphism Inequalities</title>
+      <link>/resources/mit18_225_f23_lec17-18_pdf/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/resources/mit18_225_f23_lec17-18_pdf/data.json</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>18.225 F23 Lecture 19-21: Forbidding 3-Term Arithmetic Progressions</title>
+      <link>/resources/mit18_225_f23_lec19-21_pdf/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/resources/mit18_225_f23_lec19-21_pdf/data.json</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>18.225 F23 Lecture 22-25: Structure of Set Addition</title>
+      <link>/resources/mit18_225_f23_lec22-25_pdf/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/resources/mit18_225_f23_lec22-25_pdf/data.json</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>18.225 F23 Lecture 26: Sum-Product Problem</title>
+      <link>/resources/mit18_225_f23_lec26_pdf/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/resources/mit18_225_f23_lec26_pdf/data.json</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>18.225 F23 Lecture 27: Progressions in Sparse Pseudorandom Sets</title>
+      <link>/resources/mit18_225_f23_lec27_pdf/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/resources/mit18_225_f23_lec27_pdf/data.json</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>18.225 F23 Notation and Conventions</title>
+      <link>/resources/mit18_225_f23_notation_conventions_pdf/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/resources/mit18_225_f23_notation_conventions_pdf/data.json</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>18.225 F23 Preface</title>
+      <link>/resources/mit18_225_f23_preface_pdf/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/resources/mit18_225_f23_preface_pdf/data.json</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>18.225 F23 References</title>
+      <link>/resources/mit18_225_f23_references_pdf/data.json</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/resources/mit18_225_f23_references_pdf/data.json</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

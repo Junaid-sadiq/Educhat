@@ -1,0 +1,19 @@
+
+{ 
+  "title":"Introduction to R",
+  "description":"", 
+  "videos": [{
+          "description": null,
+          "file": "/courses/introduction-to-r-and-gis-fall-2023/res1-002-1a-intro-to-r_360p_16_9.mp4"
+        },{
+          "description": null,
+          "file": "/courses/introduction-to-r-and-gis-fall-2023/res1-002-1b-playing_with_data_360p_16_9.mp4"
+        },{
+          "description": null,
+          "file": "/courses/introduction-to-r-and-gis-fall-2023/res1002_1b-2_linearmixed_models_in_r_360p_16_9.mp4"
+        },{
+          "description": null,
+          "file": "/courses/introduction-to-r-and-gis-fall-2023/res1-002-1c-loopsfunctions_360p_16_9.mp4"
+        }]}
+
+

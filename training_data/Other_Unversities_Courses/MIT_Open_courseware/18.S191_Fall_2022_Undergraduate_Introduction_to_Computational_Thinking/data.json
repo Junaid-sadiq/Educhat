@@ -1,0 +1,33 @@
+{
+  "course_title":"Introduction to Computational Thinking",
+  "course_description":"This class uses revolutionary programmable interactivity to combine material from three fields -- Computer Science + Mathematics + Applications -- creating an engaging, efficient learning solution to prepare students to be sophisticated and intuitive thinkers, programmers, and solution providers for the modern interconnected online world.\n\nUpon completion, students are well trained to be scientific “trilinguals,” seeing and experimenting with mathematics interactively as math is meant to be seen, and ready to participate and contribute to open source development of large projects and ecosystems.",
+  "course_description_html":"<p>This class uses revolutionary programmable interactivity to combine material from three fields &ndash; Computer Science + Mathematics + Applications &ndash; creating an engaging, efficient learning solution to prepare students to be sophisticated and intuitive thinkers, programmers, and solution providers for the modern interconnected online world.</p>\n<p>Upon completion, students are well trained to be scientific “trilinguals,” seeing and experimenting with mathematics interactively as math is meant to be seen, and ready to participate and contribute to open source development of large projects and ecosystems.</p>\n",
+  "site_uid":"81fee806-20b5-4f46-8f62-452e4ce98829",
+  "legacy_uid":"","instructors": [{
+    "first_name":"Alan",
+    "last_name":"Edelman",
+    "middle_initial":"",
+    "salutation":"Prof.",
+    "title":"Prof. Alan Edelman"},{
+    "first_name":"David",
+    "last_name":"Sanders",
+    "middle_initial":"P.",
+    "salutation":"Prof.",
+    "title":"Prof. David P. Sanders"},{
+    "first_name":"Charles",
+    "last_name":"Leiserson",
+    "middle_initial":"",
+    "salutation":"Prof.",
+    "title":"Prof. Charles Leiserson"}],"department_numbers":["18","1","6","12","16","22"],
+  "learning_resource_types":["Lecture Videos","Problem Sets","Programming Assignments"],
+  "topics":[["Energy","Climate"],["Engineering","Computer Science","Algorithms and Data Structures"],["Engineering","Computer Science","Computer Design and Engineering"],["Engineering","Computer Science","Computer Networks"],["Mathematics","Applied Mathematics"],["Mathematics","Computation"]],
+  "mit_learn_topics":null,
+  "primary_course_number":"18.S191",
+  "extra_course_numbers":"1.S992, 6.S083, 12.S083, 16.S686, 22.S093 ",
+  "term":"Fall",
+  "year":"2022",
+  "level":["Undergraduate"],
+  "hide_download":null,
+  "image_src":"./static_resources/18-s191f22.jpg",
+  "course_image_metadata":{"body":"","content_type":"resource","draft":false,"file":"/courses/18-s191-introduction-to-computational-thinking-fall-2022/18-s191f22.jpg","file_size":36144,"file_type":"image/jpeg","image_metadata":{"caption":"Corgi \"in a washing machine.\" An example of image manipulation by means of data processing. (Image of Philip the corgi courtesy of the instructors.)","credit":"","image-alt":"A distorted image of a corgi with distorted graph lines superimposed."},"iscjklanguage":false,"learning_resource_types":[],"license":"https://creativecommons.org/licenses/by-nc-sa/4.0/","resourcetype":"Image","title":"18-S191f22.jpg","uid":"87f398c8-9632-459a-a2f8-89e72eb6826b","video_files":{"video_captions_file":"","video_thumbnail_file":"","video_transcript_file":""},"video_metadata":{"video_speakers":"","video_tags":"","youtube_description":"","youtube_id":""}}}
+

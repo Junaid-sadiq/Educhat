@@ -1,0 +1,12 @@
+{
+  "title":"Lecture 3: Regular Pumping Lemma, Finite Automata → Regular Expressions, CFGs",
+  "description": "",
+  "file": null,
+  "learning_resource_types": ["Lecture Videos"],
+  "resource_type": "Video",
+  "file_type": null,
+  "youtube_key":  "KAySmSEGc9U",
+  "captions_file": "/courses/18-404j-theory-of-computation-fall-2020/198849bbce9951cba630ac4faca25686_KAySmSEGc9U.vtt",
+  "transcript_file": "/courses/18-404j-theory-of-computation-fall-2020/5e1fd0dfb8d0d45a2bde948aec38b4d9_KAySmSEGc9U.pdf",
+  "thumbnail_file": "https://img.youtube.com/vi/KAySmSEGc9U/default.jpg",
+  "archive_url": "https://archive.org/download/MIT18.404F20/MIT18_404F20_lec03_300k.mp4"}

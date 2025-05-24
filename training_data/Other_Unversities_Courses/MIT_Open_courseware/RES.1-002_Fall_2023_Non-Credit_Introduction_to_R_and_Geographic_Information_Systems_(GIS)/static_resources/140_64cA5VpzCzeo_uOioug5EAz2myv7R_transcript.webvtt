@@ -1,0 +1,2394 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:10.503 align:middle line:84%
+[SQUEAKING]
+[RUSTLING] [CLICKING]
+
+00:00:10.503 --> 00:00:11.920 align:middle line:84%
+HELENA VAILLICROSA:
+In this video,
+
+00:00:11.920 --> 00:00:14.790 align:middle line:84%
+I'm going to go directly
+to R. So what is R?
+
+00:00:14.790 --> 00:00:18.150 align:middle line:84%
+And what are the
+advantages of using R?
+
+00:00:18.150 --> 00:00:20.340 align:middle line:84%
+R is a coding language
+that's broadly
+
+00:00:20.340 --> 00:00:23.460 align:middle line:90%
+used in some scientific areas--
+
+00:00:23.460 --> 00:00:26.130 align:middle line:84%
+for example, ecology
+or climate sciences.
+
+00:00:26.130 --> 00:00:26.970 align:middle line:90%
+And why is that?
+
+00:00:26.970 --> 00:00:29.730 align:middle line:84%
+Well, first of all,
+R is free of charge,
+
+00:00:29.730 --> 00:00:31.923 align:middle line:84%
+meaning that
+everybody can use it.
+
+00:00:31.923 --> 00:00:34.090 align:middle line:84%
+And as long as they have
+connection to the internet,
+
+00:00:34.090 --> 00:00:35.070 align:middle line:90%
+they can download it.
+
+00:00:35.070 --> 00:00:37.240 align:middle line:84%
+And there's no
+subscription at all.
+
+00:00:37.240 --> 00:00:39.900 align:middle line:84%
+Second of all is that
+it's collaborative,
+
+00:00:39.900 --> 00:00:43.800 align:middle line:84%
+meaning that everybody can
+share their code through the R
+
+00:00:43.800 --> 00:00:48.130 align:middle line:84%
+platform itself or also
+by alternative sources.
+
+00:00:48.130 --> 00:00:49.770 align:middle line:90%
+So this code can be shared.
+
+00:00:49.770 --> 00:00:52.400 align:middle line:84%
+And there's no need
+to start from scratch.
+
+00:00:52.400 --> 00:00:55.300 align:middle line:84%
+And third of all is that it
+can be repeated or shared.
+
+00:00:55.300 --> 00:00:58.050 align:middle line:84%
+So as I said, you
+can get your script
+
+00:00:58.050 --> 00:00:59.520 align:middle line:90%
+and share it to somebody else.
+
+00:00:59.520 --> 00:01:03.510 align:middle line:84%
+You can publish it along
+with your research.
+
+00:01:03.510 --> 00:01:07.380 align:middle line:84%
+Fourth of all is that you
+can go from the head to tail
+
+00:01:07.380 --> 00:01:08.770 align:middle line:90%
+to the process of the research.
+
+00:01:08.770 --> 00:01:13.540 align:middle line:84%
+So that involves the data
+cleaning processes, also
+
+00:01:13.540 --> 00:01:16.660 align:middle line:84%
+the statistical
+processes and the GIS,
+
+00:01:16.660 --> 00:01:20.230 align:middle line:84%
+meaning that you can
+also use maps on R.
+
+00:01:20.230 --> 00:01:23.060 align:middle line:84%
+And finally, you can
+produce nice plots,
+
+00:01:23.060 --> 00:01:27.090 align:middle line:84%
+so you can communicate
+your research.
+
+00:01:27.090 --> 00:01:30.440 align:middle line:84%
+So in this video, we're going
+to go through the first time we
+
+00:01:30.440 --> 00:01:33.440 align:middle line:84%
+face R. So once we
+have downloaded R
+
+00:01:33.440 --> 00:01:37.070 align:middle line:84%
+and we have downloaded and
+installed also RStudio,
+
+00:01:37.070 --> 00:01:39.140 align:middle line:90%
+this is what we see.
+
+00:01:39.140 --> 00:01:42.110 align:middle line:84%
+You might be surprised
+because your interface might
+
+00:01:42.110 --> 00:01:43.278 align:middle line:90%
+have a different background.
+
+00:01:43.278 --> 00:01:44.570 align:middle line:90%
+It might be a white background.
+
+00:01:44.570 --> 00:01:47.120 align:middle line:90%
+And the font would be black.
+
+00:01:47.120 --> 00:01:49.190 align:middle line:84%
+But that's something
+that can be changed.
+
+00:01:49.190 --> 00:01:50.660 align:middle line:84%
+By default, it
+appears like that.
+
+00:01:50.660 --> 00:01:54.140 align:middle line:84%
+But my personal preference, it's
+to have it in black, so it's not
+
+00:01:54.140 --> 00:01:55.818 align:middle line:90%
+as violent for my eyes.
+
+00:01:55.818 --> 00:01:57.860 align:middle line:84%
+So this is something that
+you can change as well,
+
+00:01:57.860 --> 00:01:59.120 align:middle line:90%
+if you'd like.
+
+00:01:59.120 --> 00:02:02.840 align:middle line:84%
+And here are the different
+panels you'll find.
+
+00:02:02.840 --> 00:02:05.390 align:middle line:84%
+The first panel here
+is the one where you
+
+00:02:05.390 --> 00:02:06.740 align:middle line:90%
+are going to write your script.
+
+00:02:06.740 --> 00:02:09.289 align:middle line:84%
+So all the different
+orders you're
+
+00:02:09.289 --> 00:02:11.810 align:middle line:84%
+going to give the computer
+are listed right there.
+
+00:02:11.810 --> 00:02:15.110 align:middle line:84%
+And whenever you
+ask the computer
+
+00:02:15.110 --> 00:02:17.450 align:middle line:84%
+to quantify or to
+execute an order,
+
+00:02:17.450 --> 00:02:20.820 align:middle line:84%
+it's going to be
+displayed right here.
+
+00:02:20.820 --> 00:02:24.590 align:middle line:84%
+And then in these two different
+panels, we're going to have,
+
+00:02:24.590 --> 00:02:30.320 align:middle line:84%
+in the top one, the data that we
+have stored, the objects that we
+
+00:02:30.320 --> 00:02:31.710 align:middle line:90%
+have stored and created.
+
+00:02:31.710 --> 00:02:34.640 align:middle line:84%
+And here, we are going to
+have different things, which
+
+00:02:34.640 --> 00:02:36.810 align:middle line:84%
+could be the files
+in our computer,
+
+00:02:36.810 --> 00:02:38.390 align:middle line:90%
+so we can navigate through that.
+
+00:02:38.390 --> 00:02:41.330 align:middle line:84%
+Also, we could show
+here the different plots
+
+00:02:41.330 --> 00:02:43.490 align:middle line:90%
+that we have created.
+
+00:02:43.490 --> 00:02:45.043 align:middle line:90%
+Here are the packages.
+
+00:02:45.043 --> 00:02:46.710 align:middle line:84%
+We're going to go
+through the packages--
+
+00:02:46.710 --> 00:02:48.170 align:middle line:90%
+no worries-- in the future.
+
+00:02:48.170 --> 00:02:50.005 align:middle line:84%
+And also, this is
+very important.
+
+00:02:50.005 --> 00:02:51.380 align:middle line:84%
+This is going to
+be the Help tab.
+
+00:02:51.380 --> 00:02:53.870 align:middle line:84%
+So whenever we
+face a new function
+
+00:02:53.870 --> 00:02:55.640 align:middle line:84%
+that we are not
+familiar with, we
+
+00:02:55.640 --> 00:02:58.940 align:middle line:84%
+can read some description of
+what each function is doing
+
+00:02:58.940 --> 00:03:01.880 align:middle line:90%
+and how actually we can use it.
+
+00:03:01.880 --> 00:03:04.270 align:middle line:90%
+
+
+00:03:04.270 --> 00:03:04.770 align:middle line:90%
+OK.
+
+00:03:04.770 --> 00:03:07.750 align:middle line:90%
+So let's go to the code itself.
+
+00:03:07.750 --> 00:03:10.620 align:middle line:84%
+Now, I'm going to be presenting
+the different types of data
+
+00:03:10.620 --> 00:03:11.640 align:middle line:90%
+that we can have.
+
+00:03:11.640 --> 00:03:14.230 align:middle line:84%
+So there are the
+different data types.
+
+00:03:14.230 --> 00:03:16.440 align:middle line:84%
+Then we're going to move
+through the vectors.
+
+00:03:16.440 --> 00:03:20.280 align:middle line:84%
+We're going to go to the matrix,
+followed by the data frames,
+
+00:03:20.280 --> 00:03:21.720 align:middle line:90%
+and finally the list.
+
+00:03:21.720 --> 00:03:26.010 align:middle line:84%
+And I'm going to wrap up the
+whole section by challenging you
+
+00:03:26.010 --> 00:03:27.930 align:middle line:84%
+with some exercises,
+so you can practice
+
+00:03:27.930 --> 00:03:31.030 align:middle line:90%
+what we've been talking about.
+
+00:03:31.030 --> 00:03:35.830 align:middle line:90%
+So R works as a big calculator.
+
+00:03:35.830 --> 00:03:39.070 align:middle line:84%
+So we are going to be assigning
+numbers to different variables.
+
+00:03:39.070 --> 00:03:44.345 align:middle line:84%
+So the assigning sign
+is this arrow here.
+
+00:03:44.345 --> 00:03:46.470 align:middle line:84%
+So this is the variable
+we're going to be creating.
+
+00:03:46.470 --> 00:03:48.300 align:middle line:84%
+In this case, it's
+going to be the x.
+
+00:03:48.300 --> 00:03:50.620 align:middle line:84%
+And we're going to
+assign the value--
+
+00:03:50.620 --> 00:03:53.280 align:middle line:84%
+or the number,
+number 2, to that x.
+
+00:03:53.280 --> 00:03:55.350 align:middle line:90%
+How can we execute an order?
+
+00:03:55.350 --> 00:03:57.040 align:middle line:84%
+So there are two
+ways of doing it.
+
+00:03:57.040 --> 00:04:01.870 align:middle line:84%
+The first of all is to point
+at the line we want to execute.
+
+00:04:01.870 --> 00:04:06.800 align:middle line:84%
+And then if you have a Mac, you
+can click on Command and Return.
+
+00:04:06.800 --> 00:04:10.600 align:middle line:84%
+So if you do that, you see
+now that this piece of code
+
+00:04:10.600 --> 00:04:11.980 align:middle line:90%
+has been executed here.
+
+00:04:11.980 --> 00:04:15.760 align:middle line:84%
+And we have created
+the x right here.
+
+00:04:15.760 --> 00:04:17.440 align:middle line:90%
+And it's assigned to a 2.
+
+00:04:17.440 --> 00:04:21.700 align:middle line:84%
+The other way of doing
+it is to just highlight
+
+00:04:21.700 --> 00:04:26.890 align:middle line:84%
+the line we want to execute
+and click into Run, right here.
+
+00:04:26.890 --> 00:04:28.990 align:middle line:84%
+That's especially
+beneficial if we want
+
+00:04:28.990 --> 00:04:31.520 align:middle line:90%
+to run different lines of code.
+
+00:04:31.520 --> 00:04:34.930 align:middle line:84%
+So if I would like to execute
+all these at the same time,
+
+00:04:34.930 --> 00:04:38.800 align:middle line:84%
+I would just highlight
+everything and click on Run.
+
+00:04:38.800 --> 00:04:41.500 align:middle line:84%
+You can also see that
+there are some fonts here
+
+00:04:41.500 --> 00:04:43.660 align:middle line:90%
+that are in gray.
+
+00:04:43.660 --> 00:04:45.430 align:middle line:90%
+So they don't appear as bright.
+
+00:04:45.430 --> 00:04:47.390 align:middle line:84%
+That's because they
+are annotations.
+
+00:04:47.390 --> 00:04:49.880 align:middle line:84%
+So this is not meant
+to be executed.
+
+00:04:49.880 --> 00:04:52.880 align:middle line:84%
+So there's nothing
+related to this code.
+
+00:04:52.880 --> 00:04:56.320 align:middle line:84%
+And you can create
+these annotations
+
+00:04:56.320 --> 00:05:01.990 align:middle line:84%
+by locating it right
+after this sign here.
+
+00:05:01.990 --> 00:05:10.570 align:middle line:84%
+So also, to follow up with the
+assigning of values to the x,
+
+00:05:10.570 --> 00:05:13.480 align:middle line:84%
+if you rewrite the x
+with another value--
+
+00:05:13.480 --> 00:05:15.950 align:middle line:84%
+we are just going to
+smash the previous 2.
+
+00:05:15.950 --> 00:05:18.790 align:middle line:84%
+So that 2 is going
+to be a 3 instead.
+
+00:05:18.790 --> 00:05:21.910 align:middle line:84%
+And we can just use this
+value we just created
+
+00:05:21.910 --> 00:05:24.200 align:middle line:90%
+to assign it to another value.
+
+00:05:24.200 --> 00:05:26.720 align:middle line:84%
+So now, we have
+this y right here.
+
+00:05:26.720 --> 00:05:28.960 align:middle line:84%
+So to create the outcome
+of this variable,
+
+00:05:28.960 --> 00:05:31.690 align:middle line:84%
+we're using the previous
+x that we just created.
+
+00:05:31.690 --> 00:05:35.710 align:middle line:84%
+And we are assigning
+it to that value here.
+
+00:05:35.710 --> 00:05:37.510 align:middle line:90%
+As you can see, now, we have 2.
+
+00:05:37.510 --> 00:05:38.680 align:middle line:90%
+The x and the y.
+
+00:05:38.680 --> 00:05:39.460 align:middle line:90%
+The x is a 3.
+
+00:05:39.460 --> 00:05:41.140 align:middle line:90%
+The y is a 13.
+
+00:05:41.140 --> 00:05:47.770 align:middle line:84%
+And we can keep going on,
+using different mathematical
+
+00:05:47.770 --> 00:05:49.390 align:middle line:90%
+expressions right there.
+
+00:05:49.390 --> 00:05:53.560 align:middle line:84%
+Also, this is the first
+function you are seeing.
+
+00:05:53.560 --> 00:05:55.420 align:middle line:90%
+This means exponential.
+
+00:05:55.420 --> 00:05:59.230 align:middle line:84%
+So we're going to be calculating
+the exponential of a 2.
+
+00:05:59.230 --> 00:06:02.980 align:middle line:84%
+In this case, the value
+we want to be targeting
+
+00:06:02.980 --> 00:06:05.450 align:middle line:84%
+is going to be between
+parentheses right here.
+
+00:06:05.450 --> 00:06:07.900 align:middle line:84%
+So if we run this
+piece of code, again,
+
+00:06:07.900 --> 00:06:11.590 align:middle line:84%
+with pressing Command
+and Return on the line,
+
+00:06:11.590 --> 00:06:15.400 align:middle line:84%
+we're going to have
+the exponential of y.
+
+00:06:15.400 --> 00:06:18.063 align:middle line:84%
+Also, if we don't know
+how to use exponential
+
+00:06:18.063 --> 00:06:19.480 align:middle line:84%
+and we don't know
+what that means,
+
+00:06:19.480 --> 00:06:25.160 align:middle line:84%
+we just click where the function
+is and go in your keyboard
+
+00:06:25.160 --> 00:06:28.150 align:middle line:84%
+with Fn, which is
+function, and F1.
+
+00:06:28.150 --> 00:06:32.300 align:middle line:84%
+And you see that it points
+out to Help, right here.
+
+00:06:32.300 --> 00:06:35.200 align:middle line:84%
+So you can see, OK,
+logarithms and exponentials.
+
+00:06:35.200 --> 00:06:38.300 align:middle line:84%
+You can read the
+description of the function.
+
+00:06:38.300 --> 00:06:43.160 align:middle line:84%
+And you can see, right here,
+how it is going to be used.
+
+00:06:43.160 --> 00:06:44.740 align:middle line:84%
+So that hopefully
+is going to help
+
+00:06:44.740 --> 00:06:47.620 align:middle line:84%
+you to face the
+different functions
+
+00:06:47.620 --> 00:06:50.590 align:middle line:90%
+you can see throughout the code.
+
+00:06:50.590 --> 00:06:54.820 align:middle line:84%
+Also, what happens if we
+want to remove a variable?
+
+00:06:54.820 --> 00:06:58.510 align:middle line:84%
+Well, you just write rm,
+which stands for remove
+
+00:06:58.510 --> 00:07:00.400 align:middle line:84%
+and, in between the
+parentheses, what
+
+00:07:00.400 --> 00:07:03.020 align:middle line:90%
+we want to remove, right here.
+
+00:07:03.020 --> 00:07:04.950 align:middle line:90%
+We just click on it.
+
+00:07:04.950 --> 00:07:07.850 align:middle line:84%
+And we see that the
+x, boom, it's gone.
+
+00:07:07.850 --> 00:07:11.260 align:middle line:90%
+
+
+00:07:11.260 --> 00:07:11.760 align:middle line:90%
+OK.
+
+00:07:11.760 --> 00:07:16.440 align:middle line:84%
+So now that we've gotten
+through how to assign numbers
+
+00:07:16.440 --> 00:07:18.330 align:middle line:84%
+to variables, we're
+going to start
+
+00:07:18.330 --> 00:07:21.970 align:middle line:84%
+asking logic questions
+to R. So first of all,
+
+00:07:21.970 --> 00:07:27.090 align:middle line:84%
+I need, again, to create
+some value for x, now
+
+00:07:27.090 --> 00:07:28.140 align:middle line:90%
+that we have it.
+
+00:07:28.140 --> 00:07:32.190 align:middle line:84%
+I'm going to ask R if
+x is bigger than y.
+
+00:07:32.190 --> 00:07:35.340 align:middle line:84%
+So for that, let's
+just run the command.
+
+00:07:35.340 --> 00:07:37.000 align:middle line:90%
+And it's obviously false.
+
+00:07:37.000 --> 00:07:39.900 align:middle line:84%
+So in this case, x
+is not bigger than y.
+
+00:07:39.900 --> 00:07:42.270 align:middle line:90%
+So it has to be smaller than y.
+
+00:07:42.270 --> 00:07:47.020 align:middle line:84%
+So there's the other way around
+of the question, right here.
+
+00:07:47.020 --> 00:07:49.950 align:middle line:84%
+We can also ask
+if two values are
+
+00:07:49.950 --> 00:07:54.510 align:middle line:84%
+equal by using two equal
+signs one next to the other.
+
+00:07:54.510 --> 00:07:56.830 align:middle line:90%
+Or we can ask if it's not equal.
+
+00:07:56.830 --> 00:08:00.150 align:middle line:84%
+So by applying this
+sign next to an equal,
+
+00:08:00.150 --> 00:08:06.480 align:middle line:84%
+we are creating the negation
+of the equal, so not equal.
+
+00:08:06.480 --> 00:08:15.000 align:middle line:84%
+And here is how we ask
+logical questions to R.
+
+00:08:15.000 --> 00:08:18.490 align:middle line:84%
+So let's move on
+to the data types.
+
+00:08:18.490 --> 00:08:23.190 align:middle line:84%
+We have, obviously,
+numeric data types,
+
+00:08:23.190 --> 00:08:25.380 align:middle line:84%
+which means that
+there are numbers
+
+00:08:25.380 --> 00:08:26.970 align:middle line:90%
+assigned to those variables.
+
+00:08:26.970 --> 00:08:30.780 align:middle line:84%
+And we can ask what's
+the class of this value
+
+00:08:30.780 --> 00:08:34.919 align:middle line:84%
+to R by writing class
+and the variable
+
+00:08:34.919 --> 00:08:37.030 align:middle line:90%
+that we want to ask about.
+
+00:08:37.030 --> 00:08:40.260 align:middle line:84%
+So in this case, it's
+saying that it's numeric
+
+00:08:40.260 --> 00:08:43.480 align:middle line:84%
+because, if we go
+to this value here,
+
+00:08:43.480 --> 00:08:45.430 align:middle line:90%
+we see that that's a number.
+
+00:08:45.430 --> 00:08:48.330 align:middle line:84%
+And we can ask also if that's
+an integer, which it would
+
+00:08:48.330 --> 00:08:51.540 align:middle line:90%
+be a number without decimals.
+
+00:08:51.540 --> 00:08:53.800 align:middle line:90%
+So we ask, is integer.
+
+00:08:53.800 --> 00:08:56.190 align:middle line:84%
+And in this case, it says
+no because, as you can see,
+
+00:08:56.190 --> 00:09:03.180 align:middle line:84%
+we have a lot of decimals
+following this number.
+
+00:09:03.180 --> 00:09:06.280 align:middle line:84%
+And we can force one
+number to be an integer.
+
+00:09:06.280 --> 00:09:07.450 align:middle line:90%
+So how do we do that?
+
+00:09:07.450 --> 00:09:11.110 align:middle line:84%
+It's like put this variable
+here as an integer.
+
+00:09:11.110 --> 00:09:15.340 align:middle line:84%
+So if we click on it, it
+says that now it could be 7.
+
+00:09:15.340 --> 00:09:19.340 align:middle line:84%
+And we could store it
+in a different variable.
+
+00:09:19.340 --> 00:09:23.170 align:middle line:84%
+So in this case, let's
+just put this one.
+
+00:09:23.170 --> 00:09:25.860 align:middle line:84%
+And as you can see,
+now it's the same
+
+00:09:25.860 --> 00:09:28.680 align:middle line:84%
+that we had, but
+just in integer form.
+
+00:09:28.680 --> 00:09:32.820 align:middle line:84%
+We can also assign
+characters to variables.
+
+00:09:32.820 --> 00:09:35.610 align:middle line:84%
+In this case, so we want to
+write something here, let's
+
+00:09:35.610 --> 00:09:37.530 align:middle line:84%
+just write lobster
+and assign it directly
+
+00:09:37.530 --> 00:09:40.530 align:middle line:84%
+to z, which would be
+a very reasonable way
+
+00:09:40.530 --> 00:09:44.140 align:middle line:90%
+to assign a word to a variable.
+
+00:09:44.140 --> 00:09:45.820 align:middle line:84%
+But in this case,
+it doesn't work.
+
+00:09:45.820 --> 00:09:48.220 align:middle line:84%
+You can see here in another
+color that's an error.
+
+00:09:48.220 --> 00:09:51.240 align:middle line:84%
+So what is complaining
+is that, OK,
+
+00:09:51.240 --> 00:09:54.690 align:middle line:84%
+R is expecting here this lobster
+to be already a variable that
+
+00:09:54.690 --> 00:09:55.770 align:middle line:90%
+has been created.
+
+00:09:55.770 --> 00:09:57.580 align:middle line:90%
+How can we fix that problem?
+
+00:09:57.580 --> 00:10:02.970 align:middle line:84%
+We just have to put
+lobster between commas,
+
+00:10:02.970 --> 00:10:06.900 align:middle line:84%
+like that, and put the C,
+which means concatenating.
+
+00:10:06.900 --> 00:10:09.728 align:middle line:84%
+And by using this
+format, R is going
+
+00:10:09.728 --> 00:10:11.520 align:middle line:84%
+to understand that
+that's a word that we're
+
+00:10:11.520 --> 00:10:13.890 align:middle line:90%
+going to assign to the z.
+
+00:10:13.890 --> 00:10:17.340 align:middle line:84%
+So if you go to the different
+values, now z is a lobster,
+
+00:10:17.340 --> 00:10:18.690 align:middle line:90%
+right here.
+
+00:10:18.690 --> 00:10:21.600 align:middle line:84%
+And let's ask, what's
+the class of z?
+
+00:10:21.600 --> 00:10:23.040 align:middle line:90%
+Well, it's a character.
+
+00:10:23.040 --> 00:10:26.050 align:middle line:90%
+
+
+00:10:26.050 --> 00:10:26.550 align:middle line:90%
+OK.
+
+00:10:26.550 --> 00:10:28.980 align:middle line:90%
+So let's move on to vectors.
+
+00:10:28.980 --> 00:10:29.950 align:middle line:90%
+What's a vector?
+
+00:10:29.950 --> 00:10:34.260 align:middle line:84%
+Well, so far, we've just assign
+one value to one variable.
+
+00:10:34.260 --> 00:10:37.290 align:middle line:84%
+But we can just concatenate
+different values
+
+00:10:37.290 --> 00:10:38.310 align:middle line:90%
+for the same variable.
+
+00:10:38.310 --> 00:10:40.680 align:middle line:84%
+In this case, for
+example, we want
+
+00:10:40.680 --> 00:10:43.050 align:middle line:90%
+to create the vector number 1.
+
+00:10:43.050 --> 00:10:47.310 align:middle line:84%
+And we want to assign 1 and
+2 to the vector number 1.
+
+00:10:47.310 --> 00:10:48.490 align:middle line:90%
+How do we do that?
+
+00:10:48.490 --> 00:10:51.460 align:middle line:84%
+We've seen already
+this construction form,
+
+00:10:51.460 --> 00:10:53.590 align:middle line:90%
+which is the C and parentheses.
+
+00:10:53.590 --> 00:10:55.140 align:middle line:84%
+So in between the
+parentheses, we
+
+00:10:55.140 --> 00:10:58.380 align:middle line:84%
+can separate by commas
+the different numbers
+
+00:10:58.380 --> 00:11:00.330 align:middle line:90%
+we want to assign to V1.
+
+00:11:00.330 --> 00:11:03.870 align:middle line:84%
+So if we enter this
+command, we see that now we
+
+00:11:03.870 --> 00:11:05.670 align:middle line:90%
+have created this V1.
+
+00:11:05.670 --> 00:11:09.900 align:middle line:84%
+And it's a numeric character, if
+you follow these letters here.
+
+00:11:09.900 --> 00:11:14.670 align:middle line:84%
+And it has 1 and
+2 concepts inside.
+
+00:11:14.670 --> 00:11:17.880 align:middle line:84%
+And these 1 and 2 concepts are
+the number 1 and the number 2,
+
+00:11:17.880 --> 00:11:19.020 align:middle line:90%
+conveniently.
+
+00:11:19.020 --> 00:11:24.010 align:middle line:84%
+But we can create vectors
+with three categories.
+
+00:11:24.010 --> 00:11:28.480 align:middle line:84%
+And in this case V1,
+instead of having two,
+
+00:11:28.480 --> 00:11:30.520 align:middle line:90%
+it has three, like 1, 2, 3.
+
+00:11:30.520 --> 00:11:34.750 align:middle line:84%
+And the first one
+is 11, 22, and 33.
+
+00:11:34.750 --> 00:11:41.890 align:middle line:84%
+But we can also create vectors
+with character variables inside.
+
+00:11:41.890 --> 00:11:45.010 align:middle line:84%
+So instead of having numbers, we
+just concatenate different words
+
+00:11:45.010 --> 00:11:45.970 align:middle line:90%
+inside.
+
+00:11:45.970 --> 00:11:49.660 align:middle line:84%
+And if we go to how
+vector 2 looks like,
+
+00:11:49.660 --> 00:11:53.080 align:middle line:84%
+we see that there's a
+gathering of characters
+
+00:11:53.080 --> 00:11:57.040 align:middle line:84%
+right here, that we have
+five that goes from 1 to 5.
+
+00:11:57.040 --> 00:11:59.830 align:middle line:84%
+And inside of these, we have
+Monday, Tuesday, Wednesday,
+
+00:11:59.830 --> 00:12:02.700 align:middle line:90%
+and so forth.
+
+00:12:02.700 --> 00:12:03.200 align:middle line:90%
+OK.
+
+00:12:03.200 --> 00:12:07.070 align:middle line:84%
+What if we want to create
+a very long vector,
+
+00:12:07.070 --> 00:12:10.640 align:middle line:84%
+but we don't want to spend time
+by writing each number on it?
+
+00:12:10.640 --> 00:12:12.590 align:middle line:84%
+We have this very
+useful tool, which
+
+00:12:12.590 --> 00:12:15.480 align:middle line:90%
+is the repetition of numbers.
+
+00:12:15.480 --> 00:12:17.832 align:middle line:90%
+So we write this.
+
+00:12:17.832 --> 00:12:19.790 align:middle line:84%
+And if we want to know
+more about the function,
+
+00:12:19.790 --> 00:12:25.040 align:middle line:84%
+we can, again, go to Fn
+in our keyboards and F1.
+
+00:12:25.040 --> 00:12:29.690 align:middle line:84%
+So by clicking that, we
+get some help right here.
+
+00:12:29.690 --> 00:12:32.120 align:middle line:84%
+This is because I have
+different packages installed.
+
+00:12:32.120 --> 00:12:34.370 align:middle line:84%
+So that could be part
+of different packages.
+
+00:12:34.370 --> 00:12:36.470 align:middle line:84%
+But we're interested
+in the package
+
+00:12:36.470 --> 00:12:40.650 align:middle line:84%
+base, which is what
+comes from R directly,
+
+00:12:40.650 --> 00:12:42.180 align:middle line:90%
+which is the pure part.
+
+00:12:42.180 --> 00:12:43.580 align:middle line:90%
+So we just click in here.
+
+00:12:43.580 --> 00:12:47.270 align:middle line:84%
+And we're going to be directed
+to this function here.
+
+00:12:47.270 --> 00:12:48.650 align:middle line:90%
+And we can read through.
+
+00:12:48.650 --> 00:12:53.000 align:middle line:90%
+We can repeat integers, length.
+
+00:12:53.000 --> 00:12:58.710 align:middle line:84%
+And x stands for the
+vector we want to repeat.
+
+00:12:58.710 --> 00:13:01.160 align:middle line:84%
+And so by reading that, we
+can have a good understanding
+
+00:13:01.160 --> 00:13:03.460 align:middle line:90%
+of what rep is doing.
+
+00:13:03.460 --> 00:13:07.990 align:middle line:84%
+So let's just
+execute that order.
+
+00:13:07.990 --> 00:13:12.180 align:middle line:84%
+And we see that we are
+repeating 22 two times.
+
+00:13:12.180 --> 00:13:16.200 align:middle line:84%
+But if I would change that,
+we want to repeat 22 20 times.
+
+00:13:16.200 --> 00:13:17.130 align:middle line:90%
+I can just do that.
+
+00:13:17.130 --> 00:13:23.630 align:middle line:84%
+And we repeat 22 20
+times and so forth.
+
+00:13:23.630 --> 00:13:24.130 align:middle line:90%
+OK.
+
+00:13:24.130 --> 00:13:27.010 align:middle line:84%
+What if we want to create
+a concatenation of numbers
+
+00:13:27.010 --> 00:13:29.410 align:middle line:90%
+that goes from 1 to 100?
+
+00:13:29.410 --> 00:13:31.600 align:middle line:84%
+It's as easy as just
+saying the first number I
+
+00:13:31.600 --> 00:13:34.510 align:middle line:84%
+want to be 1 and
+the last number I
+
+00:13:34.510 --> 00:13:37.990 align:middle line:84%
+want to be 100 and just
+separated by these two dots
+
+00:13:37.990 --> 00:13:38.705 align:middle line:90%
+in the middle.
+
+00:13:38.705 --> 00:13:40.330 align:middle line:84%
+We're going to create
+the vector number
+
+00:13:40.330 --> 00:13:43.820 align:middle line:90%
+4 by executing that order.
+
+00:13:43.820 --> 00:13:48.400 align:middle line:84%
+So we see that we have a vector
+created by different integers
+
+00:13:48.400 --> 00:13:50.260 align:middle line:90%
+that go from 1 to 100.
+
+00:13:50.260 --> 00:13:54.770 align:middle line:84%
+And they're just 1, 2, 3,
+4, 5, and it goes to 100.
+
+00:13:54.770 --> 00:13:56.950 align:middle line:84%
+What if I want to see
+the complete vector?
+
+00:13:56.950 --> 00:13:59.470 align:middle line:84%
+Because here, we don't
+have enough space
+
+00:13:59.470 --> 00:14:02.050 align:middle line:84%
+to just get to see
+the whole numbers.
+
+00:14:02.050 --> 00:14:10.750 align:middle line:84%
+Well, it's just select V4,
+and we Command and Return.
+
+00:14:10.750 --> 00:14:13.240 align:middle line:90%
+We can see here the whole thing.
+
+00:14:13.240 --> 00:14:18.460 align:middle line:84%
+And also, we can write
+on this box here.
+
+00:14:18.460 --> 00:14:20.440 align:middle line:90%
+I want to see V4.
+
+00:14:20.440 --> 00:14:23.900 align:middle line:84%
+And just click Return and
+you see the same thing.
+
+00:14:23.900 --> 00:14:26.622 align:middle line:84%
+Now, you don't see the
+difference because here it is.
+
+00:14:26.622 --> 00:14:28.580 align:middle line:84%
+This is the one that we
+first asked and here is
+
+00:14:28.580 --> 00:14:31.970 align:middle line:90%
+the second we ask as well.
+
+00:14:31.970 --> 00:14:34.190 align:middle line:90%
+All right, I'll just keep going.
+
+00:14:34.190 --> 00:14:37.850 align:middle line:84%
+What if we don't want a list
+that goes from 1 to 1001 one
+
+00:14:37.850 --> 00:14:40.340 align:middle line:84%
+by one and we just
+wanted to do two by two,
+
+00:14:40.340 --> 00:14:43.260 align:middle line:84%
+so we just get 1,
+3, 5, and so forth?
+
+00:14:43.260 --> 00:14:45.350 align:middle line:90%
+So there's also sequence here.
+
+00:14:45.350 --> 00:14:49.210 align:middle line:84%
+We create we can create a
+sequence that goes from number 1
+
+00:14:49.210 --> 00:14:52.280 align:middle line:90%
+to 100, but by 2.
+
+00:14:52.280 --> 00:14:55.295 align:middle line:84%
+So we just skip one and
+we just go two by two.
+
+00:14:55.295 --> 00:14:57.820 align:middle line:90%
+
+
+00:14:57.820 --> 00:14:59.420 align:middle line:90%
+So we have vector number 5.
+
+00:14:59.420 --> 00:15:02.720 align:middle line:84%
+Let's see how vector
+number 5 looks like.
+
+00:15:02.720 --> 00:15:06.250 align:middle line:84%
+So as you can see,
+we've got 1, 3, 5,
+
+00:15:06.250 --> 00:15:09.280 align:middle line:84%
+and so forth until we get
+to 99 because, of course,
+
+00:15:09.280 --> 00:15:14.060 align:middle line:90%
+100 was out of the pairings.
+
+00:15:14.060 --> 00:15:14.560 align:middle line:90%
+OK.
+
+00:15:14.560 --> 00:15:17.440 align:middle line:84%
+So what if I just
+want to get one
+
+00:15:17.440 --> 00:15:18.770 align:middle line:90%
+of these numbers in the middle?
+
+00:15:18.770 --> 00:15:22.900 align:middle line:84%
+So we have, for example,
+just for simplicity purposes,
+
+00:15:22.900 --> 00:15:27.080 align:middle line:84%
+if we go to V4 again that
+we are going from 1 to 100,
+
+00:15:27.080 --> 00:15:31.610 align:middle line:84%
+what if I want to see what's in
+the slot, let's say number 20?
+
+00:15:31.610 --> 00:15:35.500 align:middle line:84%
+So if I want to
+make a consultation,
+
+00:15:35.500 --> 00:15:40.510 align:middle line:84%
+just let's go to the vector
+number 4 and just put
+
+00:15:40.510 --> 00:15:45.920 align:middle line:84%
+the [? cloud ?] [? ladder ?]
+here, concatenating.
+
+00:15:45.920 --> 00:15:48.670 align:middle line:84%
+Let's just say, for example,
+I said the number 20.
+
+00:15:48.670 --> 00:15:51.640 align:middle line:84%
+So I want to see what's
+inside the number 20.
+
+00:15:51.640 --> 00:15:54.460 align:middle line:84%
+So in the slot number 20,
+we have the number 20,
+
+00:15:54.460 --> 00:15:55.400 align:middle line:90%
+in this case.
+
+00:15:55.400 --> 00:15:58.970 align:middle line:84%
+So this is how I just
+select one number.
+
+00:15:58.970 --> 00:16:02.400 align:middle line:84%
+Or if you want to select
+more than one, in this case,
+
+00:16:02.400 --> 00:16:05.150 align:middle line:90%
+we go to V5.
+
+00:16:05.150 --> 00:16:08.220 align:middle line:90%
+We use the concatenation form.
+
+00:16:08.220 --> 00:16:11.030 align:middle line:84%
+So I just want to explore
+what's in the slot number 10
+
+00:16:11.030 --> 00:16:13.640 align:middle line:84%
+and what's in the
+slot number 12.
+
+00:16:13.640 --> 00:16:18.200 align:middle line:84%
+And I'm creating a vector
+inside of the vector number 5.
+
+00:16:18.200 --> 00:16:21.050 align:middle line:84%
+So I'm just going to
+make this consultation.
+
+00:16:21.050 --> 00:16:25.760 align:middle line:84%
+And you see the numbers that we
+have in these particular slots.
+
+00:16:25.760 --> 00:16:28.630 align:middle line:84%
+It wouldn't work if we
+would do it like this.
+
+00:16:28.630 --> 00:16:31.130 align:middle line:84%
+I wrote this for
+the purpose that you
+
+00:16:31.130 --> 00:16:34.410 align:middle line:84%
+can see that there's an
+error applied to that code.
+
+00:16:34.410 --> 00:16:38.330 align:middle line:84%
+So that's because you
+should put these numbers
+
+00:16:38.330 --> 00:16:41.940 align:middle line:84%
+inside of the construction, like
+with the C and the parentheses,
+
+00:16:41.940 --> 00:16:44.960 align:middle line:90%
+so R is able to understand.
+
+00:16:44.960 --> 00:16:48.080 align:middle line:84%
+What if I want to get
+rid of one of the numbers
+
+00:16:48.080 --> 00:16:50.030 align:middle line:90%
+that I had inside a vector?
+
+00:16:50.030 --> 00:16:52.280 align:middle line:90%
+I can do that too by--
+
+00:16:52.280 --> 00:16:55.100 align:middle line:84%
+in this case, I'm just going
+to create the vector number 6.
+
+00:16:55.100 --> 00:16:56.720 align:middle line:84%
+We're going to use
+vector number 2.
+
+00:16:56.720 --> 00:16:59.930 align:middle line:84%
+Let's just remind what
+was vector number 2.
+
+00:16:59.930 --> 00:17:03.230 align:middle line:84%
+It was that list of the
+different days of the week.
+
+00:17:03.230 --> 00:17:06.000 align:middle line:84%
+And we don't like
+Wednesday, for some reason.
+
+00:17:06.000 --> 00:17:08.150 align:middle line:84%
+We just want to get
+rid of Wednesday.
+
+00:17:08.150 --> 00:17:10.400 align:middle line:90%
+We use the slot number 3.
+
+00:17:10.400 --> 00:17:13.640 align:middle line:90%
+We say minus 3.
+
+00:17:13.640 --> 00:17:17.599 align:middle line:84%
+So V2, like vector number
+2, minus the slot number 3,
+
+00:17:17.599 --> 00:17:19.160 align:middle line:84%
+which, in this
+case, is Wednesday.
+
+00:17:19.160 --> 00:17:22.069 align:middle line:90%
+So let's just apply that.
+
+00:17:22.069 --> 00:17:25.849 align:middle line:84%
+Now, just check
+out what's in V6.
+
+00:17:25.849 --> 00:17:29.480 align:middle line:84%
+You see, boom,
+Wednesday is gone.
+
+00:17:29.480 --> 00:17:32.450 align:middle line:90%
+What if we want to create WPA.
+
+00:17:32.450 --> 00:17:35.150 align:middle line:90%
+
+
+00:17:35.150 --> 00:17:36.710 align:middle line:84%
+Further details
+about functions--
+
+00:17:36.710 --> 00:17:42.290 align:middle line:84%
+oh, I've written here after the
+different functions what they
+
+00:17:42.290 --> 00:17:44.750 align:middle line:84%
+are supposed to do, so
+you don't have to console
+
+00:17:44.750 --> 00:17:46.280 align:middle line:90%
+every time the Help section.
+
+00:17:46.280 --> 00:17:50.550 align:middle line:84%
+So I created a comment
+right after them.
+
+00:17:50.550 --> 00:17:53.310 align:middle line:90%
+So these are kind of similar.
+
+00:17:53.310 --> 00:17:55.070 align:middle line:84%
+These are different
+functions that
+
+00:17:55.070 --> 00:18:00.010 align:middle line:84%
+are going to create random
+constructions of data.
+
+00:18:00.010 --> 00:18:03.360 align:middle line:84%
+So every time we
+would run each one,
+
+00:18:03.360 --> 00:18:05.460 align:middle line:84%
+it's going to be
+different because that's
+
+00:18:05.460 --> 00:18:08.350 align:middle line:84%
+the purpose of the
+randomization of the data.
+
+00:18:08.350 --> 00:18:13.750 align:middle line:84%
+And in this case, we are going
+to go from 10 to 50 by 10.
+
+00:18:13.750 --> 00:18:16.155 align:middle line:90%
+Let's just see how it goes.
+
+00:18:16.155 --> 00:18:19.150 align:middle line:90%
+
+
+00:18:19.150 --> 00:18:22.410 align:middle line:84%
+So we have a random
+selection of 10 numbers
+
+00:18:22.410 --> 00:18:25.230 align:middle line:90%
+that are going from 10 to 50.
+
+00:18:25.230 --> 00:18:29.220 align:middle line:84%
+What happens if I
+rerun the same command?
+
+00:18:29.220 --> 00:18:33.060 align:middle line:90%
+Hopefully, they are different.
+
+00:18:33.060 --> 00:18:36.390 align:middle line:84%
+OK, so just by applying
+the same structure of data,
+
+00:18:36.390 --> 00:18:38.820 align:middle line:84%
+we get different outcomes
+because the purpose of that
+
+00:18:38.820 --> 00:18:43.290 align:middle line:90%
+is that we resample the data.
+
+00:18:43.290 --> 00:18:46.380 align:middle line:84%
+We can also put
+this randomization
+
+00:18:46.380 --> 00:18:51.970 align:middle line:84%
+into normal
+distributions of data.
+
+00:18:51.970 --> 00:18:55.110 align:middle line:84%
+So that's why we
+have this rnorm here.
+
+00:18:55.110 --> 00:18:57.300 align:middle line:84%
+In this case, the
+sample is just random.
+
+00:18:57.300 --> 00:19:00.440 align:middle line:84%
+But this is forcing this
+randomization of the data
+
+00:19:00.440 --> 00:19:03.510 align:middle line:90%
+into a normal distribution.
+
+00:19:03.510 --> 00:19:08.010 align:middle line:90%
+So I'm just creating this.
+
+00:19:08.010 --> 00:19:11.790 align:middle line:84%
+I'm just going to go with
+a V9 that I like it more.
+
+00:19:11.790 --> 00:19:16.200 align:middle line:84%
+Now, if we take a look
+at V9, we have a lot
+
+00:19:16.200 --> 00:19:18.910 align:middle line:90%
+of numbers, different numbers.
+
+00:19:18.910 --> 00:19:21.090 align:middle line:84%
+But if we want to see
+how this data looks like,
+
+00:19:21.090 --> 00:19:24.460 align:middle line:84%
+we just create a histogram
+by putting hist right here.
+
+00:19:24.460 --> 00:19:27.720 align:middle line:84%
+So also, you can get familiar
+with how the plots look
+
+00:19:27.720 --> 00:19:29.530 align:middle line:90%
+like by doing this.
+
+00:19:29.530 --> 00:19:31.890 align:middle line:84%
+I'm just going to see how
+a histogram for this data
+
+00:19:31.890 --> 00:19:33.610 align:middle line:90%
+looks like.
+
+00:19:33.610 --> 00:19:38.880 align:middle line:84%
+So here, we have a normal
+distribution of data
+
+00:19:38.880 --> 00:19:42.790 align:middle line:90%
+by applying this function.
+
+00:19:42.790 --> 00:19:44.290 align:middle line:84%
+Here, I'll just do
+it one more time,
+
+00:19:44.290 --> 00:19:48.750 align:middle line:84%
+so you can see that the
+distribution changes and so does
+
+00:19:48.750 --> 00:19:49.635 align:middle line:90%
+the plot.
+
+00:19:49.635 --> 00:19:53.830 align:middle line:90%
+
+
+00:19:53.830 --> 00:19:54.330 align:middle line:90%
+OK.
+
+00:19:54.330 --> 00:19:57.300 align:middle line:84%
+So now that we've been
+through the construction
+
+00:19:57.300 --> 00:19:59.700 align:middle line:84%
+of different
+vectors, it would be
+
+00:19:59.700 --> 00:20:02.970 align:middle line:84%
+interesting to ask R
+about different summary
+
+00:20:02.970 --> 00:20:04.120 align:middle line:90%
+of those vectors.
+
+00:20:04.120 --> 00:20:06.720 align:middle line:84%
+So one of the things that
+we might be interested
+
+00:20:06.720 --> 00:20:10.810 align:middle line:84%
+when we are facing vectors is
+get to know the length of those.
+
+00:20:10.810 --> 00:20:13.980 align:middle line:84%
+So let's just ask R, what's
+the length of, in this case,
+
+00:20:13.980 --> 00:20:16.320 align:middle line:90%
+vector number 4?
+
+00:20:16.320 --> 00:20:20.190 align:middle line:84%
+So we got it like
+the length is 100.
+
+00:20:20.190 --> 00:20:22.660 align:middle line:84%
+And what happens if we
+just ask the summary?
+
+00:20:22.660 --> 00:20:24.220 align:middle line:90%
+What is it going to summarize?
+
+00:20:24.220 --> 00:20:27.280 align:middle line:84%
+So well, it summarizes this,
+a bunch of information.
+
+00:20:27.280 --> 00:20:29.440 align:middle line:84%
+So we go from the
+minimum to the maximum.
+
+00:20:29.440 --> 00:20:32.040 align:middle line:84%
+So the minimum value,
+in this case, is 1.
+
+00:20:32.040 --> 00:20:34.260 align:middle line:90%
+The maximum value is 100.
+
+00:20:34.260 --> 00:20:37.800 align:middle line:84%
+But we also have the different
+quantiles, and the median,
+
+00:20:37.800 --> 00:20:38.590 align:middle line:90%
+and the mean.
+
+00:20:38.590 --> 00:20:42.510 align:middle line:84%
+So this is a very
+useful function
+
+00:20:42.510 --> 00:20:46.740 align:middle line:84%
+that we can use to get a
+good summary of the data
+
+00:20:46.740 --> 00:20:47.700 align:middle line:90%
+that we are facing.
+
+00:20:47.700 --> 00:20:50.580 align:middle line:84%
+Also, we can use these
+different functions
+
+00:20:50.580 --> 00:20:54.012 align:middle line:90%
+right here to sum a vector.
+
+00:20:54.012 --> 00:20:54.720 align:middle line:90%
+So in this case--
+
+00:20:54.720 --> 00:20:57.270 align:middle line:84%
+I don't know-- let's just
+use the vector number 1.
+
+00:20:57.270 --> 00:20:59.810 align:middle line:90%
+
+
+00:20:59.810 --> 00:21:02.930 align:middle line:84%
+So it's going to sum each
+individual number that's
+
+00:21:02.930 --> 00:21:05.460 align:middle line:84%
+contained inside vector
+number 1, in this case.
+
+00:21:05.460 --> 00:21:10.670 align:middle line:84%
+We can also ask only the
+minimum of any vector, also
+
+00:21:10.670 --> 00:21:11.390 align:middle line:90%
+with the maximum.
+
+00:21:11.390 --> 00:21:16.550 align:middle line:84%
+And we can calculate the mean
+of any numerical vector as well.
+
+00:21:16.550 --> 00:21:19.960 align:middle line:90%
+
+
+00:21:19.960 --> 00:21:20.460 align:middle line:90%
+OK.
+
+00:21:20.460 --> 00:21:23.100 align:middle line:84%
+So now that we are
+familiar with vectors
+
+00:21:23.100 --> 00:21:25.230 align:middle line:84%
+that we just went through
+a lot of information
+
+00:21:25.230 --> 00:21:27.960 align:middle line:84%
+related to vectors, let's
+just move on to matrix.
+
+00:21:27.960 --> 00:21:30.850 align:middle line:84%
+Matrix is, at the end, an
+accumulation of vectors.
+
+00:21:30.850 --> 00:21:34.000 align:middle line:84%
+So we are moving into
+two-dimension data.
+
+00:21:34.000 --> 00:21:37.020 align:middle line:84%
+So we have different rows
+and different columns.
+
+00:21:37.020 --> 00:21:40.230 align:middle line:84%
+But they are only related
+to numerical variables.
+
+00:21:40.230 --> 00:21:44.640 align:middle line:84%
+We don't get to have
+characters inside of matrix.
+
+00:21:44.640 --> 00:21:49.330 align:middle line:84%
+So just a heads up to put
+attention into that detail.
+
+00:21:49.330 --> 00:21:52.620 align:middle line:84%
+In this case, we are going to be
+creating a matrix that's going
+
+00:21:52.620 --> 00:21:54.960 align:middle line:90%
+to combine vector number 5.
+
+00:21:54.960 --> 00:21:57.040 align:middle line:90%
+We're going to put it in rows.
+
+00:21:57.040 --> 00:22:01.350 align:middle line:84%
+So we want 10 rows and
+we want five columns.
+
+00:22:01.350 --> 00:22:04.560 align:middle line:84%
+We just click on
+that instruction.
+
+00:22:04.560 --> 00:22:08.110 align:middle line:84%
+We see here that now we have
+a different subset of data.
+
+00:22:08.110 --> 00:22:11.490 align:middle line:84%
+So far, we've had just values
+and vectors, right here.
+
+00:22:11.490 --> 00:22:14.970 align:middle line:84%
+But now, we just created a new
+section, which is called data.
+
+00:22:14.970 --> 00:22:16.900 align:middle line:90%
+And here, we have a matrix.
+
+00:22:16.900 --> 00:22:21.090 align:middle line:84%
+We can consult this
+matrix again by just
+
+00:22:21.090 --> 00:22:24.580 align:middle line:84%
+clicking into Mat 1,
+just command and return.
+
+00:22:24.580 --> 00:22:25.800 align:middle line:90%
+We see it here.
+
+00:22:25.800 --> 00:22:31.230 align:middle line:84%
+We can also type here
+Mat 1 and Return.
+
+00:22:31.230 --> 00:22:35.730 align:middle line:84%
+But we can, in this case,
+click on the data itself.
+
+00:22:35.730 --> 00:22:38.200 align:middle line:84%
+And it's going to be
+displayed just like that,
+
+00:22:38.200 --> 00:22:42.250 align:middle line:84%
+so we can visualize easily how
+we've constructed the data.
+
+00:22:42.250 --> 00:22:44.310 align:middle line:84%
+So what this function
+has been doing
+
+00:22:44.310 --> 00:22:46.740 align:middle line:90%
+is to split the vector number--
+
+00:22:46.740 --> 00:22:49.650 align:middle line:84%
+in this case, number
+5 that we had before--
+
+00:22:49.650 --> 00:22:53.070 align:middle line:84%
+just putting it in order,
+separated in different columns.
+
+00:22:53.070 --> 00:22:55.800 align:middle line:90%
+
+
+00:22:55.800 --> 00:22:59.700 align:middle line:90%
+Also, this needs to be--
+
+00:22:59.700 --> 00:23:01.980 align:middle line:84%
+it has to match with
+the length of the vector
+
+00:23:01.980 --> 00:23:05.340 align:middle line:84%
+because, in this case, I would
+say let's just not structure it
+
+00:23:05.340 --> 00:23:06.030 align:middle line:90%
+in 10 rows.
+
+00:23:06.030 --> 00:23:09.030 align:middle line:90%
+Let's just make 11 rows.
+
+00:23:09.030 --> 00:23:13.750 align:middle line:84%
+What should happen
+is that R is saying,
+
+00:23:13.750 --> 00:23:17.460 align:middle line:84%
+hey, this is not
+accurate because you're
+
+00:23:17.460 --> 00:23:19.020 align:middle line:84%
+asking me to put
+the data in a format
+
+00:23:19.020 --> 00:23:21.420 align:middle line:90%
+that it doesn't really fit.
+
+00:23:21.420 --> 00:23:24.130 align:middle line:84%
+Just the difference between
+warning and errors--
+
+00:23:24.130 --> 00:23:25.990 align:middle line:84%
+so previously,
+we've seen an error.
+
+00:23:25.990 --> 00:23:28.960 align:middle line:84%
+It's just R is saying, no,
+I'm not going to do that.
+
+00:23:28.960 --> 00:23:30.703 align:middle line:84%
+But if there is a
+warning, it's saying
+
+00:23:30.703 --> 00:23:32.370 align:middle line:84%
+that, hey, there's
+something wrong here,
+
+00:23:32.370 --> 00:23:33.875 align:middle line:90%
+but I'm able to do it.
+
+00:23:33.875 --> 00:23:36.375 align:middle line:84%
+So that's mostly the difference
+between warnings and errors.
+
+00:23:36.375 --> 00:23:38.980 align:middle line:90%
+
+
+00:23:38.980 --> 00:23:42.990 align:middle line:90%
+You can just close that tab.
+
+00:23:42.990 --> 00:23:49.890 align:middle line:84%
+And OK, we can also put
+names on these matrix.
+
+00:23:49.890 --> 00:23:54.420 align:middle line:84%
+So we just consult with R the
+column names of those matrices.
+
+00:23:54.420 --> 00:23:56.760 align:middle line:84%
+In this case, it's
+null because--
+
+00:23:56.760 --> 00:23:58.920 align:middle line:84%
+let's just consult
+again the matrix.
+
+00:23:58.920 --> 00:24:03.030 align:middle line:90%
+We have nothing here.
+
+00:24:03.030 --> 00:24:06.060 align:middle line:84%
+Let's just remember what
+was in vector number 2.
+
+00:24:06.060 --> 00:24:08.440 align:middle line:84%
+So we have the different
+days of the week.
+
+00:24:08.440 --> 00:24:14.250 align:middle line:84%
+So we're just going to assign
+these five characters as a title
+
+00:24:14.250 --> 00:24:16.570 align:middle line:90%
+of our matrix, just like that.
+
+00:24:16.570 --> 00:24:20.640 align:middle line:84%
+And now, we see that
+where we had nothing, now
+
+00:24:20.640 --> 00:24:23.390 align:middle line:84%
+we have the different
+days, right here.
+
+00:24:23.390 --> 00:24:26.080 align:middle line:84%
+So we just assigned
+column names to the matrix
+
+00:24:26.080 --> 00:24:27.850 align:middle line:90%
+that we already had.
+
+00:24:27.850 --> 00:24:31.310 align:middle line:84%
+And how can we navigate
+through matrices?
+
+00:24:31.310 --> 00:24:33.940 align:middle line:84%
+So first of all, we
+have to name the object
+
+00:24:33.940 --> 00:24:35.840 align:middle line:90%
+we want to navigate on.
+
+00:24:35.840 --> 00:24:37.090 align:middle line:90%
+So mat number 1.
+
+00:24:37.090 --> 00:24:41.510 align:middle line:84%
+And this stands for row,
+like the first number,
+
+00:24:41.510 --> 00:24:42.460 align:middle line:90%
+it stands for the row.
+
+00:24:42.460 --> 00:24:44.050 align:middle line:90%
+We separate it by a comma.
+
+00:24:44.050 --> 00:24:47.690 align:middle line:84%
+And the second number
+stands for the column.
+
+00:24:47.690 --> 00:24:51.370 align:middle line:84%
+So in this case, I want to
+see what's on the row number
+
+00:24:51.370 --> 00:24:52.900 align:middle line:90%
+4 and the column number 3.
+
+00:24:52.900 --> 00:24:57.610 align:middle line:84%
+So it says that
+it's the number 51.
+
+00:24:57.610 --> 00:25:00.850 align:middle line:84%
+And just for our information,
+it says that the column number 3
+
+00:25:00.850 --> 00:25:03.580 align:middle line:90%
+is named Wednesday.
+
+00:25:03.580 --> 00:25:05.620 align:middle line:84%
+And what if I want
+to get the whole row?
+
+00:25:05.620 --> 00:25:08.060 align:middle line:84%
+So I just put nothing
+in the second part.
+
+00:25:08.060 --> 00:25:09.340 align:middle line:90%
+So I erase the 3.
+
+00:25:09.340 --> 00:25:10.607 align:middle line:90%
+I keep the comma.
+
+00:25:10.607 --> 00:25:12.190 align:middle line:84%
+It's very important
+to keep the comma.
+
+00:25:12.190 --> 00:25:15.580 align:middle line:84%
+Otherwise, it would
+give an error.
+
+00:25:15.580 --> 00:25:18.120 align:middle line:90%
+I'm just going to try.
+
+00:25:18.120 --> 00:25:19.870 align:middle line:84%
+Oh yeah, it's going
+to go to the number 4.
+
+00:25:19.870 --> 00:25:25.050 align:middle line:84%
+Yeah, so it takes the matrix and
+it goes for the slot number 4--
+
+00:25:25.050 --> 00:25:26.310 align:middle line:90%
+1, 2, 3, 4.
+
+00:25:26.310 --> 00:25:29.710 align:middle line:84%
+But what we want here
+is the whole row.
+
+00:25:29.710 --> 00:25:35.430 align:middle line:84%
+So we'll just put the comma
+here, execute the thing.
+
+00:25:35.430 --> 00:25:38.130 align:middle line:84%
+And it's giving
+us the whole row.
+
+00:25:38.130 --> 00:25:43.590 align:middle line:84%
+So we want the whole
+column is just keep the 3,
+
+00:25:43.590 --> 00:25:47.190 align:middle line:84%
+erase the 4, we're going to
+get the whole column number 3,
+
+00:25:47.190 --> 00:25:49.580 align:middle line:90%
+just like that.
+
+00:25:49.580 --> 00:25:53.780 align:middle line:84%
+And of course, if we want to
+reassign a value that we're
+
+00:25:53.780 --> 00:25:57.570 align:middle line:84%
+getting-- because here, we are
+not recording this anywhere.
+
+00:25:57.570 --> 00:25:58.640 align:middle line:90%
+We're just consulting.
+
+00:25:58.640 --> 00:26:02.210 align:middle line:84%
+But if we wanted
+to record this data
+
+00:26:02.210 --> 00:26:04.010 align:middle line:84%
+or assign this data
+to a new variable,
+
+00:26:04.010 --> 00:26:06.050 align:middle line:90%
+we are always welcome to
+
+00:26:06.050 --> 00:26:10.070 align:middle line:84%
+So by just creating a
+name of the variable--
+
+00:26:10.070 --> 00:26:14.900 align:middle line:84%
+like xx, for example, just
+put the arrow right there.
+
+00:26:14.900 --> 00:26:18.350 align:middle line:84%
+And we would assign
+this data that we're
+
+00:26:18.350 --> 00:26:20.490 align:middle line:90%
+consulting into a new variable.
+
+00:26:20.490 --> 00:26:26.090 align:middle line:84%
+So now, the xx variable here, it
+corresponds to the column number
+
+00:26:26.090 --> 00:26:27.650 align:middle line:90%
+3 of the matrix number 1.
+
+00:26:27.650 --> 00:26:32.360 align:middle line:90%
+
+
+00:26:32.360 --> 00:26:32.860 align:middle line:90%
+OK.
+
+00:26:32.860 --> 00:26:37.220 align:middle line:84%
+So in this case,
+what am I doing here?
+
+00:26:37.220 --> 00:26:42.370 align:middle line:84%
+I'm creating a vector,
+which is in the second part
+
+00:26:42.370 --> 00:26:43.760 align:middle line:90%
+of this structure.
+
+00:26:43.760 --> 00:26:46.870 align:middle line:90%
+So I'm messing with the columns.
+
+00:26:46.870 --> 00:26:50.470 align:middle line:84%
+I'm getting the column number
+1 and the column number 3
+
+00:26:50.470 --> 00:26:53.110 align:middle line:84%
+of the matrix that
+we just created.
+
+00:26:53.110 --> 00:26:58.490 align:middle line:84%
+And we are storing this
+data into this new variable.
+
+00:26:58.490 --> 00:27:01.960 align:middle line:84%
+Let's just check it
+out, how it looks like.
+
+00:27:01.960 --> 00:27:04.210 align:middle line:84%
+And indeed, we have the
+two columns right here.
+
+00:27:04.210 --> 00:27:07.570 align:middle line:90%
+
+
+00:27:07.570 --> 00:27:11.080 align:middle line:84%
+Moving to data frames
+right now, data frames
+
+00:27:11.080 --> 00:27:13.000 align:middle line:90%
+are an evolution of matrix.
+
+00:27:13.000 --> 00:27:15.070 align:middle line:84%
+And the good thing
+about data frames
+
+00:27:15.070 --> 00:27:19.540 align:middle line:84%
+is that they allow us to
+put also factors inside,
+
+00:27:19.540 --> 00:27:21.310 align:middle line:84%
+allows us to put as
+characters inside.
+
+00:27:21.310 --> 00:27:23.020 align:middle line:84%
+So it's not going
+to be only numbers.
+
+00:27:23.020 --> 00:27:27.970 align:middle line:84%
+So we can have a mixture of
+different data structures.
+
+00:27:27.970 --> 00:27:32.620 align:middle line:84%
+Also, R by itself has a
+library of data frames.
+
+00:27:32.620 --> 00:27:35.200 align:middle line:84%
+So if you ever want to play
+with data just for fun,
+
+00:27:35.200 --> 00:27:39.580 align:middle line:84%
+you can access this data
+that's included inside the R.
+
+00:27:39.580 --> 00:27:41.410 align:middle line:84%
+In this case, the
+one that I'm using
+
+00:27:41.410 --> 00:27:44.200 align:middle line:90%
+is one that's called mtcars.
+
+00:27:44.200 --> 00:27:48.380 align:middle line:84%
+I'm going to assign this
+name to cars right here.
+
+00:27:48.380 --> 00:27:52.390 align:middle line:84%
+So just click on it, you'll
+see that this new data
+
+00:27:52.390 --> 00:27:53.290 align:middle line:90%
+has been created.
+
+00:27:53.290 --> 00:27:56.770 align:middle line:84%
+It's in the same
+section as the matrix.
+
+00:27:56.770 --> 00:28:00.070 align:middle line:84%
+But we see that, in this case,
+we have this little arrow,
+
+00:28:00.070 --> 00:28:02.750 align:middle line:84%
+blue arrow right here
+that, if we click on it,
+
+00:28:02.750 --> 00:28:06.280 align:middle line:84%
+it's going to display the
+different column names
+
+00:28:06.280 --> 00:28:08.270 align:middle line:84%
+and information of
+each column that
+
+00:28:08.270 --> 00:28:11.510 align:middle line:90%
+is assigned to that database.
+
+00:28:11.510 --> 00:28:14.160 align:middle line:84%
+So just for
+visualizing purposes,
+
+00:28:14.160 --> 00:28:16.010 align:middle line:84%
+I'm just going to
+click on top of cars.
+
+00:28:16.010 --> 00:28:17.570 align:middle line:90%
+And here is what we have.
+
+00:28:17.570 --> 00:28:22.460 align:middle line:84%
+This database is related
+to different car engines,
+
+00:28:22.460 --> 00:28:26.400 align:middle line:84%
+miles per gallon, the different
+number of cylinders that it has.
+
+00:28:26.400 --> 00:28:31.460 align:middle line:84%
+So it allows us to play
+quite a lot with this data.
+
+00:28:31.460 --> 00:28:34.580 align:middle line:84%
+We're going to just ask
+the length about cars,
+
+00:28:34.580 --> 00:28:36.080 align:middle line:84%
+as we did before
+with the vectors.
+
+00:28:36.080 --> 00:28:38.600 align:middle line:90%
+It also applies to data frames.
+
+00:28:38.600 --> 00:28:41.540 align:middle line:84%
+So here, we have
+the length of that.
+
+00:28:41.540 --> 00:28:44.900 align:middle line:84%
+What's the number of columns
+that we have involved?
+
+00:28:44.900 --> 00:28:47.390 align:middle line:84%
+In here, we can also
+ask that to R. We
+
+00:28:47.390 --> 00:28:52.400 align:middle line:84%
+can also ask the number
+of rows that are involved.
+
+00:28:52.400 --> 00:28:54.545 align:middle line:84%
+We can ask what's
+the column names.
+
+00:28:54.545 --> 00:28:57.050 align:middle line:90%
+
+
+00:28:57.050 --> 00:28:59.510 align:middle line:84%
+And again, we can use
+the same data structure
+
+00:28:59.510 --> 00:29:04.130 align:middle line:84%
+that we use for matrices
+by consulting what's
+
+00:29:04.130 --> 00:29:06.720 align:middle line:84%
+on the row number
+4 inside of cars,
+
+00:29:06.720 --> 00:29:12.170 align:middle line:84%
+so using the same data
+structure we used before.
+
+00:29:12.170 --> 00:29:13.550 align:middle line:84%
+And there's
+something else that's
+
+00:29:13.550 --> 00:29:19.310 align:middle line:84%
+a new feature that I'm showing
+here is that you can also
+
+00:29:19.310 --> 00:29:24.690 align:middle line:84%
+select or consult a column
+by using its column name.
+
+00:29:24.690 --> 00:29:29.435 align:middle line:84%
+So in this case, there's
+this column named HP.
+
+00:29:29.435 --> 00:29:31.250 align:middle line:90%
+I just put the dollar sign here.
+
+00:29:31.250 --> 00:29:35.260 align:middle line:84%
+So I'm saying this is the
+cars object that we assigned,
+
+00:29:35.260 --> 00:29:36.500 align:middle line:90%
+dollar sign.
+
+00:29:36.500 --> 00:29:43.220 align:middle line:84%
+And inside of the cars, I'm
+consulting the column called HP.
+
+00:29:43.220 --> 00:29:47.360 align:middle line:84%
+If we don't know what other
+names are involved in this data
+
+00:29:47.360 --> 00:29:51.740 align:middle line:84%
+frame, we just go from cars
+just right to dollar sign.
+
+00:29:51.740 --> 00:29:54.595 align:middle line:84%
+And it's going to be
+displayed in a list what
+
+00:29:54.595 --> 00:29:56.220 align:middle line:84%
+are the different
+columns that we have.
+
+00:29:56.220 --> 00:29:59.280 align:middle line:84%
+We can just scroll
+down and click the one
+
+00:29:59.280 --> 00:30:04.530 align:middle line:84%
+that we like, just intro,
+and it works, just like that.
+
+00:30:04.530 --> 00:30:07.920 align:middle line:90%
+
+
+00:30:07.920 --> 00:30:08.420 align:middle line:90%
+OK.
+
+00:30:08.420 --> 00:30:11.780 align:middle line:84%
+So now, we have already
+been going through a lot
+
+00:30:11.780 --> 00:30:13.280 align:middle line:90%
+of different data structures.
+
+00:30:13.280 --> 00:30:17.360 align:middle line:84%
+We went from individual
+characters to numbers.
+
+00:30:17.360 --> 00:30:21.200 align:middle line:90%
+Then we moved to vectors.
+
+00:30:21.200 --> 00:30:24.440 align:middle line:84%
+Then we moved to
+matrices, data frames.
+
+00:30:24.440 --> 00:30:28.700 align:middle line:84%
+But there's the
+summary of everything.
+
+00:30:28.700 --> 00:30:32.000 align:middle line:84%
+You could store every
+single type of data
+
+00:30:32.000 --> 00:30:35.750 align:middle line:84%
+in one data structure, which is
+the masterpiece of everything.
+
+00:30:35.750 --> 00:30:37.080 align:middle line:90%
+This is called the list.
+
+00:30:37.080 --> 00:30:39.710 align:middle line:84%
+So we can create a list
+of everything we want.
+
+00:30:39.710 --> 00:30:44.180 align:middle line:84%
+We can put together, as you
+can see, different vectors.
+
+00:30:44.180 --> 00:30:46.940 align:middle line:84%
+But we can put together
+a matrix there.
+
+00:30:46.940 --> 00:30:49.238 align:middle line:90%
+And we put data frame.
+
+00:30:49.238 --> 00:30:51.530 align:middle line:84%
+So in this case, we're putting
+everything in that list.
+
+00:30:51.530 --> 00:30:55.070 align:middle line:90%
+And we just create this.
+
+00:30:55.070 --> 00:31:00.500 align:middle line:84%
+And if you can see here,
+it has been created.
+
+00:31:00.500 --> 00:31:04.900 align:middle line:84%
+If you click on that arrow that
+we had also in the data frame,
+
+00:31:04.900 --> 00:31:08.950 align:middle line:84%
+we see the different
+data structures
+
+00:31:08.950 --> 00:31:10.960 align:middle line:90%
+that we have inside that matrix.
+
+00:31:10.960 --> 00:31:13.000 align:middle line:84%
+The first one is
+a numeric vector.
+
+00:31:13.000 --> 00:31:14.650 align:middle line:90%
+Then we have a character vector.
+
+00:31:14.650 --> 00:31:18.010 align:middle line:84%
+We have another numerical
+vector, a vector
+
+00:31:18.010 --> 00:31:19.720 align:middle line:90%
+that's created with integers.
+
+00:31:19.720 --> 00:31:21.190 align:middle line:90%
+We have a data frame.
+
+00:31:21.190 --> 00:31:26.180 align:middle line:84%
+And we also have a
+matrix, right there.
+
+00:31:26.180 --> 00:31:30.820 align:middle line:84%
+So this is a way to
+store data easily
+
+00:31:30.820 --> 00:31:33.325 align:middle line:84%
+that you don't even have
+to think about what's
+
+00:31:33.325 --> 00:31:34.450 align:middle line:90%
+the structure of that data.
+
+00:31:34.450 --> 00:31:35.690 align:middle line:90%
+We just put it in there.
+
+00:31:35.690 --> 00:31:39.283 align:middle line:84%
+And you can consult, OK, let's
+just go to the space number
+
+00:31:39.283 --> 00:31:40.450 align:middle line:90%
+6, which, in this case, is--
+
+00:31:40.450 --> 00:31:44.920 align:middle line:84%
+1, 2, 3, 4, 5, 6-- is
+going to be the matrix.
+
+00:31:44.920 --> 00:31:45.760 align:middle line:90%
+Let's just see.
+
+00:31:45.760 --> 00:31:47.980 align:middle line:84%
+And of course, the
+matrix is here.
+
+00:31:47.980 --> 00:31:52.180 align:middle line:84%
+And this is how we can store
+everything in the same place.
+
+00:31:52.180 --> 00:31:57.160 align:middle line:84%
+And now that you've been
+exposed to such amount of data,
+
+00:31:57.160 --> 00:31:59.260 align:middle line:84%
+I just prepare some
+exercises for you
+
+00:31:59.260 --> 00:32:03.670 align:middle line:84%
+to start emptying your
+brains and putting everything
+
+00:32:03.670 --> 00:32:05.240 align:middle line:90%
+into practice.
+
+00:32:05.240 --> 00:32:10.480 align:middle line:84%
+So I encourage you to take these
+little questions here and try
+
+00:32:10.480 --> 00:32:12.140 align:middle line:90%
+to answer them.
+
+00:32:12.140 --> 00:32:14.410 align:middle line:84%
+And if you are eager
+for more, I encourage
+
+00:32:14.410 --> 00:32:17.320 align:middle line:84%
+you to go through different
+internet resources.
+
+00:32:17.320 --> 00:32:20.770 align:middle line:84%
+One good thing of R is also
+that you can find everything
+
+00:32:20.770 --> 00:32:21.470 align:middle line:90%
+on the internet.
+
+00:32:21.470 --> 00:32:23.440 align:middle line:84%
+So there's going to
+be a lot of resources
+
+00:32:23.440 --> 00:32:28.380 align:middle line:84%
+for you to practice as well,
+if you are hungry for more.
+
+00:32:28.380 --> 00:32:33.000 align:middle line:90%

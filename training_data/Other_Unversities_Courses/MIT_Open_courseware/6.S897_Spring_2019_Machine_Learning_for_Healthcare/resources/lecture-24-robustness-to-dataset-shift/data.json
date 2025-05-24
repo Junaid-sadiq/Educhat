@@ -1,0 +1,12 @@
+{
+  "title":"Lecture 24: Robustness to Dataset Shift",
+  "description": "",
+  "file": null,
+  "learning_resource_types": ["Lecture Videos"],
+  "resource_type": "Video",
+  "file_type": null,
+  "youtube_key":  "MdUnh4PaGKw",
+  "captions_file": "/courses/6-s897-machine-learning-for-healthcare-spring-2019/1c8d2b9beb205deb9197593be72ce253_MdUnh4PaGKw.vtt",
+  "transcript_file": "/courses/6-s897-machine-learning-for-healthcare-spring-2019/51971aa5fe476117ea44a576e47f5d97_MdUnh4PaGKw.pdf",
+  "thumbnail_file": "https://img.youtube.com/vi/MdUnh4PaGKw/default.jpg",
+  "archive_url": "https://archive.org/download/MIT6.S897S19/MIT6_S897S19_lec24_300k.mp4"}

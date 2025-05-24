@@ -1,0 +1,1251 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:06.318 align:middle line:84%
+[SQUEAKING]
+[RUSTLING] [CLICKING]
+
+00:00:06.318 --> 00:00:10.687 align:middle line:90%
+
+
+00:00:10.687 --> 00:00:12.520 align:middle line:84%
+HELENA VAILLICROSA: All
+right, hopefully you
+
+00:00:12.520 --> 00:00:15.970 align:middle line:84%
+had the chance to practice the
+exercises that we went through
+
+00:00:15.970 --> 00:00:17.200 align:middle line:90%
+on the last video.
+
+00:00:17.200 --> 00:00:20.320 align:middle line:84%
+And now, we're going
+to start going directly
+
+00:00:20.320 --> 00:00:23.350 align:middle line:84%
+how to import data
+in R because we've
+
+00:00:23.350 --> 00:00:28.180 align:middle line:84%
+been working on how to type
+or create data in the script
+
+00:00:28.180 --> 00:00:28.850 align:middle line:90%
+itself.
+
+00:00:28.850 --> 00:00:32.450 align:middle line:84%
+But now, it's the turn to
+import data from other sources.
+
+00:00:32.450 --> 00:00:36.940 align:middle line:84%
+So I'll just erase everything,
+so we start with a white board.
+
+00:00:36.940 --> 00:00:42.010 align:middle line:84%
+So if we click here,
+we're going to clean
+
+00:00:42.010 --> 00:00:46.660 align:middle line:84%
+everything we've been
+working, also with the plots.
+
+00:00:46.660 --> 00:00:48.370 align:middle line:84%
+And we can do the
+same with the console.
+
+00:00:48.370 --> 00:00:52.670 align:middle line:90%
+
+
+00:00:52.670 --> 00:00:53.420 align:middle line:90%
+OK?
+
+00:00:53.420 --> 00:00:57.230 align:middle line:84%
+So now, we start with
+everything brand new.
+
+00:00:57.230 --> 00:01:03.980 align:middle line:84%
+So first of all, where
+is the data taken from?
+
+00:01:03.980 --> 00:01:10.370 align:middle line:84%
+If you type getwd, which
+it means working directory,
+
+00:01:10.370 --> 00:01:12.620 align:middle line:84%
+it's going to say what's
+your working directory that's
+
+00:01:12.620 --> 00:01:14.420 align:middle line:90%
+been linked to.
+
+00:01:14.420 --> 00:01:18.020 align:middle line:84%
+So in this case, I'm going to
+Users, Helena, and Desktop.
+
+00:01:18.020 --> 00:01:23.630 align:middle line:84%
+And you can change this working
+directory by creating setwd,
+
+00:01:23.630 --> 00:01:26.000 align:middle line:90%
+and here write a new route.
+
+00:01:26.000 --> 00:01:29.520 align:middle line:84%
+I'm just going to go with
+the same one right here.
+
+00:01:29.520 --> 00:01:34.850 align:middle line:84%
+And by default, R allows
+you to import CSV files.
+
+00:01:34.850 --> 00:01:39.560 align:middle line:84%
+This is the command you should
+write to import comments
+
+00:01:39.560 --> 00:01:43.130 align:middle line:84%
+as a CSV file, just
+read.csv, and then
+
+00:01:43.130 --> 00:01:45.830 align:middle line:90%
+your working directory here.
+
+00:01:45.830 --> 00:01:47.450 align:middle line:90%
+This works for my laptop.
+
+00:01:47.450 --> 00:01:49.400 align:middle line:84%
+But of course, you
+would have to change it
+
+00:01:49.400 --> 00:01:51.110 align:middle line:84%
+depending on the
+location of the file you
+
+00:01:51.110 --> 00:01:56.420 align:middle line:84%
+want to import and always
+between these commas
+
+00:01:56.420 --> 00:01:57.330 align:middle line:90%
+right there.
+
+00:01:57.330 --> 00:02:02.510 align:middle line:84%
+So if I click on here, you see
+this data has been imported.
+
+00:02:02.510 --> 00:02:05.540 align:middle line:84%
+And if I click on
+it, I can visualize
+
+00:02:05.540 --> 00:02:08.030 align:middle line:90%
+everything that's inside.
+
+00:02:08.030 --> 00:02:12.270 align:middle line:84%
+You can try it with
+whatever CSV file you have.
+
+00:02:12.270 --> 00:02:16.160 align:middle line:84%
+But what happens if I want
+to import files that are
+
+00:02:16.160 --> 00:02:20.180 align:middle line:90%
+in, for example, Excel format?
+
+00:02:20.180 --> 00:02:22.970 align:middle line:84%
+Well, for that, we
+would need a package.
+
+00:02:22.970 --> 00:02:25.340 align:middle line:84%
+In the beginning,
+of the sessions
+
+00:02:25.340 --> 00:02:27.980 align:middle line:90%
+I briefly talked about packages.
+
+00:02:27.980 --> 00:02:29.810 align:middle line:84%
+When you go to this
+tab, you can see what
+
+00:02:29.810 --> 00:02:31.350 align:middle line:90%
+packages you have installed.
+
+00:02:31.350 --> 00:02:34.340 align:middle line:84%
+So now, it's time to go
+deeper with packages.
+
+00:02:34.340 --> 00:02:38.030 align:middle line:84%
+Packages mostly
+are an accumulation
+
+00:02:38.030 --> 00:02:39.950 align:middle line:84%
+of different functions
+that somebody has
+
+00:02:39.950 --> 00:02:42.290 align:middle line:90%
+uploaded into the R interface.
+
+00:02:42.290 --> 00:02:49.940 align:middle line:84%
+And you can download them
+using Tools, Install Packages.
+
+00:02:49.940 --> 00:02:53.308 align:middle line:84%
+And here, you type the name of
+the package you want to install.
+
+00:02:53.308 --> 00:02:55.850 align:middle line:84%
+Let's just go with the one that
+we want to install right now.
+
+00:02:55.850 --> 00:02:58.440 align:middle line:90%
+
+
+00:02:58.440 --> 00:03:02.225 align:middle line:90%
+Phase 1, Install, Yes.
+
+00:03:02.225 --> 00:03:07.510 align:middle line:90%
+
+
+00:03:07.510 --> 00:03:08.010 align:middle line:90%
+OK.
+
+00:03:08.010 --> 00:03:12.450 align:middle line:84%
+Now, it's already
+installed in our system.
+
+00:03:12.450 --> 00:03:16.440 align:middle line:84%
+Also, another way to
+do it would be to type
+
+00:03:16.440 --> 00:03:21.540 align:middle line:84%
+install packages and, between
+commas, the package name.
+
+00:03:21.540 --> 00:03:23.610 align:middle line:90%
+So that works either way.
+
+00:03:23.610 --> 00:03:28.530 align:middle line:84%
+And now, we have to charge
+this library into our session.
+
+00:03:28.530 --> 00:03:30.540 align:middle line:90%
+So OK, the package is installed.
+
+00:03:30.540 --> 00:03:32.040 align:middle line:90%
+It's in our computer.
+
+00:03:32.040 --> 00:03:34.440 align:middle line:84%
+But now, we have to
+call all these functions
+
+00:03:34.440 --> 00:03:35.820 align:middle line:90%
+into our R session.
+
+00:03:35.820 --> 00:03:39.600 align:middle line:84%
+And to do, so we just type
+library and the package
+
+00:03:39.600 --> 00:03:40.540 align:middle line:90%
+we want to charge.
+
+00:03:40.540 --> 00:03:43.820 align:middle line:90%
+So I'll just do this.
+
+00:03:43.820 --> 00:03:46.280 align:middle line:84%
+And now, if we go to
+the packages list,
+
+00:03:46.280 --> 00:03:52.715 align:middle line:84%
+we should see that open
+XLSX scroll all the way.
+
+00:03:52.715 --> 00:04:03.260 align:middle line:90%
+
+
+00:04:03.260 --> 00:04:03.760 align:middle line:90%
+You see?
+
+00:04:03.760 --> 00:04:04.390 align:middle line:90%
+It clicked.
+
+00:04:04.390 --> 00:04:05.990 align:middle line:90%
+It means that it is loaded.
+
+00:04:05.990 --> 00:04:08.800 align:middle line:84%
+You could click
+here and click here
+
+00:04:08.800 --> 00:04:12.790 align:middle line:84%
+and it would work
+exactly the same.
+
+00:04:12.790 --> 00:04:16.550 align:middle line:84%
+We've gotten good at installing
+and charging packages.
+
+00:04:16.550 --> 00:04:18.300 align:middle line:90%
+Let's just use them.
+
+00:04:18.300 --> 00:04:23.290 align:middle line:84%
+I'm going to charge this
+file that is an XLSX file.
+
+00:04:23.290 --> 00:04:25.470 align:middle line:90%
+So it's an Excel file.
+
+00:04:25.470 --> 00:04:28.230 align:middle line:84%
+It mimics the function
+of the read.csv.
+
+00:04:28.230 --> 00:04:32.440 align:middle line:84%
+So it's read.xlsx and
+the same functioning.
+
+00:04:32.440 --> 00:04:34.830 align:middle line:84%
+So you just put the
+route here between commas
+
+00:04:34.830 --> 00:04:37.440 align:middle line:90%
+and it loads itself.
+
+00:04:37.440 --> 00:04:42.090 align:middle line:84%
+Here, the name I'm going to
+put to this database is T1.
+
+00:04:42.090 --> 00:04:43.630 align:middle line:84%
+It says that the
+file doesn't exist.
+
+00:04:43.630 --> 00:04:47.640 align:middle line:84%
+So that could be because some
+of these parts of the route
+
+00:04:47.640 --> 00:04:51.420 align:middle line:90%
+is not well-written.
+
+00:04:51.420 --> 00:04:54.570 align:middle line:84%
+Also, there is something
+important that might be handy
+
+00:04:54.570 --> 00:05:01.260 align:middle line:84%
+for you is that R has its own
+R format file, which is the .r.
+
+00:05:01.260 --> 00:05:04.570 align:middle line:84%
+So it's a very compact
+way to store data.
+
+00:05:04.570 --> 00:05:11.880 align:middle line:84%
+And you can also load R files by
+just typing load and the route
+
+00:05:11.880 --> 00:05:13.730 align:middle line:90%
+you have right here.
+
+00:05:13.730 --> 00:05:17.890 align:middle line:84%
+So I just charge
+these with R files.
+
+00:05:17.890 --> 00:05:21.340 align:middle line:84%
+And I have the data
+frame attached.
+
+00:05:21.340 --> 00:05:25.200 align:middle line:90%
+
+
+00:05:25.200 --> 00:05:28.430 align:middle line:84%
+OK, I just realized that the
+font might be a little bit too
+
+00:05:28.430 --> 00:05:28.930 align:middle line:90%
+small.
+
+00:05:28.930 --> 00:05:31.223 align:middle line:84%
+So I'm just going to
+make it bigger for you.
+
+00:05:31.223 --> 00:05:33.390 align:middle line:84%
+And also, I'm going to show
+you how to make the font
+
+00:05:33.390 --> 00:05:35.830 align:middle line:90%
+bigger for your own purposes.
+
+00:05:35.830 --> 00:05:40.260 align:middle line:84%
+So if you click on
+your command tab here
+
+00:05:40.260 --> 00:05:45.060 align:middle line:84%
+and then you go to the
+sign +, you see that?
+
+00:05:45.060 --> 00:05:46.200 align:middle line:90%
+Things are getting bigger.
+
+00:05:46.200 --> 00:05:48.283 align:middle line:84%
+And if you're going to go
+to the other way around,
+
+00:05:48.283 --> 00:05:51.000 align:middle line:90%
+you just Command and -.
+
+00:05:51.000 --> 00:05:54.690 align:middle line:84%
+OK, so that could
+be handy for you.
+
+00:05:54.690 --> 00:05:56.790 align:middle line:90%
+And also, I'm going to show--
+
+00:05:56.790 --> 00:06:00.280 align:middle line:84%
+I'm going to talk about a very
+interesting tool that R offers,
+
+00:06:00.280 --> 00:06:02.380 align:middle line:84%
+which is the Find
+and Replace tool.
+
+00:06:02.380 --> 00:06:05.900 align:middle line:84%
+So if we go here, we have
+this magnifying glass.
+
+00:06:05.900 --> 00:06:11.155 align:middle line:84%
+You click on it and you
+can type any characters
+
+00:06:11.155 --> 00:06:12.030 align:middle line:90%
+you want to look for.
+
+00:06:12.030 --> 00:06:13.113 align:middle line:90%
+Let's say-- I don't know--
+
+00:06:13.113 --> 00:06:15.975 align:middle line:84%
+I want to know
+where I typed read.
+
+00:06:15.975 --> 00:06:19.250 align:middle line:90%
+
+
+00:06:19.250 --> 00:06:23.550 align:middle line:84%
+So it's going to guide you
+through the different places
+
+00:06:23.550 --> 00:06:26.820 align:middle line:84%
+in your script that
+you've wrote read.
+
+00:06:26.820 --> 00:06:31.320 align:middle line:84%
+And also, you would be
+able to replace all read
+
+00:06:31.320 --> 00:06:33.480 align:middle line:90%
+things into something else.
+
+00:06:33.480 --> 00:06:35.670 align:middle line:84%
+I'm not going to do
+it now because that
+
+00:06:35.670 --> 00:06:40.620 align:middle line:90%
+would screw my whole R session.
+
+00:06:40.620 --> 00:06:44.140 align:middle line:84%
+But that is a very useful
+thing to do whenever you have,
+
+00:06:44.140 --> 00:06:46.210 align:middle line:84%
+let's say, a variable
+that you want to change.
+
+00:06:46.210 --> 00:06:50.400 align:middle line:84%
+So initially, you were
+working with temperature.
+
+00:06:50.400 --> 00:06:54.910 align:middle line:84%
+And you want to change
+temperature for precipitation.
+
+00:06:54.910 --> 00:06:59.010 align:middle line:84%
+And you can do it all at
+once in a very simple way.
+
+00:06:59.010 --> 00:07:03.780 align:middle line:84%
+All right, that
+being said, also, I
+
+00:07:03.780 --> 00:07:06.190 align:middle line:84%
+have this organization
+right here in the right.
+
+00:07:06.190 --> 00:07:11.010 align:middle line:84%
+So you can follow the
+structure of the script
+
+00:07:11.010 --> 00:07:12.210 align:middle line:90%
+that I'm having here.
+
+00:07:12.210 --> 00:07:15.960 align:middle line:84%
+And I can click on the
+different names of where I was.
+
+00:07:15.960 --> 00:07:20.570 align:middle line:84%
+So I was about to rejoin
+the explanation right here.
+
+00:07:20.570 --> 00:07:22.810 align:middle line:84%
+So this makes it
+easy to find as well.
+
+00:07:22.810 --> 00:07:25.750 align:middle line:84%
+How do I make
+things appear here?
+
+00:07:25.750 --> 00:07:30.410 align:middle line:84%
+I just have to put four of these
+signs here and for at the end.
+
+00:07:30.410 --> 00:07:32.110 align:middle line:90%
+So let's just try it.
+
+00:07:32.110 --> 00:07:37.290 align:middle line:90%
+
+
+00:07:37.290 --> 00:07:40.210 align:middle line:90%
+Now, hi has appeared right here.
+
+00:07:40.210 --> 00:07:43.920 align:middle line:84%
+So this is a way that
+I personally find easy
+
+00:07:43.920 --> 00:07:47.220 align:middle line:84%
+in order to have
+tidy scripts and not
+
+00:07:47.220 --> 00:07:51.210 align:middle line:90%
+get lost into all this code.
+
+00:07:51.210 --> 00:07:54.450 align:middle line:84%
+OK, let's get back
+to the exercises.
+
+00:07:54.450 --> 00:07:59.430 align:middle line:84%
+Now that we have learned how to
+upload data from our computer,
+
+00:07:59.430 --> 00:08:00.990 align:middle line:84%
+I'm going to work
+with this database
+
+00:08:00.990 --> 00:08:04.780 align:middle line:84%
+right here, which is the above
+that I already mentioned.
+
+00:08:04.780 --> 00:08:05.280 align:middle line:90%
+OK.
+
+00:08:05.280 --> 00:08:06.870 align:middle line:84%
+First of all, what
+I would like to see
+
+00:08:06.870 --> 00:08:09.060 align:middle line:90%
+is how the data looks like.
+
+00:08:09.060 --> 00:08:12.060 align:middle line:84%
+We can use this summary
+function that we already
+
+00:08:12.060 --> 00:08:15.480 align:middle line:90%
+talked to previously.
+
+00:08:15.480 --> 00:08:18.810 align:middle line:84%
+This is going to
+provide me, on a glance,
+
+00:08:18.810 --> 00:08:21.460 align:middle line:90%
+what's inside this database.
+
+00:08:21.460 --> 00:08:23.550 align:middle line:90%
+So where's the beginning?
+
+00:08:23.550 --> 00:08:24.580 align:middle line:90%
+Right here.
+
+00:08:24.580 --> 00:08:27.850 align:middle line:84%
+So in each column, we're going
+to have each column name.
+
+00:08:27.850 --> 00:08:29.250 align:middle line:90%
+So that's the column name.
+
+00:08:29.250 --> 00:08:32.100 align:middle line:84%
+And then depending on if
+the variable is categorical
+
+00:08:32.100 --> 00:08:35.580 align:middle line:84%
+or it's numerical, we're going
+to have different features
+
+00:08:35.580 --> 00:08:36.419 align:middle line:90%
+applied there.
+
+00:08:36.419 --> 00:08:42.070 align:middle line:84%
+For example, season,
+it's a character.
+
+00:08:42.070 --> 00:08:43.510 align:middle line:90%
+But the ones that are numeric--
+
+00:08:43.510 --> 00:08:49.750 align:middle line:84%
+let's say carbon--
+we get the minimum,
+
+00:08:49.750 --> 00:08:53.890 align:middle line:84%
+the different quantiles, the
+mean, and the maximum value,
+
+00:08:53.890 --> 00:08:57.190 align:middle line:84%
+and the number of N/A--
+so here, I have 500 N/As--
+
+00:08:57.190 --> 00:08:58.300 align:middle line:90%
+and so forth.
+
+00:08:58.300 --> 00:09:03.220 align:middle line:84%
+That's going to be applied to
+each column, so each variable.
+
+00:09:03.220 --> 00:09:07.450 align:middle line:84%
+Also, another way
+that we can use
+
+00:09:07.450 --> 00:09:13.810 align:middle line:84%
+to see summary of our
+database is the one that's
+
+00:09:13.810 --> 00:09:16.310 align:middle line:90%
+provided by this package.
+
+00:09:16.310 --> 00:09:20.980 align:middle line:84%
+So just to remind you how to
+install and charge packages,
+
+00:09:20.980 --> 00:09:22.450 align:middle line:90%
+you go right here--
+
+00:09:22.450 --> 00:09:24.340 align:middle line:90%
+Tools, Install Packages.
+
+00:09:24.340 --> 00:09:29.230 align:middle line:84%
+And here, you type the package
+you want to install and install.
+
+00:09:29.230 --> 00:09:32.870 align:middle line:84%
+And then to call the
+package in your session,
+
+00:09:32.870 --> 00:09:35.410 align:middle line:90%
+you can do two things--
+
+00:09:35.410 --> 00:09:40.800 align:middle line:90%
+this library situation and in.
+
+00:09:40.800 --> 00:09:43.982 align:middle line:84%
+But if you don't want
+to charge forever
+
+00:09:43.982 --> 00:09:45.690 align:middle line:84%
+this package in your
+session and you just
+
+00:09:45.690 --> 00:09:49.300 align:middle line:84%
+want to use it in this line
+code, you can use this.
+
+00:09:49.300 --> 00:09:51.510 align:middle line:84%
+So you put the
+name of the package
+
+00:09:51.510 --> 00:09:56.160 align:middle line:84%
+here, like these two signs,
+and then the function you
+
+00:09:56.160 --> 00:09:57.450 align:middle line:90%
+want to use.
+
+00:09:57.450 --> 00:10:01.030 align:middle line:84%
+R is going to understand that
+you instantly call that package,
+
+00:10:01.030 --> 00:10:04.060 align:middle line:84%
+but then you don't
+want it anymore.
+
+00:10:04.060 --> 00:10:07.620 align:middle line:84%
+So I'm just going to
+see what this provides.
+
+00:10:07.620 --> 00:10:10.260 align:middle line:84%
+This is a very cool way
+to approach the data
+
+00:10:10.260 --> 00:10:14.400 align:middle line:84%
+because it offers in
+another color wherever
+
+00:10:14.400 --> 00:10:15.960 align:middle line:90%
+we have negative values.
+
+00:10:15.960 --> 00:10:19.620 align:middle line:84%
+And also, it provides us
+of the same information,
+
+00:10:19.620 --> 00:10:24.120 align:middle line:84%
+like the mean, standard
+deviation, different quantiles,
+
+00:10:24.120 --> 00:10:28.410 align:middle line:90%
+and also the missing values.
+
+00:10:28.410 --> 00:10:30.460 align:middle line:84%
+And this very
+interesting feature,
+
+00:10:30.460 --> 00:10:33.040 align:middle line:84%
+which is a histogram
+of each column--
+
+00:10:33.040 --> 00:10:35.280 align:middle line:84%
+so we can see how the
+distribution of the data
+
+00:10:35.280 --> 00:10:38.910 align:middle line:84%
+looks like, which could
+be sometimes very handy.
+
+00:10:38.910 --> 00:10:41.070 align:middle line:84%
+Other ways to
+approach the database
+
+00:10:41.070 --> 00:10:43.320 align:middle line:84%
+would be to call
+the headers, which
+
+00:10:43.320 --> 00:10:47.220 align:middle line:84%
+is the different rows
+of the data we have.
+
+00:10:47.220 --> 00:10:51.090 align:middle line:84%
+I'm just going to replace
+the cars for the above.
+
+00:10:51.090 --> 00:10:52.840 align:middle line:90%
+Here, we have it.
+
+00:10:52.840 --> 00:10:58.650 align:middle line:84%
+So we're going to see
+only the six first rows.
+
+00:10:58.650 --> 00:11:03.960 align:middle line:84%
+Just to remind you, how can
+we check the column names?
+
+00:11:03.960 --> 00:11:05.610 align:middle line:90%
+Just call names.
+
+00:11:05.610 --> 00:11:09.870 align:middle line:84%
+This is all the variables
+that we have in this database.
+
+00:11:09.870 --> 00:11:13.110 align:middle line:90%
+
+
+00:11:13.110 --> 00:11:17.400 align:middle line:84%
+This is something that is also
+very useful, which is unique.
+
+00:11:17.400 --> 00:11:20.960 align:middle line:84%
+So it's going to
+say, for example,
+
+00:11:20.960 --> 00:11:24.510 align:middle line:84%
+we have a character
+associated to this database.
+
+00:11:24.510 --> 00:11:27.090 align:middle line:90%
+
+
+00:11:27.090 --> 00:11:29.640 align:middle line:90%
+Let's say-- I don't know--
+
+00:11:29.640 --> 00:11:30.820 align:middle line:90%
+topography.
+
+00:11:30.820 --> 00:11:32.860 align:middle line:84%
+What are the topographies
+that we have?
+
+00:11:32.860 --> 00:11:35.190 align:middle line:84%
+So we have bottom,
+slope, and top.
+
+00:11:35.190 --> 00:11:37.410 align:middle line:84%
+These are the
+different categories
+
+00:11:37.410 --> 00:11:41.550 align:middle line:84%
+that we have inside
+this variable.
+
+00:11:41.550 --> 00:11:45.100 align:middle line:84%
+This is something that
+we already talked about,
+
+00:11:45.100 --> 00:11:50.740 align:middle line:84%
+which is a quick reminder of
+consulting column by column.
+
+00:11:50.740 --> 00:11:55.380 align:middle line:84%
+So let's go to above
+in column number 1.
+
+00:11:55.380 --> 00:11:56.940 align:middle line:84%
+Here, we have the
+column number 1.
+
+00:11:56.940 --> 00:11:59.610 align:middle line:90%
+
+
+00:11:59.610 --> 00:12:05.570 align:middle line:84%
+But we also can call the things
+by using the dollar sign.
+
+00:12:05.570 --> 00:12:06.950 align:middle line:90%
+This is the number 1.
+
+00:12:06.950 --> 00:12:09.510 align:middle line:90%
+It's going to be the same.
+
+00:12:09.510 --> 00:12:16.370 align:middle line:84%
+And we can individually provide
+a histogram of the variables.
+
+00:12:16.370 --> 00:12:20.960 align:middle line:84%
+And let's say I'm just going
+to see how carbon looks like--
+
+00:12:20.960 --> 00:12:27.720 align:middle line:84%
+histogram, the database,
+dollar sign, and the column.
+
+00:12:27.720 --> 00:12:30.810 align:middle line:84%
+And this is how our
+data looks like.
+
+00:12:30.810 --> 00:12:34.110 align:middle line:84%
+Obviously, you can
+also change some
+
+00:12:34.110 --> 00:12:37.740 align:middle line:90%
+of the features of this graph.
+
+00:12:37.740 --> 00:12:44.580 align:middle line:84%
+You could even change the
+different x or y-axis.
+
+00:12:44.580 --> 00:12:49.470 align:middle line:84%
+Or you could split
+the data in more bars.
+
+00:12:49.470 --> 00:12:53.260 align:middle line:84%
+But that's something we're
+going to cover in future videos.
+
+00:12:53.260 --> 00:12:57.460 align:middle line:84%
+So following this histogram that
+we just created about carbon,
+
+00:12:57.460 --> 00:13:00.450 align:middle line:84%
+we're just going to make a
+subset of the database we have
+
+00:13:00.450 --> 00:13:02.520 align:middle line:90%
+based on the amount of carbon.
+
+00:13:02.520 --> 00:13:09.700 align:middle line:84%
+So let's say we want to keep
+the ones that have low carbon,
+
+00:13:09.700 --> 00:13:14.520 align:middle line:84%
+just subset, just change
+the name of the database,
+
+00:13:14.520 --> 00:13:15.540 align:middle line:90%
+right here.
+
+00:13:15.540 --> 00:13:20.340 align:middle line:84%
+And now, inside the
+database, the variable
+
+00:13:20.340 --> 00:13:22.920 align:middle line:90%
+we want to focus on.
+
+00:13:22.920 --> 00:13:29.440 align:middle line:84%
+And we want it to
+be lower than 50.
+
+00:13:29.440 --> 00:13:31.420 align:middle line:90%
+Just go ahead.
+
+00:13:31.420 --> 00:13:34.060 align:middle line:84%
+And you see that now we've
+created another database right
+
+00:13:34.060 --> 00:13:40.130 align:middle line:84%
+here where the
+columns are the same,
+
+00:13:40.130 --> 00:13:43.610 align:middle line:84%
+but the only difference
+is that we have
+
+00:13:43.610 --> 00:13:46.590 align:middle line:90%
+less rows, less observations.
+
+00:13:46.590 --> 00:14:03.700 align:middle line:84%
+And if we see how the
+histogram looks like,
+
+00:14:03.700 --> 00:14:05.470 align:middle line:90%
+we see that now it has changed.
+
+00:14:05.470 --> 00:14:06.940 align:middle line:90%
+And the maximum is 50.
+
+00:14:06.940 --> 00:14:13.525 align:middle line:84%
+And we have all the rows that
+have a value of carbon below 50.
+
+00:14:13.525 --> 00:14:18.080 align:middle line:90%
+
+
+00:14:18.080 --> 00:14:18.650 align:middle line:90%
+OK.
+
+00:14:18.650 --> 00:14:22.010 align:middle line:84%
+So I've already
+mentioned in other videos
+
+00:14:22.010 --> 00:14:25.850 align:middle line:84%
+that R itself has a library
+of different databases.
+
+00:14:25.850 --> 00:14:27.350 align:middle line:84%
+I'm just going to
+go through that
+
+00:14:27.350 --> 00:14:30.780 align:middle line:84%
+and just write data
+in parentheses.
+
+00:14:30.780 --> 00:14:33.020 align:middle line:84%
+So we're going to
+see all the data
+
+00:14:33.020 --> 00:14:41.170 align:middle line:84%
+sets that R includes without
+installing anything on the side.
+
+00:14:41.170 --> 00:14:44.700 align:middle line:84%
+And I'm going to pick
+a database called NPK,
+
+00:14:44.700 --> 00:14:48.780 align:middle line:84%
+since my field of expertise
+is field sciences applied
+
+00:14:48.780 --> 00:14:51.850 align:middle line:90%
+to plants and climate change.
+
+00:14:51.850 --> 00:14:53.340 align:middle line:90%
+This is a database.
+
+00:14:53.340 --> 00:14:55.440 align:middle line:84%
+I'm just going to
+charge it, so you can
+
+00:14:55.440 --> 00:14:57.240 align:middle line:90%
+have an idea how it looks like.
+
+00:14:57.240 --> 00:15:00.960 align:middle line:84%
+It has different blocks
+of experiment right here.
+
+00:15:00.960 --> 00:15:05.220 align:middle line:84%
+And also, it
+indicates in every row
+
+00:15:05.220 --> 00:15:08.280 align:middle line:84%
+if that block has been
+fertilized with nitrogen,
+
+00:15:08.280 --> 00:15:10.320 align:middle line:90%
+with phosphorus, or potassium.
+
+00:15:10.320 --> 00:15:13.710 align:middle line:84%
+In this case, 0 means
+that it hasn't and a 1
+
+00:15:13.710 --> 00:15:15.360 align:middle line:84%
+means that it has
+been fertilized.
+
+00:15:15.360 --> 00:15:17.340 align:middle line:84%
+And it records the
+amount of yield
+
+00:15:17.340 --> 00:15:20.830 align:middle line:84%
+that has been produced right
+after this fertilization.
+
+00:15:20.830 --> 00:15:26.040 align:middle line:84%
+So we're going to play a
+little with this database.
+
+00:15:26.040 --> 00:15:31.920 align:middle line:84%
+First of all, I'm going
+to create an extra column
+
+00:15:31.920 --> 00:15:36.750 align:middle line:84%
+to combine nitrogen, phosphorus,
+and potassium fertilization
+
+00:15:36.750 --> 00:15:37.750 align:middle line:90%
+at the same time.
+
+00:15:37.750 --> 00:15:39.880 align:middle line:90%
+So how am I going to do this?
+
+00:15:39.880 --> 00:15:41.850 align:middle line:84%
+Well, I'm just going
+to create directly
+
+00:15:41.850 --> 00:15:44.460 align:middle line:90%
+a column in our database.
+
+00:15:44.460 --> 00:15:49.150 align:middle line:84%
+Now, just to remind you again,
+it only has these rows here.
+
+00:15:49.150 --> 00:15:51.570 align:middle line:84%
+But I'm going to create
+an extra one, right there.
+
+00:15:51.570 --> 00:15:56.230 align:middle line:84%
+And it's going to be called
+All Ferti, All Fertilization.
+
+00:15:56.230 --> 00:16:02.040 align:middle line:84%
+So I want to paste the column
+that includes the nitrogen
+
+00:16:02.040 --> 00:16:04.920 align:middle line:84%
+information, the phosphorus
+information, and the potassium
+
+00:16:04.920 --> 00:16:05.760 align:middle line:90%
+information.
+
+00:16:05.760 --> 00:16:12.050 align:middle line:84%
+And I'm going to separate each
+one with this symbol here.
+
+00:16:12.050 --> 00:16:16.890 align:middle line:84%
+So I'm just going the go
+ahead, run the command.
+
+00:16:16.890 --> 00:16:19.130 align:middle line:84%
+And now, we've created
+a new column here
+
+00:16:19.130 --> 00:16:21.080 align:middle line:84%
+that includes the
+different fertilizations.
+
+00:16:21.080 --> 00:16:24.710 align:middle line:84%
+And we can see only
+in one factor what
+
+00:16:24.710 --> 00:16:28.580 align:middle line:84%
+has been the different
+treatments that yield
+
+00:16:28.580 --> 00:16:30.410 align:middle line:90%
+has been passed through.
+
+00:16:30.410 --> 00:16:33.500 align:middle line:84%
+OK, I'm just going to come
+with a little exercise here.
+
+00:16:33.500 --> 00:16:38.030 align:middle line:84%
+I'm asking you if you could
+subset this database taking
+
+00:16:38.030 --> 00:16:47.570 align:middle line:84%
+only the data that has been
+fertilized with nitrogen.
+
+00:16:47.570 --> 00:16:51.020 align:middle line:84%
+So how are you going to
+answer this exercise?
+
+00:16:51.020 --> 00:16:55.840 align:middle line:84%
+First of all, let's just go
+back to the data and see, OK,
+
+00:16:55.840 --> 00:16:58.210 align:middle line:84%
+nitrogen, there's
+0's and there's 1's.
+
+00:16:58.210 --> 00:17:01.390 align:middle line:84%
+And we want the ones that have
+just the number 1, which means
+
+00:17:01.390 --> 00:17:03.110 align:middle line:90%
+that they have been fertilized.
+
+00:17:03.110 --> 00:17:05.740 align:middle line:90%
+So we just make up a name.
+
+00:17:05.740 --> 00:17:11.800 align:middle line:90%
+
+
+00:17:11.800 --> 00:17:16.329 align:middle line:84%
+Subset, what's the
+database we want to subset?
+
+00:17:16.329 --> 00:17:17.305 align:middle line:90%
+What's the variable?
+
+00:17:17.305 --> 00:17:22.250 align:middle line:90%
+
+
+00:17:22.250 --> 00:17:27.650 align:middle line:84%
+And we want the ones
+that are equal to 1.
+
+00:17:27.650 --> 00:17:31.000 align:middle line:90%
+
+
+00:17:31.000 --> 00:17:35.590 align:middle line:84%
+And here is how we create
+a subset filtering only
+
+00:17:35.590 --> 00:17:39.910 align:middle line:84%
+by the ones that have
+been nitrogen fertilized.
+
+00:17:39.910 --> 00:17:43.250 align:middle line:84%
+All right, other things
+that can be useful--
+
+00:17:43.250 --> 00:17:49.120 align:middle line:84%
+we have the rbind and the cbind,
+which basically paste vectors
+
+00:17:49.120 --> 00:17:50.540 align:middle line:90%
+into the database.
+
+00:17:50.540 --> 00:17:55.270 align:middle line:84%
+So let's say we have the
+different columns right here
+
+00:17:55.270 --> 00:17:58.420 align:middle line:84%
+and we want to add an extra one
+or if we have the different rows
+
+00:17:58.420 --> 00:18:01.720 align:middle line:84%
+and we want to add
+a row on the bottom.
+
+00:18:01.720 --> 00:18:03.430 align:middle line:90%
+They have to match by length.
+
+00:18:03.430 --> 00:18:06.850 align:middle line:84%
+But other than that,
+R is going to accept.
+
+00:18:06.850 --> 00:18:09.910 align:middle line:84%
+Let's just put
+that into practice.
+
+00:18:09.910 --> 00:18:13.210 align:middle line:84%
+Previously, we created this
+new column, right here,
+
+00:18:13.210 --> 00:18:15.245 align:middle line:90%
+just to remind you, that one.
+
+00:18:15.245 --> 00:18:15.745 align:middle line:90%
+OK?
+
+00:18:15.745 --> 00:18:19.000 align:middle line:90%
+
+
+00:18:19.000 --> 00:18:22.285 align:middle line:84%
+But what if we just create
+the column on the side?
+
+00:18:22.285 --> 00:18:24.880 align:middle line:90%
+
+
+00:18:24.880 --> 00:18:25.380 align:middle line:90%
+OK.
+
+00:18:25.380 --> 00:18:29.940 align:middle line:84%
+Here, you see that we've
+created a vector that
+
+00:18:29.940 --> 00:18:33.480 align:middle line:84%
+includes the same information
+that we have previously
+
+00:18:33.480 --> 00:18:34.740 align:middle line:90%
+included in the database.
+
+00:18:34.740 --> 00:18:42.220 align:middle line:84%
+And we want to just use the
+cbind just to combine these two.
+
+00:18:42.220 --> 00:18:45.390 align:middle line:84%
+So that's the new
+name that I came with.
+
+00:18:45.390 --> 00:18:46.710 align:middle line:90%
+Apply the function.
+
+00:18:46.710 --> 00:18:50.260 align:middle line:84%
+I want to merge this one
+here and this one here.
+
+00:18:50.260 --> 00:18:54.360 align:middle line:84%
+So if they match in size, R
+is going to allow us to do it.
+
+00:18:54.360 --> 00:18:55.428 align:middle line:90%
+And now, I have--
+
+00:18:55.428 --> 00:18:56.970 align:middle line:84%
+this is the one that
+I first created.
+
+00:18:56.970 --> 00:18:59.440 align:middle line:84%
+And this is the one
+that I just added.
+
+00:18:59.440 --> 00:19:02.160 align:middle line:84%
+So this is two different
+ways of doing the same thing.
+
+00:19:02.160 --> 00:19:05.110 align:middle line:84%
+R has multiple ways of
+doing sometimes the same.
+
+00:19:05.110 --> 00:19:08.240 align:middle line:84%
+So just pick the one that
+works for you the best.
+
+00:19:08.240 --> 00:19:12.000 align:middle line:90%

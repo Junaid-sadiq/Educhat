@@ -1,0 +1,1553 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <head>
+        <meta charset="utf-8" />
+
+        <title>WSD: lect06</title>
+
+        <meta name="description" content="A framework for easily creating beautiful presentations using HTML" />
+        <meta name="author" content="Pia Niemelä" />
+
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <link rel="stylesheet" href="dist/reset.css" />
+        <link rel="stylesheet" href="dist/reveal.css" />
+        <link rel="stylesheet" href="dist/theme/moon.css" id="theme" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+        <!-- Theme used for syntax highlighting of code -->
+        <link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme" />
+        <link href="https://fonts.googleapis.com/css?family=Coda" rel="stylesheet" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+
+        <link rel="stylesheet" href="../css/infograph.css" id="theme" />
+    </head>
+
+<body>
+    <div class="reveal">
+        <!-- Any         element inside of this container is displayed as a slide -->
+        <div class="slides">
+
+            <section data-background="#81237F">
+                <h2>Luento 6</h2>
+                <div style="display:flex;font-size: 80%;">
+                    <ul style="width:55%">
+                        <li>Perinteinen asemointi<ul>
+                                <li><a href="#/1">Normaali kulku (flow) + display: block|inline|inline-block|none</a>
+                                </li>
+                                <li><a href="#/2">Sijoittelu</a>
+                                    <ul>
+                                        <li>static, relative, absolute, fixed, sticky</li>
+                                        <li>top, bottom, left, right
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li><a href="#/3">Float</a>
+                                    <ul>
+                                        <li>..ja clear</li>
+                                    </ul>
+                                </li>
+                        </li>
+                    </ul>
+                    </li>
+                    </ul>
+                    <ul style="width:45%">
+                        <li>Uudet joustavammat asemointitavat
+                            <ul>
+                                <li><a href="#/4">CSS Flexbox (1D)</a></li>
+                                <li><a href="#/5">CSS Grid (2D)</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#/6">Mukautetut ominaisuudet - ✨Uutta!</a></li>
+                    </ul>
+                </div>
+                <div>"flow->float->fluid"</div>
+            </section>
+            <section>
+                <section data-background="../img/typewriter.png" data-background-repeat="repeat"
+                    data-background-size="100px" style="color: white;background-color: rgba(0,0,0,.9);">
+                    <h2 class="r-fit-text">Normaali kulku</h2>
+                    <h3>inline-elementtien ja lohkojen kanssa</h3>
+                </section>
+                <section>
+                    <h2>CSS-ominaisuus display: inline</h2>
+
+                    <div style="display:flex">
+                        <div style="width:45%;height: fit-content;">
+                            <pre><code><span>xxx</span>
+<span>yyy</span>
+<span>zzz</span></code></pre>
+                        </div>
+                        <div style="width:45%">
+                            <span>xxx</span>
+                            <span>yyy</span>
+                            <span>zzz</span>
+                        </div>
+                    </div>
+
+                    <ul style="font-size: 80%;">
+                        <li>display: inline, esim.
+                            <ul>
+                                <li>elementit: span, strong, em,...</li>
+                            </ul>
+                        </li>
+                        <li>Elementeillä on oletusarvot display-ominaisuudelle, mutta niitä voidaan muuttaa</li>
+                        <li>samalla rivillä muiden inline-elementtien kanssa<ul>
+                                <li>leveys ja korkeus määräytyvät sisällön mukaan</li>
+                                <li>padding/margin eivät vaikuta pystysuunnassa,
+                                    poikkeukset:
+                                    <ul style="font-size: 70%;">
+                                        <li>korvatut elementit</li>
+                                        <li>upotetut elementit</li>
+                                        <li>option-elementit, joissa leveys
+                                            ja korkeus ovat säädettävissä</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                </section>
+
+                <section>
+                    <h2>CSS-ominaisuus display: block</h2>
+                    <div style="display:flex">
+                        <div style="width:45%; height: fit-content;">
+                            <pre><code><div>xxx</div>
+<div>yyy</div>
+<div>zzz</div></code></pre>
+                        </div>
+                        <div style="width:45%">
+                            <div>xxx</div>
+                            <div>yyy</div>
+                            <div>zzz</div>
+                        </div>
+                    </div>
+
+                    <ul style="font-size: 80%;">
+                        <li>Elementeillä on oletusarvot display-ominaisuudelle, mutta sitä voidaan muuttaa
+                            CSS-säännöllä, esim.</li>
+                        <li>Block-tason elementit
+                            <pre>div, p, ol, li, …</pre>
+                            <ul>
+                                <li>täyttävät koko käytettävissä olevan leveyden</li>
+                                <li>marginaali, täyte (padding), leveys ja korkeus ovat asetettavissa</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>CSS-ominaisuus display: inline-block</h2>
+
+                    <pre><code>#ååå {display:inline-block; margin: 3rem;}</code></pre>
+                    <div style="display:flex;font-size: 60%;">
+                        <div style="width:60%;height: fit-content;">
+                            <pre><code><span>xxx</span><div id="ååå">ååå</div><span>zzz</span><br></code></pre>
+                        </div>
+                        <div style="width:40%">
+                            <span>xxx</span>
+                            <div id="ååå" style="display:inline-block; margin: 3rem;">ååå</div>
+                            <span id="zzz">zzz</span>
+                        </div>
+                    </div>
+
+                    <ul>
+                        <li>elementit ovat rivissä, kuten mutta..</li>
+                        <li>Marginaali, täyte, leveys ja korkeus voidaan silti asettaa</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>CSS-ominaisuus display: none</h2>
+                    <button id="hide" style="font-size: 150%;">Piilota display: none</button>
+                    <ul id="hideable">
+                        <li>Piilottaa elementin</li>
+                        <li>Elementti poistetaan myös dokumenttivirrasta</li>
+                    </ul>
+                    <ul>
+                        <li>Lisäksi näkyvyyttä voidaan hallita seuraavilla ominaisuuksilla:
+                            <ul style="background-color: aquamarine; opacity: 30%;">
+                                <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/visibility">visibility (hidden)</a>
+                                    <button style="font-size:120%" id="visibility">Kokeile visibility</button>
+                                </li>
+                                <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/opacity">opacity (0)</a>
+                                    <button style="font-size:120%" id="opacity">Kokeile opacity</button>
+                                </li>
+                            </ul>
+                            jolloin elementin tila säilyy, vaikka se ei olisi näkyvissä, toisin kuin
+                            <code>display:none</code> -ominaisuutta käytettäessä.
+                        </li>
+                    </ul>
+                    <script>
+                        const doHide = event => {
+                            const id = event.target.id
+                            let val;
+                            switch (id) {
+                                case "hide":
+                                    val = document.querySelector("#hideable").style.display;
+                                    document.querySelector("#hideable").style.display = val === "none" ? "inline" : "none";
+                                    break;
+                                case "visibility":
+                                    val = document.querySelector("#hideable").style.visibility;
+                                    document.querySelector("#hideable").style.visibility = val === "hidden" ? "visible" : "hidden";
+                                    break;
+                                case "opacity":
+                                    val = document.querySelector("#hideable").style.opacity;
+                                    document.querySelector("#hideable").style.opacity = val === "0" ? "100" : "0";
+                                    break;
+
+                            }
+
+                        }
+                        document.querySelector("#hide").addEventListener("click", doHide);
+                        document.querySelector("#visibility").addEventListener("click", doHide);
+                        document.querySelector("#opacity").addEventListener("click", doHide);
+
+
+                    </script>
+
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2 class="r-fit-text">Sijainti</h2>
+                </section>
+                <section class="present" style="top: 42.5px; display: block;">
+                    <h2>Sijainti</h2>
+
+                    <p style="font-size: 80%">Elementin sijainti voidaan asettaa <code>position</code>-attribuutilla</p>
+                    <div style="display: flex">
+                        <div style="font-size: 40%;width:60%;">
+                            <ul class="dense">
+                                <li><code>static</code> - Elementti sijoitetaan normaalin virtauksen mukaisesti,
+                                    oletusarvo</li>
+                                <li><code>relative</code> - Elementti sijoitetaan suhteessa sen "normaaliin" sijaintiin
+                                </li>
+                                <li><code>absolute</code> - Elementti sijoitetaan suhteessa <em>lähimpään asemoituun
+                                        ylätason
+                                        elementtiin</em> tai jos
+                                    sellaista ei ole, dokumentin pääsäiliöön</li>
+                                <li><code>fixed</code> - Elementti sijoitetaan suhteessa näkymäalueeseen. Se pysyy
+                                    samassa paikassa
+                                    ikkunassa myös vieritettäessä.</li>
+                                <li><code>sticky</code> - Yhdistelmä suhteellisesta ja kiinteästä asemoinnista. Ei vielä
+                                    laajasti
+                                    tuettu.</li>
+                            </ul>
+                            <p>Yhdistettynä ominaisuuksiin <em>top</em>, <em>bottom</em>, <em>left</em>,
+                                <em>right</em> uuden sijainnin määrittämiseksi.
+                            </p>
+                            <p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/position" target="_blanc">MDN
+                                    sijainnista</a></p>
+                        </div>
+                        <div style="width:40%">
+                            <img style="background-color: white" src="../img/positions.png" alt-text="sijainnin kuvaus">
+                        </div>
+                    </div>
+                </section>
+                <section style="font-size: 80%;">
+                    <h2>Suhteellinen asemointi</h2>
+                    <ul>
+                        <li>siirtää elementtiä suhteessa sen normaaliin sijaintiin</li>
+                        <li>määritetään ominaisuuksilla top, bottom, left, right<ul>
+                                <li>esim. ylhäältä, alhaalta jne.</li>
+                            </ul>
+                        </li>
+                        <li>elementti säilyy dokumenttivirrassa<ul>
+                                <li>muut elementit olettavat sen olevan alkuperäisessä paikassaan</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div style="display:flex">
+                        <style>
+                            .parent {
+                                border: 2px solid;
+                            }
+
+                            #static {
+                                display: inline-block;
+                                width: 10vw;
+                                height: 10vh;
+                                background-color: cyan;
+                            }
+
+                            #relative {
+                                display: inline-block;
+                                width: 10vw;
+                                height: 10vh;
+                                display: inline-block;
+                                background-color: cyan;
+                                position: relative;
+                                top: 50px;
+                                left: 100px;
+
+                            }
+                        </style>
+                        <div class="parent"><span id="static"></span></div>
+                        <pre style="width:30%"><code>elem {
+position: relative;
+top: 50px;
+left: 100px;
+}</code></pre>
+                        <div class="parent"><span id="relative"></span></div>
+
+
+                    </div>
+                </section>
+                <section>
+                    <h2>Absoluuttinen asemointi</h2>
+                    <ul>
+                        <li>elementti otetaan pois dokumenttivirrasta ja</li>
+                        <li>se liitetään lähimpään esivanhempaan, jonka asemointi on jotain muuta kuin static</li>
+                    </ul>
+                    <div style="display:flex">
+                        <style>
+                            .parent {
+                                border: 2px solid;
+                                width: 30%;
+                            }
+
+                            #static2 {
+                                display: inline-block;
+                                width: 10vw;
+                                height: 10vh;
+                                background-color: rgba(0, 0, 255, 0.3);
+                                ;
+                            }
+
+                            #absolute {
+                                display: inline-block;
+                                width: 10vw;
+                                height: 10vh;
+                                display: inline-block;
+                                background-color: rgba(0, 0, 255, 0.3);
+                                ;
+                                position: absolute;
+                                top: 50px;
+                                left: 100px;
+
+                            }
+                        </style>
+                        <div class="parent"><span id="static2"></span></div>
+                        <pre style="width:30%"><code>elem {
+position: absolute;
+top: 50px;
+left: 100px;
+}</code></pre>
+                        <div class="parent"><span id="absolute"></span></div>
+                    </div>
+
+                </section>
+                <section>
+                    <h2>Fixed-asemointi</h2>
+                    <ul>
+                        <li>Samanlainen absoluuttiseen asemointiin verrattuna,
+                            mutta elementtiä ei liitetä esivanhempaan vaan selainikkunaan (viewport)</li>
+                    </ul>
+
+                    <div style="display:flex">
+                        <style>
+                            .parent {
+                                border: 2px solid;
+                            }
+
+                            #static3 {
+                                display: inline-block;
+                                width: 10vw;
+                                height: 10vh;
+                                background-color: rgba(0, 0, 255, 0.3);
+                                ;
+                            }
+
+                            #fixed {
+                                display: inline-block;
+                                width: 10vw;
+                                height: 10vh;
+                                display: inline-block;
+                                background-color: rgba(0, 0, 255, 0.3);
+                                ;
+                                position: fixed;
+                                top: 50px;
+                                left: 100px;
+
+                            }
+                        </style>
+                        <div class="parent"><span id="static3"></span></div>
+                        <pre style="width:30%"><code>elem {
+position: fixed;
+top: 50px;
+left: 100px;
+}</code></pre>
+                        <div class="parent"><span id="fixed"></span></div>
+                    </div>
+                </section>
+                <section>
+                    <h2>Tahmea (sticky) asemointi</h2>
+                    <ul>
+                        <li>uusi, kokeellinen asemointitapa</li>
+                        <li>ikään kuin yhdistelmä absoluuttisesta ja kiinteästä asemoinnista:<ul>
+                                <li>pysyy kiinteänä tiettyyn rajaan asti, jonka jälkeen muuttuu absoluuttiseksi</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div style="display:flex">
+                        <style>
+                            .parent {
+                                border: 2px solid;
+                            }
+
+                            #static4 {
+                                display: inline-block;
+                                width: 10vw;
+                                height: 10vh;
+                                background-color: rgba(0, 0, 255, 0.3);
+                                ;
+                            }
+
+                            #sticky {
+                                display: inline-block;
+                                width: 10vw;
+                                height: 10vh;
+                                display: inline-block;
+                                background-color: rgba(0, 0, 255, 0.3);
+                                ;
+                                position: fixed;
+                                top: 50px;
+                                left: 100px;
+
+                            }
+                        </style>
+                        <div class="parent"><span id="static4"></span></div>
+                        <pre style="width:30%"><code>elem {
+position: sticky;
+top: 50px;
+left: 100px;
+}</code></pre>
+                        <div class="parent"><span id="fixed"></span></div>
+
+
+                    </div>
+
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2 class="r-fit-text">Kelluvat elementit (Floats)</h2>
+                </section>
+                <section>
+                    <h2>CSS float</h2>
+                    <ul style="font-size: 60%;">
+                        <li><code>float</code> asettaa elementin vaaka-aseman: vasemmalle tai oikealle sen vanhemman
+                            reunan mukaan</li>
+                        <pre><code>aside {
+  float: left;
+}</code></pre>
+
+                        <li>vieritettäessä liikkuu vanhempansa mukana</li>
+                        <li>poistetaan normaalista dokumenttivirrasta</li>
+                        <li>seuraavat elementit täyttävät vapautuneen tilan</li>
+                        <li>tilan täyttö voidaan estää <code>clear</code>-ominaisuudella</li>
+
+                        <li>
+                            <a href="https://youtu.be/fyWdofSeukE?t=51">Video kelluvista elementeistä</a>
+                            <a href="https://peterxjang.com/blog/modern-css-explained-for-dinosaurs.html">Artikkeli
+                                kelluvista elementeistä</a>
+                        </li>
+
+                    </ul>
+                </section>
+                <section style="font-size: 80%;">
+                    <h2>CSS float -esimerkki</h2>
+
+                    <pre><code>float: none|left|right</code></pre>
+
+                    <div style="display:flex">
+
+                        <div style="width:40%">
+
+                            <div style="font-size:75%;">
+                                <p>Kelluvuuden nollaus:</p>
+                                <pre><code>clear: right|left|both</code></pre>
+                                <p>Esimerkiksi:</p>
+                                <pre><code>aside {
+    float: left;
+}
+p.cleared {
+    clear: left;
+}</code></pre>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                </section>
+                <section>
+
+                    <div style="width:60%;font-size: 40%;">
+                        Laboris esse reprehenderit adipisicing consectetur excepteur esse non sit quis exercitation
+                        officia amet.
+                        Enim ad enim mollit ullamco reprehenderit. Cillum elit adipisicing nostrud est adipisicing
+                        in labore quis
+                        sint dolore nulla aliquip aute cillum ex.
+                        <img src="https://cdn-icons-png.flaticon.com/512/4062/4062096.png"
+                            style="float: left;width: 20%;">
+                        Eu ut deserunt quis non aliquip Lorem minim officia voluptate quis enim velit. Labore et
+                        tempor irure id nulla magna dolore adipisicing culpa. Ad laborum minim magna sint.
+                        Ullamco cupidatat consequat nisi velit culpa. Minim ad aute eu fugiat voluptate cupidatat
+                        nisi adipisicing ullamco minim mollit. Proident Lorem est irure qui magna minim ea duis
+                        ullamco et id do Lorem. Consequat nulla laborum proident velit commodo officia tempor do ut
+                        consectetur. Ut non esse aute amet minim consectetur.
+                        Lorem proident excepteur nostrud ullamco enim officia eu incididunt dolore voluptate do amet
+                        cupidatat nulla. Cupidatat exercitation eiusmod voluptate in culpa mollit laborum consequat
+                        velit anim. Commodo tempor id nulla. Deserunt ut Lorem ad enim aliqua.
+                        <img src="https://cdn-icons-png.flaticon.com/512/4062/4062096.png"
+                            style="float: right;width: 20%;">
+                        Esse occaecat ut incididunt pariatur nulla voluptate pariatur elit cillum occaecat quis
+                        exercitation nostrud fugiat. Anim sit quis officia excepteur reprehenderit nostrud velit
+                        dolor do anim ad. Adipisicing laborum exercitation minim culpa velit. Mollit irure nisi
+                        laboris do quis voluptate nisi occaecat. Ut ipsum reprehenderit pariatur est. Minim mollit
+                        voluptate veniam et fugiat dolore occaecat fugiat exercitation. Aliquip nisi eiusmod aliqua
+                        mollit eu. Adipisicing laborum ex ex est aute aliqua id nisi cupidatat non consectetur minim
+                        voluptate.
+                        <p style="clear:both">
+                            <strong>clear:both in effect.</strong>
+                            Sit occaecat anim laborum Lorem in fugiat enim. Duis nostrud velit non excepteur laboris
+                            minim excepteur pariatur sunt ut laborum. Et velit laboris amet. Mollit amet non elit
+                            aliquip est excepteur dolore Lorem anim elit. Ipsum irure reprehenderit mollit excepteur
+                            nostrud incididunt do eiusmod enim nisi. Id irure exercitation adipisicing eu ea laborum
+                            pariatur id minim eu eu excepteur.
+                        </p>
+
+                    </div>
+                </section>
+                <section>
+                    <h2>Muista: floatin vaikutus täytyy mitätöidä (clear)</h2>
+                    <ul style="font-size: 60%;">
+                        <li>Mitätöity elementti siirtyy seuraavalle vapaalle riville kelluvien elementtien alapuolelle.
+                        </li>
+                        <pre><code>.container {
+    clear: both; /* mitätöi sekä vasemman että oikean kellutuksen */
+}</code></pre>
+                        <li>Clearfix-tekniikoita voidaan käyttää luotettavampaan tyhjennykseen eri selaimissa.</li>
+                        <li>"Clearfix"-hakkerointia (lisäämällä tyhjä elementti, jolla on <code>clear: both</code>,
+                            kelluvien
+                            elementtien jälkeen)
+                            käytettiin yleisesti estämään vanhemman säiliön romahtaminen.</li>
+                        <li>
+                            <a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Floats">MDN floatin
+                                mitätöinnistä</a>
+                        </li>
+                    </ul>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2 class="r-fit-text">Flex</h2>
+                </section>
+                <section>
+                    <h2>CSS Flexbox</h2>
+                    <pre><code>display: flex</code></pre>
+
+                    <ul>
+                        <li>Helpompi tapa joustavien ladontojen luomiseen</li>
+                        <li>Elementit ladotaan sisältävän säiliön sisään,joka on ns. flex container</li>
+                        <li>flex containerin display property on flex</li>
+
+                    </ul>
+                    <div style="display:flex">
+                        <pre style="width:50%"><code><div class="container">
+    <!-- flex-items -->
+</div></code></pre>
+                        <pre style="width:50%"><code>div.container {
+  display: flex;
+}</code></pre>
+                    </div>
+
+
+                    <p>flex voi toimia joko horisontaali- tai vertikaalisuunnassa</p>
+
+                </section>
+                <section>
+                    <h2>Flex-direction: row ja column</h2>
+                    flex-direction:<button class="btn btn-secondary">row </button>|
+                    <button class="btn btn-secondary">row-reverse</button>|<button
+                        class="btn btn-secondary">column</button>|
+                    <button class="btn btn-secondary">column-reverse</button>
+
+                    <style>
+                        .container2 {
+                            display: flex;
+                            width: 100%;
+                            height: 50vw;
+                        }
+
+                        .yyy {
+                            background-color: olive;
+                            width: 25%;
+                            height: 25%
+                        }
+
+                        .kaa {
+                            background-color: rosybrown;
+                            width: 25%;
+                            height: 25%
+                        }
+
+                        .koo {
+                            background-color: burlywood;
+                            width: 25%;
+                            height: 25%
+                        }
+                    </style>
+                    <script>
+                        const setStyle = e => {
+                            const direction = e.target.textContent;
+                            const container = document.querySelector(".container2");
+                            container.style.display = "flex";
+                            container.style.flexDirection = direction;
+
+
+                        }
+                        (() => {
+                            Array.from(document.querySelectorAll(".btn")).forEach(b => b.addEventListener("click", setStyle))
+                        })()
+                    </script>
+
+                    <div class="container2" style="width:30rem;height:20vh">
+                        <div class="flex-item yyy">Yyy</div>
+                        <div class="flex-item kaa">Kaa</div>
+                        <div class="flex-item koo">Koo</div>
+                    </div>
+
+
+                </section>
+                <section>
+                    <h2>Flex-direction asettaa samalla pää- ja poikittaisakselit</h2>
+
+                    <div style="display:flex">
+                        <div style="width:40%">
+
+                            pää- ja poikittaisakselit, kun
+                            flex-direction on
+                            <ol>
+                                <li>row (rivi)</li>
+                                <li>row-reverse (käänteinen rivi)</li>
+                                <li>column (sarake)</li>
+                                <li>column-reverse (käänteinen sarake)</li>
+                            </ol>
+                        </div>
+                        <div style="width:60%">
+                            <img src="../img/main_vs_cross.png">
+                        </div>
+                    </div>
+                </section>
+                <section style="font-size: 80%;">
+                    <h2>Pääakseli!</h2>
+
+                    <p>Justify-content on pääakselin suuntainen</p>
+
+                    justify-content:<button class="btn btn-secondary">flex-start</button>|
+                    <button class="btn btn-secondary">center</button>|<button
+                        class="btn btn-secondary">flex-end</button>|
+                    <button class="btn btn-secondary">space-around</button>|<button
+                        class="btn btn-secondary">space-between</button>
+                    <br>
+                    flex-direction:<button class="btn btn-secondary">row</button>|
+                    <button class="btn btn-secondary">row-reverse</button>|<button
+                        class="btn btn-secondary">column</button>|
+                    <button class="btn btn-secondary">column-reverse</button>
+                    <style>
+                        .container3,
+                        .container4 {
+                            display: flex;
+                            width: 100%;
+                            height: 30vh;
+                        }
+                    </style>
+
+                    <script>
+                        const setStyle2 = e => {
+                            const justify = e.target.textContent;
+                            const container = document.querySelector(".container3");
+                            container.style.display = "flex";
+                            container.style.flexDirection = justify;
+                            container.style.justifyContent = justify;
+
+
+                        }
+                        (() => {
+                            Array.from(document.querySelectorAll(".btn")).forEach(b => b.addEventListener("click", setStyle2))
+                        })()
+                    </script>
+                    <div class="container3">
+                        <div class="flex-item yyy">Yyy</div>
+                        <div class="flex-item kaa">Kaa</div>
+                        <div class="flex-item koo">Koo</div>
+                    </div>
+
+
+
+
+                </section>
+                <section style="font-size: 80%;">
+                    <h2>Poikittaisakseli!</h2>
+
+                    <h2>align-items toimii poikittaisakselin suuntaisesti</h2>
+
+                    <div style="display:flex;align-items: flex-start;">
+
+
+                        <div style="font-size: 80%;">
+                            align-items: <button class="btn btn-secondary">stretch</button>|<button
+                                class="btn btn-secondary">flex-start</button>|<button
+                                class="btn btn-secondary">flex-end</button>|<button
+                                class="btn btn-secondary">center</button>| ...</code></pre>
+                            <br>
+                            flex-direction:<button class="btn btn-secondary">row</button>|
+                            <button class="btn btn-secondary">row-reverse</button>|<button
+                                class="btn btn-secondary">column</button>|
+                            <button class="btn btn-secondary">column-reverse</button>
+                        </div>
+
+                        <div style="width:40%">
+                            <p>For example:</p>
+                            <pre style="width:100%"><code>div.container4 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}</code></pre>
+                        </div>
+                    </div>
+
+                    <style>
+                        .yyy {
+                            background-color: olive;
+                            width: auto;
+                            height: auto;
+                        }
+
+                        .kaa {
+                            background-color: rosybrown;
+                            width: auto;
+                            height: auto;
+                        }
+
+                        .koo {
+                            background-color: burlywood;
+                            width: auto;
+                            height: auto;
+                        }
+                    </style>
+                    <script>
+                        const setStyle4 = e => {
+                            const justify = e.target.textContent;
+                            const container = document.querySelector(".container4");
+                            container.style.display = "flex";
+                            container.style.flexDirection = justify;
+                            container.style.alignItems = justify;
+
+
+                        }
+                        (() => {
+                            Array.from(document.querySelectorAll(".btn")).forEach(b => b.addEventListener("click", setStyle4))
+                        })()
+                    </script>
+                    <div class="container4">
+                        <div class="flex-item yyy">Yyy</div>
+                        <div class="flex-item kaa">Kaa</div>
+                        <div class="flex-item koo">Koo</div>
+                    </div>
+
+                </section>
+                <section>
+                    <h2>Monirivinen flex-säiliö flex-wrapin avulla</h2>
+                    <pre><code>flex-wrap: nowrap|wrap</code></pre>
+                    <div style="display:flex">
+                        <div style="width: 40%; font-size: 80%;">
+                            <pre><code>div.container {
+    display: flex;
+    flex-wrap: wrap;
+}
+div.flex-item {
+    width: 150px
+}
+</code></pre>
+
+                        </div>
+                        <style>
+                            div.container {
+                                display: flex;
+                                flex-wrap: wrap;
+                            }
+
+                            div.flex-item {
+                                width: min(5rem, 1fr)
+                            }
+                        </style>
+
+                        <div class="container" style="display:flex;width:50%">
+                            <div class="flex-item yyy">YyyLongRowToDistrupt</div>
+                            <div class="flex-item kaa">Kaa</div>
+                            <div class="flex-item koo">Koo</div>
+                            <div class="flex-item yyy">Yyy</div>
+                            <div class="flex-item kaa">Kaa</div>
+                            <div class="flex-item koo">Koo</div>
+                        </div>
+
+                    </div>
+
+                </section>
+                <section class="basis">
+                    <h2>Flex-elementin mitoitus</h2>
+                    flex: <button class="btn btn-secondary">1</button>|flex-shrink|flex-grow|<button
+                        class="btn btn-secondary">flex-basis: 5rem</button>
+
+                    <pre><code>div.container {display: flex;}  
+div.flex-item {flex: 1; /* = flex: 1 1 0, oletusarvo */}</code></pre>
+
+                    <dl>
+                        <dt>flex-basis</dt>
+                        <dd>määrittää flex-elementtien alkukoon;
+                            jäljelle jäävä tila jää käyttämättömäksi</dd>
+                    </dl>
+
+
+                    <pre><code>div.flex-item {
+    flex-basis: 5rem;
+}
+</code></pre>
+                    <script>
+                        const setStyle5 = e => {
+                            const flex = e.target.textContent;
+                            const container = document.querySelector(".container5");
+                            container.style.display = "flex";
+                            container.style.flexDirection = "row";
+                            const flexItems = Array.from(container.querySelectorAll(".flex-item"));
+                            // alert(flex+flexItems.length)
+                            if (flex.indexOf("basis") > -1) {
+                                flexItems.forEach(item => item.style.setProperty('flex-basis', "5rem"))
+                            }
+                            else {
+                                flexItems.forEach(item => {
+                                    item.style.setProperty('flex', "1")
+                                })
+                            }
+                        }
+                        (() => {
+                            Array.from(document.querySelectorAll(".basis .btn")).forEach(b => b.addEventListener("click", setStyle5))
+                        })()
+                    </script>
+
+
+                    <div class="container5" style="display:flex;">
+                        <div class="flex-item yyy">Yyy</div>
+                        <div class="flex-item kaa">Kaa</div>
+                        <div class="flex-item koo">Koo</div>
+                        <div class="flex-item yyy">Yyy</div>
+                        <div class="flex-item kaa">Kaa</div>
+                        <div class="flex-item koo">Koo</div>
+                    </div>
+
+
+                </section>
+                <section style="font-size: 80%;">
+                    <h2>flex-grow</h2>
+                    <pre><code>'flex-grow'|['flex-shrink']|['flex-basis']</code></pre>
+                    <img src="../img/flex-grow.gif">
+
+                    <dl>
+                        <dt>flex-grow</dt>
+                        <dd>käytetään tilan jakamiseen suhteellisesti muihin elementteihin nähden</dd>
+                    </dl>
+
+                    <div style="display:flex;font-size:70%;width:70%">
+                        <pre style="width:auto"><code>.square#three {flex-grow: 6;}</code></pre>
+                    </div>
+
+                    <div>eli ylimääräinen tila (peruskoon jälkeen) jaetaan siten, että #three saa kuusinkertaisesti
+                        enemmän
+                        tilaa kuin muut</div>
+
+                    <a
+                        href="https://www.freecodecamp.org/news/even-more-about-how-flexbox-works-explained-in-big-colorful-animated-gifs-a5a74812b053/">
+                        Katso freeCodeCampin animoitu gif-selitys
+                    </a>
+                </section>
+
+                <section>
+                    <h2>flex-shrink</h2>
+                    'flex-grow'|['flex-shrink']|['flex-basis']
+
+                    <div style="display:flex">
+                        <pre><code>
+div.container {
+display: flex;
+}
+div.flex-item {
+flex-basis: 200px;
+}
+div.flex-item:nth-child(2) {
+flex-shrink: 0; /* = flex: 1 0 150px */
+/* = do NOT shrink! */
+}</code></pre>
+                        <div>
+                            <img src="../img/flex-shrink.gif">
+                        </div>
+                    </div>
+
+                    <dl style="font-size: 50%;">
+                        <dt>flex-shrink:0</dt>
+                        <dd>ei kutistu</dd>
+                        <dt>flex-shrink:2</dt>
+                        <dd>tilan puuttuueessa, tämä elementti kutistuu kaksikertaa nopeammin kuin muut elementit
+                            oletusasetuksilla.
+                            (Yksi tapa ajatella on, että se käyttää kaksikertaisen määrän miinusmerkkistä tilaa)</dd>
+                    </dl>
+
+
+                </section>
+                <section>
+                    <h2>order</h2>
+                    <pre><code>order: integer</code></pre>
+                    <pre><code>
+div.container {
+display: flex;
+}</code></pre>
+                    oletus on 0, mitä suurempi numero, sitä kauempana se on järjestyksessä.
+                    Varmistaakseen ensimmäisen paikan, elementille voidaan määritellä myös järjestysnumero (order) -1.
+
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2 class="r-fit-text">Grid</h2>
+                </section>
+
+                <section>
+                    <h2>CSS Grid</h2>
+                    <pre><code>display: grid</code></pre>
+                    <ul>
+                        <li>käytetään koko verkkosivun asetteluun</li>
+                        <li>ruudukko (grid) 2D-asetteluun, joustoasettelu (flex) 1D-asetteluun</li>
+                    </ul>
+
+                    <div style="display:flex">
+                        <pre><code><elem class="container">
+    <!-- ruudukon elementit -->
+</elem>
+</code></pre>
+                        <pre><code>elem.container {
+  display: grid;
+  . . .
+}
+</code></pre>
+    </div>
+
+                </section>
+                <section style="font-size:50%">
+                    <h2>Lisää termejä</h2>
+                    <style>
+                        .grid {
+                            display: grid;
+                            height: auto;
+                            width: 50%;
+                            grid-template: 5rem 5rem/5rem 5rem 5rem;
+                            grid-row-gap: 0;
+                        }
+
+                        .grid-item {
+                            border: 1px solid red;
+                            box-sizing: border-box;
+                        }
+
+                        .grid tr:hover {
+                            background-color: yellow;
+                        }
+
+                        .grid-item:hover:after {
+                            background-color: purple;
+                        }
+
+                        .grid-item:hover:after {
+                            color: #93c21b !important;
+                            content: "Cell!"
+                        }
+
+
+                        .grid:hover>div:first-child {
+                            background-color: orange;
+                        }
+
+                        .grid:hover>div:nth-child(2) {
+                            background-color: orange;
+                        }
+
+                        .grid:hover>div:nth-child(3) {
+                            background-color: orange;
+                        }
+
+                        .grid:hover>div:nth-child(4) {
+                            background-color: green;
+                        }
+
+                        .grid:hover>div:nth-child(5) {
+                            background-color: green;
+                        }
+
+                        .grid:hover>div:nth-child(6) {
+                            background-color: green;
+                        }
+                    </style>
+
+                    <div style="display:flex">
+                        <dl style="width:50%">
+                            <dt>viiva (line)</dt>
+                            <dd>rivin tai sarakkeen viiva</dd>
+                            <dt>rata (track)</dt>
+                            <dd>vierekkäisten viivojen välinen alue (vie hiiri rivien päälle)</dd>
+                            <dt>solu (cell)</dt>
+                            <dd>ympäröity vierekkäisillä riveillä ja sarakkeilla (vie hiiri nähdäksesi riviradat)</dd>
+                            <dt>alue (area)</dt>
+                            <dd>yksi tai useampi solu muodostaa suorakulmion</dd>
+                        </dl>
+                        <div class="grid">
+                            <div class="grid-item"></div>
+                            <div class="grid-item"></div>
+                            <div class="grid-item"></div>
+                            <div class="grid-item"></div>
+                            <div class="grid-item"></div>
+                            <div class="grid-item"></div>
+                        </div>
+                    </div>
+
+                </section>
+                <section>
+                    <h2>Grid container: grid-template</h2>
+                    <pre><code style="display:inline">grid-template: &lt;row-heights&gt;/&lt;column-widths&gt;</code></pre>
+                    <style>
+                        .grid2 {
+                            width: 50%;
+                            display: grid;
+                            /* 2 x 3 grid */
+                            grid-template: 50px 50px / 150px auto 150px;
+                        }
+
+                        .item {
+                            border: 2px solid red;
+                        }
+                    </style>
+                    <div style="display:flex;align-items: center;">
+                        <div class="grid2">
+                            <div class="item"></div>
+                            <div class="item"></div>
+                            <div class="item"></div>
+                            <div class="item"></div>
+                            <div class="item"></div>
+                            <div class="item"></div>
+                        </div>
+                        <pre style="width:60%;font-size: 40%;"><code>.grid {
+    display: grid;
+    /* 2 x 3 grid */
+    grid-template: 50px 50px / 150px auto 150px;
+}</code></pre>
+                    </div>
+                    <p>auto käyttää jäljelle jääneen tilan</p>
+
+
+                </section>
+                <section style="font-size: 80%;">
+                    <h2>grid-template, joka käyttää fraction(fr)-jakoa</h2>
+
+                    <div style="display:grid;grid-template: 1fr 1fr/1fr 1fr;">
+
+                        <div>width/3 (= 1 + 1 + 1): samanleveyiset sarakkeet</div>
+                        <pre><code>.container {
+grid-template: 50px 50px / 1fr 1fr 1fr;
+}</code></pre>
+
+
+                        <div>1 + 4 + 5 = 10: sarakkeet 1/10, 4/10 ja 5/10</div>
+                        <pre><code>.container {
+grid-template: 50px 50px / 1fr 4fr 5fr;
+}</code></pre>
+
+                    </div>
+
+
+                </section>
+                <section>
+                    <h2>Grid-mallin toistot: repeat</h2>
+                    <pre><code>repeat(n, CSS-yksikköarvo)</code></pre>
+                    <p>vastaa n kertaa toistettua CSS-yksikköarvoa, esim.</p>
+                    <div style="display:flex;justify-content: space-between; font-size: 70%;align-items: center;">
+                        <pre><code>grid-template: 50px 50px / 1fr 1fr 1fr;</code></pre>==
+                        <pre><code>grid-template: repeat(2, 50px) / repeat(3, 1fr);</code></pre>
+                    </div>
+
+                </section>
+                <section style="font-size: 80%;">
+                    <h2>Grid-alueet: useita ruutuja</h2>
+
+                    <pre><code>grid-column: aloitusarvo/lopetusarvo | aloitusarvo/span-arvo</code></pre>
+                    <pre><code>grid-row: aloitusarvo/lopetusarvo | aloitusarvo/span-arvo</code></pre>
+                    <pre><code>grid-area: rivi-alku/sarake-alku/rivi-loppu/sarake-loppu</code></pre>
+                    <ul>
+                        <li>grid-column ja grid-row määrittävät useita soluja annettujen
+                            ruudukon linjojen välillä; <a
+                                href="https://css-tricks.com/almanac/properties/g/grid-row-column/">Esimerkki
+                                CSS Tricks -sivustolla</a>
+                        </li>
+                    </ul>
+
+                    <div style="width:100%;height:20em;display:flex;font-size: 40%;">
+
+
+                        <div class="grid4">
+                            <div style="
+      grid-column: 1 / span 2 ;
+      grid-row: 2 / 3;
+    ">
+                            </div>
+                            <div style="
+      grid-column: 3 / 4;
+      grid-row: 1 / 2;
+    ">
+                            </div>
+                            <div style="grid-area:3/1/3/3"></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+
+                        <pre style="font-size: 80%;"><code>.grid4 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-gap: 10px;
+  padding: 10px;
+}
+
+.grid4 > div {
+  min-height: 100px;
+  background: white;
+  display: grid;
+  place-items: center;
+}
+.grid4 > div::after {content: attr(style);}</code></pre>
+                    </div>
+                    <style>
+                        .grid4 {
+                            display: grid;
+                            height: 20rem;
+                            width: 20rem;
+                            grid-template-columns: repeat(3, 1fr);
+                            grid-template-rows: repeat(3, 1fr);
+                            grid-gap: 10px;
+                            border: 1px solid red;
+                            /* padding: 10px; */
+                            width: 50%;
+                        }
+
+                        .grid4>div {
+                            min-height: 100px;
+                            background: white;
+                            display: grid;
+                            place-items: center;
+                        }
+
+                        .grid4>div::after {
+                            content: attr(style);
+                            white-space: pre-wrap;
+                        }
+                    </style>
+
+
+
+                </section>
+                <section>
+                    <h2><a href="https://w3c.github.io/csswg-drafts/css-grid/#subgrids">Sisäkkäiset gridit
+                            sub-grideinä</a>
+                    </h2>
+
+                    <style>
+                        .maingrid {
+                            display: grid;
+                            width: 50%;
+                            gap: 10px;
+                            grid-template-columns: 150px 100px 150px 100px;
+                            grid-template-rows: repeat(3, minmax(100px, auto));
+                            color: #444;
+                            margin: 1em;
+                        }
+
+                        .box {
+                            background-color: #444;
+                            color: #fff;
+                            border-radius: 5px;
+                            padding: 20px;
+                            font-size: 150%;
+
+                        }
+
+                        .box .box {
+                            background-color: #ccc;
+                            color: #444;
+                        }
+
+                        .a {
+                            grid-column: 1 / 3;
+                        }
+
+                        .b {
+                            grid-column: 4;
+                        }
+
+                        .c {
+                            grid-column: 1;
+                            grid-row: 2 / 4;
+                        }
+
+                        .d {
+                            grid-column: 2 / 5;
+                            grid-row: 2 / 4;
+                            display: grid;
+                            grid-template-columns: subgrid;
+                            grid-template-rows: subgrid;
+                        }
+
+                        .e {
+                            grid-row: 1 / 3;
+                            grid-column: 1;
+                        }
+
+                        .f {
+                            grid-row: 1;
+                            grid-column: 2 / 4;
+                        }
+
+                        .g {
+                            grid-row: 2;
+                            grid-column: 3;
+                        }
+                    </style>
+                    <div style="display:flex;font-size:60%">
+                        <div class="maingrid">
+                            <div class="box a">A</div>
+                            <div class="box b">B</div>
+                            <div class="box c">C</div>
+                            <div class="box d">
+                                <span style="font-size:80%">subgrid</span>
+                                <div class="box e">E</div>
+                                <div class="box f">F</div>
+                                <div class="box g">G</div>
+                            </div>
+                        </div>
+                        <div style="height:auto; margin: 1em;">
+                            <ul>
+                                <li>ensin Firefoxissa, muihin selaimiin Web Interopin <a
+                                        href="https://web.dev/interop-2022/#subgrid">kautta</a></li>
+                                <li>subgrid kohdistuu ulompaan ruudukkoon</li>
+                                <li><a href="https://www.youtube.com/watch?v=ZcE83LAmLSQ">mahdollistaa uusia siistejä
+                                        designeja, katso video</a></li>
+                            </ul>
+                            <pre style="height:auto;"><code>.d {grid-column: 2 / 5; grid-row: 2 / 4;
+                      display: grid; 
+                      grid-template-columns: subgrid;
+                      grid-template-rows: subgrid;
+                    }</code></pre>
+                        </div>
+                    </div>
+
+                </section>
+                <section>
+                    <h2>grid-template-areas ("ascii-taiteena - olettaen merkin nimet")</h2>
+
+                    <div style="display:flex">
+                        <div style="display:flex;flex-direction: column;width: 50%;">
+                            <pre style="font-size: 40%;"><code><div id="grid5">
+<div style="grid-area: h">Header</div>
+<div style="grid-area: m">Menu</div>
+<div style="grid-area: a">Article</div>
+<div style="grid-area: f">Footer</div>                    
+</div>
+</code></pre>
+                            <div id="grid5">
+                                <div style="grid-area: h">Header</div>
+                                <div style="grid-area: m">Menu</div>
+                                <div style="grid-area: a">Article</div>
+                                <div style="grid-area: f">Footer</div>
+                            </div>
+                        </div>
+                        <pre style="width:50%;font-size:40%"><code id="code_grid5">#grid5 {
+height: 4em;
+display: grid;
+grid-gap: 3px;
+grid-template:
+50px auto 50px / repeat(12, 1fr);
+grid-template-areas:
+"h h h h h h h h h h h h"
+"m m a a a a a a a a a a"
+". . f f f f f f f f f f";
+}
+
+#grid5 > div {
+background-color: aliceblue;
+text-align: center;
+padding: 25px 5px;
+font-size: 18px;
+}</code></pre>
+                    </div>
+                    <style>
+                        #grid5,
+                        #grid6 {
+                            height: 4em;
+                            display: grid;
+                            grid-gap: 3px;
+                            grid-template:
+                                50px auto 50px / repeat(12, 1fr);
+                            grid-template-areas:
+                                "h h h h h h h h h h h h"
+                                "m m a a a a a a a a a a"
+                                ". . f f f f f f f f f f";
+                        }
+
+                        #grid5>div,
+                        #grid6>div {
+                            background-color: aliceblue;
+                            text-align: center;
+                            padding: 25px 5px;
+                            font-size: 18px;
+                        }
+                    </style>
+
+                    <div class="alert alert-light" role="alert">
+                        Huom: grid-arean nimi voi luonnollisesti olla pidempi kuin yksi merkki
+                    </div>
+                </section>
+
+
+                <section>
+                    <h2>Sama grid-area - eri layout</h2>
+
+                    <div style="display:flex">
+                        <div style="display:flex;flex-direction: column;width: 50%;">
+                            <pre style="font-size: 40%;"><code><div id="grid6">
+<div style="grid-area: h">Header</div>
+<div style="grid-area: m">Menu</div>
+<div style="grid-area: a">Article</div>
+<div style="grid-area: f">Footer</div>                    
+</div>
+</code></pre>
+                            <div id="grid6">
+                                <div style="grid-area: h">Header</div>
+                                <div style="grid-area: m">Menu</div>
+                                <div style="grid-area: a">Article</div>
+                                <div style="grid-area: f">Footer</div>
+                            </div>
+                        </div>
+                        <pre style="width:50%;font-size:40%"><code id="code_grid6">#grid6 {
+grid-template-areas:
+"h h h h h h h h h h h h"
+". . f f f f f f f f f f"
+"a a a a . . m m m m m m"
+}</code></pre>
+                    </div>
+                    <style>
+                        #grid6 {
+                            grid-template-areas:
+                                "h h h h h h h h h h h h"
+                                ". . f f f f f f f f f f"
+                                "a a a a . . m m m m m m"
+                        }
+                    </style>
+
+                </section>
+
+
+                <section style="font-size:70%">
+                    <h2>Grid ja järjestys: normaalin virran häiritseminen</h2>
+
+                    <p>Normaalisti dokumentin sisältö asetellaan esiintymisjärjestyksessä. Grid-layout voi kuitenkin
+                        muuttaa
+                        tätä:</p>
+
+                    <ul style="font-size: 80%;">
+                        <li>grid antaa mahdollisuuden määrittää layoutin rakenteen ja sijoittaa elementit sen sisälle.
+                            Tämä tarkoittaa, että elementit voivat näkyä eri paikoissa kuin niiden järjestys HTML:ssä.
+                        </li>
+                        <li>order-ominaisuus mahdollistaa grid-elementtien järjestyksen hallinnan rivillä tai
+                            sarakkeessa.
+                            <ul>
+                                <li>oletusarvoisesti kaikilla elementeillä on järjestysarvo 0. Voit asettaa positiivisia
+                                    tai
+                                    negatiivisia arvoja, samoin kuin `z-index`-ominaisuudessa.</li>
+                                <li>vasemmalta oikealle etenevässä pääakselissa pienin order-arvo ilmestyy vasemmalle ja
+                                    suurin oikealle.</li>
+                            </ul>
+                        </li>
+                        <li>grid-elementit voivat ulottua useiden sarakkeiden yli. Esimerkiksi,
+                            <kbd>.item { grid-column: 1 / -1; }</kbd> venyttää elementin ensimmäisestä sarakkeesta (1)
+                            viimeiseen linjaan (merkitty `-1`:llä).
+                        </li>
+                    </ul>
+                </section>
+
+                <section style="color:white;font-size: 60%;">
+                    <h2>Yhteenveto grid-asettelun vaihtoehdoista</h2>
+
+                    <div style="display:grid;grid-template-columns: 1fr 1fr;justify-items: flex-start;">
+                        <table style="color:white;margin-top: auto;display: flex; align-items: flex-start;">
+                            <tr>
+                                <th colspan="2">Grid-kontaineri</th>
+                            </tr>
+                            <tr>
+                                <td>grid-template-rows</td>
+                                <td>rivien korkeudet</td>
+                            </tr>
+                            <tr>
+                                <td>grid-template-columns</td>
+                                <td>sarakkeiden leveydet, esim. 1em 1em auto 1em</td>
+                            </tr>
+                            <tr>
+                                <td>grid-template</td>
+                                <td>rivit/sarakkeet</td>
+                            </tr>
+                            <tr>
+                                <td>grid-template-areas</td>
+                                <td>"ASCII-taide"</td>
+                            </tr>
+                            <tr>
+                                <td>row-gap, column-gap, gap</td>
+                                <td>"marginaalit"</td>
+                            </tr>
+                        </table>
+
+                        <table
+                            style="color:white; margin-top: auto;display: flex; align-items: flex-start;align-self: flex-start;">
+                            <tr>
+                                <th colspan="2">Grid-elementit</th>
+                            </tr>
+                            <tr>
+                                <td>grid-row</td>
+                                <td>rivi-alku/-loppu</td>
+                            </tr>
+                            <tr>
+                                <td>grid-column</td>
+                                <td>sarakkeen alku/loppu</td>
+                            </tr>
+                            <tr>
+                                <td>grid-area</td>
+                                <td>rivi/sarake (oletusarvo 1) tai rivi-alku/sarake-alku/rivi-loppu/sarake-loppu</td>
+                            </tr>
+                            <tr>
+                                <td>subgrid</td>
+                                <td>sisäkkäinen grid, joka kohdistaa rivit ja sarakkeet pääkontainerin kanssa</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <a href="https://css-tricks.com/snippets/css/complete-guide-grid/">Lisää vinkkejä löydät CSS Tricks
+                        -sivustolta</a>
+
+                </section>
+            </section>
+            <section style="font-size: 80%;">
+                <section>
+                    <h2 class="r-fit-text">
+                        Mukautetut ominaisuudet
+                    </h2>
+                </section>
+                <section>
+                    <h2>Mukautetut ominaisuudet</h2>
+
+                    <ul>
+                        <li>tunnetaan myös CSS-muuttujina</li>
+                        <li>määritettyjä arvoja, joita voidaan käyttää uudelleen koko dokumentissa</li>
+                        <li>syntaksi:
+                            <ol>
+                                <li>kaksoisviiva:
+                                    <pre><code>:root { --primary-color: #3498db; }</code></pre>
+                                    määrittää ominaisuuden koko dokumentille (:root-pseudoluokka)
+                                </li>
+                                <li><a
+                                        href="https://developer.mozilla.org/en-US/docs/Web/CSS/@property#browser_compatibility">@property;
+                                        ei vielä laajasti tuettu</a>
+                                    <pre><code>@property --item-size {
+    syntax: "&lt;percentage&gt;"; /* Sallii vain prosenttiarvot */
+    initial-value: 40%; /* Asettaa oletusarvon */
+}</code></pre>
+                                </li>
+                            </ol>
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>Käyttö var()-funktion kanssa</h2>
+
+                    <div style="display: flex;">
+                        <ul style="width:45%;font-size: 2rem;">
+                            <li>var() on CSS-funktio, jota käytetään mukautetun ominaisuuden (muuttujan) arvon
+                                lisäämiseen
+                            </li>
+                            <li>Sintaksi:
+                                <pre><code>var(--variable-name, 
+            oletusarvo)</code></pre>
+                            </li>
+                            <li>Jos muuttujaa ei ole määritetty, se palautuu oletusarvoon.</li>
+                        </ul>
+                    </div>
+                    <pre style="width:60%;font-size: 1rem;"><code>.button {
+    background-color: 
+        var(--primary-color, blue);
+    color: white;
+}    
+.container {
+    width: var(--item-size); 
+    height: var(--item-size); 
+}</code></pre>
+
+
+
+
+                </section>
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+        <script src="dist/reveal.js"></script>
+        <script src="plugin/zoom/zoom.js"></script>
+        <script src="plugin/notes/notes.js"></script>
+        <script src="plugin/search/search.js"></script>
+        <script src="plugin/markdown/markdown.js"></script>
+        <script src="plugin/highlight/highlight.js"></script>
+        <script>
+            // Als</li><li>available as an ES module, see:
+            // https://revealjs.com/initialization/
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                center: true,
+                hash: true,
+
+                // Learn about plugins: https://revealjs.com/plugins/
+                plugins: [
+                    RevealZoom,
+                    RevealNotes,
+                    RevealSearch,
+                    RevealMarkdown,
+                    RevealHighlight
+                ]
+            })
+        </script>
+</body>
+
+</html>

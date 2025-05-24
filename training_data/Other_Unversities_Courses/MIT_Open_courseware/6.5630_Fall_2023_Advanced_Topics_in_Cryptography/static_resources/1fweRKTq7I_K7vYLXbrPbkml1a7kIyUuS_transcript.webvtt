@@ -1,0 +1,3007 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:02.470 align:middle line:90%
+[SQUEAKING]
+
+00:00:02.470 --> 00:00:04.446 align:middle line:90%
+[RUSTLING]
+
+00:00:04.446 --> 00:00:13.150 align:middle line:90%
+[CLICKING]
+
+00:00:13.150 --> 00:00:17.170 align:middle line:84%
+PROFESSOR: OK, actually,
+before I continue, one
+
+00:00:17.170 --> 00:00:20.260 align:middle line:90%
+administrative announcement--
+
+00:00:20.260 --> 00:00:23.260 align:middle line:84%
+OK, there's a sign
+up sheet to Scribd.
+
+00:00:23.260 --> 00:00:26.200 align:middle line:84%
+You guys saw this
+very fast Scribd.
+
+00:00:26.200 --> 00:00:28.540 align:middle line:90%
+It's all taken, so that's great.
+
+00:00:28.540 --> 00:00:33.130 align:middle line:84%
+If anyone-- how many people here
+are taking this class for credit
+
+00:00:33.130 --> 00:00:35.175 align:middle line:90%
+and did not sign up to Scribd?
+
+00:00:35.175 --> 00:00:39.520 align:middle line:90%
+
+
+00:00:39.520 --> 00:00:41.920 align:middle line:90%
+So come talk to me.
+
+00:00:41.920 --> 00:00:46.680 align:middle line:84%
+I want mainly to gauge the
+numbers, but that's fine.
+
+00:00:46.680 --> 00:00:48.140 align:middle line:90%
+So let me tell you two options.
+
+00:00:48.140 --> 00:00:49.598 align:middle line:84%
+Either you can
+Scribd with someone.
+
+00:00:49.598 --> 00:00:52.110 align:middle line:84%
+That's OK with me, but it's
+OK if you don't Scribd.
+
+00:00:52.110 --> 00:00:56.050 align:middle line:84%
+There's other things, more
+things in the scribing regime
+
+00:00:56.050 --> 00:00:59.450 align:middle line:90%
+that I can happily hand out.
+
+00:00:59.450 --> 00:01:03.340 align:middle line:84%
+So just come talk to me
+if you didn't Scribd.
+
+00:01:03.340 --> 00:01:04.989 align:middle line:84%
+And thank you so
+much for scribing,
+
+00:01:04.989 --> 00:01:08.650 align:middle line:84%
+for picking up the
+spots so quickly.
+
+00:01:08.650 --> 00:01:13.870 align:middle line:84%
+So before I explain the two to
+one-- the problem with from one
+
+00:01:13.870 --> 00:01:16.398 align:middle line:84%
+claim to two claims, I want to
+recap a little bit because I
+
+00:01:16.398 --> 00:01:18.190 align:middle line:84%
+had some questions in
+the break, and I want
+
+00:01:18.190 --> 00:01:20.960 align:middle line:90%
+to make sure to try to clarify.
+
+00:01:20.960 --> 00:01:23.560 align:middle line:90%
+OK, so what are we doing here?
+
+00:01:23.560 --> 00:01:28.720 align:middle line:84%
+The verifier-- the prover
+is arguing that in layer I,
+
+00:01:28.720 --> 00:01:33.650 align:middle line:84%
+starting with layer 0, the
+value at a certain point
+
+00:01:33.650 --> 00:01:34.793 align:middle line:90%
+in the layer--
+
+00:01:34.793 --> 00:01:36.210 align:middle line:84%
+eventually, it's
+in the extension.
+
+00:01:36.210 --> 00:01:38.043 align:middle line:84%
+At the beginning, it's
+not in the extension.
+
+00:01:38.043 --> 00:01:40.550 align:middle line:90%
+The value is some Vi star.
+
+00:01:40.550 --> 00:01:42.990 align:middle line:90%
+Now we know that--
+
+00:01:42.990 --> 00:01:45.140 align:middle line:84%
+so he's actually
+claiming that Vi star
+
+00:01:45.140 --> 00:01:47.790 align:middle line:90%
+is the value of the extension.
+
+00:01:47.790 --> 00:01:50.480 align:middle line:84%
+But by this calculation,
+we know that in the--
+
+00:01:50.480 --> 00:01:55.250 align:middle line:84%
+in other words, he's claiming
+that Vi star is this sum
+
+00:01:55.250 --> 00:01:57.060 align:middle line:90%
+of this gigantic thing.
+
+00:01:57.060 --> 00:02:00.660 align:middle line:84%
+So he's claiming Vi star is
+sum over P in each of them,
+
+00:02:00.660 --> 00:02:04.080 align:middle line:84%
+sum over w1, w2 in each of them,
+blah, blah, blah, blah, blah,
+
+00:02:04.080 --> 00:02:05.260 align:middle line:90%
+blah, blah, blah.
+
+00:02:05.260 --> 00:02:07.960 align:middle line:84%
+OK, so the claim
+is that Vi star is
+
+00:02:07.960 --> 00:02:13.172 align:middle line:84%
+equal to sum of multivariate
+low-degree polynomials.
+
+00:02:13.172 --> 00:02:14.630 align:middle line:84%
+What we're going
+to do, we're going
+
+00:02:14.630 --> 00:02:19.360 align:middle line:84%
+to do this exact black box,
+sum-check protocol, where
+
+00:02:19.360 --> 00:02:23.950 align:middle line:84%
+beta, the value we're claiming--
+we're claiming is Vi star.
+
+00:02:23.950 --> 00:02:28.210 align:middle line:84%
+So the prover is claiming that
+the sum of this entire thing
+
+00:02:28.210 --> 00:02:29.500 align:middle line:90%
+is going to be f.
+
+00:02:29.500 --> 00:02:32.410 align:middle line:90%
+OK, this function is f.
+
+00:02:32.410 --> 00:02:34.960 align:middle line:84%
+And he's claiming that
+the sum-- so if you
+
+00:02:34.960 --> 00:02:42.470 align:middle line:84%
+call this entire
+function, this thing f,
+
+00:02:42.470 --> 00:02:45.740 align:middle line:84%
+the prover is claiming
+that Vi star is
+
+00:02:45.740 --> 00:02:58.040 align:middle line:84%
+equal to sum and pw1w2 of fpw1w2
+in h to the n-- each one in h
+
+00:02:58.040 --> 00:02:58.820 align:middle line:90%
+to the n.
+
+00:02:58.820 --> 00:03:02.900 align:middle line:84%
+So the prover is claiming
+that Vi star is this sum.
+
+00:03:02.900 --> 00:03:07.370 align:middle line:84%
+And this f is some kind
+of low-degree polynomial.
+
+00:03:07.370 --> 00:03:10.280 align:middle line:84%
+So what we're going to do, we're
+just going to do black box,
+
+00:03:10.280 --> 00:03:11.420 align:middle line:90%
+the sum check.
+
+00:03:11.420 --> 00:03:15.240 align:middle line:84%
+You don't need to remember
+what the sum-check protocol is.
+
+00:03:15.240 --> 00:03:18.870 align:middle line:84%
+But if you remember, you just--
+the prover constantly checks--
+
+00:03:18.870 --> 00:03:21.805 align:middle line:84%
+sends univariate low-degree
+polynomial, being checked.
+
+00:03:21.805 --> 00:03:23.680 align:middle line:84%
+But if you don't want
+to remember what it is,
+
+00:03:23.680 --> 00:03:24.520 align:middle line:90%
+don't remember.
+
+00:03:24.520 --> 00:03:27.270 align:middle line:84%
+The only important thing
+to remember is at the end--
+
+00:03:27.270 --> 00:03:28.762 align:middle line:84%
+and during the
+sum-check protocol,
+
+00:03:28.762 --> 00:03:30.220 align:middle line:84%
+the verifier just
+sends randomness.
+
+00:03:30.220 --> 00:03:31.595 align:middle line:84%
+He doesn't need
+to know anything.
+
+00:03:31.595 --> 00:03:34.370 align:middle line:84%
+He sends a random field
+element, gets back
+
+00:03:34.370 --> 00:03:36.120 align:middle line:84%
+a univariate polynomial,
+does some checks,
+
+00:03:36.120 --> 00:03:37.328 align:middle line:90%
+and the random field element.
+
+00:03:37.328 --> 00:03:40.110 align:middle line:84%
+He never actually needs to
+know what this f tilde is.
+
+00:03:40.110 --> 00:03:44.460 align:middle line:84%
+The only point where he
+actually needs to verify--
+
+00:03:44.460 --> 00:03:47.550 align:middle line:84%
+compare something
+with f tilde is
+
+00:03:47.550 --> 00:03:56.870 align:middle line:84%
+where he needs to check
+that f tilde of z0z1z2
+
+00:03:56.870 --> 00:03:58.970 align:middle line:90%
+is equal to some t--
+
+00:03:58.970 --> 00:04:00.890 align:middle line:84%
+I don't know-- to some
+element t that came out
+
+00:04:00.890 --> 00:04:02.930 align:middle line:84%
+from the sum-check
+protocol, some field element
+
+00:04:02.930 --> 00:04:05.350 align:middle line:90%
+t that came out.
+
+00:04:05.350 --> 00:04:07.540 align:middle line:84%
+But the thing is, so
+how does he check it?
+
+00:04:07.540 --> 00:04:09.370 align:middle line:84%
+In the sum-check,
+we said let's assume
+
+00:04:09.370 --> 00:04:12.790 align:middle line:90%
+he has Oracle access to it.
+
+00:04:12.790 --> 00:04:17.600 align:middle line:84%
+But now, he doesn't have Oracle
+access to this gigantic mess.
+
+00:04:17.600 --> 00:04:18.839 align:middle line:90%
+So what do we do?
+
+00:04:18.839 --> 00:04:21.260 align:middle line:84%
+So first thing, let me
+help-- say, OK, he does
+
+00:04:21.260 --> 00:04:23.030 align:middle line:90%
+have Oracle access to add tilde.
+
+00:04:23.030 --> 00:04:24.740 align:middle line:90%
+Let's assume that.
+
+00:04:24.740 --> 00:04:27.620 align:middle line:84%
+But even then, he doesn't
+know what this Vi--
+
+00:04:27.620 --> 00:04:30.350 align:middle line:84%
+he doesn't know the-- he can't
+compute the low-degree extension
+
+00:04:30.350 --> 00:04:32.870 align:middle line:84%
+of one layer below,
+so he doesn't know
+
+00:04:32.870 --> 00:04:36.352 align:middle line:90%
+the extension on z1 and z2.
+
+00:04:36.352 --> 00:04:37.810 align:middle line:84%
+So these are really
+the only things
+
+00:04:37.810 --> 00:04:41.262 align:middle line:84%
+he does know, beyond the tilde,
+which we assume he knows.
+
+00:04:41.262 --> 00:04:43.720 align:middle line:84%
+If he knew them, that he could
+check, and he can catch you,
+
+00:04:43.720 --> 00:04:44.510 align:middle line:90%
+the prover.
+
+00:04:44.510 --> 00:04:46.310 align:middle line:90%
+But he doesn't know them.
+
+00:04:46.310 --> 00:04:48.140 align:middle line:84%
+So now we say, OK,
+so we're not done.
+
+00:04:48.140 --> 00:04:49.820 align:middle line:84%
+We don't just do
+sum-check protocol.
+
+00:04:49.820 --> 00:04:51.560 align:middle line:84%
+I mean, I said only
+sum-check, but it's
+
+00:04:51.560 --> 00:04:53.180 align:middle line:90%
+many sum-checks, not just one.
+
+00:04:53.180 --> 00:04:54.720 align:middle line:90%
+So we're not done.
+
+00:04:54.720 --> 00:04:58.370 align:middle line:84%
+So now we say, you know
+what, the prover will
+
+00:04:58.370 --> 00:05:02.950 align:middle line:84%
+give the verifier the
+values, these two values.
+
+00:05:02.950 --> 00:05:05.080 align:middle line:84%
+You know what, you can't
+compute them unknown.
+
+00:05:05.080 --> 00:05:07.950 align:middle line:90%
+I'll tell you what they are.
+
+00:05:07.950 --> 00:05:09.600 align:middle line:84%
+Now, of course,
+he's going to cheat
+
+00:05:09.600 --> 00:05:11.460 align:middle line:84%
+because if he tells
+honestly, he's
+
+00:05:11.460 --> 00:05:14.267 align:middle line:84%
+going to get caught because
+by the sum-check protocol,
+
+00:05:14.267 --> 00:05:16.350 align:middle line:84%
+there's a very high
+probability this t is actually
+
+00:05:16.350 --> 00:05:18.570 align:middle line:90%
+not the right value.
+
+00:05:18.570 --> 00:05:21.580 align:middle line:84%
+So because of the soundness,
+he's going to catch him.
+
+00:05:21.580 --> 00:05:23.100 align:middle line:90%
+This is not the correct value.
+
+00:05:23.100 --> 00:05:26.010 align:middle line:84%
+So now when the verifier--
+so now the verifier
+
+00:05:26.010 --> 00:05:29.940 align:middle line:84%
+tells the prover, give
+me these two values.
+
+00:05:29.940 --> 00:05:34.088 align:middle line:84%
+If he gives the correct
+value, then the verifier
+
+00:05:34.088 --> 00:05:36.380 align:middle line:84%
+will compute the correct f,
+and he'll notice the cheat,
+
+00:05:36.380 --> 00:05:38.490 align:middle line:90%
+and he'll reject him.
+
+00:05:38.490 --> 00:05:42.460 align:middle line:84%
+So now what we know is if
+the prover wants to win,
+
+00:05:42.460 --> 00:05:46.170 align:middle line:90%
+he must give false answers.
+
+00:05:46.170 --> 00:05:48.040 align:middle line:84%
+One of these answers
+or both must be false.
+
+00:05:48.040 --> 00:05:49.498 align:middle line:84%
+Otherwise, he's
+going to be caught.
+
+00:05:49.498 --> 00:05:51.840 align:middle line:90%
+
+
+00:05:51.840 --> 00:05:57.120 align:middle line:84%
+And therefore, we reduced a
+claim from layer I to two claims
+
+00:05:57.120 --> 00:05:58.240 align:middle line:90%
+and layer I plus 1.
+
+00:05:58.240 --> 00:06:01.090 align:middle line:90%
+
+
+00:06:01.090 --> 00:06:04.120 align:middle line:84%
+Is there any
+question about this?
+
+00:06:04.120 --> 00:06:06.500 align:middle line:84%
+Does anybody want me to
+repeat what I just said,
+
+00:06:06.500 --> 00:06:10.420 align:middle line:84%
+maybe in different
+words, or is this clear?
+
+00:06:10.420 --> 00:06:17.055 align:middle line:90%
+OK, so now what we do?
+
+00:06:17.055 --> 00:06:23.880 align:middle line:90%
+
+
+00:06:23.880 --> 00:06:27.770 align:middle line:90%
+So let me actually--
+
+00:06:27.770 --> 00:06:29.070 align:middle line:90%
+OK, so what do we do?
+
+00:06:29.070 --> 00:06:30.260 align:middle line:90%
+So the idea is--
+
+00:06:30.260 --> 00:06:33.290 align:middle line:90%
+
+
+00:06:33.290 --> 00:06:38.590 align:middle line:84%
+actually, in the GKR
+paper itself, what we did
+
+00:06:38.590 --> 00:06:43.150 align:middle line:84%
+is, we did kind of another
+protocol for go to two claims
+
+00:06:43.150 --> 00:06:44.570 align:middle line:90%
+to one claim.
+
+00:06:44.570 --> 00:06:47.530 align:middle line:84%
+But actually, there's a much,
+much simpler idea, which
+
+00:06:47.530 --> 00:06:51.020 align:middle line:90%
+is actually Rachel's idea.
+
+00:06:51.020 --> 00:06:53.070 align:middle line:84%
+Well, you don't need to
+do anything, actually.
+
+00:06:53.070 --> 00:06:54.170 align:middle line:90%
+So here's the idea.
+
+00:06:54.170 --> 00:06:55.360 align:middle line:90%
+Don't do anything.
+
+00:06:55.360 --> 00:06:57.370 align:middle line:90%
+Actually, it's not a problem.
+
+00:06:57.370 --> 00:07:02.230 align:middle line:90%
+
+
+00:07:02.230 --> 00:07:04.630 align:middle line:84%
+I know it's funny, but it's
+actually not a problem.
+
+00:07:04.630 --> 00:07:06.430 align:middle line:90%
+Why is it not a problem?
+
+00:07:06.430 --> 00:07:10.390 align:middle line:84%
+So we reduced from one
+claim to two claims.
+
+00:07:10.390 --> 00:07:10.890 align:middle line:90%
+Fine.
+
+00:07:10.890 --> 00:07:12.620 align:middle line:90%
+Continue with two claims.
+
+00:07:12.620 --> 00:07:13.750 align:middle line:84%
+Now you're saying, what do you
+mean continuing with two claims?
+
+00:07:13.750 --> 00:07:15.792 align:middle line:84%
+You're going to get four
+claims and eight claims.
+
+00:07:15.792 --> 00:07:17.710 align:middle line:90%
+That's terrible.
+
+00:07:17.710 --> 00:07:18.440 align:middle line:90%
+Yeah?
+
+00:07:18.440 --> 00:07:20.433 align:middle line:90%
+AUDIENCE: It's not my idea.
+
+00:07:20.433 --> 00:07:21.100 align:middle line:90%
+PROFESSOR: What?
+
+00:07:21.100 --> 00:07:22.308 align:middle line:90%
+AUDIENCE: It was Lisa's idea.
+
+00:07:22.308 --> 00:07:23.860 align:middle line:90%
+PROFESSOR: Oh, it's Lisa's idea?
+
+00:07:23.860 --> 00:07:24.715 align:middle line:90%
+OK, Lisa's idea.
+
+00:07:24.715 --> 00:07:25.215 align:middle line:90%
+OK.
+
+00:07:25.215 --> 00:07:28.640 align:middle line:90%
+
+
+00:07:28.640 --> 00:07:30.980 align:middle line:84%
+So you go-- right,
+it was Lisa's idea.
+
+00:07:30.980 --> 00:07:32.450 align:middle line:90%
+I forgot.
+
+00:07:32.450 --> 00:07:34.700 align:middle line:90%
+So you go from--
+
+00:07:34.700 --> 00:07:36.680 align:middle line:90%
+so you just continue with two.
+
+00:07:36.680 --> 00:07:38.660 align:middle line:84%
+And now you're saying if
+you continue with two,
+
+00:07:38.660 --> 00:07:41.310 align:middle line:90%
+you're going to get to four.
+
+00:07:41.310 --> 00:07:43.320 align:middle line:90%
+So the point is, you're not.
+
+00:07:43.320 --> 00:07:45.690 align:middle line:84%
+You're going to stay
+with two, and you're
+
+00:07:45.690 --> 00:07:48.810 align:middle line:84%
+going to stay with two and stay
+with two and stay with two.
+
+00:07:48.810 --> 00:07:49.890 align:middle line:90%
+Why?
+
+00:07:49.890 --> 00:07:51.840 align:middle line:90%
+So here's the idea.
+
+00:07:51.840 --> 00:07:59.620 align:middle line:84%
+We reduced it to two claims
+about layer I plus 1.
+
+00:07:59.620 --> 00:08:03.410 align:middle line:84%
+So now when we go down, we're
+going to do two sum checks.
+
+00:08:03.410 --> 00:08:06.950 align:middle line:84%
+We're going to do again
+the exact same sum check,
+
+00:08:06.950 --> 00:08:10.350 align:middle line:84%
+but twice because now
+we have two claims.
+
+00:08:10.350 --> 00:08:12.370 align:middle line:90%
+So now we're-- OK, so let's see.
+
+00:08:12.370 --> 00:08:14.980 align:middle line:84%
+Let me maybe write it, so
+it'll be a little clearer.
+
+00:08:14.980 --> 00:08:18.020 align:middle line:84%
+So let me actually write
+a little bit the notation.
+
+00:08:18.020 --> 00:08:21.190 align:middle line:90%
+So now let's-- let's call this--
+
+00:08:21.190 --> 00:08:23.380 align:middle line:90%
+I have this function.
+
+00:08:23.380 --> 00:08:28.930 align:middle line:84%
+Let's call fi, the sum--
+fi is a function of p--
+
+00:08:28.930 --> 00:08:31.990 align:middle line:90%
+
+
+00:08:31.990 --> 00:08:38.589 align:middle line:84%
+yeah, p, w1, w2, and all
+it does is it does a add--
+
+00:08:38.589 --> 00:08:41.539 align:middle line:90%
+
+
+00:08:41.539 --> 00:08:45.380 align:middle line:84%
+it reduces the value of
+checking on p to checking
+
+00:08:45.380 --> 00:08:47.390 align:middle line:90%
+two elements in layer I plus 1.
+
+00:08:47.390 --> 00:08:50.400 align:middle line:84%
+I want to have a neat notation,
+so we'll be able to see it.
+
+00:08:50.400 --> 00:08:52.280 align:middle line:90%
+So it does sum--
+
+00:08:52.280 --> 00:08:54.110 align:middle line:90%
+it does-- sorry, it checks.
+
+00:08:54.110 --> 00:09:09.200 align:middle line:84%
+If it's add, p, w1, w2, so it
+checks add, and it adds a Vi--
+
+00:09:09.200 --> 00:09:17.450 align:middle line:84%
+well, we'll do the extension--
+but Vi and a w1 plus Vi plus 1,
+
+00:09:17.450 --> 00:09:25.140 align:middle line:84%
+Vi plus 1 and w2 plus mult.
+So I want to give this a name,
+
+00:09:25.140 --> 00:09:26.250 align:middle line:90%
+so we'll have it.
+
+00:09:26.250 --> 00:09:27.830 align:middle line:90%
+This is i.
+
+00:09:27.830 --> 00:09:38.243 align:middle line:84%
+This is i, p, w1, w2 times Vi
+plus 1, w1 times Vi plus 1, w2.
+
+00:09:38.243 --> 00:09:40.870 align:middle line:90%
+
+
+00:09:40.870 --> 00:09:48.260 align:middle line:84%
+So for each and every w1
+and w2, we check whether--
+
+00:09:48.260 --> 00:09:52.780 align:middle line:84%
+we want to go to 1 layer
+below, so we check whether--
+
+00:09:52.780 --> 00:09:54.640 align:middle line:90%
+if it's an add, we do an add.
+
+00:09:54.640 --> 00:09:58.070 align:middle line:84%
+If it's a mult, we do
+a mult. And at the end,
+
+00:09:58.070 --> 00:10:08.680 align:middle line:84%
+we also multiply this
+with chi of p and w0.
+
+00:10:08.680 --> 00:10:11.665 align:middle line:90%
+
+
+00:10:11.665 --> 00:10:18.060 align:middle line:90%
+No, one second.
+
+00:10:18.060 --> 00:10:19.060 align:middle line:90%
+That was the claim.
+
+00:10:19.060 --> 00:10:25.430 align:middle line:90%
+
+
+00:10:25.430 --> 00:10:27.230 align:middle line:90%
+Let me call it zi.
+
+00:10:27.230 --> 00:10:28.780 align:middle line:90%
+This is fi of zi.
+
+00:10:28.780 --> 00:10:33.980 align:middle line:90%
+
+
+00:10:33.980 --> 00:10:34.530 align:middle line:90%
+Good.
+
+00:10:34.530 --> 00:10:36.400 align:middle line:84%
+And now we can think
+of this as a polynomial
+
+00:10:36.400 --> 00:10:37.483 align:middle line:90%
+because it's all extended.
+
+00:10:37.483 --> 00:10:40.540 align:middle line:90%
+
+
+00:10:40.540 --> 00:10:44.500 align:middle line:84%
+And when we check, we
+check-- we get a value Vi,
+
+00:10:44.500 --> 00:10:46.340 align:middle line:90%
+and we check-- or Vi star.
+
+00:10:46.340 --> 00:10:51.370 align:middle line:84%
+We check that Vi
+star is the sum of f.
+
+00:10:51.370 --> 00:10:53.060 align:middle line:90%
+This is the i star.
+
+00:10:53.060 --> 00:10:54.880 align:middle line:90%
+That was the star.
+
+00:10:54.880 --> 00:11:08.140 align:middle line:84%
+We check that it's fi, zi star
+of p, w1, w2 of p, w1, w2 e,
+
+00:11:08.140 --> 00:11:09.940 align:middle line:90%
+h to the n
+
+00:11:09.940 --> 00:11:12.920 align:middle line:84%
+So this is where
+we start, right?
+
+00:11:12.920 --> 00:11:15.350 align:middle line:90%
+We have a value on layer--
+
+00:11:15.350 --> 00:11:19.810 align:middle line:84%
+we have a fixed zi
+star in layer i.
+
+00:11:19.810 --> 00:11:24.550 align:middle line:84%
+There's a claim that the
+extension that equal Vi star,
+
+00:11:24.550 --> 00:11:28.690 align:middle line:84%
+and we know that the sum,
+just by this calculation,
+
+00:11:28.690 --> 00:11:31.120 align:middle line:90%
+that Vi star should be--
+
+00:11:31.120 --> 00:11:36.640 align:middle line:84%
+if you were honest-- it should
+be sum of this polynomial f.
+
+00:11:36.640 --> 00:11:38.530 align:middle line:90%
+And we do a sum check.
+
+00:11:38.530 --> 00:11:40.670 align:middle line:84%
+And when we do a sum
+check, we reduce.
+
+00:11:40.670 --> 00:11:43.940 align:middle line:84%
+And now we reduced it
+to a claim after this--
+
+00:11:43.940 --> 00:11:53.590 align:middle line:84%
+so now in the GKR protocol,
+first we do a sum check for--
+
+00:11:53.590 --> 00:11:54.560 align:middle line:90%
+so for each layer.
+
+00:11:54.560 --> 00:11:59.830 align:middle line:90%
+
+
+00:11:59.830 --> 00:12:00.950 align:middle line:90%
+what do we do?
+
+00:12:00.950 --> 00:12:08.680 align:middle line:84%
+Sum check corresponding to
+fi for proving that Vi star,
+
+00:12:08.680 --> 00:12:11.910 align:middle line:84%
+which we got from
+the previous layer--
+
+00:12:11.910 --> 00:12:15.460 align:middle line:84%
+OK, we got it-- so it originates
+from-- it's the claim.
+
+00:12:15.460 --> 00:12:17.760 align:middle line:84%
+V0 star is the claim
+of the prover--
+
+00:12:17.760 --> 00:12:18.630 align:middle line:90%
+the original.
+
+00:12:18.630 --> 00:12:22.900 align:middle line:84%
+He claimed that C
+of x equals V0 star.
+
+00:12:22.900 --> 00:12:25.020 align:middle line:90%
+That's the original V0 star.
+
+00:12:25.020 --> 00:12:26.580 align:middle line:90%
+And then we check.
+
+00:12:26.580 --> 00:12:31.387 align:middle line:84%
+We do sum check that this
+is equal to fi, zi star.
+
+00:12:31.387 --> 00:12:33.345 align:middle line:84%
+These are both the claims
+that we started with.
+
+00:12:33.345 --> 00:12:40.295 align:middle line:90%
+
+
+00:12:40.295 --> 00:12:40.795 align:middle line:90%
+Sorry.
+
+00:12:40.795 --> 00:12:51.610 align:middle line:84%
+So the sum p, w1, w2 and
+fi, zi star of p, w1, w2.
+
+00:12:51.610 --> 00:12:53.770 align:middle line:90%
+So we do-- we do the sum check.
+
+00:12:53.770 --> 00:12:56.350 align:middle line:84%
+At the end of this sum
+check, we reduced it
+
+00:12:56.350 --> 00:12:57.850 align:middle line:90%
+to checking two things.
+
+00:12:57.850 --> 00:13:03.660 align:middle line:84%
+We reduced it to
+checking V tilde--
+
+00:13:03.660 --> 00:13:14.500 align:middle line:84%
+two things-- Vi plus 1, 1
+star, and Vi plus 2, 2 star.
+
+00:13:14.500 --> 00:13:19.232 align:middle line:84%
+So we have two
+V's now, and two--
+
+00:13:19.232 --> 00:13:20.890 align:middle line:90%
+AUDIENCE: [INAUDIBLE]
+
+00:13:20.890 --> 00:13:23.420 align:middle line:90%
+
+
+00:13:23.420 --> 00:13:25.290 align:middle line:90%
+PROFESSOR: Wait, what?
+
+00:13:25.290 --> 00:13:27.688 align:middle line:84%
+AUDIENCE: The second
+to right V is V--
+
+00:13:27.688 --> 00:13:28.480 align:middle line:90%
+PROFESSOR: Oh, one.
+
+00:13:28.480 --> 00:13:30.230 align:middle line:90%
+Sorry, sorry, I plus 1--
+
+00:13:30.230 --> 00:13:31.200 align:middle line:90%
+I plus 1.
+
+00:13:31.200 --> 00:13:34.247 align:middle line:84%
+And then two points,
+we called it z1, z2,
+
+00:13:34.247 --> 00:13:36.080 align:middle line:84%
+but these are random
+points from the prover.
+
+00:13:36.080 --> 00:13:42.510 align:middle line:84%
+That these are-- so these should
+be z1 and z2 respectively.
+
+00:13:42.510 --> 00:13:44.875 align:middle line:84%
+These are now star because
+they are going to be fixed.
+
+00:13:44.875 --> 00:13:50.830 align:middle line:90%
+
+
+00:13:50.830 --> 00:13:53.190 align:middle line:84%
+OK, so now we have
+a new sum check.
+
+00:13:53.190 --> 00:13:55.820 align:middle line:90%
+So this boils down to--
+
+00:13:55.820 --> 00:13:57.080 align:middle line:90%
+so now what we want to do?
+
+00:13:57.080 --> 00:13:58.630 align:middle line:90%
+We want to do two sum checks.
+
+00:13:58.630 --> 00:14:08.110 align:middle line:84%
+First sum check that Vi plus 1
+star is equal to sum fi plus 1,
+
+00:14:08.110 --> 00:14:10.220 align:middle line:90%
+and we call them star.
+
+00:14:10.220 --> 00:14:12.610 align:middle line:90%
+So we have z.
+
+00:14:12.610 --> 00:14:14.920 align:middle line:90%
+Let me call this now--
+
+00:14:14.920 --> 00:14:16.340 align:middle line:90%
+we called it z star.
+
+00:14:16.340 --> 00:14:22.450 align:middle line:90%
+OK, z1 star and p, w1, w2.
+
+00:14:22.450 --> 00:14:24.466 align:middle line:90%
+But we have another one--
+
+00:14:24.466 --> 00:14:31.676 align:middle line:84%
+Vi plus 1, 2,
+which is fi plus 1,
+
+00:14:31.676 --> 00:14:43.020 align:middle line:84%
+V2 star sum p,
+w1, w2, p, w1, w2.
+
+00:14:43.020 --> 00:14:44.585 align:middle line:90%
+So now we need to prove this.
+
+00:14:44.585 --> 00:14:49.010 align:middle line:90%
+
+
+00:14:49.010 --> 00:14:53.010 align:middle line:90%
+We have two sum checks.
+
+00:14:53.010 --> 00:14:54.990 align:middle line:84%
+And note that it's
+not even-- it's even
+
+00:14:54.990 --> 00:14:57.100 align:middle line:84%
+two sum checks of
+different functions too.
+
+00:14:57.100 --> 00:15:00.562 align:middle line:84%
+This is with z1 star,
+and this is of z2 star.
+
+00:15:00.562 --> 00:15:02.520 align:middle line:84%
+It's kind of a little
+different, the functions.
+
+00:15:02.520 --> 00:15:03.420 align:middle line:90%
+Yeah?
+
+00:15:03.420 --> 00:15:05.532 align:middle line:90%
+AUDIENCE: [INAUDIBLE]
+
+00:15:05.532 --> 00:15:12.070 align:middle line:90%
+
+
+00:15:12.070 --> 00:15:13.090 align:middle line:90%
+PROFESSOR: Exactly.
+
+00:15:13.090 --> 00:15:14.050 align:middle line:90%
+You got it.
+
+00:15:14.050 --> 00:15:15.220 align:middle line:90%
+That's it.
+
+00:15:15.220 --> 00:15:16.280 align:middle line:90%
+It's as simple as that.
+
+00:15:16.280 --> 00:15:18.050 align:middle line:90%
+So what do we do?
+
+00:15:18.050 --> 00:15:21.700 align:middle line:84%
+We something-- do
+two sum checks.
+
+00:15:21.700 --> 00:15:23.350 align:middle line:90%
+How do I do two--
+
+00:15:23.350 --> 00:15:24.620 align:middle line:90%
+won't it grow to four?
+
+00:15:24.620 --> 00:15:27.160 align:middle line:84%
+No, the simple,
+trivial observation,
+
+00:15:27.160 --> 00:15:31.350 align:middle line:84%
+do to sum checks with the same
+randomness from the prover.
+
+00:15:31.350 --> 00:15:34.230 align:middle line:84%
+So the GKR says
+when you have this,
+
+00:15:34.230 --> 00:15:42.480 align:middle line:84%
+do two sum checks with
+same prover randomness--
+
+00:15:42.480 --> 00:15:49.740 align:middle line:84%
+verifier-- sorry, sorry,
+verifier randomness.
+
+00:15:49.740 --> 00:15:52.750 align:middle line:90%
+
+
+00:15:52.750 --> 00:15:55.780 align:middle line:84%
+So at the end, what do we have
+if we use the same randomness?
+
+00:15:55.780 --> 00:16:02.480 align:middle line:84%
+We need to-- it reduces to
+verifying fi plus 1, z1 star,
+
+00:16:02.480 --> 00:16:06.760 align:middle line:84%
+and some randomness from the
+verifier, which we call--
+
+00:16:06.760 --> 00:16:08.320 align:middle line:90%
+let me call it--
+
+00:16:08.320 --> 00:16:10.064 align:middle line:90%
+I'll call it again, z0, z1, z2.
+
+00:16:10.064 --> 00:16:12.580 align:middle line:90%
+
+
+00:16:12.580 --> 00:16:13.780 align:middle line:90%
+It's fresh.
+
+00:16:13.780 --> 00:16:22.040 align:middle line:84%
+And also, he needs to check fi
+plus 1, z2 star and z0, z1, z2.
+
+00:16:22.040 --> 00:16:25.740 align:middle line:90%
+
+
+00:16:25.740 --> 00:16:27.010 align:middle line:90%
+How does he check them?
+
+00:16:27.010 --> 00:16:28.080 align:middle line:90%
+What is this f?
+
+00:16:28.080 --> 00:16:30.330 align:middle line:90%
+Let's go back.
+
+00:16:30.330 --> 00:16:32.010 align:middle line:84%
+We have all-- this
+is the f, right?
+
+00:16:32.010 --> 00:16:34.560 align:middle line:84%
+It's like the
+[MUMBLES] all this.
+
+00:16:34.560 --> 00:16:36.930 align:middle line:84%
+So we said, look, add
+tilde, don't worry,
+
+00:16:36.930 --> 00:16:39.580 align:middle line:90%
+he can do on his own.
+
+00:16:39.580 --> 00:16:41.990 align:middle line:84%
+Mult tilde, he
+can do on his own.
+
+00:16:41.990 --> 00:16:43.960 align:middle line:84%
+What does he need
+from the verifier?
+
+00:16:43.960 --> 00:16:48.440 align:middle line:84%
+And sorry-- and this chi,
+he can do on his own.
+
+00:16:48.440 --> 00:16:51.720 align:middle line:84%
+What does he actually
+need from the prover?
+
+00:16:51.720 --> 00:16:57.020 align:middle line:84%
+What he needs from the
+prover is v plus 1--
+
+00:16:57.020 --> 00:16:59.390 align:middle line:84%
+v plus 2 tilde because
+we're going one less--
+
+00:16:59.390 --> 00:17:02.860 align:middle line:90%
+and z1 and on z2.
+
+00:17:02.860 --> 00:17:04.950 align:middle line:84%
+But it's the same
+z1 and z2 on both.
+
+00:17:04.950 --> 00:17:07.490 align:middle line:90%
+
+
+00:17:07.490 --> 00:17:13.880 align:middle line:84%
+So all he needs from the prover
+is the value of V tilde and z1
+
+00:17:13.880 --> 00:17:14.502 align:middle line:90%
+and z2.
+
+00:17:14.502 --> 00:17:15.085 align:middle line:90%
+And he's done.
+
+00:17:15.085 --> 00:17:18.270 align:middle line:90%
+
+
+00:17:18.270 --> 00:17:20.117 align:middle line:90%
+So yeah, two values--
+
+00:17:20.117 --> 00:17:20.950 align:middle line:90%
+we started with two.
+
+00:17:20.950 --> 00:17:22.690 align:middle line:90%
+We ended with two.
+
+00:17:22.690 --> 00:17:23.710 align:middle line:90%
+That's it.
+
+00:17:23.710 --> 00:17:26.500 align:middle line:84%
+You continue like
+this all the way down.
+
+00:17:26.500 --> 00:17:36.950 align:middle line:84%
+So to summarize, what
+is the GKR protocol?
+
+00:17:36.950 --> 00:17:42.350 align:middle line:84%
+It's just a bunch of two sum
+checks in parallel, D of them.
+
+00:17:42.350 --> 00:17:44.150 align:middle line:90%
+That's all.
+
+00:17:44.150 --> 00:17:45.830 align:middle line:90%
+That's what we do.
+
+00:17:45.830 --> 00:17:48.080 align:middle line:84%
+And in the middle, the
+prover gives information.
+
+00:17:48.080 --> 00:17:50.940 align:middle line:84%
+The prover needs to give the
+v tildes to help him out,
+
+00:17:50.940 --> 00:17:52.510 align:middle line:90%
+but that's it.
+
+00:17:52.510 --> 00:17:53.380 align:middle line:90%
+Yes?
+
+00:17:53.380 --> 00:17:56.155 align:middle line:84%
+AUDIENCE: You need to interleave
+the [INAUDIBLE], right?
+
+00:17:56.155 --> 00:17:57.530 align:middle line:84%
+PROFESSOR: You do
+it in parallel.
+
+00:17:57.530 --> 00:18:00.870 align:middle line:84%
+Yes, it's very important--
+good observation, Gabe.
+
+00:18:00.870 --> 00:18:03.100 align:middle line:84%
+It's very important
+that when you
+
+00:18:03.100 --> 00:18:06.260 align:middle line:84%
+do-- when you go from layer
+I to layer I plus 1, the two,
+
+00:18:06.260 --> 00:18:08.040 align:middle line:90%
+sum checks are done in parallel.
+
+00:18:08.040 --> 00:18:10.510 align:middle line:84%
+If you do it sequentially,
+then now, the second subject
+
+00:18:10.510 --> 00:18:13.390 align:middle line:84%
+you know the coin,
+so you can cheat.
+
+00:18:13.390 --> 00:18:15.070 align:middle line:90%
+But you do two--
+
+00:18:15.070 --> 00:18:17.590 align:middle line:84%
+you do-- so here's
+the GKR protocol.
+
+00:18:17.590 --> 00:18:19.960 align:middle line:90%
+You start with the output layer.
+
+00:18:19.960 --> 00:18:23.700 align:middle line:84%
+You do-- so the output
+layer is two sum checks,
+
+00:18:23.700 --> 00:18:24.450 align:middle line:90%
+but it's just one.
+
+00:18:24.450 --> 00:18:25.150 align:middle line:90%
+It's for the same thing.
+
+00:18:25.150 --> 00:18:27.060 align:middle line:84%
+So you can think of it
+as just one sum check.
+
+00:18:27.060 --> 00:18:30.790 align:middle line:84%
+So you do the sum check
+twice for the sake of it,
+
+00:18:30.790 --> 00:18:31.600 align:middle line:90%
+but really, one.
+
+00:18:31.600 --> 00:18:32.610 align:middle line:90%
+You do sum check.
+
+00:18:32.610 --> 00:18:36.460 align:middle line:84%
+You reduce to-- so you
+do the two sum checks.
+
+00:18:36.460 --> 00:18:41.680 align:middle line:84%
+It reduces to two values
+in layer I plus 1.
+
+00:18:41.680 --> 00:18:43.660 align:middle line:90%
+But not just it reduces--
+
+00:18:43.660 --> 00:18:45.930 align:middle line:84%
+it reduces to a
+point here, which
+
+00:18:45.930 --> 00:18:51.220 align:middle line:84%
+you can compute from two
+values in layer one below.
+
+00:18:51.220 --> 00:18:54.240 align:middle line:84%
+So I ask the provers,
+give me the two values.
+
+00:18:54.240 --> 00:18:55.605 align:middle line:90%
+He must cheat if he--
+
+00:18:55.605 --> 00:18:56.980 align:middle line:84%
+I mean, if he
+cheated originally,
+
+00:18:56.980 --> 00:18:58.660 align:middle line:90%
+he must continue to cheat.
+
+00:18:58.660 --> 00:19:02.790 align:middle line:84%
+So I have two values, and
+then I do another sum check
+
+00:19:02.790 --> 00:19:05.357 align:middle line:84%
+with the same randomness,
+same exact randomness.
+
+00:19:05.357 --> 00:19:06.190 align:middle line:90%
+So I do a sum check.
+
+00:19:06.190 --> 00:19:08.650 align:middle line:90%
+I go one layer below.
+
+00:19:08.650 --> 00:19:11.120 align:middle line:90%
+Again, I need to check.
+
+00:19:11.120 --> 00:19:14.300 align:middle line:84%
+I get a value of f, but the
+two values of f to check them.
+
+00:19:14.300 --> 00:19:20.260 align:middle line:84%
+I need to ask the prover, give
+me two values on this layer
+
+00:19:20.260 --> 00:19:21.200 align:middle line:90%
+I plus 2 below.
+
+00:19:21.200 --> 00:19:23.230 align:middle line:90%
+I get these two value.
+
+00:19:23.230 --> 00:19:25.420 align:middle line:84%
+By soundness of the
+sum check, they must--
+
+00:19:25.420 --> 00:19:26.990 align:middle line:90%
+they should not be correct.
+
+00:19:26.990 --> 00:19:29.560 align:middle line:84%
+And then I do another sum check,
+another sum check, another,
+
+00:19:29.560 --> 00:19:33.210 align:middle line:84%
+until I reach the
+leaves-- the input.
+
+00:19:33.210 --> 00:19:36.338 align:middle line:84%
+Once I reach the input,
+what do they give me?
+
+00:19:36.338 --> 00:19:38.130 align:middle line:84%
+Give me a point in the
+low-degree extension
+
+00:19:38.130 --> 00:19:39.420 align:middle line:90%
+of my input.
+
+00:19:39.420 --> 00:19:41.320 align:middle line:84%
+That I can compute
+in linear time.
+
+00:19:41.320 --> 00:19:44.400 align:middle line:84%
+It's just a sum of-- a weighted
+sum over my input values.
+
+00:19:44.400 --> 00:19:47.760 align:middle line:90%
+So I just compute it on my own.
+
+00:19:47.760 --> 00:19:48.310 align:middle line:90%
+That's it.
+
+00:19:48.310 --> 00:19:50.680 align:middle line:90%
+That's the protocol.
+
+00:19:50.680 --> 00:19:53.350 align:middle line:84%
+So it's really
+just two sum checks
+
+00:19:53.350 --> 00:19:55.030 align:middle line:84%
+in parallel with
+same randomness.
+
+00:19:55.030 --> 00:19:57.760 align:middle line:84%
+Prover sends two values in
+the low-degree extension
+
+00:19:57.760 --> 00:19:58.510 align:middle line:90%
+of the next layer.
+
+00:19:58.510 --> 00:20:00.340 align:middle line:84%
+Two sum checks,
+present two values.
+
+00:20:00.340 --> 00:20:01.840 align:middle line:90%
+Two sum checks, present.
+
+00:20:01.840 --> 00:20:03.840 align:middle line:90%
+That's the protocol.
+
+00:20:03.840 --> 00:20:04.340 align:middle line:90%
+Yeah?
+
+00:20:04.340 --> 00:20:07.535 align:middle line:84%
+AUDIENCE: So those are
+not the same that, right?
+
+00:20:07.535 --> 00:20:09.410 align:middle line:84%
+So you're saying it's
+the same as each other,
+
+00:20:09.410 --> 00:20:10.970 align:middle line:84%
+not the same as
+the previous layer.
+
+00:20:10.970 --> 00:20:11.780 align:middle line:90%
+PROFESSOR: Yeah, exactly.
+
+00:20:11.780 --> 00:20:12.488 align:middle line:90%
+Yeah, yeah, yeah.
+
+00:20:12.488 --> 00:20:14.240 align:middle line:84%
+These are actually
+per layer, right.
+
+00:20:14.240 --> 00:20:15.620 align:middle line:90%
+This is like I plus 1.
+
+00:20:15.620 --> 00:20:19.580 align:middle line:90%
+This is like I. Exactly.
+
+00:20:19.580 --> 00:20:24.532 align:middle line:84%
+So there's the same for I, but
+in Is, they have different--
+
+00:20:24.532 --> 00:20:26.740 align:middle line:84%
+in different layers, you
+choose the randomness fresh.
+
+00:20:26.740 --> 00:20:28.240 align:middle line:90%
+Yes, thank you.
+
+00:20:28.240 --> 00:20:29.380 align:middle line:90%
+Yeah?
+
+00:20:29.380 --> 00:20:32.800 align:middle line:84%
+AUDIENCE: Is there
+any security proof
+
+00:20:32.800 --> 00:20:35.380 align:middle line:90%
+of the parallel version that--
+
+00:20:35.380 --> 00:20:38.260 align:middle line:84%
+does it just come from
+the sum-check protocol?
+
+00:20:38.260 --> 00:20:42.680 align:middle line:84%
+Would there be any issue
+with the security [INAUDIBLE]
+
+00:20:42.680 --> 00:20:43.180 align:middle line:90%
+randomness?
+
+00:20:43.180 --> 00:20:43.847 align:middle line:90%
+PROFESSOR: Good.
+
+00:20:43.847 --> 00:20:45.920 align:middle line:90%
+So let's do the security proof.
+
+00:20:45.920 --> 00:20:51.030 align:middle line:84%
+I'm trying to think what's
+the best to erase here.
+
+00:20:51.030 --> 00:20:52.460 align:middle line:90%
+I'll erase this.
+
+00:20:52.460 --> 00:20:56.650 align:middle line:84%
+OK, so let's do the security
+proof, the soundness.
+
+00:20:56.650 --> 00:21:00.367 align:middle line:84%
+So first, I guess,
+the completeness
+
+00:21:00.367 --> 00:21:02.700 align:middle line:84%
+really follows from the
+completeness from the sum check.
+
+00:21:02.700 --> 00:21:05.970 align:middle line:84%
+If you do things correctly,
+the sum check should work.
+
+00:21:05.970 --> 00:21:08.440 align:middle line:84%
+You just get-- the
+completeness is pretty trivial.
+
+00:21:08.440 --> 00:21:13.512 align:middle line:84%
+The complexity y--
+the complexity--
+
+00:21:13.512 --> 00:21:14.970 align:middle line:84%
+we'll do the
+soundness in a minute.
+
+00:21:14.970 --> 00:21:17.030 align:middle line:90%
+Let's first do the complexity.
+
+00:21:17.030 --> 00:21:17.940 align:middle line:90%
+So what are we doing?
+
+00:21:17.940 --> 00:21:21.290 align:middle line:84%
+We're doing two sum
+checks per layer.
+
+00:21:21.290 --> 00:21:25.520 align:middle line:84%
+We have d layers,
+so we run in time--
+
+00:21:25.520 --> 00:21:28.480 align:middle line:84%
+so, OK, let's first
+do the complexity.
+
+00:21:28.480 --> 00:21:32.630 align:middle line:84%
+So what is the
+communication complexity?
+
+00:21:32.630 --> 00:21:37.830 align:middle line:84%
+So we do d pairs of
+sum-check protocols.
+
+00:21:37.830 --> 00:21:39.770 align:middle line:90%
+So we already run in d.
+
+00:21:39.770 --> 00:21:41.480 align:middle line:84%
+What is the
+communication complexity
+
+00:21:41.480 --> 00:21:43.890 align:middle line:90%
+of each sum-check protocol?
+
+00:21:43.890 --> 00:21:49.440 align:middle line:84%
+Number of variables, degree, and
+log F. Number of variable is 3m,
+
+00:21:49.440 --> 00:21:51.150 align:middle line:90%
+order m.
+
+00:21:51.150 --> 00:21:54.490 align:middle line:84%
+The degree is h minus 1,
+but-- oh, I just erased.
+
+00:21:54.490 --> 00:21:59.730 align:middle line:84%
+So the depth-- the number of
+variables like log S over log,
+
+00:21:59.730 --> 00:22:09.560 align:middle line:84%
+log S, the degree is log S, so
+everything is like poly log S.
+
+00:22:09.560 --> 00:22:11.780 align:middle line:90%
+So we don't need o.
+
+00:22:11.780 --> 00:22:15.350 align:middle line:84%
+And times the log f, but we'll
+take f to be poly log s2,
+
+00:22:15.350 --> 00:22:18.380 align:middle line:84%
+so everything is
+d times polylog s.
+
+00:22:18.380 --> 00:22:18.880 align:middle line:90%
+OK.
+
+00:22:18.880 --> 00:22:20.070 align:middle line:90%
+So I'll put it aside.
+
+00:22:20.070 --> 00:22:23.330 align:middle line:84%
+We'll take F it can be very
+big, but it will be poly
+
+00:22:23.330 --> 00:22:30.710 align:middle line:90%
+log S. That's the field.
+
+00:22:30.710 --> 00:22:31.540 align:middle line:90%
+OK.
+
+00:22:31.540 --> 00:22:33.560 align:middle line:90%
+Sorry.
+
+00:22:33.560 --> 00:22:37.150 align:middle line:90%
+It's log-- poly s.
+
+00:22:37.150 --> 00:22:44.110 align:middle line:84%
+Yeah, so log s is-- yeah,
+log f is poly log s.
+
+00:22:44.110 --> 00:22:44.780 align:middle line:90%
+Great.
+
+00:22:44.780 --> 00:22:47.690 align:middle line:84%
+So this is communication
+complexity.
+
+00:22:47.690 --> 00:22:49.380 align:middle line:90%
+What about the verifier runtime?
+
+00:22:49.380 --> 00:22:53.820 align:middle line:90%
+
+
+00:22:53.820 --> 00:22:58.690 align:middle line:84%
+So of course, he does
+the-- he does the--
+
+00:22:58.690 --> 00:23:02.560 align:middle line:84%
+so in the GKR, all he does, a
+bunch of sum-check protocols--
+
+00:23:02.560 --> 00:23:05.400 align:middle line:84%
+so he just sends randomness
+and does whatever--
+
+00:23:05.400 --> 00:23:12.180 align:middle line:84%
+does these-- I guess the runtime
+of the sum-check protocol.
+
+00:23:12.180 --> 00:23:16.530 align:middle line:84%
+And then he gets at each time
+two elements from the prover.
+
+00:23:16.530 --> 00:23:20.970 align:middle line:84%
+And he just needs to check
+consistency of this f, right?
+
+00:23:20.970 --> 00:23:23.620 align:middle line:84%
+Assuming he has f tilde
+and multa as an oracle,
+
+00:23:23.620 --> 00:23:25.930 align:middle line:84%
+the only thing he
+checks is that--
+
+00:23:25.930 --> 00:23:29.610 align:middle line:84%
+this times this plus this
+is equals to some value.
+
+00:23:29.610 --> 00:23:31.330 align:middle line:84%
+So that's just a bunch
+of field elements.
+
+00:23:31.330 --> 00:23:32.850 align:middle line:90%
+It's nothing.
+
+00:23:32.850 --> 00:23:37.780 align:middle line:84%
+So really, it's the same
+as this, not much more.
+
+00:23:37.780 --> 00:23:39.520 align:middle line:90%
+And what does the prover do?
+
+00:23:39.520 --> 00:23:43.410 align:middle line:84%
+The prover just does
+a bunch of sum checks.
+
+00:23:43.410 --> 00:23:46.410 align:middle line:90%
+So the prover runtime--
+
+00:23:46.410 --> 00:23:48.840 align:middle line:84%
+well, he does d
+sum checks or 2d,
+
+00:23:48.840 --> 00:23:50.670 align:middle line:90%
+but we'll do a lot of order--
+
+00:23:50.670 --> 00:23:55.440 align:middle line:84%
+times the number of variables
+m, which is less than log
+
+00:23:55.440 --> 00:23:58.050 align:middle line:90%
+s times h to the m, which is s.
+
+00:23:58.050 --> 00:24:02.020 align:middle line:84%
+So already, he's like poly s, so
+the d doesn't matter actually.
+
+00:24:02.020 --> 00:24:05.490 align:middle line:84%
+Essentially, d poly s because
+the d is poly s, h to the m
+
+00:24:05.490 --> 00:24:06.780 align:middle line:90%
+is poly s.
+
+00:24:06.780 --> 00:24:09.430 align:middle line:90%
+And the time to compute--
+
+00:24:09.430 --> 00:24:11.370 align:middle line:84%
+he also runs in
+the time to compute
+
+00:24:11.370 --> 00:24:14.830 align:middle line:84%
+this polynomial, this
+kind of function,
+
+00:24:14.830 --> 00:24:18.960 align:middle line:84%
+but the time to compute this is
+also like poly and h to the m
+
+00:24:18.960 --> 00:24:22.530 align:middle line:84%
+because each one of
+them is like sum of h
+
+00:24:22.530 --> 00:24:25.163 align:middle line:84%
+to the m terms times a
+very simple polynomial.
+
+00:24:25.163 --> 00:24:26.830 align:middle line:84%
+That's kind of the
+low-degree extension.
+
+00:24:26.830 --> 00:24:29.378 align:middle line:84%
+So overall, he runs
+in time poly s.
+
+00:24:29.378 --> 00:24:32.045 align:middle line:84%
+So really-- so this is what you
+get, and this is what we wanted.
+
+00:24:32.045 --> 00:24:40.455 align:middle line:90%
+
+
+00:24:40.455 --> 00:24:42.390 align:middle line:84%
+So the verify runs
+in time d, the number
+
+00:24:42.390 --> 00:24:44.390 align:middle line:84%
+of sum checks times polylog
+s because each time,
+
+00:24:44.390 --> 00:24:46.810 align:middle line:84%
+he does something
+very, very small.
+
+00:24:46.810 --> 00:24:48.800 align:middle line:84%
+So let's talk about
+the soundness.
+
+00:24:48.800 --> 00:24:50.920 align:middle line:84%
+That's kind of the
+interesting part.
+
+00:24:50.920 --> 00:24:57.640 align:middle line:84%
+So for soundness-- the soundness
+analysis goes as follows.
+
+00:24:57.640 --> 00:25:02.760 align:middle line:90%
+It says if the prover cheated--
+
+00:25:02.760 --> 00:25:05.933 align:middle line:84%
+successfully cheated, so he
+lied, but we accepted him--
+
+00:25:05.933 --> 00:25:07.350 align:middle line:84%
+we want to argue
+that this happens
+
+00:25:07.350 --> 00:25:09.030 align:middle line:90%
+with a small probability.
+
+00:25:09.030 --> 00:25:13.260 align:middle line:84%
+So for this to happen,
+there must exist a layer
+
+00:25:13.260 --> 00:25:16.440 align:middle line:84%
+when he went from a false
+claim to a true claim.
+
+00:25:16.440 --> 00:25:19.150 align:middle line:84%
+Because at the end, he gave us a
+true claim because I'm checking.
+
+00:25:19.150 --> 00:25:21.270 align:middle line:84%
+In the beginning, he
+gave me a false claim.
+
+00:25:21.270 --> 00:25:25.740 align:middle line:84%
+So somewhere I had to
+go from false to true.
+
+00:25:25.740 --> 00:25:28.870 align:middle line:84%
+So let me-- I want to
+look at the notation,
+
+00:25:28.870 --> 00:25:30.295 align:middle line:90%
+so I won't mess it up this time.
+
+00:25:30.295 --> 00:25:33.920 align:middle line:90%
+
+
+00:25:33.920 --> 00:25:37.570 align:middle line:90%
+So here's the soundness.
+
+00:25:37.570 --> 00:25:41.730 align:middle line:90%
+
+
+00:25:41.730 --> 00:25:47.490 align:middle line:84%
+So let's denote--
+so suppose we have
+
+00:25:47.490 --> 00:25:51.080 align:middle line:84%
+a cheating prover that cheats
+with probability epsilon.
+
+00:25:51.080 --> 00:25:53.980 align:middle line:90%
+
+
+00:25:53.980 --> 00:25:57.640 align:middle line:84%
+And then we'll see also what
+the epsilon is, what's the best
+
+00:25:57.640 --> 00:25:58.790 align:middle line:90%
+probability you can cheat.
+
+00:25:58.790 --> 00:26:01.420 align:middle line:84%
+So suppose there's
+a p star that cheats
+
+00:26:01.420 --> 00:26:03.763 align:middle line:90%
+with probability epsilon--
+
+00:26:03.763 --> 00:26:05.680 align:middle line:84%
+cheats, meaning he gives
+me a false statement,
+
+00:26:05.680 --> 00:26:07.260 align:middle line:90%
+but I accept him.
+
+00:26:07.260 --> 00:26:12.000 align:middle line:84%
+Then I'm looking--
+so then for every--
+
+00:26:12.000 --> 00:26:21.070 align:middle line:84%
+actually, for every
+i in d, I want
+
+00:26:21.070 --> 00:26:23.480 align:middle line:84%
+to denote the randomness that
+was used by the sum check,
+
+00:26:23.480 --> 00:26:25.500 align:middle line:84%
+by the two parallel
+sum-check protocols.
+
+00:26:25.500 --> 00:26:48.110 align:middle line:84%
+Let's denote by Zi0, Zi1, and
+Zi2 the randomness use of a V
+
+00:26:48.110 --> 00:26:51.660 align:middle line:90%
+in the i-th sum-check protocol--
+
+00:26:51.660 --> 00:26:56.100 align:middle line:90%
+
+
+00:26:56.100 --> 00:26:59.260 align:middle line:84%
+in the two kind of parallel--
+use the same randomness.
+
+00:26:59.260 --> 00:27:02.920 align:middle line:84%
+So let's just denote by Zi0,
+that's kind of the Z0, Z1, Z2.
+
+00:27:02.920 --> 00:27:04.680 align:middle line:84%
+But in each layer,
+it's different.
+
+00:27:04.680 --> 00:27:10.490 align:middle line:90%
+
+
+00:27:10.490 --> 00:27:10.990 align:middle line:90%
+OK.
+
+00:27:10.990 --> 00:27:14.880 align:middle line:84%
+And let's denote
+the resulting claim.
+
+00:27:14.880 --> 00:27:33.140 align:middle line:84%
+So denote resulting claim of
+after the i by a Vi tilde,
+
+00:27:33.140 --> 00:27:40.820 align:middle line:90%
+and Zi1 equals Vi1 and Vi tilde.
+
+00:27:40.820 --> 00:27:47.850 align:middle line:90%
+And Zi2 equals Vi2.
+
+00:27:47.850 --> 00:27:52.190 align:middle line:84%
+OK, so this is the claim,
+what the verifier sends me
+
+00:27:52.190 --> 00:27:53.760 align:middle line:90%
+after the sum-check protocol.
+
+00:27:53.760 --> 00:27:58.860 align:middle line:84%
+So the sum-check protocol gave
+him a bunch of Zi0, Zi1, Zi2.
+
+00:27:58.860 --> 00:28:02.310 align:middle line:84%
+This is in the i-th pairs
+of sum-check protocol.
+
+00:28:02.310 --> 00:28:05.480 align:middle line:90%
+And then I can--
+
+00:28:05.480 --> 00:28:07.790 align:middle line:84%
+for the next layer, he
+gives me the values.
+
+00:28:07.790 --> 00:28:12.740 align:middle line:90%
+
+
+00:28:12.740 --> 00:28:13.950 align:middle line:90%
+This is just notation.
+
+00:28:13.950 --> 00:28:19.860 align:middle line:84%
+So with this notation, what does
+it mean for the prover to cheat?
+
+00:28:19.860 --> 00:28:24.620 align:middle line:84%
+So let's denote by kind of
+a bad event, Bi, the event--
+
+00:28:24.620 --> 00:28:26.720 align:middle line:84%
+so I'm going to
+denote by Bi for bad--
+
+00:28:26.720 --> 00:28:32.690 align:middle line:84%
+the event that in round
+i minus 1, he was faulty,
+
+00:28:32.690 --> 00:28:33.830 align:middle line:90%
+namely he gave me cheat.
+
+00:28:33.830 --> 00:28:37.550 align:middle line:84%
+But miraculously in round
+i, everything is fine.
+
+00:28:37.550 --> 00:28:47.230 align:middle line:84%
+So denote by Bi is
+the event that what?
+
+00:28:47.230 --> 00:28:58.640 align:middle line:84%
+That in round i minus 1, Vi
+minus 1 and Zi minus 1, 1,
+
+00:28:58.640 --> 00:29:07.740 align:middle line:84%
+either this is not
+true, or Vi minus--
+
+00:29:07.740 --> 00:29:09.270 align:middle line:90%
+or the other one is not true.
+
+00:29:09.270 --> 00:29:11.255 align:middle line:90%
+So one of them is not true.
+
+00:29:11.255 --> 00:29:17.180 align:middle line:90%
+
+
+00:29:17.180 --> 00:29:21.140 align:middle line:84%
+So bad is the event that in
+round i minus 1, at least one
+
+00:29:21.140 --> 00:29:22.520 align:middle line:90%
+of the claim is false.
+
+00:29:22.520 --> 00:29:24.650 align:middle line:90%
+But in round i--
+
+00:29:24.650 --> 00:29:29.060 align:middle line:84%
+and in round i, both of
+them are true miraculously.
+
+00:29:29.060 --> 00:29:32.110 align:middle line:90%
+This is also an equal.
+
+00:29:32.110 --> 00:29:38.040 align:middle line:90%
+And Vi and Zi2 is equal to Vi2.
+
+00:29:38.040 --> 00:29:41.980 align:middle line:90%
+
+
+00:29:41.980 --> 00:29:45.310 align:middle line:84%
+Note that if the
+prover cheated, it
+
+00:29:45.310 --> 00:29:48.790 align:middle line:84%
+must be the case that
+the probability--
+
+00:29:48.790 --> 00:29:51.160 align:middle line:84%
+because the prover cheated
+with probability epsilon
+
+00:29:51.160 --> 00:29:53.410 align:middle line:84%
+by our assumption,
+it must be the case
+
+00:29:53.410 --> 00:30:01.190 align:middle line:84%
+that B1 one or Bd is at least
+epsilon because he cheats
+
+00:30:01.190 --> 00:30:02.430 align:middle line:90%
+with probability epsilon.
+
+00:30:02.430 --> 00:30:04.610 align:middle line:84%
+So the probability of
+epsilon-- he starts with false
+
+00:30:04.610 --> 00:30:07.050 align:middle line:90%
+and gets to true.
+
+00:30:07.050 --> 00:30:12.480 align:middle line:84%
+So either he already got
+the true after round two,
+
+00:30:12.480 --> 00:30:15.210 align:middle line:84%
+after the first one,
+or went to true.
+
+00:30:15.210 --> 00:30:17.790 align:middle line:90%
+So one of the Bs must hold.
+
+00:30:17.790 --> 00:30:23.110 align:middle line:84%
+One of the bad event must
+happen for him to cheat.
+
+00:30:23.110 --> 00:30:24.875 align:middle line:84%
+OK, let me denote
+the epsilon here.
+
+00:30:24.875 --> 00:30:29.730 align:middle line:90%
+
+
+00:30:29.730 --> 00:30:35.675 align:middle line:84%
+But by union bound, this is just
+sum on d of probability of Bi.
+
+00:30:35.675 --> 00:30:38.900 align:middle line:90%
+
+
+00:30:38.900 --> 00:30:43.910 align:middle line:84%
+OK, so we know that he
+can cheat with probability
+
+00:30:43.910 --> 00:30:51.270 align:middle line:84%
+and with probability at most sum
+of the probability of bad and i.
+
+00:30:51.270 --> 00:30:53.790 align:middle line:84%
+Now what is it
+bad-- so let's look
+
+00:30:53.790 --> 00:30:55.560 align:middle line:90%
+at probability of bad and i.
+
+00:30:55.560 --> 00:30:57.720 align:middle line:90%
+So let me actually even this--
+
+00:30:57.720 --> 00:30:59.410 align:middle line:90%
+there's two types of bad i.
+
+00:30:59.410 --> 00:31:05.190 align:middle line:84%
+There's bad i where this is bad,
+bad i 0, or bad i 1 and bad i 2,
+
+00:31:05.190 --> 00:31:06.920 align:middle line:90%
+or this is bad.
+
+00:31:06.920 --> 00:31:13.030 align:middle line:84%
+So just let me denote this
+by sum and i and d, sorry.
+
+00:31:13.030 --> 00:31:19.320 align:middle line:90%
+
+
+00:31:19.320 --> 00:31:22.870 align:middle line:84%
+The probability-- so
+this is just notation.
+
+00:31:22.870 --> 00:31:29.600 align:middle line:90%
+I want to call this Bi1 or Bi2.
+
+00:31:29.600 --> 00:31:31.050 align:middle line:90%
+So let me define.
+
+00:31:31.050 --> 00:31:39.720 align:middle line:84%
+Bi1 is that bad where-- this
+is bad where the 1 is bad.
+
+00:31:39.720 --> 00:31:46.150 align:middle line:84%
+So this means that Vi minus
+1, Zi minus 1, 1 is bad.
+
+00:31:46.150 --> 00:31:48.360 align:middle line:90%
+It's not-- it was false.
+
+00:31:48.360 --> 00:31:51.390 align:middle line:90%
+And this means that 2 was false.
+
+00:31:51.390 --> 00:31:53.820 align:middle line:84%
+So Bi says one of
+them was false.
+
+00:31:53.820 --> 00:31:55.470 align:middle line:90%
+Let's partition it.
+
+00:31:55.470 --> 00:31:57.730 align:middle line:84%
+Either the first was
+false or the second.
+
+00:31:57.730 --> 00:31:59.460 align:middle line:90%
+Now maybe both--
+
+00:31:59.460 --> 00:32:01.060 align:middle line:90%
+I said or.
+
+00:32:01.060 --> 00:32:02.880 align:middle line:90%
+But I know one of them is false.
+
+00:32:02.880 --> 00:32:04.103 align:middle line:90%
+Now I'm going to union bound.
+
+00:32:04.103 --> 00:32:05.520 align:middle line:84%
+So I'm going to
+say again, this is
+
+00:32:05.520 --> 00:32:15.590 align:middle line:84%
+equal to some and i and
+d, sum and B in 1 or 2.
+
+00:32:15.590 --> 00:32:22.740 align:middle line:90%
+Probability of Bi, B.
+
+00:32:22.740 --> 00:32:25.660 align:middle line:84%
+Now let's look-- what is
+the probability of B--
+
+00:32:25.660 --> 00:32:28.500 align:middle line:90%
+what is this bad event, Bi, B?
+
+00:32:28.500 --> 00:32:31.590 align:middle line:84%
+Let's think of Bi
+for 1 for simplicity.
+
+00:32:31.590 --> 00:32:36.695 align:middle line:84%
+This is false, but the
+layer below is true.
+
+00:32:36.695 --> 00:32:39.360 align:middle line:90%
+
+
+00:32:39.360 --> 00:32:42.480 align:middle line:84%
+If this is false and
+the layer below is true,
+
+00:32:42.480 --> 00:32:44.830 align:middle line:84%
+it means that he cheated
+in the sum-check protocol.
+
+00:32:44.830 --> 00:32:47.280 align:middle line:84%
+This exactly means he cheated
+in the sum-check protocol
+
+00:32:47.280 --> 00:32:50.070 align:middle line:84%
+because he managed to
+start with a false claim
+
+00:32:50.070 --> 00:32:52.050 align:middle line:84%
+in the sum-check
+protocol and get you
+
+00:32:52.050 --> 00:33:01.630 align:middle line:84%
+to a true claim at
+the f, at the bottom.
+
+00:33:01.630 --> 00:33:05.230 align:middle line:84%
+Because if he didn't
+give you a true claim--
+
+00:33:05.230 --> 00:33:09.160 align:middle line:84%
+if he gave you a true,
+you wouldn't accept him.
+
+00:33:09.160 --> 00:33:11.570 align:middle line:90%
+You would actually call him out.
+
+00:33:11.570 --> 00:33:14.240 align:middle line:84%
+So if you accepted him when
+he gave you a true claim in i,
+
+00:33:14.240 --> 00:33:16.820 align:middle line:84%
+it must mean that he
+cheated in the i-th
+
+00:33:16.820 --> 00:33:18.010 align:middle line:90%
+in that sum-check protocol.
+
+00:33:18.010 --> 00:33:18.510 align:middle line:90%
+Yeah?
+
+00:33:18.510 --> 00:33:21.530 align:middle line:90%
+AUDIENCE: [INAUDIBLE]
+
+00:33:21.530 --> 00:33:24.411 align:middle line:90%
+
+
+00:33:24.411 --> 00:33:26.240 align:middle line:90%
+PROFESSOR: Oh, sorry, yes.
+
+00:33:26.240 --> 00:33:27.090 align:middle line:90%
+Yeah.
+
+00:33:27.090 --> 00:33:27.590 align:middle line:90%
+Sorry.
+
+00:33:27.590 --> 00:33:30.410 align:middle line:90%
+
+
+00:33:30.410 --> 00:33:32.690 align:middle line:84%
+i union bound, everything
+is more equal to.
+
+00:33:32.690 --> 00:33:33.420 align:middle line:90%
+Thank you.
+
+00:33:33.420 --> 00:33:37.150 align:middle line:90%
+AUDIENCE: And the middle one.
+
+00:33:37.150 --> 00:33:37.910 align:middle line:90%
+PROFESSOR: Sorry.
+
+00:33:37.910 --> 00:33:38.600 align:middle line:90%
+This is equal.
+
+00:33:38.600 --> 00:33:40.690 align:middle line:90%
+This is definition.
+
+00:33:40.690 --> 00:33:43.690 align:middle line:90%
+Yeah, this is just definition.
+
+00:33:43.690 --> 00:33:45.970 align:middle line:90%
+AUDIENCE: Bi 1 again.
+
+00:33:45.970 --> 00:33:46.820 align:middle line:90%
+PROFESSOR: OK, yeah.
+
+00:33:46.820 --> 00:33:48.563 align:middle line:90%
+So Bi 1--
+
+00:33:48.563 --> 00:33:49.480 align:middle line:90%
+OK, so let me explain.
+
+00:33:49.480 --> 00:33:53.440 align:middle line:84%
+Bi is the event that this
+or this and both of this.
+
+00:33:53.440 --> 00:33:57.190 align:middle line:84%
+Bi 1 is just the event that
+this is false and this.
+
+00:33:57.190 --> 00:34:02.805 align:middle line:84%
+Bi 2 is the event that
+this is false and this.
+
+00:34:02.805 --> 00:34:04.340 align:middle line:90%
+AUDIENCE: [INAUDIBLE].
+
+00:34:04.340 --> 00:34:05.110 align:middle line:90%
+PROFESSOR: OK.
+
+00:34:05.110 --> 00:34:05.710 align:middle line:90%
+Exactly.
+
+00:34:05.710 --> 00:34:07.600 align:middle line:90%
+So that is the--
+
+00:34:07.600 --> 00:34:12.670 align:middle line:84%
+Bi is the event that in layer
+i minus 1, one of the answers
+
+00:34:12.670 --> 00:34:13.750 align:middle line:90%
+is false.
+
+00:34:13.750 --> 00:34:16.150 align:middle line:90%
+But in layer i, both are true.
+
+00:34:16.150 --> 00:34:18.389 align:middle line:90%
+That's Bi.
+
+00:34:18.389 --> 00:34:21.020 align:middle line:90%
+Bi 1-- I'm partitioned into two.
+
+00:34:21.020 --> 00:34:24.270 align:middle line:84%
+Bi 1 is that actually, it's
+the first claim that's false,
+
+00:34:24.270 --> 00:34:26.040 align:middle line:90%
+and the next layer is true.
+
+00:34:26.040 --> 00:34:29.730 align:middle line:84%
+Bi 2 is that the
+second claim was false,
+
+00:34:29.730 --> 00:34:32.162 align:middle line:90%
+and the layer below is true.
+
+00:34:32.162 --> 00:34:33.870 align:middle line:84%
+So I'm kind of
+partitioning the-- there's
+
+00:34:33.870 --> 00:34:35.110 align:middle line:90%
+two sum-check protocols.
+
+00:34:35.110 --> 00:34:37.750 align:middle line:84%
+I'm saying, look, you
+cheated in one of them.
+
+00:34:37.750 --> 00:34:40.714 align:middle line:84%
+Either you cheated in this one,
+or you cheated in this one.
+
+00:34:40.714 --> 00:34:45.090 align:middle line:90%
+
+
+00:34:45.090 --> 00:34:48.030 align:middle line:84%
+So Bi 1 said you cheated in
+the first sum-check protocol
+
+00:34:48.030 --> 00:34:50.130 align:middle line:84%
+because this was
+false, and you managed
+
+00:34:50.130 --> 00:34:52.900 align:middle line:90%
+to get a true for some reason.
+
+00:34:52.900 --> 00:34:56.380 align:middle line:84%
+Bi 2 says you cheated
+in the second protocol.
+
+00:34:56.380 --> 00:34:58.440 align:middle line:84%
+You started with false,
+and you got true.
+
+00:34:58.440 --> 00:35:01.050 align:middle line:90%
+
+
+00:35:01.050 --> 00:35:03.360 align:middle line:84%
+So going back to
+the question about--
+
+00:35:03.360 --> 00:35:05.130 align:middle line:90%
+OK, let me just finish this.
+
+00:35:05.130 --> 00:35:08.100 align:middle line:84%
+What's the probability
+of cheating
+
+00:35:08.100 --> 00:35:09.430 align:middle line:90%
+in the sum-check protocol?
+
+00:35:09.430 --> 00:35:12.930 align:middle line:84%
+Well, we have it-- m
+times d divided by f.
+
+00:35:12.930 --> 00:35:15.750 align:middle line:90%
+M is less than log s.
+
+00:35:15.750 --> 00:35:27.750 align:middle line:84%
+d Is less than log s, so let's
+say, log squared s divided by f.
+
+00:35:27.750 --> 00:35:30.630 align:middle line:84%
+So really, the probability
+to cheat epsilon
+
+00:35:30.630 --> 00:35:34.470 align:middle line:84%
+is smaller than log squared
+f divided by epsilon.
+
+00:35:34.470 --> 00:35:37.920 align:middle line:84%
+Squared f is just kind
+of m times d for us
+
+00:35:37.920 --> 00:35:41.130 align:middle line:84%
+because m is like log
+s over log, log s.
+
+00:35:41.130 --> 00:35:45.210 align:middle line:84%
+d is H minus 1, which is
+log s, so essentially, log
+
+00:35:45.210 --> 00:35:46.410 align:middle line:90%
+squared s over s.
+
+00:35:46.410 --> 00:35:50.080 align:middle line:84%
+So as long as you take
+f to be-- oh, sorry.
+
+00:35:50.080 --> 00:35:52.060 align:middle line:90%
+Yeah.
+
+00:35:52.060 --> 00:35:52.560 align:middle line:90%
+Yeah.
+
+00:35:52.560 --> 00:35:56.640 align:middle line:84%
+So as long as you take
+f to be significantly--
+
+00:35:56.640 --> 00:35:59.730 align:middle line:84%
+now just take f to be--
+you pay with polylog
+
+00:35:59.730 --> 00:36:03.270 align:middle line:84%
+f in the communication
+and everything.
+
+00:36:03.270 --> 00:36:06.710 align:middle line:84%
+So take a big f,
+and you're good.
+
+00:36:06.710 --> 00:36:11.240 align:middle line:84%
+Now about the comment of
+isn't it dangerous that we use
+
+00:36:11.240 --> 00:36:14.510 align:middle line:84%
+the same randomness for
+two sum-check protocols--
+
+00:36:14.510 --> 00:36:15.865 align:middle line:90%
+it's not dangerous.
+
+00:36:15.865 --> 00:36:17.240 align:middle line:84%
+And the reason
+it's not dangerous
+
+00:36:17.240 --> 00:36:18.900 align:middle line:84%
+because we're doing
+a union bound.
+
+00:36:18.900 --> 00:36:21.870 align:middle line:84%
+The point is we're doing
+two sum-check protocols,
+
+00:36:21.870 --> 00:36:23.890 align:middle line:90%
+but actually, we don't--
+
+00:36:23.890 --> 00:36:25.950 align:middle line:84%
+look, let's forget that
+we're doing with another.
+
+00:36:25.950 --> 00:36:26.492 align:middle line:90%
+I don't care.
+
+00:36:26.492 --> 00:36:27.920 align:middle line:90%
+Let's just look at one of them.
+
+00:36:27.920 --> 00:36:29.600 align:middle line:84%
+We know that on
+this, you can't cheat
+
+00:36:29.600 --> 00:36:31.892 align:middle line:84%
+even if you're doing a lot
+of other things in the side.
+
+00:36:31.892 --> 00:36:32.960 align:middle line:90%
+On this, we can't cheat.
+
+00:36:32.960 --> 00:36:34.830 align:middle line:90%
+And we know that on this we can.
+
+00:36:34.830 --> 00:36:36.090 align:middle line:90%
+Now, it may be correlated.
+
+00:36:36.090 --> 00:36:36.750 align:middle line:90%
+I don't care.
+
+00:36:36.750 --> 00:36:37.850 align:middle line:84%
+It may be that if
+you cheat on one if
+
+00:36:37.850 --> 00:36:39.350 align:middle line:84%
+and only if you
+cheat on the other.
+
+00:36:39.350 --> 00:36:41.558 align:middle line:84%
+The fact that you cheat on
+one is good enough for me.
+
+00:36:41.558 --> 00:36:45.440 align:middle line:84%
+I don't-- so the union bound
+takes care of the fact that we
+
+00:36:45.440 --> 00:36:46.740 align:middle line:90%
+use the same randomness.
+
+00:36:46.740 --> 00:36:50.120 align:middle line:90%
+
+
+00:36:50.120 --> 00:36:50.930 align:middle line:90%
+Questions?
+
+00:36:50.930 --> 00:36:51.440 align:middle line:90%
+Yeah.
+
+00:36:51.440 --> 00:36:53.065 align:middle line:84%
+AUDIENCE: So in the
+sum-check protocol,
+
+00:36:53.065 --> 00:36:56.138 align:middle line:84%
+is it-- is the GKR apply
+in like a black box way?
+
+00:36:56.138 --> 00:36:56.930 align:middle line:90%
+PROFESSOR: Exactly.
+
+00:36:56.930 --> 00:37:00.170 align:middle line:84%
+So GKR uses the sum-check
+protocol completely
+
+00:37:00.170 --> 00:37:01.280 align:middle line:90%
+in a black box way.
+
+00:37:01.280 --> 00:37:04.495 align:middle line:84%
+You don't need to ever open
+the box to know how it works.
+
+00:37:04.495 --> 00:37:09.008 align:middle line:84%
+AUDIENCE: Oh, so there's Z0,
+Z1, Z2's randomness [INAUDIBLE].
+
+00:37:09.008 --> 00:37:10.050 align:middle line:90%
+PROFESSOR: Yeah, exactly.
+
+00:37:10.050 --> 00:37:12.550 align:middle line:84%
+So I'll tell you what you need
+about the sum-check protocol.
+
+00:37:12.550 --> 00:37:14.510 align:middle line:90%
+The one property you need--
+
+00:37:14.510 --> 00:37:17.390 align:middle line:84%
+so you can use any quote,
+unquote sum-check protocol
+
+00:37:17.390 --> 00:37:19.350 align:middle line:84%
+as long as it has the
+following property.
+
+00:37:19.350 --> 00:37:24.230 align:middle line:84%
+The property is that the
+protocol is public coin, namely
+
+00:37:24.230 --> 00:37:26.930 align:middle line:90%
+the verify--
+
+00:37:26.930 --> 00:37:28.560 align:middle line:84%
+actually, that even
+doesn't matter.
+
+00:37:28.560 --> 00:37:32.220 align:middle line:84%
+Let me even-- the verifier
+sends some randomness.
+
+00:37:32.220 --> 00:37:34.463 align:middle line:90%
+Let's call it T1 to TM.
+
+00:37:34.463 --> 00:37:36.630 align:middle line:84%
+I don't care what else he
+sends, actually, whatever.
+
+00:37:36.630 --> 00:37:39.620 align:middle line:84%
+But at the end of
+the day, it reduces
+
+00:37:39.620 --> 00:37:43.170 align:middle line:84%
+to the verifier needs to
+check f and T1 up to TM.
+
+00:37:43.170 --> 00:37:45.020 align:middle line:84%
+So the only thing
+I'm really using
+
+00:37:45.020 --> 00:37:48.470 align:middle line:84%
+about the sum-check protocol
+beyond the guarantees
+
+00:37:48.470 --> 00:37:51.970 align:middle line:84%
+is the fact that at
+the end of the day,
+
+00:37:51.970 --> 00:37:55.080 align:middle line:84%
+the verifier checks
+f and random points
+
+00:37:55.080 --> 00:38:01.990 align:middle line:84%
+generated by him because that
+is what allows me to do the two
+
+00:38:01.990 --> 00:38:03.970 align:middle line:90%
+sum-checks in parallel.
+
+00:38:03.970 --> 00:38:06.370 align:middle line:84%
+And as I said, by the
+way, in the original GKR,
+
+00:38:06.370 --> 00:38:07.220 align:middle line:90%
+we didn't need that.
+
+00:38:07.220 --> 00:38:09.137 align:middle line:84%
+We could use any sum-check
+because we actually
+
+00:38:09.137 --> 00:38:10.420 align:middle line:90%
+didn't do two GKRs.
+
+00:38:10.420 --> 00:38:12.800 align:middle line:84%
+There was kind of a 2 to 1
+trick that went in there.
+
+00:38:12.800 --> 00:38:16.330 align:middle line:84%
+But the way I presented it here,
+which is simpler, we need--
+
+00:38:16.330 --> 00:38:18.875 align:middle line:84%
+the property we need about
+the sum check is that--
+
+00:38:18.875 --> 00:38:20.500 align:middle line:84%
+the protocol itself
+is that at the end,
+
+00:38:20.500 --> 00:38:24.970 align:middle line:84%
+it reduces to verifying a
+single point of the verifier's
+
+00:38:24.970 --> 00:38:26.200 align:middle line:90%
+choosing.
+
+00:38:26.200 --> 00:38:27.430 align:middle line:90%
+Yeah?
+
+00:38:27.430 --> 00:38:29.183 align:middle line:84%
+AUDIENCE: What happens
+at the very end
+
+00:38:29.183 --> 00:38:31.100 align:middle line:84%
+when you're like-- you
+get to the input layer?
+
+00:38:31.100 --> 00:38:31.767 align:middle line:90%
+PROFESSOR: Good.
+
+00:38:31.767 --> 00:38:34.054 align:middle line:84%
+AUDIENCE: How do you define
+the extension of that
+
+00:38:34.054 --> 00:38:35.040 align:middle line:90%
+or compute that?
+
+00:38:35.040 --> 00:38:37.090 align:middle line:90%
+PROFESSOR: OK.
+
+00:38:37.090 --> 00:38:39.220 align:middle line:84%
+So what happens in
+the input layer?
+
+00:38:39.220 --> 00:38:42.613 align:middle line:84%
+In the input layer, at the end,
+the verifier needs to compute--
+
+00:38:42.613 --> 00:38:46.660 align:middle line:90%
+
+
+00:38:46.660 --> 00:38:51.830 align:middle line:84%
+the verifier needs
+to compute Vd,
+
+00:38:51.830 --> 00:38:54.834 align:middle line:90%
+which is the input layer on--
+
+00:38:54.834 --> 00:38:55.667 align:middle line:90%
+I don't know-- zd1--
+
+00:38:55.667 --> 00:38:58.600 align:middle line:90%
+
+
+00:38:58.600 --> 00:39:07.700 align:middle line:84%
+it kind of equals Vd1 and
+Vd and Zd2 is equal to Vd2.
+
+00:39:07.700 --> 00:39:08.960 align:middle line:90%
+He needs to check this.
+
+00:39:08.960 --> 00:39:10.940 align:middle line:90%
+So the verify will check this.
+
+00:39:10.940 --> 00:39:12.530 align:middle line:90%
+How will he check it?
+
+00:39:12.530 --> 00:39:14.090 align:middle line:84%
+Oh, he can check
+that on his own.
+
+00:39:14.090 --> 00:39:14.610 align:middle line:90%
+Why?
+
+00:39:14.610 --> 00:39:15.110 align:middle line:90%
+Let's see.
+
+00:39:15.110 --> 00:39:16.820 align:middle line:84%
+How long does it
+take to check this?
+
+00:39:16.820 --> 00:39:19.820 align:middle line:84%
+Let me see where the
+low-degree extension is buried.
+
+00:39:19.820 --> 00:39:21.550 align:middle line:90%
+OK, let's see.
+
+00:39:21.550 --> 00:39:24.160 align:middle line:84%
+What is the low-degree--
+computing the low-degree
+
+00:39:24.160 --> 00:39:26.920 align:middle line:90%
+extension-- he knows the--
+
+00:39:26.920 --> 00:39:36.720 align:middle line:84%
+so v-- this is low-degree
+extension of x1 up to xn.
+
+00:39:36.720 --> 00:39:38.800 align:middle line:84%
+It's just the
+extension of the input.
+
+00:39:38.800 --> 00:39:40.200 align:middle line:90%
+That's all.
+
+00:39:40.200 --> 00:39:41.220 align:middle line:90%
+AUDIENCE: So n is small?
+
+00:39:41.220 --> 00:39:42.180 align:middle line:90%
+PROFESSOR: n is small.
+
+00:39:42.180 --> 00:39:45.990 align:middle line:90%
+N is much smaller than s.
+
+00:39:45.990 --> 00:39:49.060 align:middle line:84%
+So n is very, very small,
+much smaller than--
+
+00:39:49.060 --> 00:39:51.300 align:middle line:84%
+of course, the--
+look, the verifier
+
+00:39:51.300 --> 00:39:52.830 align:middle line:90%
+needs to read the input.
+
+00:39:52.830 --> 00:39:54.120 align:middle line:90%
+Yeah, he needs to run time n.
+
+00:39:54.120 --> 00:39:56.170 align:middle line:84%
+He needs to know
+what he's verifying.
+
+00:39:56.170 --> 00:39:58.680 align:middle line:84%
+So he reads the input,
+and you should think of it
+
+00:39:58.680 --> 00:40:00.280 align:middle line:90%
+as much smaller than s.
+
+00:40:00.280 --> 00:40:02.350 align:middle line:84%
+Otherwise, there's
+no point in all this.
+
+00:40:02.350 --> 00:40:05.040 align:middle line:84%
+And to check this--
+to check a point
+
+00:40:05.040 --> 00:40:11.190 align:middle line:84%
+in the low-degree extension of
+x takes time, linear in n times
+
+00:40:11.190 --> 00:40:15.090 align:middle line:84%
+polylog n the field,
+so quasi linear in n.
+
+00:40:15.090 --> 00:40:18.570 align:middle line:90%
+Because to check the sum--
+
+00:40:18.570 --> 00:40:23.550 align:middle line:84%
+to check low-degree extension,
+you just take only n of them
+
+00:40:23.550 --> 00:40:25.200 align:middle line:84%
+because you're doing
+sum check over n.
+
+00:40:25.200 --> 00:40:27.460 align:middle line:84%
+You can pad it by zeros
+to get s as you want,
+
+00:40:27.460 --> 00:40:30.130 align:middle line:84%
+but there's only n
+non-zero f's here.
+
+00:40:30.130 --> 00:40:33.220 align:middle line:84%
+So you're doing sum of
+n elements, x1 to xn,
+
+00:40:33.220 --> 00:40:36.020 align:middle line:84%
+and each one times this small
+polynomial that you can compute.
+
+00:40:36.020 --> 00:40:37.460 align:middle line:90%
+That's a polylog computation.
+
+00:40:37.460 --> 00:40:39.710 align:middle line:84%
+AUDIENCE: When you do the
+dummy variables for padding,
+
+00:40:39.710 --> 00:40:40.923 align:middle line:90%
+[INAUDIBLE].
+
+00:40:40.923 --> 00:40:42.840 align:middle line:84%
+PROFESSOR: Exactly, you
+just set them up to 0.
+
+00:40:42.840 --> 00:40:45.142 align:middle line:90%
+Yeah, exactly.
+
+00:40:45.142 --> 00:40:47.600 align:middle line:84%
+Actually, in the original paper,
+the way the notations work
+
+00:40:47.600 --> 00:40:50.100 align:middle line:84%
+is more complicated because
+we didn't set them all to 0.
+
+00:40:50.100 --> 00:40:51.590 align:middle line:90%
+So we had another s and another.
+
+00:40:51.590 --> 00:40:53.750 align:middle line:84%
+But setting all to
+0 is just simple
+
+00:40:53.750 --> 00:40:55.735 align:middle line:90%
+because you have less notation.
+
+00:40:55.735 --> 00:40:58.340 align:middle line:90%
+
+
+00:40:58.340 --> 00:41:00.630 align:middle line:90%
+Other questions?
+
+00:41:00.630 --> 00:41:01.130 align:middle line:90%
+Yeah.
+
+00:41:01.130 --> 00:41:04.890 align:middle line:84%
+AUDIENCE: So [INAUDIBLE]
+this, but the V1 and V2,
+
+00:41:04.890 --> 00:41:08.420 align:middle line:84%
+do they come from the fan-in
+2, left inputs and right inputs
+
+00:41:08.420 --> 00:41:09.950 align:middle line:90%
+or--
+
+00:41:09.950 --> 00:41:15.320 align:middle line:84%
+PROFESSOR: No, the fan-in 2
+came from the fact that add here
+
+00:41:15.320 --> 00:41:16.740 align:middle line:90%
+has only three things.
+
+00:41:16.740 --> 00:41:18.680 align:middle line:84%
+It's like the input
+and two output.
+
+00:41:18.680 --> 00:41:22.580 align:middle line:84%
+P is the gate above, and
+it only has two children.
+
+00:41:22.580 --> 00:41:23.850 align:middle line:90%
+That's the fan-in 2.
+
+00:41:23.850 --> 00:41:25.020 align:middle line:90%
+Otherwise, you'll have many.
+
+00:41:25.020 --> 00:41:27.285 align:middle line:90%
+The reason-- OK, yes.
+
+00:41:27.285 --> 00:41:28.410 align:middle line:90%
+The answer is yes actually.
+
+00:41:28.410 --> 00:41:31.300 align:middle line:90%
+Because the-- OK.
+
+00:41:31.300 --> 00:41:32.230 align:middle line:90%
+Yeah, sorry.
+
+00:41:32.230 --> 00:41:35.430 align:middle line:84%
+Yes, because they have only
+fan-in 2, there's only--
+
+00:41:35.430 --> 00:41:39.470 align:middle line:84%
+otherwise, you'll have Vw1
+plus Vw2 plus Vw3 plus Vw4.
+
+00:41:39.470 --> 00:41:40.860 align:middle line:90%
+Sorry.
+
+00:41:40.860 --> 00:41:44.005 align:middle line:84%
+AUDIENCE: So if you had a
+higher fan-in with lower depth,
+
+00:41:44.005 --> 00:41:45.880 align:middle line:84%
+could you do just more
+sum checks in parallel
+
+00:41:45.880 --> 00:41:47.100 align:middle line:90%
+and [INAUDIBLE] the depth?
+
+00:41:47.100 --> 00:41:47.767 align:middle line:90%
+PROFESSOR: Yeah.
+
+00:41:47.767 --> 00:41:49.240 align:middle line:90%
+Yeah, yeah, yeah.
+
+00:41:49.240 --> 00:41:50.320 align:middle line:90%
+You can-- OK, good point.
+
+00:41:50.320 --> 00:41:51.510 align:middle line:90%
+OK, Leo has a very good point.
+
+00:41:51.510 --> 00:41:52.343 align:middle line:90%
+What Leo is saying--
+
+00:41:52.343 --> 00:41:54.550 align:middle line:84%
+he's saying, look,
+you assumed fan-in 2,
+
+00:41:54.550 --> 00:41:58.110 align:middle line:84%
+but you paid for it in
+another log number of rounds.
+
+00:41:58.110 --> 00:41:59.470 align:middle line:90%
+Don't assume it.
+
+00:41:59.470 --> 00:42:00.870 align:middle line:90%
+Just don't have fan-in 2.
+
+00:42:00.870 --> 00:42:04.710 align:middle line:84%
+Have p and many children--
+w1 up to w whatever.
+
+00:42:04.710 --> 00:42:07.480 align:middle line:90%
+But then reduce it to more.
+
+00:42:07.480 --> 00:42:09.270 align:middle line:84%
+True, but you can't
+have too big fan
+
+00:42:09.270 --> 00:42:10.710 align:middle line:84%
+because you're going to pay
+for it in the communication
+
+00:42:10.710 --> 00:42:12.010 align:middle line:90%
+complexity and everything.
+
+00:42:12.010 --> 00:42:15.190 align:middle line:84%
+So as long as it's most
+polylog, you're OK.
+
+00:42:15.190 --> 00:42:17.482 align:middle line:90%
+So it's-- yeah.
+
+00:42:17.482 --> 00:42:18.190 align:middle line:90%
+But you're right.
+
+00:42:18.190 --> 00:42:21.610 align:middle line:84%
+You don't-- there's
+no magic about 2.
+
+00:42:21.610 --> 00:42:22.770 align:middle line:90%
+OK, we're out of time.
+
+00:42:22.770 --> 00:42:26.650 align:middle line:84%
+Thank you so much and
+enjoy your break next week
+
+00:42:26.650 --> 00:42:28.150 align:middle line:90%
+for some reason, your holiday.
+
+00:42:28.150 --> 00:42:30.000 align:middle line:90%
+[LAUGHTER]

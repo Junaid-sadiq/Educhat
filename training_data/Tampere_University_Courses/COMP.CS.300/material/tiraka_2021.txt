@@ -1,0 +1,6326 @@
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+1
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+2
+
+Lähteet
+
+Luentomoniste pohjautuu vahvasti prof. Antti Valmarin
+vanhaan luentomonisteeseen Tietorakenteet ja algoritmit.
+
+Useimmat algoritmit ovat peräisin kirjasta Introduction to
+Algorithms; Thomas H. Cormen, Charles E. Leiserson, Ronald L.
+Rivest, Clifford Stein.
+
+Lisäksi luentomonistetta koottaessa on käytetty seuraavia
+kirjoja:
+• Introduction to The Design & Analysis of Algorithms; Anany
+
+Levitin
+
+• Olioiden ohjelmointi C++:lla; Matti Rintala, Jyke Jokinen
+• Tietorakenteet ja Algoritmit; Ilkka Kokkarinen, Kirsti
+
+Ala-Mutka
+
+• The C++ Standard Library; Nicolai M. Josuttis
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+3
+
+1 Johdanto
+
+Mietitään ensin hiukan syitä tietorakenteiden ja algoritmien
+opiskelulle
+
+Algorithms in the world
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+4
+
+1.1 Miksi?
+
+Mitkä ovat sinun elämääsi eniten vaikuttavat algoritmit?
+
+Picture: Chris Watt
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+5
+
+Tietokoneohjelmia ei ole olemassa ilman algoritmeja
+
+• algoritmeihin törmäät esimerkiksi seuraavissa sovelluksissa:
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+6
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+7
+
+aina, kun käytät tietokonetta, käytät myös algoritmeja.
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+8
+
+1.2 Kaikki pennillä?
+
+Via: The Washington Post
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+9
+
+Tietorakenteita tarvitaan ohjelmissa käsiteltävän tiedon
+tallettamiseen ja sen käsittelyn mahdollistamiseen ja
+helpottamiseen
+
+• tietorakenteita on monia eivätkä ne kaikki sovi kaikkiin
+
+tilanteisiin
+⇒ ohjelmoijan pitää osata valita tilanteeseen sopivin
+⇒ vaihtoehtojen käyttäytyminen, vahvuudet ja heikkoudet
+on tunnettava
+
+Modernit ohjelmointikielet tarjoavat valmiina helppokäyttöisiä
+tietorakenteita. Näiden ominaisuuksien sekä käyttöön
+vaikuttavien rajoitteiden tuntemiseksi tarvitaan
+perustietorakenneosaamista
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+10
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+11
+
+Kuinka moni on turhautunut ohjelman tai esimerkiksi kännykän
+hitauteen?
+• toiminnallisuus on toki ensisijaisen tärkeää kaikille ohjelmille,
+
+mutta tehokkuus ei ole merkityksetön sivuseikka
+
+• on tärkeää huomioida ja miettiä ratkaisujaan myös ajan- ja
+
+muistinkäytön kannalta
+
+• valmiin kirjaston käyttö näyttää usein suoraviivaisemmalta
+
+kuin onkaan
+
+Näitä asioita käsitellään tällä kurssilla
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+12
+
+2 Käsitteitä ja merkintöjä
+
+Tässä luvussa esitellään kurssilla käytettävää käsitteistöä ja
+merkintätapoja.
+
+Luvussa käsitellään myös pseudokoodiesityksen ja
+ohjelmointikielisen koodin eroja. Esimerkkinä käytetään
+järjestämisalgoritmia INSERTION-SORT.
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+13
+
+2.1 Tavoitteet
+
+Kurssin keskeisenä tavoitteena on antaa opiskelijalle käyttöön
+peruskoneisto kuhunkin ohjelmointitehtävään sopivan
+ratkaisun valitsemiseen ja omien ratkaisujen tehokkuuden
+arvioimiseen karkealla tasolla.
+
+• Kurssilla keskitytään tilanteeseen sopivan tietorakenteen
+
+valintaan.
+
+• Lisäksi käsitellään käytännön tilanteissa usein vastaan tulevia
+
+ongelmatyyppejä ja algoritmeja, joilla ne voi ratkaista.
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+14
+
+• Kurssilla keskitytään lähinnä ns. hyviin algoritmeihin.
+• Painotus on siis siinä, miten algoritmin ajankulutus kasvaa
+
+syötekoon kasvaessa, eikä niinkään yksityiskohtien
+optimoinnissa.
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+15
+
+2.2 Peruskäsitteistöä
+
+Tietorakenne
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+16
+
+Tapa tallettaa ja järjestää tietoa:
+• tietoa pystytään lisäämään ja hakemaan algoritmien
+
+avulla.
+
+• talletettua tietoa voidaan muokata
+• tietorakenteita on useamman tasoisia: tietorakenne voi
+
+koostua toisista tietorakenteista
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+17
+
+Algoritmi:
+
+Kuva 1: kuva: Aldo Cortesi
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+18
+
+• Joukko ohjeita tai askeleita jonkin ongelman ratkaisemiseksi
+• Hyvin määritelty laskentamenetelmä, joka saa syötteenään
+alkion tai joukon alkioita ja ja tuottaa tuloksenaan alkion tai
+joukon alkioita
+
+• Tapa tuottaa syötteestä tulos
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+19
+
+• hyvin määritelty =
+
+– jokainen askel on kuvattu niin tarkasti, että lukija (ihminen
+
+tai kone) osaa suorittaa sen
+
+– jokainen askel on määritelty yksikäsitteisesti
+– samat vaatimukset pätevät askelten suoritusjärjestykselle
+– suorituksen tulee päättyä äärellisen askelmäärän jälkeen
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+20
+
+Algoritmi ratkaisee jonkin hyvin määritellyn (laskenta)tehtävän.
+• laskentatehtävä määrittelee, missä suhteessa tulosten tulee
+
+olla annettuihin syötteisiin
+
+• esimerkiksi:
+
+– taulukon järjestäminen
+
+syötteet: jono lukuja a1, a2, . . . , an
+tulokset: luvut a1, a2, . . . , an suuruusjärjestyksessä pienin
+ensin
+
+– lentoyhteyksien etsiminen
+
+syötteet: lentoreittiverkosto eli kaupunkeja joiden
+välillä lentoyhteyksiä
+tulokset: Lentojen numerot, yhteyden tiedot ja hinta.
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+21
+
+• laskentatehtävän esiintymä eli instanssi saadaan antamalla
+
+tehtävän syötteille lailliset arvot
+
+– järjestämistehtävän instanssiesimerkki: 31, 41, 59, 26, 41, 58
+
+Algoritmi on oikea (correct), jos se pysähtyy ja antaa oikeat
+tulokset aina kun sille on annettu laillinen syöte.
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+22
+
+• algoritmin tai laskentatehtävän määritelmä saa kieltää
+
+osan muodollisesti mahdollisista syötteistä
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+23
+
+algoritmi voi olla virheellinen kolmella tavalla
+– antaa väärän lopputuloksen
+– kaatuu kesken suorituksen
+– ei koskaan lopeta
+virheellinenkin algoritmi on joskus hyvin käyttökelpoinen, jos
+virhetiheys hallitaan!
+– esim. luvun testaus alkuluvuksi
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+24
+
+Periaatteessa mikä tahansa menetelmä kelpaa algoritmien
+esittämiseen, kunhan tulos on tarkka ja yksikäsitteinen.
+• yleensä algoritmit toteutetaan tietokoneohjelmina tai
+
+laitteistoina
+
+• käytännön toteutuksessa on otettava huomioon monia
+
+insinöörinäkökohtia
+– sopeuttaminen käyttötilanteeseen
+– syötteiden laillisuuden tarkistukset
+– virhetilanteiden käsittely
+– ohjelmointikielen rajoitukset
+– laitteiston ja kielen aiheuttamat nopeus- ja
+
+tarkoituksenmukaisuusnäkökohdat
+– ylläpidettävyys ⇒ modulaarisuus jne.
+⇒ algoritmin idea hukkuu helposti toteutusyksityiskohtien
+alle
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+25
+
+Tällä kurssilla keskitytään algoritmien ideoihin ja algoritmit
+esitetään useimmiten pseudokoodina ilman
+laillisuustarkistuksia, virheiden käsittelyä yms.
+
+Otetaan esimerkiksi pienten taulukoiden järjestämiseen
+soveltuva algoritmi INSERTION-SORT:
+
+Kuva 2: kuva: Wikipedia
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+26
+
+• periaate:
+
+– toiminnan aikana taulukon alkuo-
+sa on järjestyksessä ja loppuosa ei
+– osien raja lähtee liikkeelle paikko-
+jen 1 ja 2 välistä ja etenee askel ker-
+rallaan taulukon loppuun
+
+• kullakin siirtoaskeleella etsitään taulu-
+kon alkuosasta kohta, johon loppuo-
+san ensimmäinen alkio kuuluu
+– uudelle alkiolle raivataan tilaa
+siirtämällä isompia alkioita askel
+eteenpäin
+
+– lopuksi alkio sijoitetaan paikalleen
+ja alkuosaa kasvatetaan pykälällä
+
+594131584126594158412659413131265958414131265859414131265841594131265841COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+27
+
+Kurssilla käytetyllä pseudokoodiesityksellä INSERTION-SORT
+näyttää tältä:
+
+(syöte saadaan taulukossa A)
+(siirretään osien välistä rajaa)
+(otetaan alkuosan uusi alkio käsittelyyn)
+
+INSERTION-SORT(A)
+1 for j := 2 to A.length do
+key := A[j]
+2
+i := j − 1
+3
+while i > 0 and A[i] > key do(etsitään uudelle alkiolle oikea paikka)
+4
+5
+6
+7
+
+(raivataan uudelle alkiolle tilaa)
+
+(asetetaan uusi alkio oikealle paikalleen)
+
+A[i + 1] := A[i]
+i := i − 1
+
+A[i + 1] := key
+
+• for- yms. rakenteellisten lauseiden rajaus osoitetaan
+
+sisennyksillä
+
+• (kommentit) kirjoitetaan sulkuihin kursiivilla
+• sijoitusoperaattorina on “:=” (“=” on yhtäsuuruuden
+
+vertaaminen)
+
+• (cid:46) -merkkillä varustettu rivi antaa ohjeet vapaamuotoisesti
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+28
+
+• tietueen (tai olion) kenttiä osoitetaan pisteen avulla
+
+– esim. opiskelija.nimi , opiskelija.numero
+
+• osoittimen x osoittaman tietueen kenttiä osoitetaan merkin
+
+→ avulla
+– esim. x →nimi , x →numero
+
+• ellei toisin sanota, kaikki muuttujat ovat paikallisia
+• taulukoilla ja / tai osoittimilla kootun kokonaisuuden nimi
+
+tarkoittaa viitettä ko. kokonaisuuteen
+– tuollaiset isommat tietorakenteethan aina käytännössä
+
+kannattaa välittää viiteparametreina
+
+• yksittäisten muuttujien osalta aliohjelmat käyttävät
+arvonvälitystä (kuten C++-ohjelmatkin oletuksena)
+• osoitin tai viite voi kohdistua myös ei minnekään: NIL
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+29
+
+2.3 Algoritmien toteutuksesta
+
+Käytännön toteutuksissa teoriaa tulee osata soveltaa.
+
+Esimerkki: järjestämisalgoritmin sopeuttaminen
+käyttötilanteeseen.
+• harvoin järjestetään pelkkiä lukuja; yleensä järjestetään
+
+tietueita, joissa on
+– avain (key)
+– oheisdataa (satellite data)
+
+• avain määrää järjestyksen
+
+⇒ sitä käytetään vertailuissa
+
+• oheisdataa ei käytetä vertailuissa, mutta sitä on siirreltävä
+
+samalla kuin avaintakin
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+30
+
+Edellisessä kappaleessa esitelty INSERTION-SORTissa muuttuisi
+seuraavalla tavalla, jos siihen lisättäisi oheisdata:
+
+1 for j := 2 to A.length do
+temp := A[j]
+2
+i := j − 1
+3
+while i > 0 and A[i].key > temp.key do
+4
+5
+6
+7
+
+A[i + 1] := A[i]
+i := i − 1
+A[i + 1] := temp
+
+• jos oheisdataa on paljon, kannattaa järjestää taulukollinen
+
+osoittimia tietueisiin ja siirtää lopuksi tietueet suoraan
+paikoilleen
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+31
+
+Jotta tulokseksi saataisi ajokelpoinen ohjelma, joka toteuttaa
+INSERTION-SORT:n tarvitaan vielä paljon enemmän.
+
+• täytyy ottaa käyttöön oikea ohjelmointikieli muuttujien
+
+määrittelyineen ja aliohjelmineen
+
+• tarvitaan pääohjelma, joka hoitaa syötteenluvun ja sen
+
+laillisuuden tutkimisen ja vastauksen tulostamisen
+– on tavallista, että pääohjelma on selvästi algoritmia
+
+pidempi
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+32
+
+Ohjelmointikieli määrää usein myös muita asioita, esim:
+• Indeksointi alkaa 0:sta (pseudokoodissa usein 1:stä)
+• Käytetäänkö edes indeksointia (tai taulukoita, tai...)
+• (C++) Onko data oikeasti tietorakenteen sisässä, vai
+
+osoittimen päässä (jolloin dataa ei tarvitse siirtää ja sen
+jakaminen on helpompaa)
+
+• Jos dataan viitataan epäsuorasti muualta, tapahtuuko se
+
+– Osoittimella
+– Älyosoittimella (esim. shared_ptr)
+– Iteraattorilla (jos data tietorakenteessa)
+– Indeksillä (jos data vektorissa tms.)
+– Hakuavaimella (jos data tietorakenteessa, josta haku
+
+nopeaa)
+
+• Toteutetaanko rekursio iteroinnilla vai ei (riippuu myös
+
+ongelmasta)
+
+• Ovatko algoritmin "parametrit"oikeasti parametreja, vai vain
+
+muuttujia tms.
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+33
+
+Otetaan esimerkiksi edellä kuvatun ohjelman toteutus C++:lla:
+
+#include <iostream>
+#include <vector>
+typedef std::vector<int> Taulukko;
+
+void insertionSort( Taulukko & A ) {
+
+int key = 0; int i = 0;
+for( Taulukko::size_type j = 1; j < A.size(); ++j ) {
+
+key = A.at(j); i = j-1;
+while( i >= 0 && A.at(i) > key ) {
+
+A.at(i+1) = A.at(i); --i;
+
+}
+A.at(i+1) = key;
+
+}
+
+}
+
+int main() {
+
+unsigned int i;
+// haetaan järjestettävien määrä
+std::cout << "Anna taulukon koko 0...: "; std::cin >> i;
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+34
+
+Taulukko A(i); // luodaan taulukko
+// luetaan järjestettävät
+for( i = 0; i < A.size(); ++i ) {
+
+std::cout << "Anna A[" << i+1 << "]: ";
+std::cin >> A.at(i);
+
+}
+insertionSort( A );
+
+// järjestetään
+
+// tulostetaan siististi
+for( i = 0; i < A.size(); ++i ) {
+
+if( i % 5 == 0 ) {
+
+std::cout << std::endl;
+
+}
+else {
+
+std::cout << " ";
+
+}
+std::cout << A.at(i);
+
+}
+std::cout << std::endl;
+
+}
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+35
+
+Ohjelmakoodi on huomattavasti pseudokoodia pidempi ja
+algoritmille ominaisten asioiden hahmottaminen on siitä paljon
+vaikeampaa.
+
+Tämä kurssi keskittyy algoritmien ja tietorakenteiden
+periaatteisiin, joten ohjelmakoodi ei palvele tarkoituksiamme.
+
+⇒ Tästä eteenpäin toteutuksia ohjelmointikielillä ei juurikaan
+esitetä.
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+52
+
+4 Tehokkuus ja algoritmien suunnittelu
+
+Tässä luvussa pohditaan tehokkuuden käsitettä ja esitellään
+kurssilla käytetty kertaluokkanotaatio, jolla kuvataan
+algoritmin asymptoottista käyttäytymistä eli tapaa, jolla
+algoritmin resurssien kulutus muuttuu syötekoon kasvaessa.
+
+tnCOMP.CS.300 Tietorakenteet ja algoritmit 1
+
+53
+
+4.1 Kertaluokat
+
+Algoritmin analysoinnilla tarkoitetaan sen kuluttamien
+resurssien määrän arvioimista
+
+Tyypillisesti analysoidaan syötekoon kasvun vaikutusta
+algoritmin resurssien kulutukseen
+
+Useimmiten meitä kiinnostaa algoritmin ajankäytön kasvu
+syötteen koon kasvaessa
+– Voimme siis tarkastella ajankäyttöä irrallaan
+
+toteutusympäristöstä
+
+– Itse asiassa voimme kuvata periaatteessa minkä tahansa
+
+peräkkäisiä operaatioita sisältävän toiminnan
+ajankulutusta
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+54
+
+– Algoritmin ajankäyttö:
+
+Algoritmin suorittamien "askelten" suorituskertojen määrä
+
+– Askel:
+
+syötekoosta riippumattoman operaation viemä aika.
+– Emme välitä siitä, kuinka monta kertaa jokin operaatio
+
+suoritetaan kunhan se tehdään vain vakiomäärä kertoja.
+
+– Tutkimme kuinka monta kertaa algoritmin suorituksen
+
+aikana kukin rivi suoritetaan ja laskemme nämä määrät
+yhteen.
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+55
+
+– Yksinkertaistamme vielä tulosta poistamalla mahdolliset
+
+vakiokertoimet ja alemman asteen termit.
+⇒ Näin voidaan tehdä, koska syötekoon kasvaessa
+riittävästi alemman asteen termit käyvät
+merkityksettömiksi korkeimman asteen termin rinnalla.
+⇒ Menetelmä ei luonnollisestikaan anna luotettavia
+tuloksia pienillä syöteaineistoilla, mutta niillä ohjelmat ovat
+tyypillisesti riittävän tehokkaita joka tapauksessa.
+
+– Kutsumme näin saatua tulosta algoritmin ajan kulutuksen
+kertaluokaksi, jota merkitään kreikkalaisella kirjaimella Θ
+(äännetään “theeta”).
+
+f (n) = 23n2 + 2n + 15 ⇒ f ∈ Θ(n2)
+
+f (n) = 1
+
+2n lg n + n ⇒ f ∈ Θ(n lg n)
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+56
+
+Esimerkki 1: taulukon alkioiden summaus
+
+1 for i := 1 to A.length do
+2
+
+summa := summa + A[i]
+
+– jos taulukon A pituus (syötekoko) on n, rivi 1 suoritetaan n
+
++ 1 kertaa
+
+– rivi 2 suoritetaan n kertaa
+– ajankulutus kasvaa siis n:n kasvaessa seuraavalla tavalla:
+
+n
+1
+10
+100
+1000
+10000 20001
+
+aika = 2n + 1
+3
+21
+201
+2001
+
+⇒ n:n arvo hallitsee ajankulutusta
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+57
+
+– suoritamme edellä sovitut yksinkertaistukset: poistamme
+
+vakiokertoimen ja alemman asteen termin:
+
+f (n) = 2n + 1 ⇒ n
+
+⇒ saamme tulokseksi Θ(n)
+
+⇒ kulutettu aika riippuu lineaarisesti syötteen koosta
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+58
+
+Esimerkki 2: alkion etsintä järjestämättömästä taulukosta
+
+1 for i := 1 to A.length do
+2
+3
+
+if A[i] = key then
+return i
+
+– tässä tapauksessa suoritusaika riippuu syöteaineiston
+koon lisäksi sen koostumuksesta eli siitä, mistä kohtaa
+taulukkoa haluttu alkio löytyy
+
+– On tutkittava erikseen:
+
+paras,
+huonoin ja
+keskimääräinen tapaus
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+59
+
+– paras tapaus:
+
+Kuva 6: Etsintä: paras tapaus, löytyy ensimmäisestä alkiosta
+
+⇒ alkio löytyy vakioajassa eli ajankulutus on Θ(1)
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+60
+
+– huonoin tapaus
+
+Kuva 7: Etsintä: huonoin tapaus, löytyy viimeisestä tai ei ollenkaan
+
+rivi 1 suoritetaan n + 1 kertaa ja rivi 2 n kertaa
+⇒ suoritusaika on lineaarinen eli Θ(n).
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+61
+
+– keskimääräinen tapaus:
+
+täytyy tehdä jonkinlainen oletus tyypillisestä eli
+keskimääräisestä aineistosta:
+* alkio on taulukossa todennäköisyydellä p (0 ≤ p ≤ 1)
+* ensimmäinen haettu alkio löytyy taulukon jokaisesta
+
+kohdasta samalla todennäköisyydellä
+
+– voimme laskea suoraan todennäköisyyslaskennan avulla,
+kuinka monta vertailua keskimäärin joudutaan tekemään
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+62
+
+– todennäköisyys sille, että alkio ei löydy taulukosta on 1 - p
+
+⇒ joudutaan tekemään n vertailua (huonoin tapaus)
+– todennäköisyys sille, että alkio löytyy kohdasta i, on p/n
+
+⇒ joudutaan tekemään i vertailua
+
+– odotusarvoinen tarvittavien vertailujen määrä saadaan
+
+siis seuraavasti:
+
+[1 ·
+
+p
+n
+
++ 2 ·
+
+p
+n
+
++ · · · + i ·
+
+p
+n
+
+· · · + n ·
+
+p
+n
+
+] + n · (1 − p)
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+63
+
+– oletamme, että alkio varmasti löytyy taulukosta eli p = 1,
+
+saamme tulokseksi (n+1)/2 eli Θ(n)
+⇒ koska myös tapaus, jossa alkio ei löydy taulukosta, on
+ajankäytöltään lineaarinen, voimme olla varsin
+luottavaisia sen suhteen, että keskimääräinen ajankäyttö
+on kertaluokassa Θ(n)
+
+– kannattaa kuitenkin muistaa, että läheskään aina kaikki
+
+syötteet eivät ole yhtä todennäköisiä
+⇒ jokaista tapausta on syytä tutkia erikseen
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+64
+
+Esimerkki 3: kahden taulukon yhteisen alkion etsintä
+
+1 for i := 1 to A.length do
+2
+3
+4
+
+for j := 1 to B .length do
+if A[i] = B[j] then
+return A[i]
+
+– rivi 1 suoritetaan 1 .. (n + 1) kertaa
+– rivi 2 suoritetaan 1 .. (n · (n + 1)) kertaa
+– rivi 3 suoritetaan 1 .. (n · n) kertaa
+– rivi 4 suoritetaan korkeintaan kerran
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+65
+
+– nopeimmillaan algoritmi on siis silloin kun molempien
+
+taulukoiden ensimmäinen alkio on sama
+⇒ parhaan tapauksen ajoaika on Θ(1)
+
+– pahimmassa tapauksessa taulukoissa ei ole ainuttakaan
+yhteistä alkiota tai ainoastaan viimeiset alkiot ovat samat
+⇒ tällöin suoritusajaksi tulee neliöllinen eli
+2n2 + 2n + 1 = Θ(n2)
+
+– keskimäärin voidaan olettaa, että molempia taulukoita
+
+joudutaan käymään läpi noin puoleen väliin
+⇒ tällöin suoritusajaksi tulee Θ(n2)
+(tai Θ(nm) mikäli taulukot ovat eri mittaisia)
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+66
+
+Palataan INSERTION-SORTiin. Sen ajankäyttö:
+
+INSERTION-SORT( A )
+1 for j := 2 to A.length do
+key := A[ j ]
+2
+i := j − 1
+3
+while i > 0 and A[ i ] > key do (etsitään uudelle alkiolle oikea paikka)
+4
+5
+6
+7
+
+(syöte saadaan taulukossa A)
+(siirretään osien välistä rajaa)
+(otetaan alkuosan uusi alkio käsittelyyn)
+
+A[ i + 1 ] := A[ i ]
+i := i − 1
+A[ i + 1 ] := key
+
+(raivataan uudelle alkiolle tilaa)
+
+(asetetaan uusi alki o oikealle paikalleen)
+
+– rivi 1 suoritetaan n kertaa
+– rivit 2 ja 3 suoritetaan n - 1 kertaa
+– rivi 4 suoritetaan vähintään n - 1, enintään (2 + 3 + 4 + · · ·
+
++ n - 2) kertaa
+
+– rivit 5 ja 6 suoritetaan vähintään 0, enintään (1 + 2 + 3 + 4
+
++ · · · + n - 3) kertaa
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+67
+
+– parhaassa tapauksessa, kun taulukko on valmiiksi
+
+järjestyksessä, koko algoritmi siis kuluttaa vähintään Θ(n)
+aikaa
+
+– huonoimmassa tapauksessa, kun taulukko on
+
+käänteisessä järjestyksessä, aikaa taas kuluu Θ(n2)
+– keskimääräisen tapauksen selvittäminen on jälleen
+
+vaikeampaa:
+* oletamme, että satunnaisessa järjestyksessä olevassa
+taulukossa olevista elementtipareista puolet ovat
+keskenään epäjärjestyksessä.
+⇒ vertailuja joudutaan tekemään puolet vähemmän
+kuin pahimmassa tapauksessa, jossa kaikki
+elementtiparit ovat keskenään väärässä järjestyksessä
+⇒ keskimääräinen ajankulutus on pahimman
+tapauksen ajankäyttö jaettuna kahdella: [(n - 1)n]/ 4 =
+Θ(n2)
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+40
+
+3.3 Suunnitteluperiaate: Hajota ja hallitse
+
+Suunnitteluperiaate hajota ja hallitse on todennäköisesti
+periaatteista kuuluisin.
+
+Se toimii useiden tunnettujen tehokkaiden algoritmien
+periaatteena
+
+Perusidea:
+• ongelma jaetaan alkuperäisen kaltaisiksi, mutta
+
+pienemmiksi osaongelmiksi.
+
+• pienet osaongelmat ratkaistaan suoraviivaisesti
+• suuremmat osaongelmat jaetaan edelleen pienempiin osiin
+• lopuksi osaongelmien ratkaisut kootaan alkuperäisen
+
+ongelman ratkaisuksi
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+41
+
+Hajota ja hallitse on usein rekursiivinen rakenteeltaan: algoritmi
+kutsuu itseään osaongelmille
+
+Pienten osaongelmien ratkaisemiseksi voidaan myös
+hyödyntää toista algoritmia
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+42
+
+3.4 QUICKSOR T
+
+Ongelman jakaminen pienemmiksi osaongelmiksi
+• Valitaan jokin taulukon alkioista jakoalkioksi eli pivot-alkioksi.
+• Muutetaan taulukon alkioiden järjestystä siten, että kaikki
+
+jakoalkiota pienemmät tai yhtäsuuret alkiot ovat taulukossa
+ennen jakoalkiota ja suuremmat alkiot sijaitsevat jakoalkion
+jälkeen.
+
+• Jatketaan alku ja loppuosien jakamista pienemmiksi, kunnes
+
+ollaan päästy 0:n tai 1:n kokoisiin osataulukoihin.
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+43
+
+QUICKSORT-algoritmi
+
+QUICKSORT( A, lef t, right )
+1 if lef t < right then
+2
+3
+4
+
+(triviaalitapaukselle ei tehdä mitään)
+
+p := PARTITION( A, lef t, right )(muuten jaetaan alkuosaan ja loppuosaan)
+QUICKSORT( A, lef t, p − 1 )
+QUICKSORT( A, p + 1, right )
+
+(järjestetään jakoalkiota pienemmät)
+(järjestetään jakoalkiota suuremmat)
+
+Kuva 3: Jako pienempiin ja suurempiin
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+44
+
+Pienet osaongelmat:
+• 0:n tai 1:n kokoiset osataulukot ovat valmiiksi järjestyksessä.
+
+Järjestyksessä olevien osataulukoiden yhdistäminen:
+
+• Kun alkuosa ja loppuosa on järjestetty on koko
+(osa)taulukko automaattisesti järjestyksessä.
+– kaikki alkuosan alkiothan ovat loppuosan alkioita
+
+pienempiä, kuten pitääkin
+
+Ositus- eli partitiointialgoritmi jakaa taulukon paikallaan
+vaaditulla tavalla.
+
+PARTITION( A, lef t, right )
+1 p := A[ right ]
+2 i := lef t − 1
+3 for j := lef t to right − 1 do
+4
+5
+6
+7 exchange A[ i + 1 ] ↔ A[ right ] (sijoitetaan pivot pienten ja isojen puolten väliin)
+8 return i + 1
+
+(otetaan pivotiksi viimeinen alkio)
+(merkitään i:llä pienten puolen loppua)
+(käydään läpi toiseksi viimeiseen alkioon asti)
+(jos A[ j] kuuluu pienten puolelle...)
+(... kasvatetaan pienten puolta...)
+
+if A[ j ] ≤ p
+i := i + 1
+exchange A[ i ] ↔ A[ j ] (... ja siirretään A[j] sinne)
+
+(palautetaan pivot-alkion sijainti)
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+45
+
+3.5 MERGESOR T
+
+Erinomainen esimerkki hajota ja hallitse -periaatteesta on
+MERGE-SORT järjestämisalgoritmi:
+1. Taulukko jaetaan kahteen osaan A[1..(cid:98)n/2(cid:99)] ja A[(cid:98)n/2(cid:99) + 1..n].
+2. Järjestetään puolikkaat rekursiivisesti
+3. Limitetään järjestetyt puolikkaat järjestetyksi taulukoksi
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+46
+
+• MERGE-SORT -ALGORITMI
+
+MERGE-SORT( A, lef t, right )
+1 if lef t < right then
+2
+3
+4
+5
+
+mid := (cid:98)( lef t + right )/2(cid:99)
+MERGE-SORT( A, lef t, mid )
+MERGE-SORT( A, mid + 1, right ) (... ja loppuosa)
+MERGE( A, lef t, mid, right )
+
+(jos taulukossa on alkioita...)
+(... jaetaan se kahtia)
+(järjestetään alkuosa...)
+
+(limitetään osat siten, että järjestys säilyy)
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+47
+
+Hajota:
+
+Kuva 4: Jako osaongelmiin
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+48
+
+Hallitse:
+
+Kuva 5: Osaongelmien ratkaisujen limitys
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+49
+
+Eli:
+– jaetaan järjestettävä taulukko kah-
+
+teen osaan
+
+– jatketaan edelleen osien jakamista
+kahtia, kunnes osataulukot ovat 0 tai
+1 alkion kokoisia
+
+– 0 ja 1 kokoiset taulukot ovat valmiiksi
+järjestyksessä eivätkä vaadi mitään
+toimenpiteitä
+
+– lopuksi yhdistetään järjestyksessä
+
+olevat osataulukot limittämällä
+
+– huomaa, että rekursiivinen algorit-
+mi ei toimi kuvan tavalla molemmat
+puolet rinnakkain
+
+685366185366183561561368561368536681561368COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+50
+
+– limityksen suorittava MERGE-algoritmi:
+
+if B[ j ] ≤ B[ k ] then
+A[ i ] := B[ j ]
+j := j + 1
+
+(käydään koko alue läpi...)
+(... ja kopioidaan se aputaulukkoon)
+(asetetaan i osoittamaan valmiin osan loppua)
+(asetetaan j ja k osoittamaan osien alkuja)
+
+MERGE( A, lef t, mid, right )
+1 for i := lef t to right do
+B[ i ] := A[ i ]
+2
+3 i := lef t
+4 j := lef t; k := mid + 1
+5 while j ≤ mid and k ≤ right do (käydään läpi, kunnes jompikumpi osa loppuu)
+6
+7
+8
+9
+10
+11
+12
+13 if j > mid then
+k := 0
+14
+15 else
+16
+17 for j := i to right do (siirretään loput alkiot valmiin osan loppuun)
+18
+
+(jos alkuosan ensimmäinen alkio on pienempi...)
+(... sijoitetaan se tulostaulukkoon...)
+(... ja siirretään alkuosan alkukohtaa)
+(muuten...)
+(... sijoitetaan loppuosan alkio tulostaulukkoon...)
+(... ja siirretään loppuosan alkukohtaa)
+(siirretään myös valmiin osan alkukohtaa)
+
+A[ i ] := B[ k ]
+k := k + 1
+
+A[ j ] := B[ j + k ]
+
+k := mid − right
+
+i := i + 1
+
+else
+
+MERGE limittää taulukot käyttäen “pala kerrallaan”
+-menetelmää.
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+51
+
+Tuottaako hajota ja hallitse tehokkaamman ratkaisun kuin
+pala kerrallaan?
+
+Ei aina, mutta tarkastellaksemme tilannetta tarkemmin,
+meidän täytyy tutustua algoritmin analyysiin
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+75
+
+5 Kertaluokkamerkinnät
+
+Tässä luvussa käsitellään asymptoottisessa analyysissa
+käytettyjä matemaattisia merkintätapoja
+
+Määritellään tarkemmin Θ, sekä kaksi muuta saman sukuista
+merkintää O ja Ω.
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+76
+
+5.1 Asymptoottinen aika-analyysi
+
+Edellisessä luvussa yksinkertaistimme suoritusajan lauseketta
+melkoisesti:
+
+• jätimme jäljelle ainoastaan eniten merkitsevän termin
+• poistimme sen edestä vakiokertoimen
+
+⇒ kuvastavat algoritmin käyttäytymistä, kun syötekoko kasvaa
+kohti ääretöntä
+
+• siis kuvaavat asymptoottista suorituskykyä
+
+⇒ antavat käyttökelpoista tietoa vain jotain rajaa suuremmilla
+syötteillä
+
+• todettiin, että usein raja on varsin alhaalla
+
+⇒ Θ- yms. merkintöjen mukaan nopein on myös
+käytännössä nopein, paitsi aivan pienillä syötteillä
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+77
+
+Θ-merkintä
+
+Kuva 8: Θ-merkintä
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+78
+
+eli matemaattisesti
+• olkoon g(n) funktio luvuilta luvuille
+
+Θ(g(n)) on niiden funktioiden f (n) joukko, joille on
+olemassa positiiviset vakiot c1, c2 ja n0 siten, että aina
+kun n ≥ n0, niin
+
+0 ≤ c1 · g(n) ≤ f (n) ≤ c2 · g(n)
+
+– Θ(g(n)) on joukko funktioita
+
+⇒ tulisi kirjoittaa esim. f (n) ∈ Θ(g(n)) ⇒ ohjelmistotieteessä
+vakiintunut käytäntö kuitenkin on käyttää = -merkintää
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+79
+
+Funktion f (n) kuuluvuuden kertaluokkaan Θ(g(n)), voi siis
+todistaa etsimällä jotkin arvot vakioille c1, c2 ja n0 ja
+osoittamalla, että funktion arvo pysyy n:n arvoilla n0:sta alkaen
+arvojen c1g(n) ja c2g(n) välillä (eli suurempana tai yhtäsuurena
+kuin c1g(n) ja pienempänä tai yhtäsuurena, kuin c2g(n)).
+Esimerkki: 3n2 + 5n − 20 = Θ(n2)
+• valitaan c1 = 3, c2 = 4 ja n0 = 4
+• 0 ≤ 3n2 ≤ 3n2 + 5n − 20 ≤ 4n2 kun n ≥ 4, koska silloin
+
+0 ≤ 5n − 20 ≤ n2
+
+• yhtä hyvin olisi voitu valita c1 = 2, c2 = 6 ja n0 = 7 tai
+
+c1 = 0,000 1, c2 = 1 000 ja n0 = 1 000
+
+• tärkeää on vain, että voidaan valita jotkut positiiviset, ehdot
+
+täyttävät c1, c2 ja n0
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+80
+
+Tärkeä tulos: jos ak > 0, niin
+
+aknk + ak−1nk−1 + · · · + a2n2 + a1n + a0 = Θ(nk)
+
+• toisin sanoen, jos polynomin eniten merkitsevän termin
+kerroin on positiivinen, Θ-merkintä sallii kaikkien muiden
+termien sekä e.m. kertoimen abstrahoinnin pois
+
+Vakiofunktiolle pätee c = Θ(n0) = Θ(1)
+• Θ(1) ei kerro, minkä muuttujan suhteen funktioita
+
+tarkastellaan
+⇒ sitä saa käyttää vain kun muuttuja on asiayhteyden
+vuoksi selvä ⇒ yleensä algoritmien tapauksessa on
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+81
+
+O-merkintä
+
+Kuva 9: O-merkintä
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+82
+
+O-merkintä on muuten samanlainen kuin Θ-merkintä, mutta se
+rajaa funktion ainoastaan ylhäältä.
+⇒ asymptoottinen yläraja
+
+Määritelmä:
+
+O(g(n)) on niiden funktioiden f (n) joukko, joille on
+olemassa positiiviset vakiot c ja n0 siten, että aina kun
+n ≥ n0, niin
+
+0 ≤ f (n) ≤ c · g(n)
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+83
+
+• pätee: jos f (n) = Θ(g(n)), niin f (n) = O(g(n))
+• päinvastainen ei aina päde: n2 = O(n3), mutta n2 (cid:54)= Θ(n3)
+• tärkeä tulos: jos k ≤ m, niin nk = O(nm)
+• jos hitaimman tapauksen suoritusaika on O(g(n)), niin
+
+jokaisen tapauksen suoritusaika on O(g(n))
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+84
+
+Usein algoritmin hitaimman (ja samalla jokaisen) tapauksen
+suoritusajalle saadaan pelkällä vilkaisulla jokin O-merkinnällä
+ilmoitettava yläraja.
+
+Usein vain yläraja onkin kiinnostava
+⇒ O-merkinnällä on suuri käytännön merkitys
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+85
+
+Esimerkki: INSERTION-SORT
+
+rivi
+for j := 2 to A.length do
+
+key := A[j]
+i := j − 1
+while i > 0 and A[i] > key do
+
+A[i + 1] := A[i]
+i := i − 1
+
+A[i + 1] := key
+
+kerta-aika
+O(n)
+· O(1)
+· O(1)
+· O(n)
+·
+·
+· O(1)
+
+· O(1)
+· O(1)
+
+Jolloin pahimmalle tapaukselle saadaan suoritusaika
+O(n) · O(n) · O(1) = O(n2)
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+86
+
+Ω-merkintä (äännetään “iso oomega”)
+
+Kuva 10: Ω-merkintä
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+87
+
+Ω-merkintä on muuten täysin samanlainen kuin Θ-merkintä,
+mutta se rajaa funktion vain alhaalta.
+⇒ asymptoottinen alaraja
+
+määritelmä:
+
+Ω(g(n)) on niiden funktioiden f (n) joukko, joille on
+olemassa positiiviset vakiot c ja n0 siten, että aina kun
+n ≥ n0, niin
+
+0 ≤ c · g(n) ≤ f (n)
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+88
+
+• määritelmistä seuraa tärkeä tulos:
+
+f (n) = Θ(g(n)) jos ja vain jos f (n) = O(g(n)) ja f (n) = Ω(g(n)).
+
+• jos nopeimman tapauksen suoritusaika on Ω(g(n)), niin
+
+jokaisen tapauksen suoritusaika on Ω(g(n))
+
+Käytännön hyötyä Ω-merkinnästä on lähinnä tilanteissa, joissa
+jonkin ratkaisuvaihtoehdon parhaan tapauksenkin tehokkuus
+on epätyydyttävä, jolloin ratkaisu voidaan hylätä välittömästi.
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+89
+
+Merkintöjen keskinäiset suhteet
+
+f (n) = Ω(g(n)) ja f (n) = O(g(n)) ⇐⇒ f (n) = Θ(g(n))
+
+Kertaluokkamerkinnöillä on samankaltaisia ominaisuuksia kuin
+lukujen vertailuilla:
+
+f (n) = O(g(n)) a ≤ b
+f (n) = Θ(g(n)) a = b
+a ≥ b
+f (n) = Ω(g(n))
+
+Eli, jos f (n):n korkeimman asteen termi, josta on poistettu
+vakiokerroin ≤ g(n): n vastaava, f (n) = O(g(n)) jne.
+
+Yksi merkittävä ero: reaaliluvuille pätee aina tasan yksi
+kaavoista a < b, a = b ja a > b, mutta vastaava ei päde
+kertaluokkamerkinnöille.
+⇒ Kaikkia funktioita ei pysty mielekkäällä tavalla vertaamaan
+toisiinsa kertaluokkamerkintöjen avulla (esim. n ja n1+sin n).
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+90
+
+Hieman yksinkertaisten:
+
+• Jos algoritmi on Ω(g(n)), sen resurssien kulutus on ainakin
+
+kertaluokassa g(n).
+– vrt. kirja maksaa ainakin noin kympin.
+
+• Jos algoritmi on O(g(n)), sen resurssien kulutus on
+
+korkeintaan kertaluokassa g(n).
+– vrt. kirja maksaa korkeintaan noin kympin.
+
+• Jos algoritmi on Θ(g(n)), sen resurssien kulutus on aina
+
+kertaluokassa g(n).
+– vrt. kirja maksaa suunnilleen kympin.
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+91
+
+Kaikkien algoritmien kaikkien tapausten suoritusajalle ei
+välttämättä voida antaa mitään ratkaisua Θ-notaatiolla.
+
+Esimerkkinä Insertion-Sort:
+• paras tapaus on Ω(n), mutta ei Ω(n2)
+• pahin tapaus on O(n2), mutta ei O(n)
+
+⇒ kaikille tapauksille yhteistä Θ-arvoa ei voida määrittää
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+92
+
+Esimerkki
+
+Otetaan funktio f (n) = 3n2 + 5n + 2.
+
+Suoritetaan sille aiemmin sovitut
+yksinkertaistukset:
+• alemman asteen termit pois
+• vakiokertoimet pois
+⇒ f (n) = Θ(n2)
+
+Vakuuttuaksemme asiasta etsim-
+me kertoimet c1 ja c2:
+3n2 ≤ 3n2 + 5n + 2 ≤ 4n2, kun n ≥ 6
+⇒ c1 = 3, c2 = 4 ja n0 = 6 toimivat
+⇒ f (n) = O(n2) ja Ω(n2)
+⇒ f (n) = Θ(n2)
+
+0510150100200300400500600700800f(n)n²0510150100200300400500600700800n04n²3n²COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+93
+
+Selvästi kerroin c2 = 4 toimii myös
+kun g(n) = n3, sillä kun n ≥ 6, n3 > n2
+⇒ f (n) = O(n3)
+• sama pätee kun g(n) = n4...
+
+Ja alapuolella kerroin c1 = 3 toimii
+myös kun g(n) = n lg n, sillä kun n ≥
+6, n2 > n lg n
+⇒ f (n) = Ω(n lg n)
+• sama pätee kun g(n) = n tai
+
+g(n) = lg n
+
+0510150100200300400500600700800n04n²3n²3n3nlog(n)4n³COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+94
+
+5.2 Suorituskykykäsitteitä
+
+Tähän mennessä algoritmien suorituskykyä on arvioitu lähinnä
+suoritusajan näkökulmasta. Muitakin vaihtoehtoja kuitenkin on:
+• Voidaan mitata myös esimerkiksi muistinkulutusta tai
+
+kaistanleveyttä.
+
+Lisäksi käytännössä tulee ottaa huomioon ainakin seuraavat
+seikat:
+• Millä mittayksiköllä resurssien kulutusta mitataan?
+• Miten syötekoko määritellään?
+• Mitataanko huonoimman, parhaan vai keskimääräisen
+
+tapauksen resurssien kulutusta?
+
+• Millaiset syötekoot tulevat kysymykseen?
+• Riittääkö kertaluokkamerkintöjen tarkkuus vai tarvitaanko
+
+tarkempaa tietoa?
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+95
+
+Ajoajan mittayksiköt
+
+Valittaessa ajoajan mittayksikköä “askelta” pyritään yleensä
+mahdollisimman koneriippumattomaan ratkaisuun:
+
+• Todelliset aikayksiköt kuten sekunti eivät siis kelpaa.
+• Vakiokertoimet käyvät merkityksettömiksi.
+
+⇒ Jäljelle jää kertaluokkamerkintöjen tarkkuustaso.
+
+⇒ askeleeksi voidaan katsoa mikä tahansa enintään
+vakioajan vievä operaatio.
+• Vakioaikaiseksi tulkitaan mikä tahansa operaatio, jonka
+
+ajankulutus on riippumaton syötekoosta.
+
+• Tällöin on olemassa jokin syötteen koosta riippumaton
+aikamäärä, jota operaation kesto ei milloinkaan ylitä.
+• Yksittäisiä askeleita ovat esimerkiksi yksittäisen muuttujan
+
+sijoitus, if-lauseen ehdon testaus etc.
+
+• Askeleen rajauksen kanssa ei tarvitse olla kovin tarkka, koska
+
+Θ(1) + Θ(1) = Θ(1).
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+96
+
+Muistin käytön mittayksiköt
+
+Tarkkoja yksiköitä ovat lähes aina bitti, tavu (8 bittiä) ja sana
+(jos sen pituus tunnetaan).
+
+Eri tyyppien muistin käyttö on usein tunnettu, joskin se
+vaihtelee vähän eri tietokoneiden ja kielten välillä.
+• kokonaisluku on yleensä 16 tai 32 bittiä
+• merkki on yleensä 1 tavu = 8 bittiä
+• osoitin on yleensä 4 tavua = 32 bittiä
+• taulukko A[1 . . . n] on usein n · <alkion koko>
+⇒ Tarkka muistin käytön arvioiminen on usein mahdollista,
+joskin huolellisuutta vaativaa.
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+97
+
+Kertaluokkamerkinnät ovat käteviä silloin, kun tarkka tavujen
+laskeminen ei ole vaivan arvoista.
+
+Jos algoritmi säilyttää yhtäaikaa koko syöteaineiston, niin
+arvioinnissa kannattaa erottaa syöteaineiston kuluttama muisti
+muusta muistin tarpeesta.
+
+• Θ(1) lisämuistin tarve vs. Θ(n) lisämuistin tarve
+• Kannattaa kuitenkin huomata, että esimerkiksi merkkijonon
+
+etsintä syötetiedostosta ei talleta yhtäaikaa koko
+syöteaineistoa, vaan selaa sen läpi.
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+98
+
+6 Pikalajittelu ja satunnaistaminen
+
+MERGE-SORTilla osaongelmiin jako oli helppoa ja ratkaisujen
+yhdistämisessä nähtiin paljon työtä.
+
+Tutustutaan seuraavaksi keskimäärin erittäin nopeaan
+järjestämisalgoritmiin QUICKSORT, jossa työ tehdään
+jakovaiheessa.
+
+QUICKSORTin kautta kohdataan uusi suunnitteluperiaate:
+satunnaistaminen.
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+99
+
+6.1 QUICKSOR T
+
+Ongelman jakaminen pienemmiksi osaongelmiksi
+• Valitaan jokin taulukon alkioista jakoalkioksi eli pivot-alkioksi.
+• Muutetaan taulukon alkioiden järjestystä siten, että kaikki
+
+jakoalkiota pienemmät tai yhtäsuuret alkiot ovat taulukossa
+ennen jakoalkiota ja suuremmat alkiot sijaitsevat jakoalkion
+jälkeen.
+
+• Jatketaan alku ja loppuosien jakamista pienemmiksi, kunnes
+
+ollaan päästy 0:n tai 1:n kokoisiin osataulukoihin.
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+100
+
+Kertaus: QUICKSORT-algoritmi
+
+QUICKSORT( A, lef t, right )
+1 if lef t < right then
+2
+3
+4
+
+(triviaalitapaukselle ei tehdä mitään)
+
+p := PARTITION( A, lef t, right )(muuten jaetaan alkuosaan ja loppuosaan)
+QUICKSORT( A, lef t, p − 1 )
+QUICKSORT( A, p + 1, right )
+
+(järjestetään jakoalkiota pienemmät)
+(järjestetään jakoalkiota suuremmat)
+
+Kuva 11: Jako pienempiin ja suurempiin
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+101
+
+Pienet osaongelmat:
+• 0:n tai 1:n kokoiset osataulukot ovat valmiiksi järjestyksessä.
+
+Järjestyksessä olevien osataulukoiden yhdistäminen:
+• Kun alkuosa ja loppuosa on järjestetty on koko
+(osa)taulukko automaattisesti järjestyksessä.
+– kaikki alkuosan alkiothan ovat loppuosan alkioita
+
+pienempiä, kuten pitääkin
+
+Ositus- eli partitiointialgoritmi jakaa taulukon paikallaan
+vaaditulla tavalla.
+PARTITION( A, lef t, right )
+1 p := A[ right ]
+2 i := lef t − 1
+3 for j := lef t to right − 1 do
+4
+5
+6
+7 exchange A[ i + 1 ] ↔ A[ right ] (sijoitetaan pivot pienten ja isojen puolten väliin)
+8 return i + 1
+
+(otetaan pivotiksi viimeinen alkio)
+(merkitään i:llä pienten puolen loppua)
+(käydään läpi toiseksi viimeiseen alkioon asti)
+(jos A[ j] kuuluu pienten puolelle...)
+(... kasvatetaan pienten puolta...)
+
+if A[ j ] ≤ p
+i := i + 1
+exchange A[ i ] ↔ A[ j ] (... ja siirretään A[j] sinne)
+
+(palautetaan pivot-alkion sijainti)
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+102
+
+Kuinka nopeasti PARTITION toimii?
+
+• For-silmukka tekee n - 1 kierrosta, kun n on right - lef t
+• Kaikki muut operaatiot ovat vakioaikaisia.
+
+⇒ Sen suoritusaika on Θ(n).
+
+Kuten MERGE-SORTilla QUICKSORTin analyysi ei ole yhtä
+suoraviivainen rekursion vuoksi
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+103
+
+• Koska PARTITIONIA ja rekursiivista kutsua lukuunottamatta
+
+kaikki QUICKSORTIN operaatiot ovat vakioaikaisia,
+keskitymme tarkastelemaan PARTITIONIN instanssien
+käyttämää aikaa.
+
+11111nnn1111122n − n − 1n − n − 1COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+104
+
+• Kokonaisaika on edellisen kuvan esittämän puun solmujen
+
+aikojen summa.
+
+• 1 kokoiselle taulukolle suoritus on vakioaikaista.
+• Muille suoritus on lineaarista osataulukon kokoon nähden.
+⇒ Kokonaisaika on siis Θ(solmujen numeroiden summa).
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+105
+
+Pahimman tapauksen suoritusaika
+• Solmun numero on aina pienempi kuin isäsolmun
+numero, koska jakoalkio on jo oikealla paikallaan,
+eikä se kuulu kumpaankaan järjestettävään osa-
+taulukkoon
+⇒ puussa voi siis olla kerroksia enintään n kappa-
+letta
+
+• pahin tapaus realisoituu, kun jakoalkioksi valitaan
+
+aina pienin tai suurin alkio
+– näin tapahtuu esimerkiksi valmiiksi
+
+järjestetyllä
+
+taulukolla
+
+• solmujen numeroiden summa on n + n - 1 + · · · + 2
+
++ 1
+
+⇒ QUICKSORTIN suoritusaika on O(n2)
+
+n−1n−2k21nCOMP.CS.300 Tietorakenteet ja algoritmit 1
+
+106
+
+Paras tapaus realisoituu kun taulukko jakautuu aina tasan.
+
+• Alla oleva kuva näyttää kuinka osataulukoiden koot
+
+pienenevät.
+– harmaat ruudut ovat jo oikealla paikallaan olevia alkioita
+
+• Jokaisella tasolla tehtävä työ on kertaluokassa Θ(n).
+– tästä saamme pessimistisen arvion suorituspuun
+korkeudelle parhaassa tapauksessa ⇒ O(lg n)
+
+⇒ Parhaan tapauksen suoritusajan yläraja on O(n lg n).
+
+O(lg n)O(n)O(n)O(n)O(n)O(n)COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+107
+
+QUICKSORTIN kohdalla parhaan ja huonoimman tapauksen
+suoritusajat eroavat toisistaan selvästi.
+
+• Olisi mielenkiintoista tietää keskimääräinen suoritusaika.
+• Sen analysoiminen menee tämän kurssin tavoitteiden
+ulkopuolelle, mutta on osoitettu, että jos aineisto on
+tasajakautunutta, keskimääräinen suoritusaika on Θ(n lg n).
+
+• Keskimääräinen suoritusaika on siis varsin hyvä.
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+108
+
+QUICKSORTIIN liittyy kuitenkin se kiusallinen seikka, että sen
+pahimman tapauksen suoritus on hidasta ja sen esiintyminen
+on käytännössä varsin todennäköistä.
+• On helppoa kuvitella tilanteita, joissa aineisto on jo
+
+järjestyksessä tai melkein järjestyksessä.
+
+⇒ Tarvitaan keino, jolla pahimman tapauksen systemaattisen
+esiintymisen riskiä saadaan pienennettyä.
+
+Satunnaistaminen on osoittautunut tässä varsin tehokkaaksi.
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+109
+
+QUICKSORTIN etuja ja haittoja
+
+Etuja:
+• järjestää taulukon keskimäärin erittäin tehokkaasti
+
+– ajoaika on keskimäärin Θ(n lg n)
+– vakiokerroin on pieni
+
+• tarvitsee vain vakiomäärän lisämuistia
+• sopii hyvin virtuaalimuistiympäristöön
+• käyttää tehokkaasti välimuistia
+
+Haittoja:
+• ajoaika on hitaimmillaan Θ(n2)
+• hitaimman tapauksen tuottava syöte on kiusallisen
+
+tavallinen ilman satunnaistamista
+
+• rekursiivisuus
+
+⇒ tarvitsee lisämuistia pinolle
+
+• epävakaus
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+119
+
+7 C++:n standardikirjasto
+
+Tässä luvussa käsitellään C++:n standardikirjaston
+tietorakenteita ja algoritmeja.
+
+Tarkoituksena on käsitellä sellaisia asioita, joihin tulee kiinnittää
+huomiota, jotta kirjastoa tulisi käyttäneeksi
+tarkoituksenmukaisesti ja tehokkaasti.
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+120
+
+7.1 Yleistä C++:n standardikirjastosta
+
+Standardikirjasto standardoitiin C++-kielen mukana syksyllä
+1998, ja sitä on jonkin verran laajennettu myöhemmissä
+versioissa. Uusin standardiversio on C++17 vuodelta 2017.
+
+Kirjasto sisältää tärkeimmät perustietorakenteet ja algoritmit.
+
+• useimmat tämän aineiston alkupuolen tietorakenteet ja
+
+algoritmit mukana muodossa tai toisessa
+
+Rajapinnat ovat harkittuja, joustavia, geneerisiä ja
+tyyppiturvallisia.
+
+Rajapintojen tarjoamien operaatioiden tehokkuudet on
+ilmaistu O-merkinnällä.
+
+Kirjaston geneerisyys on toteutettu käännösaikaisella
+mekanismilla: C++:n malli (template)
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+121
+
+Tietorakennekurssin kannalta kiinnostavin standardikirjaston
+elementti on ns. STL (Standard Template Library): säiliöt eli
+kirjaston tarjoamat tietorakenteet, geneeriset algoritmit sekä
+iteraattorit, joiden avulla säiliöiden alkioita käsitellään.
+
+Kuva 12: STL:n osaset
+
+C++11:n mukana tulleet lambdat ovat myös keskeisiä
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+122
+
+7.2 Iteraattorit
+Kaikki standardikirjaston tietora-
+kenteet näyttäytyvät meille var-
+sin samanlaisina mustina laati-
+koina, joista oikeastaan tiedäm-
+me ainoastaan, että ne sisältä-
+vät tallettamiamme alkioita ja
+että ne toteuttavat tietyt raja-
+pintafunktiot.
+
+Pystymme käsittelemään säiliöi-
+den sisältöä ainoastaan noi-
+den rajapintafunktioiden sekä
+iteraattorien avulla.
+
+Alkio2Alkio3Alkio4Alkio5IteraattoriIteraattoriIteraattoriAlkio1SäiliölukeminenmuuttaminenxqsiirtopCOMP.CS.300 Tietorakenteet ja algoritmit 1
+
+123
+
+Iteraattorit ovat kahvoja tai “kirjanmerkkejä” tietorakenteen
+alkioihin.
+• kukin iteraattori osoittaa joko tietorakenteen alkuun,
+
+loppuun tai kahden alkion väliin.
+
+• säiliöiden rajapinnassa on yleensä funktiot begin() ja end(),
+
+jotka palauttavat säiliön alkuun ja loppuun osoittavat
+iteraattorit
+
+• iteraattorin läpi pääsee käsiksi sen oikealla puolella olevaan
+
+alkioon, paitsi jos kysymyksessä on käänteisiteraattori
+(reverse iterator), joilloin sen läpi käsitellään
+vasemmanpuoleista alkiota
+
+• käänteisiteraattorille myös siirto-operaatiot toimivan
+
+käänteisesti, esimerkiksi ++ siirtää iteraattoria pykälän
+vasemmalle
+
+• begin():ä ja end():ä vastaavat käänteisiteraattorit saa
+
+rbegin():llä ja rend():llä
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+124
+
+• nimensä mukaisesti iteraattoria voi siirtää säiliön sisällä, ja
+
+sen avulla säiliön voi käydä läpi
+
+• iteraattorin avulla voi lukea ja kirjoittaa
+• säiliöön lisättävien ja siitä poistettavien alkioiden sijainti
+
+yleensä ilmaistaan iteraattoreiden avulla
+
+Kullakin säiliöllä on oma iteraattorityyppinsä.
+
+• eri säiliöt tarjoavat erilaisia mahdollisuuksia siirtää
+
+iteraattoria nopeasti paikasta toiseen (vrt. taulukon/listan
+mielivaltaisen alkion lukeminen)
+
+• suunnitteluperiaatteena on ollut, että kaikkien iteraattoreille
+tehtävien operaatioiden tulee onnistua vakioajassa, jotta
+geneeriset algoritmit toimisivat luvatulla tehokkuudella
+riippumatta siitä mikä iteraattori niille annetaan
+
+• iteraattorit voidaan jakaa kategorioihin sen mukaan,
+
+millaisia vakioaikaisia operaatioita ne pystyvät tarjoamaan
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+125
+
+Syöttöiteraattorin (input itera-
+tor) avulla voi vain lukea al-
+kioita, mutta ei muuttaa niitä
+
+• iteraattorin osoittaman al-
+kion arvon voi lukea (*p)
+• iteraattorin osoittaman al-
+kion kentän voi
+lukea tai
+kutsua sen jäsenfunktiota
+(p->)
+
+• iteraattoria voi siirtää as-
+keleen eteenpäin (++p tai
+p++)
+
+• iteraattoreita voi
+
+sijoittaa
+ja vertailla toisiinsa (p=q,
+p==q, p!=)
+
+Tulostusiteraattori (output iterator) on kuten syöttöiteraattori,
+mutta sen avulla voi vain muuttaa alkioita. (*p=x)
+
+input iterator* (luku), ==, !=, ++, =, −>syöttöiteraattorioutput iteratortulostusiteraattori* (kirjoitus), ==, !=, ++, =, −>forward iterator* (luku/kirjoitus)eteenpäin−iteraattoribidirectional iterator−−kaksisuuntainen iteraattorirandom access iterator+=, −=, +, −, [], <, >, <=, >=hajasaanti−iteraattoridequevectorsetmultisetmapmultimaplistT[]COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+126
+
+Eteenpäin-iteraattori (forward iterator) on yhdistelmä syöttö- ja
+tulostusiteraattorien rajapinnoista.
+
+Kaksisuuntainen iteraattori (bidirectional iterator) osaa lisäksi
+siirtyä yhden askeleen kerrallaan taaksepäin. (--p tai p--)
+
+Hajasaanti-iteraattori (random access iterator) on kuin
+kaksisuuntainen iteraattori, mutta sitä voi lisäksi siirtää
+mielivaltaisen määrän eteen- tai taaksepäin.
+
+• iteraattoria voi siirtää n askelta eteen- tai taaksepäin (p+=n,
+
+p-=n, q=p+n, q=p-n)
+
+• iteraattorista n:n alkion päässä olevan alkion pystyy
+
+lukemaan ja sitä pystyy muokkaamaan (p[n])
+
+• kahden iteraattorin välisen etäisyyden pystyy selvittämään
+
+(p-q)
+
+• iteraattoreiden keskinäistä suuruusjärjestystä voi vertailla,
+
+iteraattori on toista “pienempi”, jos sen paikka on säiliössä
+ennen tätä (p<q, p<=q, p>q, p>=q)
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+127
+
+Iteraattorit ovat osoitinabstraktio → Iteraattorien
+operaatioiden syntaksi muistuttaa selvästi C++:n
+osoitinsyntaksia.
+
+Iteraattorit saadaan otettua käyttöön komennolla
+#include <iterator>
+
+Oikean tyyppinen iteraattori saadaan luotua esimerkiksi
+seuraavalla syntaksilla.
+
+säiliö<talletettava tyyppi>::iterator p;
+
+Iteraattoreiden kanssa avainsana auto on käyttökelpoinen:
+auto p = begin( säiliö );
+// → std::vector<std::string>::iterator
+
+Säiliöihin tehtävät poistot ja lisäykset saattavat mitätöidä
+säiliöön jo osoittavia iteraattoreita.
+• ominaisuus on säiliö-kohtainen, joten sen yksityiskohdat
+
+käsitellään säiliöiden yhteydessä
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+128
+
+Tavallisten iteraattorien lisäksi STL tarjoaa joukon
+iteraattorisovittimia.
+• niiden avulla voidaan muunnella geneeristen algoritmien
+
+toiminnallisuutta
+
+• edellä mainitut käänteisiteraattorit (reverse iterator) ovat
+
+iteraattorisovittimia
+
+• lisäysiteraattorit (insert iterator/inserter) ovat tärkeitä
+
+iteraattorisovittimia.
+
+– ne ovat tulostusiteraattoreita, jotka lisäävät alkioita
+
+halutulle paikalle säiliöön kopioimisen sijasta
+
+– säiliön alkuun lisäävän iteraattorin saa funktiokutsulla
+
+front_inserter(säiliö)
+
+– säiliön loppuun lisäävän iteraattorin saa funktiokutsulla
+
+back_inserter(säiliö)
+
+– annetun iteraattorin kohdalle lisäävän iteraattorin saa
+
+funktiokutsulla inserter(säiliö, paikka)
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+129
+
+• virtaiteraattorit (stream iterator) ovat syöttö- ja
+
+tulostusiteraattoreita, jotka käyttävät säiliöiden sijaista C++:n
+tiedostovirtoja
+– cin virrasta haluttua tyyppiä lukevan syöttöiteraattorin
+
+saa syntaksilla istream_iterator<tyyppi> (cin)
+– cout virtaan haluttua tyyppiä pilkuilla erotettuna
+
+tulostavan tulostusiteraattorin saa syntaksilla
+ostream_iterator<tyyppi> (cout, ’,’)
+
+• siirtoiteraattorit (move iterator) muuttavat alkion kopioinnin
+
+iteraattorin avulla alkion siirtämiseksi.
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+130
+
+7.3 Säiliöt
+
+Standardikirjaston säiliöt kuuluvat pääsääntöisesti kahteen
+kategoriaan rajapintojensa puolesta:
+
+• sarjat (sequence)
+
+– alkioita pystyy hakemaan niiden järjestysnumeron
+
+perusteella
+
+– alkioita pystyy lisäämään ja poistamaan halutusta
+
+kohdasta
+
+– alkioita pystyy selaamaan järjestyksessä
+
+• assosiatiiviset säiliöt (associative container)
+
+– alkiot sijoitetaan säiliöön avaimen määräämään kohtaan
+– talletettavien alkioiden avainten arvoja pitää pystyä
+vertaamaan toisiinsa oletusarvoisesti operaattorilla <
+järjestetyissä säiliöissä
+
+• Rajapintojen tarjoamista jäsenfunktiosta näkee, mikä säiliön
+
+mielekäs käyttötarkoitus on
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+131
+
+Kirjaston säiliöt:
+
+Säiliötyyppi
+Sarjat
+
+Assosiatiiviset
+
+Kirjasto
+array
+vector
+deque
+list
+(forward_list)
+map
+set
+
+Järjestämättömät unordered_map
+assosiatiiviset
+unordered_set
+Säiliösovittimet
+queue
+stack
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+132
+
+Säiliöt noudattavat arvon välitystä.
+
+• säiliö ottaa talletettavasta datasta kopion
+• säiliö palauttaa kopioita sisältämästään tiedosta
+
+⇒ säiliön ulkopuolella tehtävät muutokset eivät vaikuta
+säiliön sisältämään dataan
+
+• kaikilla säiliöihin talletettavilla alkioilla tulee olla
+
+kopiorakentaja ja sijoitusoperaattori.
+
+– perustyypeillä sellaiset ovat valmiina
+
+• itse määriteltyä tyyppiä olevat alkiot kannattaa tallettaa
+
+osoittimen päähän
+– näinhän kannattaisi tehdä tehokkuussyistä joka
+
+tapauksessa
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+133
+
+• C++11 tarjoaa kätevän työkalun muistinhallinnan
+
+helpottamiseksi shared_pointer tilanteissa, joissa useampi
+taho tarvitsee resurssia
+– sisältää sisäänrakennetun viitelaskurin ja tuhoaa alkion
+
+kun viitelaskuri nollautuu
+
+– deleteä ei tarvitse eikä saakaan kutsua
+– luominen: auto pi = std::make_shared<Olio>(params);
+– näppärä erityisesti jos halutaan tehdä kahden avaimen
+
+mukaan järjestetty tietorakenne:
+* sijoitetaan oheisdata shared_pointerin päähän
+* sijoitetaan osoittimet kahteen eri säiliöön kahden eri
+
+avaimen mukaan
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+134
+
+Sarjat :
+
+Taulukko array<tyyppi> on vakiokokoinen taulukko.
+• Luodaan std::array<tyyppi, koko> a = {arvo, arvo,...};
+• Indeksointi jäsenfunktiolla .at() tai []-operaatiolla.
+
+Funktioilla front() ja back() voidaan käsitellä ensimmäistä ja
+viimeistä alkiota.
+
+• Tarjoaa iteraattorit ja käänteisiteraattorit
+• empty(), size() ja max_size()
+• Funktion data() avulla päästään suoraan käsiksi sisällä
+
+olevaan taulukkoon
+
+Taulukon operaatiot ovat vakioaikaisia, mutta fill() ja swap()
+ovat O(n)
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+135
+
+Vektori vector<tyyppi> on lopustaan joustavarajainen taulukko
+• Luodaan vector<int> v {arvo, arvo, ...};
+• Vakioaikainen indeksointi .at(), [] sekä (tasatusti)
+
+vakioaikainen lisäys push_back() ja poisto pop_back() vektorin
+lopussa
+
+• alkion lisääminen muualle insert():illä ja poistaminen
+
+erase:lla on lineaarista, O(n)
+
+• emplace_back(args); rakentaa alkion suoraan vektoriin
+• Vektorin kokoa voi kasvattaa funktiolla
+
+.resize(koko, alkuarvo);
+– alkuarvo on vapaaehtoinen
+– tarvittaessa vektori varaa lisää muistia automaattisesti
+– muistia voi varata myös ennakkoon:
+
+.reserve(koko), .capacity()
+
+• iteraattorien mitätöitymistä tapahtuu seuraavissa tilanteissa
+– mikäli vectorille ei ole etukäteen varattu riittävää tilaa, voi
+
+mikä tahansa lisäys aiheuttaa kaikkien iteraattoreiden
+mitätöitymisen
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+136
+
+– poistot aiheuttavat mitätöitymisen ainoastaan
+
+poistopaikan jälkeen tuleville iteraattoreille
+
+– lisäykset keskelle aiheuttavat aina lisäyspaikan jälkeen
+
+tulevien iteraattoreiden mitätöitymisen
+
+• vector<bool>:ille on määritelty erikoistoteutus, joka poikkeaa
+siitä mitä yleinen toteutus tekisi muistinkäytön tehostamiseksi
+– tavoite: mahdollistaa 1 bitti / alkio, kun tavallinen toteutus
+
+luultavasti veisi 1 tavu / alkio eli 8 bittiä / alkio
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+137
+
+Pakka deque<tyyppi> on molemmista päistään avoin taulukko
+• luodaan deque<tyyppi> d {arvo, arvo, arvo...};
+• Rajapinta vektorin kanssa yhtenevä, mutta tarjoaa
+
+tehokkaan (O(1) tasattu suoritusaika) lisäyksen ja poiston
+molemmissa päissä: .push_front(alkio),
+.emplace_front(args), .pop_front()
+
+• iteraattorien mitätöitymistä tapahtuu seuraavissa tilanteissa
+
+– kaikki lisäykset voivat mitätöidä iteraattorit
+– poistot keskelle mitätöivät kaikki iteraattorit
+– kaikki paitsi päihin kohdistuvat lisäys- ja poisto-operaatiot
+
+voivat mitätöidä viitteet ja osoittimet
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+138
+
+Lista on säiliö, joka tukee kaksisuuntaista iterointia
+• luodaan list<tyyppi> l {arvo, arvo, arvo };
+• lisäys ja poisto kaikkialla vakioaikaista,
+
+indeksointioperaatiota ei ole
+
+• lisäys ja poisto eivät mitätöi iteraattoreita ja viitteitä (paitsi
+
+tietysti poistettuihin alkioihin)
+
+• listalla on monenlaisia erikoispalveluja
+
+– .splice(paikka, toinen_lista) siirtää toisen listan nykyisen
+
+osaksi paikan eteen, O(1).
+
+– .splice(paikka, lista, alkio) siirtää alkion toisesta tai
+
+samasta listasta paikan eteen, O(1).
+
+– .splice(paikka, lista, alku, loppu) siirtää välin alkiot
+
+paikan eteen, O(1) tai lineaarinen
+
+– .merge(toinen_lista) ja .sort(), vakaa, keskimäärin
+
+O(nlogn)
+
+– .reverse(), lineaarinen
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+142
+
+Assosiatiiviset säiliöt :
+
+Joukko set<tyyppi> ja monijoukko multiset<tyyppi> on
+dynaaminen joukko, josta voi
+• etsiä, lisätä ja poistaa logaritmisessa ajassa
+• selata suuruusjärjestyksessä tasatussa vakioajassa siten että
+läpikäynti alusta loppuun on aina lineaarinen operaatio
+
+• alkioilla on oltava suuruusjärjestys “<”
+• voi määritellä erikseen joko osana tyyppiä tai rakentajan
+
+parametrina
+
+• tutkii yhtäsuuruuden kaavalla ¬(x<y ∨ y<x) ⇒ “<”
+
+määriteltävä järkevästi ja tehokkaaksi
+
+Monijoukossa sama alkio voi olla moneen kertaan, joukossa ei
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+143
+
+Luodaan std::set<tyyppi> s {arvo, arvo, arvo...};
+
+• alkion arvon muuttaminen on pyritty estämään
+
+– sen sijaan pitää poistaa vanha alkio ja lisätä uusi
+
+• mielenkiintoisia operaatioita:
+
+– .find(alkio) etsii alkion (monijoukolle ensimmäisen
+
+monesta), tai palauttaa .end() jollei löydä
+
+– .lower_bound(alkio) etsii ensimmäisen, joka on ≥ alkio
+– .upper_bound(alkio) etsii ensimmäisen, joka on > alkio
+– .equal_range(alkio) palauttaa
+
+make_pair( .lower_bound(alkio), .upper_bound(alkio) ),
+mutta selviää yhdellä etsinnällä (joukolle ko. välin leveys
+on 0 tai 1)
+
+– joukoille insert palauttaa parin (paikka, lisättiin), koska
+
+alkiota ei saa lisätä, jos se on jo joukossa
+
+• standardi lupaa, että iteraattorit eivät vanhene lisäyksessä
+
+ja poistossa (paitsi tietysti poistettuihin alkioihin kohdistuneet)
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+144
+
+Kuvaus map<avaimen_tyyppi, alkion_tyyppi> ja monikuvaus
+multimap<avaimen_tyyppi, alkion_tyyppi>
+• alkiot avain-oheisdatapareja
+
+– parin tyyppi on pair<tyyppi1, tyyppi2>
+– parin voi tehdä funktiolla make_pair:illä
+– parin kentät saa operaatioilla .first(), .second()
+
+• luodaan
+
+std::map m<avain_tyyppi, alkio_tyyppi> m {{avain1, arvo1},
+{avain2, arvo2}, avain3, arvo3},...};
+esim.
+std::map<std::string,int> anim { {"bear",4}, {"giraffe",2},
+{"tiger",7} };
+
+• map:ia voi poikkeuksellisesti indeksoida avaimen avulla
+
+O(logn)
+– Jos avainta ei löydy, lisää arvoparin avain-arvo
+
+rakenteeseen
+
+• nytkään iteraattorit eivät vanhene lisäyksessä ja poistossa
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+145
+
+Hajautustaulu, Unordered set/multiset, joka sisältää joukon
+alkioita ja unordered map/multimap, joka sisältää joukon
+alkioita, jotka assosioidaan avainarvojoukolle.
+
+• unordered map/set muistuttavat rajapinnaltaan mapia ja
+
+setia
+
+• tärkeimmät erot:
+
+– alkiot eivät ole järjestyksessä (unordered)
+– lisäys, poisto ja etsintä ovat keskimäärin vakioaikaisia ja
+
+pahimmassa tapauksessa lineaarisia
+
+– tarjoavat hajautuksen kannalta olennaisia funktioita,
+kuten rehash(koko), load_factor(), hash_function() ja
+bucket_size().
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+146
+
+• hajautustalun kokoa kasvatetaan automaattisesti, jotta
+
+lokeroiden keskimääräinen täyttöaste saadaan pidettyä
+sovitun rajan alapuolella
+– hajautustaulun koon muuttaminen (rehashing) on
+keskimäärin lineaarinen pahimmillaan neliöllinen
+operaatio
+
+– koon muuttaminen mitätöi kaikki iteraattorit, muttei
+
+osoittimia eikä viitteitä
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+147
+
+Lisäksi Standardikirjastosta löytyy joitakin muita säiliöitä:
+
+Bittivektori bitset<bittien_määrä>
+• #include<bitset>
+• tarkoitettu kiinteän kokoisten binääristen bittisarjojen
+
+käsittelyyn
+
+• tarjoaa tyypillisiä binäärisiä operaatioita (AND, OR, XOR,
+
+NOT)
+
+Merkkijonot string
+• #include<string>
+• vaikka C++:n merkkijonot on optimoitu muuhun
+
+tarkoitukseen eikä niitä yleensä ajatella säiliöinä, ne ovat
+muun lisäksi säiliöitäkin
+
+• säilövät merkkejä, mutta saadaan säilömään muutakin
+• niillä on mm. iteraattorit, [. . . ], .at(. . . ), .size(), .capacity()
+
+ja swap
+
+• merkkijonot voivat kasvaa hyvin suuriksi ja varaavat
+
+tarvittaessa automaattisesti lisää muistia
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+148
+
+• merkkijonojen muokkausoperaatioiden (katenointi, poisto)
+kanssa kannattaa olla varovainen, koska niissä suoritetaan
+muistinvarausta ja kopiointia, minkä vuoksi ne ovat pitkille
+merkkijonoille varsin raskaita
+
+• usein on muutenkin järkevää sijoittaa merkkijonot esimerkiksi
+osoittimen päähän sijoitettaessa niitä säiliöihin, jottei niitä
+turhaan kopioitaisi
+
+• samasta syystä merkkijonot tulee välittää viiteparametreina
+
+Säiliöiden lisäksi STL tarjoaa joukon säiliösovittimia, jotka eivät
+itsessään ole säiliöitä, mutta joiden avulla säiliön rajapinnan
+saa “sovitettua toiseen muottiin”:
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+149
+
+Pino stack<alkion_tyyppi, säiliön_tyyppi>
+• tarjoaa normaalien luokka-operaatioiden lisäksi vain
+
+– pino-operaatiot, .push(. . . ), .top(), .pop()
+– koon kyselyt .size() ja .empty()
+– vertailut “==”, “<” jne.
+
+• .pop() ei palauta mitään, ylimmän alkion saa
+
+tarkasteltavaksi .top():illa
+
+• pinon ylintä alkiota voi muuttaa paikallaan:
+
+pino.top() = 35;
+
+• kurssin kannalta kiinnostavaa on, että käyttäjä voi valita
+
+taulukkoon tai listaan perustuvan toteutuksen
+– mikä tahansa säiliö, joka tarjoaa back(), push_back() ja
+
+pop_back() käy, erityisesti vector, list ja deque.
+
+– stack<tyyppi> perus_pino; (deque)
+– stack<tyyppi, list<tyyppi> > lista_pino;
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+150
+
+Jono queue<alkion_tyyppi, säiliön_tyyppi>
+• jono-operaatiot .push(. . . ), .pop(), .front(), .back()(!)
+• mikä tahansa säiliö, joka tarjoaa front(), back(), push_back()
+
+ja pop_front käy
+
+• muuten kutakuinkin samanlainen kuin pino
+
+Prioriteettijono priority_queue<alkion_tyyppi,säiliön_tyyppi>
+• lähes täysin samanlainen rajapinta kuin jonolla
+• toteutus kekona
+• mikä tahansa säiliö, jolla front(), push_back() ja pop_back() ja
+
+hajasaanti-iteraattoreita tukeva käy, erityisesti vector
+(oletus) ja deque
+
+• alkioilla eri järjestys: .top() palauttaa suurimman
+• yhtäsuurista palauttaa minkä vain
+• ylintä alkiota ei voi muuttaa top:in avulla paikallaan
+• kuten assosiatiivisilla säiliöillä, järjestämisperiaatteen voi
+antaa <>-parametrina tai rakentajan parametrina (strict
+weak ordering)
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+151
+
+tieto-
+rakenne
+array
+vector
+list
+deque
+stack[9]
+queue[9]
+priority
+queue[9]
+set
+(multiset)
+map
+(multimap)
+unordered_
+(multi)set
+unordered_
+(multi)map
+
+lisäys
+loppuun muualle poisto poisto (indeks.) etsintä poisto
+
+alkion n:s alkio tietyn
+
+lisäys
+
+1.
+
+suurimman
+
+O(1)
+O(1)
+O(1)
+O(1)
+
+O(n)
+O(1)
+O(n)[4]
+
+O(n)
+O(1)
+O(1)
+
+O(1)[6]
+O(log n)
+
+O(1)
+O(n)[1] O(1)
+O(1)
+O(n)
+O(n)[1] O(1)
+O(1)[5]
+O(1)[7]
+
+O(n)[2]
+O(n)[2] O(n)[3]
+O(n)
+O(n)[3]
+O(n)[2] O(n)[3]
+
+O(log n)[8]
+
+[10]
+O(log n) O(log n) O(log n) O(n)
+
+O(log n) O(log n)
+
+O(log n) O(log n) O(log n) O(n)
+
+O(log n) O(log n)
+
+O(n)
+≈ Θ(1)
+O(n)
+≈ Θ(1)
+
+O(n)
+≈ Θ(1)
+O(n)
+≈ Θ(1)
+
+O(n)
+O(n)
+≈ Θ(1) O(n)
+O(n)
+O(n)
+≈ Θ(1) O(n)
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+152
+
+[1] vakioaikainen viimeiselle alkiolle, muuten lineaarinen
+[2] logaritminen jos tietorakenne on järjestetty, muuten
+lineaarinen
+[3] vakioaikainen jos tietorakenne on järjestetty, muuten
+lineaarinen
+[4] vakioaikainen ensimmäiselle alkiolle, muuten lineaarinen
+[5] mahdollinen vain viimeiselle alkiolle
+[6] vain alkuun lisääminen on mahdollista
+[7] vain lopusta poistaminen on mahdollista
+[8] kysyminen vakioajassa, poistaminen logaritmisessa ajassa
+[9] säiliösovitin
+[10] lisäys tapahtuu automaattisesti kekojärjestyksen mukaiselle
+paikalle
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+153
+
+7.4 Geneeriset algoritmit
+
+Standardikirjasto tarjoaa useimmat tähän mennessä
+käsitellyistä algoritmeista.
+
+Algoritmit on kaikki toteutettu funktiomalleina, jotka saavat
+kaikki tarvitsemansa tiedon käsiteltävistä säiliöistä parametrien
+avulla.
+
+Algoritmeille ei kuitenkaan koskaan anneta parametrina
+kokonaisia säiliöitä vaan ainoastaan iteraattoreita niihin.
+
+• algoritmeilla voidaan käsitellä myös säiliön osia kokonaisten
+
+säiliöiden sijasta
+
+• algoritmi voi saada parametrinaan iteraattoreita
+
+erityyppisiin säiliöihin, jolloin yhdellä funktiokutsulla voidaan
+yhdistää esimerkiksi vectorin ja listan sisällöt ja tallettaa tulos
+joukkoon
+
+• algoritmien toimintaa voidaan muuttaa
+
+iteraattorisovittimien avulla
+
+• ohjelmoija voi toteuttaa omiin tietorakenteisiinsa iteraattorit,
+
+jonka jälkeen algoritmit toimivat myös niille
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+154
+
+Kaikkia algoritmeja ei kuitenkaan pystytä suorittamaan kaikille
+tietorakenteille tehokkaasti.
+⇒ osa algoritmeista hyväksyy parametreikseen vain tietyn
+iteraattorikategorian iteraattoreita.
+
+• tämä takaa algoritmien tehokkuuden, koska kaikki
+iteraattorin tarjoamat operaatiot ovat vakioaikaisia
+
+• jos iteraattori on väärää tyyppiä, annetaan
+
+käännösaikainen virhe-ilmoitus
+⇒ jos algoritmille annetaan tietorakenne, jolle sitä ei voida
+toteuttaa tehokkaasti, se ei edes käänny
+
+Standardikirjaston algoritmit ovat kirjastossa algorithm. Lisäksi
+standardi määrittelee C-kielen algoritmikirjaston cstdlib.
+
+jakaa algoritmit kolmee pääryhmään: muuttamattomat
+sarjalliset operaatiot, muuttavat sarjalliset operaatiot ja
+järjestäminen sekä siihen liittyvät operaatiot.
+
+Seuraavaksi lyhyt kuvaus joistakin kurssin kannalta
+kiinnostavimmista algoritmeista (näiden lisäksi on vielä
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+155
+
+runsaasti suoraviivaisia selaamiseen yms. perustuvia
+algoritmeja):
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+156
+
+Puolitushaku
+• binary_search(eka, loppu, arvo) kertoo onko arvo
+
+järjestetyssä jononpätkässä
+– eka ja loppu ovat iteraattoreita, jotka osoittavat etsittävän
+
+alueen alkuun ja loppuun, muttei välttämättä säiliön
+alkuun ja loppuun
+
+• samaa arvoa voi olla monta peräkkäin
+
+⇒ lower_bound ja upper_bound palauttavat sen alueen rajat,
+jolla on arvoa
+– alaraja on, yläraja ei ole mukana alueessa
+
+• rajat saa myös pariksi yhdistettynä yhdellä etsinnällä:
+
+equal_range
+
+• vertaa BIN-SEARCH sivu 74
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+157
+
+Järjestämisalgoritmit
+• sort(alku, loppu) ja stable_sort(alku, loppu)
+• sortin suoritusaika O(nlogn) ja stable_sortin O(nlogn) jos
+tarpeeksi lisämuistia on saatavilla, muuten O(nlog2n)
+
+• järjestelyalgoritmit vaativat parametreikseen
+
+hajasaanti-iteraattorit
+⇒ eivät toimi listoille, mutta niissä on oma sort (ja
+ei-kopioiva merge) jäsenfunktiona
+
+• löytyy myös järjestäminen, joka lopettaa, kun halutun
+
+mittainen alkuosa on järjestyksessä: partial_sort(alku, keski ,
+loppu)
+
+• lisäksi is_sorted(alku, loppu) ja is_sorted_until(alku, loppu)
+
+nth_element( eka, ¨ann¨as, loppu )
+
+• etsii alkion, joka järjestetyssä säiliössä olisi kohdalla ¨ann¨as
+• muistuttaa algoritmia RANDOMIZED-SELECT
+• iteraattoreiden tulee olla hajasaanti-iteraattoreita
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+158
+
+Ositus (partitiointi)
+• partition(eka, loppu, ehtofunktio) epävakaa, erikseen
+
+stable_partition.
+
+• stable_partition(eka, loppu, ehtofunktio) vakaa, mutta
+
+hitaampi ja/tai varaa enemmän muistia
+
+• järjestää välillä eka - loppu olevat alkiot siten, että ensin
+
+tulevat alkiot, joille ehtofunktio palauttaa true ja sitten, ne
+joille se palauttaa false.
+
+• vrt. QUICK-SORTn yhteudessä esitelty PARTITION
+• partition on tehokkuudeltaan lineaarinen
+• lisäksi is_partitioned ja partition_point
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+159
+
+merge( alku1 , loppu1 , alku2 , loppu2 , maali )
+
+• Algoritmi limittää välien alku1 - loppu1 ja alku2 - loppu2 alkiot
+ja kopioi ne suuruusjärjestyksessä iteraattorin maali päähän
+• algoritmi edellyttää, että alkiot yhdistettävillä väleillä ovat
+
+järjestyksessä
+
+• vertaa sivun 45 MERGE
+• algoritmi on lineaarinen
+• alku- ja loppu-iteraattorit ovat syöttöiteraattoreita ja maali on
+
+tulostusiteraattori
+
+Keot
+• STL:stä löytyy myös vastineet luvun 3.1 kekoalgoritmeille
+• push_heap( eka, loppu) HEAP-INSERT
+• pop_heap( eka, loppu ) vaihtaa huippualkion viimeiseksi (eli
+paikkaan loppu − 1) ja ajaa HEAPIFY:n osalle eka . . . loppu − 1
+– vrt. HEAP-EXTRACT-MAX
+
+• make_heap( eka, loppu) BUILD-HEAP
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+160
+
+• sort_heap( eka, loppu ) HEAPSORT
+• lisäksi is_heap ja is_heap_until
+• iteraattoreiden tulee olla hajasaanti-iteraattoreita
+
+Joukko-operaatiot
+• C++:n standardikirjasto sisältää tätä tukevia funktioita
+• includes( eka1 , loppu1 , eka2 , loppu2 ) osajoukko ⊆
+• set_union( eka1 , loppu1 , eka2 , loppu2 , tulos ) unioni ∪
+• set_intersection(. . . ) leikkaus ∩
+• set_difference(. . . ) erotus -
+• set_symmetric_difference(. . . )
+• alku- ja loppu-iteraattorit ovat syöttöiteraattoreita ja tulos on
+
+tulostusiteraattori
+
+find_first_of( eka1 , loppu1 , eka2 , loppu2 )
+
+• lopussa voi lisäksi olla tutkittavia alkioita rajaava ehto
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+161
+
+• etsii ensimmäisestä jonosta ensimmäisen alkion, joka on
+
+myös toisessa jonossa
+
+• jono voi olla taulukko, lista, joukko, . . .
+
+• yksinkertainen toteutus on hitaimmillaan Θ(nm), missä n ja
+m ovat jonojen pituudet
+
+• toinen jono selataan jokaiselle ensimmäisen jonon alkiolle
+
+– hitain tapaus kun ei löydy
+⇒ hidasta, jos molemmat jonot pitkiä
+
+• toteutus saataisiin yksinkertaiseksi, nopeaksi ja muistia
+säästäväksi vaatimalla, että jonot ovat järjestyksessä
+
+HUOM! Mikään STL:n algoritmi ei automaattisesti tee säiliöihin
+lisäyksiä eikä poistoja, vaan ainoastaan muokkaa olemassa
+olevia alkioita.
+
+• esimerkiksi merge ei toimi, jos sille annetaan
+
+tulostusiteraattoriksi iteraattori tyhjän säiliön alkuun
+
+• jos tulostusiteraattorin halutaan tekevän lisäyksiä kopioinnin
+
+sijasta, tulee käyttää iteraattorisovitinta lisäysiteraattori
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+162
+
+7.5 Lambdat: [](){}
+
+Algoritmikirjaston yhteydessä on paljon tilanteita, joissa on
+tarve välittää funktiolle toiminnallisuutta
+– esim. find_if, for_each, sort
+
+Lambdat ovat nimettömiä, määrittelemättömän tyyppisiä
+funktion kaltaisia. Ne ottavat parametreja, palauttavat
+paluuarvon ja pystyvät viittaamaan luontiympäristönstä
+muuttujiin sekä muuttamaan niitä.
+
+Syntaksi: [ympäristö](parametrit)->paluutyyppi {runko}
+– Jos lambda ei viittaa ympäristöönsä ympäristö on tyhjä
+– parametrit voi puuttua
+– jos ->paluutyyppiä ei ole annettu, se on void. Yksittäisestä
+
+return-lauseesta se voidaan päätellä
+– esim. [](int x, int y){ return x+y;}
+
+for_each( v.begin(), v.end(),[] (int val) {cout<<val<<endl;});
+std::cin >> raja; //paikallinen muuttuja
+std:find_if(v.begin(), v.end(),[raja](int a){return a<raja;});
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+163
+
+STL:n algoritmeja voi ajatella nimettyinä erityissilmukoina,
+joiden runko lambda on
+
+bool kaikki = true;
+for (auto i : v)
+{
+
+if (i%10 != 0) {
+
+kaikki = false;
+break;
+
+}
+
+}
+if (kaikki) {...}
+
+if (std::all_of(v.begin(), v.end(), [](int i){return i%10==0;}){...}
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+169
+
+8.1 Puu
+
+Ennen kuin käydään käsiksi kekoon, määritellään sen tueksi
+käsite puu.
+
+Puu on:
+
+• rakenne, joka koostuu solmuista, joilla on mielivaltainen
+
+määrä lapsia.
+
+lehtiäsisäsolmujajuuriCOMP.CS.300 Tietorakenteet ja algoritmit 1
+
+170
+
+• Binääripuussa lasten määrä on rajoitettu välille 0–2. Tällöin
+
+lapset nimetään vasen (left) ja oikea (right)
+
+• solmu on lapsiensa isä (parent)
+• lapseton solmu on lehti (leaf), ja muut solmut ovat
+
+sisäsolmuja (internal node)
+
+• puussa on korkeintaan yksi solmu, jolla ei ole isää. Isätön
+
+solmu on puun juuri (root).
+– kaikki muut solmut ovat juuren lapsia, lastenlapsia jne.
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+171
+
+• puun rakenne on rekursiivinen: kunkin solmun jälkeläiset
+
+muodostavat puun alipuun, jonka juuri kyseinen solmu on
+
+Kuva 13: Binääripuun rekursiivisuus
+
+• puun solmun korkeus (height) on pisimmän solmusta
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+172
+
+suoraan alas lehteen vievän polun pituus
+– pituus lasketaan kaarien mukaan, jolloin lehden korkeus
+
+on 0
+
+• puun korkeus on sen juuren korkeus
+
+• puu on täydellisesti tasapainotettu (completely balanced),
+
+jos sen juuren lasten määräämien alipuiden korkeudet
+eroavat toisistaan enintään yhdellä, ja alipuut on
+täydellisesti tasapainotettu
+
+• n-solmuisen puun korkeus on vähintään (cid:98)lg n(cid:99) ja korkeintaan
+n - 1 (logaritmin kantaluku riippuu lasten maksimimäärästä)
+⇒ O(n) ja Ω(lg n)
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+173
+
+Puun solmut voidaan käsitellä monessa eri järjestyksessä.
+• esijärjestys (preorder) eli ensin käsi-
+tellään juuri, sitten rekursiivisesti lap-
+set.
+– kutsu:
+
+PREORDER-TREE-WALK(T .root)
+
+– esimerkin käsittelyjärjestys on 18,
+13, 8, 5, 3, 6, 9, 15, 14, 25, 22, 23,
+30, 26, 33, 32, 35
+PREORDER-TREE-WALK(x)
+1 if x (cid:54)= NIL then
+2
+3
+4
+
+käsittele alkio x
+for child in x→children do
+
+PREORDER-TREE-WALK(child )
+
+132533lehtiäsisäsolmujajuuri14189235153835322622306COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+174
+
+• välijärjestys (inorder)
+
+– välijärjestys koskee lähinnä bi-
+nääripuuta, siinä käsitellään en-
+sin rekursiivisesti vasen lapsi, sitten
+juuri ja lopuksi rekursiivisesti oikea
+lapsi
+
+– esimerkissä 3, 5, 6, 8, 9, 13, 14, 15,
+18, 22, 23, 25, 26, 30, 32, 33, 35
+
+INORDER-TREE-WALK(x)
+1 if x (cid:54)= NIL then
+2
+3
+4
+
+INORDER-TREE-WALK(x→left)
+käsittele alkio x
+INORDER-TREE-WALK(x→right)
+
+132533lehtiäsisäsolmujajuuri14189235153835322622306COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+175
+
+• jälkijärjestys (postorder), eli ensin
+lapset, lo-
+
+käsitellään rekursiivisesti
+puksi vasta juuri
+– esimerkissä 3, 6, 5, 9, 8, 14, 15, 13,
+23, 22, 26, 32, 35, 33, 30, 25, 18
+
+POSTORDER-TREE-WALK(x)
+1 if x (cid:54)= NIL then
+2
+3
+4
+
+käsittele alkio x
+
+for child in x→children do
+
+POSTORDER-TREE-WALK(child )
+
+132533lehtiäsisäsolmujajuuri14189235153835322622306COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+176
+
+Puun läpikäynnin ajankäyttö:
+• ajoaika Θ(n), algoritmit kutsuvat itseään kahdesti joka
+
+solmussa: kerran vasemmalle ja kerran oikealle lapselle
+• lisämuistin tarve = Θ(rekursion maksimisyvyys) = Θ(h + 1) =
+
+Θ(h)
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+139
+
+Tasattu eli amortisoitu ajoaika
+
+Vektori on joustavarajainen taulukko eli sen kokoa
+kasvatetaan tarvittaessa.
+
+• kun uusi alkio ei enää mahdu taulukkoon, varataan uusi
+
+suurempi ja siirretään kaikki alkiot sinne
+
+• taulukko ei koskaan kutistu
+
+⇒ muistin varaus ei vähene muuten kuin kopioimalla
+vektoriin kokonaan uusi sisältö
+
+⇒ Alkion lisäämisen vectorin loppuun sanottiin olevan tasatusti
+(amortisoidusti) vakioaikaista.
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+140
+
+• Amortisoidusti lähestyttäessä suoritusaikaa tarkastellaan
+
+kokonaisuutena, tutkitaan operaatiosarjojen suoritusaikaa
+yksittäisten operaatioiden sijaan
+– jokaista kallista muistinvarausta vaativaa lisäysoperaatiota
+edeltää kalliin operaation hintaan suoraan verrannollinen
+määrä halpoja lisäysoperaatioita
+
+– kalliin operaation kustannus voidaan jakaa tasan halvoille
+
+operaatioille
+
+– tällöin halvat operaatiot ovat edelleen vakioaikaisia, tosin
+
+vakiokertoimen verran hitaampia kuin oikeasti
+
+– kallis operaatio voidaan maksaa säästöillä
+
+⇒ kaikki lisäysoperaatiot vektorin loppuun ovat tasatusti
+
+vakioaikaisia
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+141
+
+Tämä voidaan todentaa vaikkapa kirjanpito-
+menetelmällä:
+
+• laskutetaan jokaisesta lisäyksestä kolme ra-
+
+haa
+
+• yksi raha käytetään lisäyksen todellisiin kus-
+
+tannuksiin
+
+• yksi raha laitetaan säästöön lisätyn alkion i
+
+kohdalle
+
+• yksi raha laitetaan säästöön alkion i − 1
+
+2 ·
+
+vector .capacity() kohdalle
+
+• kun tulee tarve laajentaa taulukkoa, jokai-
+sella alkiolla on yksi raha säästössä, ja kallis
+kopiointi voidaan maksaa niillä
+
+11111111111111111111111111111COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+110
+
+6.2 Suunnitteluperiaate: Satunnaistaminen
+
+Satunnaista on eräs algoritmien suunnitteluperiaatteista.
+
+• Sen avulla voidaan usein estää huonoimpien tapausten
+
+patologinen ilmeneminen.
+
+• Parhaan ja huonoimman tapauksen suoritusajat eivät
+
+useinkaan muutu, mutta niiden esiintymistodennäköisuus
+käytännössä laskee.
+
+• Huonot syötteet ovat täsmälleen yhtä todennäköisiä kuin
+mitkä tahansa muut syötteet riippumatta alkuperäisestä
+syötteiden jakaumasta.
+
+• Satunnaistaminen voidaan suorittaa joko ennen algoritmin
+suoritusta satunnaistamalla sen saama syöteaineisto tai
+upottamalla satunnaistaminen algoritmin sisälle.
+
+– jälkimmäisellä tavalla päästään usein parempaan
+
+tulokseen
+
+– usein se on myös helpompaa kuin syötteen esikäsittely
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+111
+
+• Satunnaistaminen on hyvä ratkaisu yleensä silloin, kun
+– algoritmi voi jatkaa suoritustaan monella tavalla
+– on vaikea arvata etukäteen, mikä tapa on hyvä
+– suuri osa tavoista on hyviä
+– muutama huono arvaus hyvien joukossa ei haittaa paljoa
+
+• Esimerkiksi QUICKSORT voi valita jakoarvoksi minkä tahansa
+
+taulukon alkion
+– hyviä valintoja ovat kaikki muut, paitsi lähes pienimmät ja
+
+lähes suurimmat taulukossa olevat arvot
+
+– on vaikea arvata valintaa tehdessä, onko ko. arvo lähes
+
+pienin / suurin
+
+– muutama huono arvaus silloin tällöin ei turmele
+
+QUICKSORTin suorituskykyä
+
+⇒ satunnaistaminen sopii QUICKSORTille
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+112
+
+Satunnaistamisen avulla voidaan tuottaa algoritmi
+RANDOMIZED-QUICKSORT, joka käyttää satunnaistettua
+PARTITIONIA.
+
+• Ei valita jakoarvoksi aina A[ right ]:tä, vaan valitaan jakoarvo
+
+satunnaisesti koko osataulukosta.
+
+• Jotta PARTITION ei menisi rikki, sijoitetaan jakoarvo silti
+
+kohtaan right taulukkoa
+⇒ Nyt jako on todennäköisesti melko tasainen riippumatta
+siitä, mikä syöte saatiin ja mitä taulukolle on jo ehditty
+tehdä.
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+113
+
+RANDOMIZED-PARTITION( A, lef t, right )
+1 p := RANDOM(lef t, right)
+2 exchange A[ right ] ↔ A[ p ]
+3 return PARTITION( A, lef t, right )
+
+(valitaan satunnainen alkio pivotiksi)
+(asetetaan se taulukon viimeiseksi)
+(kutsutaan tavallista partitiointia)
+
+RANDOMIZED-QUICKSORT( A, lef t, right )
+1 if lef t < right then
+2
+3
+4
+
+p := RANDOMIZED-PARTITION( A, lef t, right )
+RANDOMIZED-QUICKSORT( A, lef t, p − 1 )
+RANDOMIZED-QUICKSORT( A, p + 1, right )
+
+RANDOMIZED-QUICKSORTIN ajoaika on keskimäärin Θ(n lg n)
+samoin kuin tavallisenkin QUICKSORTIN.
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+114
+
+• RANDOMIZED-QUICKSORTILLE kuitenkin varmasti pätee
+
+keskimääräisen ajankäytön analyysin yhteydessä tehtävä
+oletus, jonka mukaan pivot-alkio on osataulukon pienin,
+toiseksi pienin jne. aina samalla todennäköisyydellä.
+• Tavalliselle QUICKSORTILLE tämä pätee ainoastaan, jos
+
+aineisto on tasaisesti jakautunutta.
+
+⇒ RANDOMIZED-QUICKSORT on yleisessä tapauksessa tavallista
+QUICKSORTIA parempi.
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+115
+
+QUICKSORTIA voidaan tehostaa myös muilla keinoilla:
+• Voidaan järjestää pienet osataulukot pienille taulukoille
+tehokkaalla algoritmilla (esim. INSERTIONSORT) avulla.
+– voidaan myös jättää ne vain järjestämättä ja järjestää
+
+taulukko lopuksi INSERTIONSORTIN avulla
+
+• Jakoarvo voidaan valita esimerkiksi kolmen satunnaisesti
+
+valitun alkion mediaanina.
+
+• On jopa mahdollista käyttää aina mediaanialkiota
+
+jakoalkiona.
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+116
+
+Mediaani on mahdollista etsiä nopeasti niin sanotun laiskan
+QUICKSORTIN avulla.
+
+• Jaetaan taulukko “pienten alkioiden” alaosaan ja “suurten
+
+alkioiden” yläosaan kuten QUICKSORTissa.
+
+• Lasketaan, kumpaan osaan i:s alkio kuuluu, ja jatketaan
+
+rekursiivisesti sieltä.
+
+• Toiselle osalle ei tarvitse tehdä enää mitään.
+
+(jos osataulukko on yhden kokoinen...)
+(... palautetaan ainoa alkio)
+
+RANDOMIZED-SELECT( A, lef t, right, goal )
+1 if lef t = right then
+return A[ lef t ]
+2
+3 p := RANDOMIZED-PARTITION( A, lef t, right ) (jaetaan taulukko pieniin ja isoihin)
+4 k := p − lef t + 1
+(lasketaan monesko jakoalkio on)
+5 if i = k then
+(jos jakoalkio on taulukon i:s alkio...)
+(...palautetaan se)
+6
+7 else if i < k then
+(jatketaan etsintää pienten puolelta)
+8
+9 else
+10
+
+return RANDOMIZED-SELECT( A, p + 1, right, goal − k )
+
+return RANDOMIZED-SELECT( A, lef t, p − 1, goal )
+
+(jatketaan etsintää suurten puolelta)
+
+return A[ p ]
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+117
+
+RANDOMIZED-SELECTIN suoritusajan alaraja:
+• Jälleen kaikki muu on vakioaikaista paitsi
+
+RANDOMIZED-PARTITION ja rekursiivinen kutsu.
+
+• Parhaassa tapauksessa RANDOMIZED-PARTITIONIN valitsema
+jakoalkio on taulukon i:s alkio, ja ohjelman suoritus loppuu.
+
+• RANDOMIZED-PARTITION ajetaan kerran koko taulukolle.
+⇒ Algoritmin suoritusaika on Ω(n).
+
+RANDOMIZED-SELECTIN suoritusajan yläraja:
+• RANDOMIZED-PARTITION sattuu aina valitsemaan pienimmän
+tai suurimman alkion, ja i:s alkio jää suuremmalle puoliskolle
+
+• työmäärä pienenee vain yhdellä askeleella joka
+
+rekursiotasolla.
+
+⇒ Algoritmin suoritusaika on O(n2).
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+118
+
+Keskimääräisen tapauksen ajoaika on kuitenkin O(n).
+
+Algoritmi löytyy esimerkiksi STL:stä nimellä nth_element.
+
+Algoritmi on mahdollista muuttaa myös toimimaan aina
+lineaarisessa ajassa.
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+177
+
+8.2 Suunnitteluperiaate: Muunna ja hallitse
+
+Muunna ja hallitse on suunnitteluperiaate, joka
+• Ensin muokkaa ongelman instanssia muotoon, joka on
+
+helpompi ratkaista – muunnosvaihe
+
+• Sitten ongelma voidaan ratkaista – hallintavaihe
+
+Ongelman instanssi voidaan muuntaa kolmella eri tavalla:
+• Yksinkertaistaminen (Instance simpliﬁcation):
+
+yksinkertaisempi tai kätevämpi instanssi samasta
+ongelmasta
+
+• Esitystavan muutos (Representation change): saman
+
+instanssin toinen esitystapa
+
+• Ongelman muunnos (Problem reduction): ratkaistaan
+
+sellaisen ongelman, jolle algoritmi on jo valmiina, instanssi
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+178
+
+Keko
+
+Taulukko A[1 . . . n] on keko, jos A[i] ≥ A[2i] ja A[i] ≥ A[2i + 1] aina
+kun 1 ≤ i ≤ (cid:98)n
+
+2(cid:99) (ja 2i + 1 ≤ n).
+
+Tämä on helpompi ymmärtää, kun tulkitaan keko täydellisesti
+tasapainotetuksi binääripuuksi, jonka
+
+• juuri on talletettu taulukon paik-
+
+kaan 1
+
+• paikkaan i
+
+talletetun solmun
+lapset (jos olemassa) on talletet-
+tu paikkoihin 2i ja 2i + 1
+
+• paikkaan i talletetun solmun isä
+
+on talletettu paikkaan (cid:98) i
+2(cid:99)
+
+121514717510827COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+179
+
+Tällöin jokaisen solmun arvo on suurempi tai yhtä suuri kuin sen
+lasten arvot.
+
+Kekopuun jokainen kerros on täysi, paitsi ehkä alin, joka on
+täytetty vasemmasta reunasta alkaen.
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+180
+
+Jotta kekoa olisi helpompi ajatella puuna, määrittelemme isä-
+ja lapsisolmut löytävät aliohjelmat.
+• ne ovat toteutettavissa hyvin tehokkaasti bittisiirtoina
+• kunkin suoritusaika on aina Θ(1)
+
+PARENT(i)
+
+return (cid:98)i/2(cid:99)
+
+LEFT(i)
+
+return 2i
+
+RIGHT(i)
+
+return 2i + 1
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+181
+
+⇒ Nyt keko-ominaisuus voidaan lausua seuraavasti:
+
+A[PARENT(i)] ≥ A[i] aina kun 2 ≤ i ≤ A.heapsize
+
+• A.heapsize kertoo keon koon (myöhemmin nähdään, ettei se
+
+aina ole välttämättä sama kuin taulukon koko)
+
+Keko-ominaisuudesta seuraa, että keon suurin alkio on aina
+keon juuressa, siis taulukon ensimmäisessa lokerossa.
+
+Jos keon korkeus on h, sen solmujen määrä on välillä
+2h . . . 2h+1 − 1.
+⇒ Jos keossa n solmua, sen korkeus on Θ(lg n).
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+182
+
+Alkion lisääminen kekoon ylhäältä:
+
+• oletetaan, että A[1 . . . n] on
+muuten keko, mutta keko-
+ominaisuus ei päde kekopuun
+juurelle
+
+– toisin sanoen A[1] < A[2] tai
+
+A[1] < A[3]
+
+• ongelma saadaan
+
+siirrettyä
+alemmas puussa valitsemal-
+ja
+la juuren lapsista suurempi,
+vaihtamalla se juuren kanssa
+– jotta keko-ominaisuus ei ha-
+joaisi, pitää valita lapsista suu-
+rempi - siitähän tulee toisen
+lapsen uusi isä
+
+12109834567211514759810271210983456721971451081572COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+183
+
+• sama voidaan tehdä alipuulle,
+jonka juureen ongelma siirtyi, ja
+sen alipuulle jne. kunnes ongel-
+ma katoaa
+– ongelma katoaa viimeistään
+
+kun saavutetaan lehti
+⇒ puu muuttuu keoksi
+
+1210983456721147510158972COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+184
+
+Sama pseudokoodina:
+HEAPIFY( A, i )
+1 repeat
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11 until i = old _i
+
+if i (cid:54)= old _i then
+
+i := r
+
+i := l
+
+(i kertoo paikan, jonka alkio saattaa olla liian pieni)
+(toistetaan, kunnes keko on ehjä)
+(otetaan i:n arvo talteen)
+
+old _i := i
+l := LEFT( i )
+r := RIGHT( i )
+if l ≤ A.heapsize and A[ l ] > A[ i ] then (vasen lapsi on suurempi kuin i)
+
+if r ≤ A.heapsize and A[ r ] > A[ i ] then (oikea lapsi on vielä suurempi)
+
+exchange A[ old _i ] ↔ A[ i ]
+
+(jos suurempi lapsi löytyi...)
+(...siirretään rike alaspäin)
+(jos keko oli jo ehjä, lopetetaan)
+
+• Suoritus on vakioaikaista kun rivin 11 ehto toteutuu heti
+
+ensimmäisellä kerralla kun sinne päädytään: Ω(1).
+
+• Pahimmassa tapauksessa uusi alkio joudutaan siirtämään
+
+lehteen asti koko korkeuden verran.
+⇒ Suoritusaika on O(h) = O(lg n).
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+185
+
+Keon rakentaminen
+• seuraava algoritmi järjestää taulukon uudelleen niin, että
+
+siitä tulee keko:
+
+BUILD-HEAP(A)
+1 A.heapsize := A.length
+2 for i := (cid:98)A.length/2(cid:99) downto 1 do
+3
+
+HEAPIFY(A, i)
+
+(koko taulukosta tehdään keko)
+(käydään taulukon alkupuolisko läpi)
+(kutsutaan Heapifyta)
+
+• Lähdetään käymään taulukkoa läpi lopusta käsin ja
+
+kutsutaan HEAPIFYTA kaikille alkioille.
+– ennen HEAPIFY-funktion kutsua keko-ominaisuus pätee
+
+aina i:n määräämälle alipuulle, paitsi että paikan i alkio
+on mahdollisesti liian pieni
+
+– yhden kokoisia alipuita ei tarvitse korjata, koska niissä
+
+keko-ominaisuus pätee triviaalisti
+
+– HEAPIFY(A, i):n jälkeen i:n määräämä alipuu on keko
+⇒ HEAPIFY(A, 1):n jälkeen koko taulukko on keko
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+186
+
+• BUILD-HEAP ajaa for-silmukan (cid:98)n
+
+2(cid:99) kertaa ja HEAPIFY on Ω(1) ja
+
+O(lg n), joten
+– nopein suoritusaika on (cid:98)n
+– ohjelma ei voi koskaan käyttää enempää aikaa kuin
+
+2(cid:99) · Ω(1) + Θ(n) = Ω(n)
+
+(cid:98)n
+2(cid:99) · O(lg n) + Θ(n) = O(n lg n)
+
+• Näin saamamme hitaimman tapauksen suoritusaika on
+
+kuitenkin liian pessimistinen:
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+187
+
+– HEAPIFY on O(h), missä h on kekopuun korkeus
+– i:n muuttuessa myös puun korkeus vaihtelee
+
+kerros
+alin
+toinen
+kolmas
+...
+ylin
+
+h
+0
+1
+2
+...
+(cid:98)lg n(cid:99)
+
+HEAPIFY-suoritusten määrä
+0
+(cid:98) n
+4 (cid:99)
+(cid:98) n
+8 (cid:99)
+...
+1
+
+– siis pahimman tapauksen suoritusaika onkin
+
+n
+
+4 · 1 + n
+
+16 · 3 + · · · = n
+⇒ BUILD-HEAPIN suoritusaika on aina Θ(n)
+
+8 · 2 + n
+
+2i = n
+
+2 · (cid:80)∞
+
+i=1
+
+i
+
+2 · 2 = n ⇒ O(n)
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+188
+
+8.3 Järjestäminen keon avulla
+
+Taulukon alkioiden ärjestäminen voidaan toteuttaa
+tehokkaasti kekoa hyödyntäen:
+
+HEAPSORT( A )
+1 BUILD-HEAP( A )
+2 for i := A.length downto 2 do
+exchange A[ 1 ] ↔ A[ i ]
+3
+A.heapsize := A.heapsize − 1
+4
+HEAPIFY( A, 1 )
+5
+
+(muutetaan taulukko keoksi)
+(käydään taulukko läpi lopusta alkuun)
+(siirretään keon suurin alkio keon viimeiseksi)
+(siirretään suurin alkio keon ulkopuolelle)
+(korjataan keko, joka on muuten kunnossa, mutta...)
+(... sen ensimmäinen alkio saattaa olla liian pieni)
+
+Esitetäänpä sama kuvien avulla:
+• ensin taulukko muutetaan keoksi
+• esimerkistä on helppo havaita, et-
+
+tei operaatio ole kovin raskas
+– keko-ominaisuus on selvästi
+
+jär-
+
+jestystä heikompi
+
+912814715999121212888777141414151515COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+189
+
+• kuvassa voi nähdä kuinka järjeste-
+tyn loppuosan koko kasvaa, kun-
+nes koko taulukko on järjestyksessä
+• kasvatusten välillä keko-osuus kor-
+
+jataan
+
+• korjaus näyttää tällaisessa pienes-
+sä esimerkissä tarpeettoman moni-
+mutkaiselta
+– korjaukseen ei suurillakaan taulu-
+koilla kulu kovin montaa askelta,
+ainoastaan logaritminen määrä
+
+781491215151515151512879147141415912871415814912714141414121212127989978878791412981279887912121478915151515COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+190
+
+HEAPSORTIN suoritusaika koostuu seuraavista osista.
+
+• BUILD-HEAP rivillä 1 suoritetaan kerran: Θ(n)
+• for-silmukan sisältö suoritetaan n - 1 kertaa
+– rivien 3 ja 4 operaatiot ovat vakioaikaisia
+– HEAPIFY käyttää aikaa Ω(1) ja O(lg n)
+⇒ Saadaan yhteensä Ω(n) ja O(n lg n)
+
+• alaraja on tarkka
+
+– jos kaikki alkiot ovat samanarvoisia, keon
+
+korjaustoimenpiteitä ei tarvita koskaan ja HEAPIFY on aina
+vakioaikainen
+
+• myös yläraja on tarkka
+
+– tämän osoittaminen on hieman hankalampaa ja
+tyydymmekin myöhemmin saatavaan tulokseen
+vertailuun perustuvan järjestämisen nopeudesta
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+191
+
+Huom! Edelliset suoritusaikalaskelmat olettavat, että keon
+pohjana käytettävällä tietorakenteella on vakioaikainen
+indeksointi.
+• Kekoa kannattaa käyttää ainoastaan silloin!
+
+HEAPSORTIN etuja ja haittoja
+
+Etuja:
+• järjestää taulukon paikallaan
+• ei koskaan käytä enempää kuin Θ(n lg n) aikaa
+
+Haittoja:
+• suoritusajan vakiokerroin on suurehko
+• epävakaus
+
+– samanarvoisten alkioiden keskinäinen järjestys ei säily
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+192
+
+8.4 Prioriteettijono
+
+Prioriteettijono (priority queue) on tietorakenne, joka pitää yllä
+joukkoa S alkioita, joista jokaiseen liittyy avain (key), ja sallii
+seuraavat operaatiot:
+• INSERT(S, x) lisää alkion x joukkoon S
+• MAXIMUM(S) palauttaa sen alkion, jonka avain on suurin
+– jos monella eri alkiolla on sama, suurin avain, valitsee
+
+vapaasti minkä tahansa niistä
+
+• EXTRACT-MAX(S) poistaa ja palauttaa sen alkion, jonka
+
+avain on suurin
+
+• vaihtoehtoisesti voidaan toteuttaa operaatiot MINIMUM(S)
+
+ja EXTRACT-MIN(S)
+– samassa jonossa on joko vain maksimi- tai vain
+
+minimioperaatiot!
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+193
+
+Prioriteettijonoilla on monia käyttökohteita
+• tehtävien ajoitus käyttöjärjestelmässä
+
+– uusia tehtäviä lisätään komennolla INSERT
+– kun edellinen tehtävä valmistuu tai keskeytetään,
+
+seuraava valitaan komennolla EXTRACT-MAX
+
+• tapahtumapohjainen simulointi
+
+– jono tallettaa tulevia (= vielä simuloimattomia)
+
+tapahtumia
+
+– avain on tapahtuman tapahtumisaika
+– tapahtuma voi aiheuttaa uusia tapahtumia
+
+⇒ lisätään jonoon operaatiolla INSERT
+
+– EXTRACT-MIN antaa seuraavan simuloitavan tapahtuman
+
+• lyhimmän reitin etsintä kartalta
+
+– simuloidaan vakionopeudella ajavia, eri reitit valitsevia
+
+autoja, kunnes ensimmäinen perillä
+
+– prioriteettijonoa tarvitaan käytännössä myöhemmin
+esiteltävässä lyhimpien polkujen etsintäalgoritmissa
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+194
+
+Prioriteettijonon voisi käytännössä toteuttaa
+järjestämättömänä tai järjestettynä taulukkona, mutta se olisi
+tehotonta.
+
+• järjestämättömässä taulukossa MAXIMUM ja EXTRACT-MAX
+
+ovat hitaita
+
+• järjestetyssä taulukossa INSERT on hidas
+
+Sen sijaan keon avulla prioriteettijonon voi toteuttaa
+tehokkaasti.
+
+• Joukon S alkiot talletetaan kekoon A.
+• MAXIMUM( S ) on hyvin helppo, ja toimii ajassa Θ(1).
+
+HEAP-MAXIMUM( A )
+1 if A.heapsize < 1 then
+2
+3 return A[ 1 ]
+
+error “heap underﬂow”
+
+(tyhjästä keosta ei löydy maksimia)
+
+(muuten palautetaan taulukon ensimmäinen alkio)
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+195
+
+• EXTRACT-MAX(S) voidaan toteuttaa korjaamalla keko
+
+poiston jälkeen HEAPIFYN avulla.
+
+• HEAPIFY dominoi algoritmin ajoaikaa: O(lg n).
+
+error “heap underﬂow”
+
+HEAP-EXTRACT-MAX( A )
+1 if A.heapsize < 1 then
+2
+3 max := A[ 1 ]
+4 A[ 1 ] := A[ A.heapsize ]
+5 A.heapsize := A.heapsize − 1
+6 HEAPIFY( A, 1 )
+7 return max
+
+(tyhjästä keosta ei löydy maksimia)
+
+(suurin alkio löytyy taulukon alusta)
+(siirretään viimeinen alkio juureen)
+(pienennetään keon kokoa)
+(korjataan keko)
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+196
+
+• INSERT(S, x) lisää uuden alkion kekoon asettamalla sen
+
+uudeksi lehdeksi, ja nostamalla sen suuruutensa mukaiselle
+paikalle.
+– se toimii kuten HEAPIFY, mutta alhaalta ylöspäin
+– lehti joudutaan nostamaan pahimmassa tapauksessa
+
+juureen asti: ajoaika O(lg n)
+
+HEAP-INSERT( A, key )
+1 A.heapsize := A.heapsize + 1
+(kasvatetaan keon kokoa)
+2 i := A.heapsize
+(lähdetään liikkeelle taulukon lopusta)
+3 while i > 1 and A[ PARENT(i) ] < key do (edetään kunnes ollaan juuressa tai ...)
+
+A[ i ] := A[ PARENT(i) ]
+i := PARENT(i)
+
+4
+5
+6 A[ i ] := key
+
+(...kohdassa jonka isä on avainta suurempi)
+(siirretään isää alas päin)
+(siirrytään ylöspäin)
+(asetetaan avain oikealle paikalleen)
+
+⇒ Keon avulla saadaan jokainen prioriteettijonon operaatio
+toimimaan ajassa O(lg n).
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+197
+
+Prioriteettijonoa voidaan ajatella abstraktina tietotyyppinä,
+johon kuuluu talletettu data (joukko S) ja operaatiot (INSERT,
+MAXIMUM,EXTRACT-MAX.
+
+• käyttäjälle kerrotaan ainoastaan operaatioiden nimet ja
+
+merkitykset, muttei toteutusta
+
+• toteutus kapseloidaan esimerkiksi pakkaukseksi (Ada),
+
+luokaksi (C++) tai itsenäiseksi tiedostoksi (C)
+
+⇒ Toteutusta on helppo ylläpitää, korjata ja tarvittaessa
+vaihtaa toiseen, ilman että käyttäjien koodiin tarvitsee koskea.
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+231
+
+11.1 Hajautustaulu
+
+Hajautustaulun ideana on tiivistää dynaamisen joukon
+avainten arvoalue pienemmäksi hajautusfunktion (hash
+function) h avulla, siten että ne voidaan tallettaa taulukkoon.
+• taulukon etuna on sen tarjoama tehokas vakioaikainen
+
+indeksointi
+
+12345612121220130411122220130413579567135N=30000h(k)20130412345620130412121212121213579567135111222COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+232
+
+Avainten arvoalueen tiivistämisestä seuraa kuitenkin ongelma:
+törmäykset.
+
+• useampi kuin yksi alkio voi hajautua samaan hajautustaulun
+
+lokeroon
+
+Tavallisin tapa ratkaista ongelma on ketjuttaminen (chaining).
+
+• samaan lokeroon hajautuvat alkiot talletetaan listoihin
+• muitakin ratkaisutapoja on
+
+– avoimen osoituksen käsittelytavalla alkio laitetaan
+sekundääriseen lokeroon, mikäli primäärinen ei ole
+vapaana
+
+– joissakin tapauksissa avainten arvoalue on niin pieni, että
+
+arvoalueen tiivistämistä ei tarvita, eikä siis synny
+törmäyksiäkään
+* tällainen suoraosoitustaulu (direct-access table) on
+
+hyvin yksinkertainen ja tehokas
+
+– tällä kurssilla kuitenkin käsitellään ainoastaan ketjutettuja
+
+hajautustauluja
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+233
+
+Alla oleva kuva esittää ketjutettua hajautustaulua, jonka
+avaimet on hajautettu etukirjaimen mukaan viereisen
+taulukon avulla.
+
+h(k) alkukirjain
+0
+H P X
+1 A I Q Y
+2 B J R Z
+3 C K S Ä
+4 D L
+T Ö
+5 E M U Å
+6 F N V
+7 G O W
+
+Onko tämä hyvä hajautus?
+• Ei. Katsotaan seuraavaksi, miksei.
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+234
+
+Ketjutettu hajautustaulu tarjoaa ainoastaan sanakirjan
+operaatiot, mutta ne ovat hyvin yksinkertaisia:
+
+CHAINED-HASH-SEARCH(T, k)
+
+(cid:46) etsi listasta T [h(k)] alkio, jonka avain on k
+
+CHAINED-HASH-INSERT(T, x)
+
+(cid:46) lisää x listan T [h(x→key)] alkuun
+
+CHAINED-HASH-DELETE(T, x)
+
+(cid:46) poista x listasta T [h(x→key)]
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+235
+
+Suoritusajat:
+• lisäys: Θ(1)
+• etsintä: hitaimmassa tapauksessa Θ(n)
+• poisto: jos lista kaksisuuntainen, niin Θ(1); yksisuuntaisella
+hitaimmillaan Θ(n), koska poistettavan edeltäjä on ensin
+etsittävä listasta
+– käytännössä ero ei kuitenkaan ole kovin merkittävä,
+
+koska yleensä poistettava alkio joudutaan joka
+tapauksessa etsimään listasta
+
+Ketjutetun hajautustaulun operaatioiden keskimääräiset
+suoritusajat riippuvat listojen pituuksista.
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+236
+
+• huonoimmassa tapauksessa kaikki alkiot joutuvat samaan
+
+listaan jolloin suoritusajat ovat Θ(n)
+
+• keskimääräisen tapauksen selville saamiseksi käytämme
+
+seuraavia merkintöjä:
+– m = hajautustaulun koko
+– n = alkioiden määrä taulussa
+– α = n
+pituus
+
+m = täyttöaste (load factor) eli listan keskimääräinen
+
+• lisäksi keskimääräisen suoritusajan arvioimiseksi on tehtävä
+
+oletus siitä, miten hyvin h hajauttaa alkiot
+
+– jos esim. h(k) = nimen alkukirjaimen 3 ylintä bittiä, niin
+
+kaikki osuvat samaan listaan
+
+– usein oletetaan että, jokaisella alkiolla on yhtä suuri
+
+todennäköisyys osua mihin tahansa lokeroon
+
+– tasainen hajautus (simple uniform hashing)
+– oletetaan myös, että h(k):n laskenta kuluttaa Θ(1) aikaa
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+237
+
+• jos etsitään alkiota, jota ei ole taulussa, niin joudutaan
+
+selaamaan koko lista läpi
+⇒ joudutaan tutkimaan keskimäärin α alkiota
+⇒ suoritusaika keskimäärin Θ(1 + α)
+
+• jos oletetaan, että listassa oleva avain on mikä tahansa
+listan alkio samalla todennäköisyydellä, joudutaan listaa
+selamaan etsinnän yhteydessä keskimäärin puoleen väliin
+siinäkin tapauksessa, että avain löytyy listasta
+⇒ suoritusaika keskimäärin Θ(1 + α
+2 ) = Θ(1 + α)
+
+• jos täyttöaste pidetään alle jonkin kiinteän rajan (esim. α <
+
+50 %), niin Θ(1 + α) = Θ(1)
+⇒ ketjutetun hajautustaulun kaikki operaatiot voi toteuttaa
+keskimäärin ajassa Θ(1)
+
+– tämä edellyttää, että hajautustaulun koko on samaa
+
+luokkaa kuin sinne talletettavien alkioiden määrä
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+238
+
+Laskiessamme keskimääräistä suoritusaikaa oletimme, että
+hajautusfunktio hajauttaa täydellisesti. Ei kuitenkaan ole
+mitenkään itsestään selvää, että näin tapahtuu.
+
+Hajautusfunktion laatu on kriittisin tekijä hajautustaulun
+suorituskyvyn muodostumisessa.
+
+Hyvän hajautusfunktion ominaisuuksia:
+
+• hajautusfunktion on oltava deterministinen
+
+– muutoin kerran tauluun pantua ei välttämättä enää
+
+koskaan löydetä!
+
+• tästä huolimatta olisi hyvä, että hajautusfunktion arvo olisi
+
+mahdollisimman “satunnainen”
+– kuhunkin lokeroon tulisi osua mahdollisimman tarkasti 1
+m
+
+avaimista
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+239
+
+• valitettavasti täysin tasaisesti hajottavan hajautusfunktion
+
+teko on useinmiten mahdotonta
+– eri arvojen esiintymistodennäköisyydet aineistossa ovat
+
+yleensä tuntemattomia
+
+– aineisto ei yleensä ole tasaisesti jakautunut
+
+* lähes mikä tahansa järkevä hajautusfunktio jakaa
+
+tasaisesti jakautuneen aineiston täydellisesti
+
+• yleensä hajautusfunktio pyritään muodostamaan siten, että
+
+se sotkee tehokkaasti kaikki syöteaineistossa luultavasti
+esiintyvät säännönmukaisuudet
+– esimerkiksi nimien tapauksessa ei katsota yksittäisiä
+
+kirjaimia, vaan otetaan jotenkin huomioon nimen kaikki
+bitit
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+240
+
+• esittelemme kaksi yleistä usein hyvin toimivaa
+
+hajautusfunktion luontimenetelmää
+
+• oletamme, että avaimet ovat luonnollisia lukuja 0, 1, 2, . . .
+– jollei näin ole, avain voidaan usein tulkita luonnolliseksi
+
+luvuksi
+
+– esim. nimen saa luvuksi muuttamalla kirjaimet numeroiksi
+
+ASCII-koodiarvon mukaan, ja laskemalla ne sopivasti
+painottaen yhteen
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+241
+
+Hajautusfunktion luonti jakomenetelmällä on yksinkertaista ja
+nopeaa.
+• h(k) = k mod m
+• sitä kannattaa kuitenkin käyttää vain, jos m:n arvo on sopiva
+• esim. jos m = 2b jollekin b ∈ N = {0, 1, 2, . . .}, niin
+
+h(k) = k:n b alinta bittiä
+
+⇒ funktio ei edes katso kaikkia k:n bittejä
+⇒ funktio todennäköisesti hajauttaa huonosti, jos avaimet
+ovat peräisin binäärijärjestelmästä
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+242
+
+• samasta syystä tulee välttää m:n arvoja muotoa m = 10b, jos
+
+avaimet ovat peräisin kymmenjärjestelmän luvuista
+• jos avaimet ovat muodostetut tulkitsemalla merkkijono
+
+128-järjestelmän luvuksi, niin m = 127 on huono valinta, koska
+silloin saman merkkijonon kaikki permutaatiot osuvat
+samaan lokeroon
+
+• hyviä m:n arvoja ovat yleensä alkuluvut, jotka eivät ole
+
+lähellä 2:n potensseja
+– esim. halutaan ≈ 700 listaa ⇒ 701 kelpaa
+
+• kannattaa tarkistaa kokeilemalla pienellä “oikealla”
+aineistolla, hajauttaako funktio avaimet tehokkaasti
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+243
+
+Hajautusfunktion luonti kertomenetelmällä ei aseta suuria
+vaatimuksia m:n arvolle.
+• valitaan vakio A siten, että 0 < A < 1
+• h(k) = (cid:98)m(kA − (cid:98)kA(cid:99))(cid:99)
+• jos m = 2b, koneen sanapituus on w, ja k ja 2w · A mahtuvat
+
+yhteen sanaan, niin h(k) voidaan laskea helposti
+seuraavasti:
+
+h(k) = (cid:98)
+
+(((2w · A) · k) mod 2w)
+2w−b
+
+(cid:99)
+
+• mikä arvo A:lle tulisi valita?
+
+– kaikki A:n arvot toimivat ainakin jollain lailla
+– kuulemma A ≈
+
+toimii usein aika hyvin
+
+√
+
+5−1
+2
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+244
+
+12 Binäärihakupuu
+
+http://imgur.com/L77FY5X
+
+Tässä luvussa käsitellään erilaisia yleisiä puurakenteita.
+
+• Ensin opitaan, millainen rakenne on binäärihakupuu,
+• ja tasapainotetaan binäärihakupuu muuttamalla se
+
+puna-mustaksi puuksi.
+
+• Sitten tutustutaan monihaaraisiin puihin: merkkijonopuu Trie
+
+ja B-puu.
+
+• Lopuksi vilkaistaan splay- ja AVL-puita.
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+245
+
+12.1 Tavallinen binäärihakupuu
+
+Kertauksena: Binääripuu (binary tree) on äärellinen solmuista
+(node) koostuva rakenne, joka on joko
+• tyhjä, tai
+• sisältää yhden solmun nimeltä juuri (root), sekä kaksi
+
+binääripuuta nimeltä vasen alipuu (left subtree) ja oikea
+alipuu (right subtree).
+
+Kuva 14: Kertaus: Binääripuu
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+246
+
+Lisäksi määritellään:
+
+• Lapseton solmu: lehti (leaf ).
+• Muut solmut sisäsolmuja.
+• Solmu on lastensa isä (pa-
+rent)
+esi-isiä
+(ancestor) ovat solmu itse,
+solmun isä, tämän isä jne.
+
+solmun
+
+ja
+
+• Jälkeläinen
+vastaavasti.
+
+(descendant)
+
+132533lehtiäsisäsolmujajuuri14189235153835322622306COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+247
+
+Binäärihakupuu (binary search tree) on binääripuu, jonka
+kaikille solmuille x pätee:
+
+Jos l on mikä tahansa solmu x:n vasemmassa alipuussa ja
+r mikä tahansa solmu x:n oikeassa alipuussa, niin
+
+l.key ≤ x.key ≤ r.key
+
+• Edellisen sivun binääripuu on binäärihakupuu
+• Luvussa 8.2 esitelty kekorakenne on binääripuu muttei
+
+binäärihakupuu
+
+Useinmiten binäärihakupuu esitetään linkitettynä rakenteena,
+jossa jokaisessa alkiossa on kentät avain (key), vasen lapsi (left),
+oikea lapsi (right) ja vanhempi (p (parent)). Lisäksi alkiolla on
+oheisdataa.
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+248
+
+Kuva 15: Hakupuita
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+249
+
+Avaimen haku binäärihakupuusta :
+
+• koko puusta haku R-TREE-SEARCH(T .root, k)
+• palauttaa osoittimen x solmuun, jolle x→key = k, tai NIL, jos
+
+tällaista solmua ei ole
+
+R-TREE-SEARCH(x, k)
+1 if x = NIL or k = x→key then
+return x
+2
+3 if k < x→key then
+4
+5 else
+6
+
+return R-TREE-SEARCH(x→left, k)
+
+return R-TREE-SEARCH(x→right, k)
+
+(etsitty avain löytyi)
+(jos etsitty on pienempi kuin avain...)
+(...etsitään vasemmasta alipuusta)
+(muuten...)
+(...etsitään oikeasta alipuusta)
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+250
+
+Algoritmi suunnistaa juuresta alaspäin huonoimmassa
+tapauksessa pisimmän polun päässä olevaan lehteen asti.
+• suoritusaika O(h), missä h on puun korkeus
+• lisämuistin tarve O(h), rekursion vuoksi
+
+Saman voi tehdä myös ilman rekursiota, mikä on suositeltavaa.
+• tällöin lisämuistin tarve on vain Θ(1)
+• ajoaika on yhä O(h)
+
+if k < x→key then
+x := x→left
+
+TREE-SEARCH(x, k)
+1 while x (cid:54)= NIL and k (cid:54)= x→key do
+2
+3
+4
+5
+6 return x
+
+x := x→right
+
+else
+
+(kunnes avain on löytynyt tai ollaan lehdessä)
+(jos etsitty on pienempi kuin avain...)
+(...siirrytään vasemmalle)
+(muuten...)
+(...siirrytään oikealle)
+(palautetaan tulos)
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+251
+
+Minimi ja maksimi:
+
+• minimi löydetään menemällä vasemmalle niin kauan kun se
+
+on mahdollista
+
+TREE-MINIMUM(x)
+1 while x→left (cid:54)= NIL do
+x := x→left
+2
+3 return x
+
+• maksimi löydetään vastaavasti menemällä oikealle niin
+
+kauan kun se on mahdollista
+
+TREE-MAXIMUM(x)
+1 while x→right (cid:54)= NIL do
+x := x→right
+2
+3 return x
+
+• molempien ajoaika on O(h) ja lisämuistin tarve Θ(1)
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+252
+
+Solmun seuraajaa ja edeltäjää kannattaa etsiä
+binäärihakupuusta puun rakenteen avulla mieluummin kuin
+avainten arvojen perusteella.
+• tällöin kaikki alkiot saadaan käytyä niiden avulla läpi, vaikka
+
+puussa olisi yhtä suuria avaimia
+⇒ tarvitaan siis algoritmi, joka etsii annettua solmua
+välijärjestyksessä seuraavan solmun
+
+• sellainen voidaan rakentaa algoritmin TREE-MINIMUM avulla
+
+Kuva 16: Solmun seuraaja?
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+253
+
+Binäärihakupuun solmun seuraaja on joko:
+• oikean alipuun pienin alkio
+• tai solmusta juureen vievällä polulla ensimmäinen kohdattu
+
+solmu, jonka vasempaan alipuuhun solmu kuuluu
+
+jos edellä mainittuja solmuja ei löydy, on kysymyksessä puun
+suurin solmu
+
+Kuva 17: Seuraajat
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+254
+
+return TREE-MINIMUM(x→right)
+
+TREE-SUCCESSOR(x)
+1 if x→right (cid:54)= NIL then
+2
+3 y := x→p
+4 while y (cid:54)= NIL and x = y→right do
+5
+6
+7 return y
+
+x := y
+y := y→p
+
+(jos oikea alipuu löytyy...)
+(...etsitään sen minimi)
+(muuten lähdetään kulkemaan kohti juurta)
+(kunnes ollaan tultu vasemmasta lapsesta)
+
+(palautetaan löydetty solmu)
+
+• huomaa, että avainten arvoja ei edes katsota!
+• vrt. seuraajan löytäminen järjestetystä listasta
+• ajoaika O(h), lisämuistin tarve Θ(1)
+• TREE-PREDECESSOR voidaan toteuttaa vastaavalla tavalla
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+255
+
+TREE-SUCCESSORIN ja TREE-MINIMUMIN avulla voidaan rakentaa
+toinen tapa selata puu läpi välijärjestyksessä.
+
+x := TREE-MINIMUM(T .root)
+
+TREE-SCAN-ALL(T )
+1 if T .root (cid:54)= NIL then
+2
+3 else
+x := NIL
+4
+5 while x (cid:54)= NIL do
+6
+7
+
+käsittele alkio x
+x := TREE-SUCCESSOR(x)
+
+(aloitetaan selaus puun minimistä)
+
+(selataan niin kauan kun seuraajia löytyy)
+
+• jokainen kaari kuljetaan kerran molempiin suuntiin
+
+⇒ TREE-SCAN-ALL selviää ajassa Θ(n), vaikka kutsuukin
+TREE-SUCCESSORia n kertaa
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+256
+
+• lisämuistin tarve Θ(1)
+
+⇒ TREE-SCAN-ALL on asymptoottisesti yhtä nopea, ja
+muistinkulutukseltaan asymptoottisesti parempi kuin
+INORDER-TREE-WALK
+– vakiokertoimissa ei suurta eroa
+⇒ kannattaa valita TREE-SCAN-ALL, jos tietueissa on
+p-kentät
+
+• TREE-SCAN-ALL sallii useat yhtäaikaiset selaukset,
+
+INORDER-TREE-WALK ei
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+257
+
+Lisäys binäärihakupuuhun:
+
+else
+
+x := x→left
+
+TREE-INSERT(T, z)
+1 y := NIL; x := T .root
+2 while x (cid:54)= NIL do
+y := x
+3
+if z→key < x→key then
+4
+5
+6
+7
+8 z→p := y
+9 if y = NIL then
+T .root := z
+10
+11 else if z→key < y→key then
+12
+13 else
+14
+15 z→left := NIL; z→right := NIL
+
+x := x→right
+
+y→right := z
+
+y→left := z
+
+(z osoittaa käyttäjän varaamaa alustettua tietuetta)
+(aloitetaan juuresta)
+(laskeudutaan kunnes kohdataan tyhjä paikka)
+(otetaan potentiaalinen isä-solmu talteen)
+(siirrytään oikealle tai vasemmalle)
+
+(sijoitetaan löydetty solmu uuden solmun isäksi)
+
+(puun ainoa solmu on juuri)
+(sijoitetaan uusi solmu isänsä vasemmaksi . . . )
+
+(. . . tai oikeaksi lapseksi)
+
+Algoritmi suunnistaa juuresta lehteen; uusi solmu sijoitetaan
+aina lehdeksi.
+⇒ ajoaika O(h), lisämuistin tarve Θ(1)
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+258
+
+(z osoittaa poistettavaa solmua)
+(jos z:lla on vain yksi lapsi . . . )
+(. . . asetetaan z poistettavaksi tietueeksi)
+
+(muuten poistetaan z:n seuraaja)
+(otetaan talteen poistettavan ainoa lapsi)
+
+y := z
+
+x := y→left
+
+x := y→right
+
+y := TREE-SUCCESSOR(z)
+
+Poisto on monimutkaisempaa, koska se voi kohdistua
+sisäsolmuun:
+TREE-DELETE(T, z)
+1 if z→left = NIL or z→right = NIL then
+2
+3 else
+4
+5 if y→left (cid:54)= NIL then
+6
+7 else
+8
+9 if x (cid:54)= NIL then
+10
+11 if y→p = NIL then
+12
+13 else if y = y→p→left then
+y→p→left := x
+14
+15 else
+16
+17 if y (cid:54)= z then
+18
+19
+20 return y
+
+z→key := y→key
+z→satellitedata := y→satellitedata
+
+y→p→right := x
+
+x→p := y→p
+
+T .root := x
+
+(jos lapsi on olemassa . . . )
+(. . . linkitetään se poistettavan tilalle)
+(jos poistettava oli juuri . . . )
+(. . . merkitään x uudeksi juureksi)
+(sijoitetaan x poistettavan tilalle . . . )
+(. . . sen isän vasemmaksi . . . )
+
+(. . . tai oikeaksi lapseksi)
+(jos poistettiin joku muu kuin z . . . )
+(. . . vaihdetaan poistetun ja z:n datat)
+
+(palautetaan osoitin poistettuun solmuun)
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+259
+
+Huom! Rivillä 5 todellakin tiedetään, että y:llä on korkeintaan
+yksi lapsi.
+
+• jos z:lla on vain yksi lapsi, y on z
+• jos rivillä 4 kutsutaan TREE-SUCCESSORIA tiedetään, että z:lla
+
+on oikea alipuu, jonka minimi on y
+– minimillä ei voi olla vasenta lasta
+
+Algoritmi näyttää monimutkaiselta, mutta rivin 4
+TREE-SUCCESSORIA lukuunottamatta kaikki operaatiot ovat
+vakioaikaisia.
+⇒ ajoaika on siis O(h) ja lisämuistin tarve Θ(1)
+
+Siis kaikki dynaamisen joukon perusoperaatiot saadaan
+binäärihakupuulla toimimaan ajassa O(h) ja lisämuistilla Θ(1):
+
+SEARCH, INSERT, DELETE, MINIMUM, MAXIMUM, SUCCESSOR ja
+PREDECESSOR
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+260
+
+Binäärihakupuita - kuten muitakin tietorakenteita - voi sovittaa
+uusiin tehtäviin lisäämällä uusia tehtävän kannalta olennaista
+tietoa sisältäviä kenttiä.
+
+• tällöin perusoperaatiot tulee muokata ylläpitämään myös
+
+uusien kenttien sisältöä
+
+• esimerkiksi lisäämällä solmuihin kenttä, joka kertoo solmun
+
+virittämän alipuun koon
+– saadaan toteutettua algoritmi, joka palauttaa puun
+korkeuteen nähden lineaarisessa ajassa i:nnen alkion
+– saadaan toteutettua algoritmi, joka puun korkeuteen
+
+nähden lineaarisessa ajassa kertoo, monesko kysytty alkio
+on suuruusjärjestyksessä
+
+– ilman ylimääräistä kenttää algoritmit täytyisi toteuttaa
+
+huomattavasti tehottomammin puun alkioiden määrään
+nähden lineaarisessa ajassa
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+261
+
+12.2 Kuinka korkeita binäärihakupuut yleensä ovat?
+
+Kaikki dynaamisen joukon perusoperaatiot saatiin
+binäärihakupuulla toimimaan ajassa O(h). ⇒ puun korkeus on
+tehokkuuden kannalta keskeinen tekijä.
+
+Jos oletetaan, että alkiot on syötetty satunnaisessa
+järjestyksessä, ja jokainen järjestys on yhtä todennäköinen,
+suoraan INSERTillä rakennetun binäärihakupuun korkeus on
+keskimäärin Θ(lg n).
+⇒ kaikki operaatiot keskimäärin Θ(lg n)
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+262
+
+Valitettavasti lopputulos on surkeampi, jos avai-
+met syötetään (lähes) suuruusjärjestyksessä, ku-
+ten viereisestä kuvasta voi havaita.
+
+• korkeus on n -1, surkeaa!
+
+Ongelmaa ei pystytä ratkaisemaan järkevästi
+esimerkiksi satunnaistamalla, jos halutaan säilyt-
+tää kaikki dynaamisen joukon operaatiot.
+
+Puu pitää siis tasapainottaa. Siihen palataan
+myöhemmin.
+
+7651432COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+309
+
+15 Tasapainotetut puurakenteet
+
+Binäärihakupuu toteuttaa kaikki dynaamisen joukon
+operaatiot O(h) ajassa
+
+Kääntöpuolena on, että puu voi joskus litistyä listaksi, jolloin
+tehokkuus menetetään (O(n))
+
+Tässä luvussa käsitellään tapoja pitää huolta siitä, ettei
+litistymistä käy
+
+Ensin opitaan tasapainoitus puna-mustan puun invarianttia
+ylläpitämällä
+
+Lopuksi vilkaistaan muista tasapainotetuista binäärihakupuista
+Splay- ja AVL-puita
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+310
+
+15.1 Puna-musta binäärihakupuu
+
+Puna-mustat puut ovat tasapainotettuja binäärihakupuita.
+
+Ne tekevät lisäysten ja poistojen yhteydessä
+tasapainotustoimenpiteitä, jotka takaavat, ettei haku ole
+koskaan tehoton vaikka alkiot olisikin lisätty puuhun
+epäsuotuisassa järjestyksessä.
+• puna-musta puu ei voi koskaan litistyä listaksi, kuten
+
+perusbinäärihakupuu
+
+Kuva 23: Punamustapuu (via Wikipedia, ©Colin M.L. Burnett (CC BY-SA 3.0))
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+311
+
+Puna-mustien puiden perusidea:
+• jokaisessa solmussa on yksi lisäbitti: väri (colour)
+
+– arvot punainen ja musta
+
+• muut kentät ovat vanhat tutut key, left, right ja p
+
+– jätämme oheisdatan näyttämättä, jotta pääideat eivät
+
+hukkuisi yksityiskohtien taakse
+
+• värikenttien avulla ylläpidetään puna-mustan puun
+invarianttia, joka takaa, että puun korkeus on aina
+kertaluokassa Θ(lg n)
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+312
+
+Puna-mustien puiden invariantti:
+
+1. Jos solmu on punainen, niin sillä joko
+• ei ole lapsia, tai
+• on kaksi lasta, ja ne molemmat ovat mustia.
+2. Jokaiselle solmulle pätee: jokainen solmusta alas 1- tai
+
+0-lapsiseen solmuun vievä polku sisältää saman määrän
+mustia solmuja.
+3. Juuri on musta.
+
+Solmun x musta-korkeus (black-height) bh(x) on siitä alas 1- tai
+0-lapsiseen solmuun vievällä polulla olevien mustien solmujen
+määrä.
+• invariantin osan 3 mukaisesti jokaisen solmun mustakorkeus
+
+on yksikäsitteinen
+
+• jokaisella vaihtoehtoisella polulla on sama määrä mustia
+
+solmuja
+
+• koko puun mustakorkeus on sen juuren mustakorkeus
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+313
+
+Puna-mustan puun maksimikorkeus
+• merkitään korkeus = h ja solmujen määrä = n
+• kunkin juuresta lehteen vievän polun solmuista vähintään
+
+puolet ((cid:98)h
+
+2(cid:99) + 1) ovat mustia (invariantin osat 1 ja 3)
+• jokaisella juuresta lehteen vievällä polulla on saman verran
+
+mustia solmuja (invariantin osa 2)
+⇒ ainakin (cid:98)h
+
+2(cid:99) + 1 ylintä tasoa täysiä
+
+h
+2
+
+⇒ n ≥ 2
+⇒ h ≤ 2 lg n
+
+Invariantti siis todellakin takaa puun korkeuden pysymisen
+logaritmisena puun alkioiden määrään nähden.
+⇒ Dynaamisen joukon operaatiot SEARCH, MINIMUM, MAXIMUM,
+SUCCESSOR ja PREDECESSOR saadaan toimimaan puna-mustille
+puille ajassa O(lg n).
+
+• binäärihakupuulle operaatiot toimivat ajassa O(h), ja
+puna-musta puu on binäärihakupuu, jolle h = Θ(lg n)
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+314
+
+Puna-mustien puiden ylläpitämiseen ei kuitenkaan voida
+käyttää samoja lisäys- ja poistoalgoritmeja kuin tavallisilla
+binäärihakupuilla, koska ne saattavat rikkoa invariantin.
+
+Niiden sijaan käytetään algoritmeja RB-INSERT ja RB-DELETE.
+• operaatiot RB-INSERT ja RB-DELETE perustuvat kiertoihin
+
+(rotation)
+
+• kiertoja on kaksi: vasemmalle ja oikealle
+• ne muuttavat puun rakennetta, mutta säilyttävät
+
+binäärihakupuiden perusominaisuuden kaikille solmuille
+
+• kierto vasemmalle
+
+– olettaa, että solmut x ja
+
+y ovat olemassa
+
+• kierto oikealle vastaavasti
+– left ja right vaihtaneet
+
+paikkaa
+
+xyCABCBAxyxyCOMP.CS.300 Tietorakenteet ja algoritmit 1
+
+315
+
+y→left→p := x
+
+LEFT-ROTATE(T, x)
+1 y := x→right; x→right := y→left
+2 if y→left (cid:54)= NIL then
+3
+4 y→p := x→p
+5 if x→p = NIL then
+6
+7 else if x = x→p→left then
+x→p→left := y
+8
+9 else
+10
+11 y→left := x; x→p := y
+
+x→p→right := y
+
+T .root := y
+
+• molempien kiertojen ajoaika on Θ(1)
+• ainoastaan osoittimia muutetaan
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+316
+
+Lisäyksen perusidea
+• ensin uusi solmu lisätään kuten tavalliseen
+
+binäärihakupuuhun
+
+• sitten lisätty väritetään punaiseksi
+• mitä puna-mustien puiden perusominaisuuksia näin tehty
+
+lisäys voi rikkoa?
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+317
+
+• Invariantin osa
+
+– 1 rikkoutuu lisätyn solmun osalta, jos sen isä on punainen;
+
+muuten se ei voi rikkoutua.
+
+– 2 ei rikkoudu, koska minkään solmun alla olevien mustien
+solmujen määrät ja sijainnit eivät muutu, ja lisätyn alla ei
+ole solmuja.
+
+– 3 rikkoutuu, jos puu oli alun perin tyhjä.
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+318
+
+• korjataan puu seuraavasti:
+
+– ominaisuutta 2 pilaamatta siirretään 1:n rike ylöspäin
+
+kunnes se katoaa
+
+– lopuksi 3 korjataan värittämällä juuri mustaksi (ei voi pilata
+
+ominaisuuksia 1 ja 2)
+
+• 1:n rike = sekä solmu että sen isä ovat punaisia
+• siirto tapahtuu värittämällä solmuja ja tekemällä kiertoja
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+319
+
+RB-INSERT(T, x)
+TREE-INSERT(T, x)
+1
+2 x→colour := RED
+
+(suoritetaan silmukkaa kunnes rike on hävinnyt tai ollaan saavutettu juuri)
+
+if x→p = x→p→p→left then
+y := x→p→p→right
+if y (cid:54)= NIL and y→colour = RED then (siirretään rikettä ylöspäin)
+
+x→p→colour := BLACK
+y→colour := BLACK
+x→p→p→colour := RED
+x := x→p→p
+
+3 while x (cid:54)= T .root and x→p→colour = RED do
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+. . .
+30 T .root→colour := BLACK
+
+x→p→colour := BLACK
+x→p→p→colour := RED
+RIGHT-ROTATE(T, x→p→p)
+
+x := x→p; LEFT-ROTATE(T, x)
+
+if x = x→p→right then
+
+else
+
+else
+(cid:46) sama kuin rivit 5. . . 16 paitsi “left” ja “right” vaihtaneet paikkaa
+(väritetään juuri mustaksi)
+
+(siirto ei onnistu → korjataan rike)
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+320
+
+Ominaisuuden 1 rikkeen siirto ylöspäin:
+• solmu x ja sen isä ovat molemmat punai-
+
+sia.
+
+• myös solmun x setä on punainen ja isoisä
+
+musta.
+
+⇒ rike siirretään ylöspäin värittämällä sekä
+x:n setä että isä mustiksi ja isoisä punaiseksi.
+
+Korjauksen jälkeen:
+
+• ominaisuus 1 saattaa olla edelleen rikki
+
+– solmu x ja sen isä saattavat molemmat
+
+olla punaisia
+
+• ominaisuus 2 ei rikkoudu
+
+– kaikkien polkujen mustien solmujen
+
+määrä pysyy samana
+
+• ominaisuus 3 saattaa rikkoutua
+
+– jos ollaan noustu juureen asti, se on
+
+saatettu värittää punaiseksi
+
+x−>p−>px−>pxyCBxAACBCOMP.CS.300 Tietorakenteet ja algoritmit 1
+
+321
+
+Mikäli punaista setää ei ole olemassa,
+rikettä ei voi siirtää ylöspäin vaan se
+täytyy poistaa käyttäen monimutkaisem-
+paa menetelmää:
+• Varmistetaan ensin, että x on isänsä
+vasen lapsi tekemällä tarvittaessa kier-
+to vasemmalle.
+
+x−>p−>px−>pyxxx−>px−>p−>pyCDBADCABCOMP.CS.300 Tietorakenteet ja algoritmit 1
+
+322
+
+• tämän jälkeen väritetään x:n isä
+mustaksi ja isoisä punaiseksi, ja suo-
+ritetaan kierto oikealle
+
+– isoisä on varmasti musta, koska
+muuten puussa olisi ollut kaksi pu-
+naista solmua päällekkäin jo en-
+nen lisäystä
+
+Korjauksen jälkeen:
+
+• puussa ei enää ole päällekkäisiä
+
+punaisia solmuja
+
+• korjausoperaatiot yhdessä eivät ri-
+
+ko 2. ominaisuutta
+⇒ puu on ehjä ja korjausalgoritmin
+suorittaminen voidaan lopettaa
+
+yxx−>p−>px−>pxDCBADABCCOMP.CS.300 Tietorakenteet ja algoritmit 1
+
+323
+
+Poistoalgoritmin yleispiirteet
+• ensin solmu poistetaan kuten tavallisesta binäärihakupuusta
+
+– w osoittaa poistettua solmua
+
+• jos w oli punainen tai puu tyhjeni kokonaan,
+puna-musta-ominaisuudet säilyvät voimassa
+⇒ ei tarvitse tehdä muuta
+
+• muussa tapauksessa korjataan puu RB-DELETE-FIXUPin avulla
+aloittaen w:n (mahdollisesta) lapsesta x ja sen isästä w→p
+– TREE-DELETE takaa, että w:llä oli enintään yksi lapsi
+
+if w→left (cid:54)= NIL then
+x := w→left
+
+RB-DELETE(T, z)
+1 w := TREE-DELETE(T, z)
+2 if w→colour = BLACK and T .root (cid:54)= NIL then
+3
+4
+5
+6
+7
+8 return w
+
+RB-DELETE-FIXUP(T, x, w→p)
+
+x := w→right
+
+else
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+324
+
+if x = y→left then
+
+RB-DELETE-FIXUP(T, x, y)
+1 while x (cid:54)= T .root and (x = NIL or x→colour = BLACK) do
+2
+3
+4
+5
+6
+7
+
+w→colour := BLACK; y→colour := RED
+LEFT-ROTATE(T, y); w := y→right
+
+w := y→right
+if w→colour = RED then
+
+if (w→left = NIL or w→left→colour = BLACK) and
+(w→right = NIL or w→right→colour = BLACK)
+then
+
+w→colour := RED; x := y
+
+else
+
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+. . .
+y := y→p
+32
+33 x→colour := BLACK
+
+else
+
+if w→right = NIL or w→right→colour = BLACK then
+
+w→left→colour := BLACK
+w→colour := RED
+RIGHT-ROTATE(T, w); w := y→right
+w→colour := y→colour ; y→colour := BLACK
+w→right→colour := BLACK; LEFT-ROTATE(T, y)
+x := T .root
+
+(cid:46) sama kuin rivit 3. . . 16 paitsi “left” ja “right” vaihtaneet paikkaa
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+325
+
+15.2 AVL-puut ja Splay-puut
+
+AVL puu (Adelson-Velsky, Landis mukaan) on binäärihakupuu,
+jossa jokaisella solmulla on tasapainokerroin: 0, +1, tai -1, kun
+tasapainossa.
+• kerroin määräytyy solmun oikean ja vasemman alipuun
+
+korkeuksien erotuksesta.
+
+Kun uuden solmun lisäys tekee AVL-puusta epätasapainoisen,
+puu palautetaan tasapainoiseksi tekemällä rotaatioita.
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+326
+
+Mahdollisia rotaatioita on neljä:
+• Oikealle
+• Vasemmalle
+• Kaksois-rotaatio vasen-oikea
+• Kaksois-rotaatio oikea-vasen
+
+123123123123312R123132123LLRRLCOMP.CS.300 Tietorakenteet ja algoritmit 1
+
+327
+
+Splay puu on binäärihakupuu, jossa lisäominaisuutena viimeksi
+haetut alkiot ovat nopeita hakea uudelleen.
+
+Splay-operaatio suoritetaan solmulle haun yhteydessä. Tämä
+ns. splay-askelien sekvenssi siirtää solmun askel askeleelta
+lähemmäksi juurta ja lopulta juureksi.
+• Zig-askel:
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+328
+
+• Zig-Zig-askel:
+
+• Zig-Zag-askel:
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+263
+
+13 Graaﬁt
+
+Seuraavaksi tutustutaan tietorakenteeseen, jonka
+muodostavat pisteet ja niiden välille muodostetut yhteydet –
+graaﬁin.
+
+Keskitymme myös tyypillisimpiin tapoihin etsiä tietoa graaﬁsta
+eli graaﬁalgoritmeihin.
+
+Kuva: Flickr, Rachel D
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+264
+
+13.1 Graaﬁen esittäminen tietokoneessa
+
+Graaﬁ on ohjelmistotekniikassa keskeinen rakenne, joka
+koostuu solmuista (vertex, node) ja niitä yhdistävistä kaarista
+(edge, arc).
+
+Graaﬁ voi olla suuntaamaton (undirected) tai suunnattu
+(directed).
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+265
+
+Kuva 18: Kuva: Getty Images
+
+• kaaviokuvat voidaan usein ajatella graafeiksi
+• asioiden välisiä suhteita voi usein esittää graafeina
+• monet tehtävät voidaan palauttaa graaﬁtehtäviksi
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+266
+
+Kuva 19: Kuva: Wikimedia Commons, User:Jpatokal
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+267
+
+Kuva 20: Kuva: Flickr, yaph,http://exploringdata.github.io/vis/footballers-search-relations/
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+268
+
+Kuva 21: Kuva: Flickr, Andy Lamb
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+269
+
+Kuva 22: Kuva: Tokyo Metro
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+270
+
+Matematiikassa graaﬁ G ilmoitetaan usein parina G = (V, E).
+• V = solmujen joukko
+• E = kaarien joukko
+• tällöin samojen solmujen välillä saa yleensä olla vain yksi
+
+kaari molempiin suuntiin
+– aina tämä ei kuitenkaan käytännön sovelluksessa riitä
+– esimerkiksi juna-aikatauluja esittävässä graaﬁssa
+kaupunkien välillä on yleensä useampia vuoroja
+
+– tällaista graaﬁa kutsutaan monigraaﬁksi (multigraph)
+
+Kuva: HSL
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+271
+
+• jos solmujen välillä sallitaan vain yksi kaari suuntaansa ⇒
+
+E ⊆ V 2
+– suunnatulla graaﬁlla |E| voi vaihdella välillä 0, . . . , |V |2
+– laskettaessa graaﬁalgoritmien suoritusaikoja oletamme
+
+tämän
+
+Graaﬁalgoritmin suorituskyky ilmoitetaan yleensä sekä |V |:n
+että |E|:n funktiona
+– helppouden vuoksi jätämme itseisarvomerkit pois
+
+kertaluokkamerkintöjen sisällä ts. O(V E) = O(|V | · |E|)
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+272
+
+Graaﬁn esittämiseen tietokoneessa on kaksi
+perusmenetelmää kytkentälista (adjacency list) ja
+kytkentämatriisi (adjacency matrix).
+
+Näistä kahdesta kytkentälistaesitys on yleisempi, ja tällä
+kurssilla keskitytään siihen.
+
+• Solmut on talletettu johonkin tietorakenteeseen (valittu
+
+tietorakenne riippuu siitä, mitä oheisdataa solmut sisältävät,
+miten niitä pitää pystyä hakemaan, lisäämään jne.)
+
+• Yksinkertaisimmillaan jokaisessa solmussa on tietorakenne,
+jossa on tallessa mihin solmuihin tästä solmusta on kaari.
+– Valittu tietorakenne riippuu siitä, paljonko kaaria
+
+arvellaan olevan, lisätäänkö/poistetaanko niitä jatkuvasti,
+täytyykö tiettyä kaarta pystyä hakemaan nopeasti jne.)
+
+– Tieto kohdesolmusta voidaan tallettaa osoittimena,
+
+solmun indeksinä (jos solmut indeksoitavassa
+tietorakenteessa) tms.
+
+– Solmujen järjestyksellä kytkentälistassa ei yleensä ole väliä
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+273
+
+• Graaﬁn kytkentälistojen yh-
+
+teiskoko on
+– |E|, jos graaﬁ on suunnat-
+tu, 2·|E|, jos graaﬁ on suun-
+taamaton
+
+⇒ kytkentälistaesityksen
+
+muistin
+O(max(V, E)) = O(V + E)
+
+kulutus
+
+on
+
+• Tiedon “onko kaarta solmusta v solmuun u” haku edellyttää
+yhden kytkentälistan läpi selaamista mikä vie hitaimmillaan
+aikaa Θ(V ) (ellei solmusta lähteviä kaaria talleteta johonkin
+tietorakenteeseen, josta niistä pystytään nopeasti
+hakemaan kohdekaaren perusteella)
+
+• Jos kaari on painotettu tai siihen liittyy oheisdataa, täytyy
+kaaresta tallettaa kohdesolmun lisäksi myös oheisdata
+(esim. struct, jossa kohdesolmu ja oheisdata)
+
+• Joskus on tarpeen tallettaa myös tieto solmuun tulevista
+
+kaarista samaan tapaan (esim. solmujen ja kaarien
+poistamisen helpottamiseksi)
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+274
+
+Kytkentämatriisiesityksen avulla edelliseen kysymykseen
+pystytään vastaamaan helposti.
+
+• kytkentämatriisi on |V | × |V | -matriisi A, jonka alkio aij on
+
+– 0, jos solmusta i ei ole kaarta solmuun j
+– 1, jos solmusta i on kaari solmuun j
+
+• edellisen esimerkin graaﬁen kytkentämatriisit ovat
+
+1 2 3 4 5
+1 0 1 0 1 1
+2 1 0 0 1 0
+3 0 0 0 0 0
+4 1 1 0 0 1
+5 1 0 0 1 0
+
+1 2 3 4 5
+1 0 1 0 1 0
+2 0 1 0 0 0
+3 0 0 0 0 0
+4 0 1 0 0 1
+5 1 0 0 1 0
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+275
+
+• muistin kulutus on aina Θ(V 2)
+
+– jokainen alkio tarvitsee vain bitin muistia, joten useita
+
+alkioita voidaan tallettaa yhteen sanaan ⇒ vakiokerroin
+saadaan aika pieneksi
+
+• kytkentämatriisiesitystä kannattaa käyttää lähinnä vain
+
+hyvin tiheiden graaﬁen yhteydessä.
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+276
+
+Tarkastellaan tarkemmin kytkentälistaesitystavan toteutusta:
+
+• käytännön sovelluksissa solmuun kertyy usein monenlaista
+
+tehtävän tai algoritmin vaatimaa tietoa
+– nimi
+– bitti, joka kertoo, onko solmussa käyty
+– osoitin, joka kertoo, mistä solmusta tähän solmuun viimeksi
+
+tultiin
+
+– . . .
+⇒ solmusta kannattaa tehdä itsenäinen alkio, jossa on
+tarpeelliset kentät
+
+• yleensä sama pätee myös kaariin
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+277
+
+• pääperiaate:
+
+– talleta jokainen asia yhteen kertaan
+– ota käyttöön osoittimet, joilla voit helposti kulkea
+
+haluamiisi suuntiin
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+278
+
+13.2 Yleistä graaﬁalgoritmeista
+
+Käsitteitä:
+
+• askel = siirtyminen solmusta toiseen yhtä kaarta pitkin
+
+– suunnatussa graaﬁssa askel on otettava kaaren suuntaan
+• solmun v2 etäisyys (distance) solmusta v1 on lyhimmän v1:stä
+
+v2:een vievän polun pituus.
+– jokaisen solmun etäisyys itsestään on 0
+– merkitään δ(v1, v2)
+– suunnatussa graaﬁssa on mahdollista (ja tavallista), että
+
+δ(v1, v2) (cid:54)= δ(v2, v1)
+
+– jos v1:stä ei ole polkua v2:een, niin δ(v1, v2) = ∞
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+279
+
+Algoritmien ymmärtämisen helpottamiseksi annamme usein
+solmuille värit.
+• valkoinen = solmua ei ole vielä löydetty
+• harmaa = solmu on löydetty, mutta ei loppuun käsitelty
+• musta = solmu on löydetty ja loppuun käsitelty
+• solmun väri muuttuu järjestyksessä valkoinen → harmaa →
+
+musta
+
+• värikoodaus on lähinnä ajattelun apuväline, eikä sitä
+
+välttämättä tarvitse toteuttaa täysin, yleensä riittää tietää,
+onko solmu löydetty vai ei.
+
+– usein tämäkin informaatio on pääteltävissä nopeasti
+
+muista kentistä
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+280
+
+Monet graaﬁalgoritmit perustuvat graaﬁn tai sen osan
+läpikäyntiin tietyssä järjestyksessä.
+• perusläpikäyntijärjestyksiä on kaksi, leveyteen ensin -haku
+
+(BFS) ja syvyyteen ensin -haku (DFS).
+
+• läpikäynnillä tarkoitetaan algoritmia, jossa
+
+– käydään kerran graaﬁn tai sen osan jokaisessa solmussa
+– kuljetaan kerran graaﬁn tai sen osan jokainen kaari
+
+Hakualgoritmit käyttävät lähtökohtana jotain annettua graaﬁn
+solmua, lähtösolmua (source) ja etsivät kaikki ne solmut, joihin
+pääsee lähtösolmusta nollalla tai useammalla askeleella.
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+281
+
+13.3 Leveyteen ensin -haku (breadth-ﬁrst)
+
+Leveyteen ensin -hakua voi käyttää esimerkiksi
+• kaikkien solmujen etäisyyden määrittämiseen lähtösolmusta
+• (yhden) lyhimmän polun löytämiseen lähtösolmusta
+
+jokaiseen solmuun
+
+Leveyteen ensin -haun nimi tulee siitä, että se tutkii tutkitun ja
+tuntemattoman graaﬁn osan välistä rajapintaa koko ajan
+koko sen leveydeltä.
+
+Solmujen kentät:
+• v→d = jos solmu v on löydetty niin sen etäisyys s:tä, muutoin
+
+∞
+
+• v→π = osoitin solmuun, josta haku ensi kerran tuli v:hen,
+
+löytämättömille solmuille NIL
+
+• v→colour = solmun v väri
+• v→Adj = solmun v naapurisolmujen joukko
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+282
+
+Algoritmin käyttämä tietorakenne Q on jono (noudattaa
+FIFO-jonokuria).
+
+(algoritmi saa parametrinaan aloitussolmun s)
+
+BFS(s)
+1 (cid:46) alussa kaikkien solmujen kentät ovat arvoiltaan colour = WHITE, d = ∞, π = NIL
+2 s→colour := GRAY
+3 s→d := 0
+4 PUSH(Q, s)
+5 while Q (cid:54)= ∅ do
+u := POP(Q)
+6
+for each v ∈ u→Adj do
+7
+8
+9
+10
+11
+12
+13
+
+(merkitään alkutila löydetyksi)
+(etäisyys alkutilasta alkutilaan on 0)
+(työnnetään alkutila jonoon)
+(toistetaan niin kauan kun tiloja riittää)
+(vedetään jonosta seuraava tila)
+(käydään u:n naapurit läpi)
+(jos solmua ei ole vielä löydetty . . . )
+(. . . merkitään se löydetyksi)
+(kasvatetaan etäisyyttä yhdellä)
+(tilaan v tultiin tilan u kautta)
+(työnnetään tila jonoon odottamaan käsittelyä)
+(merkitään tila u käsitellyksi)
+
+if v→colour = WHITE then
+v→colour := GRAY
+v→d := u→d + 1
+v→π := u
+PUSH(Q, v)
+u→colour := BLACK
+
+Kaikkia algoritmin käyttämiä solmun kenttiä ei välttämättä
+käytännön toteutuksessa tarvita, vaan osan arvoista voi
+päätellä toisistaan.
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+283
+
+Alla olevassa kuvassa graaﬁn solmut on numeroitu siinä
+järjestyksessä, jossa BFS löytää ne. Solmujen etäisyys alkutilasta
+on merkitty solmun viereen ja haun kulkureitti tummennettu.
+
+811alkutila12932225467334COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+284
+
+Suoritusaika solmujen (V ) ja kaarien (E) määrien avulla
+ilmaistuna:
+• ennen algoritmin kutsumista solmut pitää alustaa
+
+– järkevässä ratkaisussa tämä on tehtävissä ajassa O(V )
+
+• rivillä 7 algoritmi selaa solmun lähtökaaret
+
+– onnistuu käyttämällämme kytkentälistaesityksellä solmun
+
+kaarien määrään nähden lineaarisessa ajassa
+
+• kukin jono-operaatio vie vakiomäärän aikaa
+• while-silmukan kierrosten määrä
+
+– vain valkoisia solmuja laitetaan jonoon
+– samalla solmun väri muuttuu harmaaksi
+
+⇒ kukin solmu voi mennä jonoon korkeintaan kerran
+⇒ while-silmukka pyörähtää siis korkeintaan O(V ) määrän
+kertoja
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+285
+
+• for-silmukan kierrosten määrä
+
+– algoritmi kulkee jokaisen kaaren korkeintaan kerran
+
+molempiin suuntiin
+
+⇒ for-silmukka käydään läpi yhteensä korkeintaan O(E)
+kertaa
+
+⇒ koko algoritmin suoritusaika on siis O(V + E)
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+286
+
+Algoritmin lopetettua π-osoittimet määrittelevät puun, joka
+sisältää löydetyt solmut, ja jonka juurena on lähtösolmu s.
+• leveyteen ensin -puu (breadth-ﬁrst tree)
+• π-osoittimet määräävät puun kaaret “takaperin”
+
+– osoittavat juurta kohti
+– v→π = v:n edeltäjä (predecessor) eli isä (parent)
+
+• kaikki lähtösolmusta saavutettavissa olevat solmut kuuluvat
+
+puuhun
+
+• puun polut ovat mahdollisimman lyhyitä polkuja s:stä
+
+löydettyihin solmuihin
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+287
+
+Lyhimmän polun tulostaminen
+• kun BFS on asettanut π-osoittimet kohdalleen, lyhin polku
+lähtösolmusta s solmuun v voidaan tulostaa seuraavasti:
+
+print s
+
+PRINT-PATH(G, s, v)
+1 if v = s then
+2
+3 else if v→π = NIL then
+4
+print “ei polkua”
+5 else
+6
+7
+
+PRINT-PATH(G, s, v→π)
+print v
+
+(rekursion pohjatapaus)
+
+(haku ei ole saavuttanut solmua v lainkaan)
+
+(rekursiokutsu . . . )
+(. . . jonka jälkeen suoritetaan tulostus)
+
+• ei-rekursiivisen version voi tehdä esim.
+
+– kokoamalla solmujen numerot taulukkoon kulkemalla
+π-osoittimia pitkin, ja tulostamalla taulukon sisällön
+takaperin
+
+– kulkemalla polku kahdesti, ja kääntämällä π-osoittimet
+
+takaperin kummallakin kertaa (jälkimmäinen käännös ei
+tarpeen, jos π-osoittimet saa turmella)
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+288
+
+13.4 Syvyyteen ensin -haku (depth-ﬁrst)
+
+Syvyyteen ensin -haku on toinen perusläpikäyntijärjestyksistä.
+
+Siinä missä leveyteen ensin -haku tutkii koko hakurintamaa sen
+koko leveydeltä, syvyyteen ensin -haku menee yhtä polkua
+eteen päin niin kauan kuin se on mahdollista.
+• polkuun hyväksytään vain solmuja, joita ei ole aiemmin
+
+nähty
+
+• kun algoritmi ei enää pääse eteenpäin, se peruuttaa juuri
+
+sen verran kuin on tarpeen uuden etenemisreitin
+löytämiseksi, ja lähtee sitä pitkin
+
+• algoritmi lopettaa, kun se peruuttaa viimeisen kerran
+takaisin lähtösolmuun, eikä löydä enää sieltäkään
+tutkimattomia kaaria
+
+Algoritmi muistuttaa huomattavasti leveyteen ensin -haun
+pseudokoodia.
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+289
+
+Merkittäviä eroja on oikeastaan vain muutama:
+• jonon sijasta käsittelyvuoroaan odottavat tilat talletetaan
+
+pinoon
+
+• algoritmi ei löydä lyhimpiä polkuja, vaan ainoastaan jonkin
+
+polun
+– tästä syystä esimerkkipseudokoodia on yksinkertaistettu
+
+jättämällä π-kentät pois
+
+Algoritmin käyttämä tietorakenne S on pino (noudattaa
+LIFO-jonokuria).
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+290
+
+(algoritmi saa parametrinaan aloitussolmun s)
+
+DFS(s)
+1 (cid:46) alussa kaikkien (käsittelemättömien) solmujen värikenttä colour = WHITE
+2 PUSH(S, s)
+3 while S (cid:54)= ∅ do
+u := POP(S)
+4
+if u→colour = WHITE then
+5
+u→colour := GRAY
+6
+PUSH(S, u)
+7
+for each v ∈ u→Adj do
+8
+9
+10
+11
+12
+13
+14
+
+(työnnetään alkutila pinoon)
+(jatketaan niin kauan kun pinossa on tavaraa)
+(vedetään pinosta viimeisin sinne lisätty tila)
+(jos solmua ei ole vielä käsitelty . . . )
+(merkitään tila käsittelyssä olevaksi)
+(työnnetään taas pinoon (mustaksi värjäys))
+(käydään u:n naapurit läpi)
+
+if v→colour = WHITE then (jos solmua ei ole vielä käsitelty . . . )
+
+(kaikki lapset käsitelty, solmu on valmis)
+
+(harmaa solmu! Sykli löytynyt! . . . )
+
+(käsittele sykli, jos se kiinnostaa)
+
+else if v→colour = GRAY then
+
+u→colour := BLACK
+
+PUSH(S, v)
+
+????
+
+else
+
+(. . . työnnetään se pinoon odottamaan käsittelyä)
+
+Jos halutaan tutkia koko graaﬁ, voidaan kutsua syvyyteen
+ensin -hakua kertaalleen kaikista vielä tutkimattomista
+solmuista.
+
+• tällöin solmuja ei väritetä valkoisiksi kutsukertojen välillä
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+291
+
+Rivin 5 perään voitaisi lisätä operaatio, joka kaikille graaﬁn
+alkioille halutaan tehdä. Voidaan esimerkiksi
+
+• tutkia onko tila maalitila, ja lopettaa jos on
+• ottaa talteen solmuun liittyvää oheisdataa
+• muokata solmuun liittyvää oheisdataa
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+292
+
+Suoritusaika voidaan laskea samoin kuin leveyteen ensin -haun
+yhteydessä:
+• ennen algoritmin kutsumista solmut pitää alustaa
+
+– järkevässä ratkaisussa tämä on tehtävissä ajassa O(V )
+
+• rivillä 6 algoritmi selaa solmun lähtökaaret
+
+– onnistuu käyttämällämme kytkentälistaesityksellä solmun
+
+kaarien määrään nähden lineaarisessa ajassa
+
+• kukin pino-operaatio vie vakiomäärän aikaa
+• while-silmukan kierrosten määrä
+
+– vain valkoisia solmuja laitetaan pinoon
+– samalla solmun väri muuttuu harmaaksi
+
+⇒ kukin solmu voi mennä pinoon korkeintaan kerran
+⇒ while-silmukka pyörähtää siis korkeintaan O(V ) määrän
+kertoja
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+293
+
+• for-silmukan kierrosten määrä
+
+– algoritmi kulkee jokaisen kaaren korkeintaan kerran
+
+molempiin suuntiin
+
+⇒ for-silmukka käydään läpi yhteensä korkeintaan O(E)
+kertaa
+
+⇒ koko algoritmin suoritusaika on siis O(V + E)
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+294
+
+DFS on myös mahdollista toteuttaa rekursiivisesti, jolloin
+algoritmin pinona toimii funktioiden kutsupino.
+
+• Rekursiivinen versio on itse asiassa jonkin verran
+
+yksinkertaisempi kuin iteratiivinen versio!
+
+• (Keksitkö, miksi?)
+
+Huom! Ennen algoritmin kutsumista kaikki solmut tulee alustaa
+valkoisiksi!
+
+if v→colour = WHITE then
+
+DFS(u)
+1 u→colour := GRAY
+2 for each v ∈ u→Adj do
+3
+4
+5
+6
+7 u→colour := BLACK
+
+DFS(v)
+
+else if v→colour = GRAY then
+(cid:46) silmukka on löytynyt
+
+(merkitään tila löydetyksi)
+(käydään kaikki u:n naapurit läpi)
+(jos ei olla vielä käyty v:ssä. . . )
+(. . . jatketaan etsintää rekursiivisesti tilasta v)
+(jos on jo käyty, muttei loppuun käsitelty . . . )
+(. . . silmukka on löytynyt)
+(merkitään tila käsitellyksi)
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+295
+
+Suoritusaika:
+
+• rekursiivinen kutsu tehdään ainoastaan valkoisille solmuille
+• funktion alussa solmu väritetään harmaaksi
+
+⇒ DFS:ää kutsutaan korkeintaan O(V ) kertaa
+
+• kuten aiemmassakin versiossa for-silmukka kiertää
+
+korkeintaan kaksi kierrosta kutakin graaﬁn kaarta kohden
+koko algoritmin suorituksen aikana
+⇒ siis for-silmukan kierroksia tulee korkeintaan O(E)
+kappaletta
+
+• muut operaatioista ovat vakioaikaisia
+
+⇒ koko algoritmin suoritusaika on edelleen O(V + E)
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+296
+
+Leveyteen ensin -haku vai syvyyteen ensin -haku:
+
+• lyhimmän polun etsimiseen täytyy käyttää leveyteen ensin
+
+-hakua
+
+• jos graaﬁn esittämä tilavaruus on hyvin suuri, käyttää
+
+leveyteen ensin -haku yleensä huomattavasti enemmän
+muistia
+
+– syvyyteen ensin -haun pinon koko pysyy yleensä
+
+pienempänä kuin leveyteen ensin -haun jonon koko
+
+– useissa sovelluksissa esimerkiksi tekoälyn alalla jonon koko
+
+estää leveyteen ensin -haun käytön
+
+• mikäli graaﬁn koko on ääretön, ongelmaksi nousee se, ettei
+syvyyteen ensin -haku välttämättä löydä ikinä maalitilaa,
+eikä edes lopeta ennen kuin muisti loppuu
+
+– näin tapahtuu, jos algoritmi lähtee tutkimaan
+hedelmätöntä äärettömän pitkää haaraa
+
+– tätä ongelmaa ei kuitenkaan esiinny äärellisten graaﬁen
+
+yhteydessä
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+297
+
+• syvyyteen ensin -haun avulla voi ratkaista joitakin
+
+monimutkaisempia ongelmia, kuten graaﬁn silmukoiden
+etsintä
+– harmaat solmut muodostavat lähtösolmusta nykyiseen
+
+solmuun vievän polun
+
+– mustista solmuista pääsee vain mustiin ja harmaisiin
+
+solmuihin
+⇒ jos nykyisestä solmusta pääsee harmaaseen solmuun,
+niin graaﬁssa on silmukka
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+298
+
+14 Lyhimmät painotetut polut
+
+BFS löytää lyhimmän polun lähtösolmusta graaﬁn
+saavutettaviin solmuihin.
+
+Se ei kuitenkaan enää suoriudu tehtävästä, jos kaarien läpi
+kulkeminen maksaa askelta enemmän.
+
+Tässä luvussa käsitellemme lyhimpien painotettujen polkujen
+etsintää graaﬁsta, jonka kaaripainot ovat positiivisia ja voivat
+poiketa ykkösestä.
+
+• negatiivisten kaaripainojen hallitsemiseen tarvitaan
+
+monimutkaisempia algoritmeja, esimerkiksi Bellman-Ford
+algoritmi
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+299
+
+14.1 Lyhin polku
+
+Graaﬁn kaarilla voi olla ominaisuus nimeltä paino(weight).
+• paino voi edustaa vaikkapa reitin pituutta tai tilasiirtymän
+
+kustannusta
+
+• Graaﬁn G = (V, E) painofunktio w : E → R kaarilta
+
+reaalilukupainoille
+
+• Polun p = (cid:104)v0, v1, ..., vk(cid:105) paino w(p) on sen muodostavien
+
+kaarten painojen summa w(p) = (cid:80)k
+
+i=1 w(vi−1, vi).
+
+Määritelmä: lyhimmän polun paino δ(u, v):
+
+δ(u, v) =
+
+(cid:40)
+
+min{w(p) : u
+∞
+
+p(cid:32) v}
+
+jos on polkuu:sta v:hen,
+muuten.
+
+ja siten lyhin polku u:sta v:hen mikä tahansa polku p, jolle
+w(p) = δ(u, v)
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+300
+
+Tämä mutkistaa lyhimmän reitin etsintää merkittävästi.
+• lyhin reitti on se lähtösolmusta etsittyyn solmuun kulkeva
+
+polku, jonka kaarien painojen summa on mahdollisimman
+pieni
+
+• jos jokaisen kaaren paino on 1, tehtävä voidaan ratkaista
+käymällä lähtösolmusta saavutettavissa oleva graaﬁn osa
+läpi leveyteen ensin -järjestyksessä
+
+• jos painot saattavat olla < 0, voi olla, että tehtävään ei ole
+
+ratkaisua, vaikka polkuja olisi olemassakin
+– jos graaﬁssa on silmukka, jonka kaaripainojen summa on
+
+negatiivinen saadaan mielivaltaisen pieni painojen
+summa kiertämällä silmukkaa tarpeeksi monta kertaa
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+301
+
+14.2 Dijkstran algoritmi
+Suunnatun, painotetun graaﬁn G = (V, E), jossa kaaripainot
+ovat ei-negatiivisia, lyhimmät painotetut polut lähtösolmusta
+voi etsiä Dijkstran algoritmilla.
+• etsii lyhimmät polut lähtösolmusta s kaikkiin saavutettaviin
+
+solmuihin, painottaen kaarien pituuksia w:n mukaan
+
+• valitsee joka tilanteessa tutkittavakseen lyhimmän polun,
+
+jota se ei ole vielä tutkinut
+⇒ se on siis ahne algoritmi
+• oletus: w(u, v) ≥ 0 ∀(u, v) ∈ E
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+302
+
+(algoritmi saa parametrinaan aloitussolmun s)
+
+DIJKSTRA(s, w)
+1 (cid:46) alussa kaikkien solmujen kentät ovat arvoiltaan colour = WHITE, d = ∞, π = NIL
+2 s→colour := GRAY
+3 s→d := 0
+4 PUSH(Q, s)
+5 while Q (cid:54)= ∅ do
+6
+7
+8
+9
+10
+11
+12
+
+(merkitään alkutila löydetyksi)
+(etäisyys alkutilasta alkutilaan on 0)
+(työnnetään alkutila prioriteettijonoon)
+(jatketaan niin kauan kun solmuja riittää)
+(otetaan prioriteettijonosta seuraava tila)
+(käydään u:n naapurit läpi)
+(jos solmussa ei ole käyty . . . )
+(. . . merkitään se löydetyksi)
+(työnnetään tila jonoon odottamaan käsittelyä)
+
+if v→colour = WHITE then
+v→colour := GRAY
+PUSH(Q, v)
+RELAX(u, v, w)
+u→colour := BLACK
+
+u := EXTRACT-MIN(Q)
+for each v ∈ u→Adj do
+
+(merkitään tila u käsitellyksi)
+
+RELAX(u, v, w)
+1 if v→d > u→d + w(u, v) then
+2
+3
+
+v→d := u→d + w(u, v)
+v→π := u
+
+(jos löydettiin uusi lyhyempi reitti tilaan v...)
+(...pienennetään v:n etäisyyttä lähtösolmusta)
+(merkitään, että v:n tultiin u:sta)
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+303
+
+Algoritmin käyttämä tietorakenne Q on prioriteettijono
+(luentomonisteen kohta 3.2).
+
+w sisältää kaikkien kaarien painot.
+
+Dijkstran algoritmi käyttää apufunktiota RELAX
+• kaaren (u, v) relaksointi (relaxation) testaa, voiko lyhintä
+
+löydettyä v:hen vievää polkua parantaa reitittämällä sen
+loppupää u:n kautta, ja tarvittaessa tekee niin
+
+Muilta osin algoritmi muistuttaa huomattavasti leveyteen ensin
+-hakua.
+• se löytää lyhimmät polut kasvavan pituuden mukaisessa
+
+järjestyksessä
+
+• kun solmu u otetaan Q:sta, sen painotettu etäisyys s:stä
+
+varmistuu u→d:ksi
+– jos prioriteettijonosta otettu tila on maalitila, voidaan
+
+algoritmin suoritus lopettaa saman tien
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+304
+
+Alla olevassa kuvassa nähdään Dijkstran algoritmi tilanteessa,
+jossa mustalla ympyröidyt solmut on käsitelty.
+
+Alkutila513243738014iii2COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+305
+
+Suoritusaika:
+• while-silmukka käy enintään O(V ) kierrosta ja for-silmukka
+
+yhteensä enintään O(E) kierrosta
+
+• prioriteettijonon voi toteuttaa tehokkaasti keon avulla tai
+
+vähemmän tehokkaasti listan avulla
+
+kekototeutuksella:listatoteutuksella:
+rivi 4: Θ(1)
+rivi 5: Θ(1)
+rivi 6: O(lg V )
+rivi 10: Θ(1)
+
+Θ(1)
+Θ(1)
+O(V )
+Θ(1)
+
+rivi 11: O(lg V )
+
+Θ(1)
+
+(tyhjään tietorakenteeseen lisääminen)
+(onko prioriteettijono tyhjä)
+(Extract-Min)
+(valkoisen solmun prioriteetti on ääretön,
+joten sen oikea paikka on keon lopussa)
+(relaksoinnissa solmun prioriteetti voi muuttua)
+
+• käytettäessä kekototeutusta jokaisella while- ja for-silmukan
+
+kierroksella suoritetaan yksi O(lg V ) aikaa kuluttava
+operaatio
+⇒ algoritmin suoritusaika on O((V + E) lg V )
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+306
+
+14.3 A*-algoritmi
+
+Dijkstran algoritmi etsi lyhimmän painotetun reitin
+kartoittamalla solmuja lyhimmästä reitistä alkaen reitin
+pituusjärjestyksessä. Eli: Dijkstra käyttää hyväkseen vain jo
+kuljetuista kaarista saatavaa tietoa.
+
+A*-algoritmi tehostaa tätä lisäämällä heuristiikan (=oletuksen)
+lyhimmästä mahdollisesta etäisyydestä maaliin. (Esim.
+maantiereitin haussa etäisyys linnuntietä).
+• etsii lyhimmän painotetun polun lähtösolmusta s annettuun
+maalisolmuun g. Ei kartoita lyhintä reittiä kaikkiin solmuihin
+(kuten Dijkstra), vain maalisolmuun.
+
+• edellyttää, että painot ovat ei-negatiivisia (kuten Dijkstrakin)
+• edellyttää, että jokaiselle solmulle voidaan laskea sen
+
+minimietäisyys maalista (ts. löytynyt lyhin reitti ei voi olla
+lyhempi).
+
+• valitsee joka tilanteessa tutkittavakseen ei-tutkitun solmun,
+
+jossa (lyhin etäisyys lähdöstä solmuun + arvioitu
+minimietäisyys maaliin) on pienin.
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+307
+
+Ainoa ero A*:n ja Dijkstran välillä on relaksointi (ja se, että A*
+kannattaa lopettaa heti maalisolmun löydyttyä, koska se ei
+kartoita lyhimpiä etäisyyksiä kaikkiin solmuihin).
+
+RELAX-A*(u, v, w)
+1 if v→d > u→d + w(u, v) then
+2
+3
+4
+
+v→d := u→d + w(u, v)
+v→de := v→d + min_est(v, g)
+v→π := u
+
+(jos löydettiin uusi lyhyempi reitti tilaan v...)
+(...uusi pituus tähän saakka...)
+(...ja minimiarvio koko reitistä)
+(merkitään, että v:n tultiin u:sta)
+
+A*:n käyttämässä prioriteettijonossa käytetään prioriteettina
+koko reitin pituusarviota v→de.
+
+(Dijkstran algoritmi on A*:n erikoistapaus, jossa min_est(a, b) on
+aina 0.)
+
+COMP.CS.300 Tietorakenteet ja algoritmit 1
+
+308
+
+14.4 Kevyin virittävä puu
+Graaﬁn G = (V, E) kevyin virittävä puu on sen asyklinen
+aligraaﬁ, joka yhdistää kaikki graaﬁn solmut niin, että aligraaﬁn
+kaarien painojen summa on pienin mahdollinen.
+
+Puun löytämiseksi on kaksi algoritmia: Primin ja Kruskalin
+
+Prim muistuttaa Dijkstran algoritmin kun taas Kruskal lähestyy
+ongelmaa luomalla metsän, jossa on puu jokaiselle puulle ja
+sitten yhdistämällä näitä puuksi
+
+

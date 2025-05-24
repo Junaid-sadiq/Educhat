@@ -1,0 +1,1504 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:00.992 align:middle line:90%
+
+
+00:00:00.992 --> 00:00:06.944 align:middle line:84%
+[SQUEAKING]
+[RUSTLING] [CLICKING]
+
+00:00:06.944 --> 00:00:11.420 align:middle line:90%
+
+
+00:00:11.420 --> 00:00:13.790 align:middle line:84%
+HELENA VALLICROSA: Now is
+where things get interesting
+
+00:00:13.790 --> 00:00:16.430 align:middle line:84%
+and where we're going to use
+the power of the computer
+
+00:00:16.430 --> 00:00:22.040 align:middle line:84%
+to make our lives easier and
+not prevent us from doing
+
+00:00:22.040 --> 00:00:23.902 align:middle line:90%
+mechanical stuff over and over.
+
+00:00:23.902 --> 00:00:25.610 align:middle line:84%
+So we're just going
+to set some commands,
+
+00:00:25.610 --> 00:00:29.090 align:middle line:84%
+and the computer is going to
+run them for us without us being
+
+00:00:29.090 --> 00:00:32.610 align:middle line:90%
+there repeating the stuff.
+
+00:00:32.610 --> 00:00:35.270 align:middle line:84%
+So there are two
+different types of loops.
+
+00:00:35.270 --> 00:00:37.910 align:middle line:84%
+We have for loops
+and the while loops.
+
+00:00:37.910 --> 00:00:43.430 align:middle line:84%
+The main difference between them
+is that for loops are static,
+
+00:00:43.430 --> 00:00:46.940 align:middle line:84%
+so they are going to be repeated
+for the amount of iterations
+
+00:00:46.940 --> 00:00:48.770 align:middle line:90%
+that we set at the beginning.
+
+00:00:48.770 --> 00:00:50.880 align:middle line:84%
+But then we have
+the while loops,
+
+00:00:50.880 --> 00:00:53.480 align:middle line:84%
+which are the ones
+that are going to stop
+
+00:00:53.480 --> 00:00:56.070 align:middle line:90%
+once a command is reached.
+
+00:00:56.070 --> 00:01:01.340 align:middle line:84%
+So whenever there's a constant
+that has overpassed or whatever
+
+00:01:01.340 --> 00:01:04.730 align:middle line:84%
+is a different that
+has been fulfilled.
+
+00:01:04.730 --> 00:01:08.270 align:middle line:84%
+You'll see that further
+when I'll explain them
+
+00:01:08.270 --> 00:01:09.990 align:middle line:90%
+a little bit more in detail.
+
+00:01:09.990 --> 00:01:14.340 align:middle line:84%
+So let's just go with for
+loop at the beginning.
+
+00:01:14.340 --> 00:01:16.680 align:middle line:84%
+I'm just going to
+create a vector here
+
+00:01:16.680 --> 00:01:18.540 align:middle line:90%
+that we're going to name here.
+
+00:01:18.540 --> 00:01:22.920 align:middle line:84%
+I'm going to go
+from 2010 and 2015.
+
+00:01:22.920 --> 00:01:24.900 align:middle line:90%
+Just run it so we have it.
+
+00:01:24.900 --> 00:01:30.970 align:middle line:84%
+Also just as a reminder,
+we could do it like this
+
+00:01:30.970 --> 00:01:33.085 align:middle line:90%
+and it would work either way.
+
+00:01:33.085 --> 00:01:35.397 align:middle line:90%
+
+
+00:01:35.397 --> 00:01:36.355 align:middle line:90%
+We have the same thing.
+
+00:01:36.355 --> 00:01:38.960 align:middle line:90%
+
+
+00:01:38.960 --> 00:01:40.910 align:middle line:84%
+So what are we going
+to do with this?
+
+00:01:40.910 --> 00:01:44.740 align:middle line:84%
+There's a very fixed
+structure for for loops.
+
+00:01:44.740 --> 00:01:50.020 align:middle line:84%
+It starts with the command for
+so the R session understands
+
+00:01:50.020 --> 00:01:51.310 align:middle line:90%
+that this is a for loop.
+
+00:01:51.310 --> 00:01:54.715 align:middle line:84%
+You'll see that the
+font color changes here.
+
+00:01:54.715 --> 00:01:57.400 align:middle line:90%
+
+
+00:01:57.400 --> 00:02:00.460 align:middle line:84%
+We're going to set initially
+the amount of times
+
+00:02:00.460 --> 00:02:01.880 align:middle line:90%
+this is going to be repeated.
+
+00:02:01.880 --> 00:02:04.880 align:middle line:84%
+So it's going to be throughout
+the whole year vector.
+
+00:02:04.880 --> 00:02:10.210 align:middle line:84%
+So it's going to be repeated
+1, 2, 3, 4, 5, 6 times.
+
+00:02:10.210 --> 00:02:14.240 align:middle line:84%
+And then this is going
+to be the iteration,
+
+00:02:14.240 --> 00:02:16.520 align:middle line:84%
+so every time this
+is going to change.
+
+00:02:16.520 --> 00:02:19.750 align:middle line:84%
+So when we go to the
+expression we are creating
+
+00:02:19.750 --> 00:02:24.370 align:middle line:84%
+or as we want for loop
+to repeat over and over,
+
+00:02:24.370 --> 00:02:26.720 align:middle line:84%
+this is the command that
+it's going to change.
+
+00:02:26.720 --> 00:02:30.550 align:middle line:84%
+So in the first iteration,
+this part of the code
+
+00:02:30.550 --> 00:02:32.230 align:middle line:90%
+is going to be 2010.
+
+00:02:32.230 --> 00:02:34.670 align:middle line:84%
+But in the second
+iteration, it's
+
+00:02:34.670 --> 00:02:38.550 align:middle line:84%
+going to be 2011, and
+so forth until the end.
+
+00:02:38.550 --> 00:02:39.815 align:middle line:90%
+So let's just see how it goes.
+
+00:02:39.815 --> 00:02:42.390 align:middle line:90%
+
+
+00:02:42.390 --> 00:02:44.280 align:middle line:84%
+Just click in here
+and you can see
+
+00:02:44.280 --> 00:02:48.600 align:middle line:84%
+that we have been repeating
+the same thing for six times,
+
+00:02:48.600 --> 00:02:54.960 align:middle line:84%
+but every time it's changed
+the command referring to year.
+
+00:02:54.960 --> 00:02:56.280 align:middle line:90%
+All right.
+
+00:02:56.280 --> 00:03:03.210 align:middle line:84%
+So let's just move
+into the while loop.
+
+00:03:03.210 --> 00:03:06.150 align:middle line:84%
+In this case, I'm going to
+create the iteration that's
+
+00:03:06.150 --> 00:03:07.275 align:middle line:90%
+going to be the number one.
+
+00:03:07.275 --> 00:03:09.960 align:middle line:90%
+
+
+00:03:09.960 --> 00:03:13.360 align:middle line:84%
+So it starts kind of the
+same way as for loop.
+
+00:03:13.360 --> 00:03:17.710 align:middle line:84%
+So we said we're going
+to create a while loop.
+
+00:03:17.710 --> 00:03:22.170 align:middle line:84%
+So here the font changes again,
+and we set the parameters
+
+00:03:22.170 --> 00:03:23.430 align:middle line:90%
+about this loop.
+
+00:03:23.430 --> 00:03:29.460 align:middle line:84%
+So initially we want this
+to go until all the times
+
+00:03:29.460 --> 00:03:33.330 align:middle line:84%
+that this value here
+is lower than six.
+
+00:03:33.330 --> 00:03:38.040 align:middle line:84%
+So as long as this value is
+lower than six, just keep going
+
+00:03:38.040 --> 00:03:40.680 align:middle line:84%
+and it's going to stop
+when this is not fulfilled.
+
+00:03:40.680 --> 00:03:45.160 align:middle line:84%
+So we're going to print the
+value and then take the value
+
+00:03:45.160 --> 00:03:47.620 align:middle line:90%
+and add one every time.
+
+00:03:47.620 --> 00:03:50.660 align:middle line:90%
+So I'm just going to run this.
+
+00:03:50.660 --> 00:03:56.200 align:middle line:84%
+And what we have been doing is
+to add one at every iteration,
+
+00:03:56.200 --> 00:04:00.160 align:middle line:84%
+and a loop stopped when this
+condition was not fulfilled.
+
+00:04:00.160 --> 00:04:02.590 align:middle line:84%
+So at the time when
+we reached the six,
+
+00:04:02.590 --> 00:04:06.310 align:middle line:84%
+six is obviously
+no smaller than six
+
+00:04:06.310 --> 00:04:09.880 align:middle line:84%
+so here is where
+the loop stopped.
+
+00:04:09.880 --> 00:04:13.450 align:middle line:84%
+Also there is something
+else it could become handy.
+
+00:04:13.450 --> 00:04:15.130 align:middle line:84%
+Even it's not a
+loop, it's something
+
+00:04:15.130 --> 00:04:19.329 align:middle line:84%
+that could be introduced
+inside a loop, which
+
+00:04:19.329 --> 00:04:21.589 align:middle line:90%
+is the if else condition.
+
+00:04:21.589 --> 00:04:27.970 align:middle line:84%
+So in this case, I'm just
+going to set x as a 2.
+
+00:04:27.970 --> 00:04:31.340 align:middle line:84%
+And what we're going
+to do is say, OK,
+
+00:04:31.340 --> 00:04:34.210 align:middle line:84%
+if this value is
+bigger than two,
+
+00:04:34.210 --> 00:04:37.880 align:middle line:90%
+fulfill this command right here.
+
+00:04:37.880 --> 00:04:42.950 align:middle line:84%
+But if this is not the case,
+just do something else.
+
+00:04:42.950 --> 00:04:47.370 align:middle line:90%
+So just going to run this.
+
+00:04:47.370 --> 00:04:51.480 align:middle line:84%
+So we printed positive number
+because x is bigger than zero,
+
+00:04:51.480 --> 00:04:55.260 align:middle line:84%
+so this is the command
+that has been executed.
+
+00:04:55.260 --> 00:04:59.830 align:middle line:84%
+But if I change the 2 for
+a minus 1, for example,
+
+00:04:59.830 --> 00:05:04.650 align:middle line:84%
+just run the command and then
+just run the whole if else.
+
+00:05:04.650 --> 00:05:06.570 align:middle line:84%
+And now instead of
+positive number,
+
+00:05:06.570 --> 00:05:09.870 align:middle line:84%
+we have a negative number
+because the route that has been
+
+00:05:09.870 --> 00:05:12.750 align:middle line:90%
+followed is the second one.
+
+00:05:12.750 --> 00:05:17.140 align:middle line:90%
+
+
+00:05:17.140 --> 00:05:20.620 align:middle line:84%
+So far, we've been working with
+functions that have already
+
+00:05:20.620 --> 00:05:24.550 align:middle line:84%
+been defined or incorporated
+in some packages,
+
+00:05:24.550 --> 00:05:27.800 align:middle line:84%
+but we can also create
+our own functions
+
+00:05:27.800 --> 00:05:32.240 align:middle line:84%
+So they can help us
+into our purposes.
+
+00:05:32.240 --> 00:05:35.770 align:middle line:84%
+So here I'm going to be creating
+a function called Celsius
+
+00:05:35.770 --> 00:05:38.800 align:middle line:84%
+to Kelvin, which is
+going to transform
+
+00:05:38.800 --> 00:05:44.120 align:middle line:84%
+Celsius temperatures into Kelvin
+temperatures automatically.
+
+00:05:44.120 --> 00:05:47.590 align:middle line:84%
+First of all, I have
+to name the function
+
+00:05:47.590 --> 00:05:52.360 align:middle line:84%
+and tell R that I'm going
+to be creating a function.
+
+00:05:52.360 --> 00:05:55.690 align:middle line:84%
+Inside the parentheses
+I have to specify
+
+00:05:55.690 --> 00:05:59.620 align:middle line:84%
+what are the variables that
+this function would need.
+
+00:05:59.620 --> 00:06:04.360 align:middle line:84%
+In this case, we would need an
+input of Celsius temperatures,
+
+00:06:04.360 --> 00:06:06.730 align:middle line:84%
+and here is what we
+want the function to do.
+
+00:06:06.730 --> 00:06:09.140 align:middle line:90%
+So we open the key.
+
+00:06:09.140 --> 00:06:14.950 align:middle line:84%
+And these are the mathematical
+calculations we want to set up.
+
+00:06:14.950 --> 00:06:18.070 align:middle line:90%
+And finally, we need a return.
+
+00:06:18.070 --> 00:06:21.590 align:middle line:84%
+So it's like, OK, once
+you've done all these,
+
+00:06:21.590 --> 00:06:25.580 align:middle line:84%
+give me back this object
+here, which is the one
+
+00:06:25.580 --> 00:06:28.860 align:middle line:84%
+that we have
+created right there.
+
+00:06:28.860 --> 00:06:31.280 align:middle line:90%
+And obviously closing the thing.
+
+00:06:31.280 --> 00:06:33.730 align:middle line:90%
+
+
+00:06:33.730 --> 00:06:34.230 align:middle line:90%
+OK.
+
+00:06:34.230 --> 00:06:37.020 align:middle line:84%
+This is the function
+that we've created.
+
+00:06:37.020 --> 00:06:40.920 align:middle line:84%
+We went directly here in
+the subset of functions.
+
+00:06:40.920 --> 00:06:44.895 align:middle line:84%
+We could go any time and see
+how the function looks like.
+
+00:06:44.895 --> 00:06:48.130 align:middle line:90%
+
+
+00:06:48.130 --> 00:06:51.240 align:middle line:84%
+And now it's time to
+execute that function
+
+00:06:51.240 --> 00:06:53.350 align:middle line:90%
+and obtain the results.
+
+00:06:53.350 --> 00:06:59.220 align:middle line:84%
+So first of all, we create this
+sequence that goes from 1 to 30
+
+00:06:59.220 --> 00:07:03.600 align:middle line:90%
+and it's stored in the E. Mhm.
+
+00:07:03.600 --> 00:07:07.470 align:middle line:84%
+And I'm just going
+to store an object.
+
+00:07:07.470 --> 00:07:11.490 align:middle line:84%
+Let's say Kelvin to
+make it more elegant.
+
+00:07:11.490 --> 00:07:15.000 align:middle line:84%
+And we apply the
+function right here,
+
+00:07:15.000 --> 00:07:16.410 align:middle line:84%
+the one that we
+created, the name
+
+00:07:16.410 --> 00:07:19.560 align:middle line:84%
+that we gave to our
+function, Celsius to Kelvin.
+
+00:07:19.560 --> 00:07:24.930 align:middle line:84%
+And then we-- you remember that
+we ask the function to work
+
+00:07:24.930 --> 00:07:28.210 align:middle line:84%
+with this input, so we are
+saying this input that you need,
+
+00:07:28.210 --> 00:07:33.060 align:middle line:84%
+take it from E. So
+if we run the thing,
+
+00:07:33.060 --> 00:07:40.970 align:middle line:84%
+we have these results where
+all the temperatures have
+
+00:07:40.970 --> 00:07:45.080 align:middle line:84%
+been automatically converted
+from Celsius to Kelvin,
+
+00:07:45.080 --> 00:07:47.435 align:middle line:90%
+and here is how they look.
+
+00:07:47.435 --> 00:07:51.180 align:middle line:90%
+
+
+00:07:51.180 --> 00:07:54.090 align:middle line:84%
+During these years
+of being an R user,
+
+00:07:54.090 --> 00:07:59.850 align:middle line:84%
+I came across different good
+manners and tricks while coding.
+
+00:07:59.850 --> 00:08:02.500 align:middle line:84%
+Those good manners and
+tricks made my life easier,
+
+00:08:02.500 --> 00:08:05.040 align:middle line:90%
+so I'm translating them to you.
+
+00:08:05.040 --> 00:08:07.980 align:middle line:84%
+Hopefully you
+incorporate them now
+
+00:08:07.980 --> 00:08:10.770 align:middle line:84%
+that you are starting
+your journey with R
+
+00:08:10.770 --> 00:08:13.020 align:middle line:84%
+so you don't pass through
+the different hassles
+
+00:08:13.020 --> 00:08:15.670 align:middle line:90%
+that I passed through.
+
+00:08:15.670 --> 00:08:19.680 align:middle line:84%
+The first one is to format
+according to the subprocess.
+
+00:08:19.680 --> 00:08:20.830 align:middle line:90%
+What do I mean with that?
+
+00:08:20.830 --> 00:08:26.490 align:middle line:84%
+So I'm just going to go
+through a complex function.
+
+00:08:26.490 --> 00:08:31.540 align:middle line:84%
+Here you can see that
+I indented the process,
+
+00:08:31.540 --> 00:08:34.289 align:middle line:84%
+so I put more spaces or less
+depending on the subprocess
+
+00:08:34.289 --> 00:08:35.890 align:middle line:90%
+I'm currently at.
+
+00:08:35.890 --> 00:08:38.010 align:middle line:84%
+So at this stage,
+we have whatever
+
+00:08:38.010 --> 00:08:39.630 align:middle line:90%
+is related to the function.
+
+00:08:39.630 --> 00:08:42.510 align:middle line:84%
+But then if I get
+in a little bit--
+
+00:08:42.510 --> 00:08:46.380 align:middle line:84%
+I get into the for loop, and
+this is the different commands
+
+00:08:46.380 --> 00:08:47.680 align:middle line:90%
+inside for loop.
+
+00:08:47.680 --> 00:08:51.940 align:middle line:84%
+So this helps us visually
+keeping our code tidy
+
+00:08:51.940 --> 00:08:55.960 align:middle line:84%
+and be able to reference
+where are we working on
+
+00:08:55.960 --> 00:09:01.580 align:middle line:84%
+and what part corresponds
+to what section of the code.
+
+00:09:01.580 --> 00:09:07.090 align:middle line:84%
+Then it's also useful to follow
+the same policy with spaces.
+
+00:09:07.090 --> 00:09:13.730 align:middle line:84%
+The reason for that is when
+you use the search tool.
+
+00:09:13.730 --> 00:09:18.580 align:middle line:84%
+So if you are strict with
+your policy on spaces,
+
+00:09:18.580 --> 00:09:21.880 align:middle line:84%
+then you will be able to
+find all the variables
+
+00:09:21.880 --> 00:09:27.640 align:middle line:84%
+at the same time, and so you're
+not going to get any behind.
+
+00:09:27.640 --> 00:09:31.180 align:middle line:84%
+Then we have a good
+tool to convert text
+
+00:09:31.180 --> 00:09:34.810 align:middle line:84%
+into a comment and
+a comment to a text.
+
+00:09:34.810 --> 00:09:38.710 align:middle line:84%
+This is useful because when you
+are experimenting in your code
+
+00:09:38.710 --> 00:09:41.890 align:middle line:84%
+and you don't know which one
+is going to be the good code,
+
+00:09:41.890 --> 00:09:45.530 align:middle line:84%
+you keep converting them
+into comment or real code.
+
+00:09:45.530 --> 00:09:48.100 align:middle line:84%
+So let's say this is
+something that I tried and I
+
+00:09:48.100 --> 00:09:53.560 align:middle line:84%
+want to recover again, so you
+click on Command-Shift and C.
+
+00:09:53.560 --> 00:09:55.030 align:middle line:90%
+So it's no longer a comment.
+
+00:09:55.030 --> 00:09:57.730 align:middle line:84%
+So here you are saying,
+OK, this is the good code.
+
+00:09:57.730 --> 00:10:00.040 align:middle line:84%
+But then you keep
+elaborating your code.
+
+00:10:00.040 --> 00:10:02.380 align:middle line:84%
+At some point you're
+like, OK, this code,
+
+00:10:02.380 --> 00:10:04.190 align:middle line:84%
+I think I'm not going
+to use it anymore.
+
+00:10:04.190 --> 00:10:08.920 align:middle line:84%
+I don't want to erase it because
+I might want to recover it,
+
+00:10:08.920 --> 00:10:11.350 align:middle line:84%
+but I just can keep
+converting them
+
+00:10:11.350 --> 00:10:17.710 align:middle line:84%
+into comment or into real
+code just by clicking this.
+
+00:10:17.710 --> 00:10:23.170 align:middle line:84%
+There's also click on a key just
+to know where this key ends.
+
+00:10:23.170 --> 00:10:26.950 align:middle line:84%
+So going back, again,
+to that function here.
+
+00:10:26.950 --> 00:10:30.010 align:middle line:84%
+If you click on that
+key, you're going
+
+00:10:30.010 --> 00:10:31.850 align:middle line:90%
+to get this one highlighted.
+
+00:10:31.850 --> 00:10:33.700 align:middle line:84%
+So this one that is
+highlighted is the one
+
+00:10:33.700 --> 00:10:35.540 align:middle line:90%
+that's closing this key.
+
+00:10:35.540 --> 00:10:39.820 align:middle line:84%
+So the function starts
+here and it's closed here.
+
+00:10:39.820 --> 00:10:41.350 align:middle line:84%
+This is pretty
+obvious, but if you
+
+00:10:41.350 --> 00:10:44.080 align:middle line:84%
+go to for loop here in the
+middle of the function,
+
+00:10:44.080 --> 00:10:45.670 align:middle line:90%
+you might get lost.
+
+00:10:45.670 --> 00:10:50.030 align:middle line:84%
+And it's like, OK, what
+is closing this key here?
+
+00:10:50.030 --> 00:10:52.570 align:middle line:84%
+So this is the key that's
+closing, so the for loop
+
+00:10:52.570 --> 00:10:55.640 align:middle line:90%
+is comprehended only here.
+
+00:10:55.640 --> 00:10:58.190 align:middle line:90%
+So this is very useful as well.
+
+00:10:58.190 --> 00:11:01.240 align:middle line:84%
+And here we have
+that you can hide
+
+00:11:01.240 --> 00:11:05.050 align:middle line:84%
+the whole section just clicking
+on the arrow next to its title.
+
+00:11:05.050 --> 00:11:09.220 align:middle line:84%
+So I've been creating here
+different title sections,
+
+00:11:09.220 --> 00:11:12.830 align:middle line:84%
+which are the same titles
+that appear here on the side.
+
+00:11:12.830 --> 00:11:15.850 align:middle line:84%
+So this is something that I
+follow to keep my script tidy
+
+00:11:15.850 --> 00:11:18.980 align:middle line:84%
+and jump from one place to
+the other pretty easily.
+
+00:11:18.980 --> 00:11:21.160 align:middle line:84%
+So if I click in
+any of these names,
+
+00:11:21.160 --> 00:11:25.450 align:middle line:84%
+I'm going to be teleported to
+the place that I just clicked,
+
+00:11:25.450 --> 00:11:27.670 align:middle line:90%
+dataframe, go to dataframe.
+
+00:11:27.670 --> 00:11:31.310 align:middle line:84%
+Let's just go back
+to where we were.
+
+00:11:31.310 --> 00:11:34.540 align:middle line:84%
+So if you click
+on this arrow, we
+
+00:11:34.540 --> 00:11:37.550 align:middle line:84%
+can make the whole
+section disappear.
+
+00:11:37.550 --> 00:11:39.790 align:middle line:84%
+It's not that I'm
+erasing the code.
+
+00:11:39.790 --> 00:11:41.740 align:middle line:84%
+It's just that I'm
+folding the thing in
+
+00:11:41.740 --> 00:11:44.760 align:middle line:84%
+so it's not occupying
+visual space.
+
+00:11:44.760 --> 00:11:48.880 align:middle line:84%
+I can just recover things pretty
+easily just clicking here again.
+
+00:11:48.880 --> 00:11:54.390 align:middle line:84%
+And finally, here is a
+way to free some memory.
+
+00:11:54.390 --> 00:11:57.630 align:middle line:84%
+When you are working with very
+heavy databases, let's say
+
+00:11:57.630 --> 00:12:00.690 align:middle line:84%
+maps or huge data
+frames, this is
+
+00:12:00.690 --> 00:12:03.330 align:middle line:84%
+going to occupy a lot of
+space in your computer.
+
+00:12:03.330 --> 00:12:07.150 align:middle line:84%
+And sometimes even if you
+clean your environment,
+
+00:12:07.150 --> 00:12:09.120 align:middle line:90%
+this memory is not freed.
+
+00:12:09.120 --> 00:12:12.150 align:middle line:84%
+So just to force the computer
+to free these memory,
+
+00:12:12.150 --> 00:12:17.880 align:middle line:84%
+you just click on this
+command and run it
+
+00:12:17.880 --> 00:12:21.675 align:middle line:84%
+and you'll see that your memory
+will be significantly cleaned.
+
+00:12:21.675 --> 00:12:26.150 align:middle line:90%
+
+
+00:12:26.150 --> 00:12:31.820 align:middle line:84%
+And finally, to wrap up this
+session about introduction to R,
+
+00:12:31.820 --> 00:12:33.690 align:middle line:84%
+I planned this
+practical example,
+
+00:12:33.690 --> 00:12:37.970 align:middle line:84%
+which is a real example that
+I have used in my papers
+
+00:12:37.970 --> 00:12:42.050 align:middle line:84%
+or in exercises that I do with
+R. We put together everything
+
+00:12:42.050 --> 00:12:44.450 align:middle line:84%
+we've learned, which
+is to charge packages,
+
+00:12:44.450 --> 00:12:47.390 align:middle line:84%
+to take these databases
+that are part of R,
+
+00:12:47.390 --> 00:12:49.340 align:middle line:84%
+and combine everything
+in a function that
+
+00:12:49.340 --> 00:12:51.320 align:middle line:90%
+also includes a for loop.
+
+00:12:51.320 --> 00:12:55.370 align:middle line:84%
+And at the end, just make some
+rearrangements on the product
+
+00:12:55.370 --> 00:12:57.750 align:middle line:90%
+and save the data.
+
+00:12:57.750 --> 00:12:59.390 align:middle line:90%
+So what I am doing here--
+
+00:12:59.390 --> 00:13:03.800 align:middle line:84%
+let's just first of all remind
+you how we charge packages
+
+00:13:03.800 --> 00:13:05.420 align:middle line:90%
+and how we install them.
+
+00:13:05.420 --> 00:13:09.230 align:middle line:84%
+This package, I already have
+it installed in my device,
+
+00:13:09.230 --> 00:13:14.450 align:middle line:84%
+but you can install yours by
+going to tool install packages,
+
+00:13:14.450 --> 00:13:18.170 align:middle line:84%
+again, and type the name of
+the package and then install.
+
+00:13:18.170 --> 00:13:21.980 align:middle line:84%
+And then you charge it to
+your session using library.
+
+00:13:21.980 --> 00:13:24.320 align:middle line:84%
+So I'm going to charge
+this to the session
+
+00:13:24.320 --> 00:13:29.580 align:middle line:84%
+and I'm going to store this
+NPK database that's inside R,
+
+00:13:29.580 --> 00:13:31.630 align:middle line:90%
+name it the same way.
+
+00:13:31.630 --> 00:13:34.320 align:middle line:84%
+So this is the
+database, and what
+
+00:13:34.320 --> 00:13:37.470 align:middle line:84%
+I'm going to do in this function
+that I'm going to be creating
+
+00:13:37.470 --> 00:13:41.170 align:middle line:90%
+is to create univariate models.
+
+00:13:41.170 --> 00:13:45.660 align:middle line:84%
+So just as a reminder,
+we had this database
+
+00:13:45.660 --> 00:13:47.850 align:middle line:84%
+where we have different
+blogs right here
+
+00:13:47.850 --> 00:13:50.860 align:middle line:90%
+and three different treatments.
+
+00:13:50.860 --> 00:13:54.150 align:middle line:84%
+So nitrogen fertilization,
+phosphorus fertilization,
+
+00:13:54.150 --> 00:13:56.100 align:middle line:84%
+potassium fertilization,
+and finally, we
+
+00:13:56.100 --> 00:13:58.650 align:middle line:84%
+have the product which is
+the amount of yield that
+
+00:13:58.650 --> 00:14:01.120 align:middle line:84%
+has been produced after
+the fertilization.
+
+00:14:01.120 --> 00:14:02.730 align:middle line:84%
+So what we want to
+do in this function
+
+00:14:02.730 --> 00:14:04.080 align:middle line:90%
+is to create univariate models.
+
+00:14:04.080 --> 00:14:07.710 align:middle line:84%
+So yield as a response
+of nitrogen addition,
+
+00:14:07.710 --> 00:14:10.050 align:middle line:84%
+yield as a response of
+phosphorus addition,
+
+00:14:10.050 --> 00:14:14.410 align:middle line:84%
+and yield as a response of
+potassium addition one by one.
+
+00:14:14.410 --> 00:14:19.140 align:middle line:84%
+So first of all,
+just this is going
+
+00:14:19.140 --> 00:14:21.180 align:middle line:90%
+to be the name of the function.
+
+00:14:21.180 --> 00:14:22.883 align:middle line:90%
+It stands for mixed models.
+
+00:14:22.883 --> 00:14:25.050 align:middle line:84%
+This is the function that
+we're going to be creating
+
+00:14:25.050 --> 00:14:28.110 align:middle line:84%
+and these are the two
+variables that this function is
+
+00:14:28.110 --> 00:14:28.950 align:middle line:90%
+going to need.
+
+00:14:28.950 --> 00:14:32.950 align:middle line:84%
+First LM, which stands for
+elements, and this is the data.
+
+00:14:32.950 --> 00:14:35.190 align:middle line:84%
+The data is going to
+be the NPK database
+
+00:14:35.190 --> 00:14:38.610 align:middle line:84%
+and the elements are
+going to be the names
+
+00:14:38.610 --> 00:14:43.250 align:middle line:84%
+of the different
+elements, so N, P, K.
+
+00:14:43.250 --> 00:14:45.830 align:middle line:84%
+What I'm going to
+be doing first is
+
+00:14:45.830 --> 00:14:50.240 align:middle line:84%
+to create an empty
+dataframe.You can see that I'm
+
+00:14:50.240 --> 00:14:51.980 align:middle line:90%
+going to be naming it out.
+
+00:14:51.980 --> 00:14:55.940 align:middle line:84%
+So to create an empty dataframe
+you just set dataframe here
+
+00:14:55.940 --> 00:14:57.660 align:middle line:90%
+and put nothing inside.
+
+00:14:57.660 --> 00:14:59.780 align:middle line:84%
+Just going to see
+how it looks like.
+
+00:14:59.780 --> 00:15:03.950 align:middle line:84%
+I created the object and it
+has zero observations and zero
+
+00:15:03.950 --> 00:15:06.180 align:middle line:84%
+variables, so it's
+an empty database.
+
+00:15:06.180 --> 00:15:07.040 align:middle line:90%
+You click on here.
+
+00:15:07.040 --> 00:15:08.310 align:middle line:90%
+There's nothing there.
+
+00:15:08.310 --> 00:15:10.040 align:middle line:84%
+So here is where
+we are going to be
+
+00:15:10.040 --> 00:15:13.520 align:middle line:84%
+storing the information that
+we're going to be creating.
+
+00:15:13.520 --> 00:15:14.420 align:middle line:90%
+What do I do?
+
+00:15:14.420 --> 00:15:17.570 align:middle line:84%
+So inside of this function,
+I created a for loop.
+
+00:15:17.570 --> 00:15:20.010 align:middle line:84%
+This for loop, how long
+is it going to run?
+
+00:15:20.010 --> 00:15:24.210 align:middle line:84%
+So it's going to run as
+long as the element is.
+
+00:15:24.210 --> 00:15:28.100 align:middle line:84%
+So in this case, I'm going
+to create the element, which
+
+00:15:28.100 --> 00:15:30.800 align:middle line:84%
+is which includes the
+column names from NPK that
+
+00:15:30.800 --> 00:15:33.440 align:middle line:84%
+goes from two to four,
+which in this case
+
+00:15:33.440 --> 00:15:36.920 align:middle line:84%
+is going to be N, P, and
+K. Let's just check it out.
+
+00:15:36.920 --> 00:15:41.880 align:middle line:84%
+N, P, and K. So it is going
+to run for three times, three
+
+00:15:41.880 --> 00:15:48.810 align:middle line:84%
+iterations. one for N,
+one for P, and one for K.
+
+00:15:48.810 --> 00:15:54.100 align:middle line:84%
+What I'm doing here is to
+create the function itself,
+
+00:15:54.100 --> 00:15:57.030 align:middle line:84%
+so the model that I'm
+going to be creating.
+
+00:15:57.030 --> 00:15:59.430 align:middle line:84%
+This is going to be
+LMA, the yield, which
+
+00:15:59.430 --> 00:16:02.700 align:middle line:84%
+is going to be the y variable,
+and every iteration I'm
+
+00:16:02.700 --> 00:16:05.980 align:middle line:84%
+going to change the
+independent variable.
+
+00:16:05.980 --> 00:16:08.410 align:middle line:84%
+So the first run is going to
+be the nitrogen and so forth.
+
+00:16:08.410 --> 00:16:11.490 align:middle line:84%
+And then I also include
+the random factor
+
+00:16:11.490 --> 00:16:14.230 align:middle line:84%
+because this is going
+to be a mixed model.
+
+00:16:14.230 --> 00:16:16.170 align:middle line:84%
+The random factor is
+going to be the block.
+
+00:16:16.170 --> 00:16:22.630 align:middle line:84%
+Then we have the data and
+the inaction requirements.
+
+00:16:22.630 --> 00:16:23.130 align:middle line:90%
+OK.
+
+00:16:23.130 --> 00:16:26.860 align:middle line:84%
+Then on the next line we have
+the evaluation of this form.
+
+00:16:26.860 --> 00:16:28.950 align:middle line:90%
+So let's just click--
+
+00:16:28.950 --> 00:16:31.230 align:middle line:84%
+well, I'm just going
+to set the y as one,
+
+00:16:31.230 --> 00:16:33.670 align:middle line:84%
+so let's just mimic
+the first iteration.
+
+00:16:33.670 --> 00:16:36.250 align:middle line:84%
+I'm just going to check line by
+line what happens right here.
+
+00:16:36.250 --> 00:16:38.550 align:middle line:90%
+So we have the form.
+
+00:16:38.550 --> 00:16:41.600 align:middle line:90%
+This form looks like this.
+
+00:16:41.600 --> 00:16:44.990 align:middle line:84%
+And now we want to run
+this text that we have.
+
+00:16:44.990 --> 00:16:49.528 align:middle line:84%
+So here is where we include
+a value and this here,
+
+00:16:49.528 --> 00:16:51.070 align:middle line:84%
+and the text is
+going to be the form.
+
+00:16:51.070 --> 00:16:54.350 align:middle line:84%
+So this line of code is
+going to execute this model,
+
+00:16:54.350 --> 00:16:56.980 align:middle line:90%
+so we just click here.
+
+00:16:56.980 --> 00:17:03.475 align:middle line:84%
+Oh, it's missing
+something there.
+
+00:17:03.475 --> 00:17:06.117 align:middle line:90%
+
+
+00:17:06.117 --> 00:17:07.450 align:middle line:90%
+Let's see what is the complaint.
+
+00:17:07.450 --> 00:17:11.500 align:middle line:90%
+
+
+00:17:11.500 --> 00:17:12.000 align:middle line:90%
+Oh, yeah.
+
+00:17:12.000 --> 00:17:12.940 align:middle line:90%
+Sure.
+
+00:17:12.940 --> 00:17:15.960 align:middle line:90%
+I didn't say that data is NPK.
+
+00:17:15.960 --> 00:17:17.819 align:middle line:84%
+So now I'm going to
+name data as NPK.
+
+00:17:17.819 --> 00:17:22.480 align:middle line:90%
+
+
+00:17:22.480 --> 00:17:24.349 align:middle line:90%
+Now it runs.
+
+00:17:24.349 --> 00:17:29.120 align:middle line:84%
+So it shows we have that
+model, as we should.
+
+00:17:29.120 --> 00:17:32.030 align:middle line:84%
+And then I want to store
+the summary of this model
+
+00:17:32.030 --> 00:17:38.760 align:middle line:84%
+in an object called sum
+and see what we have.
+
+00:17:38.760 --> 00:17:44.100 align:middle line:84%
+So this is the summary that we
+would have in a normal model.
+
+00:17:44.100 --> 00:17:47.090 align:middle line:84%
+And then I'm going to select
+the items inside this model
+
+00:17:47.090 --> 00:17:49.160 align:middle line:84%
+that I'm particularly
+interested.
+
+00:17:49.160 --> 00:17:52.190 align:middle line:90%
+So I'm going to get the T table.
+
+00:17:52.190 --> 00:17:53.330 align:middle line:90%
+What is the T table?
+
+00:17:53.330 --> 00:17:54.110 align:middle line:90%
+Let's just see.
+
+00:17:54.110 --> 00:17:57.400 align:middle line:90%
+
+
+00:17:57.400 --> 00:18:03.640 align:middle line:84%
+Just the p values
+and the estimates
+
+00:18:03.640 --> 00:18:06.310 align:middle line:84%
+and standard error and
+differential square and T
+
+00:18:06.310 --> 00:18:06.970 align:middle line:90%
+values.
+
+00:18:06.970 --> 00:18:10.840 align:middle line:84%
+Then I also want to
+store the Akaike values
+
+00:18:10.840 --> 00:18:12.770 align:middle line:90%
+to know how good is the model.
+
+00:18:12.770 --> 00:18:16.090 align:middle line:84%
+And finally, just to have a
+reference what's the element
+
+00:18:16.090 --> 00:18:18.320 align:middle line:90%
+that we run in that model.
+
+00:18:18.320 --> 00:18:21.460 align:middle line:84%
+So N. So I'm taking
+everything and I'm
+
+00:18:21.460 --> 00:18:24.010 align:middle line:84%
+building another
+data frame that's
+
+00:18:24.010 --> 00:18:28.240 align:middle line:84%
+going to be called sum
+mods, sum of models.
+
+00:18:28.240 --> 00:18:33.790 align:middle line:84%
+You click here, this is
+what we're going to have.
+
+00:18:33.790 --> 00:18:38.965 align:middle line:84%
+And I'm just going to put it
+beautiful inside this output
+
+00:18:38.965 --> 00:18:40.340 align:middle line:84%
+that we created
+at the beginning.
+
+00:18:40.340 --> 00:18:43.640 align:middle line:84%
+So this result that we just saw
+is going to be stored there.
+
+00:18:43.640 --> 00:18:46.150 align:middle line:84%
+And now the first
+iteration would be done
+
+00:18:46.150 --> 00:18:47.720 align:middle line:84%
+and we would go
+to the second one.
+
+00:18:47.720 --> 00:18:50.590 align:middle line:84%
+So we would repeat the same
+process but instead of the N,
+
+00:18:50.590 --> 00:18:56.530 align:middle line:84%
+we would use the P. Then we
+would store this outcome again
+
+00:18:56.530 --> 00:19:00.080 align:middle line:84%
+down to the-- we would
+have the outcome of the N,
+
+00:19:00.080 --> 00:19:03.980 align:middle line:84%
+then the outcome of the P, and
+finally, the outcome of the K.
+
+00:19:03.980 --> 00:19:08.480 align:middle line:84%
+And once we would have that
+created, the for loop would stop
+
+00:19:08.480 --> 00:19:11.310 align:middle line:84%
+and we would keep
+going in our function.
+
+00:19:11.310 --> 00:19:13.430 align:middle line:84%
+So we would change
+the column names just
+
+00:19:13.430 --> 00:19:17.000 align:middle line:84%
+to make them prettier so
+it's going to be named
+
+00:19:17.000 --> 00:19:20.780 align:middle line:90%
+like this element and AIC.
+
+00:19:20.780 --> 00:19:22.800 align:middle line:84%
+And we're going to
+have this as a return.
+
+00:19:22.800 --> 00:19:26.150 align:middle line:84%
+So we want the function to
+give us back this out now
+
+00:19:26.150 --> 00:19:28.440 align:middle line:90%
+that it's going to be filled.
+
+00:19:28.440 --> 00:19:30.050 align:middle line:90%
+So let's just try it out.
+
+00:19:30.050 --> 00:19:31.980 align:middle line:90%
+Just click the function.
+
+00:19:31.980 --> 00:19:33.200 align:middle line:90%
+Now the function is created.
+
+00:19:33.200 --> 00:19:35.750 align:middle line:90%
+Let's just run the function.
+
+00:19:35.750 --> 00:19:38.210 align:middle line:84%
+I want the outcome to
+be stored in treatment
+
+00:19:38.210 --> 00:19:40.730 align:middle line:84%
+and I say the
+elements in this case
+
+00:19:40.730 --> 00:19:44.180 align:middle line:84%
+are going to be N, P, and K,
+and the data is going to be PK.
+
+00:19:44.180 --> 00:19:47.960 align:middle line:84%
+You could be able to
+change, obviously,
+
+00:19:47.960 --> 00:19:49.380 align:middle line:90%
+each of these two variables.
+
+00:19:49.380 --> 00:19:52.400 align:middle line:84%
+So if you would like to try
+that with another database,
+
+00:19:52.400 --> 00:19:53.840 align:middle line:90%
+you could do that.
+
+00:19:53.840 --> 00:19:56.270 align:middle line:84%
+That's the magic
+of the functions.
+
+00:19:56.270 --> 00:20:00.760 align:middle line:84%
+And just run this
+and see what we have.
+
+00:20:00.760 --> 00:20:01.260 align:middle line:90%
+See?
+
+00:20:01.260 --> 00:20:05.610 align:middle line:84%
+Here we have the outcome that
+we had in the first iteration,
+
+00:20:05.610 --> 00:20:07.680 align:middle line:84%
+that's the second,
+and that's the third.
+
+00:20:07.680 --> 00:20:10.050 align:middle line:84%
+Just as a reminder,
+R doesn't allow
+
+00:20:10.050 --> 00:20:12.840 align:middle line:90%
+us to have a row name repeated.
+
+00:20:12.840 --> 00:20:16.140 align:middle line:84%
+So in the second time it
+repeats intercept it has
+
+00:20:16.140 --> 00:20:18.150 align:middle line:90%
+to put a one, and the second--
+
+00:20:18.150 --> 00:20:21.810 align:middle line:84%
+the third time it includes
+intercept it has to put two.
+
+00:20:21.810 --> 00:20:24.270 align:middle line:84%
+So that's something that
+R does automatically
+
+00:20:24.270 --> 00:20:30.630 align:middle line:84%
+to avoid repeated names and
+get confused on the orders.
+
+00:20:30.630 --> 00:20:34.380 align:middle line:84%
+And just I decided to
+change the row names to make
+
+00:20:34.380 --> 00:20:35.790 align:middle line:90%
+them more understandable.
+
+00:20:35.790 --> 00:20:39.570 align:middle line:84%
+Again, I had to name
+them differently
+
+00:20:39.570 --> 00:20:41.140 align:middle line:90%
+to avoid this confusion.
+
+00:20:41.140 --> 00:20:42.090 align:middle line:90%
+So row names.
+
+00:20:42.090 --> 00:20:45.440 align:middle line:90%
+
+
+00:20:45.440 --> 00:20:47.840 align:middle line:84%
+Now we have it nice and
+pretty to be understood,
+
+00:20:47.840 --> 00:20:53.270 align:middle line:84%
+and that could be a nice
+table to publish in a paper
+
+00:20:53.270 --> 00:20:57.680 align:middle line:84%
+where easily the results of
+the models could be seen.
+
+00:20:57.680 --> 00:21:00.910 align:middle line:84%
+And also if you
+don't want to see--
+
+00:21:00.910 --> 00:21:03.140 align:middle line:84%
+oh, that I already
+have activated.
+
+00:21:03.140 --> 00:21:07.860 align:middle line:84%
+But sometimes the numbers are
+shown in scientific notation.
+
+00:21:07.860 --> 00:21:12.660 align:middle line:84%
+So if you want to change that
+and make them with commas,
+
+00:21:12.660 --> 00:21:15.650 align:middle line:84%
+you just run
+options, type in 999,
+
+00:21:15.650 --> 00:21:20.720 align:middle line:84%
+and the scientific notation is
+going to be changed to decimal.
+
+00:21:20.720 --> 00:21:26.180 align:middle line:84%
+And finally, we want to store
+this outcome that we created,
+
+00:21:26.180 --> 00:21:28.050 align:middle line:90%
+this treatment, into a file.
+
+00:21:28.050 --> 00:21:30.740 align:middle line:84%
+So in this case, I'm going
+to be creating a CSV file.
+
+00:21:30.740 --> 00:21:34.220 align:middle line:84%
+And you can change the
+route here to install it
+
+00:21:34.220 --> 00:21:38.870 align:middle line:84%
+or to create this in your
+laptop, whatever you want.
+
+00:21:38.870 --> 00:21:40.910 align:middle line:84%
+And just run this,
+and you're going
+
+00:21:40.910 --> 00:21:45.970 align:middle line:84%
+to have a beautiful
+outcome of this function.
+
+00:21:45.970 --> 00:21:50.000 align:middle line:90%

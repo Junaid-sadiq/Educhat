@@ -1,0 +1,768 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:01.992 align:middle line:90%
+[SQUEAKING]
+
+00:00:01.992 --> 00:00:03.984 align:middle line:90%
+[RUSTLING]
+
+00:00:03.984 --> 00:00:05.478 align:middle line:90%
+[CLICKING]
+
+00:00:05.478 --> 00:00:09.520 align:middle line:90%
+
+
+00:00:09.520 --> 00:00:11.020 align:middle line:84%
+HELENA VAILLICROSA:
+In this section,
+
+00:00:11.020 --> 00:00:16.980 align:middle line:84%
+I'm going to dive into stack and
+bricks, which are, I would say,
+
+00:00:16.980 --> 00:00:18.330 align:middle line:90%
+books of maps.
+
+00:00:18.330 --> 00:00:21.780 align:middle line:84%
+So just for you to have a
+good understanding of how
+
+00:00:21.780 --> 00:00:25.500 align:middle line:84%
+stack and bricks work, it's like
+if you would have each of them
+
+00:00:25.500 --> 00:00:27.180 align:middle line:84%
+map being a piece
+of paper and you
+
+00:00:27.180 --> 00:00:30.750 align:middle line:84%
+would like to put them
+together in a book form,
+
+00:00:30.750 --> 00:00:32.640 align:middle line:84%
+then you would use
+stack and brick.
+
+00:00:32.640 --> 00:00:35.100 align:middle line:90%
+And how is this helpful?
+
+00:00:35.100 --> 00:00:37.890 align:middle line:84%
+This is helpful because
+these standardized processes
+
+00:00:37.890 --> 00:00:41.470 align:middle line:84%
+that we want to
+proceed on the maps.
+
+00:00:41.470 --> 00:00:43.890 align:middle line:84%
+So let's say we want to
+chop them in the same shape,
+
+00:00:43.890 --> 00:00:46.860 align:middle line:84%
+or we want to transform
+them in the same resolution,
+
+00:00:46.860 --> 00:00:51.120 align:middle line:84%
+or we want to calculate
+some results of these maps.
+
+00:00:51.120 --> 00:00:52.920 align:middle line:84%
+We can do it using
+stack and bricks.
+
+00:00:52.920 --> 00:00:56.670 align:middle line:84%
+And we can also store stack
+and bricks in stack and brick
+
+00:00:56.670 --> 00:00:58.690 align:middle line:90%
+form in our computer.
+
+00:00:58.690 --> 00:01:02.310 align:middle line:84%
+So first of all, when we want
+to create stacks and bricks,
+
+00:01:02.310 --> 00:01:06.820 align:middle line:84%
+there's a very handy way to
+charge these files all at once,
+
+00:01:06.820 --> 00:01:09.790 align:middle line:84%
+so we don't have to type
+the route every time.
+
+00:01:09.790 --> 00:01:13.480 align:middle line:84%
+In this case, I'm going to use,
+as example, the WorldClim data
+
+00:01:13.480 --> 00:01:15.160 align:middle line:90%
+that we downloaded.
+
+00:01:15.160 --> 00:01:18.010 align:middle line:84%
+If you've paid attention
+inside the folder,
+
+00:01:18.010 --> 00:01:21.100 align:middle line:84%
+it comes with 12
+different maps that
+
+00:01:21.100 --> 00:01:25.240 align:middle line:84%
+are representing the average
+temperature of each month.
+
+00:01:25.240 --> 00:01:29.200 align:middle line:84%
+And now, we are going to
+combine them into one brick,
+
+00:01:29.200 --> 00:01:31.900 align:middle line:84%
+so we can calculate the mean
+or the standard deviation
+
+00:01:31.900 --> 00:01:33.020 align:middle line:90%
+of all of them.
+
+00:01:33.020 --> 00:01:36.430 align:middle line:84%
+So first of all, we need to
+write the directory route
+
+00:01:36.430 --> 00:01:39.280 align:middle line:90%
+where we have all the maps.
+
+00:01:39.280 --> 00:01:43.570 align:middle line:84%
+Also, you could add
+in your code a chunk
+
+00:01:43.570 --> 00:01:47.280 align:middle line:84%
+of code saying pattern.tif,
+has in case, you
+
+00:01:47.280 --> 00:01:50.260 align:middle line:84%
+would have some other
+files in that folder
+
+00:01:50.260 --> 00:01:53.200 align:middle line:84%
+and you only wanted
+to upload the TIF.
+
+00:01:53.200 --> 00:01:54.800 align:middle line:84%
+But in this case,
+everything is TIF.
+
+00:01:54.800 --> 00:01:59.110 align:middle line:90%
+So I don't need to do that.
+
+00:01:59.110 --> 00:02:01.870 align:middle line:84%
+You charge the map
+files, which is only
+
+00:02:01.870 --> 00:02:06.160 align:middle line:84%
+the name of the
+object that's inside.
+
+00:02:06.160 --> 00:02:08.350 align:middle line:84%
+And then we want to
+transform all these routes
+
+00:02:08.350 --> 00:02:10.440 align:middle line:90%
+into different rasters.
+
+00:02:10.440 --> 00:02:13.260 align:middle line:84%
+And to do so, we are going
+to use the lapply function
+
+00:02:13.260 --> 00:02:16.110 align:middle line:84%
+here using these map files
+and transforming them
+
+00:02:16.110 --> 00:02:17.610 align:middle line:90%
+all into raster.
+
+00:02:17.610 --> 00:02:24.220 align:middle line:84%
+So doing this, we'll get
+a list of these 12 maps.
+
+00:02:24.220 --> 00:02:27.730 align:middle line:84%
+And we want to just to
+consult one of them.
+
+00:02:27.730 --> 00:02:30.340 align:middle line:84%
+I'm just going to see what
+we have in the number 6,
+
+00:02:30.340 --> 00:02:31.020 align:middle line:90%
+for example.
+
+00:02:31.020 --> 00:02:32.020 align:middle line:90%
+And here, we have a map.
+
+00:02:32.020 --> 00:02:34.360 align:middle line:84%
+This is all the information
+about this map--
+
+00:02:34.360 --> 00:02:37.790 align:middle line:84%
+so the dimensions, resolution,
+extent, and so forth.
+
+00:02:37.790 --> 00:02:42.430 align:middle line:84%
+And just to see how it
+looks like, it's just a map.
+
+00:02:42.430 --> 00:02:46.390 align:middle line:84%
+And we want to include all these
+maps into a stack or a brick.
+
+00:02:46.390 --> 00:02:49.300 align:middle line:84%
+They are mostly the same
+for working purposes.
+
+00:02:49.300 --> 00:02:53.480 align:middle line:84%
+But the organization of the
+data is slightly different.
+
+00:02:53.480 --> 00:02:55.120 align:middle line:84%
+So sometimes, for
+some processes,
+
+00:02:55.120 --> 00:02:56.620 align:middle line:84%
+you will need to
+use stack or brick.
+
+00:02:56.620 --> 00:03:00.440 align:middle line:84%
+But the concept behind
+it is mostly the same.
+
+00:03:00.440 --> 00:03:03.400 align:middle line:84%
+So it works either
+way, just using
+
+00:03:03.400 --> 00:03:05.230 align:middle line:90%
+the function stack or brick.
+
+00:03:05.230 --> 00:03:08.740 align:middle line:84%
+And they have to be in the
+same extension and resolution.
+
+00:03:08.740 --> 00:03:11.380 align:middle line:84%
+Otherwise, R wouldn't let
+you to put them together.
+
+00:03:11.380 --> 00:03:14.680 align:middle line:90%
+
+
+00:03:14.680 --> 00:03:15.765 align:middle line:90%
+So here we have it.
+
+00:03:15.765 --> 00:03:18.270 align:middle line:90%
+
+
+00:03:18.270 --> 00:03:22.800 align:middle line:84%
+You see we've created a raster
+brick or raster stack, depending
+
+00:03:22.800 --> 00:03:25.920 align:middle line:90%
+on the function that we used.
+
+00:03:25.920 --> 00:03:27.990 align:middle line:84%
+And now, I'm going
+to use the function
+
+00:03:27.990 --> 00:03:30.240 align:middle line:90%
+calc, which is a calculator.
+
+00:03:30.240 --> 00:03:32.910 align:middle line:84%
+And I'm going to calculate
+something on the maps
+
+00:03:32.910 --> 00:03:34.140 align:middle line:90%
+that we just uploaded.
+
+00:03:34.140 --> 00:03:36.990 align:middle line:84%
+In this case, I'm calculating
+the standard deviation.
+
+00:03:36.990 --> 00:03:40.870 align:middle line:84%
+But I could change this
+for the mean, for example.
+
+00:03:40.870 --> 00:03:44.550 align:middle line:84%
+So I'm going to calculate
+inside this stack right
+
+00:03:44.550 --> 00:03:47.220 align:middle line:84%
+here the standard
+deviation of all the maps.
+
+00:03:47.220 --> 00:03:50.790 align:middle line:84%
+There is also extra code
+that you can see here.
+
+00:03:50.790 --> 00:03:52.800 align:middle line:84%
+And this code is
+used to calculate
+
+00:03:52.800 --> 00:03:57.600 align:middle line:84%
+the time that we are investing
+in processing this information.
+
+00:03:57.600 --> 00:04:03.180 align:middle line:84%
+Just to make it fair, we
+have to run it all at once.
+
+00:04:03.180 --> 00:04:04.080 align:middle line:90%
+It's going to run it.
+
+00:04:04.080 --> 00:04:06.450 align:middle line:84%
+And this is going to
+extract the system
+
+00:04:06.450 --> 00:04:08.250 align:middle line:84%
+time that was stored
+in our computer
+
+00:04:08.250 --> 00:04:09.880 align:middle line:90%
+at the beginning of the process.
+
+00:04:09.880 --> 00:04:12.960 align:middle line:84%
+And it's going to record it
+again at the end of the process.
+
+00:04:12.960 --> 00:04:16.170 align:middle line:84%
+And then it's going to make the
+calculation of how much time
+
+00:04:16.170 --> 00:04:21.100 align:middle line:84%
+difference there is in
+between the initiation
+
+00:04:21.100 --> 00:04:23.120 align:middle line:84%
+and the finalization
+of the process.
+
+00:04:23.120 --> 00:04:24.852 align:middle line:84%
+So in this case,
+we've calculated
+
+00:04:24.852 --> 00:04:25.810 align:middle line:90%
+the standard deviation.
+
+00:04:25.810 --> 00:04:27.730 align:middle line:90%
+That took us 14 seconds.
+
+00:04:27.730 --> 00:04:31.830 align:middle line:90%
+And let's see how it looks like.
+
+00:04:31.830 --> 00:04:33.260 align:middle line:84%
+So this is the
+standard deviation
+
+00:04:33.260 --> 00:04:37.010 align:middle line:84%
+of the average temperatures
+at global scale.
+
+00:04:37.010 --> 00:04:41.940 align:middle line:84%
+And that's also something we
+can store in our computer.
+
+00:04:41.940 --> 00:04:46.490 align:middle line:84%
+We can write raster, as
+it was only one raster.
+
+00:04:46.490 --> 00:04:49.590 align:middle line:84%
+So for stacks and bricks,
+it works the same.
+
+00:04:49.590 --> 00:04:52.340 align:middle line:84%
+So instead of
+having one map here,
+
+00:04:52.340 --> 00:05:00.390 align:middle line:84%
+we just could have put
+the raster brick or stack.
+
+00:05:00.390 --> 00:05:02.000 align:middle line:84%
+In this case, I'm
+just going to store
+
+00:05:02.000 --> 00:05:05.030 align:middle line:84%
+the outcome of this
+calculation that we've made
+
+00:05:05.030 --> 00:05:09.540 align:middle line:84%
+and just put the route that you
+want the things to be stored on.
+
+00:05:09.540 --> 00:05:14.000 align:middle line:84%
+And if you run this
+code, you're going
+
+00:05:14.000 --> 00:05:16.730 align:middle line:84%
+to create this map
+in your computer.
+
+00:05:16.730 --> 00:05:23.540 align:middle line:84%
+And also, another way to
+store the map without using
+
+00:05:23.540 --> 00:05:25.820 align:middle line:90%
+this function is to--
+
+00:05:25.820 --> 00:05:27.770 align:middle line:84%
+so while you are
+calculating something
+
+00:05:27.770 --> 00:05:31.380 align:middle line:84%
+where you are running a
+process in a raster function,
+
+00:05:31.380 --> 00:05:35.420 align:middle line:84%
+then if you specify
+a file name, R
+
+00:05:35.420 --> 00:05:38.240 align:middle line:84%
+is going to understand that
+while this is being processed,
+
+00:05:38.240 --> 00:05:40.470 align:middle line:84%
+it's going to be at
+the same time stored.
+
+00:05:40.470 --> 00:05:42.650 align:middle line:84%
+So only with a line
+of code, you would
+
+00:05:42.650 --> 00:05:46.880 align:middle line:84%
+have the creation of
+that map plus the saving
+
+00:05:46.880 --> 00:05:49.520 align:middle line:90%
+process in your computer.
+
+00:05:49.520 --> 00:05:54.830 align:middle line:84%
+Also, in case you would like
+to store stack or brick,
+
+00:05:54.830 --> 00:06:01.520 align:middle line:84%
+you would have to change
+from TIF extension to GRD.
+
+00:06:01.520 --> 00:06:04.100 align:middle line:84%
+When you create
+this extension, you
+
+00:06:04.100 --> 00:06:06.800 align:middle line:90%
+would have two different files.
+
+00:06:06.800 --> 00:06:10.040 align:middle line:84%
+And these two
+different files are--
+
+00:06:10.040 --> 00:06:13.640 align:middle line:84%
+well, it's necessary that both
+would be in the same folder.
+
+00:06:13.640 --> 00:06:16.400 align:middle line:84%
+Otherwise, when you
+would read them,
+
+00:06:16.400 --> 00:06:19.580 align:middle line:84%
+R would understand
+them as corrupted.
+
+00:06:19.580 --> 00:06:22.220 align:middle line:84%
+So make sure that
+you're not separating
+
+00:06:22.220 --> 00:06:25.100 align:middle line:84%
+these two files in
+order to be able to read
+
+00:06:25.100 --> 00:06:27.320 align:middle line:90%
+the code appropriately.
+
+00:06:27.320 --> 00:06:32.470 align:middle line:90%
+
+
+00:06:32.470 --> 00:06:36.460 align:middle line:84%
+Also, moving on to
+the next function,
+
+00:06:36.460 --> 00:06:38.660 align:middle line:84%
+we're going to move
+to the crop function.
+
+00:06:38.660 --> 00:06:42.700 align:middle line:84%
+This can be used
+to crop one map.
+
+00:06:42.700 --> 00:06:46.810 align:middle line:84%
+Or it can be used to
+crop a brick or a stack.
+
+00:06:46.810 --> 00:06:51.020 align:middle line:84%
+And chopping them in small
+pieces, in this case,
+
+00:06:51.020 --> 00:06:54.370 align:middle line:84%
+I'm going to use as a
+base this temperature map.
+
+00:06:54.370 --> 00:06:57.970 align:middle line:84%
+And I'm just going to chop
+the latitude and longitude
+
+00:06:57.970 --> 00:07:03.440 align:middle line:90%
+based on the Eastern USA Coast.
+
+00:07:03.440 --> 00:07:06.470 align:middle line:84%
+So if I do this, our
+temperature is not found.
+
+00:07:06.470 --> 00:07:11.160 align:middle line:90%
+I should go and charge it again.
+
+00:07:11.160 --> 00:07:12.330 align:middle line:90%
+Here we have it.
+
+00:07:12.330 --> 00:07:15.600 align:middle line:90%
+
+
+00:07:15.600 --> 00:07:18.390 align:middle line:84%
+Now, I should be
+able to crop it.
+
+00:07:18.390 --> 00:07:21.507 align:middle line:90%
+
+
+00:07:21.507 --> 00:07:22.840 align:middle line:90%
+I want to see how it looks like.
+
+00:07:22.840 --> 00:07:29.560 align:middle line:90%
+
+
+00:07:29.560 --> 00:07:32.500 align:middle line:84%
+And this is the
+result of a cropping.
+
+00:07:32.500 --> 00:07:34.720 align:middle line:84%
+This is a very
+handy tool in order
+
+00:07:34.720 --> 00:07:36.740 align:middle line:84%
+to make experiments
+with your code.
+
+00:07:36.740 --> 00:07:40.750 align:middle line:84%
+So as you have seen before,
+sometimes doing some processes
+
+00:07:40.750 --> 00:07:44.240 align:middle line:84%
+when we are working in maps,
+it can take a long time.
+
+00:07:44.240 --> 00:07:46.870 align:middle line:84%
+So if you want to just check
+that your code is working
+
+00:07:46.870 --> 00:07:50.080 align:middle line:84%
+and that all the processes
+that has been done
+
+00:07:50.080 --> 00:07:52.750 align:middle line:84%
+are what you want it
+to be, you can just
+
+00:07:52.750 --> 00:07:55.270 align:middle line:84%
+cut your map in a
+small piece, and then
+
+00:07:55.270 --> 00:07:57.550 align:middle line:84%
+run everything in
+that small piece,
+
+00:07:57.550 --> 00:08:01.040 align:middle line:84%
+just to be a sample
+of your final code.
+
+00:08:01.040 --> 00:08:03.010 align:middle line:84%
+And then when you've
+made sure that everything
+
+00:08:03.010 --> 00:08:07.780 align:middle line:84%
+is running properly, you can run
+the process with the whole map.
+
+00:08:07.780 --> 00:08:12.600 align:middle line:84%
+So that might save
+you some time.
+
+00:08:12.600 --> 00:08:15.220 align:middle line:84%
+There is also another
+function that I particularly
+
+00:08:15.220 --> 00:08:21.760 align:middle line:84%
+think is very useful,
+which is the mask function.
+
+00:08:21.760 --> 00:08:23.350 align:middle line:84%
+Here, I'm going to
+use one of the maps
+
+00:08:23.350 --> 00:08:26.920 align:middle line:84%
+that we've used previously
+up in the code, which was
+
+00:08:26.920 --> 00:08:29.860 align:middle line:90%
+this nitrogen deposition map.
+
+00:08:29.860 --> 00:08:33.549 align:middle line:84%
+Just to remind
+you what was that,
+
+00:08:33.549 --> 00:08:36.620 align:middle line:84%
+I'm just going to
+charge it and plot it.
+
+00:08:36.620 --> 00:08:38.559 align:middle line:84%
+So this is the nitrogen
+deposition that
+
+00:08:38.559 --> 00:08:43.960 align:middle line:90%
+has happened in 1901, I think.
+
+00:08:43.960 --> 00:08:46.600 align:middle line:84%
+But we see that the
+map here, it covers
+
+00:08:46.600 --> 00:08:50.350 align:middle line:84%
+the whole surface of the
+Earth, including water bodies.
+
+00:08:50.350 --> 00:08:54.820 align:middle line:84%
+What happens if I want to
+have the information only
+
+00:08:54.820 --> 00:08:58.520 align:middle line:84%
+on the ground, only on
+the Earth's surface?
+
+00:08:58.520 --> 00:09:01.720 align:middle line:84%
+So what I'm going to do is I'm
+going to mask this map right
+
+00:09:01.720 --> 00:09:04.360 align:middle line:84%
+here with the maps
+that we previously
+
+00:09:04.360 --> 00:09:07.570 align:middle line:90%
+used that included only--
+
+00:09:07.570 --> 00:09:10.570 align:middle line:84%
+that I excluded water
+bodies, let's say.
+
+00:09:10.570 --> 00:09:13.160 align:middle line:84%
+So I'm going to use again
+this temperature map.
+
+00:09:13.160 --> 00:09:15.650 align:middle line:90%
+I'm just going to plot it.
+
+00:09:15.650 --> 00:09:17.910 align:middle line:90%
+I'm going to use it as a base.
+
+00:09:17.910 --> 00:09:20.990 align:middle line:84%
+So to do so there,
+is this function
+
+00:09:20.990 --> 00:09:22.880 align:middle line:90%
+right here that's called mask.
+
+00:09:22.880 --> 00:09:25.370 align:middle line:84%
+And I'm going to mask
+this nitrogen deposition
+
+00:09:25.370 --> 00:09:28.370 align:middle line:90%
+based on this shape right here.
+
+00:09:28.370 --> 00:09:30.620 align:middle line:84%
+I'm going to run it, it's
+going to give me an error.
+
+00:09:30.620 --> 00:09:32.420 align:middle line:90%
+Here you have it.
+
+00:09:32.420 --> 00:09:35.690 align:middle line:84%
+This error is saying that
+we have different extent.
+
+00:09:35.690 --> 00:09:37.010 align:middle line:90%
+What is that?
+
+00:09:37.010 --> 00:09:40.580 align:middle line:90%
+Let's just check the two maps.
+
+00:09:40.580 --> 00:09:43.100 align:middle line:84%
+This map and this
+other map, it's
+
+00:09:43.100 --> 00:09:45.110 align:middle line:90%
+complaining about the extent.
+
+00:09:45.110 --> 00:09:49.790 align:middle line:90%
+So this extent here is this one.
+
+00:09:49.790 --> 00:09:53.090 align:middle line:84%
+And this extent here
+is slightly different.
+
+00:09:53.090 --> 00:09:55.710 align:middle line:84%
+And that's why we
+have this problem.
+
+00:09:55.710 --> 00:09:56.760 align:middle line:90%
+How to solve it?
+
+00:09:56.760 --> 00:10:00.720 align:middle line:84%
+Well, we'll need to fix
+this extent problem.
+
+00:10:00.720 --> 00:10:03.740 align:middle line:84%
+We're going to use this
+resample function here
+
+00:10:03.740 --> 00:10:06.140 align:middle line:84%
+that's going to
+transform both maps
+
+00:10:06.140 --> 00:10:09.200 align:middle line:84%
+in the same extension,
+projection, and resolution
+
+00:10:09.200 --> 00:10:10.560 align:middle line:90%
+all at once.
+
+00:10:10.560 --> 00:10:14.530 align:middle line:84%
+So by using this, I'm going to
+make the nitrogen deposition
+
+00:10:14.530 --> 00:10:21.980 align:middle line:84%
+map to have the same
+features as the other map.
+
+00:10:21.980 --> 00:10:25.600 align:middle line:84%
+So in this case, I'm going
+to use the second map that we
+
+00:10:25.600 --> 00:10:27.680 align:middle line:90%
+produced to see if it works.
+
+00:10:27.680 --> 00:10:29.980 align:middle line:90%
+And now, the error is solved.
+
+00:10:29.980 --> 00:10:33.970 align:middle line:84%
+And we can see the result
+on how the map has changed
+
+00:10:33.970 --> 00:10:38.190 align:middle line:84%
+and how all the water
+bodies has been masked.
+
+00:10:38.190 --> 00:10:43.000 align:middle line:90%

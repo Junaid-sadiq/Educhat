@@ -1,0 +1,6 @@
+
+{
+  "title":"Lecture Notes",
+  "content":" LEC # TOPICS PDF PPT 1 Introduction, Finite Automata, Regular Expressions (PDF) (PPT) 2 Nondeterminism, Closure Properties, Regular Expressions → Finite Automata (PDF) (PPT) 3 The Regular Pumping Lemma, Finite Automata → Regular Expressions, CFGs (PDF) (PPT) 4 Pushdown Automata, CFG ↔ PDA (PDF) (PPT) 5 The CF Pumping Lemma, Turing Machines (PDF) (PPT) 6 TM Variants, the Church-Turing Thesis (PDF) (PPT - 2.4MB) 7 Decision Problems for Automata and Grammars (PDF) (PPT - 1.9MB) 8 Undecidability (PDF) (PPT - 1.2MB) 9 Reducibility (PDF) (PPT) 10 The Computation History Method (PDF) (PPT) 11 The Recursion Theorem and Logic (PDF) (PPT) 12 Time Complexity (PDF) (PPT) 13 Midterm Exam [no lecture] 14 P and NP, SAT, Poly-time Reducibility (PDF) (PPT) 15 NP-Completeness (PDF) (PPT) 16 Cook-Levin Theorem (PDF) (PPT) 17 Space Complexity, PSPACE, Savitch\u0026rsquo;s Theorem (PDF) (PPT) 18 PSPACE-Completeness (PDF) (PPT) 19 Games, Generalized Geography (PDF) (PPT) 20 L and NL, NL = coNL (PDF) (PPT) 21 Hierarchy Theorems (PDF) (PPT) 22 Provably Intractable Problems, Oracles (PDF) (PPT) 23 Probabilistic Computation, BPP (PDF) (PPT) 24 Probabilistic Computation (cont.) (PDF) (PPT) 25 Interactive Proof Systems, IP (PDF) (PPT - 3.4MB) 26 coNP ⊆ IP (PDF) (PPT - 1.1MB) "}
+
+

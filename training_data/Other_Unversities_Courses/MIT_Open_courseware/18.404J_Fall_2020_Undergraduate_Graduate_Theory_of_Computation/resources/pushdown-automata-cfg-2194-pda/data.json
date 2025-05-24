@@ -1,0 +1,12 @@
+{
+  "title":"Lecture 4: Pushdown Automata, CFG ↔ PDA",
+  "description": "",
+  "file": null,
+  "learning_resource_types": ["Lecture Videos"],
+  "resource_type": "Video",
+  "file_type": null,
+  "youtube_key":  "m9eHViDPAJQ",
+  "captions_file": "/courses/18-404j-theory-of-computation-fall-2020/682fdf8f90ef5277a8d77fef9548c8bb_m9eHViDPAJQ.vtt",
+  "transcript_file": "/courses/18-404j-theory-of-computation-fall-2020/4971cfaeab8290eb2539668bfa3287d7_m9eHViDPAJQ.pdf",
+  "thumbnail_file": "https://img.youtube.com/vi/m9eHViDPAJQ/default.jpg",
+  "archive_url": "https://archive.org/download/MIT18.404F20/MIT18_404F20_lec04_300k.mp4"}

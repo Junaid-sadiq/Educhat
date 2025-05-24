@@ -1,0 +1,563 @@
+
+<!DOCTYPE html>
+
+
+
+
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>5.5. Backtracking, and Branch and Bound &mdash; BM40A1500 Data Structures and Algorithms</title>
+    
+    <link rel="stylesheet" href="_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../lib/normalize.css" type="text/css" />
+    <link rel="stylesheet" href="../../../lib/JSAV.css" type="text/css" />
+    <link rel="stylesheet" href="../../../lib/odsaMOD-min.css" type="text/css" />
+    <link rel="stylesheet" href="../../../lib/jquery.ui.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../../lib/odsaStyle-min.css" type="text/css" />
+    
+  <script type="text/javascript">
+    var DOCUMENTATION_OPTIONS = {
+      URL_ROOT:    './',
+      VERSION:     '0.4.1',
+      COLLAPSE_INDEX: false,
+      FILE_SUFFIX: '.html',
+      HAS_SOURCE:  true
+    };
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEscapes: true
+      },
+      "HTML-CSS": {
+        scale: "80"
+      }
+    });
+  </script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="index" title="BM40A1500 Data Structures and Algorithms" href="index.html" />
+    <link rel="next" title="6. Dynamic Programming" href="DynamicProgramming.html" />
+    <link rel="prev" title="4. Divide and Conquer: Quicksort" href="Quicksort.html" />
+
+  </head>
+
+  <body>
+
+
+      <div class="header">
+        
+  
+      <script type="text/javascript" src="../../../lib/jquery.min.js"></script>
+      <script type="text/javascript" src="../../../lib/jquery.migrate.min.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/localforage/1.9.0/localforage.min.js"></script>
+    <script type="text/javascript" src="../../../lib/jquery.ui.min.js"></script>
+    <script type="text/javascript" src="../../../lib/jquery.transit.js"></script>
+    <script type="text/javascript" src="../../../lib/raphael.js"></script>
+    <script type="text/javascript" src="../../../lib/JSAV-min.js"></script>
+    <script type="text/javascript" src="_static/config.js"></script>
+    <script type="text/javascript" src="../../../lib/timeme-min.js"></script>
+    <script type="text/javascript" src="../../../lib/odsaUtils-min.js"></script>
+    <script type="text/javascript" src="../../../lib/odsaMOD-min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.min.js"></script>
+    <script type="text/javascript" src="https://d3js.org/d3-selection-multi.v1.min.js"></script>
+    <script type="text/javascript" src="../../../lib/dataStructures.js"></script>
+    <script type="text/javascript" src="../../../lib/conceptMap.js"></script>
+
+        
+<a id="username-link" style="float:right;color:red;margin:10px 20px auto; display: none" class="username-link" href="Gradebook.html"></a>
+<a id="login-link" style="float:right;color:red;margin:10px 20px auto" class="login-link" href="#"><Macro 'login'></a>
+<div id="login-box" class="login-popup">
+  <a href="#" class="close"><img src="_static/Images/close_pop.png" class="btn_close" title="Close Window" alt="Close" /></a>
+  <form method="post" class="signin" action="https://#">
+    <fieldset class="textbox">
+      <label class="username">
+        <span>Username</span>
+        <input id="username" value="" type="text" autocomplete="on" placeholder="Username" tabindex="1">
+      </label>
+      <label class="password">
+        <span>Password</span>
+        <input id="password" value="" type="password" placeholder="Password" tabindex="2">
+        <span><a id="forgot" href="#">Forgot your password?</a></span>
+      </label>
+
+      <p>
+        <input type="submit" id="login-submit-button" value="Sign in" tabindex="3" />
+      </p>
+      <p>
+        <input type="button" id="register-button" value="Register" tabindex="4" />
+      </p>
+    </fieldset>
+  </form>
+</div>
+
+        
+<a id="registration-link" style="float:right;color:red;margin:10px 20px auto" class="registration-link" href="#">Register</a>
+<div id="registration-box" class="registration-popup ">
+  <a href="#" class="close"><img src="_static/Images/close_pop.png" class="btn_close" title="Close Window" alt="Close Window" /></a>
+  <form method="post" class="signin" action="https://#">
+    <fieldset class="textbox">
+      <div id="register_error" class="error"></div>
+      <label class="username">
+        <span>Username:</span>
+        <input type="text" id="user" placeholder="Username" />
+      </label>
+
+      <label class="password">
+        <span>Password</span>
+        <input id="pass" type="password" placeholder="Password" />
+      </label>
+
+      <label class="password">
+        <span>Confirm Password</span>
+        <input id="rpass" type="password" placeholder="Confirm Password" />
+      </label>
+
+      <label class="email">
+        <span>Email:</span>
+        <input type="text" id="email" placeholder="Email">
+      </label>
+
+      <p>
+        <input type="submit" id="register-submit-button" value="Register &rarr;"/>
+      </p>
+    </fieldset>
+  </form>
+</div>
+<img class="leftlogo" src="_static/OpenDSALogoT64.png" alt="Logo"/><div class="title-wrapper">
+          <div class="title-inbetween" style="display: table-cell; vertical-align: middle;">
+            <div class="title-content">
+              <h1 class="heading" ><a href="index.html">
+                <span>BM40A1500 Data Structures and Algorithms</span></a></h1>
+              <h2 class="heading" ><span>Chapter 5 Algorithm Design Principles</span></h2>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="topnav">
+        <p>
+            <a style="float:left;color:blue;" href="../source/Backtracking.rst.rst"
+              target="_blank" rel="nofollow">Show Source | </a>&#160;&#160;
+            <a class="abt" style="float:left;color:blue;" href="#" rel="nofollow">| About</a>&#160;&#160;
+
+          
+        «&#160;&#160;<a id="prevmod" href="Quicksort.html">5.<span class="section-number">4. </span>Divide and Conquer: Quicksort</a>
+        &#160;&#160;::&#160;&#160;
+        <a  class="uplink" href="index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a  id="nextmod" href="DynamicProgramming.html">5.<span class="section-number">6. </span>Dynamic Programming</a>&#160;&#160;»
+
+
+        </p>
+      </div>
+       
+      <div class="content">
+        
+  <script>ODSA.SETTINGS.MODULE_SECTIONS = ['backtracking', 'from-loops-to-recursion', 'implementing-the-search', 'subsets', 'permutations', 'the-n-queens-problem', 'allocating-tasks', 'branch-and-bound'];</script><script>ODSA.SETTINGS.DISP_MOD_COMP = true;ODSA.SETTINGS.MODULE_NAME = "Backtracking";ODSA.SETTINGS.MODULE_LONG_NAME = "Backtracking, and Branch and Bound";ODSA.SETTINGS.MODULE_CHAPTER = "Algorithm Design Principles"; ODSA.SETTINGS.BUILD_DATE = "2024-08-13 08:46:36"; ODSA.SETTINGS.BUILD_CMAP = false;JSAV_OPTIONS['lang']='en';JSAV_EXERCISE_OPTIONS['code']='python';</script><div class="section" id="backtracking-and-branch-and-bound">
+<h1>5.<span class="section-number">5. </span>Backtracking, and Branch and Bound<a class="headerlink" href="#backtracking-and-branch-and-bound" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2>5.<span class="section-number">5.1. </span>Backtracking<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>Backtracking is a method, which allows us to systematically visit
+all possible combinations (solutions). It is a “brute-force” algorithm,
+whose implementation is typically straightforward. The method is
+useful when the number of combinations is so small that we have time
+to go through them all. In this chapter, we will first familiarize
+ourselves with the backtracking algorithms, which go through combinations
+of numbers. After this, we will see how you can use the backtracking in
+two problems and how to make the search for optimal solution more
+efficient.</p>
+</div>
+<div class="section" id="from-loops-to-recursion">
+<h2>5.<span class="section-number">5.2. </span>From loops to recursion<a class="headerlink" href="#from-loops-to-recursion" title="Permalink to this headline">¶</a></h2>
+<p>Suppose we want to go through all combinations of 𝑛 numbers, where
+each number is an integer between <span class="math notranslate nohighlight">\(1...m\)</span>. There are a total
+of <span class="math notranslate nohighlight">\(m^n\)</span> such combinations (there are <span class="math notranslate nohighlight">\(n\)</span> points and in each
+point the number can be chosen in <span class="math notranslate nohighlight">\(m\)</span> ways). For example,
+if <span class="math notranslate nohighlight">\(n=3\)</span> and <span class="math notranslate nohighlight">\(m=4\)</span>, the combinations
+are <span class="math notranslate nohighlight">\([1,1,1], [1,1,2], [1,1,3], [1,1,4], [1,2,1],
+[1,2,2], [1,2,3], [1,2,4]\)</span>, etc.</p>
+<p>If the value of <span class="math notranslate nohighlight">\(n\)</span> is known in advance, we can create
+<span class="math notranslate nohighlight">\(n\)</span> nested loops, each of which goes through <span class="math notranslate nohighlight">\(m\)</span>
+numbers. For example, the following code loops through all
+combinations in case <span class="math notranslate nohighlight">\(n=3\)</span><span class="math notranslate nohighlight">\(n=3\)</span></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span> 
+</pre></div>
+</div>
+<p>This is a good solution in itself, but there is one problem:
+the value of <span class="math notranslate nohighlight">\(n\)</span> affects on the number of loops. If we
+wanted to change the value of <span class="math notranslate nohighlight">\(n\)</span>, we would have to change
+the amount of loops in the code, which is not practicable. However,
+we can implement a solution recursively using backtracking so that
+the same code works for all values of <span class="math notranslate nohighlight">\(n\)</span>.</p>
+</div>
+<div class="section" id="implementing-the-search">
+<h2>5.<span class="section-number">5.3. </span>Implementing the search<a class="headerlink" href="#implementing-the-search" title="Permalink to this headline">¶</a></h2>
+<p>The following recursive procedure search forms combinations using
+backtracking. This can be used as brute-force search to find the
+optimal solution. The parameter <span class="math notranslate nohighlight">\(k\)</span> is the position in the array
+where the next number is placed. If <span class="math notranslate nohighlight">\(k=n\)</span> some combination has
+been completed, in which case it is printed. Otherwise, the search
+goes through all the ways to place numbers <span class="math notranslate nohighlight">\(1...m\)</span> in
+position <span class="math notranslate nohighlight">\(k\)</span> and continues recursively to <span class="math notranslate nohighlight">\(k+1\)</span>.
+The search starts with the call <code class="docutils literal notranslate"><span class="pre">search(0)</span></code>, and
+<code class="docutils literal notranslate"><span class="pre">numbers</span></code> is an <span class="math notranslate nohighlight">\(n\)</span>-sized array in which the combination is formed.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">search</span><span class="p">(</span><span class="n">k</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">k</span> <span class="o">==</span> <span class="n">n</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">m</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="n">numbers</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span>
+            <span class="n">search</span><span class="p">(</span><span class="n">k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Figure <a href="Backtracking.html#backtrack1">5.5.1</a> shows how the search starts in case 𝑛=3
+and <span class="math notranslate nohighlight">\(m=4\)</span>. The sign “<span class="math notranslate nohighlight">\(-\)</span>” means a number that has not
+been selected yet. The first level of the search selects
+the combination to position <span class="math notranslate nohighlight">\(0\)</span> of the first number. There
+are four options for choosing this, since the possible numbers
+are <span class="math notranslate nohighlight">\(1...4\)</span>, so the search branches into four parts.
+After this, the search continues recursively and selects
+the numbers for the other positions.</p>
+<div class="figure align-center" id="id2">
+<span id="backtrack1"></span><a class="reference internal image-reference" href="_images/bb1.png"><img alt="_images/bb1.png" src="_images/bb1.png" style="width: 700px;" /></a>
+<p class="caption"><span class="caption-text"> Figure 5.5.1: Forming the combination <span class="math notranslate nohighlight">\(n=3\)</span> and <span class="math notranslate nohighlight">\(m=4\)</span>.</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</div>
+<p>We can evaluate the efficiency of the algorithm by calculating how
+many times the search procedure is called in total during the
+search. The procedure is called once with parameter <span class="math notranslate nohighlight">\(0\)</span>, <span class="math notranslate nohighlight">\(m\)</span>
+times with parameter <span class="math notranslate nohighlight">\(1\)</span>, <span class="math notranslate nohighlight">\(m^2\)</span> times with parameter
+<span class="math notranslate nohighlight">\(2\)</span>, etc., so the number of invitations is total</p>
+<div class="math notranslate nohighlight">
+\[1 + m + m^2 + \dots + m^n = \frac{m^{n+1} - 1}{m - 1} = \Theta(m^n)\]</div>
+<p>At the last level of recursion, more invitations are made
+than at all other levels combined.</p>
+</div>
+<div class="section" id="subsets">
+<h2>5.<span class="section-number">5.4. </span>Subsets<a class="headerlink" href="#subsets" title="Permalink to this headline">¶</a></h2>
+<p>Let us then examine the situation, where we want to go through all
+<a class="reference internal" href="Glossary.html#term-subset"><span class="xref std std-term">subsets</span></a> of a set with <span class="math notranslate nohighlight">\(n\)</span> elements. There are a total
+of <span class="math notranslate nohighlight">\(2n\)</span> subsets, because each element either belongs or does
+not belong to a subset. For example, <span class="math notranslate nohighlight">\(\{2,5\}\)</span> and
+:math`{3,5,9}` are subsets of the set <span class="math notranslate nohighlight">\(\{2,3,5,9\}\)</span>.
+It turns out that we can form subsets by going through all
+combinations of <span class="math notranslate nohighlight">\(n\)</span> numbers, where each number is
+<span class="math notranslate nohighlight">\(0\)</span> or <span class="math notranslate nohighlight">\(1\)</span>. The idea is that each number in the
+combination tells whether a certain element belongs to a subset.
+For example, when the set is <span class="math notranslate nohighlight">\(\{2,3,5,9\}\)</span>, the combination
+<span class="math notranslate nohighlight">\([1,0,1,0]\)</span> matches subsets <span class="math notranslate nohighlight">\(\{2,5\}\)</span> and the
+combination <span class="math notranslate nohighlight">\([0,1,1,1\)</span>] corresponds to the subset
+<span class="math notranslate nohighlight">\(\{3,5,9\}\)</span>.</p>
+<p>The following pseude code shows how we can visit all subsets using
+backtracking. The procedure <code class="docutils literal notranslate"><span class="pre">search</span></code> chooses, whether the element
+in <span class="math notranslate nohighlight">\(k\)</span> is included in the subset or not, and marks this
+information in the array <code class="docutils literal notranslate"><span class="pre">choice</span></code>. As before, the search starts
+with the call <code class="docutils literal notranslate"><span class="pre">search(0)</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">search</span><span class="p">(</span><span class="n">k</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">k</span> <span class="o">==</span> <span class="n">n</span><span class="p">:</span>
+        <span class="c1"># process the subset</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="n">choice</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span>
+            <span class="n">search</span><span class="p">(</span><span class="n">k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="permutations">
+<h2>5.<span class="section-number">5.5. </span>Permutations<a class="headerlink" href="#permutations" title="Permalink to this headline">¶</a></h2>
+<p>With backtracking, we can also loop through all
+<a class="reference internal" href="Glossary.html#term-permutation"><span class="xref std std-term">permutations</span></a>, i.e. different orders of elements.
+When there are <span class="math notranslate nohighlight">\(n\)</span> elements in the set, in total
+<span class="math notranslate nohighlight">\(n!\)</span> permutations can be formed. For example,
+<span class="math notranslate nohighlight">\(\{2,4,1,3\}\)</span> and <span class="math notranslate nohighlight">\(\{4,3,1,2\}\)</span>
+are permutations of the set <span class="math notranslate nohighlight">\(\{1,2,3,4\}\)</span>.</p>
+<p>In this situation, we want to go through combinations of
+<span class="math notranslate nohighlight">\(n\)</span> numbers, where each number is between <span class="math notranslate nohighlight">\(1...n\)</span> and
+no number is repeated. We achieve this by adding a new array
+named <code class="docutils literal notranslate"><span class="pre">included</span></code> which tells if a certain number is already included.
+At each step, the search selects only such numbers for the
+combination which have not been selected before.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">search</span><span class="p">(</span><span class="n">k</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">k</span> <span class="o">==</span> <span class="n">n</span><span class="p">:</span>
+        <span class="c1"># process permutation</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">included</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
+                <span class="n">included</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+                <span class="n">numbers</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span>
+                <span class="n">search</span><span class="p">(</span><span class="n">k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+                <span class="n">included</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="the-n-queens-problem">
+<h2>5.<span class="section-number">5.6. </span>The N Queens Problem<a class="headerlink" href="#the-n-queens-problem" title="Permalink to this headline">¶</a></h2>
+<p>Next, we will go through two more demanding examples on how
+to utilize the backtracking to solve problems.</p>
+<p>Our task is to calculate, in how many ways <span class="math notranslate nohighlight">\(n\)</span> queens can be
+placed on an <span class="math notranslate nohighlight">\(n \times n\)</span> chessboard so that no two queens
+threaten each other. In chess, queens can threaten each other
+horizontally, vertically or diagonally. For example, in the case
+of <span class="math notranslate nohighlight">\(n=4\)</span>, there are two possible ways to place the queens
+as shown in Figure <a href="Backtracking.html#queen1">5.5.2</a>.</p>
+<div class="figure align-center" id="id3">
+<span id="queen1"></span><a class="reference internal image-reference" href="_images/queen_problem1.png"><img alt="_images/queen_problem1.png" src="_images/queen_problem1.png" style="width: 500px;" /></a>
+<p class="caption"><span class="caption-text"> Figure 5.5.2: Solution to the queens problem with <span class="math notranslate nohighlight">\(n=4\)</span>.</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</div>
+<p>We can solve the task by implementing an algorithm, which goes through
+the board from top to bottom and places one queen for each row.
+Figure <a href="Backtracking.html#queen2">5.5.3</a> shows the operation of the search in
+the case <span class="math notranslate nohighlight">\(n=4\)</span>. The queen of the first row can be placed
+in any column, but in the following lines, previous selections
+limit the search. The figure shows the placement of the second
+queen, when the first queen is in the second column. In this case,
+the only option is that the second queen is in the last column,
+because in all other cases the queens would threaten each other.</p>
+<div class="figure align-center" id="id4">
+<span id="queen2"></span><a class="reference internal image-reference" href="_images/queens_problem2.png"><img alt="_images/queens_problem2.png" src="_images/queens_problem2.png" style="width: 700px;" /></a>
+<p class="caption"><span class="caption-text"> Figure 5.5.3: Applying backtracking to the <span class="math notranslate nohighlight">\(n\)</span> queens problem.</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+</div>
+<p>The following function <code class="docutils literal notranslate"><span class="pre">search</span></code> presents the backtracking
+algorithm which calculates the solutions to the
+<span class="math notranslate nohighlight">\(n\)</span> queens problem:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">search</span><span class="p">(</span><span class="n">y</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">y</span> <span class="o">==</span> <span class="n">n</span><span class="p">:</span>
+        <span class="n">counter</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">can_be_placed</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+                <span class="n">location</span><span class="p">[</span><span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span>
+                <span class="n">search</span><span class="p">(</span><span class="n">y</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We assume that the rows and columns of the board are numbered
+from <span class="math notranslate nohighlight">\(0...n-1\)</span>. The parameter <span class="math notranslate nohighlight">\(y\)</span> tells on which
+row the next queen should be placed, and the search starts with
+the call <code class="docutils literal notranslate"><span class="pre">search(0)</span></code>. If the row is <span class="math notranslate nohighlight">\(n\)</span>, all queens have
+already been placed, so one solution has been found. Otherwise,
+a loop that goes through the possible columns (<span class="math notranslate nohighlight">\(x\)</span>) is
+executed. If the queen can be placed in the column <span class="math notranslate nohighlight">\(x\)</span>
+i.e. it does not threaten any previously placed queen, the table
+<code class="docutils literal notranslate"><span class="pre">location</span></code> is updated accordingly (the queen <span class="math notranslate nohighlight">\(y\)</span> is in the
+column <span class="math notranslate nohighlight">\(x\)</span>) and the search continues recursively. The
+function <code class="docutils literal notranslate"><span class="pre">can_be_placed</span></code> examines whether a new queen can be
+placed on row <span class="math notranslate nohighlight">\(y\)</span> and column <span class="math notranslate nohighlight">\(x\)</span>.</p>
+<p>Now we have an algorithm that allows us to review solutions to the
+queen problem. The algorithm solves cases with small values of
+<span class="math notranslate nohighlight">\(n\)</span> very fast, but with larger values of <span class="math notranslate nohighlight">\(n\)</span>, the
+algorithm starts to take a lot of time. The reason for this is
+that the number of locations where the queens can be placed
+increases exponentially. For example, in the case of <span class="math notranslate nohighlight">\(n=20\)</span>,
+there are already more than 39 billion different solutions.</p>
+<p>However, we can try to speed up the algorithm by improving it
+its implementation. One easy boost is to take advantage of symmetry.
+Each solution to the queen problem is matched by another solution,
+which is obtained by mirroring the solution horizontally. For example,
+in Figure <a href="Backtracking.html#queen1">5.5.2</a>, the solutions can be changed to
+each other by mirroring. Thanks to this observation, we can halve
+the execution time of the algorithm adding the requirement that
+the first queen must be placed to the left half of the board,
+and finally multiplying the answer by two.</p>
+<p>However, the queen problem is fundamentally a hard problem, and
+no essentially better solution than brute force is known. Currently,
+the largest case with a known solution is <span class="math notranslate nohighlight">\(n=27\)</span>. Processing
+this case took about a year with a large computing cluster.</p>
+</div>
+<div class="section" id="allocating-tasks">
+<h2>5.<span class="section-number">5.7. </span>Allocating tasks<a class="headerlink" href="#allocating-tasks" title="Permalink to this headline">¶</a></h2>
+<p>Let’s consider a situation where there are <span class="math notranslate nohighlight">\(n\)</span>
+tasks and  <span class="math notranslate nohighlight">\(n\)</span> employees. Tasks should be distributed
+to the employees so that, each employee performs exactly one task.
+For each task-employee combination the cost for completing the
+task is known. The goal is to find a solution where the total
+cost is as low as possible. A table below shows
+an example case where <span class="math notranslate nohighlight">\(n=3\)</span>. The optimal way to divide
+the tasks is that Employee B performs the first task, C
+performs second task, and A performs the third task.
+The total cost of this solution is <span class="math notranslate nohighlight">\(1+2+5=8\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\large
+\begin{array}{c|c|c|c}
+\text{Employee A} &amp; 4 &amp; 8 &amp; \textbf{5} \\
+\hline
+\text{Employee B} &amp; \textbf{1} &amp; 1 &amp; 3 \\
+\hline
+\text{Employee C} &amp; 4 &amp; \textbf{2} &amp; 6 \\
+\end{array}\end{split}\]</div>
+<p>We assume that tasks and employees are numbered from
+<span class="math notranslate nohighlight">\(0...n-1\)</span> and we can read from the table array
+<code class="docutils literal notranslate"><span class="pre">cost[a][b]</span></code> how much does the task <span class="math notranslate nohighlight">\(a\)</span> costs
+when performed by the employee <span class="math notranslate nohighlight">\(b\)</span> We can implement
+a backtracking algorithm which goes through the tasks
+in order and chooses an employee for each. The following
+procedure search takes two parameters: <span class="math notranslate nohighlight">\(k\)</span> is the
+task to be processed next and <span class="math notranslate nohighlight">\(h\)</span> is the cost so far.
+The search starts with the call <code class="docutils literal notranslate"><span class="pre">search(0,0)</span></code>. The table
+<code class="docutils literal notranslate"><span class="pre">included</span></code> keeps track of which employees have already been
+given a task, and the variable <span class="math notranslate nohighlight">\(p\)</span> is the total cost
+in the best solution found so far. Before the search, the
+value of the variable <span class="math notranslate nohighlight">\(p\)</span> is set to <span class="math notranslate nohighlight">\(\infty\)</span>
+because no solution exists yet.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">search</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">h</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">k</span> <span class="o">==</span> <span class="n">n</span><span class="p">:</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">included</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
+                <span class="n">included</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+                <span class="n">search</span><span class="p">(</span><span class="n">k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">h</span> <span class="o">+</span> <span class="n">cost</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">i</span><span class="p">])</span>
+                <span class="n">included</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
+</pre></div>
+</div>
+<p>This is a working backtracking algorithm, and at the end of the
+search, the variable <span class="math notranslate nohighlight">\(p\)</span> has the total cost of the best
+solution. However, the algorithm is very slow because it always
+goes through all the <span class="math notranslate nohighlight">\(n!\)</span> possible solutions. Since we
+only want to find the best solution and not go through all the
+solutions, we can improve the algorithm by adding a condition
+which stops forming a solution if it cannot get better than an
+earlier solution.</p>
+</div>
+<div class="section" id="branch-and-bound">
+<h2>5.<span class="section-number">5.8. </span>Branch And Bound<a class="headerlink" href="#branch-and-bound" title="Permalink to this headline">¶</a></h2>
+<p>We next test the previous algorithm with the case, where <span class="math notranslate nohighlight">\(n=20\)</span>
+and the table <code class="docutils literal notranslate"><span class="pre">cost</span></code> contains random integers between <span class="math notranslate nohighlight">\(1\)</span> and
+<span class="math notranslate nohighlight">\(100\)</span>. In this case, the algorithm described above would go through</p>
+<div class="math notranslate nohighlight">
+\[20! = 2432902008176640000\]</div>
+<p>different solutions which would take hundreds of years.
+In order to solve the case, we need to improve the algorithm so,
+that it does not go through all solutions but still finds the
+best solution. This is where a technique called
+<a class="reference internal" href="Glossary.html#term-branch-and-bounds-algorithm"><span class="xref std std-term">branch and bound</span></a> can be applied.
+The idea is to make the backtracking more efficient by reducing
+the number of solutions to be investigated with suitable upper and
+lower bounds.</p>
+<p>The key observation is that we can restrict the search with the
+help of the variable <span class="math notranslate nohighlight">\(p\)</span>. This variable has at every
+moment the total cost of the best solution found so far.
+Therefore it tells the upper bound on how large the total cost
+of best solution can be. On the other hand, the variable <span class="math notranslate nohighlight">\(h\)</span> has
+the current cost of solution being formed. This is the lower bound
+for the total cost. If <span class="math notranslate nohighlight">\(h&gt;=p\)</span> the solution being formed
+cannot get better than the earlier best. We can add to the
+following inspection to the beginning of the algorithm:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">search</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">h</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">h</span> <span class="o">&gt;=</span> <span class="n">p</span><span class="p">:</span>
+        <span class="k">return</span>
+    <span class="o">...</span>
+</pre></div>
+</div>
+<p>Thanks to this, the formation of the solution ends immediately
+if its cost is equal to or higher than the cost of the best known
+solution. With this simple modification the problem (<span class="math notranslate nohighlight">\(n=20\)</span>)
+can be solved within minutes instead of hundreds of years.</p>
+<p>We can improve the algorithm even more by calculating a more
+accurate estimate for the lower bound. The cost of the solution
+under construction is certainly at least <span class="math notranslate nohighlight">\(h\)</span> but we can
+also estimate how much employees allocated for the remaining
+tasks add to the cost:</p>
+<p>Here the function estimate should give some estimate on how much does
+it cost to complete the remaining tasks <span class="math notranslate nohighlight">\(k...n-1\)</span>. One simple
+way to get an estimate is to go through the remaining tasks and choose
+the cheapest employee for each task without caring whether the
+employee has been selected before. This gives the lower bound for
+the remaining costs. With this modification the original problem can be solved in seconds.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>This page was translated and modified from Antti Laaksonen,
+Tietorakenteet ja algoritmit (Chapter 8) published under Creative
+Commons BY-NC-SA 4.0 license.</p>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      <p><span class="email_div" style="display:inline;"><a id="contact_us" class="contact" style="float:left;color:blue;" rel="nofollow" href="mailto:">Contact Us |</a><a style="float:left;color:blue;" rel="nofollow" href="../../../lib/Privacy.html" target="_blank">| Privacy |</a> <a style="float:left;color:blue;" rel="nofollow" href="../../../lib/license.html" target="_blank">| License</a></span>&#160;&#160;
+      
+        «&#160;&#160;<a id="prevmod1" href="Quicksort.html">5.<span class="section-number">4. </span>Divide and Conquer: Quicksort</a>
+        &#160;&#160;::&#160;&#160;
+        <a  class="uplink" href="index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a  id="nextmod1" href="DynamicProgramming.html">5.<span class="section-number">6. </span>Dynamic Programming</a>&#160;&#160;»
+
+</p>
+      </div>
+      <img style="float:right;" src="_static/nsf1.gif" height="62" width="62" alt="nsf"/>
+
+
+    <div class="footer">
+      <p>
+        <span class="email_div" style="display:inline;">
+          <a id="contact_us" class="contact" style="float:left;color:blue;" rel="nofollow" href="mailto:">Contact Us |</a>
+          <a id="bugreport-link" style="float:left;color:blue;" class="bugreport-link" href="#">| Report a bug</a>
+        </span>
+      </p>
+        &copy; Copyright 2011-2023 by OpenDSA Project Contributors and distributed under an MIT license.
+      Last updated on Aug 13, 2024.
+      Created using <a target="_blank" href="http://sphinx.pocoo.org/">Sphinx</a> 4.4.0.
+    </div>
+    
+<div id="bugreport-box" class="bugreport-popup ">
+  <a href="#" class="close"><img src="_static/Images/close_pop.png" class="btn_close" title="Close Window" alt="Close Window" /></a>
+  <form method="post" class="report" action="https://#">
+    <fieldset class="textbox">
+      <div id="bug_error" class="error"></div>
+      <label>
+        <span>Summary*:</span>
+        <input type="text" id="b_title" placeholder="Summary" />
+      </label>
+
+      <label class="os">
+        <span>Operating system*:</span>
+        <select id="b_os">
+          <option value="windows">Windows</option>
+          <option value="macos">Mac OS</option>
+          <option value="linux">Linux</option>
+          <option value="ios">iOS</option>
+          <option value="android">Android</option>
+          <option value="other">Other</option>
+        </select>
+      </label>
+
+      <label class="browser">
+        <span>Browser*:</span>
+        <select id="b_browser">
+          <option value="chrome">Chrome</option>
+          <option value="safari">Safari</option>
+          <option value="internetexplorer">Internet Explorer</option>
+          <option value="opera">Opera</option>
+          <option value="other">Other</option>
+        </select>
+      </label>
+
+      <label class="description">
+        <span>Description*:</span><br>
+        <textarea id="b_description" rows="5" cols="25" placeholder="***BUG** Please enter: (1) a consice description of the problem. (2) steps to reproduce bug. (3) the version of your browser and operating system."></textarea>
+      </label>
+
+      <label class="screenshot">
+        <span>Attach a screenshot (optional):</span>
+        <input type="file" id="b_screenshot" accept="image/*" placeholder="Attach a screenshot (optional)">
+      </label>
+
+      <p>
+        <input type="submit" id="bug-submit-button" value="Submit &rarr;"/>
+      </p>
+    </fieldset>
+  </form>
+</div>
+
+  </body>
+</html>

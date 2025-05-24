@@ -1,0 +1,12 @@
+{
+  "title":"Lecture 8: Succinct Non-Interactive Arguments for Batch NP (BARGs) from LWE, Part 1",
+  "description": null,
+  "file": "/courses/6-5630-advanced-topics-in-cryptography-fall-2023/65630-f23-lecture-8-part-1_360p_16_9.mp4",
+  "learning_resource_types": ["Lecture Videos"],
+  "resource_type": "Video",
+  "file_type": "video/mp4",
+  "youtube_key":  "t3C6cpQlSvA",
+  "captions_file": "/courses/6-5630-advanced-topics-in-cryptography-fall-2023/1OulMfgsVwuSMpAw6rd4ENyMPStdnj5eS_transcript.webvtt",
+  "transcript_file": "/courses/6-5630-advanced-topics-in-cryptography-fall-2023/1OulMfgsVwuSMpAw6rd4ENyMPStdnj5eS_transcript.pdf",
+  "thumbnail_file": "https://img.youtube.com/vi/t3C6cpQlSvA/default.jpg",
+  "archive_url": ""}

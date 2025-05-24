@@ -1,0 +1,28 @@
+{
+  "course_title":"Ethics of AI Bias",
+  "course_description":"This video aims to delve into the human problems brought out by issues in artificial intelligence, specifically with respect to bias. It is suitable for classroom use or as a standalone video for those who wish to understand the issue more deeply than is conventionally covered. For classroom use, we recommend watching the {{% resource_link \"4a142dcb-a3a6-42e5-b7be-fba5fc37b211\" \"chapterized version of the video\" %}} and working through the teaching materials provided for each chapter.",
+  "course_description_html":"This video aims to delve into the human problems brought out by issues in artificial intelligence, specifically with respect to bias. It is suitable for classroom use or as a standalone video for those who wish to understand the issue more deeply than is conventionally covered. For classroom use, we recommend watching the <a href=\"/pages/chapterized-video/data.json/index.html\">chapterized version of the video</a> and working through the teaching materials provided for each chapter.",
+  "site_uid":"cd4ea5d5-4f20-493b-8dc4-dd72babdf4e1",
+  "legacy_uid":"","instructors": [{
+    "first_name":"Bernhardt",
+    "last_name":"Trout",
+    "middle_initial":"",
+    "salutation":"Prof.",
+    "title":"Prof. Bernhardt Trout"},{
+    "first_name":"Svetozar",
+    "last_name":"Minkov",
+    "middle_initial":"",
+    "salutation":"",
+    "title":"Prof. Svetozar Minkov"}],"department_numbers":["10"],
+  "learning_resource_types":["Other Video"],
+  "topics":[["Engineering","Computer Science","Artificial Intelligence"],["Humanities","Philosophy","Ethics"]],
+  "mit_learn_topics":null,
+  "primary_course_number":"RES.10-002",
+  "extra_course_numbers":"",
+  "term":"Spring",
+  "year":"2023",
+  "level":["Non-Credit"],
+  "hide_download":false,
+  "image_src":"./static_resources/res-10-002s23.png",
+  "course_image_metadata":{"body":"","content_type":"resource","draft":false,"file":"/courses/res-10-002-ethics-of-ai-bias-spring-2023/res-10-002s23.png","file_size":115570,"file_type":"image/png","image_metadata":{"caption":"Image courtesy of the instructors.","credit":"Image courtesy of the instructors.","image-alt":"AN instructor in a classroom stands facing four college-aged students"},"iscjklanguage":false,"learning_resource_types":[],"license":"https://creativecommons.org/licenses/by-nc-sa/4.0/","resourcetype":"Image","title":"RES-10-002s23.png","uid":"0da41398-9560-4c17-9251-4044edd84e0c","video_files":{"video_captions_file":"","video_thumbnail_file":"","video_transcript_file":""},"video_metadata":{"video_speakers":"","video_tags":"","youtube_description":"","youtube_id":""}}}
+

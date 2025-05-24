@@ -1,0 +1,8841 @@
+1
+00:00:01,461 --> 00:00:02,435
+[CLICK]
+
+2
+00:00:02,435 --> 00:00:03,409
+[SQUEAK]
+
+3
+00:00:03,409 --> 00:00:04,383
+[PAGES RUSTLING]
+
+4
+00:00:04,383 --> 00:00:14,858
+[MOUSE DOUBLE-CLICKS]
+
+5
+00:00:14,858 --> 00:00:17,150
+PROFESSOR: So today we'll be
+continuing along the theme
+
+6
+00:00:17,150 --> 00:00:18,320
+of risk stratification.
+
+7
+00:00:18,320 --> 00:00:22,430
+I'll spend the first half
+to 2/3 of today's lecture
+
+8
+00:00:22,430 --> 00:00:25,010
+continuing where we
+left off last week
+
+9
+00:00:25,010 --> 00:00:27,230
+before the discussion.
+
+10
+00:00:27,230 --> 00:00:29,287
+I'll talk about how does
+one derive the labels
+
+11
+00:00:29,287 --> 00:00:31,370
+that one uses within a
+supervised machine learning
+
+12
+00:00:31,370 --> 00:00:32,270
+approach.
+
+13
+00:00:32,270 --> 00:00:34,610
+I'll continue talking
+about how one evaluates
+
+14
+00:00:34,610 --> 00:00:36,253
+risk stratification models.
+
+15
+00:00:36,253 --> 00:00:38,420
+And then I'll talk about
+some of the subtleties that
+
+16
+00:00:38,420 --> 00:00:39,770
+arise when you
+want to use machine
+
+17
+00:00:39,770 --> 00:00:41,353
+learning for health
+care, specifically
+
+18
+00:00:41,353 --> 00:00:42,530
+for risk stratification.
+
+19
+00:00:42,530 --> 00:00:43,947
+And I think that's
+going to be one
+
+20
+00:00:43,947 --> 00:00:46,070
+of the most interesting
+parts of today's lecture.
+
+21
+00:00:46,070 --> 00:00:47,630
+In the last third
+of today's lecture,
+
+22
+00:00:47,630 --> 00:00:51,040
+I'll be talking about
+how one can rethink
+
+23
+00:00:51,040 --> 00:00:52,820
+the supervised machine
+learning problem,
+
+24
+00:00:52,820 --> 00:00:54,750
+not to be a
+classification problem,
+
+25
+00:00:54,750 --> 00:00:57,320
+but be something closer
+to a regression problem.
+
+26
+00:00:57,320 --> 00:01:00,900
+And one now thinks about not
+will someone, for example,
+
+27
+00:01:00,900 --> 00:01:03,420
+develop diabetes within one
+to three years from now,
+
+28
+00:01:03,420 --> 00:01:06,340
+but when precisely will
+they develop diabetes--
+
+29
+00:01:06,340 --> 00:01:08,750
+so the time to event.
+
+30
+00:01:08,750 --> 00:01:11,300
+Then one has to start to
+really think very carefully
+
+31
+00:01:11,300 --> 00:01:14,660
+about the censoring issues
+that I alluded to last week.
+
+32
+00:01:14,660 --> 00:01:16,490
+And so I'll formalize
+those notions
+
+33
+00:01:16,490 --> 00:01:18,302
+in the language of
+survival modeling.
+
+34
+00:01:18,302 --> 00:01:20,510
+And I'll talk about how one
+can do maximum likelihood
+
+35
+00:01:20,510 --> 00:01:22,960
+estimation in that setting, and
+how one should do evaluation
+
+36
+00:01:22,960 --> 00:01:23,627
+in that setting.
+
+37
+00:01:26,780 --> 00:01:29,570
+So in our lecture
+last week, I gave you
+
+38
+00:01:29,570 --> 00:01:31,820
+this example of risk
+stratification for type 2
+
+39
+00:01:31,820 --> 00:01:32,990
+diabetes.
+
+40
+00:01:32,990 --> 00:01:35,660
+The goal, just to remind
+you, was as follows.
+
+41
+00:01:35,660 --> 00:01:38,000
+25% of people in
+the United States
+
+42
+00:01:38,000 --> 00:01:40,970
+have undiagnosed
+type 2 diabetes.
+
+43
+00:01:40,970 --> 00:01:43,850
+If we could take
+health insurance claims
+
+44
+00:01:43,850 --> 00:01:45,950
+data that's available
+for everyone
+
+45
+00:01:45,950 --> 00:01:48,170
+who has health
+insurance, and use
+
+46
+00:01:48,170 --> 00:01:52,040
+that to predict who, in the
+near-term-- next one to three
+
+47
+00:01:52,040 --> 00:01:56,360
+years-- is likely to be newly
+diagnosed with type 2 diabetes,
+
+48
+00:01:56,360 --> 00:01:58,910
+then we could use it to
+risk-stratify patient
+
+49
+00:01:58,910 --> 00:01:59,540
+population.
+
+50
+00:01:59,540 --> 00:02:02,030
+We could use that, then, to
+figure out who is most at risk,
+
+51
+00:02:02,030 --> 00:02:03,620
+do interventions
+for those patients,
+
+52
+00:02:03,620 --> 00:02:06,260
+to try to get them diagnosed
+and get them started
+
+53
+00:02:06,260 --> 00:02:09,080
+on treatment if relevant.
+
+54
+00:02:09,080 --> 00:02:10,669
+But what I didn't
+talk much about
+
+55
+00:02:10,669 --> 00:02:13,380
+was where did those
+labels come from.
+
+56
+00:02:13,380 --> 00:02:18,277
+How do we know that someone had
+a diabetes onset in that window
+
+57
+00:02:18,277 --> 00:02:19,610
+that I show up there on the top?
+
+58
+00:02:22,520 --> 00:02:23,870
+So what are the answers?
+
+59
+00:02:23,870 --> 00:02:26,490
+I mean, all of you should have
+read the paper by Razavian.
+
+60
+00:02:26,490 --> 00:02:29,670
+And then also you should
+hopefully have some ideas.
+
+61
+00:02:29,670 --> 00:02:31,630
+Thoughts?
+
+62
+00:02:31,630 --> 00:02:33,410
+A hint-- it was in
+supplementary material.
+
+63
+00:02:37,630 --> 00:02:41,230
+How did we define a
+positive case in that paper?
+
+64
+00:02:48,120 --> 00:02:48,713
+Yep.
+
+65
+00:02:48,713 --> 00:02:49,520
+AUDIENCE: Drugs they were on.
+
+66
+00:02:49,520 --> 00:02:50,770
+PROFESSOR: Drugs they were on.
+
+67
+00:02:50,770 --> 00:02:55,860
+OK, yeah, so for example,
+metformin, glucose--
+
+68
+00:02:55,860 --> 00:02:56,975
+sorry, insulin.
+
+69
+00:02:56,975 --> 00:03:00,620
+AUDIENCE: I think they did
+include metformin actually.
+
+70
+00:03:00,620 --> 00:03:02,550
+PROFESSOR: Metformin
+is a tricky case.
+
+71
+00:03:02,550 --> 00:03:07,320
+Because metformin is often used
+for alternative indications.
+
+72
+00:03:07,320 --> 00:03:10,570
+But there are many
+medications, such as insulin,
+
+73
+00:03:10,570 --> 00:03:13,230
+which are used pretty
+exclusively for treating
+
+74
+00:03:13,230 --> 00:03:13,950
+diabetes.
+
+75
+00:03:13,950 --> 00:03:16,920
+And so you can look
+to see, does a patient
+
+76
+00:03:16,920 --> 00:03:21,030
+have a record of taking one
+of these diabetic medications
+
+77
+00:03:21,030 --> 00:03:25,590
+in that window that we're
+using to define the outcome?
+
+78
+00:03:25,590 --> 00:03:27,480
+If you see a record
+of a medication,
+
+79
+00:03:27,480 --> 00:03:31,680
+you might conjecture, this
+patient probably has diabetes.
+
+80
+00:03:31,680 --> 00:03:34,170
+But what about it they don't
+have any medication listed
+
+81
+00:03:34,170 --> 00:03:35,610
+in that time window?
+
+82
+00:03:35,610 --> 00:03:37,470
+What could you conclude then?
+
+83
+00:03:37,470 --> 00:03:38,720
+Any ideas?
+
+84
+00:03:38,720 --> 00:03:39,220
+Yeah.
+
+85
+00:03:39,220 --> 00:03:42,660
+AUDIENCE: If you look
+at the HBA1C value,
+
+86
+00:03:42,660 --> 00:03:47,510
+and you know the normal range,
+and if you see the [INAUDIBLE]
+
+87
+00:03:47,510 --> 00:03:49,950
+above like 7.5 or 7.
+
+88
+00:03:49,950 --> 00:03:52,260
+PROFESSOR: So you're giving
+me an alternative approach,
+
+89
+00:03:52,260 --> 00:03:54,540
+not looking at medications,
+but looking at laboratory test
+
+90
+00:03:54,540 --> 00:03:55,040
+results.
+
+91
+00:03:55,040 --> 00:03:58,080
+Look at their HBA1C
+results, which
+
+92
+00:03:58,080 --> 00:04:02,070
+measures approximately an
+average of three-month glucose
+
+93
+00:04:02,070 --> 00:04:03,120
+values.
+
+94
+00:04:03,120 --> 00:04:05,460
+And if that's out of range,
+then they're diabetic.
+
+95
+00:04:05,460 --> 00:04:07,530
+And that's, in
+fact, usually used
+
+96
+00:04:07,530 --> 00:04:10,020
+as a definition of diabetes.
+
+97
+00:04:10,020 --> 00:04:12,490
+But that didn't answer
+my original question.
+
+98
+00:04:12,490 --> 00:04:15,090
+Why is just looking at diabetic
+medications not enough?
+
+99
+00:04:18,394 --> 00:04:20,282
+AUDIENCE: Some of the
+diabetic medications
+
+100
+00:04:20,282 --> 00:04:22,297
+can be used to treat
+other conditions.
+
+101
+00:04:22,297 --> 00:04:23,880
+PROFESSOR: Sometimes
+there's ambiguity
+
+102
+00:04:23,880 --> 00:04:25,475
+in diabetic medications.
+
+103
+00:04:25,475 --> 00:04:26,850
+But we've sort of
+dealt with that
+
+104
+00:04:26,850 --> 00:04:29,610
+already by trying to
+choose an unambiguous set.
+
+105
+00:04:29,610 --> 00:04:31,397
+What are other reasons?
+
+106
+00:04:31,397 --> 00:04:33,730
+AUDIENCE: You're starting
+with the medicine at the onset
+
+107
+00:04:33,730 --> 00:04:36,887
+of diabetes [INAUDIBLE].
+
+108
+00:04:36,887 --> 00:04:38,970
+PROFESSOR: Oh, that's a
+really interesting point--
+
+109
+00:04:38,970 --> 00:04:41,220
+not the one I was thinking
+about, but I like it--
+
+110
+00:04:41,220 --> 00:04:44,010
+which is that a patient might
+have been diagnosed with type 2
+
+111
+00:04:44,010 --> 00:04:47,135
+diabetes, but they,
+for whatever reason,
+
+112
+00:04:47,135 --> 00:04:49,260
+in that communication
+between provider and patient,
+
+113
+00:04:49,260 --> 00:04:52,050
+they decided we're not going
+to start treatment yet.
+
+114
+00:04:52,050 --> 00:04:55,800
+So they might not yet be
+on treatment for diabetes,
+
+115
+00:04:55,800 --> 00:04:57,640
+yet the whole health
+care system might
+
+116
+00:04:57,640 --> 00:04:59,640
+be very well aware that
+the patient is diabetic,
+
+117
+00:04:59,640 --> 00:05:02,370
+in which case doing these
+interventions for that patient
+
+118
+00:05:02,370 --> 00:05:03,787
+might be irrelevant.
+
+119
+00:05:03,787 --> 00:05:04,620
+Yep, another reason?
+
+120
+00:05:04,620 --> 00:05:06,328
+AUDIENCE: So a lot of
+people are just not
+
+121
+00:05:06,328 --> 00:05:07,530
+diagnosed for diabetes.
+
+122
+00:05:07,530 --> 00:05:08,200
+So they have it.
+
+123
+00:05:08,200 --> 00:05:10,280
+So one label means that
+they have diabetes,
+
+124
+00:05:10,280 --> 00:05:12,665
+and the other label is a
+combination of people who
+
+125
+00:05:12,665 --> 00:05:14,453
+have and don't have diabetes.
+
+126
+00:05:14,453 --> 00:05:15,870
+PROFESSOR: So the
+point was, often
+
+127
+00:05:15,870 --> 00:05:18,448
+you just might not be
+diagnosed for diabetes.
+
+128
+00:05:18,448 --> 00:05:19,990
+That, unfortunately,
+is not something
+
+129
+00:05:19,990 --> 00:05:21,640
+that we're going to
+able to solve here.
+
+130
+00:05:21,640 --> 00:05:25,292
+It is an issue, but we
+have no solution for it.
+
+131
+00:05:25,292 --> 00:05:27,750
+No, rather there's a different
+point that I want to get at,
+
+132
+00:05:27,750 --> 00:05:29,950
+which is that this
+data has biases in it.
+
+133
+00:05:29,950 --> 00:05:35,160
+So even if a patient is
+on a diabetes medication,
+
+134
+00:05:35,160 --> 00:05:37,500
+for whatever reason--
+maybe they are paying
+
+135
+00:05:37,500 --> 00:05:39,180
+cash for those medications.
+
+136
+00:05:39,180 --> 00:05:41,910
+If they're paying cash
+for those medications,
+
+137
+00:05:41,910 --> 00:05:44,520
+then there's not going to be any
+record for the patient taking
+
+138
+00:05:44,520 --> 00:05:47,730
+those medications in the
+health insurance claims.
+
+139
+00:05:47,730 --> 00:05:50,895
+Because the health insurer
+didn't have to pay for it.
+
+140
+00:05:50,895 --> 00:05:53,520
+But the reason that you gave is
+also a very interesting reason.
+
+141
+00:05:53,520 --> 00:05:54,720
+And both of them are valid.
+
+142
+00:05:54,720 --> 00:05:57,840
+So for all of these reasons,
+just looking at the medications
+
+143
+00:05:57,840 --> 00:05:59,280
+alone is going to
+be insufficient.
+
+144
+00:05:59,280 --> 00:06:01,200
+And as was just
+suggested a moment ago,
+
+145
+00:06:01,200 --> 00:06:03,600
+looking at other indicators,
+like, for example,
+
+146
+00:06:03,600 --> 00:06:06,900
+does the patient have an
+abnormal blood glucose value
+
+147
+00:06:06,900 --> 00:06:11,640
+or HBA1C value would
+also provide information.
+
+148
+00:06:11,640 --> 00:06:13,077
+So it's non-trivial, right?
+
+149
+00:06:13,077 --> 00:06:15,660
+And part of what you're going
+to be doing in your next problem
+
+150
+00:06:15,660 --> 00:06:18,120
+set, problem set 2, is going
+to be thinking through how
+
+151
+00:06:18,120 --> 00:06:21,060
+does one actually do this cohort
+construction, not just what
+
+152
+00:06:21,060 --> 00:06:22,650
+is your inclusion/exclusion
+criteria,
+
+153
+00:06:22,650 --> 00:06:25,080
+but also how do you
+really derive those labels
+
+154
+00:06:25,080 --> 00:06:26,880
+from that data set.
+
+155
+00:06:26,880 --> 00:06:31,350
+Now the traditional answer
+to this has two steps to it.
+
+156
+00:06:31,350 --> 00:06:35,800
+Step 1 is to actually
+manually label some patients.
+
+157
+00:06:35,800 --> 00:06:38,530
+So you take a few
+hundred patients,
+
+158
+00:06:38,530 --> 00:06:40,050
+and you go through their data.
+
+159
+00:06:40,050 --> 00:06:42,660
+You actually look at
+their data, and decide,
+
+160
+00:06:42,660 --> 00:06:45,650
+is this patient diabetic
+or are they not diabetic?
+
+161
+00:06:45,650 --> 00:06:48,150
+And the reason why you have to
+do that is because often what
+
+162
+00:06:48,150 --> 00:06:49,680
+you might think of is obvious--
+
+163
+00:06:49,680 --> 00:06:52,830
+like, oh, if they're on diabetes
+medication, they're diabetic--
+
+164
+00:06:52,830 --> 00:06:54,060
+has flaws to it.
+
+165
+00:06:54,060 --> 00:06:56,290
+And until you really dig
+down and look at the data,
+
+166
+00:06:56,290 --> 00:06:59,200
+you might not recognize that
+that criteria has a flaw in it.
+
+167
+00:06:59,200 --> 00:07:01,200
+So that chart review is
+really an essential part
+
+168
+00:07:01,200 --> 00:07:03,272
+of this process.
+
+169
+00:07:03,272 --> 00:07:04,730
+Then the second
+step is, how do you
+
+170
+00:07:04,730 --> 00:07:08,400
+generalize to get that
+label now for everyone
+
+171
+00:07:08,400 --> 00:07:09,618
+in your population.
+
+172
+00:07:09,618 --> 00:07:11,910
+And again, there, there are
+usually two different types
+
+173
+00:07:11,910 --> 00:07:13,090
+of approaches.
+
+174
+00:07:13,090 --> 00:07:16,380
+The first approach is to
+come up with some simple rule
+
+175
+00:07:16,380 --> 00:07:18,970
+to try to then
+extrapolate to everyone.
+
+176
+00:07:18,970 --> 00:07:22,830
+For example, if they have,
+A, diabetes medication,
+
+177
+00:07:22,830 --> 00:07:25,140
+or an abnormal lab
+test result, that
+
+178
+00:07:25,140 --> 00:07:26,820
+would be an example of a rule.
+
+179
+00:07:26,820 --> 00:07:29,970
+And then you could then
+apply that to everyone.
+
+180
+00:07:29,970 --> 00:07:33,470
+But even those rules can
+be really tricky to derive.
+
+181
+00:07:33,470 --> 00:07:37,990
+And I'll show you some examples
+of that in just a moment.
+
+182
+00:07:37,990 --> 00:07:41,700
+And as we know,
+machine learning is
+
+183
+00:07:41,700 --> 00:07:44,850
+sometimes good as an alternative
+for coming up with a rule.
+
+184
+00:07:44,850 --> 00:07:47,320
+So there's often now
+a second approach
+
+185
+00:07:47,320 --> 00:07:49,260
+to this being more
+and more commonly used
+
+186
+00:07:49,260 --> 00:07:52,140
+in the literature, which is to
+actually use machine learning
+
+187
+00:07:52,140 --> 00:07:54,783
+itself to derive the labels.
+
+188
+00:07:54,783 --> 00:07:56,700
+And this is a bit subtle,
+because it's machine
+
+189
+00:07:56,700 --> 00:07:58,020
+learning for machine learning.
+
+190
+00:07:58,020 --> 00:08:01,095
+So I want to break that
+down for one second.
+
+191
+00:08:01,095 --> 00:08:02,970
+When you're trying to
+derive the labels, what
+
+192
+00:08:02,970 --> 00:08:06,390
+you want to know
+is not, at time T,
+
+193
+00:08:06,390 --> 00:08:09,120
+what's going to happen at
+time T plus W and onwards--
+
+194
+00:08:09,120 --> 00:08:11,010
+that's the original
+machine learning task
+
+195
+00:08:11,010 --> 00:08:12,750
+that we set out to solve--
+
+196
+00:08:12,750 --> 00:08:14,920
+but rather, given
+everything you know
+
+197
+00:08:14,920 --> 00:08:18,060
+about the patient,
+including the future data,
+
+198
+00:08:18,060 --> 00:08:21,090
+is this patient newly diagnosed
+with diabetes in that window
+
+199
+00:08:21,090 --> 00:08:24,700
+that I show in black there,
+between T plus W and onward.
+
+200
+00:08:24,700 --> 00:08:26,250
+OK?
+
+201
+00:08:26,250 --> 00:08:28,943
+So for example, this
+machine learning problem,
+
+202
+00:08:28,943 --> 00:08:30,360
+this new machine
+learning problem,
+
+203
+00:08:30,360 --> 00:08:33,450
+could take, as input, lab
+test results, and medications,
+
+204
+00:08:33,450 --> 00:08:35,190
+and a whole bunch of other data.
+
+205
+00:08:35,190 --> 00:08:40,230
+And you then use the few
+examples you labeled in step 1
+
+206
+00:08:40,230 --> 00:08:42,870
+to try to predict, is
+this patient currently
+
+207
+00:08:42,870 --> 00:08:44,347
+diabetic or not.
+
+208
+00:08:44,347 --> 00:08:45,930
+You then use that
+model to extrapolate
+
+209
+00:08:45,930 --> 00:08:46,930
+to the whole population.
+
+210
+00:08:46,930 --> 00:08:48,990
+And now you have
+your outcome label.
+
+211
+00:08:48,990 --> 00:08:50,550
+It might be a little
+bit imperfect,
+
+212
+00:08:50,550 --> 00:08:52,383
+but hopefully it's much
+better than what you
+
+213
+00:08:52,383 --> 00:08:53,700
+could have gotten with a rule.
+
+214
+00:08:53,700 --> 00:08:55,710
+And then, now
+using those outcome
+
+215
+00:08:55,710 --> 00:08:59,877
+labels, you solve your original
+machine learning problem.
+
+216
+00:08:59,877 --> 00:09:00,460
+Is that clear?
+
+217
+00:09:00,460 --> 00:09:02,960
+Any questions?
+
+218
+00:09:02,960 --> 00:09:03,930
+AUDIENCE: I have one.
+
+219
+00:09:03,930 --> 00:09:04,555
+PROFESSOR: Yep.
+
+220
+00:09:04,555 --> 00:09:06,400
+AUDIENCE: How do you
+evaluate yourself then,
+
+221
+00:09:06,400 --> 00:09:07,817
+if you have these
+labels that were
+
+222
+00:09:07,817 --> 00:09:10,255
+produced with machine learning,
+which are probabilistic?
+
+223
+00:09:10,255 --> 00:09:12,880
+PROFESSOR: So that's where this
+first step is really important.
+
+224
+00:09:12,880 --> 00:09:16,000
+You've got to get
+ground truth somehow.
+
+225
+00:09:16,000 --> 00:09:19,210
+And of course once you
+get that ground truth,
+
+226
+00:09:19,210 --> 00:09:21,798
+you create a train-and-validate
+set of that ground truth.
+
+227
+00:09:21,798 --> 00:09:24,340
+You run your machine learning
+algorithm with the trained one.
+
+228
+00:09:24,340 --> 00:09:25,882
+You'd look at its
+performance metrics
+
+229
+00:09:25,882 --> 00:09:29,260
+on that validate set for the
+label prediction problem.
+
+230
+00:09:29,260 --> 00:09:31,043
+And that's how you
+get confidence in it.
+
+231
+00:09:31,043 --> 00:09:32,960
+But let's try to break
+this down a little bit.
+
+232
+00:09:32,960 --> 00:09:36,402
+So first of all, what does this
+chart review step look like?
+
+233
+00:09:36,402 --> 00:09:38,110
+Well, if it's an
+electronic health record
+
+234
+00:09:38,110 --> 00:09:41,335
+system, what you often do is you
+will pull up Epic, or Cerner,
+
+235
+00:09:41,335 --> 00:09:43,727
+or whatever the
+commercial EHR system is.
+
+236
+00:09:43,727 --> 00:09:46,060
+And you will actually start
+looking at the patient data.
+
+237
+00:09:46,060 --> 00:09:48,058
+You'll read notes written
+by previous doctors
+
+238
+00:09:48,058 --> 00:09:48,850
+about this patient.
+
+239
+00:09:48,850 --> 00:09:50,642
+And you'll look at
+their blood test results
+
+240
+00:09:50,642 --> 00:09:52,503
+across time, medications
+that they're on.
+
+241
+00:09:52,503 --> 00:09:53,920
+And from that you
+can usually tell
+
+242
+00:09:53,920 --> 00:09:56,535
+pretty coherent story what's
+going on with your patient.
+
+243
+00:09:56,535 --> 00:09:58,660
+Of course even better-- or
+the best way to get data
+
+244
+00:09:58,660 --> 00:10:00,210
+is to do a prospective study.
+
+245
+00:10:00,210 --> 00:10:03,520
+So you actually have a
+research assistant standing
+
+246
+00:10:03,520 --> 00:10:06,010
+in the room when a patient
+walks into a provider.
+
+247
+00:10:06,010 --> 00:10:09,100
+And they talk to the
+patient, and they take down
+
+248
+00:10:09,100 --> 00:10:12,910
+really very clear notes
+what this patient has,
+
+249
+00:10:12,910 --> 00:10:13,930
+what they don't have.
+
+250
+00:10:13,930 --> 00:10:16,138
+But that's usually too
+expensive to do prospectively.
+
+251
+00:10:16,138 --> 00:10:18,925
+So usually what we do is
+do this retrospectively.
+
+252
+00:10:18,925 --> 00:10:21,300
+Now, if you're working with
+health insurance claims data,
+
+253
+00:10:21,300 --> 00:10:23,710
+you usually don't have the
+luxury of looking at notes.
+
+254
+00:10:23,710 --> 00:10:27,430
+And so what, in my group, we
+type typically do is we build,
+
+255
+00:10:27,430 --> 00:10:29,770
+actually, a visualization tool.
+
+256
+00:10:29,770 --> 00:10:31,690
+And by the way, I'm a
+machine learning person.
+
+257
+00:10:31,690 --> 00:10:34,060
+I don't know anything
+about visualization.
+
+258
+00:10:34,060 --> 00:10:36,460
+Neither do I claim
+to be good at it.
+
+259
+00:10:36,460 --> 00:10:39,430
+But you can't do the machine
+learning work unless you really
+
+260
+00:10:39,430 --> 00:10:40,600
+understand your data.
+
+261
+00:10:40,600 --> 00:10:43,570
+So we had to build this tool
+in order to look at the data,
+
+262
+00:10:43,570 --> 00:10:46,240
+in order to try to do that
+first step of understanding,
+
+263
+00:10:46,240 --> 00:10:48,435
+did we even characterize
+diabetes correctly.
+
+264
+00:10:48,435 --> 00:10:49,810
+So I'm not going
+go deep into it.
+
+265
+00:10:49,810 --> 00:10:51,250
+By the way, you
+can download this.
+
+266
+00:10:51,250 --> 00:10:53,530
+It's an open source tool.
+
+267
+00:10:53,530 --> 00:10:56,910
+But ballpark what I'm showing
+you here is one patient's data.
+
+268
+00:10:56,910 --> 00:10:58,720
+I'm showing on
+this x-axis, time,
+
+269
+00:10:58,720 --> 00:11:01,450
+going from April to December.
+
+270
+00:11:01,450 --> 00:11:05,180
+And on the y-axis, I'm showing
+events as they occurred.
+
+271
+00:11:05,180 --> 00:11:07,690
+So in orange are
+diagnosis codes that
+
+272
+00:11:07,690 --> 00:11:09,130
+were recorded for the patient.
+
+273
+00:11:09,130 --> 00:11:10,960
+In green are procedure codes.
+
+274
+00:11:10,960 --> 00:11:13,030
+In blue are laboratory tests.
+
+275
+00:11:13,030 --> 00:11:16,060
+And if you see, on a
+given line, multiple dots
+
+276
+00:11:16,060 --> 00:11:19,790
+along that same line, it
+means that same lab test
+
+277
+00:11:19,790 --> 00:11:21,138
+was performed multiple times.
+
+278
+00:11:21,138 --> 00:11:23,430
+And you could click on it to
+see what the results were.
+
+279
+00:11:23,430 --> 00:11:25,780
+And in this way, you could start
+to tell a coherent story what's
+
+280
+00:11:25,780 --> 00:11:26,905
+going on with your patient.
+
+281
+00:11:26,905 --> 00:11:28,480
+All right, so tools
+like this is what
+
+282
+00:11:28,480 --> 00:11:29,897
+you're going to
+need to able to do
+
+283
+00:11:29,897 --> 00:11:32,410
+that first step from something
+like health insurance claims
+
+284
+00:11:32,410 --> 00:11:34,180
+data.
+
+285
+00:11:34,180 --> 00:11:37,910
+Now, traditionally,
+that first step,
+
+286
+00:11:37,910 --> 00:11:41,440
+which then leads you to
+label some data, and then,
+
+287
+00:11:41,440 --> 00:11:44,470
+from there, you go and
+come up with these rules,
+
+288
+00:11:44,470 --> 00:11:46,810
+or do a machine learning
+algorithm to get the label,
+
+289
+00:11:46,810 --> 00:11:48,850
+usually that's a
+paper in itself.
+
+290
+00:11:48,850 --> 00:11:51,392
+Of course, not of interest to
+the computer science community,
+
+291
+00:11:51,392 --> 00:11:53,860
+but of extreme interest to
+the health care community.
+
+292
+00:11:53,860 --> 00:11:56,830
+So usually there's a first
+paper, academic paper,
+
+293
+00:11:56,830 --> 00:12:00,653
+which evaluates this process
+for deriving the label,
+
+294
+00:12:00,653 --> 00:12:03,070
+and then there are much later
+papers which talk about what
+
+295
+00:12:03,070 --> 00:12:05,487
+you could do with that label,
+such as the machine learning
+
+296
+00:12:05,487 --> 00:12:07,790
+problem we originally
+set out to solve.
+
+297
+00:12:07,790 --> 00:12:10,540
+So let's look at an example
+of one of those rules.
+
+298
+00:12:10,540 --> 00:12:15,760
+Here is a rule, to derive
+from health insurance claims
+
+299
+00:12:15,760 --> 00:12:19,250
+data whether a patient
+has type 2 diabetes.
+
+300
+00:12:19,250 --> 00:12:25,910
+Now, this isn't quite the same
+one that we used in that paper,
+
+301
+00:12:25,910 --> 00:12:27,658
+but it gets the idea across.
+
+302
+00:12:27,658 --> 00:12:29,950
+First you look to see, did
+the patient have a diagnosis
+
+303
+00:12:29,950 --> 00:12:32,245
+code for type 1 diabetes.
+
+304
+00:12:34,780 --> 00:12:37,990
+If the answer is
+no, you continue.
+
+305
+00:12:37,990 --> 00:12:40,080
+If the answer is yes,
+you've sort of ruled out.
+
+306
+00:12:40,080 --> 00:12:43,290
+Because you say, OK, this
+patient's abnormal blood test
+
+307
+00:12:43,290 --> 00:12:45,520
+results are because they
+have type 1 diabetes, not
+
+308
+00:12:45,520 --> 00:12:47,260
+type 2 diabetes.
+
+309
+00:12:47,260 --> 00:12:50,110
+Type 1 diabetes
+usually is what you
+
+310
+00:12:50,110 --> 00:12:51,820
+can think of as
+juvenile diabetes,
+
+311
+00:12:51,820 --> 00:12:53,480
+is diagnosed much earlier.
+
+312
+00:12:53,480 --> 00:12:55,448
+And there's a different
+mechanism behind it.
+
+313
+00:12:55,448 --> 00:12:56,740
+Then you look at other things--
+
+314
+00:12:56,740 --> 00:12:58,900
+OK, is there a
+diagnosis code for type
+
+315
+00:12:58,900 --> 00:13:00,920
+2 diabetes somewhere
+in the patient's data?
+
+316
+00:13:00,920 --> 00:13:02,920
+If so, you go to the
+right, and you look to see,
+
+317
+00:13:02,920 --> 00:13:05,350
+is there a medication,
+an Rx, for type
+
+318
+00:13:05,350 --> 00:13:07,480
+1 diabetes in the data.
+
+319
+00:13:07,480 --> 00:13:10,620
+If the answer is no, you
+continue down this way.
+
+320
+00:13:10,620 --> 00:13:13,030
+If the answer is
+yes, you go this way.
+
+321
+00:13:13,030 --> 00:13:15,520
+A yes of a type 1
+diabetes medication
+
+322
+00:13:15,520 --> 00:13:17,440
+doesn't alone rule
+out the patient.
+
+323
+00:13:17,440 --> 00:13:19,030
+Because maybe the
+same medications
+
+324
+00:13:19,030 --> 00:13:20,770
+are used for type
+1 as for type 2.
+
+325
+00:13:20,770 --> 00:13:22,860
+So there's some other
+things you need to do there.
+
+326
+00:13:22,860 --> 00:13:25,360
+Right, you can see that this
+starts to really quickly become
+
+327
+00:13:25,360 --> 00:13:26,650
+complicated.
+
+328
+00:13:26,650 --> 00:13:29,830
+And these manual-based
+approaches
+
+329
+00:13:29,830 --> 00:13:33,362
+end up having pretty
+bad positive--
+
+330
+00:13:33,362 --> 00:13:35,320
+so they're designed
+usually to have pretty high
+
+331
+00:13:35,320 --> 00:13:36,550
+positive predictive value.
+
+332
+00:13:36,550 --> 00:13:38,490
+But they end up having
+pretty bad recall,
+
+333
+00:13:38,490 --> 00:13:40,740
+in that they don't end up
+finding all of the patients.
+
+334
+00:13:40,740 --> 00:13:42,740
+And that's really why the
+machine-learning-based
+
+335
+00:13:42,740 --> 00:13:44,380
+approaches end up
+being very important
+
+336
+00:13:44,380 --> 00:13:46,570
+for this type of problem.
+
+337
+00:13:46,570 --> 00:13:50,030
+Now, this is just one example
+of what I call a phenotype.
+
+338
+00:13:50,030 --> 00:13:51,762
+I call this a phenotype.
+
+339
+00:13:51,762 --> 00:13:53,590
+That's just what the
+literature calls it.
+
+340
+00:13:53,590 --> 00:13:55,900
+It's a phenotype
+for type 2 diabetes.
+
+341
+00:13:55,900 --> 00:13:57,815
+And the word, phenotype,
+in this context
+
+342
+00:13:57,815 --> 00:13:59,440
+is exactly the same
+thing as the label.
+
+343
+00:13:59,440 --> 00:14:00,005
+Yep.
+
+344
+00:14:00,005 --> 00:14:02,280
+AUDIENCE: What is abnormal mean?
+
+345
+00:14:02,280 --> 00:14:08,340
+PROFESSOR: For example, if the
+HA1C result is 6.5 or higher,
+
+346
+00:14:08,340 --> 00:14:10,230
+you might say the
+patient has diabetes.
+
+347
+00:14:10,230 --> 00:14:13,840
+AUDIENCE: OK, so this is a
+lab result, not a medical--
+
+348
+00:14:13,840 --> 00:14:15,263
+PROFESSOR: Correct,
+yeah, thanks.
+
+349
+00:14:15,263 --> 00:14:15,930
+Other questions.
+
+350
+00:14:15,930 --> 00:14:17,370
+AUDIENCE: What's the
+phenotype, which part exactly
+
+351
+00:14:17,370 --> 00:14:18,750
+is the phenotype,
+like, the whole thing?
+
+352
+00:14:18,750 --> 00:14:19,440
+PROFESSOR: The
+whole thing, yeah.
+
+353
+00:14:19,440 --> 00:14:21,300
+So the construction,
+where you say--
+
+354
+00:14:21,300 --> 00:14:23,610
+you follow this
+decision tree, and you
+
+355
+00:14:23,610 --> 00:14:26,460
+get to a conclusion, which
+is case, which means,
+
+356
+00:14:26,460 --> 00:14:28,080
+yes they're type 2 diabetic.
+
+357
+00:14:28,080 --> 00:14:30,930
+And if ever you don't reach this
+point, then the answer is no,
+
+358
+00:14:30,930 --> 00:14:33,060
+they're not type 2 diabetic.
+
+359
+00:14:33,060 --> 00:14:35,070
+That's what I mean
+by-- so that labeling
+
+360
+00:14:35,070 --> 00:14:37,540
+is what we're calling the
+phenotype of type 2 diabetes.
+
+361
+00:14:37,540 --> 00:14:39,645
+Now later in the
+semester, people
+
+362
+00:14:39,645 --> 00:14:43,740
+will use the word, phenotype,
+to mean something else.
+
+363
+00:14:43,740 --> 00:14:44,770
+It's an overloaded term.
+
+364
+00:14:44,770 --> 00:14:47,370
+But this is what it's called
+in this context as well.
+
+365
+00:14:47,370 --> 00:14:50,850
+Now here's an example
+of a website--
+
+366
+00:14:50,850 --> 00:14:53,130
+it's from the PheKB project--
+
+367
+00:14:53,130 --> 00:14:56,670
+where you will
+find tens to close
+
+368
+00:14:56,670 --> 00:14:59,040
+to 100 of these
+phenotypes that have
+
+369
+00:14:59,040 --> 00:15:02,310
+been arduously created
+for a whole range
+
+370
+00:15:02,310 --> 00:15:03,500
+of different conditions.
+
+371
+00:15:03,500 --> 00:15:05,655
+OK, so if you go
+to this website,
+
+372
+00:15:05,655 --> 00:15:07,530
+and you click on any
+one of these conditions,
+
+373
+00:15:07,530 --> 00:15:10,380
+like appendicitis,
+autism, cataracts,
+
+374
+00:15:10,380 --> 00:15:13,800
+you'll see a different diagram
+of this sort I just showed you.
+
+375
+00:15:13,800 --> 00:15:14,920
+So this is a real thing.
+
+376
+00:15:14,920 --> 00:15:17,045
+This is something that the
+medical community really
+
+377
+00:15:17,045 --> 00:15:20,220
+needs to do in order to try
+to derive the label that we
+
+378
+00:15:20,220 --> 00:15:24,342
+can then use in our
+machine learning task.
+
+379
+00:15:24,342 --> 00:15:27,910
+AUDIENCE: I'm just curious,
+is the lab value ground truth?
+
+380
+00:15:27,910 --> 00:15:30,890
+Like if somebody has
+diabetes, then they must have
+
+381
+00:15:30,890 --> 00:15:32,570
+[INAUDIBLE].
+
+382
+00:15:32,570 --> 00:15:35,288
+It means they have been
+diagnosed, and they must have--
+
+383
+00:15:35,288 --> 00:15:36,850
+PROFESSOR: Well,
+so, for example,
+
+384
+00:15:36,850 --> 00:15:38,670
+you might have an
+abnormal glucose
+
+385
+00:15:38,670 --> 00:15:40,600
+value for a variety of reasons.
+
+386
+00:15:40,600 --> 00:15:43,530
+One reason is because
+you might have
+
+387
+00:15:43,530 --> 00:15:45,270
+what's called gestational
+diabetes, which
+
+388
+00:15:45,270 --> 00:15:48,360
+is diabetes that's
+induced due to pregnancy.
+
+389
+00:15:48,360 --> 00:15:49,890
+But those patients
+typically-- well,
+
+390
+00:15:49,890 --> 00:15:51,307
+although it's a
+predictive factor,
+
+391
+00:15:51,307 --> 00:15:54,190
+they don't always have
+long-term type 2 diabetes.
+
+392
+00:15:54,190 --> 00:15:57,780
+So even the
+laboratory test alone
+
+393
+00:15:57,780 --> 00:15:59,056
+doesn't tell the whole story.
+
+394
+00:15:59,056 --> 00:16:01,386
+AUDIENCE: You could be
+diagnosed without having
+
+395
+00:16:01,386 --> 00:16:03,720
+abnormal diabetic?
+
+396
+00:16:03,720 --> 00:16:06,510
+PROFESSOR: That's
+much less common here.
+
+397
+00:16:06,510 --> 00:16:08,010
+The story will
+change in the future,
+
+398
+00:16:08,010 --> 00:16:10,320
+because there will be a
+whole range of new diagnosis
+
+399
+00:16:10,320 --> 00:16:15,750
+techniques that might use
+new modalities, like gene
+
+400
+00:16:15,750 --> 00:16:18,220
+expression, for example.
+
+401
+00:16:18,220 --> 00:16:21,020
+But typically, today, the
+answer is yes to that.
+
+402
+00:16:21,020 --> 00:16:21,520
+Yep.
+
+403
+00:16:21,520 --> 00:16:22,770
+AUDIENCE: So if these
+are made by doctors,
+
+404
+00:16:22,770 --> 00:16:23,925
+does that mean, for
+every single disease,
+
+405
+00:16:23,925 --> 00:16:25,405
+there's one
+definitive phenotype?
+
+406
+00:16:25,405 --> 00:16:26,780
+PROFESSOR: These
+are usually made
+
+407
+00:16:26,780 --> 00:16:31,730
+by health outcomes
+researchers, which usually
+
+408
+00:16:31,730 --> 00:16:33,840
+have clinicians on their team.
+
+409
+00:16:33,840 --> 00:16:36,260
+But the type of people who
+often work on these often
+
+410
+00:16:36,260 --> 00:16:40,650
+come from the field of
+epidemiology, for example.
+
+411
+00:16:40,650 --> 00:16:42,150
+And so what was
+your question again?
+
+412
+00:16:42,150 --> 00:16:43,692
+AUDIENCE: Is there
+just one phenotype
+
+413
+00:16:43,692 --> 00:16:44,810
+for every single disease?
+
+414
+00:16:44,810 --> 00:16:46,185
+PROFESSOR: Is
+there one phenotype
+
+415
+00:16:46,185 --> 00:16:47,690
+for every different disease?
+
+416
+00:16:47,690 --> 00:16:49,970
+In the ideal world, you'd
+have at least one phenotype
+
+417
+00:16:49,970 --> 00:16:52,550
+for every single disease
+that could possibly exist.
+
+418
+00:16:52,550 --> 00:16:53,630
+Now, of course, you
+might be interested
+
+419
+00:16:53,630 --> 00:16:54,560
+in different aspects.
+
+420
+00:16:54,560 --> 00:16:56,352
+Like you might be
+interested in not knowing
+
+421
+00:16:56,352 --> 00:16:57,920
+just does the
+patient have autism,
+
+422
+00:16:57,920 --> 00:17:00,250
+but where they are on
+their autism spectrum.
+
+423
+00:17:00,250 --> 00:17:02,360
+You might not be
+interested in knowing just,
+
+424
+00:17:02,360 --> 00:17:03,813
+do they have it
+now, but you also
+
+425
+00:17:03,813 --> 00:17:05,480
+might want to know
+when did they get it.
+
+426
+00:17:05,480 --> 00:17:09,140
+So there's a lot of subtleties
+that could go into this.
+
+427
+00:17:09,140 --> 00:17:11,750
+But building these
+up is really slow.
+
+428
+00:17:11,750 --> 00:17:13,833
+And validating them to
+make sure that they're
+
+429
+00:17:13,833 --> 00:17:15,250
+going to work
+across multiple data
+
+430
+00:17:15,250 --> 00:17:18,750
+sets is really challenging, and
+usually is a negative result.
+
+431
+00:17:18,750 --> 00:17:20,869
+And so it's been a
+very slow process
+
+432
+00:17:20,869 --> 00:17:23,060
+to do this manually,
+which has led me
+
+433
+00:17:23,060 --> 00:17:25,190
+and many others to start
+thinking about the machine
+
+434
+00:17:25,190 --> 00:17:28,430
+learning approaches for
+how to do it automatically.
+
+435
+00:17:28,430 --> 00:17:30,180
+AUDIENCE: Just as a
+follow-up, is there
+
+436
+00:17:30,180 --> 00:17:33,120
+any case where there's,
+like, five autism phenotypes,
+
+437
+00:17:33,120 --> 00:17:35,135
+for example, or
+multiple competing ones?
+
+438
+00:17:35,135 --> 00:17:35,760
+PROFESSOR: Yes.
+
+439
+00:17:35,760 --> 00:17:39,090
+So there are often many
+different such rule-based
+
+440
+00:17:39,090 --> 00:17:41,760
+systems that give you
+conflicting results.
+
+441
+00:17:41,760 --> 00:17:44,047
+Yes, that happens all the time.
+
+442
+00:17:44,047 --> 00:17:45,630
+AUDIENCE: Can these
+rule-based systems
+
+443
+00:17:45,630 --> 00:17:48,932
+provide an estimate of when
+their condition was onset?
+
+444
+00:17:48,932 --> 00:17:50,390
+PROFESSOR: Right,
+so that's getting
+
+445
+00:17:50,390 --> 00:17:52,973
+at one of the subtleties I just
+mentioned-- can these tell you
+
+446
+00:17:52,973 --> 00:17:55,420
+when the onset happened?
+
+447
+00:17:55,420 --> 00:17:57,170
+They're not typically
+designed to do that,
+
+448
+00:17:57,170 --> 00:17:59,660
+but one can come up
+with one to do it.
+
+449
+00:17:59,660 --> 00:18:01,260
+And so one way to
+try to do that is
+
+450
+00:18:01,260 --> 00:18:06,340
+you change those rules to have
+a time period associate to it.
+
+451
+00:18:06,340 --> 00:18:08,710
+And then you can imagine
+applying those rules
+
+452
+00:18:08,710 --> 00:18:10,450
+in a sliding window
+to the patient data
+
+453
+00:18:10,450 --> 00:18:13,295
+to see, when is the first
+time that it triggers.
+
+454
+00:18:13,295 --> 00:18:14,920
+And that would be
+one way to try to get
+
+455
+00:18:14,920 --> 00:18:16,740
+a sense of when onset was.
+
+456
+00:18:16,740 --> 00:18:19,290
+But there's a lot of
+subtleties to that, too.
+
+457
+00:18:19,290 --> 00:18:21,900
+So I'm going to move on now.
+
+458
+00:18:21,900 --> 00:18:24,400
+I just want to give it some
+sense of what that deriving
+
+459
+00:18:24,400 --> 00:18:27,010
+the labels ends up looking like.
+
+460
+00:18:27,010 --> 00:18:31,090
+Let's now turn to evaluation.
+
+461
+00:18:31,090 --> 00:18:33,910
+So a very commonly used
+approach in this field
+
+462
+00:18:33,910 --> 00:18:37,910
+is to compute what's known as
+the Receiver-Operator Curve,
+
+463
+00:18:37,910 --> 00:18:39,873
+or ROC curve.
+
+464
+00:18:39,873 --> 00:18:41,540
+And what this looks
+at is the following.
+
+465
+00:18:41,540 --> 00:18:43,300
+First of all, this
+is well-defined
+
+466
+00:18:43,300 --> 00:18:46,900
+for a binary
+classification problem.
+
+467
+00:18:46,900 --> 00:18:48,670
+For a binary
+classification problem
+
+468
+00:18:48,670 --> 00:18:51,430
+when you're using a
+model that outputs,
+
+469
+00:18:51,430 --> 00:18:54,310
+let's say, a probability
+or some continuous value,
+
+470
+00:18:54,310 --> 00:18:56,932
+then you could use that
+continuous valid prediction.
+
+471
+00:18:56,932 --> 00:18:58,390
+If you wanted to
+make a prediction,
+
+472
+00:18:58,390 --> 00:18:59,450
+you usually threshold it, right?
+
+473
+00:18:59,450 --> 00:19:01,992
+So you say, if it's greater than
+0.5, it's a prediction of 1.
+
+474
+00:19:01,992 --> 00:19:04,510
+If it's less than 0.5,
+prediction of zero.
+
+475
+00:19:04,510 --> 00:19:07,645
+But here we might be interested
+in not just what minimizes,
+
+476
+00:19:07,645 --> 00:19:09,970
+let's say, 0-1 loss,
+but you might also
+
+477
+00:19:09,970 --> 00:19:12,910
+be interested in
+trading off, let's say,
+
+478
+00:19:12,910 --> 00:19:15,130
+false positives for
+false negatives.
+
+479
+00:19:15,130 --> 00:19:17,580
+And so you might choose
+different thresholds.
+
+480
+00:19:17,580 --> 00:19:19,810
+And you might want
+to quantify how
+
+481
+00:19:19,810 --> 00:19:21,730
+do those trade-offs look
+for different choices
+
+482
+00:19:21,730 --> 00:19:24,740
+of those thresholds of this
+continuous value prediction.
+
+483
+00:19:24,740 --> 00:19:26,620
+And that's what the ROC
+curve will show you.
+
+484
+00:19:26,620 --> 00:19:29,260
+So as you move along the
+threshold, you can compute,
+
+485
+00:19:29,260 --> 00:19:31,750
+for every single threshold,
+what is the true positive rate,
+
+486
+00:19:31,750 --> 00:19:33,260
+and what is the
+false positive rate.
+
+487
+00:19:33,260 --> 00:19:35,050
+And that gives you a number.
+
+488
+00:19:35,050 --> 00:19:36,550
+And you try all
+possible thresholds,
+
+489
+00:19:36,550 --> 00:19:38,470
+that gives you a curve.
+
+490
+00:19:38,470 --> 00:19:42,190
+And then you can compare curves
+from different machine learning
+
+491
+00:19:42,190 --> 00:19:43,250
+algorithms.
+
+492
+00:19:43,250 --> 00:19:44,890
+For example, here,
+I'm showing you,
+
+493
+00:19:44,890 --> 00:19:48,610
+in the green line, the
+predictive model obtained
+
+494
+00:19:48,610 --> 00:19:51,730
+by using what we're calling the
+traditional risk factors, so
+
+495
+00:19:51,730 --> 00:19:54,940
+something like eight
+or 10 different risk
+
+496
+00:19:54,940 --> 00:19:57,880
+factors for type 2 diabetes
+that are very commonly used
+
+497
+00:19:57,880 --> 00:19:59,050
+in the literature.
+
+498
+00:19:59,050 --> 00:20:00,850
+Versus in blue, it's
+showing you what
+
+499
+00:20:00,850 --> 00:20:04,630
+you'd get if you just used
+a naive L1-regularized
+
+500
+00:20:04,630 --> 00:20:07,430
+logistic regression model
+with no domain knowledge,
+
+501
+00:20:07,430 --> 00:20:10,660
+just sort of throw in
+the bag of features.
+
+502
+00:20:10,660 --> 00:20:12,010
+And you want to be up there.
+
+503
+00:20:12,010 --> 00:20:15,530
+You want to be in
+that top left corner.
+
+504
+00:20:15,530 --> 00:20:16,640
+That's the goal here.
+
+505
+00:20:16,640 --> 00:20:18,280
+So you would like
+that blue curve
+
+506
+00:20:18,280 --> 00:20:22,360
+to be up there, and then
+all the way to the right.
+
+507
+00:20:22,360 --> 00:20:27,940
+Now, one way to try to
+quantify in a single number
+
+508
+00:20:27,940 --> 00:20:31,600
+how useful any one
+ROC curve is is
+
+509
+00:20:31,600 --> 00:20:34,960
+by looking at what's called
+the area under the ROC curve.
+
+510
+00:20:34,960 --> 00:20:37,870
+And mathematically, this is
+exactly what you'd expect.
+
+511
+00:20:37,870 --> 00:20:42,340
+This area is the area
+under the ROC curve.
+
+512
+00:20:42,340 --> 00:20:44,170
+So you could just
+integrate the curve,
+
+513
+00:20:44,170 --> 00:20:46,383
+and you get that number out.
+
+514
+00:20:46,383 --> 00:20:47,800
+Now, remember, I
+told you you want
+
+515
+00:20:47,800 --> 00:20:50,680
+to be in the upper
+left quadrant.
+
+516
+00:20:50,680 --> 00:20:52,540
+And so the goal
+was to get an area
+
+517
+00:20:52,540 --> 00:20:56,110
+under the ROC curve of a 1.
+
+518
+00:20:56,110 --> 00:21:00,600
+Now, what would a random
+prediction give you?
+
+519
+00:21:00,600 --> 00:21:01,430
+Any idea?
+
+520
+00:21:01,430 --> 00:21:06,310
+So if you're to just
+flip a coin and guess--
+
+521
+00:21:06,310 --> 00:21:07,060
+what do you think?
+
+522
+00:21:07,060 --> 00:21:07,660
+AUDIENCE: 0.5.
+
+523
+00:21:07,660 --> 00:21:09,940
+PROFESSOR: 0.5?
+
+524
+00:21:09,940 --> 00:21:12,340
+AUDIENCE: [INAUDIBLE]
+
+525
+00:21:12,340 --> 00:21:15,043
+PROFESSOR: Well, so I was a
+little bit misleading when
+
+526
+00:21:15,043 --> 00:21:16,210
+I said you just flip a coin.
+
+527
+00:21:16,210 --> 00:21:21,903
+You got to flip a coin with
+sort of different noise rates.
+
+528
+00:21:21,903 --> 00:21:23,320
+And each one of
+those will get you
+
+529
+00:21:23,320 --> 00:21:25,970
+sort of a different
+place along this curve.
+
+530
+00:21:25,970 --> 00:21:28,120
+And if you look at
+the curve that you
+
+531
+00:21:28,120 --> 00:21:30,490
+get from these
+random guesses, it's
+
+532
+00:21:30,490 --> 00:21:32,740
+going to be the straight
+line from 0 to 1.
+
+533
+00:21:32,740 --> 00:21:37,040
+And as you said, that will
+then have an AUC of 0.5.
+
+534
+00:21:37,040 --> 00:21:38,800
+So 0.5 is going to
+be random guessing.
+
+535
+00:21:38,800 --> 00:21:39,538
+1 is perfect.
+
+536
+00:21:39,538 --> 00:21:41,830
+And your algorithm is going
+to be somewhere in between.
+
+537
+00:21:44,860 --> 00:21:48,550
+Now, of relevance to the
+rest of today's lecture
+
+538
+00:21:48,550 --> 00:21:50,890
+is going to be an
+alternative definition--
+
+539
+00:21:50,890 --> 00:21:55,000
+alternative way of computing
+the area under the ROC curve.
+
+540
+00:21:55,000 --> 00:21:57,340
+So one way to compute it
+is literally as I said.
+
+541
+00:21:57,340 --> 00:21:59,860
+You create that curve,
+and you integrate
+
+542
+00:21:59,860 --> 00:22:01,960
+to get the area under it.
+
+543
+00:22:01,960 --> 00:22:03,700
+But one can show
+mathematically--
+
+544
+00:22:03,700 --> 00:22:04,900
+I'm not going to give
+you the derivation here,
+
+545
+00:22:04,900 --> 00:22:06,550
+but you can look
+it up on Wikipedia.
+
+546
+00:22:06,550 --> 00:22:09,550
+One can show mathematically
+that an equivalent
+
+547
+00:22:09,550 --> 00:22:12,670
+way of computing the
+area under the ROC curve
+
+548
+00:22:12,670 --> 00:22:15,610
+is to compute the probability
+that an algorithm will
+
+549
+00:22:15,610 --> 00:22:18,880
+rank a positive-labeled
+patient over a negative-labeled
+
+550
+00:22:18,880 --> 00:22:20,510
+patient.
+
+551
+00:22:20,510 --> 00:22:22,300
+So mathematically
+what I'm talking about
+
+552
+00:22:22,300 --> 00:22:23,760
+is the following thing.
+
+553
+00:22:23,760 --> 00:22:29,530
+You're going to sum over
+pairs of patients where--
+
+554
+00:22:29,530 --> 00:22:38,470
+I'm going to call x1 is a
+patient with label y1 equals 1.
+
+555
+00:22:38,470 --> 00:22:44,050
+And x2 is a patient
+with label y--
+
+556
+00:22:44,050 --> 00:22:45,520
+actually, I'll call it--
+
+557
+00:22:45,520 --> 00:22:48,790
+yeah, with label x2 equals 1.
+
+558
+00:22:48,790 --> 00:22:50,305
+So these are two
+different patients.
+
+559
+00:22:53,360 --> 00:22:57,320
+I think I'm going to rewrite
+it like this-- xi and xj,
+
+560
+00:22:57,320 --> 00:22:59,960
+just for generality's sake.
+
+561
+00:22:59,960 --> 00:23:04,520
+So we're going to sum this
+up over all choices of i
+
+562
+00:23:04,520 --> 00:23:10,580
+and j such that yi and
+yj have different labels.
+
+563
+00:23:10,580 --> 00:23:12,973
+So that should say yj equals 0.
+
+564
+00:23:12,973 --> 00:23:14,390
+And then you're
+going to look at--
+
+565
+00:23:14,390 --> 00:23:17,000
+what you want to happen,
+like suppose that you're
+
+566
+00:23:17,000 --> 00:23:18,290
+using a linear model here.
+
+567
+00:23:18,290 --> 00:23:22,742
+So your prediction is given
+to you by, let's say, w.xj.
+
+568
+00:23:30,020 --> 00:23:33,637
+What you want is that this
+should be smaller than w.xi.
+
+569
+00:23:37,850 --> 00:23:42,140
+So the j data point,
+remember, was the one
+
+570
+00:23:42,140 --> 00:23:44,990
+that got the 0-th and
+the i-th data point
+
+571
+00:23:44,990 --> 00:23:47,430
+is the one that got the 1 label.
+
+572
+00:23:47,430 --> 00:23:52,460
+So we want the score of the
+data point that should've been 1
+
+573
+00:23:52,460 --> 00:23:55,640
+to be higher than the score
+of the data point which
+
+574
+00:23:55,640 --> 00:23:57,290
+should've gotten the label 0.
+
+575
+00:23:57,290 --> 00:23:59,540
+And you just count up-- this
+is an indicator function.
+
+576
+00:23:59,540 --> 00:24:02,330
+You just count up how many of
+those were correctly ordered.
+
+577
+00:24:02,330 --> 00:24:05,900
+And then you're just going to
+normalize by the total number
+
+578
+00:24:05,900 --> 00:24:07,838
+of comparisons that you do.
+
+579
+00:24:07,838 --> 00:24:10,130
+And it turns out that that
+is exactly equal to the area
+
+580
+00:24:10,130 --> 00:24:11,383
+under the ROC curve.
+
+581
+00:24:11,383 --> 00:24:13,550
+And it really makes clear
+that this is a notion that
+
+582
+00:24:13,550 --> 00:24:15,320
+really cares about ranking.
+
+583
+00:24:15,320 --> 00:24:20,630
+Are you getting the ranking
+of patients correct?
+
+584
+00:24:20,630 --> 00:24:22,880
+Are you ranking
+the ones who should
+
+585
+00:24:22,880 --> 00:24:25,850
+have been given 1 higher
+than the ones that
+
+586
+00:24:25,850 --> 00:24:28,490
+should have gotten the label 0.
+
+587
+00:24:28,490 --> 00:24:31,520
+And importantly,
+this whole measure
+
+588
+00:24:31,520 --> 00:24:35,240
+is actually invariant
+to the label imbalance.
+
+589
+00:24:35,240 --> 00:24:38,300
+So you might have a very
+imbalanced data set.
+
+590
+00:24:38,300 --> 00:24:41,480
+But if you were to
+re-sample with now making
+
+591
+00:24:41,480 --> 00:24:44,720
+it a balanced data set, your
+AUC of your predictive model
+
+592
+00:24:44,720 --> 00:24:46,350
+wouldn't change.
+
+593
+00:24:46,350 --> 00:24:48,500
+And that's a nice
+property to have
+
+594
+00:24:48,500 --> 00:24:52,760
+when it comes to evaluating
+settings where you might have
+
+595
+00:24:52,760 --> 00:24:56,090
+artificially created
+a balanced data set
+
+596
+00:24:56,090 --> 00:24:57,590
+for computational concerns.
+
+597
+00:24:57,590 --> 00:25:00,007
+Even though the true setting
+is imbalanced, there at least
+
+598
+00:25:00,007 --> 00:25:01,715
+you know that the
+numbers are going to be
+
+599
+00:25:01,715 --> 00:25:02,912
+the same in both settings.
+
+600
+00:25:02,912 --> 00:25:05,120
+On the other hand, it also
+has lots of disadvantages.
+
+601
+00:25:05,120 --> 00:25:07,310
+Because often you don't
+care about the performance
+
+602
+00:25:07,310 --> 00:25:09,350
+of the whole entire curve.
+
+603
+00:25:09,350 --> 00:25:12,780
+Often you care about particular
+parts along the curve.
+
+604
+00:25:12,780 --> 00:25:16,130
+So for example, in
+last week's lecture,
+
+605
+00:25:16,130 --> 00:25:19,358
+I argued that really
+what we often care about
+
+606
+00:25:19,358 --> 00:25:20,900
+is just the positive
+predictive value
+
+607
+00:25:20,900 --> 00:25:22,780
+for a particular threshold.
+
+608
+00:25:22,780 --> 00:25:25,430
+And we want that to be as high
+as possible for as few people
+
+609
+00:25:25,430 --> 00:25:26,020
+as possible.
+
+610
+00:25:26,020 --> 00:25:28,315
+Like, find the 100
+most risky people,
+
+611
+00:25:28,315 --> 00:25:29,690
+and look at what
+fraction of them
+
+612
+00:25:29,690 --> 00:25:31,782
+actually developed
+type 2 diabetes.
+
+613
+00:25:31,782 --> 00:25:33,740
+And that setting, what
+you're really looking at
+
+614
+00:25:33,740 --> 00:25:35,580
+is this part of the curve.
+
+615
+00:25:35,580 --> 00:25:38,960
+And so it turns out
+there are generalizations
+
+616
+00:25:38,960 --> 00:25:42,510
+of area under the curve that
+focus on parts of the curve.
+
+617
+00:25:42,510 --> 00:25:44,930
+And that goes by the
+name of partial AUC.
+
+618
+00:25:44,930 --> 00:25:47,330
+For example, if you just
+integrated from 0 to,
+
+619
+00:25:47,330 --> 00:25:50,678
+let's say, 0.1 of
+the curve, then
+
+620
+00:25:50,678 --> 00:25:53,220
+you could still get a number to
+compare two different curves,
+
+621
+00:25:53,220 --> 00:25:55,220
+but it's focusing on the area
+of that curve that's actually
+
+622
+00:25:55,220 --> 00:25:57,070
+relevant for your
+predictive purposes,
+
+623
+00:25:57,070 --> 00:26:00,510
+for your task at hand.
+
+624
+00:26:00,510 --> 00:26:04,340
+So that's all I want to
+say about receiver-operator
+
+625
+00:26:04,340 --> 00:26:05,330
+characteristic curves.
+
+626
+00:26:05,330 --> 00:26:07,900
+Any questions?
+
+627
+00:26:07,900 --> 00:26:08,400
+Yep.
+
+628
+00:26:08,400 --> 00:26:11,950
+AUDIENCE: Could you talk more
+about what the drawbacks were
+
+629
+00:26:11,950 --> 00:26:13,277
+of using this.
+
+630
+00:26:13,277 --> 00:26:15,610
+Does the class imbalance--
+is the class imbalance, then,
+
+631
+00:26:15,610 --> 00:26:17,290
+always a positive effect?
+
+632
+00:26:17,290 --> 00:26:23,542
+PROFESSOR: So the thing is, when
+you want to use this approach,
+
+633
+00:26:23,542 --> 00:26:25,500
+depending on how you're
+using the [INAUDIBLE],,
+
+634
+00:26:25,500 --> 00:26:27,030
+you might not be
+able to tolerate
+
+635
+00:26:27,030 --> 00:26:30,152
+a 0.8 false positive rate.
+
+636
+00:26:30,152 --> 00:26:32,610
+So in some sense, what's going
+on in this part of the curve
+
+637
+00:26:32,610 --> 00:26:36,960
+might be completely
+irrelevant for your task.
+
+638
+00:26:36,960 --> 00:26:40,202
+And so one of the algorithms--
+so one of these curves--
+
+639
+00:26:40,202 --> 00:26:41,910
+might look like it's
+doing really, really
+
+640
+00:26:41,910 --> 00:26:43,860
+well over here, and
+pretty poorly over here.
+
+641
+00:26:43,860 --> 00:26:48,210
+But if you're looking at the
+full area under the ROC curve,
+
+642
+00:26:48,210 --> 00:26:49,480
+you won't notice that.
+
+643
+00:26:49,480 --> 00:26:51,340
+And so that's one
+of the big problems.
+
+644
+00:26:51,340 --> 00:26:51,890
+Yeah.
+
+645
+00:26:51,890 --> 00:26:55,725
+AUDIENCE: And when would you
+use this versus precision
+
+646
+00:26:55,725 --> 00:26:56,280
+recall or--
+
+647
+00:26:56,280 --> 00:26:58,030
+PROFESSOR: Yeah, so a
+lot of the community
+
+648
+00:26:58,030 --> 00:27:00,510
+is interested in
+precision recall curves.
+
+649
+00:27:00,510 --> 00:27:02,463
+And precision recall
+curves, as opposed
+
+650
+00:27:02,463 --> 00:27:04,380
+to receiver-operator
+curves, have the property
+
+651
+00:27:04,380 --> 00:27:08,558
+that they are not invariant
+to class imbalance, which
+
+652
+00:27:08,558 --> 00:27:10,350
+in many settings is of
+interest, because it
+
+653
+00:27:10,350 --> 00:27:12,548
+will allow you to capture
+these types of quantities.
+
+654
+00:27:12,548 --> 00:27:14,590
+I'm not going to go into
+depth about your reasons
+
+655
+00:27:14,590 --> 00:27:15,465
+for one or the other.
+
+656
+00:27:15,465 --> 00:27:17,577
+But that's something that
+you could read up about,
+
+657
+00:27:17,577 --> 00:27:19,410
+and I encourage you to
+post to Piazza about,
+
+658
+00:27:19,410 --> 00:27:20,785
+and we have
+discussion on Piazza.
+
+659
+00:27:24,630 --> 00:27:30,080
+So the last evaluation quantity
+that I want to talk about
+
+660
+00:27:30,080 --> 00:27:32,450
+is known as calibration.
+
+661
+00:27:32,450 --> 00:27:34,238
+And calibration, as
+I've defined it here,
+
+662
+00:27:34,238 --> 00:27:36,155
+has to do with binary
+classification problems.
+
+663
+00:27:38,690 --> 00:27:41,258
+Now, before you dig
+into this figure, which
+
+664
+00:27:41,258 --> 00:27:42,800
+I'll explain in a
+moment, let me just
+
+665
+00:27:42,800 --> 00:27:47,140
+give you the gist of what
+I mean by calibration.
+
+666
+00:27:47,140 --> 00:27:50,410
+Suppose that your model
+outputs a probability.
+
+667
+00:27:50,410 --> 00:27:51,780
+So you do logistic regression.
+
+668
+00:27:51,780 --> 00:27:53,830
+You get a probability out.
+
+669
+00:27:53,830 --> 00:27:59,410
+And your model says,
+for these 10 patients,
+
+670
+00:27:59,410 --> 00:28:08,890
+that their likelihood of dying
+in the next 48 hours is 0.7.
+
+671
+00:28:08,890 --> 00:28:11,770
+Suppose that's what
+your model output.
+
+672
+00:28:11,770 --> 00:28:14,360
+If you were on the receiving
+end of that result,
+
+673
+00:28:14,360 --> 00:28:17,320
+so you heard that,
+0.7, what should you
+
+674
+00:28:17,320 --> 00:28:20,938
+expect about those 10 people?
+
+675
+00:28:20,938 --> 00:28:22,480
+What fraction of
+them should actually
+
+676
+00:28:22,480 --> 00:28:25,900
+die in the next 48 hours?
+
+677
+00:28:25,900 --> 00:28:27,300
+Everyone could scream out loud.
+
+678
+00:28:27,300 --> 00:28:29,500
+[INTERPOSING VOICES]
+
+679
+00:28:29,500 --> 00:28:31,720
+PROFESSOR: So seven of them.
+
+680
+00:28:31,720 --> 00:28:35,860
+Seven of the 10 you would expect
+to die in the next 48 hours
+
+681
+00:28:35,860 --> 00:28:39,435
+if the probability for all of
+them that was output was 0.7.
+
+682
+00:28:39,435 --> 00:28:41,343
+All right, that's what
+I mean by calibration.
+
+683
+00:28:41,343 --> 00:28:42,760
+So if, on the other
+hand, what you
+
+684
+00:28:42,760 --> 00:28:45,660
+found was that only
+one of them died,
+
+685
+00:28:45,660 --> 00:28:49,730
+then it would be a very weird
+number that you're outputting.
+
+686
+00:28:49,730 --> 00:28:52,307
+And so the reason why this
+notion of calibration,
+
+687
+00:28:52,307 --> 00:28:54,640
+which I'll define formally
+in a second, is so important,
+
+688
+00:28:54,640 --> 00:28:56,940
+is when you're out
+putting a probability,
+
+689
+00:28:56,940 --> 00:28:59,190
+and when you don't really
+know how that probability is
+
+690
+00:28:59,190 --> 00:29:00,640
+going to be used.
+
+691
+00:29:00,640 --> 00:29:04,180
+If you knew-- if you had
+some task loss in mind.
+
+692
+00:29:04,180 --> 00:29:06,130
+And you knew that
+all that mattered
+
+693
+00:29:06,130 --> 00:29:10,990
+was the actual prediction, 1
+or 0, then that would be fine.
+
+694
+00:29:10,990 --> 00:29:13,802
+But often predictions
+in machine learning
+
+695
+00:29:13,802 --> 00:29:15,260
+are used in a much
+more subtle way.
+
+696
+00:29:15,260 --> 00:29:18,010
+Like for example,
+often your doctor
+
+697
+00:29:18,010 --> 00:29:20,980
+might have more information
+than your computer has.
+
+698
+00:29:20,980 --> 00:29:24,160
+And so often they might
+want to take the result
+
+699
+00:29:24,160 --> 00:29:27,040
+that your computer
+predicts, and weigh
+
+700
+00:29:27,040 --> 00:29:28,930
+that against other evidence.
+
+701
+00:29:28,930 --> 00:29:30,728
+Or in some settings,
+it's not just
+
+702
+00:29:30,728 --> 00:29:32,020
+weighting about other evidence.
+
+703
+00:29:32,020 --> 00:29:34,300
+Maybe it's also about
+making a decision.
+
+704
+00:29:34,300 --> 00:29:36,420
+And that decision
+might take exertion--
+
+705
+00:29:36,420 --> 00:29:40,090
+a utility, for example,
+a patient preference
+
+706
+00:29:40,090 --> 00:29:47,890
+for suffering versus getting
+a treatment that could
+
+707
+00:29:47,890 --> 00:29:50,985
+have big, adverse consequences.
+
+708
+00:29:50,985 --> 00:29:52,360
+And that's something
+that Pete is
+
+709
+00:29:52,360 --> 00:29:56,810
+going to talk about much more
+later in the semester, I think,
+
+710
+00:29:56,810 --> 00:29:58,060
+how to formalize that notion.
+
+711
+00:29:58,060 --> 00:30:01,360
+But at this point, I just want
+to sort of get out the point
+
+712
+00:30:01,360 --> 00:30:03,610
+that the probabilities
+themselves could be important.
+
+713
+00:30:03,610 --> 00:30:05,535
+And having the
+probabilities be meaningful
+
+714
+00:30:05,535 --> 00:30:07,160
+is something that
+one can now quantify.
+
+715
+00:30:07,160 --> 00:30:08,940
+So how do we quantify it?
+
+716
+00:30:08,940 --> 00:30:14,470
+Well, one way to
+try to quantify it
+
+717
+00:30:14,470 --> 00:30:18,105
+is to create the
+following prompt.
+
+718
+00:30:18,105 --> 00:30:22,970
+Actually, we'll
+call it a histogram.
+
+719
+00:30:22,970 --> 00:30:26,960
+So on the x-axis is the
+predicted probability.
+
+720
+00:30:34,650 --> 00:30:37,500
+So that's what I meant by p-hat.
+
+721
+00:30:37,500 --> 00:30:40,920
+On the y-axis is the
+true probability.
+
+722
+00:30:40,920 --> 00:30:43,740
+It's what I mean when I say
+the fraction of individuals
+
+723
+00:30:43,740 --> 00:30:46,140
+with that predicted
+probability that actually
+
+724
+00:30:46,140 --> 00:30:48,120
+got the positive outcome.
+
+725
+00:30:48,120 --> 00:30:49,510
+That's going to be the y-axis.
+
+726
+00:30:49,510 --> 00:30:52,911
+So I'll call that
+the true probability.
+
+727
+00:30:57,630 --> 00:31:01,110
+And what we would like
+to see is that this
+
+728
+00:31:01,110 --> 00:31:06,210
+is a line, a straight line,
+meaning these two should always
+
+729
+00:31:06,210 --> 00:31:07,480
+be equal.
+
+730
+00:31:07,480 --> 00:31:09,840
+And in the example
+I gave, remember
+
+731
+00:31:09,840 --> 00:31:12,030
+I said that there
+were a bunch of people
+
+732
+00:31:12,030 --> 00:31:17,190
+with 0.7 probability
+predicted, but for whom
+
+733
+00:31:17,190 --> 00:31:21,628
+only one out of them actually
+got the positive end.
+
+734
+00:31:21,628 --> 00:31:23,670
+So that would have been
+something like over here.
+
+735
+00:31:26,550 --> 00:31:29,460
+Whereas you would have
+expected it to be over there.
+
+736
+00:31:29,460 --> 00:31:33,210
+So you might ask, how
+do I create such a plot
+
+737
+00:31:33,210 --> 00:31:34,800
+from finite data?
+
+738
+00:31:34,800 --> 00:31:37,530
+Well, a common way to do
+so is to bin your data.
+
+739
+00:31:37,530 --> 00:31:40,440
+So you'll create intervals.
+
+740
+00:31:40,440 --> 00:31:46,290
+So this bin is the
+bin from 0 to 0.1.
+
+741
+00:31:46,290 --> 00:31:52,620
+This bin is the bin from
+0.1 to 0.2, and so on.
+
+742
+00:31:52,620 --> 00:31:56,160
+And then you'll look to see,
+OK, how many people for whom
+
+743
+00:31:56,160 --> 00:32:00,510
+the predicted probability
+was between 0 and 0.1
+
+744
+00:32:00,510 --> 00:32:01,770
+actually died?
+
+745
+00:32:01,770 --> 00:32:03,698
+And you'll get a number out.
+
+746
+00:32:03,698 --> 00:32:05,490
+And now here's where
+I can go to this plot.
+
+747
+00:32:05,490 --> 00:32:07,198
+That's exactly what
+I'm showing you here.
+
+748
+00:32:07,198 --> 00:32:09,330
+So for now, ignore the
+bar charts and the bottom,
+
+749
+00:32:09,330 --> 00:32:11,930
+and just look at the line.
+
+750
+00:32:11,930 --> 00:32:14,073
+So let's focus on
+just the green line.
+
+751
+00:32:14,073 --> 00:32:15,990
+Here I'm showing you
+several different models.
+
+752
+00:32:15,990 --> 00:32:18,580
+For now, just focus
+on the green line.
+
+753
+00:32:18,580 --> 00:32:22,170
+So the green line, by the way,
+notice it looks pretty good.
+
+754
+00:32:22,170 --> 00:32:24,560
+It's almost a straight line.
+
+755
+00:32:24,560 --> 00:32:25,560
+So how did I compute it?
+
+756
+00:32:25,560 --> 00:32:27,510
+Well, first of all,
+notice the number of ticks
+
+757
+00:32:27,510 --> 00:32:30,510
+are 1, 2, 3, 4,
+5, 6, 7, 8, 9, 10.
+
+758
+00:32:30,510 --> 00:32:33,810
+OK, so there are 10
+points along this line.
+
+759
+00:32:33,810 --> 00:32:36,330
+And each of those corresponds
+to one of these bins.
+
+760
+00:32:36,330 --> 00:32:39,810
+So the first point
+is the 0 to 0.1 bin.
+
+761
+00:32:39,810 --> 00:32:42,930
+The second point is the
+0.1 to 0.2 bin, and so on.
+
+762
+00:32:42,930 --> 00:32:45,372
+So that's how it computed this.
+
+763
+00:32:45,372 --> 00:32:46,830
+The next thing you
+notice is that I
+
+764
+00:32:46,830 --> 00:32:49,710
+have confidence intervals.
+
+765
+00:32:49,710 --> 00:32:52,500
+And the reason I compute
+these confidence intervals
+
+766
+00:32:52,500 --> 00:32:55,020
+is because sometimes
+you just might not
+
+767
+00:32:55,020 --> 00:32:57,060
+have that much data
+in one of these bins.
+
+768
+00:32:57,060 --> 00:32:59,880
+So for example, suppose
+your algorithm almost never
+
+769
+00:32:59,880 --> 00:33:04,560
+said that someone has a
+predictive probability of 0.99.
+
+770
+00:33:04,560 --> 00:33:06,452
+Then until you
+get a ton of data,
+
+771
+00:33:06,452 --> 00:33:08,910
+you're not going to know what
+fraction of those individuals
+
+772
+00:33:08,910 --> 00:33:12,120
+actually went on to
+develop the event.
+
+773
+00:33:12,120 --> 00:33:14,610
+And you should be looking
+at sort of the confidence
+
+774
+00:33:14,610 --> 00:33:17,940
+interval of this line,
+which should take that
+
+775
+00:33:17,940 --> 00:33:19,310
+into consideration.
+
+776
+00:33:19,310 --> 00:33:21,720
+And a different way to try to
+understand that notion, now
+
+777
+00:33:21,720 --> 00:33:22,830
+looking at the
+numbers, is what I'm
+
+778
+00:33:22,830 --> 00:33:24,663
+showing you in the bar
+charts in the bottom.
+
+779
+00:33:24,663 --> 00:33:27,790
+On the bar charts,
+I'm showing you
+
+780
+00:33:27,790 --> 00:33:30,510
+the number of individuals or
+the fraction of individuals
+
+781
+00:33:30,510 --> 00:33:33,550
+who actually got that
+predicted probability.
+
+782
+00:33:33,550 --> 00:33:36,210
+So now let's start
+comparing the lines.
+
+783
+00:33:36,210 --> 00:33:42,600
+So the blue line shown
+here is a machine
+
+784
+00:33:42,600 --> 00:33:46,262
+learning algorithm which
+is predicting infection
+
+785
+00:33:46,262 --> 00:33:47,220
+in the emergency rooms.
+
+786
+00:33:47,220 --> 00:33:49,512
+It's a slightly different
+problem than the diabetes one
+
+787
+00:33:49,512 --> 00:33:50,520
+we looked at earlier.
+
+788
+00:33:50,520 --> 00:33:54,960
+And it's using a bag of words
+model from clinical text.
+
+789
+00:33:54,960 --> 00:34:01,020
+The red line is using
+just chief complaint.
+
+790
+00:34:01,020 --> 00:34:03,567
+So it's using one piece
+of structured data
+
+791
+00:34:03,567 --> 00:34:05,400
+that you get at one
+point of time in the ER.
+
+792
+00:34:05,400 --> 00:34:10,960
+So it's using very
+little information.
+
+793
+00:34:10,960 --> 00:34:17,199
+And you can see that both models
+are somewhat well calibrated.
+
+794
+00:34:17,199 --> 00:34:19,800
+But the intervals--
+the confidence
+
+795
+00:34:19,800 --> 00:34:22,679
+intervals of both the
+red and the purple lines
+
+796
+00:34:22,679 --> 00:34:25,389
+gets really big towards the end.
+
+797
+00:34:25,389 --> 00:34:26,969
+And if you look at
+these bar charts,
+
+798
+00:34:26,969 --> 00:34:29,760
+it explains why,
+because the models
+
+799
+00:34:29,760 --> 00:34:35,190
+that use less information end
+up being much more risk-averse.
+
+800
+00:34:35,190 --> 00:34:38,010
+So they will never predict
+a very high probability.
+
+801
+00:34:38,010 --> 00:34:40,502
+They will always sort of
+stay in this lower regime.
+
+802
+00:34:40,502 --> 00:34:42,960
+And that's why we have very
+big confidence intervals there.
+
+803
+00:34:46,340 --> 00:34:50,159
+OK, so that's all I want
+to say about evaluation.
+
+804
+00:34:50,159 --> 00:34:52,020
+And I won't take any
+questions on this right
+
+805
+00:34:52,020 --> 00:34:53,395
+now, because I
+really want to get
+
+806
+00:34:53,395 --> 00:34:55,560
+on to the rest of the lecture.
+
+807
+00:34:55,560 --> 00:34:57,852
+But again, if you have any
+questions, post to Piazza,
+
+808
+00:34:57,852 --> 00:34:59,810
+and I'm happy to discuss
+them with you offline.
+
+809
+00:35:03,210 --> 00:35:06,990
+So, in summary, we've
+talked about how
+
+810
+00:35:06,990 --> 00:35:11,610
+to reduce risk stratification
+to binary classification.
+
+811
+00:35:11,610 --> 00:35:13,470
+I've told you how to
+derive the labels.
+
+812
+00:35:13,470 --> 00:35:15,880
+I've given you one example
+of machine learning algorithm
+
+813
+00:35:15,880 --> 00:35:19,440
+you can use, and I talked to
+you about how to evaluate it.
+
+814
+00:35:19,440 --> 00:35:20,890
+What could possibly go wrong?
+
+815
+00:35:23,570 --> 00:35:26,335
+So let's look at some examples.
+
+816
+00:35:26,335 --> 00:35:28,960
+And these are a small number of
+examples of what could possibly
+
+817
+00:35:28,960 --> 00:35:29,780
+go wrong.
+
+818
+00:35:29,780 --> 00:35:31,680
+There are many more.
+
+819
+00:35:31,680 --> 00:35:33,340
+So here's some data.
+
+820
+00:35:33,340 --> 00:35:35,950
+I'm showing you--
+for the same problem
+
+821
+00:35:35,950 --> 00:35:38,260
+we looked at before,
+diabetes onset, I'm
+
+822
+00:35:38,260 --> 00:35:44,050
+showing you the prevalence of
+type 2 diabetes as recorded by,
+
+823
+00:35:44,050 --> 00:35:47,926
+let's say, diagnosis
+codes across time.
+
+824
+00:35:47,926 --> 00:35:49,450
+All right, so over here is 1980.
+
+825
+00:35:49,450 --> 00:35:53,290
+Over here is 2012.
+
+826
+00:35:53,290 --> 00:35:54,340
+Look at that.
+
+827
+00:35:54,340 --> 00:35:56,088
+It is not a flat line.
+
+828
+00:35:56,088 --> 00:35:57,130
+Now, what does that mean?
+
+829
+00:35:57,130 --> 00:36:01,720
+Does that mean that the
+population is eating much more
+
+830
+00:36:01,720 --> 00:36:06,810
+unhealthy from 1980 to
+2012, and so more people
+
+831
+00:36:06,810 --> 00:36:08,890
+are becoming diabetic?
+
+832
+00:36:08,890 --> 00:36:11,230
+That would be one
+plausible answer.
+
+833
+00:36:11,230 --> 00:36:17,660
+Another plausible explanation
+is that something has changed.
+
+834
+00:36:17,660 --> 00:36:21,670
+So in fact I'm showing you
+with these blue lines, well,
+
+835
+00:36:21,670 --> 00:36:25,240
+in fact, there was a change
+in the diagnostic criteria
+
+836
+00:36:25,240 --> 00:36:27,790
+for diabetes.
+
+837
+00:36:27,790 --> 00:36:29,740
+And so now the patient
+population actually
+
+838
+00:36:29,740 --> 00:36:31,390
+didn't change much
+between, let's say,
+
+839
+00:36:31,390 --> 00:36:33,130
+this time point at
+that time point.
+
+840
+00:36:33,130 --> 00:36:37,390
+But what really led
+it to this big uptick,
+
+841
+00:36:37,390 --> 00:36:40,300
+according to one theory, is
+because the diagnostic criteria
+
+842
+00:36:40,300 --> 00:36:41,460
+changed.
+
+843
+00:36:41,460 --> 00:36:43,240
+So who we're calling
+diabetic has changed.
+
+844
+00:36:43,240 --> 00:36:46,460
+Because diseases are,
+at the end of the day,
+
+845
+00:36:46,460 --> 00:36:51,760
+a human-made concept, you know,
+what do we call some disease.
+
+846
+00:36:51,760 --> 00:36:55,747
+And so the data is
+changing, as you see here.
+
+847
+00:36:55,747 --> 00:36:57,080
+Let me show you another example.
+
+848
+00:36:57,080 --> 00:37:00,070
+Oh, by the way, so the
+consequence of that is that
+
+849
+00:37:00,070 --> 00:37:01,720
+automatically-derived labels--
+
+850
+00:37:01,720 --> 00:37:04,125
+for example, if you use
+one of those phenotyping
+
+851
+00:37:04,125 --> 00:37:05,960
+algorithms I showed you
+earlier, the rules--
+
+852
+00:37:08,770 --> 00:37:11,680
+what the label is
+derived for over here
+
+853
+00:37:11,680 --> 00:37:13,960
+might be very different
+from the label that's
+
+854
+00:37:13,960 --> 00:37:15,460
+derived from over
+here, particularly
+
+855
+00:37:15,460 --> 00:37:18,880
+if it's using data such
+as diagnosis codes that
+
+856
+00:37:18,880 --> 00:37:20,947
+have changed in
+meaning over the years.
+
+857
+00:37:20,947 --> 00:37:22,030
+So that's one consequence.
+
+858
+00:37:22,030 --> 00:37:24,762
+There'll be other consequences
+I'll tell you about later.
+
+859
+00:37:24,762 --> 00:37:25,720
+Here's another example.
+
+860
+00:37:25,720 --> 00:37:28,012
+And by the way, this notion
+is called non-stationarity,
+
+861
+00:37:28,012 --> 00:37:30,080
+that the data is
+changing across time.
+
+862
+00:37:30,080 --> 00:37:32,170
+It's not stationary.
+
+863
+00:37:32,170 --> 00:37:34,650
+Here's another example.
+
+864
+00:37:34,650 --> 00:37:38,490
+On the x-axis again
+I'm showing you time.
+
+865
+00:37:38,490 --> 00:37:44,800
+Here each column is a
+month, from 2005 to 2014.
+
+866
+00:37:44,800 --> 00:37:49,930
+And on the y-axis, for every
+sort of row of this table,
+
+867
+00:37:49,930 --> 00:37:51,625
+I'm showing you a
+laboratory test.
+
+868
+00:37:54,023 --> 00:37:56,440
+And here we're not looking at
+the results of the lab test,
+
+869
+00:37:56,440 --> 00:37:59,080
+we're only looking
+at what fraction
+
+870
+00:37:59,080 --> 00:38:02,110
+of-- at how many lab
+tests of that type
+
+871
+00:38:02,110 --> 00:38:06,426
+were performed at
+this point in time.
+
+872
+00:38:06,426 --> 00:38:10,510
+And now you might expect
+that, broadly speaking,
+
+873
+00:38:10,510 --> 00:38:13,150
+the number of glucose tests,
+the number of white blood cell
+
+874
+00:38:13,150 --> 00:38:21,040
+count tests, the number of
+neutrophil tests and so on
+
+875
+00:38:21,040 --> 00:38:23,860
+might be pretty constant
+across time, on average,
+
+876
+00:38:23,860 --> 00:38:26,200
+because you're averaging
+over lots of people.
+
+877
+00:38:26,200 --> 00:38:29,090
+But indeed what you see
+here is that, in fact,
+
+878
+00:38:29,090 --> 00:38:31,210
+there is a huge amount
+of non-stationarity.
+
+879
+00:38:31,210 --> 00:38:34,360
+Which tests are
+ordered dramatically
+
+880
+00:38:34,360 --> 00:38:36,230
+changes across time.
+
+881
+00:38:36,230 --> 00:38:39,310
+So for example you see
+this one line over here,
+
+882
+00:38:39,310 --> 00:38:43,240
+where it's all blue, meaning
+no one is ordering the test,
+
+883
+00:38:43,240 --> 00:38:46,360
+until this point in time,
+when people start using it.
+
+884
+00:38:46,360 --> 00:38:47,550
+What could that be?
+
+885
+00:38:47,550 --> 00:38:49,970
+Any ideas?
+
+886
+00:38:49,970 --> 00:38:50,818
+Yeah.
+
+887
+00:38:50,818 --> 00:38:54,067
+AUDIENCE: [INAUDIBLE]
+
+888
+00:38:54,067 --> 00:38:56,650
+PROFESSOR: So the test was used
+less, or really, in this case,
+
+889
+00:38:56,650 --> 00:38:57,320
+not used at all.
+
+890
+00:38:57,320 --> 00:38:58,330
+And then suddenly it was used.
+
+891
+00:38:58,330 --> 00:38:59,320
+Why might that happen?
+
+892
+00:38:59,320 --> 00:38:59,940
+In the back.
+
+893
+00:38:59,940 --> 00:39:01,690
+AUDIENCE: A new test.
+
+894
+00:39:01,690 --> 00:39:05,090
+PROFESSOR: A new test, right,
+because technology changes.
+
+895
+00:39:05,090 --> 00:39:07,660
+Suddenly we come up with a
+new diagnostic test, a new lab
+
+896
+00:39:07,660 --> 00:39:08,770
+test.
+
+897
+00:39:08,770 --> 00:39:11,177
+And we can start using it,
+where it didn't exist before.
+
+898
+00:39:11,177 --> 00:39:13,010
+So obviously there was
+no data on it before.
+
+899
+00:39:13,010 --> 00:39:17,014
+What's another reason why it
+might have suddenly showed up?
+
+900
+00:39:17,014 --> 00:39:17,926
+Yep.
+
+901
+00:39:17,926 --> 00:39:21,406
+AUDIENCE: It could be like
+annual check-ups become
+
+902
+00:39:21,406 --> 00:39:26,510
+mandatory, or that it's part of
+the test admission at hospital.
+
+903
+00:39:26,510 --> 00:39:28,800
+Like, it's an additional test.
+
+904
+00:39:28,800 --> 00:39:31,020
+PROFESSOR: I'll stick
+with your first example.
+
+905
+00:39:31,020 --> 00:39:33,420
+Maybe that test
+becomes mandatory.
+
+906
+00:39:33,420 --> 00:39:35,880
+OK, so maybe there's
+a clinical guideline
+
+907
+00:39:35,880 --> 00:39:41,490
+that is created at this
+point in time, right there.
+
+908
+00:39:41,490 --> 00:39:44,490
+And health insurers
+decide we're going
+
+909
+00:39:44,490 --> 00:39:47,647
+to reimburse for this test
+at this point in time.
+
+910
+00:39:47,647 --> 00:39:49,480
+And the test might've
+been really expensive.
+
+911
+00:39:49,480 --> 00:39:51,670
+So no one would have
+done it beforehand.
+
+912
+00:39:51,670 --> 00:39:52,830
+And now that the health
+insurance companies
+
+913
+00:39:52,830 --> 00:39:54,480
+are going to pay for it,
+now people start doing it.
+
+914
+00:39:54,480 --> 00:39:56,190
+So it might have
+existed beforehand.
+
+915
+00:39:56,190 --> 00:39:59,790
+But if no one would pay for
+it, no one would use it.
+
+916
+00:39:59,790 --> 00:40:02,460
+What's another reason why you
+might see something like this,
+
+917
+00:40:02,460 --> 00:40:03,762
+or maybe even a gap like this?
+
+918
+00:40:03,762 --> 00:40:05,220
+Notice, here in
+the middle, there's
+
+919
+00:40:05,220 --> 00:40:06,387
+this huge gap in the middle.
+
+920
+00:40:06,387 --> 00:40:07,770
+What might have explained that?
+
+921
+00:40:16,195 --> 00:40:17,070
+AUDIENCE: [INAUDIBLE]
+
+922
+00:40:17,070 --> 00:40:17,862
+PROFESSOR: Hold on.
+
+923
+00:40:17,862 --> 00:40:19,865
+Yep, over here.
+
+924
+00:40:19,865 --> 00:40:21,490
+AUDIENCE: Maybe your
+patient population
+
+925
+00:40:21,490 --> 00:40:25,206
+is mostly of a certain age,
+and coverage for something
+
+926
+00:40:25,206 --> 00:40:28,870
+changes once your age
+crosses a threshold.
+
+927
+00:40:28,870 --> 00:40:30,540
+PROFESSOR: Yeah, so
+one explanation--
+
+928
+00:40:30,540 --> 00:40:32,610
+I think it's not plausible
+in this data set,
+
+929
+00:40:32,610 --> 00:40:34,410
+but it is plausible
+for some data sets--
+
+930
+00:40:34,410 --> 00:40:40,380
+is that maybe your
+patients at time 0
+
+931
+00:40:40,380 --> 00:40:42,860
+were all of exactly
+the same age.
+
+932
+00:40:42,860 --> 00:40:44,610
+So maybe there's some
+amount of alignment.
+
+933
+00:40:44,610 --> 00:40:49,740
+And suddenly, at this
+point in time, let's say,
+
+934
+00:40:49,740 --> 00:40:52,492
+women only get, let's say,
+their annual mammography
+
+935
+00:40:52,492 --> 00:40:53,700
+once they turn a certain age.
+
+936
+00:40:53,700 --> 00:40:57,420
+And so that might be one reason
+why you would see nothing
+
+937
+00:40:57,420 --> 00:40:58,720
+until one point in time.
+
+938
+00:40:58,720 --> 00:41:00,720
+And maybe that would
+change across time as well.
+
+939
+00:41:00,720 --> 00:41:03,838
+Maybe they'll stop getting it
+at some point after menopause.
+
+940
+00:41:03,838 --> 00:41:05,130
+That's not true, but let's say.
+
+941
+00:41:07,527 --> 00:41:08,610
+So that's one explanation.
+
+942
+00:41:08,610 --> 00:41:10,110
+In this case, it
+doesn't make sense,
+
+943
+00:41:10,110 --> 00:41:12,518
+because the patient
+population is very mixed.
+
+944
+00:41:12,518 --> 00:41:15,060
+So you could think about it as
+being roughly at steady state.
+
+945
+00:41:15,060 --> 00:41:18,060
+So they're not-- you'll have
+patients of all ages here.
+
+946
+00:41:18,060 --> 00:41:19,280
+What's another reason?
+
+947
+00:41:19,280 --> 00:41:20,990
+Someone raised their
+hand over here.
+
+948
+00:41:20,990 --> 00:41:21,520
+Yep.
+
+949
+00:41:21,520 --> 00:41:23,600
+AUDIENCE: Yeah, I was
+just going to say,
+
+950
+00:41:23,600 --> 00:41:25,610
+maybe the EMR shut
+down for awhile,
+
+951
+00:41:25,610 --> 00:41:27,660
+and so they were only
+doing stuff on paper,
+
+952
+00:41:27,660 --> 00:41:29,710
+and they only were able
+to record 4 things.
+
+953
+00:41:29,710 --> 00:41:31,210
+PROFESSOR: Ding
+ding ding ding ding.
+
+954
+00:41:31,210 --> 00:41:32,340
+Yes, that's right.
+
+955
+00:41:32,340 --> 00:41:36,740
+So maybe the EMR shut down.
+
+956
+00:41:36,740 --> 00:41:40,100
+Or in this case,
+we had data issues.
+
+957
+00:41:40,100 --> 00:41:43,830
+So this data was
+acquired somehow.
+
+958
+00:41:43,830 --> 00:41:45,930
+For example, maybe
+it was required
+
+959
+00:41:45,930 --> 00:41:47,460
+through a contract
+with something
+
+960
+00:41:47,460 --> 00:41:50,460
+like Webquest or LabCorp.
+
+961
+00:41:50,460 --> 00:41:54,510
+And maybe, during that
+four-month interval,
+
+962
+00:41:54,510 --> 00:41:56,202
+there was contract negotiation.
+
+963
+00:41:56,202 --> 00:41:57,660
+And so suddenly we
+couldn't get the
+
+964
+00:41:57,660 --> 00:41:59,100
+Data for that time period.
+
+965
+00:41:59,100 --> 00:42:01,470
+Or maybe our databases
+crashed, and we suddenly
+
+966
+00:42:01,470 --> 00:42:03,480
+lost all the data
+for that time period.
+
+967
+00:42:03,480 --> 00:42:05,567
+This happens, and this
+happens all the time,
+
+968
+00:42:05,567 --> 00:42:07,150
+and not just the
+health care industry,
+
+969
+00:42:07,150 --> 00:42:09,060
+but other industries as well.
+
+970
+00:42:09,060 --> 00:42:12,210
+And as a result of those
+systemic-type changes,
+
+971
+00:42:12,210 --> 00:42:16,170
+your data is also going to be
+non-stationary across time.
+
+972
+00:42:16,170 --> 00:42:18,420
+So now we've seen three or
+four different explanations
+
+973
+00:42:18,420 --> 00:42:19,540
+for why this happens.
+
+974
+00:42:19,540 --> 00:42:23,720
+And the reality is really
+a mixture of all of these.
+
+975
+00:42:23,720 --> 00:42:25,037
+And just as in the previous--
+
+976
+00:42:25,037 --> 00:42:27,120
+so in the previous example,
+notice how what really
+
+977
+00:42:27,120 --> 00:42:29,010
+changed here is that
+the derived labels might
+
+978
+00:42:29,010 --> 00:42:30,830
+change meaning across time.
+
+979
+00:42:30,830 --> 00:42:34,930
+Now the significance
+of the features
+
+980
+00:42:34,930 --> 00:42:36,690
+used in the machine
+learning models
+
+981
+00:42:36,690 --> 00:42:38,048
+would really change across time.
+
+982
+00:42:38,048 --> 00:42:39,840
+And that's one of the
+consequences of this,
+
+983
+00:42:39,840 --> 00:42:44,090
+particular if you're driving
+features from lab test values.
+
+984
+00:42:44,090 --> 00:42:47,790
+Here's one last example.
+
+985
+00:42:47,790 --> 00:42:50,430
+Again, on the x-axis
+here, I have time.
+
+986
+00:42:50,430 --> 00:42:53,460
+On the y-axis here, I'm
+showing the number of times
+
+987
+00:42:53,460 --> 00:42:58,780
+that you observed some
+diagnosis code of some kind.
+
+988
+00:42:58,780 --> 00:43:01,530
+This cyan line is ICD-9 codes.
+
+989
+00:43:01,530 --> 00:43:05,090
+And this red line
+are ICD-10 codes.
+
+990
+00:43:05,090 --> 00:43:07,590
+You might remember that Pete
+mentioned in an earlier lecture
+
+991
+00:43:07,590 --> 00:43:11,340
+that there was a big shift from
+ICD-9 coding to ICD-10 coding
+
+992
+00:43:11,340 --> 00:43:12,048
+at some point.
+
+993
+00:43:12,048 --> 00:43:12,840
+When was that time?
+
+994
+00:43:12,840 --> 00:43:15,212
+It was precisely this time.
+
+995
+00:43:15,212 --> 00:43:17,670
+And so if you think about the
+feature vector that you would
+
+996
+00:43:17,670 --> 00:43:20,010
+derive for your machine
+learning problem,
+
+997
+00:43:20,010 --> 00:43:23,740
+you would have one feature
+for all ICD-9 codes, and one--
+
+998
+00:43:23,740 --> 00:43:26,190
+a whole set of features
+for all ICD-10 codes.
+
+999
+00:43:26,190 --> 00:43:27,930
+And those ICD-9-based
+features are
+
+1000
+00:43:27,930 --> 00:43:30,120
+going to be-- they're going
+to be used quite a bit
+
+1001
+00:43:30,120 --> 00:43:31,000
+in this time period.
+
+1002
+00:43:31,000 --> 00:43:33,000
+And then suddenly they're
+going to be completely
+
+1003
+00:43:33,000 --> 00:43:34,690
+sparse in this time period.
+
+1004
+00:43:34,690 --> 00:43:37,740
+And ICD-10 features
+start to become used.
+
+1005
+00:43:37,740 --> 00:43:39,990
+And you could imagine that
+if you did machine learning
+
+1006
+00:43:39,990 --> 00:43:44,340
+using just ICD-9
+data, and then you
+
+1007
+00:43:44,340 --> 00:43:47,173
+tried to apply your model
+at this point in time,
+
+1008
+00:43:47,173 --> 00:43:49,590
+it's going to do horribly,
+because it's expecting features
+
+1009
+00:43:49,590 --> 00:43:51,780
+that it no longer has access to.
+
+1010
+00:43:51,780 --> 00:43:53,358
+And this happens all the time.
+
+1011
+00:43:53,358 --> 00:43:54,900
+And in fact, what
+I'm describing here
+
+1012
+00:43:54,900 --> 00:43:58,020
+is actually a major problem for
+the whole health care industry.
+
+1013
+00:43:58,020 --> 00:43:59,407
+For the next five
+years, everyone
+
+1014
+00:43:59,407 --> 00:44:00,990
+is going to grapple
+with this problem,
+
+1015
+00:44:00,990 --> 00:44:03,240
+because they want to use their
+historical data for machine
+
+1016
+00:44:03,240 --> 00:44:04,698
+learning, but their
+historical data
+
+1017
+00:44:04,698 --> 00:44:08,270
+is very different from
+their recent data.
+
+1018
+00:44:08,270 --> 00:44:13,390
+So now, in the face of all of
+this non-stationarity that I
+
+1019
+00:44:13,390 --> 00:44:17,560
+just described, did we do
+anything wrong in the diabetes
+
+1020
+00:44:17,560 --> 00:44:22,030
+risk stratification problem
+that I told you about earlier?
+
+1021
+00:44:22,030 --> 00:44:22,530
+Thoughts.
+
+1022
+00:44:25,050 --> 00:44:26,300
+That was my paper, by the way.
+
+1023
+00:44:26,300 --> 00:44:29,000
+Did I make an error?
+
+1024
+00:44:29,000 --> 00:44:29,500
+Thoughts.
+
+1025
+00:44:36,990 --> 00:44:37,850
+Don't be afraid.
+
+1026
+00:44:37,850 --> 00:44:38,940
+I'm often wrong.
+
+1027
+00:44:45,960 --> 00:44:47,710
+I'm just asking
+specifically about the way
+
+1028
+00:44:47,710 --> 00:44:48,835
+I evaluated the models.
+
+1029
+00:44:51,200 --> 00:44:51,700
+Yep.
+
+1030
+00:44:51,700 --> 00:44:54,551
+AUDIENCE: This wasn't
+an error, but one thing,
+
+1031
+00:44:54,551 --> 00:44:56,920
+like if I was a doctor
+I would like to see
+
+1032
+00:44:56,920 --> 00:44:59,054
+is the sensitivity to--
+
+1033
+00:44:59,054 --> 00:45:01,434
+like, the inclusion
+criteria if I
+
+1034
+00:45:01,434 --> 00:45:04,710
+remove the HBA1C for instance.
+
+1035
+00:45:04,710 --> 00:45:08,456
+Like most people, they have
+compared to having either Rx
+
+1036
+00:45:08,456 --> 00:45:11,970
+or [INAUDIBLE] then
+kind of evaluating the--
+
+1037
+00:45:11,970 --> 00:45:13,720
+PROFESSOR: So understanding
+the robustness
+
+1038
+00:45:13,720 --> 00:45:15,730
+to changing the data a
+bit is something that
+
+1039
+00:45:15,730 --> 00:45:17,350
+would be of a lot of interest.
+
+1040
+00:45:17,350 --> 00:45:18,460
+I agree.
+
+1041
+00:45:18,460 --> 00:45:19,960
+But that's not
+immediately suggested
+
+1042
+00:45:19,960 --> 00:45:21,720
+by the non-stationarity results.
+
+1043
+00:45:21,720 --> 00:45:25,330
+Not something that's suggested
+by non-stationarity results.
+
+1044
+00:45:25,330 --> 00:45:26,830
+Our TA in the front
+row has an idea.
+
+1045
+00:45:26,830 --> 00:45:27,830
+Yeah, let's hear it.
+
+1046
+00:45:27,830 --> 00:45:29,625
+AUDIENCE: The train
+and test distributions
+
+1047
+00:45:29,625 --> 00:45:31,250
+were drawn from the
+same-- or the train
+
+1048
+00:45:31,250 --> 00:45:33,503
+and tests were drawn from
+the same distribution.
+
+1049
+00:45:33,503 --> 00:45:35,920
+PROFESSOR: So in the way that
+we did our evaluation there,
+
+1050
+00:45:35,920 --> 00:45:42,760
+we said, OK, we're going to set
+it up such that on January 1,
+
+1051
+00:45:42,760 --> 00:45:44,710
+2009, we're predicting
+what's going to happen
+
+1052
+00:45:44,710 --> 00:45:47,350
+in the following three years.
+
+1053
+00:45:47,350 --> 00:45:50,140
+And we segmented our
+patient population
+
+1054
+00:45:50,140 --> 00:45:53,800
+into train, validate, and
+test, but at all times,
+
+1055
+00:45:53,800 --> 00:46:00,040
+using that same setup, January
+1 2009, as the prediction time.
+
+1056
+00:46:00,040 --> 00:46:04,570
+Now, we learned this
+model, and it's now 2018.
+
+1057
+00:46:04,570 --> 00:46:07,000
+We want to apply
+this model today.
+
+1058
+00:46:07,000 --> 00:46:09,430
+And I computed an area
+under the ROC curve.
+
+1059
+00:46:09,430 --> 00:46:11,650
+I computed positive
+predictive values
+
+1060
+00:46:11,650 --> 00:46:13,690
+using that retrospective data.
+
+1061
+00:46:13,690 --> 00:46:17,650
+And I handed those
+off to my partners.
+
+1062
+00:46:17,650 --> 00:46:20,530
+And they might hope that those
+numbers are reflective of what
+
+1063
+00:46:20,530 --> 00:46:23,390
+their models would do today.
+
+1064
+00:46:23,390 --> 00:46:26,090
+But because of these issues
+I just told you about--
+
+1065
+00:46:26,090 --> 00:46:27,940
+for example, that
+the number of people
+
+1066
+00:46:27,940 --> 00:46:30,232
+who have type 2 diabetes,
+and even the definition of it
+
+1067
+00:46:30,232 --> 00:46:31,480
+has changed.
+
+1068
+00:46:31,480 --> 00:46:33,550
+Because of the fact that
+the laboratory-- ignore
+
+1069
+00:46:33,550 --> 00:46:34,180
+this part over here.
+
+1070
+00:46:34,180 --> 00:46:35,013
+That's just a fluke.
+
+1071
+00:46:35,013 --> 00:46:36,940
+But the fact, because
+of the laboratory
+
+1072
+00:46:36,940 --> 00:46:38,860
+tests that were
+available during training
+
+1073
+00:46:38,860 --> 00:46:41,940
+might be different from the
+ones that are available now,
+
+1074
+00:46:41,940 --> 00:46:45,850
+and because of the fact that
+we have only ICD-10 data now,
+
+1075
+00:46:45,850 --> 00:46:48,172
+and not ICD-9, for
+all of those reasons,
+
+1076
+00:46:48,172 --> 00:46:49,630
+our predictive
+performance is going
+
+1077
+00:46:49,630 --> 00:46:52,870
+to be really horrible
+now, Particularly
+
+1078
+00:46:52,870 --> 00:46:55,663
+because of this last issue
+of not having ICD-9s.
+
+1079
+00:46:55,663 --> 00:46:57,580
+Our predictive model is
+going to work horribly
+
+1080
+00:46:57,580 --> 00:47:02,170
+now if it was trained on
+data from 2008 or 2009.
+
+1081
+00:47:02,170 --> 00:47:05,020
+And so we would have
+never ever even recognized
+
+1082
+00:47:05,020 --> 00:47:07,840
+that if we used the validation
+set up that we had done there.
+
+1083
+00:47:07,840 --> 00:47:12,107
+So I wrote that paper when
+I was young and naive.
+
+1084
+00:47:12,107 --> 00:47:13,480
+[AUDIENCE CHUCKLING]
+
+1085
+00:47:13,480 --> 00:47:16,540
+I'm a little bit
+more gray-haired now.
+
+1086
+00:47:16,540 --> 00:47:18,640
+And so in our more recent
+work-- for example,
+
+1087
+00:47:18,640 --> 00:47:22,510
+this is a paper which
+we're working on right now,
+
+1088
+00:47:22,510 --> 00:47:24,670
+done by a master's student
+of mine, Helen Zhou,
+
+1089
+00:47:24,670 --> 00:47:27,160
+and is looking at predicting
+antibiotic resistance,
+
+1090
+00:47:27,160 --> 00:47:29,950
+now we're a little bit smarter
+about over evaluation setup.
+
+1091
+00:47:29,950 --> 00:47:32,357
+And we decided to set it up
+a little bit differently.
+
+1092
+00:47:32,357 --> 00:47:33,940
+So what I'm showing
+you now is the way
+
+1093
+00:47:33,940 --> 00:47:35,650
+that we chose,
+trained, validated
+
+1094
+00:47:35,650 --> 00:47:38,960
+and test for our population.
+
+1095
+00:47:38,960 --> 00:47:41,240
+So we segmented our data.
+
+1096
+00:47:41,240 --> 00:47:47,230
+So the x-axis here is time,
+and the y-axis here are people.
+
+1097
+00:47:47,230 --> 00:47:49,732
+So you can think of each person
+as being a different row.
+
+1098
+00:47:49,732 --> 00:47:51,940
+And you can imagine that we
+randomly sorted the rows.
+
+1099
+00:47:54,490 --> 00:47:59,150
+What we did is we segmented our
+data into these four quadrants.
+
+1100
+00:47:59,150 --> 00:48:03,980
+The first two quadrants, we
+used for train and validate.
+
+1101
+00:48:03,980 --> 00:48:09,910
+Notice, by the way, that
+we have different people
+
+1102
+00:48:09,910 --> 00:48:12,498
+in the training set as we
+do in the validate set.
+
+1103
+00:48:12,498 --> 00:48:14,290
+That's important for
+another quantity which
+
+1104
+00:48:14,290 --> 00:48:16,010
+I'll talk about in a minute.
+
+1105
+00:48:16,010 --> 00:48:18,040
+So we used this data
+for train and validate.
+
+1106
+00:48:18,040 --> 00:48:19,870
+And that's, again,
+very similar to the way
+
+1107
+00:48:19,870 --> 00:48:22,030
+we did it in the diabetes paper.
+
+1108
+00:48:22,030 --> 00:48:26,356
+But now, for testing,
+we use this future data.
+
+1109
+00:48:26,356 --> 00:48:29,287
+So we used data
+from 2014 to 2016.
+
+1110
+00:48:29,287 --> 00:48:31,120
+And one can imagine two
+different quadrants.
+
+1111
+00:48:31,120 --> 00:48:32,710
+You might be
+interested in knowing,
+
+1112
+00:48:32,710 --> 00:48:35,260
+for the same patients for
+whom you made predictions
+
+1113
+00:48:35,260 --> 00:48:40,030
+on during training, how
+would your predictions do
+
+1114
+00:48:40,030 --> 00:48:44,743
+for those same people at
+test time in the future data.
+
+1115
+00:48:44,743 --> 00:48:46,660
+And that's assuming that
+what we're predicting
+
+1116
+00:48:46,660 --> 00:48:48,670
+is something that's much
+more myopic in nature.
+
+1117
+00:48:48,670 --> 00:48:50,830
+In this case it was
+predicting, are they
+
+1118
+00:48:50,830 --> 00:48:52,973
+going to be resistant
+to some antibiotic?
+
+1119
+00:48:52,973 --> 00:48:55,390
+But you can also look at it
+for a completely different set
+
+1120
+00:48:55,390 --> 00:48:57,190
+of patients, for
+patients who are not
+
+1121
+00:48:57,190 --> 00:48:58,660
+used during training at all.
+
+1122
+00:48:58,660 --> 00:49:02,680
+And suppose that this 2
+bucket isn't used at all,
+
+1123
+00:49:02,680 --> 00:49:04,630
+for those patients,
+how do we do, again,
+
+1124
+00:49:04,630 --> 00:49:06,063
+using the future data for that.
+
+1125
+00:49:06,063 --> 00:49:07,480
+And the advantage
+of this setup is
+
+1126
+00:49:07,480 --> 00:49:10,900
+that it can really help you
+assess non-stationarity.
+
+1127
+00:49:10,900 --> 00:49:14,050
+So if your model
+really took advantage
+
+1128
+00:49:14,050 --> 00:49:17,860
+of features that were
+available in 2007, 2008, 2009,
+
+1129
+00:49:17,860 --> 00:49:19,422
+but weren't available
+in 2014, you
+
+1130
+00:49:19,422 --> 00:49:21,130
+would see a big drop
+in your performance.
+
+1131
+00:49:21,130 --> 00:49:22,547
+Looking at the
+drop in performance
+
+1132
+00:49:22,547 --> 00:49:24,550
+from your validate set
+in this time period,
+
+1133
+00:49:24,550 --> 00:49:26,740
+to your test set from
+that time period,
+
+1134
+00:49:26,740 --> 00:49:29,650
+that drop in performance
+will be uniquely attributed
+
+1135
+00:49:29,650 --> 00:49:31,760
+to the non-stationarity.
+
+1136
+00:49:31,760 --> 00:49:33,190
+So it's a good way
+to diagnose it.
+
+1137
+00:49:33,190 --> 00:49:33,690
+Yep.
+
+1138
+00:49:33,690 --> 00:49:35,065
+AUDIENCE: Just
+some clarification
+
+1139
+00:49:35,065 --> 00:49:38,013
+on non-stationarity-- is it the
+fact that certain data is just
+
+1140
+00:49:38,013 --> 00:49:39,430
+lost altogether,
+or is it the fact
+
+1141
+00:49:39,430 --> 00:49:41,240
+that it's just
+encoded differently,
+
+1142
+00:49:41,240 --> 00:49:43,698
+and so then it's difficult
+to get that mapping correct?
+
+1143
+00:49:43,698 --> 00:49:44,365
+PROFESSOR: Both.
+
+1144
+00:49:44,365 --> 00:49:45,790
+Both of these happen.
+
+1145
+00:49:45,790 --> 00:49:47,980
+So I have a big
+research program now
+
+1146
+00:49:47,980 --> 00:49:50,115
+which is asking not just how--
+
+1147
+00:49:50,115 --> 00:49:51,990
+so this is how you can
+evaluate and recognize
+
+1148
+00:49:51,990 --> 00:49:52,510
+there's a problem.
+
+1149
+00:49:52,510 --> 00:49:55,052
+But of course there's a really
+interesting research question,
+
+1150
+00:49:55,052 --> 00:49:57,450
+which is, how can you make
+use of the non-stationarity.
+
+1151
+00:49:57,450 --> 00:50:01,870
+Right, so for example,
+you had ICD-9/ICD-10 data.
+
+1152
+00:50:01,870 --> 00:50:05,020
+You don't want to just
+throw away the ICD-9 data.
+
+1153
+00:50:05,020 --> 00:50:06,640
+Is there a way to use it?
+
+1154
+00:50:06,640 --> 00:50:09,510
+So the naive answer, which is
+what the community is largely
+
+1155
+00:50:09,510 --> 00:50:12,990
+using today, is come
+up with a mapping.
+
+1156
+00:50:12,990 --> 00:50:15,700
+Come up with a manual
+mapping from ICD-9 to ICD-10
+
+1157
+00:50:15,700 --> 00:50:18,870
+so that you can sort of
+manually transform your data
+
+1158
+00:50:18,870 --> 00:50:20,820
+into this new format
+such that the models you
+
+1159
+00:50:20,820 --> 00:50:24,300
+learn from this older time
+is useful in the future time.
+
+1160
+00:50:24,300 --> 00:50:27,520
+That's the boring
+and simple answer.
+
+1161
+00:50:27,520 --> 00:50:29,020
+But I think we could
+do much better.
+
+1162
+00:50:29,020 --> 00:50:31,437
+For example, we can learn new
+representations of the data.
+
+1163
+00:50:31,437 --> 00:50:33,780
+We can learn that
+mapping directly
+
+1164
+00:50:33,780 --> 00:50:37,290
+in order to optimize
+for your sort of most
+
+1165
+00:50:37,290 --> 00:50:38,082
+recent performance.
+
+1166
+00:50:38,082 --> 00:50:40,582
+And there's a whole bunch more
+that we can talk about later.
+
+1167
+00:50:40,582 --> 00:50:41,422
+Yep.
+
+1168
+00:50:41,422 --> 00:50:44,040
+AUDIENCE: [INAUDIBLE]
+non-stationary change,
+
+1169
+00:50:44,040 --> 00:50:49,970
+this will [INAUDIBLE]
+does not ensure robustness
+
+1170
+00:50:49,970 --> 00:50:50,820
+to the future.
+
+1171
+00:50:50,820 --> 00:50:51,970
+PROFESSOR: Correct.
+
+1172
+00:50:51,970 --> 00:50:54,360
+So this allows you to detect
+that a non-stationarity has
+
+1173
+00:50:54,360 --> 00:50:55,800
+happened.
+
+1174
+00:50:55,800 --> 00:50:58,950
+And it allows you to say
+that your model is going
+
+1175
+00:50:58,950 --> 00:51:00,202
+to generalize to 2014-2016.
+
+1176
+00:51:00,202 --> 00:51:02,535
+But of course, that doesn't
+mean that your model's going
+
+1177
+00:51:02,535 --> 00:51:06,397
+to generalize to 2016-2018.
+
+1178
+00:51:06,397 --> 00:51:07,480
+And so how do you do that?
+
+1179
+00:51:07,480 --> 00:51:08,310
+How do you have
+confidence in that?
+
+1180
+00:51:08,310 --> 00:51:10,477
+Well, that's a really
+interesting research question.
+
+1181
+00:51:10,477 --> 00:51:12,610
+We don't have good
+answers to that today.
+
+1182
+00:51:12,610 --> 00:51:19,020
+From a practical perspective,
+the best I can offer you today
+
+1183
+00:51:19,020 --> 00:51:22,590
+is, build in these checks
+and balances all the time.
+
+1184
+00:51:22,590 --> 00:51:25,380
+So continuously sort
+of evaluate how you're
+
+1185
+00:51:25,380 --> 00:51:26,780
+doing on the most recent data.
+
+1186
+00:51:26,780 --> 00:51:30,150
+And if you see big
+changes, throw a red flag.
+
+1187
+00:51:30,150 --> 00:51:33,510
+Build more checks and balances
+into your deployment process.
+
+1188
+00:51:33,510 --> 00:51:35,790
+If you see a bunch of
+patients who are getting
+
+1189
+00:51:35,790 --> 00:51:38,610
+predicted probabilities
+of 1, and in the past,
+
+1190
+00:51:38,610 --> 00:51:40,110
+you'd never predicted
+probability 1,
+
+1191
+00:51:40,110 --> 00:51:42,003
+that might tell you something.
+
+1192
+00:51:42,003 --> 00:51:44,670
+Then much later in the semester,
+we'll talk about robust machine
+
+1193
+00:51:44,670 --> 00:51:45,690
+learning approaches,
+for example,
+
+1194
+00:51:45,690 --> 00:51:47,357
+approaches that have
+been designed to be
+
+1195
+00:51:47,357 --> 00:51:49,290
+robust against adversaries.
+
+1196
+00:51:49,290 --> 00:51:50,930
+And those type of
+approaches as well
+
+1197
+00:51:50,930 --> 00:51:53,370
+will allow you to be much more
+robust to particular types
+
+1198
+00:51:53,370 --> 00:51:55,410
+of data set shift, of
+which non-stationarity
+
+1199
+00:51:55,410 --> 00:51:56,400
+is one example.
+
+1200
+00:51:56,400 --> 00:51:58,400
+But it's a big,
+open research field.
+
+1201
+00:51:58,400 --> 00:51:58,900
+Yep.
+
+1202
+00:51:58,900 --> 00:52:01,610
+AUDIENCE: So just to make sure I
+have the understanding correct,
+
+1203
+00:52:01,610 --> 00:52:03,360
+theoretically, if you
+could map everything
+
+1204
+00:52:03,360 --> 00:52:07,500
+from the old data set to the new
+data set, like the encodings,
+
+1205
+00:52:07,500 --> 00:52:09,456
+would it still be
+OK, like the results
+
+1206
+00:52:09,456 --> 00:52:12,165
+you get on the future data set?
+
+1207
+00:52:12,165 --> 00:52:14,040
+PROFESSOR: If you could
+do a perfect mapping,
+
+1208
+00:52:14,040 --> 00:52:16,457
+and it's one to one, and the
+distributions of those things
+
+1209
+00:52:16,457 --> 00:52:18,750
+also didn't change, then yeah.
+
+1210
+00:52:18,750 --> 00:52:21,660
+Really what you need to assess
+is, is there data set shift?
+
+1211
+00:52:21,660 --> 00:52:23,970
+Is your training
+distribution, after mapping,
+
+1212
+00:52:23,970 --> 00:52:26,147
+the same as your
+testing distribution?
+
+1213
+00:52:26,147 --> 00:52:27,730
+If the answer is
+yes, you're all good.
+
+1214
+00:52:27,730 --> 00:52:29,110
+If you're not,
+you're in trouble.
+
+1215
+00:52:29,110 --> 00:52:29,610
+Yep.
+
+1216
+00:52:29,610 --> 00:52:32,068
+AUDIENCE: What seems to be the
+test set of traits set here?
+
+1217
+00:52:32,068 --> 00:52:35,010
+Or what [INAUDIBLE]?
+
+1218
+00:52:35,010 --> 00:52:38,530
+PROFESSOR: So 1 is using
+data only from 2007-2013,
+
+1219
+00:52:38,530 --> 00:52:40,950
+3 is using data
+only from 2014-2016.
+
+1220
+00:52:40,950 --> 00:52:44,611
+AUDIENCE: But in the case,
+like, the output we care about
+
+1221
+00:52:44,611 --> 00:52:47,016
+happened in, like,
+2007-2013, then
+
+1222
+00:52:47,016 --> 00:52:49,580
+that observation would be
+not-- it wouldn't be useful.
+
+1223
+00:52:49,580 --> 00:52:51,570
+PROFESSOR: Yeah, so for
+the diabetes problem,
+
+1224
+00:52:51,570 --> 00:52:54,090
+there's also just
+inclusion/exclusion criteria
+
+1225
+00:52:54,090 --> 00:52:55,310
+that you have to deal with.
+
+1226
+00:52:55,310 --> 00:52:57,727
+For what I'm showing you here,
+I'm talking about a setting
+
+1227
+00:52:57,727 --> 00:53:00,840
+where you might be making
+multiple predictions
+
+1228
+00:53:00,840 --> 00:53:02,230
+for patients across time.
+
+1229
+00:53:02,230 --> 00:53:04,338
+So it's a much more
+myopic prediction task.
+
+1230
+00:53:04,338 --> 00:53:05,880
+But one could come
+up with an analogy
+
+1231
+00:53:05,880 --> 00:53:07,720
+to this for the
+diabetes setting.
+
+1232
+00:53:07,720 --> 00:53:15,000
+Like, for example, just hold out
+half of the patients at random.
+
+1233
+00:53:15,000 --> 00:53:21,290
+And then for your training
+set, use data up to 2009,
+
+1234
+00:53:21,290 --> 00:53:23,760
+and evaluate on data
+only up to 2013.
+
+1235
+00:53:23,760 --> 00:53:30,610
+And for your test set, pretend
+as if it was January 1, 2013,
+
+1236
+00:53:30,610 --> 00:53:35,390
+and look at
+performance up to 2017.
+
+1237
+00:53:35,390 --> 00:53:36,600
+And so that would be--
+
+1238
+00:53:36,600 --> 00:53:39,510
+you're changing your prediction
+time to use more recent data.
+
+1239
+00:53:43,330 --> 00:53:47,727
+So the next subtlety is--
+
+1240
+00:53:47,727 --> 00:53:49,060
+it's a name that I put on to it.
+
+1241
+00:53:49,060 --> 00:53:50,220
+This isn't a standard name.
+
+1242
+00:53:50,220 --> 00:53:53,200
+This is what I'm calling
+intervention-tainted outcomes.
+
+1243
+00:53:56,130 --> 00:54:01,210
+And so the example here came
+from your reading for today.
+
+1244
+00:54:01,210 --> 00:54:03,772
+The reading was this paper
+on intelligible models
+
+1245
+00:54:03,772 --> 00:54:05,980
+for health care predicting
+pneumonia risk in hospital
+
+1246
+00:54:05,980 --> 00:54:08,350
+30-day admissions from KDD 2015.
+
+1247
+00:54:08,350 --> 00:54:10,040
+So in that paper,
+they give an example--
+
+1248
+00:54:10,040 --> 00:54:12,070
+it's a very old example--
+
+1249
+00:54:12,070 --> 00:54:13,840
+of trying to use
+a predictive model
+
+1250
+00:54:13,840 --> 00:54:17,920
+to understand a patient's
+risk of mortality
+
+1251
+00:54:17,920 --> 00:54:21,100
+when they come
+into the hospital.
+
+1252
+00:54:21,100 --> 00:54:24,010
+And what they learned-- and
+they used a rule-based learning
+
+1253
+00:54:24,010 --> 00:54:25,510
+algorithm-- and
+what they discovered
+
+1254
+00:54:25,510 --> 00:54:29,740
+was a rule that said if
+the patient has asthma,
+
+1255
+00:54:29,740 --> 00:54:33,445
+then they have
+low risk of dying.
+
+1256
+00:54:33,445 --> 00:54:35,320
+So these are all patients
+who have pneumonia.
+
+1257
+00:54:35,320 --> 00:54:38,140
+So a patient who comes in
+with pneumonia and asthma
+
+1258
+00:54:38,140 --> 00:54:40,270
+has a lower risk of
+dying than a patient who
+
+1259
+00:54:40,270 --> 00:54:45,400
+comes in with pneumonia and does
+not have a history of asthma.
+
+1260
+00:54:45,400 --> 00:54:47,830
+OK, that's what this rule says.
+
+1261
+00:54:47,830 --> 00:54:51,550
+And this paper argued
+that there's something
+
+1262
+00:54:51,550 --> 00:54:54,440
+wrong with that learned model.
+
+1263
+00:54:54,440 --> 00:54:56,110
+Any of you remember
+what that was?
+
+1264
+00:54:56,110 --> 00:54:58,390
+Someone who hasn't
+talked today, please.
+
+1265
+00:54:58,390 --> 00:54:59,250
+Yeah, in the back.
+
+1266
+00:54:59,250 --> 00:55:00,875
+AUDIENCE: It was that
+those with asthma
+
+1267
+00:55:00,875 --> 00:55:02,204
+had more aggressive treatment.
+
+1268
+00:55:02,204 --> 00:55:04,930
+So that means that they had
+a higher chance of survival.
+
+1269
+00:55:04,930 --> 00:55:07,540
+PROFESSOR: Patients with asthma
+had more aggressive treatment.
+
+1270
+00:55:07,540 --> 00:55:08,998
+In particular, they
+might have been
+
+1271
+00:55:08,998 --> 00:55:10,600
+admitted to the
+intensive care unit
+
+1272
+00:55:10,600 --> 00:55:13,080
+for more careful vigilance.
+
+1273
+00:55:13,080 --> 00:55:14,830
+And as a result, they
+had better outcomes.
+
+1274
+00:55:14,830 --> 00:55:17,080
+Yes, that's exactly right.
+
+1275
+00:55:17,080 --> 00:55:21,370
+So the real story behind this
+is that risk stratification,
+
+1276
+00:55:21,370 --> 00:55:23,140
+as we talked about
+the last couple weeks,
+
+1277
+00:55:23,140 --> 00:55:25,180
+it's used to drive
+interventions.
+
+1278
+00:55:25,180 --> 00:55:28,360
+And those interventions, if
+they happened in the past data,
+
+1279
+00:55:28,360 --> 00:55:30,350
+would change the outcomes.
+
+1280
+00:55:30,350 --> 00:55:33,550
+So in this case,
+you might imagine
+
+1281
+00:55:33,550 --> 00:55:35,530
+using the learned
+predictive model to say,
+
+1282
+00:55:35,530 --> 00:55:38,218
+a new patient comes in,
+this new patient has asthma,
+
+1283
+00:55:38,218 --> 00:55:40,010
+and so we're going to
+say they're low risk.
+
+1284
+00:55:40,010 --> 00:55:42,340
+And if we took a naive action
+based on that prediction,
+
+1285
+00:55:42,340 --> 00:55:44,800
+we might say, OK,
+let's send them home.
+
+1286
+00:55:44,800 --> 00:55:46,742
+They're at low risk of dying.
+
+1287
+00:55:46,742 --> 00:55:48,700
+But if we did that, we
+could be killing people.
+
+1288
+00:55:48,700 --> 00:55:50,710
+Because the reason
+why they were low
+
+1289
+00:55:50,710 --> 00:55:53,950
+risk is because they had those
+interventions in the past.
+
+1290
+00:55:56,650 --> 00:55:59,800
+So here's what's going
+on in that picture.
+
+1291
+00:55:59,800 --> 00:56:02,028
+You have your
+data, X. And you're
+
+1292
+00:56:02,028 --> 00:56:04,570
+trying to make a prediction at
+some point in time, let's say,
+
+1293
+00:56:04,570 --> 00:56:06,070
+emergency department triage.
+
+1294
+00:56:06,070 --> 00:56:07,630
+You want to predict
+some outcome Y,
+
+1295
+00:56:07,630 --> 00:56:10,480
+let's say, whether the patient
+dies at some defined point
+
+1296
+00:56:10,480 --> 00:56:12,710
+in the future.
+
+1297
+00:56:12,710 --> 00:56:16,960
+Now, the challenge is that, as
+stated in the machine learning
+
+1298
+00:56:16,960 --> 00:56:19,940
+tasks that you saw there,
+all you had access to
+
+1299
+00:56:19,940 --> 00:56:25,420
+was X and Y, the covariance of
+the features and the outcome.
+
+1300
+00:56:25,420 --> 00:56:28,150
+And so you're
+predicting Y from X,
+
+1301
+00:56:28,150 --> 00:56:30,670
+but you're marginalizing
+over everything
+
+1302
+00:56:30,670 --> 00:56:33,490
+that happens in between, in
+this case, the treatment.
+
+1303
+00:56:33,490 --> 00:56:36,777
+So the good outcomes,
+people surviving,
+
+1304
+00:56:36,777 --> 00:56:38,860
+might have been due to
+what's going on in between.
+
+1305
+00:56:38,860 --> 00:56:40,402
+But what's going on
+in between is not
+
+1306
+00:56:40,402 --> 00:56:43,780
+even observed in the
+data necessarily.
+
+1307
+00:56:43,780 --> 00:56:46,202
+So how do we address
+this problem?
+
+1308
+00:56:46,202 --> 00:56:48,160
+Well, the first thing I
+want you to think about
+
+1309
+00:56:48,160 --> 00:56:51,030
+is, can we even recognize
+that this is a problem?
+
+1310
+00:56:51,030 --> 00:56:53,260
+And that's where
+that article really
+
+1311
+00:56:53,260 --> 00:56:55,630
+suggests that using an
+unintelligible model, a model
+
+1312
+00:56:55,630 --> 00:56:58,510
+that you can introspect and
+try to understand a little bit,
+
+1313
+00:56:58,510 --> 00:57:01,270
+is actually really important
+for even recognizing
+
+1314
+00:57:01,270 --> 00:57:04,400
+that weird things are happening.
+
+1315
+00:57:04,400 --> 00:57:05,860
+And this is a
+topic which we will
+
+1316
+00:57:05,860 --> 00:57:08,570
+talk about in a lecture towards
+the end of the semester in much
+
+1317
+00:57:08,570 --> 00:57:09,070
+more--
+
+1318
+00:57:09,070 --> 00:57:11,200
+Jack will talk about
+algorithms for interpreting
+
+1319
+00:57:11,200 --> 00:57:13,247
+machine learning models.
+
+1320
+00:57:13,247 --> 00:57:14,080
+So that's important.
+
+1321
+00:57:14,080 --> 00:57:16,090
+You've got to recognize
+what's going on.
+
+1322
+00:57:16,090 --> 00:57:17,780
+But what do you do about it?
+
+1323
+00:57:17,780 --> 00:57:20,820
+So here are some hacks.
+
+1324
+00:57:20,820 --> 00:57:23,390
+Hack number 1--
+modify the model.
+
+1325
+00:57:23,390 --> 00:57:26,120
+This is the solution that is
+proposed in the paper you read.
+
+1326
+00:57:26,120 --> 00:57:29,740
+They said, OK, if it's a
+simple rule-based prediction
+
+1327
+00:57:29,740 --> 00:57:32,360
+that the learning
+algorithm outputs to you,
+
+1328
+00:57:32,360 --> 00:57:35,180
+you could see the rule
+that doesn't make sense,
+
+1329
+00:57:35,180 --> 00:57:36,800
+you could use your
+clinical insight
+
+1330
+00:57:36,800 --> 00:57:37,850
+to recognize it
+doesn't make sense.
+
+1331
+00:57:37,850 --> 00:57:39,933
+You might even be able to
+explain why it happened.
+
+1332
+00:57:39,933 --> 00:57:41,780
+And then you just
+remove that rule.
+
+1333
+00:57:41,780 --> 00:57:47,570
+So you manually modify the model
+to push it towards something
+
+1334
+00:57:47,570 --> 00:57:48,883
+that's more sensible.
+
+1335
+00:57:48,883 --> 00:57:50,550
+All right, so that's
+what was suggested.
+
+1336
+00:57:50,550 --> 00:57:52,020
+And I think it's nonsense.
+
+1337
+00:57:52,020 --> 00:57:56,060
+I don't think that's ever
+going to work in today's world.
+
+1338
+00:57:56,060 --> 00:57:58,940
+In today's world of
+high-dimensional models,
+
+1339
+00:57:58,940 --> 00:58:01,915
+there's always going to be
+surrogates which are somehow
+
+1340
+00:58:01,915 --> 00:58:03,290
+picked up by a
+learning algorithm
+
+1341
+00:58:03,290 --> 00:58:05,510
+that you will not
+even recognize.
+
+1342
+00:58:05,510 --> 00:58:07,910
+And it will be really hard
+to modify it in the way
+
+1343
+00:58:07,910 --> 00:58:09,040
+that you want.
+
+1344
+00:58:09,040 --> 00:58:11,540
+Maybe it's impossible using the
+simple approach, by the way.
+
+1345
+00:58:11,540 --> 00:58:12,920
+Another interesting
+research question--
+
+1346
+00:58:12,920 --> 00:58:14,480
+how do you actually
+make this work
+
+1347
+00:58:14,480 --> 00:58:16,218
+in a high-dimensional setting?
+
+1348
+00:58:16,218 --> 00:58:18,260
+But for now, let's say we
+don't know how to do it
+
+1349
+00:58:18,260 --> 00:58:19,080
+in a high-dimensional setting.
+
+1350
+00:58:19,080 --> 00:58:20,480
+So what are your other choices?
+
+1351
+00:58:20,480 --> 00:58:24,080
+Hack number 2 is to redefine
+the outcome altogether,
+
+1352
+00:58:24,080 --> 00:58:26,180
+to change what
+you're predicting.
+
+1353
+00:58:26,180 --> 00:58:29,570
+So for example, if you
+go back to this picture,
+
+1354
+00:58:29,570 --> 00:58:31,490
+and instead of
+trying to predict Y,
+
+1355
+00:58:31,490 --> 00:58:34,490
+death, if you could try to find
+some surrogate for the thing
+
+1356
+00:58:34,490 --> 00:58:37,410
+you care about, which
+is pre-treatment,
+
+1357
+00:58:37,410 --> 00:58:40,160
+and you predict
+that thing instead,
+
+1358
+00:58:40,160 --> 00:58:43,070
+then you'll be back in business.
+
+1359
+00:58:43,070 --> 00:58:46,215
+And so, for example, in one
+of the optional readings for--
+
+1360
+00:58:46,215 --> 00:58:49,310
+or actually I think in the
+second required reading
+
+1361
+00:58:49,310 --> 00:58:51,380
+for today's class,
+it was a paper
+
+1362
+00:58:51,380 --> 00:58:53,990
+about risk revocation
+for sepsis, which
+
+1363
+00:58:53,990 --> 00:58:56,850
+is often caused by infection.
+
+1364
+00:58:56,850 --> 00:58:58,640
+And what they show
+in that article
+
+1365
+00:58:58,640 --> 00:59:01,850
+is that there are laboratory
+test results, such as lactate,
+
+1366
+00:59:01,850 --> 00:59:03,980
+and there are others,
+which can give you
+
+1367
+00:59:03,980 --> 00:59:06,500
+a hint that this patient
+might be on a path
+
+1368
+00:59:06,500 --> 00:59:08,960
+to clinical deterioration.
+
+1369
+00:59:08,960 --> 00:59:12,590
+And that test might precede
+the interventions to try
+
+1370
+00:59:12,590 --> 00:59:15,140
+to take care of that condition.
+
+1371
+00:59:15,140 --> 00:59:17,720
+And so if you instead
+change your outcome
+
+1372
+00:59:17,720 --> 00:59:21,230
+to be predicting that
+surrogate, then you're
+
+1373
+00:59:21,230 --> 00:59:26,470
+getting around this problem
+that I just pointed out.
+
+1374
+00:59:26,470 --> 00:59:31,450
+Now, a third hack is from
+one of the optional readings
+
+1375
+00:59:31,450 --> 00:59:33,170
+from today's lecture,
+this paper by Suchi
+
+1376
+00:59:33,170 --> 00:59:35,380
+Saria and her students, from
+Science Translational Medicine
+
+1377
+00:59:35,380 --> 00:59:36,080
+2015.
+
+1378
+00:59:36,080 --> 00:59:37,455
+It's a really
+well-written paper.
+
+1379
+00:59:37,455 --> 00:59:38,960
+I highly recommend reading it.
+
+1380
+00:59:38,960 --> 00:59:42,370
+In that paper, they suggest
+formalizing the problem
+
+1381
+00:59:42,370 --> 00:59:43,990
+as one of censoring,
+which is what
+
+1382
+00:59:43,990 --> 00:59:46,365
+we'll be talking about for
+the very last third of today's
+
+1383
+00:59:46,365 --> 00:59:47,110
+lecture.
+
+1384
+00:59:47,110 --> 00:59:50,830
+In particular, what
+they say is suppose
+
+1385
+00:59:50,830 --> 00:59:53,210
+you see that a patient is
+treated for the condition.
+
+1386
+00:59:53,210 --> 00:59:56,620
+Let's say they're
+treated for sepsis.
+
+1387
+00:59:56,620 --> 00:59:58,810
+Then if the patient is
+treated for that condition,
+
+1388
+00:59:58,810 --> 01:00:01,390
+then we don't know what would
+have happened to them had they
+
+1389
+01:00:01,390 --> 01:00:02,570
+not been treated.
+
+1390
+01:00:02,570 --> 01:00:07,990
+So we don't observe the outcome,
+death given no treatment.
+
+1391
+01:00:07,990 --> 01:00:11,070
+And so we're going to treat
+it as an unknown outcome.
+
+1392
+01:00:11,070 --> 01:00:14,500
+And for patients who were
+not treated, but ended up
+
+1393
+01:00:14,500 --> 01:00:17,462
+dying due to sepsis, then
+they're not censored.
+
+1394
+01:00:17,462 --> 01:00:19,670
+And what I'll show you in
+the later part of the class
+
+1395
+01:00:19,670 --> 01:00:21,390
+is how to learn
+from censored data.
+
+1396
+01:00:21,390 --> 01:00:23,620
+So this is another
+formalization which
+
+1397
+01:00:23,620 --> 01:00:27,170
+tries to address this
+problem that we pointed out.
+
+1398
+01:00:27,170 --> 01:00:29,740
+Now, I call these hacks
+because, really, I
+
+1399
+01:00:29,740 --> 01:00:32,320
+think what we should be
+doing is formalizing it using
+
+1400
+01:00:32,320 --> 01:00:35,200
+the language of causality.
+
+1401
+01:00:35,200 --> 01:00:36,820
+Once you do this
+introspection and you
+
+1402
+01:00:36,820 --> 01:00:39,290
+realize that there is
+treatment, in fact,
+
+1403
+01:00:39,290 --> 01:00:41,350
+you should be rethinking
+about the problem as one
+
+1404
+01:00:41,350 --> 01:00:43,777
+of now having three
+quantities of interest.
+
+1405
+01:00:43,777 --> 01:00:46,360
+There's the patient, everything
+you know about them at triage.
+
+1406
+01:00:46,360 --> 01:00:48,430
+That's the X-variable
+I showed you before.
+
+1407
+01:00:48,430 --> 01:00:50,440
+There's the outcome,
+let's say, Y.
+
+1408
+01:00:50,440 --> 01:00:52,023
+And then there's
+that everything that
+
+1409
+01:00:52,023 --> 01:00:54,190
+happened in between, in
+particular the interventions
+
+1410
+01:00:54,190 --> 01:00:55,270
+that happened in between.
+
+1411
+01:00:55,270 --> 01:00:58,120
+We'll call that
+T, for treatment.
+
+1412
+01:00:58,120 --> 01:01:00,850
+And the question
+that one would like
+
+1413
+01:01:00,850 --> 01:01:04,030
+to ask in order to figure
+out how to optimally care
+
+1414
+01:01:04,030 --> 01:01:08,440
+for the patient is one of,
+will admission to the ICU,
+
+1415
+01:01:08,440 --> 01:01:10,690
+which is the intervention
+that we're considering here,
+
+1416
+01:01:10,690 --> 01:01:15,550
+will that lower the likelihood
+of death for the patient?
+
+1417
+01:01:15,550 --> 01:01:18,610
+And now when I say lower,
+I don't mean correlation,
+
+1418
+01:01:18,610 --> 01:01:19,660
+I mean causation.
+
+1419
+01:01:19,660 --> 01:01:23,620
+Will it actually lower the
+patient's risk of dying?
+
+1420
+01:01:23,620 --> 01:01:25,900
+I think we need to hit
+these questions on the head
+
+1421
+01:01:25,900 --> 01:01:28,990
+with actually thinking
+about causality to try
+
+1422
+01:01:28,990 --> 01:01:30,580
+to formalize this properly.
+
+1423
+01:01:30,580 --> 01:01:32,770
+And if you do that,
+this will be a solution
+
+1424
+01:01:32,770 --> 01:01:35,110
+which will generalize to the
+high-dimensional settings
+
+1425
+01:01:35,110 --> 01:01:37,450
+that we care about
+in machine learning.
+
+1426
+01:01:37,450 --> 01:01:40,870
+And this will be a topic that
+we'll talk really in-depth
+
+1427
+01:01:40,870 --> 01:01:41,960
+after spring break.
+
+1428
+01:01:41,960 --> 01:01:44,447
+But I wanted to give you this
+as one motivation for why
+
+1429
+01:01:44,447 --> 01:01:46,530
+it's so important-- there
+are many other reasons--
+
+1430
+01:01:46,530 --> 01:01:50,700
+to really think about it
+from a causal perspective.
+
+1431
+01:01:50,700 --> 01:01:55,570
+OK, so subtlety number 3--
+
+1432
+01:01:55,570 --> 01:01:58,510
+there's been a ton of hype in
+the media about deep learning
+
+1433
+01:01:58,510 --> 01:01:59,590
+and health care.
+
+1434
+01:01:59,590 --> 01:02:01,570
+A lot of it is very
+well warranted.
+
+1435
+01:02:01,570 --> 01:02:03,340
+For example, the
+advances we're seeing
+
+1436
+01:02:03,340 --> 01:02:07,390
+in areas ranging from
+radiology and pathology
+
+1437
+01:02:07,390 --> 01:02:12,970
+to interpretation of
+EKGs are all really
+
+1438
+01:02:12,970 --> 01:02:16,187
+being transformed by
+deep learning algorithms.
+
+1439
+01:02:16,187 --> 01:02:17,770
+But the problems
+I've been telling you
+
+1440
+01:02:17,770 --> 01:02:20,110
+about for the last
+couple of weeks,
+
+1441
+01:02:20,110 --> 01:02:23,180
+of doing risk stratification on
+electronic health record data,
+
+1442
+01:02:23,180 --> 01:02:26,920
+such as taxed notes,
+such as lab test
+
+1443
+01:02:26,920 --> 01:02:32,230
+results and vital signs,
+diagnosis codes, that's
+
+1444
+01:02:32,230 --> 01:02:33,110
+a different story.
+
+1445
+01:02:33,110 --> 01:02:35,735
+And in fact, if you look
+closely at all of the papers,
+
+1446
+01:02:35,735 --> 01:02:37,360
+all the papers that
+have been published
+
+1447
+01:02:37,360 --> 01:02:40,058
+in the last few years
+that have been trying
+
+1448
+01:02:40,058 --> 01:02:42,100
+to apply the gauntlet of
+deep learning algorithms
+
+1449
+01:02:42,100 --> 01:02:46,923
+at those problems, in fact,
+the gains are very small.
+
+1450
+01:02:46,923 --> 01:02:49,090
+And so what I'm showing you
+here is just one example
+
+1451
+01:02:49,090 --> 01:02:50,210
+of such a paper.
+
+1452
+01:02:50,210 --> 01:02:52,510
+This is a paper that received
+a lot of media attention.
+
+1453
+01:02:52,510 --> 01:02:54,852
+It's a Google paper
+called "Scalable
+
+1454
+01:02:54,852 --> 01:02:57,310
+and Accurate Deep Learning with
+Electronic Health Records."
+
+1455
+01:02:57,310 --> 01:02:59,230
+And if you go across
+the United States,
+
+1456
+01:02:59,230 --> 01:03:00,700
+if you go
+internationally, you talk
+
+1457
+01:03:00,700 --> 01:03:02,610
+to chief medical
+information officers,
+
+1458
+01:03:02,610 --> 01:03:04,120
+they're all going to be
+telling you about this paper.
+
+1459
+01:03:04,120 --> 01:03:06,120
+They've all read it,
+they've all heard about it,
+
+1460
+01:03:06,120 --> 01:03:08,217
+and they all want to use it.
+
+1461
+01:03:08,217 --> 01:03:09,550
+But what is this actually doing?
+
+1462
+01:03:09,550 --> 01:03:11,030
+What's going on
+behind the scenes?
+
+1463
+01:03:11,030 --> 01:03:14,230
+Well, this paper
+uses the same sorts
+
+1464
+01:03:14,230 --> 01:03:15,970
+of data we've been
+talking about.
+
+1465
+01:03:15,970 --> 01:03:19,530
+It takes vitals, notes,
+orders, medications,
+
+1466
+01:03:19,530 --> 01:03:22,417
+thinks about it as a
+timeline, summarizes it, then
+
+1467
+01:03:22,417 --> 01:03:23,750
+uses a recurrent neural network.
+
+1468
+01:03:23,750 --> 01:03:25,870
+It also uses attentional
+architectures.
+
+1469
+01:03:25,870 --> 01:03:28,046
+And there's some pretty
+smart people on this paper--
+
+1470
+01:03:28,046 --> 01:03:30,670
+you know, Greg
+Corrado, Jeff Dean,
+
+1471
+01:03:30,670 --> 01:03:33,137
+are all co-authors
+of this paper.
+
+1472
+01:03:33,137 --> 01:03:34,345
+They know what they're doing.
+
+1473
+01:03:34,345 --> 01:03:36,580
+All right, so they use
+these algorithms to predict
+
+1474
+01:03:36,580 --> 01:03:39,808
+a number of downstream
+problems-- readmission risk,
+
+1475
+01:03:39,808 --> 01:03:41,350
+for example, 30-day
+readmission, like
+
+1476
+01:03:41,350 --> 01:03:44,710
+you read about in your
+readings for this week.
+
+1477
+01:03:44,710 --> 01:03:49,150
+And they see they get
+pretty good predictions.
+
+1478
+01:03:49,150 --> 01:03:53,513
+But if you go to the
+supplementary material, which
+
+1479
+01:03:53,513 --> 01:03:55,930
+is a bit hard to find, but
+here's the link for all of you,
+
+1480
+01:03:55,930 --> 01:03:58,390
+and I'll post it to my slides.
+
+1481
+01:03:58,390 --> 01:04:00,790
+And if you look at
+the very last figure
+
+1482
+01:04:00,790 --> 01:04:02,740
+in that supplementary
+material, you'll
+
+1483
+01:04:02,740 --> 01:04:04,670
+see something interesting.
+
+1484
+01:04:04,670 --> 01:04:06,490
+So here are those
+three different tasks
+
+1485
+01:04:06,490 --> 01:04:08,115
+that they studied--
+inpatient mortality
+
+1486
+01:04:08,115 --> 01:04:11,720
+prediction, 30-day readmission,
+length-of-stay prediction.
+
+1487
+01:04:11,720 --> 01:04:13,240
+The first line each
+of these buckets
+
+1488
+01:04:13,240 --> 01:04:16,330
+is what your deep
+learning algorithm does.
+
+1489
+01:04:16,330 --> 01:04:18,230
+Over here, they have
+two different hospitals.
+
+1490
+01:04:18,230 --> 01:04:19,772
+I think it might
+have been University
+
+1491
+01:04:19,772 --> 01:04:21,700
+of Chicago and Stanford.
+
+1492
+01:04:21,700 --> 01:04:24,855
+And they're showing the area
+under the ROC curve, which
+
+1493
+01:04:24,855 --> 01:04:27,550
+we've talked about,
+performance for each
+
+1494
+01:04:27,550 --> 01:04:29,997
+of these tasks for
+their best models.
+
+1495
+01:04:29,997 --> 01:04:32,330
+And in the parentheses, they
+give confidence intervals--
+
+1496
+01:04:32,330 --> 01:04:34,850
+let's say something like 95%
+confidence intervals-- for area
+
+1497
+01:04:34,850 --> 01:04:36,640
+under the ROC curve.
+
+1498
+01:04:36,640 --> 01:04:38,560
+Now, the second
+line that you see
+
+1499
+01:04:38,560 --> 01:04:42,900
+is called full-feature
+enhanced baseline.
+
+1500
+01:04:42,900 --> 01:04:44,890
+It's using the
+same data, but it's
+
+1501
+01:04:44,890 --> 01:04:48,190
+using something very close
+to the feature represetnation
+
+1502
+01:04:48,190 --> 01:04:50,530
+that you saw in the
+paper by Narges Razavian,
+
+1503
+01:04:50,530 --> 01:04:52,030
+so that paper on
+diabetes prediction
+
+1504
+01:04:52,030 --> 01:04:54,430
+that I told you about and
+we've been criticizing.
+
+1505
+01:04:54,430 --> 01:04:56,470
+So it's using that
+L1-regularized logistic
+
+1506
+01:04:56,470 --> 01:05:00,400
+regression with a
+smart set of features.
+
+1507
+01:05:00,400 --> 01:05:04,210
+And what you see across
+all three settings
+
+1508
+01:05:04,210 --> 01:05:07,090
+is that the results are not
+physically significantly
+
+1509
+01:05:07,090 --> 01:05:09,460
+different.
+
+1510
+01:05:09,460 --> 01:05:12,700
+So let's look at the first
+one, hospital A, deep learning,
+
+1511
+01:05:12,700 --> 01:05:14,920
+0.95 AUC.
+
+1512
+01:05:14,920 --> 01:05:18,400
+This L1-regularized
+logistic regression, 0.93.
+
+1513
+01:05:18,400 --> 01:05:22,570
+30-day readmission,
+0.77, 0.75, 0.86, 0.85.
+
+1514
+01:05:22,570 --> 01:05:26,730
+And the confidence intervals
+are all overlapping.
+
+1515
+01:05:26,730 --> 01:05:30,988
+So what's going on?
+
+1516
+01:05:30,988 --> 01:05:33,030
+So I think what you're
+seeing here, first of all,
+
+1517
+01:05:33,030 --> 01:05:37,680
+is a recognition by the machine
+learning community that--
+
+1518
+01:05:37,680 --> 01:05:40,110
+in this case, a late recognition
+that simpler approaches
+
+1519
+01:05:40,110 --> 01:05:41,940
+tend to work well with
+this type of data.
+
+1520
+01:05:41,940 --> 01:05:43,740
+I don't think this was the
+first thing that they tried.
+
+1521
+01:05:43,740 --> 01:05:46,032
+They tried probably the deep
+learning algorithms first.
+
+1522
+01:05:49,200 --> 01:05:51,150
+Second, we're all
+grasping at this,
+
+1523
+01:05:51,150 --> 01:05:53,910
+and we all want to come up
+with these better algorithms,
+
+1524
+01:05:53,910 --> 01:05:57,330
+but so far we're
+not doing that well.
+
+1525
+01:05:57,330 --> 01:05:59,802
+And I'll tell you more
+about that in just a second.
+
+1526
+01:05:59,802 --> 01:06:01,260
+But before I finish
+with the slide,
+
+1527
+01:06:01,260 --> 01:06:04,247
+I want to give you a punch line
+I think is really important.
+
+1528
+01:06:04,247 --> 01:06:05,830
+You might come home
+from this and say,
+
+1529
+01:06:05,830 --> 01:06:07,260
+you know what, it's
+not that much better,
+
+1530
+01:06:07,260 --> 01:06:08,510
+but it's a little bit better--
+
+1531
+01:06:08,510 --> 01:06:09,900
+0.95 to 0.93.
+
+1532
+01:06:09,900 --> 01:06:12,030
+Suppose it was tight
+confidence intervals,
+
+1533
+01:06:12,030 --> 01:06:13,738
+there might be a few
+patients whose lives
+
+1534
+01:06:13,738 --> 01:06:15,200
+you could save with that.
+
+1535
+01:06:15,200 --> 01:06:18,120
+But because all the issues I've
+told you about up until now,
+
+1536
+01:06:18,120 --> 01:06:22,440
+of non-stationary, for
+example, those gains disappear.
+
+1537
+01:06:22,440 --> 01:06:25,770
+In many cases, they even
+reverse when you actually
+
+1538
+01:06:25,770 --> 01:06:28,850
+go to deploy these models
+because of that data set shift
+
+1539
+01:06:28,850 --> 01:06:30,000
+for non-stationarity.
+
+1540
+01:06:30,000 --> 01:06:31,920
+It so happens that
+the simpler models
+
+1541
+01:06:31,920 --> 01:06:35,590
+tend to generalize better
+when your data changes on you.
+
+1542
+01:06:35,590 --> 01:06:37,920
+And this is nicely
+explored in this paper
+
+1543
+01:06:37,920 --> 01:06:41,730
+from Kenneth Jung and Nigam
+Shah in Journal of Biomedical
+
+1544
+01:06:41,730 --> 01:06:44,040
+Informatics, 2015.
+
+1545
+01:06:44,040 --> 01:06:46,420
+So this is something that
+I want you to think about.
+
+1546
+01:06:46,420 --> 01:06:48,540
+Now let's try to answer why.
+
+1547
+01:06:48,540 --> 01:06:50,610
+Well, the areas where
+we've been seeing
+
+1548
+01:06:50,610 --> 01:06:52,560
+recurrent neural networks
+doing really well--
+
+1549
+01:06:52,560 --> 01:06:54,960
+in, for example,
+speech recognition,
+
+1550
+01:06:54,960 --> 01:06:59,742
+natural language processing,
+are areas where, often--
+
+1551
+01:06:59,742 --> 01:07:01,200
+for example, you're
+predicting what
+
+1552
+01:07:01,200 --> 01:07:02,880
+is the next word in
+a sequence of words,
+
+1553
+01:07:02,880 --> 01:07:05,760
+the previous few words
+are pretty predictive.
+
+1554
+01:07:05,760 --> 01:07:08,250
+Like, what is the next
+[PAUSES] that I'm going to say?
+
+1555
+01:07:08,250 --> 01:07:08,780
+What is it?
+
+1556
+01:07:08,780 --> 01:07:09,630
+AUDIENCE: Word.
+
+1557
+01:07:09,630 --> 01:07:11,130
+PROFESSOR: Word,
+right, and you knew
+
+1558
+01:07:11,130 --> 01:07:15,225
+that, right, because it was
+pretty obvious to predict that.
+
+1559
+01:07:15,225 --> 01:07:17,100
+And so the models that
+are good at predicting
+
+1560
+01:07:17,100 --> 01:07:18,210
+for that type of
+data, it doesn't
+
+1561
+01:07:18,210 --> 01:07:19,770
+mean that they should
+be good for predicting
+
+1562
+01:07:19,770 --> 01:07:20,940
+for a different type
+of sequential data.
+
+1563
+01:07:20,940 --> 01:07:22,170
+Sequential data
+which, by the way,
+
+1564
+01:07:22,170 --> 01:07:23,850
+lives in many
+different time scales.
+
+1565
+01:07:23,850 --> 01:07:26,580
+Patients who are hospitalized,
+you get tons of data for them
+
+1566
+01:07:26,580 --> 01:07:28,560
+at a time, and then
+you might go months
+
+1567
+01:07:28,560 --> 01:07:29,790
+without any data on them.
+
+1568
+01:07:29,790 --> 01:07:31,440
+Data with lots of missing data.
+
+1569
+01:07:31,440 --> 01:07:33,200
+Data with multivariate
+observations
+
+1570
+01:07:33,200 --> 01:07:35,233
+at each point in time,
+not just a single word
+
+1571
+01:07:35,233 --> 01:07:36,150
+at that point in time.
+
+1572
+01:07:36,150 --> 01:07:37,800
+All right, so it's
+a different setting.
+
+1573
+01:07:37,800 --> 01:07:40,567
+And we shouldn't expect that
+the same architectures that
+
+1574
+01:07:40,567 --> 01:07:42,150
+have been developed
+for other problems
+
+1575
+01:07:42,150 --> 01:07:44,910
+will generalize immediately
+to these problems.
+
+1576
+01:07:44,910 --> 01:07:46,710
+Now, I do conjecture
+that there are
+
+1577
+01:07:46,710 --> 01:07:50,250
+lots of nonlinear
+attractions where
+
+1578
+01:07:50,250 --> 01:07:51,960
+deep neural networks
+could be very
+
+1579
+01:07:51,960 --> 01:07:53,220
+powerful at predicting for.
+
+1580
+01:07:53,220 --> 01:07:55,020
+But I think they're subtle.
+
+1581
+01:07:55,020 --> 01:07:58,380
+And I don't think that we
+have enough data currently
+
+1582
+01:07:58,380 --> 01:08:03,270
+to deal with the fact
+that the data is messy
+
+1583
+01:08:03,270 --> 01:08:05,940
+and that the non-linear
+interactions are subtle.
+
+1584
+01:08:05,940 --> 01:08:07,470
+We just can't find
+them right now.
+
+1585
+01:08:07,470 --> 01:08:09,690
+But this shouldn't mean that
+we're not going to find them
+
+1586
+01:08:09,690 --> 01:08:10,565
+a few years from now.
+
+1587
+01:08:10,565 --> 01:08:13,590
+I think this deservedly is
+a very interesting research
+
+1588
+01:08:13,590 --> 01:08:15,143
+direction to work on.
+
+1589
+01:08:15,143 --> 01:08:16,560
+And a final reason
+to point out is
+
+1590
+01:08:16,560 --> 01:08:19,290
+that the features that are
+going into these types of models
+
+1591
+01:08:19,290 --> 01:08:22,939
+are actually really
+cleverly-chosen features.
+
+1592
+01:08:22,939 --> 01:08:26,609
+A laboratory test result,
+like looking at your A1C--
+
+1593
+01:08:26,609 --> 01:08:28,200
+what is A1C?
+
+1594
+01:08:28,200 --> 01:08:31,470
+So it's something that
+had been developed
+
+1595
+01:08:31,470 --> 01:08:34,050
+over decades and decades of
+research, where you recognize
+
+1596
+01:08:34,050 --> 01:08:35,550
+that looking at a
+particular protein
+
+1597
+01:08:35,550 --> 01:08:37,800
+is actually informative as
+something about a patient's
+
+1598
+01:08:37,800 --> 01:08:38,550
+health.
+
+1599
+01:08:38,550 --> 01:08:41,189
+So the features that we're
+using that go into these models
+
+1600
+01:08:41,189 --> 01:08:42,660
+were designed--
+
+1601
+01:08:42,660 --> 01:08:44,698
+first, they were designed
+for humans to look at.
+
+1602
+01:08:44,698 --> 01:08:46,740
+And second, they were
+designed to really help you
+
+1603
+01:08:46,740 --> 01:08:49,332
+with decision-making, or
+largely independent features
+
+1604
+01:08:49,332 --> 01:08:51,540
+from other information that
+you have about a patient.
+
+1605
+01:08:51,540 --> 01:08:53,082
+And all of those
+are reasons, really,
+
+1606
+01:08:53,082 --> 01:08:56,160
+I think why we're
+observing these subtleties.
+
+1607
+01:08:56,160 --> 01:08:58,350
+OK, so for the last
+10 minutes of class--
+
+1608
+01:08:58,350 --> 01:08:59,850
+I'm going to have
+to hold questions,
+
+1609
+01:08:59,850 --> 01:09:01,808
+because I want to get
+through all the material.
+
+1610
+01:09:01,808 --> 01:09:03,145
+But please post them to Piazza.
+
+1611
+01:09:03,145 --> 01:09:04,750
+For the last 10
+minutes of class,
+
+1612
+01:09:04,750 --> 01:09:06,720
+I want to change
+gears a little bit,
+
+1613
+01:09:06,720 --> 01:09:10,350
+and talk about
+survival modeling.
+
+1614
+01:09:10,350 --> 01:09:14,490
+So often we want want to
+talk about predicting time
+
+1615
+01:09:14,490 --> 01:09:16,600
+to some event.
+
+1616
+01:09:16,600 --> 01:09:18,800
+So this red dot here--
+
+1617
+01:09:18,800 --> 01:09:23,740
+sorry, this black line here
+is what I mean by an event.
+
+1618
+01:09:23,740 --> 01:09:26,299
+That event might be, for
+example, a patient dying.
+
+1619
+01:09:26,299 --> 01:09:29,970
+It might mean a married
+couple getting divorced.
+
+1620
+01:09:29,970 --> 01:09:35,649
+It might mean the day that
+what you graduate from MIT.
+
+1621
+01:09:35,649 --> 01:09:39,330
+And the red dot here
+denotes censored events.
+
+1622
+01:09:39,330 --> 01:09:42,960
+So for whatever
+reason, we don't have
+
+1623
+01:09:42,960 --> 01:09:47,128
+data on this patient, patient
+S3, after time step 4.
+
+1624
+01:09:47,128 --> 01:09:47,920
+They were censored.
+
+1625
+01:09:47,920 --> 01:09:51,270
+So we do know that
+the event didn't
+
+1626
+01:09:51,270 --> 01:09:53,670
+occur prior to time step 4.
+
+1627
+01:09:53,670 --> 01:09:55,740
+But we don't know
+if and when it's
+
+1628
+01:09:55,740 --> 01:09:57,510
+going to occur
+after time step 4,
+
+1629
+01:09:57,510 --> 01:10:00,015
+because we have
+missing data there.
+
+1630
+01:10:00,015 --> 01:10:04,170
+OK, so this is what I mean
+by right-censored data.
+
+1631
+01:10:04,170 --> 01:10:07,980
+So you might ask, why not
+just use classification--
+
+1632
+01:10:07,980 --> 01:10:10,605
+like binary classification--
+in this setting?
+
+1633
+01:10:10,605 --> 01:10:12,230
+And that's exactly
+what we did earlier.
+
+1634
+01:10:12,230 --> 01:10:16,470
+We thought about formalizing
+the diabetes risk stratification
+
+1635
+01:10:16,470 --> 01:10:20,400
+problem as looking to see
+what happens years 1 to 3
+
+1636
+01:10:20,400 --> 01:10:22,690
+after the time of prediction.
+
+1637
+01:10:22,690 --> 01:10:26,075
+That was with a gap of one year.
+
+1638
+01:10:26,075 --> 01:10:27,450
+And there a couple
+of reasons why
+
+1639
+01:10:27,450 --> 01:10:30,720
+that's perhaps not what
+you really wanted to do.
+
+1640
+01:10:30,720 --> 01:10:35,490
+First, you have less data
+to use during training.
+
+1641
+01:10:35,490 --> 01:10:40,920
+Because you've suddenly
+excluded patients for whom--
+
+1642
+01:10:40,920 --> 01:10:48,300
+or to differently--
+if you have patients
+
+1643
+01:10:48,300 --> 01:10:51,528
+for whom they were censored
+during that time window,
+
+1644
+01:10:51,528 --> 01:10:52,570
+you're throwing them out.
+
+1645
+01:10:52,570 --> 01:10:54,350
+So you have fewer
+data points there.
+
+1646
+01:10:54,350 --> 01:10:58,160
+That was part of our
+inclusion/exclusion criteria.
+
+1647
+01:10:58,160 --> 01:11:01,740
+Also, when you go to
+deploy these models,
+
+1648
+01:11:01,740 --> 01:11:03,960
+your model might say,
+yes, this patient
+
+1649
+01:11:03,960 --> 01:11:06,450
+is going to develop type 2
+diabetes between one and three
+
+1650
+01:11:06,450 --> 01:11:07,990
+years from now.
+
+1651
+01:11:07,990 --> 01:11:10,470
+But in fact what happened is
+they develop type 2 diabetes
+
+1652
+01:11:10,470 --> 01:11:13,240
+3.1 years from now.
+
+1653
+01:11:13,240 --> 01:11:15,750
+So your model would
+count this as a negative.
+
+1654
+01:11:15,750 --> 01:11:19,390
+Or it would be a false positive.
+
+1655
+01:11:19,390 --> 01:11:21,253
+The prediction would
+be a false positive.
+
+1656
+01:11:21,253 --> 01:11:23,420
+But in reality, your model
+wasn't actually that bad.
+
+1657
+01:11:23,420 --> 01:11:24,450
+We did pretty well.
+
+1658
+01:11:24,450 --> 01:11:26,130
+We didn't quite get
+the right range,
+
+1659
+01:11:26,130 --> 01:11:28,410
+but they did get
+diagnosed diabetes right
+
+1660
+01:11:28,410 --> 01:11:30,170
+outside that time window.
+
+1661
+01:11:30,170 --> 01:11:31,950
+And so your measures
+of performance
+
+1662
+01:11:31,950 --> 01:11:34,020
+are going to be pessimistic.
+
+1663
+01:11:34,020 --> 01:11:36,618
+You might be doing
+better than you thought.
+
+1664
+01:11:36,618 --> 01:11:38,160
+Now, you can try to
+address these two
+
+1665
+01:11:38,160 --> 01:11:39,180
+challenges in many ways.
+
+1666
+01:11:39,180 --> 01:11:41,220
+You can imagine a multi-task
+learning framework
+
+1667
+01:11:41,220 --> 01:11:43,357
+where you try to predict
+what's going to happen one
+
+1668
+01:11:43,357 --> 01:11:44,815
+to two years from
+now, what's going
+
+1669
+01:11:44,815 --> 01:11:46,740
+to happen two to three years
+from now, three to four,
+
+1670
+01:11:46,740 --> 01:11:47,305
+and so on.
+
+1671
+01:11:47,305 --> 01:11:49,680
+Each of those are different
+binary classification models.
+
+1672
+01:11:49,680 --> 01:11:51,640
+You might try to tie
+together the parameters
+
+1673
+01:11:51,640 --> 01:11:54,860
+of those models via a
+multi-task learning formulation.
+
+1674
+01:11:54,860 --> 01:11:57,042
+And that will get you closer
+to what you care about.
+
+1675
+01:11:57,042 --> 01:11:59,250
+But what I'll tell you about
+in the last five minutes
+
+1676
+01:11:59,250 --> 01:12:02,910
+is a much more elegant approach
+to trying to deal with that.
+
+1677
+01:12:02,910 --> 01:12:04,620
+And it's akin to regression.
+
+1678
+01:12:04,620 --> 01:12:06,730
+So that leads to
+my second point--
+
+1679
+01:12:06,730 --> 01:12:08,970
+why not just treat this
+as a regression problem?
+
+1680
+01:12:08,970 --> 01:12:10,800
+Predict time to event.
+
+1681
+01:12:10,800 --> 01:12:13,170
+You have some continuous
+valued outcome,
+
+1682
+01:12:13,170 --> 01:12:15,960
+the time until
+diagnosis diabetes.
+
+1683
+01:12:15,960 --> 01:12:19,260
+Just try to minimize
+mean squared--
+
+1684
+01:12:19,260 --> 01:12:20,910
+minimize your
+squared error trying
+
+1685
+01:12:20,910 --> 01:12:23,610
+to predict that
+continuous value.
+
+1686
+01:12:23,610 --> 01:12:26,190
+Well, the first
+challenge to think about
+
+1687
+01:12:26,190 --> 01:12:28,170
+is, remember where that
+mean squared error loss
+
+1688
+01:12:28,170 --> 01:12:28,962
+function came from.
+
+1689
+01:12:28,962 --> 01:12:33,630
+It came from thinking
+about your data
+
+1690
+01:12:33,630 --> 01:12:35,930
+as coming from a
+Gaussian distribution.
+
+1691
+01:12:35,930 --> 01:12:38,430
+And if you do maximum likelihood
+estimation of this Gaussian
+
+1692
+01:12:38,430 --> 01:12:40,800
+distribution, it
+turns out to look
+
+1693
+01:12:40,800 --> 01:12:44,100
+like minimizing a squared loss.
+
+1694
+01:12:44,100 --> 01:12:46,350
+So it's making a lot of
+assumptions about the outcome.
+
+1695
+01:12:46,350 --> 01:12:47,490
+For one, it's making
+the assumption
+
+1696
+01:12:47,490 --> 01:12:49,282
+that outcome could be
+negative or positive.
+
+1697
+01:12:49,282 --> 01:12:51,960
+A Gaussian distribution
+doesn't have to be positive.
+
+1698
+01:12:51,960 --> 01:12:54,540
+But here we know that T
+is always non-negative.
+
+1699
+01:12:54,540 --> 01:12:56,427
+In addition, there
+might be long tails.
+
+1700
+01:12:56,427 --> 01:12:58,260
+We might not know exactly
+when the patient's
+
+1701
+01:12:58,260 --> 01:12:59,190
+going to develop
+diabetes, but we
+
+1702
+01:12:59,190 --> 01:13:00,440
+know it's not going to be now.
+
+1703
+01:13:00,440 --> 01:13:02,640
+It's going to be at some
+point in the far future.
+
+1704
+01:13:02,640 --> 01:13:04,480
+And that may also look
+very non-Gaussian.
+
+1705
+01:13:04,480 --> 01:13:07,290
+So typical regression approaches
+aren't quite what you want.
+
+1706
+01:13:07,290 --> 01:13:09,600
+But there's another
+really important problem,
+
+1707
+01:13:09,600 --> 01:13:12,220
+which is that if you naively
+remove those censored points--
+
+1708
+01:13:12,220 --> 01:13:14,553
+like, what do you do for the
+individuals where you never
+
+1709
+01:13:14,553 --> 01:13:15,540
+observe the time--
+
+1710
+01:13:15,540 --> 01:13:18,240
+where the never get diabetes,
+because they were censored?
+
+1711
+01:13:18,240 --> 01:13:20,880
+Well, if you just remove those
+from your learning algorithm,
+
+1712
+01:13:20,880 --> 01:13:23,560
+then you're biasing
+your results.
+
+1713
+01:13:23,560 --> 01:13:27,390
+So for example, if you
+think about the average age
+
+1714
+01:13:27,390 --> 01:13:30,612
+of diabetes onset, if you only
+look at people who actually
+
+1715
+01:13:30,612 --> 01:13:32,070
+were observed to
+get diabetes, it's
+
+1716
+01:13:32,070 --> 01:13:34,293
+going to be much closer to now.
+
+1717
+01:13:34,293 --> 01:13:36,210
+Because obviously the
+people who were censored
+
+1718
+01:13:36,210 --> 01:13:39,920
+are people who got it much
+later from the censoring time.
+
+1719
+01:13:39,920 --> 01:13:42,040
+So that's another
+serious problem.
+
+1720
+01:13:42,040 --> 01:13:43,957
+So the way they we're
+trying to formalize this
+
+1721
+01:13:43,957 --> 01:13:45,340
+mathematically is as follows.
+
+1722
+01:13:45,340 --> 01:13:47,800
+Now we should think about
+having data which has,
+
+1723
+01:13:47,800 --> 01:13:51,270
+again, features x, outcome--
+
+1724
+01:13:51,270 --> 01:13:53,610
+what we usually call Y for
+the outcome in regression,
+
+1725
+01:13:53,610 --> 01:13:55,277
+but here I'll call
+it capital T, because
+
+1726
+01:13:55,277 --> 01:13:56,850
+of the time to the event.
+
+1727
+01:13:56,850 --> 01:13:59,100
+And now we have an
+additional variable--
+
+1728
+01:13:59,100 --> 01:14:02,220
+so it's no longer a
+two-point, now it's a triple--
+
+1729
+01:14:02,220 --> 01:14:02,940
+b.
+
+1730
+01:14:02,940 --> 01:14:05,610
+And b is going to be a binary
+variable, which is saying,
+
+1731
+01:14:05,610 --> 01:14:08,260
+was this individual
+censored-- was the time, t,
+
+1732
+01:14:08,260 --> 01:14:10,590
+denoting a censoring
+event, or was it denoting
+
+1733
+01:14:10,590 --> 01:14:12,380
+the actual event happening?
+
+1734
+01:14:12,380 --> 01:14:15,930
+So it's distinguishing
+between the red and the black.
+
+1735
+01:14:15,930 --> 01:14:19,500
+So black is b equals 0.
+
+1736
+01:14:19,500 --> 01:14:21,940
+Red is b equals 1.
+
+1737
+01:14:21,940 --> 01:14:26,950
+OK, so now we can talk
+about learning a density,
+
+1738
+01:14:26,950 --> 01:14:29,920
+P of t, which I'll
+also call f of t,
+
+1739
+01:14:29,920 --> 01:14:34,020
+which is the probability
+of death at time t.
+
+1740
+01:14:34,020 --> 01:14:36,660
+And associated with
+any density, of course,
+
+1741
+01:14:36,660 --> 01:14:38,650
+is the cumulative
+density function,
+
+1742
+01:14:38,650 --> 01:14:43,260
+which is the integral from 0
+to any point of the density.
+
+1743
+01:14:43,260 --> 01:14:45,960
+Here we'll actually look
+at 1 minus the CDF, what's
+
+1744
+01:14:45,960 --> 01:14:47,230
+called the survival function.
+
+1745
+01:14:47,230 --> 01:14:51,720
+So it's looking at probability
+of T, actual time of the event,
+
+1746
+01:14:51,720 --> 01:14:54,823
+being larger than some
+quantity, little t.
+
+1747
+01:14:54,823 --> 01:14:56,490
+And that's, of course,
+just the integral
+
+1748
+01:14:56,490 --> 01:14:59,266
+of the density from
+little t to infinity.
+
+1749
+01:14:59,266 --> 01:15:01,167
+All right, so this is
+the survival function.
+
+1750
+01:15:01,167 --> 01:15:02,250
+It's of a lot of interest.
+
+1751
+01:15:02,250 --> 01:15:03,833
+You want to know,
+is the patient going
+
+1752
+01:15:03,833 --> 01:15:07,262
+to be diagnosed with diabetes
+two or more years from now.
+
+1753
+01:15:07,262 --> 01:15:08,970
+So pictorially, what
+you're interested in
+
+1754
+01:15:08,970 --> 01:15:09,928
+is something like this.
+
+1755
+01:15:09,928 --> 01:15:12,240
+You want to estimate these
+conditional distributions.
+
+1756
+01:15:12,240 --> 01:15:14,250
+So I call it
+conditional because you
+
+1757
+01:15:14,250 --> 01:15:18,420
+want to condition on the
+covariant to individual x.
+
+1758
+01:15:18,420 --> 01:15:20,580
+So what I'm showing
+you, this black line,
+
+1759
+01:15:20,580 --> 01:15:23,670
+is your density, little f of t.
+
+1760
+01:15:23,670 --> 01:15:27,950
+And this white area
+here, the integral
+
+1761
+01:15:27,950 --> 01:15:31,430
+from little t to infinity,
+meaning all this white area,
+
+1762
+01:15:31,430 --> 01:15:33,380
+is capital S of t.
+
+1763
+01:15:33,380 --> 01:15:37,910
+It's the probability of
+surviving longer than time
+
+1764
+01:15:37,910 --> 01:15:39,430
+little t.
+
+1765
+01:15:39,430 --> 01:15:43,730
+OK, so the first thing
+you might do is say,
+
+1766
+01:15:43,730 --> 01:15:46,520
+we get these data,
+these tuples, and we
+
+1767
+01:15:46,520 --> 01:15:49,060
+want to try to estimate
+that function, little
+
+1768
+01:15:49,060 --> 01:15:52,250
+f, the probability of
+death at some time.
+
+1769
+01:15:52,250 --> 01:15:54,320
+Or, equivalently, you
+might want to estimate
+
+1770
+01:15:54,320 --> 01:15:58,220
+the survival time, capital S
+of t, which is the CDF version.
+
+1771
+01:15:58,220 --> 01:16:02,390
+And these two are related to
+another just by some calculus.
+
+1772
+01:16:02,390 --> 01:16:06,040
+So a method called the
+Kaplan-Meier estimator
+
+1773
+01:16:06,040 --> 01:16:10,280
+is a non-parametric method
+for estimating that survival
+
+1774
+01:16:10,280 --> 01:16:13,070
+probability, capital S of t.
+
+1775
+01:16:13,070 --> 01:16:15,290
+So this is the probability
+that an individual lives
+
+1776
+01:16:15,290 --> 01:16:17,150
+more than some time period.
+
+1777
+01:16:17,150 --> 01:16:20,420
+So first I'll explain
+to you this plot, then
+
+1778
+01:16:20,420 --> 01:16:22,110
+I'll tell you how to compute it.
+
+1779
+01:16:22,110 --> 01:16:24,860
+So the x-axis of
+this plot is time.
+
+1780
+01:16:24,860 --> 01:16:28,130
+The y-axis is this survival
+property, capital S of t.
+
+1781
+01:16:28,130 --> 01:16:30,050
+It's the probability
+that an individual lives
+
+1782
+01:16:30,050 --> 01:16:32,330
+more than this amount of time.
+
+1783
+01:16:32,330 --> 01:16:36,933
+I think this x-axis is in days,
+so 500, 1,000, 1,500, 2,000.
+
+1784
+01:16:36,933 --> 01:16:39,350
+This figure, by the way, was
+created by one of my students
+
+1785
+01:16:39,350 --> 01:16:42,800
+who's studying a multiple
+myeloma data set.
+
+1786
+01:16:42,800 --> 01:16:47,930
+So you could then ask, well,
+under what covariants do you
+
+1787
+01:16:47,930 --> 01:16:49,680
+want to compute this survival?
+
+1788
+01:16:49,680 --> 01:16:52,430
+So here, this method
+I'll tell you about,
+
+1789
+01:16:52,430 --> 01:16:56,125
+is very good for when you
+don't have any features.
+
+1790
+01:16:56,125 --> 01:16:57,500
+So all you want
+to do is estimate
+
+1791
+01:16:57,500 --> 01:16:58,460
+that density by itself.
+
+1792
+01:16:58,460 --> 01:17:01,970
+And of course you
+could apply a method
+
+1793
+01:17:01,970 --> 01:17:03,240
+for multiple populations.
+
+1794
+01:17:03,240 --> 01:17:04,490
+So what I'm showing
+you here is applying it
+
+1795
+01:17:04,490 --> 01:17:05,740
+for two different populations.
+
+1796
+01:17:05,740 --> 01:17:08,040
+Suppose there's just a
+single binary feature.
+
+1797
+01:17:08,040 --> 01:17:11,030
+And we're going to apply
+it to the x equals 0
+
+1798
+01:17:11,030 --> 01:17:11,875
+and to x equals 1.
+
+1799
+01:17:11,875 --> 01:17:13,670
+That gets you two
+different curves out.
+
+1800
+01:17:13,670 --> 01:17:16,790
+But here the estimator is going
+to work independently for each
+
+1801
+01:17:16,790 --> 01:17:19,140
+of the two populations.
+
+1802
+01:17:19,140 --> 01:17:20,900
+So what you see here
+on this red line
+
+1803
+01:17:20,900 --> 01:17:22,800
+is for the x equals
+0 population.
+
+1804
+01:17:22,800 --> 01:17:28,820
+We see that, at time 0, everyone
+is alive, as you would expect.
+
+1805
+01:17:28,820 --> 01:17:35,000
+And at time 1,000,
+roughly 60% individuals
+
+1806
+01:17:35,000 --> 01:17:37,340
+are still alive for time 1,000.
+
+1807
+01:17:37,340 --> 01:17:39,480
+And that sort of stays constant.
+
+1808
+01:17:39,480 --> 01:17:41,495
+Now you see that, for
+the other subgroup,
+
+1809
+01:17:41,495 --> 01:17:46,010
+the x equals 1 subgroup, again,
+time step 0, as you would
+
+1810
+01:17:46,010 --> 01:17:47,810
+expect, everyone is alive.
+
+1811
+01:17:47,810 --> 01:17:50,180
+But they survive much longer.
+
+1812
+01:17:50,180 --> 01:17:53,343
+At time step 1,000, over
+75% of them are still alive.
+
+1813
+01:17:53,343 --> 01:17:55,760
+And of course of interest here
+is also confidence balance.
+
+1814
+01:17:55,760 --> 01:17:56,900
+I'm not going to tell
+you how can you do that,
+
+1815
+01:17:56,900 --> 01:17:58,820
+but it's in some of
+the optional readings.
+
+1816
+01:17:58,820 --> 01:18:01,250
+And by the way, there are
+more optional readings given
+
+1817
+01:18:01,250 --> 01:18:03,820
+on the bottom of these slides.
+
+1818
+01:18:03,820 --> 01:18:06,170
+And so you see that there is
+a statistically significant
+
+1819
+01:18:06,170 --> 01:18:09,055
+difference between x
+equals 1 and x equals 0.
+
+1820
+01:18:09,055 --> 01:18:10,430
+These people seem
+to be surviving
+
+1821
+01:18:10,430 --> 01:18:11,490
+longer than these people.
+
+1822
+01:18:11,490 --> 01:18:13,530
+And you get that
+immediately from this curve.
+
+1823
+01:18:13,530 --> 01:18:15,240
+So how do we compute that?
+
+1824
+01:18:15,240 --> 01:18:17,630
+Well, we take those
+observed times,
+
+1825
+01:18:17,630 --> 01:18:24,410
+those capital Ts, and here
+I'm going to call them just y.
+
+1826
+01:18:24,410 --> 01:18:25,610
+I'm going to sort them.
+
+1827
+01:18:25,610 --> 01:18:28,280
+So these are sorted times.
+
+1828
+01:18:28,280 --> 01:18:32,680
+And I don't care whether they
+were censored or not censored.
+
+1829
+01:18:32,680 --> 01:18:35,840
+So y is just all of the times
+for all of the patients,
+
+1830
+01:18:35,840 --> 01:18:38,490
+whether they are
+censored or not.
+
+1831
+01:18:38,490 --> 01:18:40,310
+dK I want you think about as 1.
+
+1832
+01:18:40,310 --> 01:18:43,310
+It's the number of events
+that occurred at that time.
+
+1833
+01:18:43,310 --> 01:18:45,740
+So if everyone had a unique
+time of censoring or death,
+
+1834
+01:18:45,740 --> 01:18:47,510
+then dK is always 1.
+
+1835
+01:18:47,510 --> 01:18:49,910
+K is indexing one
+of these things.
+
+1836
+01:18:49,910 --> 01:18:52,430
+n of K is the number
+of individuals
+
+1837
+01:18:52,430 --> 01:18:56,930
+alive and uncensored
+by the K-th time point.
+
+1838
+01:18:56,930 --> 01:19:01,160
+Then what this estimator
+says is that S of t--
+
+1839
+01:19:01,160 --> 01:19:03,200
+so the estimator at
+any point in time--
+
+1840
+01:19:03,200 --> 01:19:07,190
+is given to you by
+the product over K
+
+1841
+01:19:07,190 --> 01:19:10,010
+such that y of K is
+less than or equal to t.
+
+1842
+01:19:10,010 --> 01:19:14,570
+So it's going over the
+observed times up to little t,
+
+1843
+01:19:14,570 --> 01:19:17,810
+of 1 minus the ratio of 1 over--
+
+1844
+01:19:17,810 --> 01:19:19,430
+so I'm thinking about dK as 1--
+
+1845
+01:19:19,430 --> 01:19:22,070
+1 over the number of people
+who are alive and uncensored
+
+1846
+01:19:22,070 --> 01:19:23,860
+by that time.
+
+1847
+01:19:23,860 --> 01:19:26,510
+And that has a very
+intuitive definition.
+
+1848
+01:19:26,510 --> 01:19:29,300
+And one can prove that
+this estimator gives you
+
+1849
+01:19:29,300 --> 01:19:32,270
+a consistent estimator
+of the number of people
+
+1850
+01:19:32,270 --> 01:19:34,620
+who are alive--
+
+1851
+01:19:34,620 --> 01:19:37,370
+sorry, the number of survival
+probability at any one
+
+1852
+01:19:37,370 --> 01:19:41,547
+point in time for censored data.
+
+1853
+01:19:41,547 --> 01:19:42,380
+And that's critical.
+
+1854
+01:19:42,380 --> 01:19:45,020
+This works for censored data.
+
+1855
+01:19:45,020 --> 01:19:47,340
+So I'm past time today.
+
+1856
+01:19:47,340 --> 01:19:51,520
+So I'll finish the last few
+slides on Tuesday's lecture.
+
+1857
+01:19:51,520 --> 01:19:52,520
+So that's all for today.
+
+1858
+01:19:52,520 --> 01:19:54,070
+Thanks.

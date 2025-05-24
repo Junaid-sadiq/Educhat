@@ -1,0 +1,6 @@
+
+{
+  "title":"Lecture 2: Doubly Efficient Interactive Proofs",
+  "content":" Topics Definition Example of doubly efficient IP for counting triangles in a graph Low-degree extension Doubly efficient IP for all bounded depth computations (the GKR protocol) Readings J. Thaler, \u0026ldquo;Proofs, Arguments, and Zero-Knowledge (PDF),\u0026rdquo; chapters 3.5, 4.3, 4.6 (2023). S. Goldwasser, G. Rothblum, and Y. T. Kalai, \u0026ldquo;Delegating Computation: Interactive Proofs for Muggles.\u0026rdquo; Electronic Colloquium on Computational Complexity, Report No. 108 (2017), ECCC - TR17-108 (PDF). Lecture Videos Part 1 Viewing videos requires an internet connection View video page Download video Download transcript Part 2 Viewing videos requires an internet connection View video page Download video Download transcript "}
+
+

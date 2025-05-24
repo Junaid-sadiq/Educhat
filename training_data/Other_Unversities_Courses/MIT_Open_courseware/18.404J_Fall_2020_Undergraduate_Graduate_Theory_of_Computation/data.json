@@ -1,0 +1,23 @@
+{
+  "course_title":"Theory of Computation",
+  "course_description":"This course emphasizes computability and computational complexity theory. Topics include regular and context-free languages, decidable and undecidable problems, reducibility, recursive function theory, time and space measures on computation, completeness, hierarchy theorems, inherently complex problems, oracles, probabilistic computation, and interactive proof systems.\n",
+  "course_description_html":"This course emphasizes computability and computational complexity theory. Topics include regular and context-free languages, decidable and undecidable problems, reducibility, recursive function theory, time and space measures on computation, completeness, hierarchy theorems, inherently complex problems, oracles, probabilistic computation, and interactive proof systems.",
+  "site_uid":"b48937bb-3fbe-4d3d-b3f3-15cd545dfe20",
+  "legacy_uid":"c522aafe-fc5e-830e-2e60-eba741fcc43c","instructors": [{
+    "first_name":"Michael",
+    "last_name":"Sipser",
+    "middle_initial":"",
+    "salutation":"Prof.",
+    "title":"Prof. Michael Sipser"}],"department_numbers":["18","6"],
+  "learning_resource_types":["Lecture Videos","Problem Sets","Exams","Lecture Notes","Instructor Insights"],
+  "topics":[["Engineering","Computer Science","Theory of Computation"],["Mathematics","Computation"],["Mathematics","Discrete Mathematics"]],
+  "mit_learn_topics":null,
+  "primary_course_number":"18.404J",
+  "extra_course_numbers":"18.4041J,6.840J",
+  "term":"Fall",
+  "year":"2020",
+  "level":["Undergraduate","Graduate"],
+  "hide_download":null,
+  "image_src":"./static_resources/25eb14e154bff97af5173a45a625ab51_18-404jf20_v2.jpg",
+  "course_image_metadata":{"content_type":"resource","description":"","draft":false,"file":"/courses/18-404j-theory-of-computation-fall-2020/25eb14e154bff97af5173a45a625ab51_18-404jf20_v2.jpg","file_size":89678,"file_type":"image/jpeg","image_metadata":{"caption":"Professor Michael Sipser teaching [Lecture 14](/courses/18-404j-theory-of-computation-fall-2020/resources/mit18_404f20_lec14-1) of Theory of Computation. (Image by MIT OpenCourseWare.)","credit":"","image-alt":"A man in front of a black screen with text and images."},"iscjklanguage":false,"learning_resource_types":[],"license":"https://creativecommons.org/licenses/by-nc-sa/4.0/","ocw_type":"OCWImage","resourcetype":"Image","title":"18-404jf20_v2.jpg","uid":"25eb14e1-54bf-f97a-f517-3a45a625ab51"}}
+

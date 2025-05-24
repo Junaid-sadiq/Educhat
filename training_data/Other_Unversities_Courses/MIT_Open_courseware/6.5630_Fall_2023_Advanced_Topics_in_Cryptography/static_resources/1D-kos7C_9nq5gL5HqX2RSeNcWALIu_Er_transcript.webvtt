@@ -1,0 +1,7357 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:01.952 align:middle line:90%
+[SQUEAKING]
+
+00:00:01.952 --> 00:00:03.416 align:middle line:90%
+[RUSTLING]
+
+00:00:03.416 --> 00:00:04.880 align:middle line:90%
+[CLICKING]
+
+00:00:04.880 --> 00:00:12.690 align:middle line:90%
+
+
+00:00:12.690 --> 00:00:15.160 align:middle line:84%
+YAEL T. KALAI: Let me first
+start with some administration.
+
+00:00:15.160 --> 00:00:20.585 align:middle line:84%
+So actually, some of you noticed
+that the pset problem number two
+
+00:00:20.585 --> 00:00:23.610 align:middle line:90%
+B, there is a slight problem.
+
+00:00:23.610 --> 00:00:27.110 align:middle line:84%
+I posted a comment about
+this in the website.
+
+00:00:27.110 --> 00:00:30.060 align:middle line:90%
+
+
+00:00:30.060 --> 00:00:31.950 align:middle line:84%
+So there's an
+assumption I want you
+
+00:00:31.950 --> 00:00:33.570 align:middle line:84%
+to make for problem
+two B. Just look
+
+00:00:33.570 --> 00:00:34.780 align:middle line:84%
+at the website and
+the announcement.
+
+00:00:34.780 --> 00:00:36.363 align:middle line:84%
+If you have any
+questions, come to me.
+
+00:00:36.363 --> 00:00:37.630 align:middle line:90%
+So that's one thing.
+
+00:00:37.630 --> 00:00:40.710 align:middle line:90%
+The other thing is in--
+
+00:00:40.710 --> 00:00:43.410 align:middle line:84%
+well, next week is Thanksgiving,
+so happy Thanksgiving.
+
+00:00:43.410 --> 00:00:49.150 align:middle line:84%
+And the week after, I'm actually
+away giving some keynote talk.
+
+00:00:49.150 --> 00:00:51.360 align:middle line:84%
+But actually, it
+worked out really
+
+00:00:51.360 --> 00:00:56.040 align:middle line:84%
+well because the
+topic of that lecture
+
+00:00:56.040 --> 00:00:58.110 align:middle line:84%
+is going to be
+about what's called
+
+00:00:58.110 --> 00:01:00.630 align:middle line:90%
+BARGs, or batch arguments.
+
+00:01:00.630 --> 00:01:02.880 align:middle line:84%
+That would lead us kind
+of in the final class
+
+00:01:02.880 --> 00:01:07.450 align:middle line:84%
+to get our SNARGs that we
+were kind of building for.
+
+00:01:07.450 --> 00:01:17.645 align:middle line:84%
+And that lecture covers a work
+by three authors, Jain Jin,
+
+00:01:17.645 --> 00:01:19.910 align:middle line:90%
+Choudhuri, Jain Jin.
+
+00:01:19.910 --> 00:01:23.427 align:middle line:84%
+And Jain Jin is going to come
+here and present the results.
+
+00:01:23.427 --> 00:01:26.010 align:middle line:84%
+So you'll get the author kind
+of presenting the relevant work.
+
+00:01:26.010 --> 00:01:28.340 align:middle line:84%
+And then the final class,
+we'll kind wrap everything up
+
+00:01:28.340 --> 00:01:33.110 align:middle line:84%
+and show you how to get what we
+worked for this entire semester.
+
+00:01:33.110 --> 00:01:36.620 align:middle line:84%
+So just of what we're
+going to focus on
+
+00:01:36.620 --> 00:01:39.030 align:middle line:84%
+for today-- so any questions
+about administration,
+
+00:01:39.030 --> 00:01:41.030 align:middle line:84%
+about questions from
+last class, anything
+
+00:01:41.030 --> 00:01:43.165 align:middle line:90%
+before we go into the material?
+
+00:01:43.165 --> 00:01:45.910 align:middle line:90%
+
+
+00:01:45.910 --> 00:01:46.540 align:middle line:90%
+Yeah?
+
+00:01:46.540 --> 00:01:49.780 align:middle line:84%
+AUDIENCE: Yeah, when I'm
+doing the homework, I realized
+
+00:01:49.780 --> 00:01:50.980 align:middle line:90%
+there's one thing.
+
+00:01:50.980 --> 00:01:54.250 align:middle line:84%
+I'm not sure if that's something
+you changed with gk alpha.
+
+00:01:54.250 --> 00:02:01.022 align:middle line:84%
+[INAUDIBLE] Is there any way
+to get subtraction to work?
+
+00:02:01.022 --> 00:02:02.230 align:middle line:90%
+YAEL T. KALAI: So let's talk.
+
+00:02:02.230 --> 00:02:03.730 align:middle line:90%
+Come to me after class.
+
+00:02:03.730 --> 00:02:04.600 align:middle line:90%
+OK?
+
+00:02:04.600 --> 00:02:05.800 align:middle line:90%
+OK.
+
+00:02:05.800 --> 00:02:06.790 align:middle line:90%
+OK.
+
+00:02:06.790 --> 00:02:08.570 align:middle line:90%
+Any other questions?
+
+00:02:08.570 --> 00:02:09.990 align:middle line:84%
+We'll talk about
+this after class.
+
+00:02:09.990 --> 00:02:13.190 align:middle line:90%
+So what's the plan for today?
+
+00:02:13.190 --> 00:02:15.980 align:middle line:84%
+Or where are we kind
+of left off last class
+
+00:02:15.980 --> 00:02:20.240 align:middle line:84%
+and where we're heading
+for today, so last class
+
+00:02:20.240 --> 00:02:22.440 align:middle line:84%
+we defined the
+Fiat-Shamir paradigm.
+
+00:02:22.440 --> 00:02:24.430 align:middle line:84%
+So kind of from the
+beginning, what did we do?
+
+00:02:24.430 --> 00:02:27.380 align:middle line:84%
+We showed this
+interactive protocols.
+
+00:02:27.380 --> 00:02:30.850 align:middle line:84%
+And then we showed,
+for example, GKR,
+
+00:02:30.850 --> 00:02:32.730 align:middle line:84%
+which is only for bounded
+depth computations.
+
+00:02:32.730 --> 00:02:37.010 align:middle line:84%
+Then we showed you can build
+from that a PCP and then use
+
+00:02:37.010 --> 00:02:40.400 align:middle line:84%
+that PCP to shrink
+it using cryptography
+
+00:02:40.400 --> 00:02:42.540 align:middle line:90%
+and get actually four message--
+
+00:02:42.540 --> 00:02:45.530 align:middle line:84%
+That was the key in
+Micali protocol--
+
+00:02:45.530 --> 00:02:48.470 align:middle line:84%
+protocol, proofs, or arguments,
+computationally sound
+
+00:02:48.470 --> 00:02:53.040 align:middle line:84%
+proofs, for all of NP
+where it's very succinct.
+
+00:02:53.040 --> 00:02:56.330 align:middle line:84%
+So we can take any
+witness for NP.
+
+00:02:56.330 --> 00:02:58.800 align:middle line:84%
+And instead of sending this
+witness, which is long,
+
+00:02:58.800 --> 00:03:00.530 align:middle line:84%
+I don't know, poly
+n bits, I'm going
+
+00:03:00.530 --> 00:03:03.530 align:middle line:84%
+to shrink it to be an
+interactive protocol, so
+
+00:03:03.530 --> 00:03:05.660 align:middle line:90%
+four messages, to get it--
+
+00:03:05.660 --> 00:03:07.940 align:middle line:84%
+the number of bits is
+proportional to the security
+
+00:03:07.940 --> 00:03:10.958 align:middle line:84%
+parameter, which can
+be much, much smaller.
+
+00:03:10.958 --> 00:03:12.000 align:middle line:90%
+So that's what we showed.
+
+00:03:12.000 --> 00:03:13.500 align:middle line:84%
+That was the
+Kilian-Micali protocol,
+
+00:03:13.500 --> 00:03:14.640 align:middle line:90%
+but that was for messages.
+
+00:03:14.640 --> 00:03:17.220 align:middle line:84%
+So now, we're kind of
+towards the homestretch.
+
+00:03:17.220 --> 00:03:19.250 align:middle line:84%
+We want to get around
+these four messages
+
+00:03:19.250 --> 00:03:22.490 align:middle line:84%
+and reduce it down
+to just one message.
+
+00:03:22.490 --> 00:03:23.850 align:middle line:90%
+So how do we do that?
+
+00:03:23.850 --> 00:03:27.140 align:middle line:84%
+So last class, we defined
+this paradigm called
+
+00:03:27.140 --> 00:03:28.500 align:middle line:90%
+the Fiat-Shamir paradigm.
+
+00:03:28.500 --> 00:03:30.260 align:middle line:84%
+It was introduced
+exactly for this purpose
+
+00:03:30.260 --> 00:03:36.650 align:middle line:84%
+to eliminate interaction
+from interactive protocols
+
+00:03:36.650 --> 00:03:41.130 align:middle line:84%
+by essentially replacing the
+verifier with a hash function.
+
+00:03:41.130 --> 00:03:43.290 align:middle line:90%
+And now, there was a question.
+
+00:03:43.290 --> 00:03:46.410 align:middle line:84%
+It's a very nice, very simple,
+very efficient kind of paradigm,
+
+00:03:46.410 --> 00:03:47.612 align:middle line:90%
+very elegant, in my opinion.
+
+00:03:47.612 --> 00:03:49.320 align:middle line:84%
+But then there's a
+question, is it sound?
+
+00:03:49.320 --> 00:03:51.350 align:middle line:84%
+If you start with an
+interactive protocol
+
+00:03:51.350 --> 00:03:52.850 align:middle line:84%
+that you can prove
+soundness, when
+
+00:03:52.850 --> 00:03:54.360 align:middle line:84%
+you apply the
+Fiat-Shamir paradigm,
+
+00:03:54.360 --> 00:03:56.490 align:middle line:84%
+is the protocol or
+the proof still sound?
+
+00:03:56.490 --> 00:03:57.540 align:middle line:90%
+That's the question.
+
+00:03:57.540 --> 00:04:01.230 align:middle line:84%
+And what we proved
+for this protocol,
+
+00:04:01.230 --> 00:04:03.410 align:middle line:84%
+Kilian-Micali protocol,
+is it is sound
+
+00:04:03.410 --> 00:04:05.130 align:middle line:84%
+if you apply the
+Fiat-Shamir paradigm.
+
+00:04:05.130 --> 00:04:10.560 align:middle line:84%
+But this hash function
+is a random oracle.
+
+00:04:10.560 --> 00:04:14.580 align:middle line:84%
+So instead of being actually
+an explicit kind of circuit,
+
+00:04:14.580 --> 00:04:17.209 align:middle line:84%
+if we think of it as a
+completely random function,
+
+00:04:17.209 --> 00:04:20.519 align:middle line:84%
+that both parties have oracle
+access to, then it's sound.
+
+00:04:20.519 --> 00:04:22.718 align:middle line:84%
+But in real world,
+there is no kind
+
+00:04:22.718 --> 00:04:25.260 align:middle line:84%
+of random oracles in the sky
+that all parties have access to.
+
+00:04:25.260 --> 00:04:30.360 align:middle line:84%
+We have to use specific circuits
+to replace this hash function.
+
+00:04:30.360 --> 00:04:32.660 align:middle line:84%
+And then there was
+this question of,
+
+00:04:32.660 --> 00:04:35.270 align:middle line:84%
+when we actually use
+the Fiat-Shamir paradigm
+
+00:04:35.270 --> 00:04:40.460 align:middle line:84%
+with a specific circuit,
+with a specific hash, that's
+
+00:04:40.460 --> 00:04:45.020 align:middle line:84%
+computable by a specific
+kind of circuit, is it sound?
+
+00:04:45.020 --> 00:04:48.790 align:middle line:84%
+And that was kind of
+open for a long time.
+
+00:04:48.790 --> 00:04:50.540 align:middle line:84%
+It was a very, very
+important open problem
+
+00:04:50.540 --> 00:04:53.070 align:middle line:84%
+because Fiat-Shamir was used
+all over the place in practice.
+
+00:04:53.070 --> 00:04:56.700 align:middle line:84%
+So understanding whether it's
+secure or not is very important.
+
+00:04:56.700 --> 00:05:01.910 align:middle line:84%
+And we could only analyze it in
+the random oracle model, so not
+
+00:05:01.910 --> 00:05:04.080 align:middle line:90%
+in real world settings.
+
+00:05:04.080 --> 00:05:07.370 align:middle line:84%
+And as I pointed out last
+time, the random oracle model
+
+00:05:07.370 --> 00:05:09.480 align:middle line:84%
+actually worked out to
+be a very good proxy.
+
+00:05:09.480 --> 00:05:11.407 align:middle line:84%
+So none of the schemes
+in practice actually
+
+00:05:11.407 --> 00:05:13.490 align:middle line:84%
+that we proved security
+in the random oracle model
+
+00:05:13.490 --> 00:05:15.030 align:middle line:90%
+turned out to be broken.
+
+00:05:15.030 --> 00:05:19.250 align:middle line:84%
+So it turns out it's a very,
+very good proxy for security.
+
+00:05:19.250 --> 00:05:22.380 align:middle line:84%
+But still, at least for
+me as a theoretician,
+
+00:05:22.380 --> 00:05:26.270 align:middle line:84%
+I want to understand,
+when we replace it
+
+00:05:26.270 --> 00:05:28.890 align:middle line:84%
+with an actual function,
+an actual program,
+
+00:05:28.890 --> 00:05:29.940 align:middle line:90%
+why is it secure.
+
+00:05:29.940 --> 00:05:33.020 align:middle line:84%
+And frankly, I still
+don't understand
+
+00:05:33.020 --> 00:05:34.290 align:middle line:90%
+why it's such a good proxy.
+
+00:05:34.290 --> 00:05:35.180 align:middle line:90%
+I have to say.
+
+00:05:35.180 --> 00:05:38.690 align:middle line:84%
+It's surprising to me
+that never, ever we had--
+
+00:05:38.690 --> 00:05:46.920 align:middle line:84%
+it's really, really
+approximates security very well.
+
+00:05:46.920 --> 00:05:49.260 align:middle line:84%
+Even though, as I mentioned,
+we do have counterexamples.
+
+00:05:49.260 --> 00:05:53.010 align:middle line:84%
+We do have examples contrived,
+not real world examples,
+
+00:05:53.010 --> 00:05:56.030 align:middle line:84%
+but contrived examples
+where the protocol are
+
+00:05:56.030 --> 00:05:58.970 align:middle line:84%
+secure in the random
+oracle model and not secure
+
+00:05:58.970 --> 00:06:02.340 align:middle line:84%
+when applied Fiat-Shamir
+And actually, interestingly,
+
+00:06:02.340 --> 00:06:04.160 align:middle line:90%
+Kilian-Micali is one of them.
+
+00:06:04.160 --> 00:06:05.810 align:middle line:84%
+It's actually one
+of the protocols
+
+00:06:05.810 --> 00:06:09.420 align:middle line:84%
+where actually it
+was proven that,
+
+00:06:09.420 --> 00:06:12.750 align:middle line:84%
+if you use a certain
+hash function--
+
+00:06:12.750 --> 00:06:14.550 align:middle line:84%
+collision resistant,
+but certain hash
+
+00:06:14.550 --> 00:06:17.520 align:middle line:84%
+function-- then actually
+you can't prove security.
+
+00:06:17.520 --> 00:06:19.080 align:middle line:84%
+No matter which
+specific function
+
+00:06:19.080 --> 00:06:25.290 align:middle line:84%
+you use for the Fiat-Shamir
+function, it will not be secure.
+
+00:06:25.290 --> 00:06:28.210 align:middle line:84%
+But this specific hash function,
+which is collision resistant,
+
+00:06:28.210 --> 00:06:29.140 align:middle line:90%
+is contrived.
+
+00:06:29.140 --> 00:06:32.790 align:middle line:84%
+So we still don't have real
+world natural application
+
+00:06:32.790 --> 00:06:35.190 align:middle line:84%
+of where security was proven
+in the random oracle model
+
+00:06:35.190 --> 00:06:38.000 align:middle line:84%
+but turned out to be
+false in the real world.
+
+00:06:38.000 --> 00:06:42.474 align:middle line:90%
+
+
+00:06:42.474 --> 00:06:44.180 align:middle line:84%
+So that's where
+we're heading to,
+
+00:06:44.180 --> 00:06:46.790 align:middle line:84%
+trying to prove the
+security of or the soundness
+
+00:06:46.790 --> 00:06:49.190 align:middle line:90%
+of the Fiat-Shamir paradigm.
+
+00:06:49.190 --> 00:06:52.340 align:middle line:84%
+And along the way,
+what we did is
+
+00:06:52.340 --> 00:06:56.070 align:middle line:84%
+I defined a certain protocol,
+which is zero knowledge.
+
+00:06:56.070 --> 00:06:58.740 align:middle line:84%
+We kind of took a detour,
+talked about zero knowledge.
+
+00:06:58.740 --> 00:07:01.100 align:middle line:84%
+And we looked at the specific
+protocols, zero knowledge
+
+00:07:01.100 --> 00:07:06.440 align:middle line:84%
+protocol, for Hamiltonicity,
+for whether a graph
+
+00:07:06.440 --> 00:07:08.190 align:middle line:90%
+has a Hamiltonian cycle or not.
+
+00:07:08.190 --> 00:07:10.040 align:middle line:90%
+That's an NP complete problem.
+
+00:07:10.040 --> 00:07:13.490 align:middle line:84%
+And so here is just a recap
+because we'll look at it again
+
+00:07:13.490 --> 00:07:14.140 align:middle line:90%
+today.
+
+00:07:14.140 --> 00:07:18.870 align:middle line:84%
+So here is a proof, a
+three-message proof system.
+
+00:07:18.870 --> 00:07:21.170 align:middle line:84%
+The prover is trying to
+prove to the verifier
+
+00:07:21.170 --> 00:07:24.470 align:middle line:84%
+that a graph G has
+a Hamiltonian cycle.
+
+00:07:24.470 --> 00:07:26.430 align:middle line:84%
+And we want to do it
+in zero knowledge,
+
+00:07:26.430 --> 00:07:28.440 align:middle line:84%
+so in a proof that
+gives no information.
+
+00:07:28.440 --> 00:07:32.150 align:middle line:84%
+And the way we did it, we said,
+OK, the prover, so the prover
+
+00:07:32.150 --> 00:07:33.310 align:middle line:90%
+has a Hamiltonian cycle.
+
+00:07:33.310 --> 00:07:35.060 align:middle line:84%
+He does not want to
+reveal any information
+
+00:07:35.060 --> 00:07:38.060 align:middle line:84%
+about this Hamiltonian
+cycle to the verifier.
+
+00:07:38.060 --> 00:07:39.730 align:middle line:90%
+What would the prover do?
+
+00:07:39.730 --> 00:07:43.430 align:middle line:84%
+He will choose a
+random permutation, pi.
+
+00:07:43.430 --> 00:07:48.140 align:middle line:84%
+He will commit, put in
+a safe, locked safe,
+
+00:07:48.140 --> 00:07:52.810 align:middle line:84%
+only the Hamiltonian
+cycle of pi of g.
+
+00:07:52.810 --> 00:07:56.840 align:middle line:84%
+So if c is the path
+Hamiltonian cycle in g,
+
+00:07:56.840 --> 00:08:03.590 align:middle line:84%
+he will compute pi of the cycle,
+so the cycle inside pi of g.
+
+00:08:03.590 --> 00:08:05.780 align:middle line:84%
+And then he's going
+to get a random bit.
+
+00:08:05.780 --> 00:08:07.550 align:middle line:84%
+And he's going to
+give an answer.
+
+00:08:07.550 --> 00:08:09.110 align:middle line:90%
+What is the answer?
+
+00:08:09.110 --> 00:08:14.230 align:middle line:84%
+If the bit is zero, he's
+just going to open the cycle.
+
+00:08:14.230 --> 00:08:16.210 align:middle line:90%
+Hi.
+
+00:08:16.210 --> 00:08:19.420 align:middle line:84%
+He's just going
+to open the cycle.
+
+00:08:19.420 --> 00:08:23.140 align:middle line:90%
+Or maybe I should say pi of c.
+
+00:08:23.140 --> 00:08:27.182 align:middle line:84%
+So he's going to open only the
+places where there's a cycle.
+
+00:08:27.182 --> 00:08:28.640 align:middle line:84%
+And the guy is
+going to check that,
+
+00:08:28.640 --> 00:08:31.532 align:middle line:90%
+yes, it's an, indeed, cycle.
+
+00:08:31.532 --> 00:08:33.740 align:middle line:84%
+But we need to make sure
+that the cycle has something
+
+00:08:33.740 --> 00:08:35.210 align:middle line:90%
+to do with the graph itself.
+
+00:08:35.210 --> 00:08:40.280 align:middle line:84%
+So if the b is 1,
+then we check, indeed,
+
+00:08:40.280 --> 00:08:43.429 align:middle line:90%
+that you give the permutation.
+
+00:08:43.429 --> 00:08:45.060 align:middle line:84%
+You do not give the
+permitted cycle.
+
+00:08:45.060 --> 00:08:46.560 align:middle line:84%
+Otherwise, it will
+give information.
+
+00:08:46.560 --> 00:08:48.620 align:middle line:84%
+So you only give
+them the permutation.
+
+00:08:48.620 --> 00:08:53.870 align:middle line:84%
+And you open only
+nonedges in pi of g.
+
+00:08:53.870 --> 00:08:59.030 align:middle line:84%
+So now you know everywhere in
+pi of g that there is no edge.
+
+00:08:59.030 --> 00:09:01.930 align:middle line:84%
+In this commitment,
+there is no edges.
+
+00:09:01.930 --> 00:09:04.600 align:middle line:84%
+So again, let me just
+emphasize to recap.
+
+00:09:04.600 --> 00:09:10.940 align:middle line:84%
+This commitment, if n is the
+number of nodes in the graph,
+
+00:09:10.940 --> 00:09:12.970 align:middle line:84%
+it's committing to
+n squared values
+
+00:09:12.970 --> 00:09:16.270 align:middle line:84%
+where there's a 1 if there's an
+edge, 0 if there's not an edge.
+
+00:09:16.270 --> 00:09:19.640 align:middle line:84%
+For any ij, it says 01 whether
+it's an edge or not an edge.
+
+00:09:19.640 --> 00:09:24.460 align:middle line:84%
+And if b equals 0, we
+only open the places
+
+00:09:24.460 --> 00:09:26.330 align:middle line:84%
+where there's a
+Hamiltonian cycle.
+
+00:09:26.330 --> 00:09:28.298 align:middle line:84%
+We check that everything
+there should be 1.
+
+00:09:28.298 --> 00:09:29.840 align:middle line:84%
+And you check that
+it kind of closes,
+
+00:09:29.840 --> 00:09:31.790 align:middle line:90%
+that it corresponds to a cycle.
+
+00:09:31.790 --> 00:09:35.030 align:middle line:84%
+And if b equals 1, you give
+the entire permutation,
+
+00:09:35.030 --> 00:09:38.140 align:middle line:90%
+and you open the nonedges.
+
+00:09:38.140 --> 00:09:40.970 align:middle line:84%
+Now, the claim was that this
+is, indeed, zero knowledge.
+
+00:09:40.970 --> 00:09:43.782 align:middle line:84%
+And the intuition was,
+well, if you open zero,
+
+00:09:43.782 --> 00:09:45.490 align:middle line:84%
+he doesn't learn
+anything because he just
+
+00:09:45.490 --> 00:09:46.323 align:middle line:90%
+gets a random cycle.
+
+00:09:46.323 --> 00:09:47.860 align:middle line:84%
+It has nothing to
+do with the graph.
+
+00:09:47.860 --> 00:09:49.990 align:middle line:84%
+Just any random cycle,
+that's what he sees.
+
+00:09:49.990 --> 00:09:53.690 align:middle line:84%
+He could have information
+about the graph.
+
+00:09:53.690 --> 00:09:56.250 align:middle line:84%
+And if he gets b equals
+1, then what does he see?
+
+00:09:56.250 --> 00:09:58.580 align:middle line:84%
+A random permutation and a
+bunch of openings of zero,
+
+00:09:58.580 --> 00:10:01.680 align:middle line:90%
+that's no information.
+
+00:10:01.680 --> 00:10:04.378 align:middle line:84%
+And as we said, the
+soundness here is only half.
+
+00:10:04.378 --> 00:10:05.170 align:middle line:90%
+That's the problem.
+
+00:10:05.170 --> 00:10:06.503 align:middle line:90%
+So with the half, you can cheat.
+
+00:10:06.503 --> 00:10:07.680 align:middle line:90%
+Because if you guessed--
+
+00:10:07.680 --> 00:10:10.320 align:middle line:84%
+a cheating prover,
+I can guess b.
+
+00:10:10.320 --> 00:10:13.590 align:middle line:84%
+And if I guess b, I can
+at least cheat on that b.
+
+00:10:13.590 --> 00:10:16.800 align:middle line:90%
+
+
+00:10:16.800 --> 00:10:19.720 align:middle line:84%
+Even if g doesn't have
+a Hamiltonian cycle,
+
+00:10:19.720 --> 00:10:24.290 align:middle line:84%
+I can always answer correctly
+on one of them, but not both.
+
+00:10:24.290 --> 00:10:26.190 align:middle line:84%
+So if I guess your
+b, I can answer.
+
+00:10:26.190 --> 00:10:27.030 align:middle line:90%
+I can cheat you.
+
+00:10:27.030 --> 00:10:30.950 align:middle line:84%
+So this gives only
+soundness half.
+
+00:10:30.950 --> 00:10:32.870 align:middle line:90%
+This is just a recap.
+
+00:10:32.870 --> 00:10:35.060 align:middle line:84%
+I motivated this to
+show that this is not
+
+00:10:35.060 --> 00:10:36.750 align:middle line:84%
+even secure in the
+random oracle model.
+
+00:10:36.750 --> 00:10:39.890 align:middle line:84%
+So actually, to get security
+even in the random oracle model,
+
+00:10:39.890 --> 00:10:42.670 align:middle line:90%
+you need to repeat in parallel.
+
+00:10:42.670 --> 00:10:47.290 align:middle line:84%
+So today, when I say
+now P, V, like this,
+
+00:10:47.290 --> 00:10:50.860 align:middle line:84%
+so when I say like
+the protocol P, V,
+
+00:10:50.860 --> 00:10:53.440 align:middle line:84%
+I want you to-- throughout
+this class, let's think of it
+
+00:10:53.440 --> 00:11:02.490 align:middle line:84%
+as parallel repetition of this
+with security parameter lambda
+
+00:11:02.490 --> 00:11:03.600 align:middle line:90%
+copies.
+
+00:11:03.600 --> 00:11:07.010 align:middle line:84%
+So now, I mean, some of the
+stuff is really not good for us.
+
+00:11:07.010 --> 00:11:08.010 align:middle line:90%
+That's not what we want.
+
+00:11:08.010 --> 00:11:11.790 align:middle line:84%
+So think of it that we repeat
+this in parallel security
+
+00:11:11.790 --> 00:11:14.130 align:middle line:90%
+parameter number of times.
+
+00:11:14.130 --> 00:11:17.730 align:middle line:84%
+So in other words, the
+prover lambda number of times
+
+00:11:17.730 --> 00:11:22.270 align:middle line:84%
+each time chooses a fresh
+permutation pi, commits.
+
+00:11:22.270 --> 00:11:26.130 align:middle line:84%
+So he does this lambda times
+each time with a new permutation
+
+00:11:26.130 --> 00:11:26.630 align:middle line:90%
+pi.
+
+00:11:26.630 --> 00:11:27.460 align:middle line:90%
+This is very important.
+
+00:11:27.460 --> 00:11:28.900 align:middle line:84%
+And people see
+why it's important
+
+00:11:28.900 --> 00:11:32.020 align:middle line:84%
+that the permutation
+is fresh each time?
+
+00:11:32.020 --> 00:11:34.940 align:middle line:84%
+If you use the same permutation
+and you open b0, b1,
+
+00:11:34.940 --> 00:11:36.540 align:middle line:90%
+you learn everything.
+
+00:11:36.540 --> 00:11:39.910 align:middle line:84%
+So each time you give a fresh
+kind of random permutation,
+
+00:11:39.910 --> 00:11:43.510 align:middle line:84%
+you send it lambda times,
+you get a b for each one.
+
+00:11:43.510 --> 00:11:45.710 align:middle line:84%
+And now, you send a
+message for each one.
+
+00:11:45.710 --> 00:11:48.370 align:middle line:90%
+
+
+00:11:48.370 --> 00:11:50.460 align:middle line:90%
+So that was the protocol.
+
+00:11:50.460 --> 00:11:54.050 align:middle line:84%
+Now, we proved that it's secure
+in the random oracle model.
+
+00:11:54.050 --> 00:11:59.310 align:middle line:84%
+Actually, we proved that
+any comes around protocol
+
+00:11:59.310 --> 00:12:02.670 align:middle line:84%
+that has negligible soundness
+is secure in the random oracle
+
+00:12:02.670 --> 00:12:03.250 align:middle line:90%
+model.
+
+00:12:03.250 --> 00:12:04.330 align:middle line:90%
+We showed that last time.
+
+00:12:04.330 --> 00:12:07.220 align:middle line:84%
+So it's secure in the
+random oracle model.
+
+00:12:07.220 --> 00:12:10.820 align:middle line:84%
+And now, there is a question, is
+it secure in the standard model
+
+00:12:10.820 --> 00:12:14.540 align:middle line:90%
+when we use Fiat-Shamir?
+
+00:12:14.540 --> 00:12:18.283 align:middle line:84%
+And what we're going to show
+today is, yes, it is secure.
+
+00:12:18.283 --> 00:12:19.700 align:middle line:84%
+So that's kind of
+the first thing.
+
+00:12:19.700 --> 00:12:22.130 align:middle line:84%
+We're going to show that
+this protocol, P and V--
+
+00:12:22.130 --> 00:12:24.660 align:middle line:84%
+and, again, when I say P and
+V throughout today's class,
+
+00:12:24.660 --> 00:12:27.032 align:middle line:84%
+it's the parallel
+repeated version.
+
+00:12:27.032 --> 00:12:30.680 align:middle line:84%
+So we're going to show that P
+and V are secure when you apply
+
+00:12:30.680 --> 00:12:35.057 align:middle line:84%
+Fiat-Shamir in the standard
+model for some commitment, not
+
+00:12:35.057 --> 00:12:35.765 align:middle line:90%
+every commitment.
+
+00:12:35.765 --> 00:12:37.370 align:middle line:84%
+So we'll open this
+box a little bit
+
+00:12:37.370 --> 00:12:41.610 align:middle line:84%
+and show that this is a very
+natural commitment scheme.
+
+00:12:41.610 --> 00:12:43.250 align:middle line:84%
+But with that
+commitment scheme, we
+
+00:12:43.250 --> 00:12:45.560 align:middle line:84%
+can argue that
+this is secure when
+
+00:12:45.560 --> 00:12:47.090 align:middle line:84%
+the hash function--
+we'll actually
+
+00:12:47.090 --> 00:12:48.440 align:middle line:90%
+construct a hash function.
+
+00:12:48.440 --> 00:12:49.940 align:middle line:84%
+I'll give you an
+exact hash function
+
+00:12:49.940 --> 00:12:52.770 align:middle line:84%
+and say, if you use this hash
+function for the Fiat-Shamir,
+
+00:12:52.770 --> 00:12:55.730 align:middle line:84%
+you will get security
+or soundness.
+
+00:12:55.730 --> 00:12:58.205 align:middle line:84%
+But this hash
+function, to argue,
+
+00:12:58.205 --> 00:13:00.080 align:middle line:84%
+you need to assume
+something about the hash--
+
+00:13:00.080 --> 00:13:03.890 align:middle line:84%
+I mean, this hash function
+assumes some cryptography.
+
+00:13:03.890 --> 00:13:06.320 align:middle line:84%
+And the cryptography
+it assumes is
+
+00:13:06.320 --> 00:13:08.700 align:middle line:84%
+the existence of a fully
+homomorphic encryption.
+
+00:13:08.700 --> 00:13:09.830 align:middle line:90%
+I'll define what that is.
+
+00:13:09.830 --> 00:13:12.080 align:middle line:84%
+But not just a fully
+homomorphic encryption,
+
+00:13:12.080 --> 00:13:15.600 align:middle line:84%
+we'll assume, also, that
+it's circular secure fully
+
+00:13:15.600 --> 00:13:16.900 align:middle line:90%
+homomorphic encryption.
+
+00:13:16.900 --> 00:13:18.450 align:middle line:84%
+I'll define what
+that is as well.
+
+00:13:18.450 --> 00:13:20.045 align:middle line:84%
+I just want to say
+actually, today, we
+
+00:13:20.045 --> 00:13:21.670 align:middle line:84%
+don't need the circular
+secure version.
+
+00:13:21.670 --> 00:13:22.878 align:middle line:90%
+We know how to get rid of it.
+
+00:13:22.878 --> 00:13:25.955 align:middle line:84%
+But what I'm going to explain
+today does use this version.
+
+00:13:25.955 --> 00:13:26.705 align:middle line:90%
+It's just simpler.
+
+00:13:26.705 --> 00:13:30.420 align:middle line:90%
+
+
+00:13:30.420 --> 00:13:31.450 align:middle line:90%
+We believe this is true.
+
+00:13:31.450 --> 00:13:34.200 align:middle line:84%
+There's an instantiation based
+on circular secure Learning
+
+00:13:34.200 --> 00:13:35.310 align:middle line:90%
+With Error, LWE.
+
+00:13:35.310 --> 00:13:38.280 align:middle line:84%
+But we don't need to
+get into these details.
+
+00:13:38.280 --> 00:13:41.880 align:middle line:84%
+So that's what we're going to do
+in the first part of the class.
+
+00:13:41.880 --> 00:13:43.600 align:middle line:84%
+And the second
+part of the class--
+
+00:13:43.600 --> 00:13:46.050 align:middle line:84%
+so now, you can say, OK, let's
+say we prove Fiat-Shamir.
+
+00:13:46.050 --> 00:13:47.640 align:middle line:84%
+Why am I obsessed
+with this protocol?
+
+00:13:47.640 --> 00:13:49.848 align:middle line:84%
+And let's say we prove
+Fiat-Shamir for this protocol.
+
+00:13:49.848 --> 00:13:51.010 align:middle line:90%
+So what?
+
+00:13:51.010 --> 00:13:52.100 align:middle line:90%
+Why should you be engaged?
+
+00:13:52.100 --> 00:13:54.600 align:middle line:84%
+So let me try to give you a
+motivation for you to stay awake
+
+00:13:54.600 --> 00:13:55.420 align:middle line:90%
+and listen to me.
+
+00:13:55.420 --> 00:13:56.710 align:middle line:90%
+So why is it?
+
+00:13:56.710 --> 00:14:00.700 align:middle line:84%
+So this protocol, in
+particular, is very important.
+
+00:14:00.700 --> 00:14:03.000 align:middle line:90%
+Why?
+
+00:14:03.000 --> 00:14:05.670 align:middle line:84%
+What I'm going to show is
+when you apply Fiat-Shamir
+
+00:14:05.670 --> 00:14:09.090 align:middle line:84%
+to this protocol, you get what's
+called a Noninteractive Zero
+
+00:14:09.090 --> 00:14:12.200 align:middle line:90%
+Knowledge proof, NIZK for short.
+
+00:14:12.200 --> 00:14:17.245 align:middle line:84%
+So once we do that for this
+protocol, because it was zero
+
+00:14:17.245 --> 00:14:19.620 align:middle line:84%
+knowledge, we can argue that,
+when you apply Fiat-Shamir,
+
+00:14:19.620 --> 00:14:21.300 align:middle line:84%
+you get noninteractive
+zero knowledge.
+
+00:14:21.300 --> 00:14:24.450 align:middle line:84%
+And to get noninteractive zero
+knowledge based on lattices
+
+00:14:24.450 --> 00:14:27.960 align:middle line:84%
+was an open question for
+a very, very long time.
+
+00:14:27.960 --> 00:14:29.455 align:middle line:84%
+And this was resolved
+in this paper
+
+00:14:29.455 --> 00:14:31.080 align:middle line:84%
+that I'm going to
+present, in this work
+
+00:14:31.080 --> 00:14:36.640 align:middle line:84%
+that I'm going to present to you
+by Canetti, Lombardi and Wichs.
+
+00:14:36.640 --> 00:14:39.660 align:middle line:84%
+So one of the
+motivating examples
+
+00:14:39.660 --> 00:14:42.280 align:middle line:84%
+is that we get this
+noninteractive zero knowledge.
+
+00:14:42.280 --> 00:14:43.800 align:middle line:90%
+That's one.
+
+00:14:43.800 --> 00:14:47.880 align:middle line:84%
+But the other motivating example
+is that actually this technique
+
+00:14:47.880 --> 00:14:49.190 align:middle line:90%
+is much more general.
+
+00:14:49.190 --> 00:14:52.140 align:middle line:84%
+The technique of Fiat-Shamir
+that I'm going to show you
+
+00:14:52.140 --> 00:14:54.530 align:middle line:84%
+is much more general than
+just for this protocol.
+
+00:14:54.530 --> 00:14:56.640 align:middle line:84%
+Actually, it's a very
+general technique that
+
+00:14:56.640 --> 00:14:58.450 align:middle line:90%
+can be used for many protocols.
+
+00:14:58.450 --> 00:15:01.690 align:middle line:84%
+And in particular, we used it
+later, this exact technique.
+
+00:15:01.690 --> 00:15:03.390 align:middle line:84%
+And I'm going to
+try to show you how
+
+00:15:03.390 --> 00:15:08.520 align:middle line:84%
+it can be used to show that the
+G-CARE protocol that we studied
+
+00:15:08.520 --> 00:15:10.560 align:middle line:84%
+in the beginning
+actually is secure.
+
+00:15:10.560 --> 00:15:13.440 align:middle line:90%
+
+
+00:15:13.440 --> 00:15:15.160 align:middle line:84%
+When you apply
+Fiat-Shamir to it,
+
+00:15:15.160 --> 00:15:18.458 align:middle line:84%
+you get security under
+learning with error, or FHE.
+
+00:15:18.458 --> 00:15:20.250 align:middle line:84%
+Again, as I mentioned,
+this proven security
+
+00:15:20.250 --> 00:15:21.300 align:middle line:90%
+can be prevented.
+
+00:15:21.300 --> 00:15:24.760 align:middle line:84%
+I'm just showing you the result
+that uses it for simplicity.
+
+00:15:24.760 --> 00:15:28.460 align:middle line:84%
+So it's not just for this
+protocol to get NIZK.
+
+00:15:28.460 --> 00:15:30.130 align:middle line:84%
+You can actually use
+it to get SNARGs.
+
+00:15:30.130 --> 00:15:34.380 align:middle line:84%
+And moreover, what you'll
+see after Thanksgiving
+
+00:15:34.380 --> 00:15:36.070 align:middle line:84%
+that Jain Jin is
+going to present,
+
+00:15:36.070 --> 00:15:37.950 align:middle line:84%
+he's going to use
+this exact same tool
+
+00:15:37.950 --> 00:15:40.870 align:middle line:90%
+to get batch arguments for NP.
+
+00:15:40.870 --> 00:15:46.270 align:middle line:84%
+So this kind of Fiat-Shamir
+is baked into all our results
+
+00:15:46.270 --> 00:15:47.320 align:middle line:90%
+almost.
+
+00:15:47.320 --> 00:15:50.830 align:middle line:84%
+So it's actually very
+general and nice.
+
+00:15:50.830 --> 00:15:52.166 align:middle line:90%
+Yes.
+
+00:15:52.166 --> 00:15:56.410 align:middle line:84%
+AUDIENCE: How does
+that relate to--
+
+00:15:56.410 --> 00:16:00.280 align:middle line:84%
+because last time, we went
+a little bit over the result
+
+00:16:00.280 --> 00:16:03.160 align:middle line:90%
+of [INAUDIBLE]--
+
+00:16:03.160 --> 00:16:04.460 align:middle line:90%
+YAEL T. KALAI: Great question.
+
+00:16:04.460 --> 00:16:05.840 align:middle line:90%
+Great, great, great question.
+
+00:16:05.840 --> 00:16:06.340 align:middle line:90%
+OK.
+
+00:16:06.340 --> 00:16:07.990 align:middle line:84%
+Let me repeat your
+question because you
+
+00:16:07.990 --> 00:16:09.050 align:middle line:90%
+have a great question.
+
+00:16:09.050 --> 00:16:11.067 align:middle line:84%
+So last time, I
+kind of showed you
+
+00:16:11.067 --> 00:16:12.400 align:middle line:90%
+that there's actually a tension.
+
+00:16:12.400 --> 00:16:15.960 align:middle line:84%
+If you have an interactive
+proof that is zero knowledge,
+
+00:16:15.960 --> 00:16:20.700 align:middle line:84%
+then I kind of gave you this
+high-level intuition that,
+
+00:16:20.700 --> 00:16:24.570 align:middle line:84%
+if it is really zero knowledge,
+you cannot apply Fiat-Shamir
+
+00:16:24.570 --> 00:16:25.130 align:middle line:90%
+to it.
+
+00:16:25.130 --> 00:16:27.010 align:middle line:90%
+It will fail.
+
+00:16:27.010 --> 00:16:30.280 align:middle line:84%
+And here, I'm saying,
+oh, we're going
+
+00:16:30.280 --> 00:16:31.580 align:middle line:90%
+to apply Fiat-Shamir to it.
+
+00:16:31.580 --> 00:16:33.650 align:middle line:84%
+And not only that,
+we're going to get
+
+00:16:33.650 --> 00:16:34.990 align:middle line:90%
+noninteractive zero knowledge.
+
+00:16:34.990 --> 00:16:36.657 align:middle line:84%
+It's like, wait, wait,
+wait, wait, wait.
+
+00:16:36.657 --> 00:16:39.410 align:middle line:84%
+Last time, you said you
+can't get your knowledge.
+
+00:16:39.410 --> 00:16:42.930 align:middle line:84%
+And I'm kind of
+contradicting myself here.
+
+00:16:42.930 --> 00:16:46.410 align:middle line:84%
+So again, let me repeat it just
+to make sure we're all on board.
+
+00:16:46.410 --> 00:16:50.450 align:middle line:84%
+Last time, I said a protocol
+that is zero knowledge cannot be
+
+00:16:50.450 --> 00:16:52.970 align:middle line:90%
+Fiat-Shamir secure.
+
+00:16:52.970 --> 00:16:54.870 align:middle line:90%
+Now, I'm saying, guess what?
+
+00:16:54.870 --> 00:16:57.860 align:middle line:84%
+This protocol is
+Fiat-Shamir secure.
+
+00:16:57.860 --> 00:17:02.710 align:middle line:84%
+So first of all,
+indeed, I have no reason
+
+00:17:02.710 --> 00:17:06.710 align:middle line:84%
+to believe that this protocol,
+when you repeat it in parallel,
+
+00:17:06.710 --> 00:17:07.880 align:middle line:90%
+that it's zero knowledge.
+
+00:17:07.880 --> 00:17:15.150 align:middle line:84%
+We know that it's zero knowledge
+if without parallel repetition.
+
+00:17:15.150 --> 00:17:18.630 align:middle line:84%
+We know that it's zero knowledge
+if you repeat it sequentially.
+
+00:17:18.630 --> 00:17:20.579 align:middle line:84%
+If you repeat it in
+parallel, we don't
+
+00:17:20.579 --> 00:17:22.780 align:middle line:84%
+know that it's zero
+knowledge anymore.
+
+00:17:22.780 --> 00:17:23.890 align:middle line:90%
+That's first.
+
+00:17:23.890 --> 00:17:27.760 align:middle line:84%
+Second, next thing you
+can say is, oh, so now we
+
+00:17:27.760 --> 00:17:30.280 align:middle line:84%
+know that it's not
+zero knowledge.
+
+00:17:30.280 --> 00:17:32.210 align:middle line:90%
+Almost, almost.
+
+00:17:32.210 --> 00:17:35.230 align:middle line:84%
+Actually, the result does show
+that parallel repetition does
+
+00:17:35.230 --> 00:17:36.880 align:middle line:90%
+not preserve zero knowledge.
+
+00:17:36.880 --> 00:17:38.590 align:middle line:84%
+But actually, it's
+not going to be
+
+00:17:38.590 --> 00:17:42.400 align:middle line:84%
+completely because I'm going to
+change the commitment in a way
+
+00:17:42.400 --> 00:17:45.440 align:middle line:84%
+that you'll see in a
+minute, so not quite.
+
+00:17:45.440 --> 00:17:51.010 align:middle line:84%
+But then you can say, OK, but
+how do you get NIZK out of it?
+
+00:17:51.010 --> 00:17:53.050 align:middle line:90%
+It seems completely opposite.
+
+00:17:53.050 --> 00:17:55.480 align:middle line:84%
+Because I just said
+Fiat-Shamir in contradictory
+
+00:17:55.480 --> 00:17:56.280 align:middle line:90%
+of zero knowledge.
+
+00:17:56.280 --> 00:17:58.030 align:middle line:84%
+And now, I'm saying
+you apply Fiat-Shamir,
+
+00:17:58.030 --> 00:18:00.950 align:middle line:90%
+and you get zero knowledge.
+
+00:18:00.950 --> 00:18:05.480 align:middle line:84%
+OK, so what we get is
+noninteractive zero knowledge.
+
+00:18:05.480 --> 00:18:09.830 align:middle line:84%
+And noninteractive zero
+knowledge, the simulator,
+
+00:18:09.830 --> 00:18:11.070 align:middle line:90%
+I didn't define what it is.
+
+00:18:11.070 --> 00:18:11.612 align:middle line:90%
+So it's hard.
+
+00:18:11.612 --> 00:18:12.960 align:middle line:90%
+I'll explain it as I go.
+
+00:18:12.960 --> 00:18:18.770 align:middle line:84%
+But the simulator has more
+power than the cheating prover.
+
+00:18:18.770 --> 00:18:21.020 align:middle line:84%
+Remember, the
+reason I said that,
+
+00:18:21.020 --> 00:18:23.070 align:middle line:84%
+if you have a zero
+knowledge protocol,
+
+00:18:23.070 --> 00:18:24.710 align:middle line:90%
+why can't you apply Fiat-Shamir?
+
+00:18:24.710 --> 00:18:29.630 align:middle line:84%
+Because we said, look,
+a cheating verifier
+
+00:18:29.630 --> 00:18:31.410 align:middle line:84%
+can use the
+Fiat-Shamir function.
+
+00:18:31.410 --> 00:18:32.550 align:middle line:90%
+He can behave maliciously.
+
+00:18:32.550 --> 00:18:34.430 align:middle line:84%
+He's behaving like a
+Fiat-Shamir function.
+
+00:18:34.430 --> 00:18:37.750 align:middle line:84%
+Now, you should be able
+to simulate the view.
+
+00:18:37.750 --> 00:18:39.790 align:middle line:84%
+So if you have an
+efficient simulator that
+
+00:18:39.790 --> 00:18:43.778 align:middle line:84%
+simulates the view
+for x in the language,
+
+00:18:43.778 --> 00:18:44.820 align:middle line:90%
+he's efficient simulator.
+
+00:18:44.820 --> 00:18:46.990 align:middle line:84%
+He doesn't know which
+instances are in the language
+
+00:18:46.990 --> 00:18:47.725 align:middle line:90%
+or outside the language.
+
+00:18:47.725 --> 00:18:48.225 align:middle line:90%
+It's NP.
+
+00:18:48.225 --> 00:18:49.520 align:middle line:90%
+It's hard languages.
+
+00:18:49.520 --> 00:18:53.170 align:middle line:84%
+So he probably will succeed in
+simulating the view of instances
+
+00:18:53.170 --> 00:18:54.090 align:middle line:90%
+outside the language.
+
+00:18:54.090 --> 00:18:58.030 align:middle line:84%
+Otherwise, he's like a P.
+he's a kind of distinguisher.
+
+00:18:58.030 --> 00:19:01.010 align:middle line:84%
+You can use him to show that the
+language isn't in P, not in NP.
+
+00:19:01.010 --> 00:19:03.700 align:middle line:90%
+
+
+00:19:03.700 --> 00:19:05.950 align:middle line:84%
+And that's why there
+cannot be a simulator.
+
+00:19:05.950 --> 00:19:10.390 align:middle line:84%
+Because, the simulator, he can
+act like a cheating prover.
+
+00:19:10.390 --> 00:19:13.090 align:middle line:84%
+In the noninteractive
+setting, he cannot.
+
+00:19:13.090 --> 00:19:15.400 align:middle line:84%
+Because we're giving the
+simulator extra power
+
+00:19:15.400 --> 00:19:17.547 align:middle line:84%
+to choose the common
+reference string.
+
+00:19:17.547 --> 00:19:19.130 align:middle line:84%
+We'll talk about it
+when we get there.
+
+00:19:19.130 --> 00:19:21.340 align:middle line:84%
+But it's a model that's
+a little different.
+
+00:19:21.340 --> 00:19:24.880 align:middle line:84%
+So actually, I planned
+I'm going to talk
+
+00:19:24.880 --> 00:19:27.170 align:middle line:84%
+about this more in
+length when I get there.
+
+00:19:27.170 --> 00:19:29.600 align:middle line:84%
+But since you asked, I
+want to give a preview.
+
+00:19:29.600 --> 00:19:31.075 align:middle line:90%
+So indeed, there's tension.
+
+00:19:31.075 --> 00:19:32.450 align:middle line:84%
+And we'll see how
+to overcome it.
+
+00:19:32.450 --> 00:19:37.750 align:middle line:84%
+It's actually really
+interesting that it's a belief
+
+00:19:37.750 --> 00:19:40.070 align:middle line:90%
+that you can't use Fiat-Shamir.
+
+00:19:40.070 --> 00:19:43.110 align:middle line:84%
+One, zero knowledge is a kind of
+in contradiction to Fiat-Shamir.
+
+00:19:43.110 --> 00:19:44.860 align:middle line:84%
+But actually, we use
+Fiat-Shamir to get
+
+00:19:44.860 --> 00:19:47.680 align:middle line:84%
+the noninteractive
+version of zero knowledge.
+
+00:19:47.680 --> 00:19:50.530 align:middle line:84%
+But we'll go into detail
+when we get there.
+
+00:19:50.530 --> 00:19:51.910 align:middle line:90%
+Great question.
+
+00:19:51.910 --> 00:19:55.640 align:middle line:90%
+Any other questions?
+
+00:19:55.640 --> 00:19:58.910 align:middle line:84%
+So my plan next is to
+prove the soundness
+
+00:19:58.910 --> 00:20:00.770 align:middle line:84%
+of this protocol,
+the parallel repeated
+
+00:20:00.770 --> 00:20:02.500 align:middle line:90%
+version under Fiat-Shamir.
+
+00:20:02.500 --> 00:20:04.690 align:middle line:84%
+But any question
+before we go there?
+
+00:20:04.690 --> 00:20:07.520 align:middle line:90%
+
+
+00:20:07.520 --> 00:20:12.300 align:middle line:84%
+OK, so let's-- the
+result. So as I said,
+
+00:20:12.300 --> 00:20:20.030 align:middle line:84%
+this is a result of a Canetti,
+Lombardi, and Wichs from 2019.
+
+00:20:20.030 --> 00:20:22.850 align:middle line:90%
+It's so beautiful and simple.
+
+00:20:22.850 --> 00:20:26.210 align:middle line:84%
+So this was an open question
+for a very long time.
+
+00:20:26.210 --> 00:20:30.680 align:middle line:84%
+And I want to give it to
+you as a kind of evidence
+
+00:20:30.680 --> 00:20:32.720 align:middle line:84%
+or an example of
+something that we thought
+
+00:20:32.720 --> 00:20:34.710 align:middle line:90%
+was so hard, so hard, so hard.
+
+00:20:34.710 --> 00:20:36.680 align:middle line:84%
+And then if you
+just think about it
+
+00:20:36.680 --> 00:20:39.270 align:middle line:84%
+like a little differently,
+you twist a little bit,
+
+00:20:39.270 --> 00:20:40.410 align:middle line:90%
+it's so easy.
+
+00:20:40.410 --> 00:20:44.130 align:middle line:84%
+So I'm going to have
+you guys try to come up
+
+00:20:44.130 --> 00:20:45.610 align:middle line:90%
+with a proof of this.
+
+00:20:45.610 --> 00:20:47.440 align:middle line:84%
+So let's try to do
+it interactively.
+
+00:20:47.440 --> 00:20:50.820 align:middle line:84%
+And I want you to prove to
+me that this protocol P, V--
+
+00:20:50.820 --> 00:20:55.300 align:middle line:84%
+but think of it, again,
+repeated in parallel-- is sound.
+
+00:20:55.300 --> 00:20:58.740 align:middle line:84%
+So I'm going to give
+you a few hints,
+
+00:20:58.740 --> 00:21:00.350 align:middle line:90%
+and we'll get there together.
+
+00:21:00.350 --> 00:21:03.390 align:middle line:84%
+So one thing that's really
+nice about this protocol
+
+00:21:03.390 --> 00:21:06.645 align:middle line:90%
+is I want to argue--
+
+00:21:06.645 --> 00:21:09.560 align:middle line:90%
+
+
+00:21:09.560 --> 00:21:12.640 align:middle line:84%
+let's recall, what is
+the Fiat-Shamir paradigm?
+
+00:21:12.640 --> 00:21:16.940 align:middle line:84%
+The Fiat-Shamir paradigm
+says that we choose some hash
+
+00:21:16.940 --> 00:21:21.170 align:middle line:90%
+function, some hash key, from--
+
+00:21:21.170 --> 00:21:22.940 align:middle line:84%
+there's some Fiat-Shamir
+hash function
+
+00:21:22.940 --> 00:21:24.410 align:middle line:90%
+that generates a hash key.
+
+00:21:24.410 --> 00:21:27.890 align:middle line:84%
+And now, we want to say,
+let me denote for simplicity
+
+00:21:27.890 --> 00:21:32.910 align:middle line:84%
+these messages by
+alpha, beta and gamma.
+
+00:21:32.910 --> 00:21:37.190 align:middle line:84%
+Even for now, let's even not
+think of this specific protocol.
+
+00:21:37.190 --> 00:21:38.640 align:middle line:90%
+Let's think of just a protocol.
+
+00:21:38.640 --> 00:21:44.820 align:middle line:84%
+The prover sends alpha, verifier
+sends beta, prover sends gamma.
+
+00:21:44.820 --> 00:21:47.690 align:middle line:84%
+Let's not even go into
+the specific details.
+
+00:21:47.690 --> 00:21:51.142 align:middle line:84%
+I want to prove to come
+up with a hash function.
+
+00:21:51.142 --> 00:21:52.850 align:middle line:84%
+So I want to come up
+with a hash function
+
+00:21:52.850 --> 00:21:58.230 align:middle line:84%
+h, which generates a key for
+a hash and then evaluates.
+
+00:21:58.230 --> 00:22:03.820 align:middle line:84%
+That's just a hash function
+such that this remains sound.
+
+00:22:03.820 --> 00:22:04.810 align:middle line:90%
+OK, so I have this.
+
+00:22:04.810 --> 00:22:05.940 align:middle line:90%
+There's some NP language x.
+
+00:22:05.940 --> 00:22:08.107 align:middle line:84%
+I want to prove whether
+it's in the language or not.
+
+00:22:08.107 --> 00:22:09.930 align:middle line:90%
+This is my proof system.
+
+00:22:09.930 --> 00:22:12.935 align:middle line:84%
+And I want to find a hash
+function for which it's sound.
+
+00:22:12.935 --> 00:22:17.060 align:middle line:90%
+
+
+00:22:17.060 --> 00:22:19.030 align:middle line:84%
+At first, it seems like
+it should be very easy.
+
+00:22:19.030 --> 00:22:20.590 align:middle line:90%
+Why should it be very easy?
+
+00:22:20.590 --> 00:22:23.728 align:middle line:84%
+Look, take, let's say,
+x not in the language.
+
+00:22:23.728 --> 00:22:26.270 align:middle line:84%
+We need to focus on x not in
+the language. x in the language,
+
+00:22:26.270 --> 00:22:27.080 align:middle line:90%
+it's complete.
+
+00:22:27.080 --> 00:22:28.290 align:middle line:90%
+Completeness, that's easy.
+
+00:22:28.290 --> 00:22:30.120 align:middle line:84%
+I want to argue
+you cannot cheat.
+
+00:22:30.120 --> 00:22:32.480 align:middle line:90%
+So now, what do I need to say?
+
+00:22:32.480 --> 00:22:34.350 align:middle line:84%
+I want that, for any
+x in the language--
+
+00:22:34.350 --> 00:22:36.260 align:middle line:90%
+so fix 1x on the language--
+
+00:22:36.260 --> 00:22:42.260 align:middle line:84%
+I want to argue that you
+cannot find an alpha and beta,
+
+00:22:42.260 --> 00:22:46.810 align:middle line:84%
+which is h of alpha, and
+the gamma that's accepting.
+
+00:22:46.810 --> 00:22:49.030 align:middle line:90%
+But now, this is a proof system.
+
+00:22:49.030 --> 00:22:52.480 align:middle line:84%
+So every alpha
+has very few betas
+
+00:22:52.480 --> 00:22:56.290 align:middle line:84%
+for which there even exists
+a gamma that's accepting.
+
+00:22:56.290 --> 00:22:59.870 align:middle line:84%
+So again, because it's
+fixed x on the language,
+
+00:22:59.870 --> 00:23:02.990 align:middle line:84%
+first thing we know is just
+by definition of a proof
+
+00:23:02.990 --> 00:23:06.230 align:middle line:84%
+that, for every alpha,
+any possible alpha,
+
+00:23:06.230 --> 00:23:09.530 align:middle line:84%
+there exists very few
+betas for which there
+
+00:23:09.530 --> 00:23:11.760 align:middle line:90%
+exists an accepting answer.
+
+00:23:11.760 --> 00:23:17.490 align:middle line:84%
+So there exists few,
+very few, betas such
+
+00:23:17.490 --> 00:23:25.770 align:middle line:84%
+that there exists gamma for
+which alpha, beta, gamma
+
+00:23:25.770 --> 00:23:26.675 align:middle line:90%
+are accepted.
+
+00:23:26.675 --> 00:23:30.050 align:middle line:90%
+
+
+00:23:30.050 --> 00:23:31.580 align:middle line:84%
+So that's the first
+thing we know.
+
+00:23:31.580 --> 00:23:35.780 align:middle line:84%
+Because it's a proof system, by
+the virtue of a proof system,
+
+00:23:35.780 --> 00:23:38.720 align:middle line:84%
+for every alpha, there
+are very, very few.
+
+00:23:38.720 --> 00:23:42.200 align:middle line:84%
+Actually, note, in this protocol
+specifically, there's one.
+
+00:23:42.200 --> 00:23:44.250 align:middle line:90%
+One.
+
+00:23:44.250 --> 00:23:51.140 align:middle line:84%
+Because if the graph g does
+not have a Hamiltonian cycle,
+
+00:23:51.140 --> 00:23:53.900 align:middle line:84%
+take a cheating prover
+that sends alpha.
+
+00:23:53.900 --> 00:23:56.100 align:middle line:90%
+Alpha is a bunch of commitments.
+
+00:23:56.100 --> 00:23:58.440 align:middle line:84%
+Now, let's act in
+each commitment.
+
+00:23:58.440 --> 00:24:04.177 align:middle line:84%
+Look, either they're setting
+a Hamiltonian cycle or not.
+
+00:24:04.177 --> 00:24:05.510 align:middle line:90%
+You can't answer both questions.
+
+00:24:05.510 --> 00:24:08.270 align:middle line:84%
+We know that, if you can
+answer both questions, well,
+
+00:24:08.270 --> 00:24:09.050 align:middle line:90%
+it won't be sound.
+
+00:24:09.050 --> 00:24:10.550 align:middle line:84%
+So you can only
+answer one question.
+
+00:24:10.550 --> 00:24:12.710 align:middle line:84%
+And each one can
+only answer one.
+
+00:24:12.710 --> 00:24:15.750 align:middle line:84%
+So this protocol, even for
+this specific protocol,
+
+00:24:15.750 --> 00:24:17.930 align:middle line:90%
+let's assume even.
+
+00:24:17.930 --> 00:24:22.370 align:middle line:84%
+Let's even assume
+what any proof tells
+
+00:24:22.370 --> 00:24:24.840 align:middle line:84%
+you is that, for every
+alpha, there exists a few.
+
+00:24:24.840 --> 00:24:26.900 align:middle line:84%
+But for simplicity,
+because that's
+
+00:24:26.900 --> 00:24:30.400 align:middle line:84%
+the protocol we're
+dealing with, let's
+
+00:24:30.400 --> 00:24:35.020 align:middle line:90%
+suppose there exists a unique--
+
+00:24:35.020 --> 00:24:36.730 align:middle line:84%
+this is a symbol for
+unique, by the way.
+
+00:24:36.730 --> 00:24:40.005 align:middle line:84%
+There exists a unique
+beta that can be extended.
+
+00:24:40.005 --> 00:24:43.250 align:middle line:90%
+
+
+00:24:43.250 --> 00:24:47.460 align:middle line:84%
+Now, we need to do
+is not hit that beta.
+
+00:24:47.460 --> 00:24:49.110 align:middle line:90%
+So all we need--
+
+00:24:49.110 --> 00:24:50.080 align:middle line:90%
+I mean, think about it.
+
+00:24:50.080 --> 00:24:51.080 align:middle line:90%
+It seems so easy.
+
+00:24:51.080 --> 00:24:55.420 align:middle line:84%
+All we need is to find a
+hash h, like a hash key,
+
+00:24:55.420 --> 00:25:04.500 align:middle line:84%
+such that even of hash
+key in alpha is not equal.
+
+00:25:04.500 --> 00:25:06.850 align:middle line:84%
+For every alpha there
+exists a single bit,
+
+00:25:06.850 --> 00:25:09.060 align:middle line:90%
+let me call it beta bad.
+
+00:25:09.060 --> 00:25:12.330 align:middle line:90%
+That's a beta we want to avoid.
+
+00:25:12.330 --> 00:25:17.280 align:middle line:84%
+OK, so for every alpha,
+there exists a single beta
+
+00:25:17.280 --> 00:25:17.958 align:middle line:90%
+bad of alpha.
+
+00:25:17.958 --> 00:25:19.000 align:middle line:90%
+It's a function of alpha.
+
+00:25:19.000 --> 00:25:20.670 align:middle line:84%
+For every alpha, for
+every commitment,
+
+00:25:20.670 --> 00:25:22.260 align:middle line:90%
+there's a different--
+
+00:25:22.260 --> 00:25:23.890 align:middle line:90%
+either you can answer 0 or 1.
+
+00:25:23.890 --> 00:25:28.690 align:middle line:84%
+So for any alpha, there
+exists one challenge, beta,
+
+00:25:28.690 --> 00:25:30.320 align:middle line:90%
+for which the prover can cheat.
+
+00:25:30.320 --> 00:25:33.220 align:middle line:84%
+Now, the cheating prover
+wants to hit that bad beta
+
+00:25:33.220 --> 00:25:36.010 align:middle line:84%
+because that's what
+he can cheat on.
+
+00:25:36.010 --> 00:25:40.450 align:middle line:84%
+Our job of protecting
+this is to make sure
+
+00:25:40.450 --> 00:25:44.210 align:middle line:84%
+that every alpha does not
+equal to this beta bad.
+
+00:25:44.210 --> 00:25:46.850 align:middle line:90%
+
+
+00:25:46.850 --> 00:25:48.300 align:middle line:90%
+But how hard can it be?
+
+00:25:48.300 --> 00:25:51.060 align:middle line:90%
+We just want to avoid one.
+
+00:25:51.060 --> 00:25:52.680 align:middle line:90%
+You know what?
+
+00:25:52.680 --> 00:25:55.590 align:middle line:90%
+Here, let me give a suggestion.
+
+00:25:55.590 --> 00:25:58.860 align:middle line:90%
+Eval hash key or--
+
+00:25:58.860 --> 00:26:08.040 align:middle line:84%
+here, h of alpha equals
+beta bad of alpha plus 1.
+
+00:26:08.040 --> 00:26:09.520 align:middle line:90%
+It's not beta bad.
+
+00:26:09.520 --> 00:26:10.605 align:middle line:90%
+I avoid the bad one.
+
+00:26:10.605 --> 00:26:14.763 align:middle line:90%
+
+
+00:26:14.763 --> 00:26:16.555 align:middle line:84%
+I'm going to use this
+for my hash function.
+
+00:26:16.555 --> 00:26:20.880 align:middle line:90%
+
+
+00:26:20.880 --> 00:26:23.120 align:middle line:90%
+Anybody see a problem with this?
+
+00:26:23.120 --> 00:26:28.630 align:middle line:90%
+
+
+00:26:28.630 --> 00:26:30.007 align:middle line:90%
+Yeah.
+
+00:26:30.007 --> 00:26:31.590 align:middle line:84%
+AUDIENCE: Well, it's
+not really unique
+
+00:26:31.590 --> 00:26:36.130 align:middle line:84%
+because you're using the
+computational assumption
+
+00:26:36.130 --> 00:26:37.340 align:middle line:90%
+for the commitments.
+
+00:26:37.340 --> 00:26:40.190 align:middle line:84%
+YAEL T. KALAI: No, actually,
+I'm using the computation.
+
+00:26:40.190 --> 00:26:40.780 align:middle line:90%
+OK, good.
+
+00:26:40.780 --> 00:26:44.260 align:middle line:84%
+So we'll say, well,
+actually, it's not unique
+
+00:26:44.260 --> 00:26:46.940 align:middle line:84%
+because the commitment here
+has a computational assumption.
+
+00:26:46.940 --> 00:26:50.750 align:middle line:84%
+But, actually, this commitment
+will be statistically binding.
+
+00:26:50.750 --> 00:26:53.590 align:middle line:84%
+So it's only the hiding,
+the zero knowledge,
+
+00:26:53.590 --> 00:26:54.910 align:middle line:90%
+is computational.
+
+00:26:54.910 --> 00:26:56.390 align:middle line:90%
+But actually, you can open it.
+
+00:26:56.390 --> 00:26:58.610 align:middle line:84%
+Suppose there's really
+like you're binded.
+
+00:26:58.610 --> 00:27:01.930 align:middle line:84%
+You can really only
+open it in one--
+
+00:27:01.930 --> 00:27:03.500 align:middle line:84%
+you can't open it
+two different ways.
+
+00:27:03.500 --> 00:27:05.740 align:middle line:84%
+AUDIENCE: But the
+pigeonhole principle
+
+00:27:05.740 --> 00:27:10.255 align:middle line:84%
+is going to be many
+conditions for one.
+
+00:27:10.255 --> 00:27:11.380 align:middle line:90%
+YAEL T. KALAI: That's fine.
+
+00:27:11.380 --> 00:27:11.920 align:middle line:90%
+That's fine.
+
+00:27:11.920 --> 00:27:13.870 align:middle line:84%
+But you're right, there's
+many permutations.
+
+00:27:13.870 --> 00:27:15.600 align:middle line:84%
+But suppose you
+can open to both.
+
+00:27:15.600 --> 00:27:19.700 align:middle line:84%
+Then you can give me both
+this message and this message.
+
+00:27:19.700 --> 00:27:21.690 align:middle line:84%
+If you give me both
+this and both this,
+
+00:27:21.690 --> 00:27:29.160 align:middle line:84%
+it means that this
+g must have a cycle.
+
+00:27:29.160 --> 00:27:32.560 align:middle line:84%
+Because I know that
+there's a cycle.
+
+00:27:32.560 --> 00:27:33.480 align:middle line:90%
+And guess what?
+
+00:27:33.480 --> 00:27:35.830 align:middle line:90%
+It's not in the nonedges.
+
+00:27:35.830 --> 00:27:38.630 align:middle line:84%
+So the cycle has
+to be in the edges.
+
+00:27:38.630 --> 00:27:43.260 align:middle line:90%
+So you can open only one.
+
+00:27:43.260 --> 00:27:47.370 align:middle line:84%
+So again, all I want,
+it seems so easy.
+
+00:27:47.370 --> 00:27:49.190 align:middle line:90%
+I have a proof system.
+
+00:27:49.190 --> 00:27:51.530 align:middle line:84%
+For every alpha,
+actually, the prover
+
+00:27:51.530 --> 00:27:55.080 align:middle line:84%
+can only cheat on
+one single data.
+
+00:27:55.080 --> 00:27:58.210 align:middle line:84%
+All I want to do
+is avoid that beta.
+
+00:27:58.210 --> 00:28:00.220 align:middle line:90%
+So OK, I'll just avoid that.
+
+00:28:00.220 --> 00:28:01.080 align:middle line:90%
+Do beta plus 1.
+
+00:28:01.080 --> 00:28:05.330 align:middle line:90%
+
+
+00:28:05.330 --> 00:28:06.390 align:middle line:90%
+This is delicate.
+
+00:28:06.390 --> 00:28:10.670 align:middle line:84%
+Anybody see why
+this doesn't work?
+
+00:28:10.670 --> 00:28:11.170 align:middle line:90%
+Yeah.
+
+00:28:11.170 --> 00:28:13.840 align:middle line:84%
+AUDIENCE: Don't you have to
+open the commitment to find out
+
+00:28:13.840 --> 00:28:15.372 align:middle line:90%
+which is the bad beta?
+
+00:28:15.372 --> 00:28:16.330 align:middle line:90%
+YAEL T. KALAI: Exactly.
+
+00:28:16.330 --> 00:28:19.990 align:middle line:84%
+The problem is computing
+beta bad is really hard.
+
+00:28:19.990 --> 00:28:22.090 align:middle line:84%
+How do you know what
+beta-- for example,
+
+00:28:22.090 --> 00:28:23.660 align:middle line:90%
+so computing this is hard.
+
+00:28:23.660 --> 00:28:26.890 align:middle line:84%
+Actually, if it were easy,
+you wouldn't need interaction
+
+00:28:26.890 --> 00:28:27.760 align:middle line:90%
+at all.
+
+00:28:27.760 --> 00:28:28.720 align:middle line:90%
+It would be NP.
+
+00:28:28.720 --> 00:28:30.380 align:middle line:84%
+You'd have a succinct
+witness for NP.
+
+00:28:30.380 --> 00:28:32.836 align:middle line:90%
+You just give alpha.
+
+00:28:32.836 --> 00:28:33.800 align:middle line:90%
+You compute.
+
+00:28:33.800 --> 00:28:35.860 align:middle line:84%
+This is the beta, and
+then you give gamma.
+
+00:28:35.860 --> 00:28:38.310 align:middle line:84%
+And everything is
+information theoretic.
+
+00:28:38.310 --> 00:28:40.210 align:middle line:90%
+The problem is computing.
+
+00:28:40.210 --> 00:28:44.190 align:middle line:90%
+
+
+00:28:44.190 --> 00:28:47.550 align:middle line:84%
+The power of this
+interaction lies in the fact
+
+00:28:47.550 --> 00:28:51.670 align:middle line:84%
+that computing what the
+bad beta is is hard.
+
+00:28:51.670 --> 00:28:53.890 align:middle line:84%
+Here, for example,
+how do you know
+
+00:28:53.890 --> 00:28:56.290 align:middle line:90%
+which beta you can cheat on?
+
+00:28:56.290 --> 00:29:01.870 align:middle line:84%
+Well, if you open the
+commitment, then you see, OK,
+
+00:29:01.870 --> 00:29:02.890 align:middle line:90%
+is there a lot of 1s?
+
+00:29:02.890 --> 00:29:04.540 align:middle line:90%
+Is it only in cycle?
+
+00:29:04.540 --> 00:29:07.340 align:middle line:84%
+But you need to open
+this commitment.
+
+00:29:07.340 --> 00:29:14.500 align:middle line:84%
+So computing this beta is hard
+without additional information.
+
+00:29:14.500 --> 00:29:16.380 align:middle line:90%
+So now, what do we do?
+
+00:29:16.380 --> 00:29:18.600 align:middle line:84%
+So we can't give that as a
+hash function because this
+
+00:29:18.600 --> 00:29:21.410 align:middle line:90%
+is a hard computation.
+
+00:29:21.410 --> 00:29:27.820 align:middle line:90%
+So here is the first kind of--
+
+00:29:27.820 --> 00:29:30.710 align:middle line:84%
+so there are a few a-ha
+moments in this paper.
+
+00:29:30.710 --> 00:29:33.340 align:middle line:90%
+The first one is, you know what?
+
+00:29:33.340 --> 00:29:37.800 align:middle line:84%
+Maybe if this commitment
+had some trapdoor,
+
+00:29:37.800 --> 00:29:40.640 align:middle line:84%
+maybe there's some
+trapdoor information
+
+00:29:40.640 --> 00:29:43.590 align:middle line:84%
+that, with the trapdoor,
+it becomes easy.
+
+00:29:43.590 --> 00:29:46.210 align:middle line:90%
+So then let's do that.
+
+00:29:46.210 --> 00:29:50.650 align:middle line:84%
+Let's use trapdoor
+in our hash function.
+
+00:29:50.650 --> 00:29:52.480 align:middle line:84%
+So now, two things
+I'm going to do next--
+
+00:29:52.480 --> 00:29:54.450 align:middle line:84%
+first, show you how you
+construct a commitment
+
+00:29:54.450 --> 00:29:55.440 align:middle line:90%
+with a trapdoor.
+
+00:29:55.440 --> 00:29:57.540 align:middle line:84%
+That will also be
+useful here, so it's
+
+00:29:57.540 --> 00:29:59.278 align:middle line:90%
+going to be a stepping stone.
+
+00:29:59.278 --> 00:30:00.820 align:middle line:84%
+So I'll show you
+specific commitment,
+
+00:30:00.820 --> 00:30:06.960 align:middle line:84%
+which is what we use, which has
+a trapdoor to make beta easy.
+
+00:30:06.960 --> 00:30:09.750 align:middle line:84%
+And then we're going to deal
+with the next issue that
+
+00:30:09.750 --> 00:30:13.030 align:middle line:84%
+comes up, which the next
+a-ha moment appears in,
+
+00:30:13.030 --> 00:30:16.080 align:middle line:84%
+which is, well, you can't use
+this trapdoor in the clear.
+
+00:30:16.080 --> 00:30:23.290 align:middle line:84%
+Because you can't give the
+cheating people the trapdoor.
+
+00:30:23.290 --> 00:30:25.540 align:middle line:84%
+Actually, the problem will
+not be the cheating prover.
+
+00:30:25.540 --> 00:30:27.123 align:middle line:84%
+The problem, if you
+give the trapdoor,
+
+00:30:27.123 --> 00:30:28.720 align:middle line:90%
+it's not zero knowledge anymore.
+
+00:30:28.720 --> 00:30:31.120 align:middle line:84%
+So this trapdoor
+needs to stay hidden.
+
+00:30:31.120 --> 00:30:33.742 align:middle line:90%
+You can't just use it.
+
+00:30:33.742 --> 00:30:36.630 align:middle line:84%
+The reason it's a
+commitment, it has a purpose.
+
+00:30:36.630 --> 00:30:39.000 align:middle line:84%
+We don't put things in
+the clear for a reason.
+
+00:30:39.000 --> 00:30:44.770 align:middle line:84%
+So we'll first see you can make
+it efficient given the trapdoor.
+
+00:30:44.770 --> 00:30:48.610 align:middle line:84%
+And then we'll show
+how this, nevertheless,
+
+00:30:48.610 --> 00:30:51.310 align:middle line:84%
+even though we need to
+keep this trapdoor secret,
+
+00:30:51.310 --> 00:30:53.880 align:middle line:84%
+the mere fact that it
+exists can be useful
+
+00:30:53.880 --> 00:30:58.380 align:middle line:90%
+for us to do the Fiat-Shamir.
+
+00:30:58.380 --> 00:31:00.860 align:middle line:90%
+OK, questions?
+
+00:31:00.860 --> 00:31:03.920 align:middle line:84%
+Let me remind you that
+I really like questions.
+
+00:31:03.920 --> 00:31:07.140 align:middle line:84%
+Good, bad, all of them,
+they're all fantastic.
+
+00:31:07.140 --> 00:31:07.640 align:middle line:90%
+Yeah.
+
+00:31:07.640 --> 00:31:08.150 align:middle line:90%
+AUDIENCE: I'm just curious.
+
+00:31:08.150 --> 00:31:10.260 align:middle line:84%
+So the common random
+string, how did you
+
+00:31:10.260 --> 00:31:15.590 align:middle line:84%
+use to get step where you want
+to make the trapdoor somehow
+
+00:31:15.590 --> 00:31:17.420 align:middle line:84%
+random enough that
+it's not known?
+
+00:31:17.420 --> 00:31:19.340 align:middle line:84%
+YAEL T. KALAI: So the
+common random string
+
+00:31:19.340 --> 00:31:21.098 align:middle line:90%
+will be used in many places.
+
+00:31:21.098 --> 00:31:22.640 align:middle line:84%
+The first place it's
+going to be used
+
+00:31:22.640 --> 00:31:26.000 align:middle line:84%
+is even to make sure my
+commitment has a trapdoor.
+
+00:31:26.000 --> 00:31:28.052 align:middle line:84%
+And then it's going to
+be used again and again.
+
+00:31:28.052 --> 00:31:29.760 align:middle line:84%
+It's going to be used
+all over the place.
+
+00:31:29.760 --> 00:31:32.280 align:middle line:90%
+So we'll see that next.
+
+00:31:32.280 --> 00:31:36.900 align:middle line:84%
+So any other questions
+before we proceed?
+
+00:31:36.900 --> 00:31:39.120 align:middle line:84%
+So step one, let
+me just tell you
+
+00:31:39.120 --> 00:31:42.360 align:middle line:84%
+how to construct the commitment
+so that it has a trapdoor.
+
+00:31:42.360 --> 00:31:47.100 align:middle line:84%
+And the way I'm going to do it
+is just using encryption scheme.
+
+00:31:47.100 --> 00:31:50.790 align:middle line:84%
+So let me define the notion
+of public key encryption.
+
+00:31:50.790 --> 00:31:53.590 align:middle line:84%
+And did we define public
+key encryption last time?
+
+00:31:53.590 --> 00:31:57.710 align:middle line:90%
+
+
+00:31:57.710 --> 00:31:59.680 align:middle line:90%
+No, right?
+
+00:31:59.680 --> 00:32:01.430 align:middle line:84%
+So let me define the
+notion of encryption,
+
+00:32:01.430 --> 00:32:03.590 align:middle line:84%
+and we'll use that as
+our commitment scheme.
+
+00:32:03.590 --> 00:32:06.920 align:middle line:90%
+So what is an encryption?
+
+00:32:06.920 --> 00:32:16.740 align:middle line:84%
+So a public key encryption
+with message space,
+
+00:32:16.740 --> 00:32:18.710 align:middle line:84%
+there's a message space
+associated with it--
+
+00:32:18.710 --> 00:32:23.603 align:middle line:90%
+
+
+00:32:23.603 --> 00:32:25.770 align:middle line:84%
+these are the messages that
+we're going to encrypt--
+
+00:32:25.770 --> 00:32:32.900 align:middle line:90%
+it consists of three algorithms.
+
+00:32:32.900 --> 00:32:38.800 align:middle line:84%
+So one is gen. It has its
+own key generation not
+
+00:32:38.800 --> 00:32:40.550 align:middle line:84%
+to be confused with
+the hash function that
+
+00:32:40.550 --> 00:32:41.630 align:middle line:90%
+generates hash key.
+
+00:32:41.630 --> 00:32:45.710 align:middle line:84%
+This generates public
+key and secret key.
+
+00:32:45.710 --> 00:32:54.870 align:middle line:84%
+So this just generates a pair,
+a public key and a secret key.
+
+00:32:54.870 --> 00:33:00.490 align:middle line:84%
+Let me just mention
+three PPT algorithms.
+
+00:33:00.490 --> 00:33:03.520 align:middle line:84%
+So we have Probabilistic
+Polynomial Time algorithms.
+
+00:33:03.520 --> 00:33:05.670 align:middle line:84%
+The first just generates
+two keys, a public key
+
+00:33:05.670 --> 00:33:08.050 align:middle line:90%
+and a secret key.
+
+00:33:08.050 --> 00:33:11.560 align:middle line:84%
+The encryption algorithm
+takes, as input, a public key
+
+00:33:11.560 --> 00:33:14.180 align:middle line:84%
+and a message from
+the message space.
+
+00:33:14.180 --> 00:33:20.970 align:middle line:84%
+And it generates a ciphertext
+from a ciphertext space.
+
+00:33:20.970 --> 00:33:22.800 align:middle line:84%
+And the third
+algorithm decrypts.
+
+00:33:22.800 --> 00:33:27.830 align:middle line:84%
+So it takes a secret
+key and the ciphertext,
+
+00:33:27.830 --> 00:33:33.710 align:middle line:84%
+and it generates a message in
+the message space or like that.
+
+00:33:33.710 --> 00:33:34.440 align:middle line:90%
+Maybe I failed.
+
+00:33:34.440 --> 00:33:38.090 align:middle line:84%
+I tried to decrypt,
+but I failed.
+
+00:33:38.090 --> 00:33:42.680 align:middle line:84%
+And the properties we want,
+the first is correctness
+
+00:33:42.680 --> 00:33:47.940 align:middle line:84%
+or completeness, which just
+says, if you encrypt the message
+
+00:33:47.940 --> 00:33:50.710 align:middle line:84%
+and then you decrypt it,
+you get your message back.
+
+00:33:50.710 --> 00:33:58.140 align:middle line:84%
+So it just says, for every m,
+for any message, the probability
+
+00:33:58.140 --> 00:34:00.150 align:middle line:84%
+that you decrypt--
+so the probability is
+
+00:34:00.150 --> 00:34:12.770 align:middle line:84%
+over a sample public key
+and secret key from key Gen.
+
+00:34:12.770 --> 00:34:18.924 align:middle line:84%
+And then use the secret key
+to decrypt an encryption of m.
+
+00:34:18.924 --> 00:34:25.370 align:middle line:90%
+
+
+00:34:25.370 --> 00:34:30.080 align:middle line:84%
+So it says, if you encrypt m,
+you generate a pair of keys,
+
+00:34:30.080 --> 00:34:34.250 align:middle line:84%
+you encrypt the message m
+and then you decrypt it,
+
+00:34:34.250 --> 00:34:38.750 align:middle line:84%
+you get back the message
+with probability 1.
+
+00:34:38.750 --> 00:34:40.889 align:middle line:84%
+That's just correctness,
+what you expect.
+
+00:34:40.889 --> 00:34:43.130 align:middle line:84%
+If you take a message,
+you encrypt it,
+
+00:34:43.130 --> 00:34:48.199 align:middle line:84%
+and then you decrypt it, you
+should get the message back.
+
+00:34:48.199 --> 00:34:52.070 align:middle line:84%
+The important property
+is security or what's
+
+00:34:52.070 --> 00:34:53.790 align:middle line:90%
+called semantic security.
+
+00:34:53.790 --> 00:35:00.400 align:middle line:90%
+
+
+00:35:00.400 --> 00:35:03.560 align:middle line:84%
+And this says that
+any two messages,
+
+00:35:03.560 --> 00:35:06.290 align:middle line:84%
+if you encrypt one
+or encrypt the other,
+
+00:35:06.290 --> 00:35:07.740 align:middle line:90%
+can distinguish between the two.
+
+00:35:07.740 --> 00:35:08.610 align:middle line:90%
+They look the same.
+
+00:35:08.610 --> 00:35:10.910 align:middle line:84%
+They're computationally
+indistinguishable.
+
+00:35:10.910 --> 00:35:18.500 align:middle line:84%
+So it just says, for every m0
+and m1 in the message space--
+
+00:35:18.500 --> 00:35:20.190 align:middle line:90%
+so typically, we think--
+
+00:35:20.190 --> 00:35:23.013 align:middle line:84%
+by the way, the length
+of m is revealed.
+
+00:35:23.013 --> 00:35:24.680 align:middle line:84%
+Typically, we think
+of the message space
+
+00:35:24.680 --> 00:35:26.660 align:middle line:90%
+as having fixed size.
+
+00:35:26.660 --> 00:35:30.900 align:middle line:84%
+For us, throughout this entire
+lecture and often is the case,
+
+00:35:30.900 --> 00:35:34.460 align:middle line:84%
+we can think of m as just
+containing two messages, the 0
+
+00:35:34.460 --> 00:35:36.140 align:middle line:90%
+message or the 1 message.
+
+00:35:36.140 --> 00:35:37.890 align:middle line:84%
+And if you want to
+encrypt longer message,
+
+00:35:37.890 --> 00:35:39.660 align:middle line:84%
+you just encrypt
+bit by bit by bit.
+
+00:35:39.660 --> 00:35:41.740 align:middle line:84%
+That's a common way
+to do encryption.
+
+00:35:41.740 --> 00:35:43.213 align:middle line:90%
+Not in practice, but in theory.
+
+00:35:43.213 --> 00:35:44.880 align:middle line:84%
+In practice, it's
+often not fast enough.
+
+00:35:44.880 --> 00:35:47.990 align:middle line:84%
+But in theory, you can just
+encrypt each bit separately.
+
+00:35:47.990 --> 00:35:52.040 align:middle line:84%
+But in general, for any two
+messages, the message space,
+
+00:35:52.040 --> 00:35:55.500 align:middle line:84%
+if it's just 0, 1s, for the
+message 0 and for the message 1,
+
+00:35:55.500 --> 00:35:58.940 align:middle line:84%
+the claim is that, if you
+generate public key according
+
+00:35:58.940 --> 00:36:06.620 align:middle line:84%
+to Gen and encrypt m0,
+this is indistinguishable,
+
+00:36:06.620 --> 00:36:08.390 align:middle line:84%
+computationally
+indistinguishable,
+
+00:36:08.390 --> 00:36:15.260 align:middle line:84%
+from generating a public key
+according to Gen and encrypting
+
+00:36:15.260 --> 00:36:17.510 align:middle line:90%
+message 1.
+
+00:36:17.510 --> 00:36:19.970 align:middle line:84%
+So for any messages,
+you know the messages.
+
+00:36:19.970 --> 00:36:20.810 align:middle line:90%
+I'm telling you.
+
+00:36:20.810 --> 00:36:24.150 align:middle line:90%
+I'm encrypting m0 or m1.
+
+00:36:24.150 --> 00:36:25.785 align:middle line:90%
+You can't tell the difference.
+
+00:36:25.785 --> 00:36:26.410 align:middle line:90%
+You don't know.
+
+00:36:26.410 --> 00:36:27.535 align:middle line:90%
+I'm giving you one of them.
+
+00:36:27.535 --> 00:36:30.600 align:middle line:84%
+You have no idea if it's m0
+encrypted or m1 encrypted.
+
+00:36:30.600 --> 00:36:33.780 align:middle line:84%
+Note, there's no randomness
+over the messages for any two
+
+00:36:33.780 --> 00:36:36.490 align:middle line:90%
+messages, fixed messages.
+
+00:36:36.490 --> 00:36:36.990 align:middle line:90%
+Yeah.
+
+00:36:36.990 --> 00:36:38.615 align:middle line:84%
+So even you don't
+know if I encrypt M--
+
+00:36:38.615 --> 00:36:41.790 align:middle line:84%
+if I give you two encryptions
+of 0 or I give you encryption
+
+00:36:41.790 --> 00:36:44.152 align:middle line:84%
+of 01, can't tell
+the difference.
+
+00:36:44.152 --> 00:36:47.110 align:middle line:90%
+
+
+00:36:47.110 --> 00:36:49.010 align:middle line:90%
+So that's the definition.
+
+00:36:49.010 --> 00:36:51.970 align:middle line:84%
+And we have these public
+key encryption schemes
+
+00:36:51.970 --> 00:36:56.110 align:middle line:84%
+and a whole slew of assumptions,
+lattice-based assumption,
+
+00:36:56.110 --> 00:36:58.030 align:middle line:84%
+not lattice-based,
+like discrete log
+
+00:36:58.030 --> 00:37:02.090 align:middle line:84%
+that we saw earlier in
+the semester and so on.
+
+00:37:02.090 --> 00:37:04.600 align:middle line:84%
+But I don't want to talk about
+instantiation because this
+
+00:37:04.600 --> 00:37:07.790 align:middle line:90%
+is more class on proof systems.
+
+00:37:07.790 --> 00:37:11.090 align:middle line:84%
+And I don't want to make
+it too hard core crypto.
+
+00:37:11.090 --> 00:37:13.910 align:middle line:84%
+So let me just use this-- not
+show how to actually construct
+
+00:37:13.910 --> 00:37:17.130 align:middle line:84%
+this, but we have many
+instantiation constructions.
+
+00:37:17.130 --> 00:37:19.130 align:middle line:90%
+But suppose we have this.
+
+00:37:19.130 --> 00:37:22.200 align:middle line:84%
+Let me show you what
+the commitment would be.
+
+00:37:22.200 --> 00:37:24.290 align:middle line:84%
+So now, what I want
+the commitment to be,
+
+00:37:24.290 --> 00:37:27.890 align:middle line:84%
+instead of commitment,
+make this an encryption.
+
+00:37:27.890 --> 00:37:30.545 align:middle line:84%
+Let me actually
+put another color.
+
+00:37:30.545 --> 00:37:37.060 align:middle line:90%
+
+
+00:37:37.060 --> 00:37:44.860 align:middle line:84%
+So make this be an encryption
+with some public key of pi.
+
+00:37:44.860 --> 00:37:48.800 align:middle line:84%
+So what I'm telling the prover
+now, I'm telling him, look,
+
+00:37:48.800 --> 00:37:51.470 align:middle line:84%
+I want to be able in
+the analysis at least,
+
+00:37:51.470 --> 00:37:57.100 align:middle line:84%
+to open up there and see
+where the 1s are and where are
+
+00:37:57.100 --> 00:38:00.310 align:middle line:84%
+the 01s, so that later I'll
+be able to understand where
+
+00:38:00.310 --> 00:38:01.290 align:middle line:90%
+the nonedges are.
+
+00:38:01.290 --> 00:38:04.490 align:middle line:90%
+And so what's the bad beta?
+
+00:38:04.490 --> 00:38:08.430 align:middle line:84%
+So now, I want to
+tell the prover--
+
+00:38:08.430 --> 00:38:11.240 align:middle line:84%
+so please, the commitment
+I want you to send me
+
+00:38:11.240 --> 00:38:12.860 align:middle line:90%
+is the encryption.
+
+00:38:12.860 --> 00:38:13.910 align:middle line:90%
+Now, it's hiding.
+
+00:38:13.910 --> 00:38:14.760 align:middle line:90%
+It's still hiding.
+
+00:38:14.760 --> 00:38:15.260 align:middle line:90%
+Yeah?
+
+00:38:15.260 --> 00:38:17.782 align:middle line:90%
+
+
+00:38:17.782 --> 00:38:18.990 align:middle line:90%
+So it's still zero knowledge.
+
+00:38:18.990 --> 00:38:20.782 align:middle line:84%
+It's still satisfies
+kind of-- it's locked.
+
+00:38:20.782 --> 00:38:23.590 align:middle line:84%
+It's like the verifier has
+no idea what's in there.
+
+00:38:23.590 --> 00:38:26.970 align:middle line:90%
+
+
+00:38:26.970 --> 00:38:28.230 align:middle line:90%
+And it's still binding.
+
+00:38:28.230 --> 00:38:32.440 align:middle line:84%
+Because once you
+encrypt, you're stuck.
+
+00:38:32.440 --> 00:38:35.698 align:middle line:90%
+
+
+00:38:35.698 --> 00:38:37.740 align:middle line:84%
+The message is sitting
+there because then you can
+
+00:38:37.740 --> 00:38:39.670 align:middle line:90%
+use a secret key to decrypt it.
+
+00:38:39.670 --> 00:38:42.440 align:middle line:84%
+So it really has the hiding
+and binding property.
+
+00:38:42.440 --> 00:38:44.190 align:middle line:84%
+Great, it's like a
+real commitment scheme.
+
+00:38:44.190 --> 00:38:48.060 align:middle line:90%
+
+
+00:38:48.060 --> 00:38:50.410 align:middle line:90%
+Yeah?
+
+00:38:50.410 --> 00:38:52.445 align:middle line:90%
+Yeah.
+
+00:38:52.445 --> 00:38:54.170 align:middle line:84%
+AUDIENCE: Does
+public key encryption
+
+00:38:54.170 --> 00:38:56.870 align:middle line:84%
+imply that there's
+no possibility
+
+00:38:56.870 --> 00:39:00.703 align:middle line:84%
+of a second secret key that
+decrypts it to something else?
+
+00:39:00.703 --> 00:39:02.120 align:middle line:84%
+YAEL T. KALAI: OK,
+great question.
+
+00:39:02.120 --> 00:39:04.580 align:middle line:90%
+Great question.
+
+00:39:04.580 --> 00:39:05.180 align:middle line:90%
+Great.
+
+00:39:05.180 --> 00:39:08.690 align:middle line:84%
+So you're asking, wait,
+what if the public key has
+
+00:39:08.690 --> 00:39:14.840 align:middle line:84%
+many secret keys associated with
+it and one of them decrypts to m
+
+00:39:14.840 --> 00:39:17.010 align:middle line:84%
+and the other one decrypts
+to m prime, let's say?
+
+00:39:17.010 --> 00:39:18.990 align:middle line:90%
+So now, here I say, no.
+
+00:39:18.990 --> 00:39:21.120 align:middle line:90%
+By my definition, no.
+
+00:39:21.120 --> 00:39:23.880 align:middle line:84%
+Because my
+correctness says that,
+
+00:39:23.880 --> 00:39:25.740 align:middle line:84%
+if you choose public
+key and secret key
+
+00:39:25.740 --> 00:39:30.090 align:middle line:84%
+pair with probability
+1, you will always
+
+00:39:30.090 --> 00:39:31.470 align:middle line:90%
+get your message back.
+
+00:39:31.470 --> 00:39:35.110 align:middle line:84%
+So there's no secret key that
+will give you different message.
+
+00:39:35.110 --> 00:39:36.660 align:middle line:90%
+That's my definition.
+
+00:39:36.660 --> 00:39:40.530 align:middle line:84%
+So what you're
+proposing is not for me.
+
+00:39:40.530 --> 00:39:43.290 align:middle line:84%
+It doesn't satisfy
+my definition.
+
+00:39:43.290 --> 00:39:49.830 align:middle line:84%
+So now, use a public encryption
+that satisfies my definition.
+
+00:39:49.830 --> 00:39:51.790 align:middle line:90%
+Now, you're binded.
+
+00:39:51.790 --> 00:39:52.290 align:middle line:90%
+Good?
+
+00:39:52.290 --> 00:39:53.080 align:middle line:90%
+Great question.
+
+00:39:53.080 --> 00:39:54.940 align:middle line:84%
+These are really,
+really great questions.
+
+00:39:54.940 --> 00:39:56.110 align:middle line:90%
+Yeah.
+
+00:39:56.110 --> 00:39:58.300 align:middle line:84%
+AUDIENCE: Here in the
+probability expression,
+
+00:39:58.300 --> 00:40:00.720 align:middle line:84%
+you're choosing public key
+as secret key here all coming
+
+00:40:00.720 --> 00:40:02.080 align:middle line:90%
+from the same Gen function.
+
+00:40:02.080 --> 00:40:02.913 align:middle line:90%
+YAEL T. KALAI: Yeah.
+
+00:40:02.913 --> 00:40:04.440 align:middle line:90%
+AUDIENCE: But what if--
+
+00:40:04.440 --> 00:40:06.630 align:middle line:84%
+it doesn't give you
+anything about a different--
+
+00:40:06.630 --> 00:40:08.463 align:middle line:84%
+YAEL T. KALAI: OK, very,
+very good question,
+
+00:40:08.463 --> 00:40:11.040 align:middle line:90%
+very good question.
+
+00:40:11.040 --> 00:40:13.980 align:middle line:90%
+So the point was the following.
+
+00:40:13.980 --> 00:40:18.000 align:middle line:84%
+Look, we have all these
+guarantees, the correctness
+
+00:40:18.000 --> 00:40:20.640 align:middle line:84%
+and the security,
+assuming the public key is
+
+00:40:20.640 --> 00:40:23.300 align:middle line:90%
+generated according to Gen.
+
+00:40:23.300 --> 00:40:28.840 align:middle line:84%
+Now, my question here, who
+generates this public key?
+
+00:40:28.840 --> 00:40:30.730 align:middle line:84%
+How do I know it generates
+according to Gen?
+
+00:40:30.730 --> 00:40:37.760 align:middle line:84%
+If we let the prover generate
+the public key, then maybe
+
+00:40:37.760 --> 00:40:42.420 align:middle line:84%
+it's a bad public key that is
+never going to appear here.
+
+00:40:42.420 --> 00:40:46.510 align:middle line:84%
+And for that bad public key,
+maybe your concern is valid.
+
+00:40:46.510 --> 00:40:49.840 align:middle line:84%
+Maybe you can open
+it in different ways.
+
+00:40:49.840 --> 00:40:51.740 align:middle line:90%
+And you're completely right.
+
+00:40:51.740 --> 00:40:53.260 align:middle line:90%
+That is a problem.
+
+00:40:53.260 --> 00:40:57.890 align:middle line:84%
+Actually, it's not a
+hypothetical problem.
+
+00:40:57.890 --> 00:40:59.910 align:middle line:84%
+Our scheme that we use
+that we want to get-- we
+
+00:40:59.910 --> 00:41:01.660 align:middle line:84%
+want to get this under
+lattice assumption.
+
+00:41:01.660 --> 00:41:04.990 align:middle line:84%
+That specific scheme we use has
+that property, has that problem
+
+00:41:04.990 --> 00:41:08.880 align:middle line:84%
+that, if the key is generated
+badly, actually, there
+
+00:41:08.880 --> 00:41:09.590 align:middle line:90%
+is no binding.
+
+00:41:09.590 --> 00:41:10.090 align:middle line:90%
+I can cheat.
+
+00:41:10.090 --> 00:41:11.960 align:middle line:90%
+I can open two different ways.
+
+00:41:11.960 --> 00:41:15.200 align:middle line:84%
+I will never be able to do that
+if I generate according to Gen.
+
+00:41:15.200 --> 00:41:17.720 align:middle line:84%
+But if I generated
+maliciously, I
+
+00:41:17.720 --> 00:41:19.230 align:middle line:84%
+can choose a very
+bad public key.
+
+00:41:19.230 --> 00:41:20.640 align:middle line:84%
+Nobody will be able to
+tell the difference.
+
+00:41:20.640 --> 00:41:22.190 align:middle line:84%
+It will look like
+a good public key,
+
+00:41:22.190 --> 00:41:25.790 align:middle line:84%
+but it's actually generated
+completely differently.
+
+00:41:25.790 --> 00:41:27.920 align:middle line:84%
+And it would have
+never appeared in Gen.
+
+00:41:27.920 --> 00:41:32.020 align:middle line:84%
+And with that public key,
+there is no correctness.
+
+00:41:32.020 --> 00:41:35.320 align:middle line:84%
+And I can cheat and I
+can do whatever I want.
+
+00:41:35.320 --> 00:41:40.710 align:middle line:84%
+So very good, you found the
+problem in this approach.
+
+00:41:40.710 --> 00:41:41.530 align:middle line:90%
+So what do we do?
+
+00:41:41.530 --> 00:41:42.610 align:middle line:90%
+How do we fix it?
+
+00:41:42.610 --> 00:41:45.500 align:middle line:90%
+
+
+00:41:45.500 --> 00:41:47.797 align:middle line:84%
+So this comes to your
+question at the beginning.
+
+00:41:47.797 --> 00:41:48.630 align:middle line:90%
+Well, you know what?
+
+00:41:48.630 --> 00:41:51.980 align:middle line:84%
+Let's assume that there's a
+trusted party that generates
+
+00:41:51.980 --> 00:41:53.870 align:middle line:90%
+this public key for us.
+
+00:41:53.870 --> 00:41:56.120 align:middle line:84%
+So let's assume, for
+now, that there's kind
+
+00:41:56.120 --> 00:41:57.870 align:middle line:90%
+of a common reference string.
+
+00:41:57.870 --> 00:42:00.920 align:middle line:84%
+We all agree there's a
+public key sitting here.
+
+00:42:00.920 --> 00:42:03.980 align:middle line:84%
+That's in what's called
+a common reference string
+
+00:42:03.980 --> 00:42:05.730 align:middle line:90%
+or a common random string.
+
+00:42:05.730 --> 00:42:09.037 align:middle line:84%
+Everybody knows it, both
+the prover and the verifier.
+
+00:42:09.037 --> 00:42:10.370 align:middle line:90%
+We all agree on this public key.
+
+00:42:10.370 --> 00:42:11.900 align:middle line:84%
+And we assume that
+it was trusted,
+
+00:42:11.900 --> 00:42:16.720 align:middle line:84%
+like generated according to
+Gen. Nobody has the secret key.
+
+00:42:16.720 --> 00:42:17.740 align:middle line:90%
+Nobody has a secret key.
+
+00:42:17.740 --> 00:42:20.160 align:middle line:84%
+We'll never need to
+open the secret key.
+
+00:42:20.160 --> 00:42:23.380 align:middle line:84%
+So in this protocol,
+what do I do?
+
+00:42:23.380 --> 00:42:24.360 align:middle line:90%
+I'm a prover.
+
+00:42:24.360 --> 00:42:25.710 align:middle line:90%
+I encrypt bit by bit.
+
+00:42:25.710 --> 00:42:27.140 align:middle line:90%
+So how do I encrypt?
+
+00:42:27.140 --> 00:42:28.890 align:middle line:84%
+So I didn't say,
+but this encryption
+
+00:42:28.890 --> 00:42:30.340 align:middle line:90%
+is a randomized protocol.
+
+00:42:30.340 --> 00:42:33.190 align:middle line:90%
+So I choose randomness.
+
+00:42:33.190 --> 00:42:33.940 align:middle line:90%
+I encrypt the bit.
+
+00:42:33.940 --> 00:42:34.690 align:middle line:90%
+I choose randomness.
+
+00:42:34.690 --> 00:42:35.440 align:middle line:90%
+I encrypt the next bit.
+
+00:42:35.440 --> 00:42:36.040 align:middle line:90%
+I choose randomness.
+
+00:42:36.040 --> 00:42:37.957 align:middle line:84%
+I encrypt the next bit
+and so on and so forth.
+
+00:42:37.957 --> 00:42:40.470 align:middle line:84%
+And when I'm asked to open,
+I reveal my randomness.
+
+00:42:40.470 --> 00:42:41.410 align:middle line:90%
+Look, how I encrypted.
+
+00:42:41.410 --> 00:42:42.670 align:middle line:90%
+See, there is randomness.
+
+00:42:42.670 --> 00:42:47.160 align:middle line:84%
+I took the encryption
+with public key and my bit
+
+00:42:47.160 --> 00:42:48.730 align:middle line:90%
+0 or 1 with this randomness.
+
+00:42:48.730 --> 00:42:50.410 align:middle line:84%
+And see, that's
+what's written here.
+
+00:42:50.410 --> 00:42:54.403 align:middle line:84%
+So I can just open
+without using secret key.
+
+00:42:54.403 --> 00:42:55.570 align:middle line:90%
+Nobody knows the secret key.
+
+00:42:55.570 --> 00:42:56.850 align:middle line:90%
+The secret key is gone.
+
+00:42:56.850 --> 00:42:59.670 align:middle line:84%
+Someone just came
+with the public key.
+
+00:42:59.670 --> 00:43:02.890 align:middle line:84%
+And I open here not
+with the secret key,
+
+00:43:02.890 --> 00:43:06.310 align:middle line:84%
+but I show you the randomness
+that I used to encrypt.
+
+00:43:06.310 --> 00:43:10.840 align:middle line:84%
+And that kind of is
+an opening for me.
+
+00:43:10.840 --> 00:43:13.890 align:middle line:90%
+
+
+00:43:13.890 --> 00:43:14.737 align:middle line:90%
+Yeah.
+
+00:43:14.737 --> 00:43:16.320 align:middle line:84%
+AUDIENCE: Does that
+mean the CRS can't
+
+00:43:16.320 --> 00:43:19.342 align:middle line:84%
+be like a fully
+uniformly random string?
+
+00:43:19.342 --> 00:43:21.300 align:middle line:84%
+Because if you were to
+read out the public key,
+
+00:43:21.300 --> 00:43:24.610 align:middle line:84%
+you could also pull
+out the secret key?
+
+00:43:24.610 --> 00:43:27.200 align:middle line:84%
+YAEL T. KALAI: OK,
+great, great question.
+
+00:43:27.200 --> 00:43:30.090 align:middle line:84%
+The question was, does that
+mean that the CRS here cannot be
+
+00:43:30.090 --> 00:43:30.870 align:middle line:90%
+truly random?
+
+00:43:30.870 --> 00:43:32.120 align:middle line:90%
+Because it's not truly random.
+
+00:43:32.120 --> 00:43:33.330 align:middle line:90%
+It's a public key.
+
+00:43:33.330 --> 00:43:36.260 align:middle line:84%
+A public key may
+not be truly random.
+
+00:43:36.260 --> 00:43:39.630 align:middle line:84%
+And the answer is,
+well, first of all,
+
+00:43:39.630 --> 00:43:43.010 align:middle line:84%
+some public key happened
+to be truly random.
+
+00:43:43.010 --> 00:43:47.370 align:middle line:84%
+The public key for this
+scheme is not truly random.
+
+00:43:47.370 --> 00:43:52.280 align:middle line:84%
+However, it's indistinguishable
+from being truly random.
+
+00:43:52.280 --> 00:43:55.170 align:middle line:84%
+So the scheme we actually use,
+the public key has the property.
+
+00:43:55.170 --> 00:43:55.890 align:middle line:90%
+It's not random.
+
+00:43:55.890 --> 00:43:59.090 align:middle line:84%
+It's like a LWE for those who
+know what learning with error
+
+00:43:59.090 --> 00:43:59.810 align:middle line:90%
+is.
+
+00:43:59.810 --> 00:44:02.850 align:middle line:90%
+But that's not truly random.
+
+00:44:02.850 --> 00:44:07.860 align:middle line:84%
+However, it is
+indistinguishable from random.
+
+00:44:07.860 --> 00:44:10.980 align:middle line:84%
+Now, if you have soundness
+with public key that's
+
+00:44:10.980 --> 00:44:12.840 align:middle line:84%
+indistinguishable
+from random, soundness
+
+00:44:12.840 --> 00:44:15.420 align:middle line:84%
+should hold even if
+it's completely random.
+
+00:44:15.420 --> 00:44:18.450 align:middle line:84%
+So actually, you can make
+this completely random.
+
+00:44:18.450 --> 00:44:21.600 align:middle line:84%
+And actually, in the paper, they
+actually take advantage of that.
+
+00:44:21.600 --> 00:44:24.640 align:middle line:84%
+Because if the public
+key is completely random,
+
+00:44:24.640 --> 00:44:26.970 align:middle line:84%
+then you get statistical
+zero knowledge,
+
+00:44:26.970 --> 00:44:28.320 align:middle line:90%
+computational soundness.
+
+00:44:28.320 --> 00:44:31.500 align:middle line:90%
+
+
+00:44:31.500 --> 00:44:33.480 align:middle line:84%
+In this protocol,
+especially when
+
+00:44:33.480 --> 00:44:36.520 align:middle line:84%
+you go to the noninteractive
+version, there's a tension.
+
+00:44:36.520 --> 00:44:39.120 align:middle line:84%
+You can either get
+statistical soundness
+
+00:44:39.120 --> 00:44:42.000 align:middle line:84%
+and computational zero knowledge
+or statistical zero knowledge
+
+00:44:42.000 --> 00:44:43.300 align:middle line:90%
+and computational soundness.
+
+00:44:43.300 --> 00:44:45.060 align:middle line:84%
+And you can play
+with this public key,
+
+00:44:45.060 --> 00:44:48.232 align:middle line:84%
+whether to make it kind of the
+true public key in which case
+
+00:44:48.232 --> 00:44:50.190 align:middle line:84%
+you get statistical
+soundness and computational
+
+00:44:50.190 --> 00:44:51.190 align:middle line:90%
+zero knowledge.
+
+00:44:51.190 --> 00:44:55.180 align:middle line:84%
+Or if you want to take a fake
+public key, which is all 0,
+
+00:44:55.180 --> 00:44:59.110 align:middle line:84%
+and then you get computational
+soundness and statistical zero
+
+00:44:59.110 --> 00:44:59.610 align:middle line:90%
+knowledge.
+
+00:44:59.610 --> 00:45:03.890 align:middle line:84%
+So you can play
+with these things.
+
+00:45:03.890 --> 00:45:06.800 align:middle line:90%
+
+
+00:45:06.800 --> 00:45:10.520 align:middle line:84%
+So this is the protocol
+for which we'll
+
+00:45:10.520 --> 00:45:13.030 align:middle line:90%
+show that Fiat-Shamir holds.
+
+00:45:13.030 --> 00:45:15.160 align:middle line:84%
+So again, the commitment
+is just replaced
+
+00:45:15.160 --> 00:45:19.020 align:middle line:90%
+with a public key encryption.
+
+00:45:19.020 --> 00:45:20.460 align:middle line:90%
+Yeah.
+
+00:45:20.460 --> 00:45:22.660 align:middle line:84%
+AUDIENCE: The common
+reference string, I mean,
+
+00:45:22.660 --> 00:45:24.670 align:middle line:84%
+the public key is
+by, for example,
+
+00:45:24.670 --> 00:45:27.000 align:middle line:90%
+change is a way of opening.
+
+00:45:27.000 --> 00:45:30.870 align:middle line:84%
+For example, we also
+require the prover
+
+00:45:30.870 --> 00:45:37.603 align:middle line:84%
+to provide the
+randomness for Gen.
+
+00:45:37.603 --> 00:45:39.020 align:middle line:84%
+YAEL T. KALAI: Oh,
+that's a good--
+
+00:45:39.020 --> 00:45:39.720 align:middle line:90%
+OK.
+
+00:45:39.720 --> 00:45:41.810 align:middle line:90%
+OK, good.
+
+00:45:41.810 --> 00:45:42.660 align:middle line:90%
+Good suggestion.
+
+00:45:42.660 --> 00:45:44.430 align:middle line:84%
+What you're saying
+is you're saying,
+
+00:45:44.430 --> 00:45:47.760 align:middle line:84%
+wait, how about he
+gives this public key.
+
+00:45:47.760 --> 00:45:49.380 align:middle line:90%
+It can be malicious.
+
+00:45:49.380 --> 00:45:52.618 align:middle line:84%
+But when he opens,
+we'll ask him--
+
+00:45:52.618 --> 00:45:54.410 align:middle line:84%
+OK, so I'll tell you
+the problem with that.
+
+00:45:54.410 --> 00:45:57.230 align:middle line:84%
+If, when he opens, he
+gives the randomness
+
+00:45:57.230 --> 00:45:58.910 align:middle line:84%
+he used-- so you're
+suggesting, why
+
+00:45:58.910 --> 00:46:00.410 align:middle line:84%
+don't he give the
+randomness he used
+
+00:46:00.410 --> 00:46:01.577 align:middle line:90%
+to generate this public key?
+
+00:46:01.577 --> 00:46:03.980 align:middle line:84%
+And now, you know that
+it's a valid public key.
+
+00:46:03.980 --> 00:46:06.240 align:middle line:84%
+That will, indeed,
+ensure soundness.
+
+00:46:06.240 --> 00:46:09.470 align:middle line:84%
+However, that will break
+the zero knowledge.
+
+00:46:09.470 --> 00:46:11.220 align:middle line:84%
+Because once you
+give the randomness,
+
+00:46:11.220 --> 00:46:12.890 align:middle line:84%
+you also give the
+secret key away.
+
+00:46:12.890 --> 00:46:16.490 align:middle line:84%
+Because this randomness was
+used to generate both of them.
+
+00:46:16.490 --> 00:46:20.870 align:middle line:84%
+And if the secret key, then
+you lost the zero knowledge.
+
+00:46:20.870 --> 00:46:21.930 align:middle line:90%
+But great suggestion.
+
+00:46:21.930 --> 00:46:22.860 align:middle line:90%
+OK, great, you guys.
+
+00:46:22.860 --> 00:46:25.027 align:middle line:84%
+It's clear that you're
+thinking, which is fantastic.
+
+00:46:25.027 --> 00:46:28.000 align:middle line:90%
+Great suggestions.
+
+00:46:28.000 --> 00:46:32.420 align:middle line:84%
+Any other questions
+before we move on?
+
+00:46:32.420 --> 00:46:36.140 align:middle line:90%
+
+
+00:46:36.140 --> 00:46:37.690 align:middle line:90%
+So we're making progress.
+
+00:46:37.690 --> 00:46:39.080 align:middle line:90%
+Now, what do we know?
+
+00:46:39.080 --> 00:46:43.780 align:middle line:84%
+So let me hide this
+encryption for a second.
+
+00:46:43.780 --> 00:46:46.130 align:middle line:90%
+Let's go back here.
+
+00:46:46.130 --> 00:46:50.670 align:middle line:84%
+Now, I want you
+actually to forget
+
+00:46:50.670 --> 00:46:52.420 align:middle line:84%
+that this was an
+encryption, because we'll
+
+00:46:52.420 --> 00:46:53.990 align:middle line:90%
+use another encryption.
+
+00:46:53.990 --> 00:46:56.385 align:middle line:84%
+And I don't want you to be
+confused with this encryption,
+
+00:46:56.385 --> 00:46:57.260 align:middle line:90%
+the other encryption.
+
+00:46:57.260 --> 00:46:59.560 align:middle line:84%
+What I want you to remember
+about the commitment,
+
+00:46:59.560 --> 00:47:03.253 align:middle line:84%
+that there's some trapdoor,
+like a secret key.
+
+00:47:03.253 --> 00:47:05.170 align:middle line:84%
+I'll call it trapdoor
+on purpose because we'll
+
+00:47:05.170 --> 00:47:08.270 align:middle line:84%
+have another encryption
+which will have a secret key.
+
+00:47:08.270 --> 00:47:11.620 align:middle line:84%
+So what I want you to
+remember about this commitment
+
+00:47:11.620 --> 00:47:15.100 align:middle line:84%
+is that there's some
+trapdoor information
+
+00:47:15.100 --> 00:47:16.840 align:middle line:84%
+that, with that
+trapdoor information,
+
+00:47:16.840 --> 00:47:20.595 align:middle line:84%
+you can open and
+know which b is bad.
+
+00:47:20.595 --> 00:47:23.380 align:middle line:90%
+
+
+00:47:23.380 --> 00:47:30.610 align:middle line:84%
+So a trapdoor has a commitment,
+has some trapdoor information,
+
+00:47:30.610 --> 00:47:33.720 align:middle line:84%
+which allows you to open it, in
+that case, open the encryption.
+
+00:47:33.720 --> 00:47:35.550 align:middle line:90%
+And then where the 1s are.
+
+00:47:35.550 --> 00:47:43.890 align:middle line:84%
+And that will help you
+decide where the bad b lies.
+
+00:47:43.890 --> 00:47:47.640 align:middle line:84%
+Actually, you know, I think I
+need to also add a commitment
+
+00:47:47.640 --> 00:47:49.910 align:middle line:90%
+to pi there.
+
+00:47:49.910 --> 00:47:55.930 align:middle line:84%
+Because, otherwise,
+how do you know which--
+
+00:47:55.930 --> 00:47:57.110 align:middle line:90%
+maybe you can tell anyway.
+
+00:47:57.110 --> 00:47:58.902 align:middle line:84%
+If you had a commitment
+to pi, it's easier.
+
+00:47:58.902 --> 00:48:02.630 align:middle line:84%
+But if you don't add
+a commitment to pi,
+
+00:48:02.630 --> 00:48:05.940 align:middle line:84%
+is it clear that just by
+seeing 1s it's easy to test?
+
+00:48:05.940 --> 00:48:19.267 align:middle line:90%
+
+
+00:48:19.267 --> 00:48:19.850 align:middle line:90%
+Yeah, I guess.
+
+00:48:19.850 --> 00:48:21.510 align:middle line:84%
+I guess if you open
+both, you can see both.
+
+00:48:21.510 --> 00:48:22.843 align:middle line:90%
+Yeah, I don't think you need it.
+
+00:48:22.843 --> 00:48:24.610 align:middle line:90%
+But anyway-- so, good.
+
+00:48:24.610 --> 00:48:26.180 align:middle line:90%
+Sorry.
+
+00:48:26.180 --> 00:48:27.970 align:middle line:84%
+So now, what I
+want to do, I want
+
+00:48:27.970 --> 00:48:29.960 align:middle line:90%
+to say here's my hash function.
+
+00:48:29.960 --> 00:48:33.580 align:middle line:90%
+It has trapdoor hardwired to it.
+
+00:48:33.580 --> 00:48:36.500 align:middle line:84%
+Once he knows the
+trapdoor, it's a trapdoor,
+
+00:48:36.500 --> 00:48:38.530 align:middle line:84%
+depends on the public
+key and the CRS.
+
+00:48:38.530 --> 00:48:40.330 align:middle line:84%
+It doesn't depend
+on the actual--
+
+00:48:40.330 --> 00:48:41.830 align:middle line:84%
+once he has the
+trapdoor, he'll know
+
+00:48:41.830 --> 00:48:43.590 align:middle line:90%
+what the bad thing is and done.
+
+00:48:43.590 --> 00:48:47.420 align:middle line:90%
+
+
+00:48:47.420 --> 00:48:54.930 align:middle line:84%
+So one can say, OK, use this as
+the Fiat-Shamir hash function.
+
+00:48:54.930 --> 00:48:56.030 align:middle line:90%
+Sufficient, it's good.
+
+00:48:56.030 --> 00:48:59.850 align:middle line:84%
+However, as we said, the problem
+is then you know the trapdoor.
+
+00:48:59.850 --> 00:49:02.440 align:middle line:84%
+It's sitting there,
+the trapdoor.
+
+00:49:02.440 --> 00:49:05.680 align:middle line:84%
+And once you're in the trapdoor,
+it's not zero knowledge.
+
+00:49:05.680 --> 00:49:08.170 align:middle line:90%
+So that's the problem.
+
+00:49:08.170 --> 00:49:12.740 align:middle line:84%
+And then there were
+attempts to try to do, OK,
+
+00:49:12.740 --> 00:49:14.620 align:middle line:90%
+let's obfuscate these things.
+
+00:49:14.620 --> 00:49:17.590 align:middle line:84%
+And a lot of hammers were
+thrown in this direction.
+
+00:49:17.590 --> 00:49:19.850 align:middle line:84%
+And it resulted in
+crazy assumptions.
+
+00:49:19.850 --> 00:49:22.540 align:middle line:84%
+And anyway, there was a
+long line of work where
+
+00:49:22.540 --> 00:49:23.690 align:middle line:90%
+that's what we tried to do.
+
+00:49:23.690 --> 00:49:26.341 align:middle line:90%
+
+
+00:49:26.341 --> 00:49:30.030 align:middle line:90%
+And then here is their idea.
+
+00:49:30.030 --> 00:49:32.320 align:middle line:84%
+So now, I can tell you
+the next a-ha moment.
+
+00:49:32.320 --> 00:49:35.550 align:middle line:84%
+So again, one option
+is to throw what's
+
+00:49:35.550 --> 00:49:36.780 align:middle line:90%
+called obfuscation at this.
+
+00:49:36.780 --> 00:49:38.322 align:middle line:84%
+For those who don't
+know obfuscation,
+
+00:49:38.322 --> 00:49:39.930 align:middle line:84%
+don't worry about
+it-- essentially,
+
+00:49:39.930 --> 00:49:42.930 align:middle line:84%
+garbling so that the trapdoor
+will be really hidden there.
+
+00:49:42.930 --> 00:49:44.440 align:middle line:90%
+Nobody will be able to find it.
+
+00:49:44.440 --> 00:49:47.910 align:middle line:84%
+And even then, it was a
+messy approach that we tried.
+
+00:49:47.910 --> 00:49:50.070 align:middle line:84%
+And we got really, really
+strong assumptions,
+
+00:49:50.070 --> 00:49:52.560 align:middle line:84%
+which I have no idea if
+they were true or not.
+
+00:49:52.560 --> 00:49:55.560 align:middle line:84%
+It was kind of a messy
+approach that a bunch of papers
+
+00:49:55.560 --> 00:49:58.530 align:middle line:84%
+kind of followed that
+approach, very complicated.
+
+00:49:58.530 --> 00:50:01.050 align:middle line:90%
+
+
+00:50:01.050 --> 00:50:02.520 align:middle line:90%
+Then came this paper.
+
+00:50:02.520 --> 00:50:08.100 align:middle line:90%
+And here is the beautiful idea.
+
+00:50:08.100 --> 00:50:09.970 align:middle line:84%
+So the beautiful idea
+was the following.
+
+00:50:09.970 --> 00:50:11.590 align:middle line:90%
+They said, you know what?
+
+00:50:11.590 --> 00:50:13.400 align:middle line:90%
+Yeah, you can't give trapdoor.
+
+00:50:13.400 --> 00:50:14.860 align:middle line:90%
+That's a problem.
+
+00:50:14.860 --> 00:50:16.720 align:middle line:90%
+Give an encryption of trapdoor.
+
+00:50:16.720 --> 00:50:17.990 align:middle line:90%
+Forget about this encryption.
+
+00:50:17.990 --> 00:50:19.340 align:middle line:90%
+That's a different encryption.
+
+00:50:19.340 --> 00:50:21.870 align:middle line:84%
+So it's now fresh,
+new encryption.
+
+00:50:21.870 --> 00:50:23.790 align:middle line:84%
+Why don't you give
+encryption-- let
+
+00:50:23.790 --> 00:50:26.860 align:middle line:84%
+me denote the encryption
+of trapdoor here by hat.
+
+00:50:26.860 --> 00:50:30.690 align:middle line:84%
+That's a common way we use fully
+homomorphic encryption, which
+
+00:50:30.690 --> 00:50:32.530 align:middle line:90%
+I'm going to define next.
+
+00:50:32.530 --> 00:50:37.490 align:middle line:84%
+So they said put in this
+Fiat-Shamir hash function,
+
+00:50:37.490 --> 00:50:39.760 align:middle line:84%
+an encryption of
+the trapdoor that
+
+00:50:39.760 --> 00:50:42.520 align:middle line:90%
+helps you open the commitment.
+
+00:50:42.520 --> 00:50:44.180 align:middle line:90%
+That's like, so, OK.
+
+00:50:44.180 --> 00:50:45.307 align:middle line:90%
+And then what?
+
+00:50:45.307 --> 00:50:47.140 align:middle line:84%
+What are we going to
+do with the ciphertext?
+
+00:50:47.140 --> 00:50:48.348 align:middle line:90%
+We can't do anything with it.
+
+00:50:48.348 --> 00:50:49.580 align:middle line:90%
+Ciphertext is like junk.
+
+00:50:49.580 --> 00:50:51.320 align:middle line:84%
+What are we going
+to do with that?
+
+00:50:51.320 --> 00:50:53.450 align:middle line:90%
+So the idea is you know what?
+
+00:50:53.450 --> 00:50:55.940 align:middle line:90%
+Don't just use any encryption.
+
+00:50:55.940 --> 00:51:01.240 align:middle line:84%
+Use what's called a fully
+homomorphic encryption.
+
+00:51:01.240 --> 00:51:03.290 align:middle line:84%
+What is a fully
+homomorphic encryption?
+
+00:51:03.290 --> 00:51:04.780 align:middle line:90%
+I'll explain that next.
+
+00:51:04.780 --> 00:51:07.180 align:middle line:84%
+But essentially,
+what it does, it
+
+00:51:07.180 --> 00:51:11.570 align:middle line:84%
+allows you to compute
+unencrypted data.
+
+00:51:11.570 --> 00:51:14.380 align:middle line:84%
+So a fully
+homomorphic encryption
+
+00:51:14.380 --> 00:51:20.200 align:middle line:84%
+is exactly the same as
+an encryption scheme.
+
+00:51:20.200 --> 00:51:22.930 align:middle line:84%
+So a fully homomorphic, it's
+a public key encryption.
+
+00:51:22.930 --> 00:51:25.630 align:middle line:90%
+
+
+00:51:25.630 --> 00:51:36.550 align:middle line:84%
+So let me write a
+fully homomorphic
+
+00:51:36.550 --> 00:51:40.400 align:middle line:84%
+public key encryption scheme
+is encryption scheme Gen
+
+00:51:40.400 --> 00:51:41.700 align:middle line:90%
+encrypt and decrypt.
+
+00:51:41.700 --> 00:51:45.770 align:middle line:84%
+But it also allows you to do
+computation on encrypted data.
+
+00:51:45.770 --> 00:51:47.290 align:middle line:90%
+So what do I mean?
+
+00:51:47.290 --> 00:51:48.860 align:middle line:90%
+There is an eval function.
+
+00:51:48.860 --> 00:51:51.690 align:middle line:90%
+
+
+00:51:51.690 --> 00:51:54.600 align:middle line:84%
+It takes a bunch of
+ciphertexts, and it
+
+00:51:54.600 --> 00:51:57.420 align:middle line:84%
+can do computation
+on the bits hiding
+
+00:51:57.420 --> 00:51:59.780 align:middle line:90%
+underneath the ciphertext.
+
+00:51:59.780 --> 00:52:07.100 align:middle line:84%
+So it takes a public key, a
+description of a circuit, c.
+
+00:52:07.100 --> 00:52:10.830 align:middle line:84%
+Think of it with additions
+and multiplication mod 2.
+
+00:52:10.830 --> 00:52:12.280 align:middle line:90%
+And it gets a ciphertext.
+
+00:52:12.280 --> 00:52:16.930 align:middle line:84%
+So encryption of b1, bit
+1, let me think of it now,
+
+00:52:16.930 --> 00:52:22.250 align:middle line:84%
+as I said, think of it as the
+message space being 0 and 1.
+
+00:52:22.250 --> 00:52:24.560 align:middle line:90%
+So it gets encryption of bits.
+
+00:52:24.560 --> 00:52:28.250 align:middle line:84%
+Let's say encryption-- or
+I'll just call it ciphertext,
+
+00:52:28.250 --> 00:52:32.840 align:middle line:84%
+ciphertext 1 up to
+ciphertext n each one
+
+00:52:32.840 --> 00:52:34.860 align:middle line:90%
+encrypting a single bit.
+
+00:52:34.860 --> 00:52:40.130 align:middle line:84%
+The circuit takes as input
+n bits and produces a bit.
+
+00:52:40.130 --> 00:52:43.370 align:middle line:90%
+And it output some ciphertext.
+
+00:52:43.370 --> 00:52:46.640 align:middle line:84%
+And this ciphertext
+if, here, you
+
+00:52:46.640 --> 00:52:50.350 align:middle line:84%
+have encryption of
+b1, b2 up to bn,
+
+00:52:50.350 --> 00:52:57.650 align:middle line:84%
+this ciphertext should have
+encryption of c of b1 up to bn.
+
+00:52:57.650 --> 00:53:03.130 align:middle line:84%
+So what this eval does, it
+gets encryption of bits,
+
+00:53:03.130 --> 00:53:06.560 align:middle line:84%
+and it can compute an encryption
+of the addition of the bits,
+
+00:53:06.560 --> 00:53:09.110 align:middle line:84%
+an encryption of the
+multiplication of the bits,
+
+00:53:09.110 --> 00:53:10.490 align:middle line:90%
+and so on and so forth.
+
+00:53:10.490 --> 00:53:12.680 align:middle line:90%
+It can do arbitrary computation.
+
+00:53:12.680 --> 00:53:15.040 align:middle line:84%
+It can compute an
+arbitrary circuit c.
+
+00:53:15.040 --> 00:53:21.130 align:middle line:90%
+c goes from 01 to the n to 01.
+
+00:53:21.130 --> 00:53:26.290 align:middle line:84%
+It can do arbitrary
+computation under the FHE.
+
+00:53:26.290 --> 00:53:28.180 align:middle line:90%
+So I'll just write--
+
+00:53:28.180 --> 00:53:30.880 align:middle line:84%
+maybe I'll write here
+the completeness property
+
+00:53:30.880 --> 00:53:31.850 align:middle line:90%
+for the eval.
+
+00:53:31.850 --> 00:53:34.720 align:middle line:84%
+So I wrote the completeness
+property where all you do
+
+00:53:34.720 --> 00:53:36.100 align:middle line:90%
+is decrypt.
+
+00:53:36.100 --> 00:53:38.740 align:middle line:84%
+If you encrypt and decrypt,
+you get back the message.
+
+00:53:38.740 --> 00:53:41.560 align:middle line:84%
+The eval also has a
+completeness property
+
+00:53:41.560 --> 00:53:44.700 align:middle line:84%
+which essentially says-- so
+let me just write it down.
+
+00:53:44.700 --> 00:53:46.845 align:middle line:84%
+So completeness of eval,
+I'll write it here.
+
+00:53:46.845 --> 00:53:54.790 align:middle line:90%
+
+
+00:53:54.790 --> 00:54:04.400 align:middle line:84%
+It says that for every b1
+up to bn and the probability
+
+00:54:04.400 --> 00:54:08.130 align:middle line:90%
+that when you decrypt eval--
+
+00:54:08.130 --> 00:54:19.980 align:middle line:84%
+sorry, for every c, for every
+circuit c, when you decrypt--
+
+00:54:19.980 --> 00:54:22.250 align:middle line:84%
+so choose a public
+key, secret key pair.
+
+00:54:22.250 --> 00:54:28.790 align:middle line:90%
+
+
+00:54:28.790 --> 00:54:31.580 align:middle line:84%
+When you decrypt,
+use the secret key.
+
+00:54:31.580 --> 00:54:34.670 align:middle line:84%
+To decrypt the
+eval function, so,
+
+00:54:34.670 --> 00:54:40.280 align:middle line:84%
+now, evaluate with respect to
+the public key and the circuit
+
+00:54:40.280 --> 00:54:40.970 align:middle line:90%
+c.
+
+00:54:40.970 --> 00:54:46.490 align:middle line:84%
+Evaluate on this--
+and ciphertext
+
+00:54:46.490 --> 00:54:48.290 align:middle line:90%
+corresponding to b1 up to bn.
+
+00:54:48.290 --> 00:54:54.530 align:middle line:84%
+So encryption public key
+with b1 up to encryption
+
+00:54:54.530 --> 00:55:02.220 align:middle line:84%
+of public key and bit bn, so
+encrypt each of these bits.
+
+00:55:02.220 --> 00:55:04.550 align:middle line:84%
+You'll get encryption of
+b1 up to encryption bn.
+
+00:55:04.550 --> 00:55:06.050 align:middle line:90%
+Then evaluate.
+
+00:55:06.050 --> 00:55:09.290 align:middle line:84%
+Do homomorphic computations
+on these encrypted bits
+
+00:55:09.290 --> 00:55:10.540 align:middle line:90%
+with respect to circuit c.
+
+00:55:10.540 --> 00:55:13.480 align:middle line:90%
+
+
+00:55:13.480 --> 00:55:14.960 align:middle line:90%
+Now, you get a ciphertext.
+
+00:55:14.960 --> 00:55:19.480 align:middle line:84%
+You should get a ciphertext
+that encrypts c of b1 up to bn.
+
+00:55:19.480 --> 00:55:25.090 align:middle line:84%
+And indeed, the probability that
+when you decrypt you get c of b1
+
+00:55:25.090 --> 00:55:29.280 align:middle line:90%
+up to bn is 1 or close to 1.
+
+00:55:29.280 --> 00:55:37.210 align:middle line:90%
+
+
+00:55:37.210 --> 00:55:41.380 align:middle line:84%
+So again, what eval does,
+it does a computation
+
+00:55:41.380 --> 00:55:43.030 align:middle line:90%
+on this encrypted data.
+
+00:55:43.030 --> 00:55:47.530 align:middle line:84%
+It computes an
+arbitrary circuit c
+
+00:55:47.530 --> 00:55:49.360 align:middle line:84%
+that, when you
+decrypt it-- and did
+
+00:55:49.360 --> 00:55:52.180 align:middle line:84%
+you get c with probability
+very, very close to 1.
+
+00:55:52.180 --> 00:55:54.550 align:middle line:84%
+I wrote here 1 minus
+negligible as opposed
+
+00:55:54.550 --> 00:55:58.300 align:middle line:84%
+to 1 because our scheme have
+this negative probability
+
+00:55:58.300 --> 00:55:58.970 align:middle line:90%
+of error.
+
+00:55:58.970 --> 00:56:00.820 align:middle line:90%
+So that's why I--
+
+00:56:00.820 --> 00:56:04.910 align:middle line:90%
+
+
+00:56:04.910 --> 00:56:09.470 align:middle line:84%
+So again, high level what
+the FHE, Fully Homomorphic
+
+00:56:09.470 --> 00:56:12.440 align:middle line:84%
+Encryption, allows you to
+do is to do this computation
+
+00:56:12.440 --> 00:56:13.345 align:middle line:90%
+on encrypted data.
+
+00:56:13.345 --> 00:56:17.730 align:middle line:90%
+
+
+00:56:17.730 --> 00:56:20.340 align:middle line:84%
+Questions about the fully
+homomorphic encryption?
+
+00:56:20.340 --> 00:56:24.370 align:middle line:90%
+
+
+00:56:24.370 --> 00:56:25.300 align:middle line:90%
+We're good?
+
+00:56:25.300 --> 00:56:26.080 align:middle line:90%
+Yeah.
+
+00:56:26.080 --> 00:56:29.540 align:middle line:84%
+AUDIENCE: I guess does
+it matter what c is?
+
+00:56:29.540 --> 00:56:30.490 align:middle line:90%
+Oh, never mind.
+
+00:56:30.490 --> 00:56:31.060 align:middle line:90%
+Never mind.
+
+00:56:31.060 --> 00:56:33.377 align:middle line:84%
+I was thinking just
+arithmetic or--
+
+00:56:33.377 --> 00:56:34.460 align:middle line:90%
+YAEL T. KALAI: Good, good.
+
+00:56:34.460 --> 00:56:36.257 align:middle line:84%
+No, that's actually
+a very good question.
+
+00:56:36.257 --> 00:56:37.340 align:middle line:90%
+It's a very good question.
+
+00:56:37.340 --> 00:56:40.250 align:middle line:84%
+So the question was this
+circuit c, what is it?
+
+00:56:40.250 --> 00:56:43.030 align:middle line:84%
+So the circuit c, think
+of it as a circuit that
+
+00:56:43.030 --> 00:56:44.740 align:middle line:84%
+has addition and
+multiplication gates
+
+00:56:44.740 --> 00:56:51.440 align:middle line:84%
+mod 2, so any polynomial size
+circuit that has addition
+
+00:56:51.440 --> 00:56:53.180 align:middle line:90%
+and multiplication gates mod 2.
+
+00:56:53.180 --> 00:56:55.600 align:middle line:90%
+Great, thank you.
+
+00:56:55.600 --> 00:56:56.720 align:middle line:90%
+Other questions?
+
+00:56:56.720 --> 00:57:00.310 align:middle line:90%
+
+
+00:57:00.310 --> 00:57:01.290 align:middle line:90%
+So now, let's go back.
+
+00:57:01.290 --> 00:57:02.790 align:middle line:84%
+So now, we have an
+encryption scheme
+
+00:57:02.790 --> 00:57:05.440 align:middle line:84%
+that we can do computation
+and encrypted data.
+
+00:57:05.440 --> 00:57:06.850 align:middle line:90%
+Now, let's go back.
+
+00:57:06.850 --> 00:57:08.470 align:middle line:90%
+Remember, where are we?
+
+00:57:08.470 --> 00:57:11.580 align:middle line:84%
+We're saying all we want
+is to avoid this bad.
+
+00:57:11.580 --> 00:57:13.530 align:middle line:84%
+We want a hash function,
+its only purpose
+
+00:57:13.530 --> 00:57:15.790 align:middle line:90%
+to avoid one single point.
+
+00:57:15.790 --> 00:57:19.190 align:middle line:90%
+How hard can that be?
+
+00:57:19.190 --> 00:57:20.900 align:middle line:84%
+I'll tell you the
+hard problem is
+
+00:57:20.900 --> 00:57:23.610 align:middle line:84%
+it needs to avoid the bad
+point for each and every alpha.
+
+00:57:23.610 --> 00:57:26.160 align:middle line:84%
+That's kind of the hard
+part that, for every alpha,
+
+00:57:26.160 --> 00:57:27.580 align:middle line:90%
+you need to avoid the bad one.
+
+00:57:27.580 --> 00:57:29.820 align:middle line:84%
+If you just want to avoid
+the bad one for one alpha,
+
+00:57:29.820 --> 00:57:30.483 align:middle line:90%
+choose random.
+
+00:57:30.483 --> 00:57:32.400 align:middle line:84%
+Probably, you're not
+going to hit the bad one.
+
+00:57:32.400 --> 00:57:36.450 align:middle line:84%
+But you need to avoid the bad
+one for each and every alpha.
+
+00:57:36.450 --> 00:57:40.260 align:middle line:90%
+That's kind of harder.
+
+00:57:40.260 --> 00:57:43.003 align:middle line:84%
+But if we have the
+trapdoor, then it's easy.
+
+00:57:43.003 --> 00:57:44.920 align:middle line:84%
+But we said, look, we
+can't give the trapdoor.
+
+00:57:44.920 --> 00:57:47.780 align:middle line:90%
+That will break zero knowledge.
+
+00:57:47.780 --> 00:57:49.230 align:middle line:84%
+So instead, we
+say, you know what?
+
+00:57:49.230 --> 00:57:53.020 align:middle line:84%
+Let's give a homomorphic
+encryption of the trapdoor.
+
+00:57:53.020 --> 00:57:56.110 align:middle line:90%
+
+
+00:57:56.110 --> 00:57:58.510 align:middle line:90%
+Now, this seems not helpful.
+
+00:57:58.510 --> 00:58:00.220 align:middle line:90%
+Why is it not helpful?
+
+00:58:00.220 --> 00:58:04.915 align:middle line:84%
+OK, let's say you can
+compute on encrypted data.
+
+00:58:04.915 --> 00:58:08.700 align:middle line:84%
+You do the computation
+of computing bad.
+
+00:58:08.700 --> 00:58:10.100 align:middle line:90%
+So now, here's my hash function.
+
+00:58:10.100 --> 00:58:12.400 align:middle line:90%
+It has trapdoor, hardwire.
+
+00:58:12.400 --> 00:58:15.940 align:middle line:84%
+So think of it like h of,
+instead of trapdoor, it
+
+00:58:15.940 --> 00:58:17.720 align:middle line:90%
+will have hat of trapdoor.
+
+00:58:17.720 --> 00:58:19.240 align:middle line:90%
+Why not?
+
+00:58:19.240 --> 00:58:23.590 align:middle line:84%
+And it will do this computation
+under the hood with eval
+
+00:58:23.590 --> 00:58:26.390 align:middle line:84%
+under the hood of the
+encryption, very nice.
+
+00:58:26.390 --> 00:58:35.070 align:middle line:84%
+So now, on input alpha,
+you won't get the bad alpha
+
+00:58:35.070 --> 00:58:38.280 align:middle line:84%
+plus 1, very nice,
+but encrypted.
+
+00:58:38.280 --> 00:58:40.910 align:middle line:90%
+So why is that helpful?
+
+00:58:40.910 --> 00:58:41.770 align:middle line:90%
+Yeah.
+
+00:58:41.770 --> 00:58:46.145 align:middle line:84%
+AUDIENCE: [INAUDIBLE] you could
+also encrypt the eval part, so
+
+00:58:46.145 --> 00:58:49.130 align:middle line:84%
+that encryption, the ciphertext,
+the two different messages
+
+00:58:49.130 --> 00:58:50.040 align:middle line:90%
+are now equal.
+
+00:58:50.040 --> 00:58:51.790 align:middle line:84%
+YAEL T. KALAI: Again,
+what are you saying?
+
+00:58:51.790 --> 00:58:52.460 align:middle line:90%
+Encrypt?
+
+00:58:52.460 --> 00:58:54.260 align:middle line:90%
+AUDIENCE: Encrypt the eval--
+
+00:58:54.260 --> 00:58:55.790 align:middle line:84%
+the left-hand side
+of the equality,
+
+00:58:55.790 --> 00:58:57.920 align:middle line:90%
+the eval hash [INAUDIBLE].
+
+00:58:57.920 --> 00:58:59.580 align:middle line:84%
+YAEL T. KALAI: Oh,
+you can encrypt--
+
+00:58:59.580 --> 00:59:00.920 align:middle line:90%
+exactly.
+
+00:59:00.920 --> 00:59:05.110 align:middle line:84%
+So that's kind of
+what I'm doing.
+
+00:59:05.110 --> 00:59:08.380 align:middle line:90%
+
+
+00:59:08.380 --> 00:59:10.170 align:middle line:90%
+This is the shorthand for--
+
+00:59:10.170 --> 00:59:15.330 align:middle line:84%
+this is actually eval of--
+this is kind of the hash key.
+
+00:59:15.330 --> 00:59:19.230 align:middle line:84%
+The hash key will
+have trapdoor in it.
+
+00:59:19.230 --> 00:59:22.590 align:middle line:84%
+And an input alpha,
+it should output this.
+
+00:59:22.590 --> 00:59:25.560 align:middle line:84%
+And what we're doing is
+we're saying, OK encrypt--
+
+00:59:25.560 --> 00:59:29.070 align:middle line:84%
+or you can think of it the
+hash key being trapdoor
+
+00:59:29.070 --> 00:59:31.510 align:middle line:90%
+and encrypt the entire thing.
+
+00:59:31.510 --> 00:59:35.560 align:middle line:84%
+You can do everything under
+the hood of the encryption.
+
+00:59:35.560 --> 00:59:38.665 align:middle line:84%
+You want the output to
+be different than beta.
+
+00:59:38.665 --> 00:59:40.660 align:middle line:90%
+You get a ciphertext.
+
+00:59:40.660 --> 00:59:44.780 align:middle line:84%
+I want this to be
+different than beta.
+
+00:59:44.780 --> 00:59:46.690 align:middle line:90%
+That's what I want.
+
+00:59:46.690 --> 00:59:49.000 align:middle line:84%
+I don't want underneath
+the hood to be something
+
+00:59:49.000 --> 00:59:51.410 align:middle line:90%
+that's different than beta.
+
+00:59:51.410 --> 00:59:54.470 align:middle line:90%
+So this seems like a bad idea.
+
+00:59:54.470 --> 00:59:57.620 align:middle line:90%
+It gets us nowhere.
+
+00:59:57.620 --> 00:59:59.130 align:middle line:90%
+Yes, again, where are we?
+
+00:59:59.130 --> 01:00:02.718 align:middle line:84%
+We said, if we knew
+trapdoor, we would be done.
+
+01:00:02.718 --> 01:00:04.760 align:middle line:84%
+The hash function, the
+eval of the hash function,
+
+01:00:04.760 --> 01:00:08.420 align:middle line:84%
+will take this trapdoor, compute
+beta, and output not beta,
+
+01:00:08.420 --> 01:00:10.710 align:middle line:84%
+move it by one, move one of
+the bits by one, whatever,
+
+01:00:10.710 --> 01:00:13.360 align:middle line:84%
+as long as it doesn't--
+it's not the beta.
+
+01:00:13.360 --> 01:00:16.360 align:middle line:84%
+And now, they say, no, let's
+do everything under the hood.
+
+01:00:16.360 --> 01:00:17.160 align:middle line:90%
+What?
+
+01:00:17.160 --> 01:00:18.530 align:middle line:90%
+Then we'll get an encryption.
+
+01:00:18.530 --> 01:00:19.960 align:middle line:90%
+Why would that not be--
+
+01:00:19.960 --> 01:00:25.153 align:middle line:84%
+it seems like you're not
+getting anywhere to me.
+
+01:00:25.153 --> 01:00:27.320 align:middle line:84%
+It seemed like, when they
+first presented this idea,
+
+01:00:27.320 --> 01:00:29.180 align:middle line:84%
+I'm like, OK, this seems
+completely useless.
+
+01:00:29.180 --> 01:00:29.680 align:middle line:90%
+So what?
+
+01:00:29.680 --> 01:00:31.770 align:middle line:84%
+Now, everything
+is under the hood.
+
+01:00:31.770 --> 01:00:32.560 align:middle line:90%
+And guess what?
+
+01:00:32.560 --> 01:00:33.310 align:middle line:90%
+We're almost done.
+
+01:00:33.310 --> 01:00:34.070 align:middle line:90%
+Yeah.
+
+01:00:34.070 --> 01:00:36.360 align:middle line:90%
+AUDIENCE: [INAUDIBLE]
+
+01:00:36.360 --> 01:00:39.580 align:middle line:90%
+
+
+01:00:39.580 --> 01:00:43.050 align:middle line:84%
+YAEL T. KALAI: You
+take the randomness.
+
+01:00:43.050 --> 01:00:45.780 align:middle line:84%
+AUDIENCE: Define the randomness
+so that computes encryption
+
+01:00:45.780 --> 01:00:49.205 align:middle line:90%
+of eval plus 1 gets us that--
+
+01:00:49.205 --> 01:00:51.937 align:middle line:90%
+
+
+01:00:51.937 --> 01:00:53.270 align:middle line:90%
+YAEL T. KALAI: So you know what?
+
+01:00:53.270 --> 01:00:55.030 align:middle line:84%
+I want to say something
+even before that.
+
+01:00:55.030 --> 01:00:57.300 align:middle line:90%
+There's even a mismatch.
+
+01:00:57.300 --> 01:01:00.562 align:middle line:84%
+Beta, let's say,
+consists of lambda bits.
+
+01:01:00.562 --> 01:01:02.520 align:middle line:84%
+For example, in our case,
+because we repeat it,
+
+01:01:02.520 --> 01:01:03.870 align:middle line:90%
+its lambda bits.
+
+01:01:03.870 --> 01:01:05.947 align:middle line:90%
+This is not even lambda bits.
+
+01:01:05.947 --> 01:01:08.530 align:middle line:84%
+It's much more than lambda bits
+because we encrypt bit by bit.
+
+01:01:08.530 --> 01:01:09.340 align:middle line:90%
+It's much bigger.
+
+01:01:09.340 --> 01:01:12.190 align:middle line:90%
+
+
+01:01:12.190 --> 01:01:14.340 align:middle line:90%
+It seems like completely bogus.
+
+01:01:14.340 --> 01:01:18.030 align:middle line:84%
+This is going to be the
+length of beta times security
+
+01:01:18.030 --> 01:01:18.840 align:middle line:90%
+parameter.
+
+01:01:18.840 --> 01:01:23.340 align:middle line:84%
+So it's not it doesn't
+even correspond to--
+
+01:01:23.340 --> 01:01:27.410 align:middle line:90%
+the sizes don't even match.
+
+01:01:27.410 --> 01:01:31.970 align:middle line:84%
+So it seems like an
+encryption is not helpful.
+
+01:01:31.970 --> 01:01:32.470 align:middle line:90%
+Yeah.
+
+01:01:32.470 --> 01:01:35.210 align:middle line:84%
+AUDIENCE: How could
+it computer beta
+
+01:01:35.210 --> 01:01:37.546 align:middle line:90%
+bad given alpha has trapdoor?
+
+01:01:37.546 --> 01:01:41.057 align:middle line:84%
+YAEL T. KALAI: Oh, Good The
+only way he can compute beta bad
+
+01:01:41.057 --> 01:01:43.640 align:middle line:84%
+is if he has the-- oh, how can
+you compute given the trapdoor,
+
+01:01:43.640 --> 01:01:44.225 align:middle line:90%
+you're saying?
+
+01:01:44.225 --> 01:01:44.630 align:middle line:90%
+AUDIENCE: Yeah.
+
+01:01:44.630 --> 01:01:45.380 align:middle line:90%
+YAEL T. KALAI: OK.
+
+01:01:45.380 --> 01:01:47.060 align:middle line:84%
+AUDIENCE: Then it
+will [INAUDIBLE]?
+
+01:01:47.060 --> 01:01:47.360 align:middle line:90%
+YAEL T. KALAI: Yeah.
+
+01:01:47.360 --> 01:01:48.390 align:middle line:90%
+So what he will do?
+
+01:01:48.390 --> 01:01:51.050 align:middle line:84%
+The trapdoor in
+this protocol allows
+
+01:01:51.050 --> 01:01:54.320 align:middle line:90%
+you to open the commitment.
+
+01:01:54.320 --> 01:01:58.990 align:middle line:84%
+So now, you see each point
+if it has a 01, 01, 01.
+
+01:01:58.990 --> 01:02:01.690 align:middle line:84%
+So now, why do you
+know what's beta bad?
+
+01:02:01.690 --> 01:02:04.150 align:middle line:90%
+Because, now, you look.
+
+01:02:04.150 --> 01:02:08.488 align:middle line:84%
+If it has just a
+Hamiltonian cycle,
+
+01:02:08.488 --> 01:02:10.280 align:middle line:84%
+I mean, the truth is,
+it's easier to see it
+
+01:02:10.280 --> 01:02:12.200 align:middle line:90%
+if you have the pi.
+
+01:02:12.200 --> 01:02:13.900 align:middle line:84%
+Suppose you always
+also committed to pi.
+
+01:02:13.900 --> 01:02:15.370 align:middle line:84%
+Well, it's just easier
+to see it that way.
+
+01:02:15.370 --> 01:02:17.400 align:middle line:84%
+Suppose I tell you, don't
+only commit to that.
+
+01:02:17.400 --> 01:02:19.850 align:middle line:90%
+Commit also to your pi.
+
+01:02:19.850 --> 01:02:22.070 align:middle line:90%
+Now, you see what's in there.
+
+01:02:22.070 --> 01:02:23.560 align:middle line:90%
+Either if you remove pi--
+
+01:02:23.560 --> 01:02:30.790 align:middle line:90%
+
+
+01:02:30.790 --> 01:02:34.030 align:middle line:84%
+so you look at all
+the edges of pi of g.
+
+01:02:34.030 --> 01:02:38.020 align:middle line:84%
+And you make sure that
+these edges are 0.
+
+01:02:38.020 --> 01:02:39.080 align:middle line:90%
+Everywhere, they're 0.
+
+01:02:39.080 --> 01:02:43.460 align:middle line:84%
+If one of them is 1, you
+know that he won't succeed.
+
+01:02:43.460 --> 01:02:45.120 align:middle line:90%
+Then this is not bad.
+
+01:02:45.120 --> 01:02:49.440 align:middle line:84%
+Then the b equals 1 is not
+bad because he will fail.
+
+01:02:49.440 --> 01:02:52.730 align:middle line:84%
+The bad is where
+he will succeed.
+
+01:02:52.730 --> 01:02:55.880 align:middle line:84%
+A bad beta is the beta that
+will allow him to succeed.
+
+01:02:55.880 --> 01:02:59.360 align:middle line:84%
+So now, if you can open
+everything, now you can see.
+
+01:02:59.360 --> 01:03:03.170 align:middle line:84%
+If there is one edge
+of pi of g, if there
+
+01:03:03.170 --> 01:03:06.175 align:middle line:84%
+is a nonedge that
+has a 1, then you
+
+01:03:06.175 --> 01:03:08.820 align:middle line:90%
+know this is definitely not bad.
+
+01:03:08.820 --> 01:03:12.090 align:middle line:84%
+And so he won't be able to see--
+so, this, this is the beta bad.
+
+01:03:12.090 --> 01:03:16.640 align:middle line:84%
+On the other hand, if all of
+the nonedges are, indeed, 0,
+
+01:03:16.640 --> 01:03:19.400 align:middle line:84%
+you know he can't open
+Hamiltonian cycle because there
+
+01:03:19.400 --> 01:03:22.970 align:middle line:90%
+is no Hamiltonian cycle.
+
+01:03:22.970 --> 01:03:24.350 align:middle line:90%
+So then this becomes the bad.
+
+01:03:24.350 --> 01:03:26.400 align:middle line:84%
+So if you know what's
+in the commitment,
+
+01:03:26.400 --> 01:03:27.990 align:middle line:84%
+you can tell which
+one is the bad.
+
+01:03:27.990 --> 01:03:30.720 align:middle line:84%
+So the trapdoor allows you to
+compute the bad efficiently.
+
+01:03:30.720 --> 01:03:32.070 align:middle line:90%
+That's the point.
+
+01:03:32.070 --> 01:03:32.620 align:middle line:90%
+Yeah?
+
+01:03:32.620 --> 01:03:35.120 align:middle line:84%
+AUDIENCE: So does that mean the
+[INAUDIBLE] the random coins
+
+01:03:35.120 --> 01:03:37.640 align:middle line:90%
+used in each [INAUDIBLE]?
+
+01:03:37.640 --> 01:03:39.410 align:middle line:84%
+YAEL T. KALAI: The
+random coins used?
+
+01:03:39.410 --> 01:03:42.080 align:middle line:84%
+AUDIENCE: The randomness
+that's used inside each--
+
+01:03:42.080 --> 01:03:43.355 align:middle line:90%
+is that what the trapdoor is?
+
+01:03:43.355 --> 01:03:45.870 align:middle line:90%
+
+
+01:03:45.870 --> 01:03:47.928 align:middle line:90%
+YAEL T. KALAI: No.
+
+01:03:47.928 --> 01:03:49.470 align:middle line:84%
+I'm thinking of the
+trapdoor as being
+
+01:03:49.470 --> 01:03:52.407 align:middle line:84%
+the secret key corresponding
+to the public key.
+
+01:03:52.407 --> 01:03:53.490 align:middle line:90%
+I'll tell you the problem.
+
+01:03:53.490 --> 01:03:55.740 align:middle line:84%
+The problem of using
+the randomness,
+
+01:03:55.740 --> 01:03:58.890 align:middle line:84%
+then it's chosen by
+the cheating prover.
+
+01:03:58.890 --> 01:04:01.440 align:middle line:84%
+I don't know how
+he's going to use it.
+
+01:04:01.440 --> 01:04:05.005 align:middle line:84%
+The trapdoor, you
+write the trapdoor--
+
+01:04:05.005 --> 01:04:06.130 align:middle line:90%
+this is an important point.
+
+01:04:06.130 --> 01:04:10.830 align:middle line:84%
+So note, I can open
+this commitment
+
+01:04:10.830 --> 01:04:13.860 align:middle line:84%
+by giving you the
+randomness that I used
+
+01:04:13.860 --> 01:04:15.460 align:middle line:90%
+to generate this commitment.
+
+01:04:15.460 --> 01:04:17.180 align:middle line:90%
+That would be a good trapdoor.
+
+01:04:17.180 --> 01:04:20.310 align:middle line:84%
+But when I designed the
+Fiat-Shamir hash function,
+
+01:04:20.310 --> 01:04:22.442 align:middle line:84%
+I have no idea what
+randomness the cheating
+
+01:04:22.442 --> 01:04:23.400 align:middle line:90%
+prover is going to use.
+
+01:04:23.400 --> 01:04:24.450 align:middle line:90%
+Maybe it's even deterministic.
+
+01:04:24.450 --> 01:04:25.658 align:middle line:90%
+I don't know what he's doing.
+
+01:04:25.658 --> 01:04:27.110 align:middle line:90%
+He may just give me--
+
+01:04:27.110 --> 01:04:28.110 align:middle line:90%
+I don't know.
+
+01:04:28.110 --> 01:04:31.382 align:middle line:84%
+So I don't know ahead of
+time it's random coins.
+
+01:04:31.382 --> 01:04:32.840 align:middle line:84%
+And different
+cheating provers will
+
+01:04:32.840 --> 01:04:34.670 align:middle line:90%
+have different random coins.
+
+01:04:34.670 --> 01:04:36.475 align:middle line:84%
+So I want to put
+something in the CRS,
+
+01:04:36.475 --> 01:04:39.210 align:middle line:84%
+in the hash function, the
+Fiat-Shamir hash function.
+
+01:04:39.210 --> 01:04:40.670 align:middle line:84%
+So this trapdoor
+is actually going
+
+01:04:40.670 --> 01:04:44.760 align:middle line:84%
+to be the secret key
+corresponding to the public key.
+
+01:04:44.760 --> 01:04:47.350 align:middle line:84%
+The secret key is not
+going to be used in here.
+
+01:04:47.350 --> 01:04:49.380 align:middle line:84%
+It's never going to be
+used in the protocol,
+
+01:04:49.380 --> 01:04:51.730 align:middle line:84%
+but it will be used
+in the analysis.
+
+01:04:51.730 --> 01:04:54.320 align:middle line:90%
+
+
+01:04:54.320 --> 01:04:55.080 align:middle line:90%
+OK?
+
+01:04:55.080 --> 01:04:55.620 align:middle line:90%
+Great.
+
+01:04:55.620 --> 01:04:56.220 align:middle line:90%
+Yes.
+
+01:04:56.220 --> 01:05:00.890 align:middle line:84%
+AUDIENCE: Is this only if you
+do an interactive proof where
+
+01:05:00.890 --> 01:05:03.530 align:middle line:84%
+you commit to the
+witness, or can you
+
+01:05:03.530 --> 01:05:07.100 align:middle line:84%
+draw this to put
+first [INAUDIBLE]?
+
+01:05:07.100 --> 01:05:09.240 align:middle line:84%
+YAEL T. KALAI: Again,
+you're saying, is this--
+
+01:05:09.240 --> 01:05:12.290 align:middle line:84%
+AUDIENCE: To proof system where
+you commit to the witness,
+
+01:05:12.290 --> 01:05:15.920 align:middle line:84%
+or can you draw
+this to proof system
+
+01:05:15.920 --> 01:05:18.302 align:middle line:90%
+where the first [INAUDIBLE]?
+
+01:05:18.302 --> 01:05:24.707 align:middle line:90%
+
+
+01:05:24.707 --> 01:05:26.290 align:middle line:84%
+YAEL T. KALAI: So
+this technique works
+
+01:05:26.290 --> 01:05:30.440 align:middle line:84%
+for this protocol where you
+commit to something in open.
+
+01:05:30.440 --> 01:05:32.843 align:middle line:90%
+And after, I'll show you why.
+
+01:05:32.843 --> 01:05:34.760 align:middle line:84%
+I'll show you that it's
+actually more general.
+
+01:05:34.760 --> 01:05:38.300 align:middle line:84%
+And it applies to a large,
+actually, slew of protocols
+
+01:05:38.300 --> 01:05:40.110 align:middle line:84%
+where there's no
+commitment whatsoever.
+
+01:05:40.110 --> 01:05:42.620 align:middle line:84%
+For example, it
+applies to GCR protocol
+
+01:05:42.620 --> 01:05:44.070 align:middle line:90%
+where it's just sum-check.
+
+01:05:44.070 --> 01:05:46.010 align:middle line:84%
+It applies to
+sum-check protocol.
+
+01:05:46.010 --> 01:05:49.810 align:middle line:84%
+And so it's not
+specific to this.
+
+01:05:49.810 --> 01:05:52.150 align:middle line:84%
+And I'll show you
+later all you need
+
+01:05:52.150 --> 01:05:56.080 align:middle line:84%
+is this trapdoor that tells you
+where the bad kind of challenges
+
+01:05:56.080 --> 01:05:56.640 align:middle line:90%
+are.
+
+01:05:56.640 --> 01:05:58.432 align:middle line:84%
+And once you have a
+trapdoor that tells you
+
+01:05:58.432 --> 01:06:02.510 align:middle line:84%
+where the bad challenges
+are, then you can use it.
+
+01:06:02.510 --> 01:06:05.630 align:middle line:84%
+But we'll mention that
+at the end of class,
+
+01:06:05.630 --> 01:06:06.610 align:middle line:90%
+like towards the end.
+
+01:06:06.610 --> 01:06:09.010 align:middle line:84%
+But yeah, we'll see
+that it's general.
+
+01:06:09.010 --> 01:06:12.190 align:middle line:84%
+So in some sense, you don't even
+need to look too, too detailed
+
+01:06:12.190 --> 01:06:13.750 align:middle line:90%
+into that protocol.
+
+01:06:13.750 --> 01:06:15.380 align:middle line:84%
+The idea here is
+more high level.
+
+01:06:15.380 --> 01:06:18.070 align:middle line:84%
+We say, look, in an
+interactive proof,
+
+01:06:18.070 --> 01:06:23.350 align:middle line:84%
+there's the beta that are
+bad, bad for security, that
+
+01:06:23.350 --> 01:06:24.740 align:middle line:90%
+are good for the adversary.
+
+01:06:24.740 --> 01:06:26.180 align:middle line:90%
+But they're bad for security.
+
+01:06:26.180 --> 01:06:29.020 align:middle line:84%
+If the adversary managed
+to hit a bad beta
+
+01:06:29.020 --> 01:06:33.500 align:middle line:84%
+and alpha for which h of
+alpha gives him a bad beta,
+
+01:06:33.500 --> 01:06:34.760 align:middle line:90%
+then he can cheat me.
+
+01:06:34.760 --> 01:06:36.820 align:middle line:90%
+I want to avoid these bad betas.
+
+01:06:36.820 --> 01:06:38.320 align:middle line:84%
+And now, we're
+saying, well, there's
+
+01:06:38.320 --> 01:06:40.220 align:middle line:84%
+only one bad beta
+for simplicity.
+
+01:06:40.220 --> 01:06:42.710 align:middle line:84%
+This one has one bad
+beta, so we're good.
+
+01:06:42.710 --> 01:06:46.240 align:middle line:84%
+If it has one bad beta,
+I want to avoid that one.
+
+01:06:46.240 --> 01:06:49.270 align:middle line:84%
+Now, if there's
+some trapdoor that
+
+01:06:49.270 --> 01:06:53.350 align:middle line:84%
+allows me to compute
+that bad beta,
+
+01:06:53.350 --> 01:06:57.190 align:middle line:84%
+then I can't put the
+trapdoor in the hash function
+
+01:06:57.190 --> 01:06:58.810 align:middle line:90%
+and give it to the world.
+
+01:06:58.810 --> 01:07:01.490 align:middle line:84%
+There's a reason why it's
+a trapdoor and not public.
+
+01:07:01.490 --> 01:07:04.030 align:middle line:84%
+Here, in this case,
+it's for zero knowledge.
+
+01:07:04.030 --> 01:07:09.220 align:middle line:84%
+But what I can do is give an
+encryption of the trapdoor.
+
+01:07:09.220 --> 01:07:10.760 align:middle line:84%
+And actually, in
+the actual scheme,
+
+01:07:10.760 --> 01:07:11.950 align:middle line:84%
+it won't be encryption
+on that trapdoor.
+
+01:07:11.950 --> 01:07:13.117 align:middle line:90%
+It'll be encryption of zero.
+
+01:07:13.117 --> 01:07:15.160 align:middle line:84%
+Nobody's going to ever
+decrypt this thing.
+
+01:07:15.160 --> 01:07:16.960 align:middle line:84%
+But let's think of
+it as an encryption
+
+01:07:16.960 --> 01:07:20.210 align:middle line:90%
+of the trapdoor for now.
+
+01:07:20.210 --> 01:07:22.110 align:middle line:90%
+Now, again, where are we?
+
+01:07:22.110 --> 01:07:24.070 align:middle line:84%
+Why did we make
+any progress here?
+
+01:07:24.070 --> 01:07:29.510 align:middle line:90%
+
+
+01:07:29.510 --> 01:07:35.330 align:middle line:84%
+So next, is the most
+amazing point, I think.
+
+01:07:35.330 --> 01:07:37.790 align:middle line:84%
+When I saw this, it
+took me a very long time
+
+01:07:37.790 --> 01:07:40.705 align:middle line:84%
+to process because it's
+such an ingenious idea.
+
+01:07:40.705 --> 01:07:43.310 align:middle line:90%
+
+
+01:07:43.310 --> 01:07:45.960 align:middle line:90%
+But here's the idea.
+
+01:07:45.960 --> 01:07:49.850 align:middle line:84%
+So they say, yeah,
+you know what?
+
+01:07:49.850 --> 01:07:54.920 align:middle line:90%
+Nevertheless, my hash function--
+
+01:07:54.920 --> 01:07:57.060 align:middle line:84%
+so then they say,
+OK, you're right.
+
+01:07:57.060 --> 01:08:02.390 align:middle line:84%
+This kind of hash function
+that has the trapdoor in it
+
+01:08:02.390 --> 01:08:04.877 align:middle line:84%
+and you evaluate the
+trapdoor, you're right.
+
+01:08:04.877 --> 01:08:05.460 align:middle line:90%
+It's not good.
+
+01:08:05.460 --> 01:08:06.800 align:middle line:90%
+It doesn't even type check.
+
+01:08:06.800 --> 01:08:09.150 align:middle line:84%
+The output is not the
+length it's supposed to be.
+
+01:08:09.150 --> 01:08:10.550 align:middle line:90%
+Yeah, this is nonsense.
+
+01:08:10.550 --> 01:08:12.140 align:middle line:90%
+Let us fix this.
+
+01:08:12.140 --> 01:08:13.950 align:middle line:90%
+And here's how they fix it.
+
+01:08:13.950 --> 01:08:17.240 align:middle line:84%
+Let me put the eval here
+because it'd be nice to see.
+
+01:08:17.240 --> 01:08:19.118 align:middle line:90%
+So here's their fix.
+
+01:08:19.118 --> 01:08:20.160 align:middle line:90%
+They said, you know what?
+
+01:08:20.160 --> 01:08:23.149 align:middle line:84%
+Fine, that may have
+been the wrong function.
+
+01:08:23.149 --> 01:08:24.600 align:middle line:90%
+We're going to encrypt.
+
+01:08:24.600 --> 01:08:29.960 align:middle line:84%
+So our CRR hash key is going
+to consist of encryption
+
+01:08:29.960 --> 01:08:33.080 align:middle line:90%
+of another function, g.
+
+01:08:33.080 --> 01:08:35.950 align:middle line:84%
+By the way, I'm using
+the hat to denote
+
+01:08:35.950 --> 01:08:38.950 align:middle line:84%
+fully homomorphic encryption as
+opposed to standard encryption.
+
+01:08:38.950 --> 01:08:41.109 align:middle line:84%
+That's often we use
+in the literature.
+
+01:08:41.109 --> 01:08:44.620 align:middle line:84%
+The hat is kind of a shortcut
+to denote public key comma
+
+01:08:44.620 --> 01:08:45.880 align:middle line:90%
+encryption of g.
+
+01:08:45.880 --> 01:08:48.580 align:middle line:84%
+And when you use
+this hat, we usually
+
+01:08:48.580 --> 01:08:50.260 align:middle line:84%
+use it when we want
+to talk about fully
+
+01:08:50.260 --> 01:08:53.149 align:middle line:90%
+homomorphic encryption.
+
+01:08:53.149 --> 01:08:57.010 align:middle line:84%
+So now, they say, this
+is going to be my--
+
+01:08:57.010 --> 01:08:58.779 align:middle line:84%
+nevertheless, I'm
+going to encrypt a g.
+
+01:08:58.779 --> 01:08:59.899 align:middle line:90%
+What's this g?
+
+01:08:59.899 --> 01:09:01.060 align:middle line:90%
+We'll see.
+
+01:09:01.060 --> 01:09:02.290 align:middle line:90%
+I'm going to encrypt a g.
+
+01:09:02.290 --> 01:09:06.069 align:middle line:90%
+
+
+01:09:06.069 --> 01:09:08.560 align:middle line:90%
+So here's their hash key.
+
+01:09:08.560 --> 01:09:13.720 align:middle line:84%
+The hash key is going to be I'm
+going to generate a public key
+
+01:09:13.720 --> 01:09:15.870 align:middle line:90%
+and encrypt a function g.
+
+01:09:15.870 --> 01:09:18.420 align:middle line:84%
+So it's like the public
+key corresponding to g
+
+01:09:18.420 --> 01:09:21.270 align:middle line:84%
+and then g, which is
+just another shortcut
+
+01:09:21.270 --> 01:09:23.939 align:middle line:90%
+to say encryption of g.
+
+01:09:23.939 --> 01:09:28.560 align:middle line:84%
+And when I say encrypted g,
+just think of the description
+
+01:09:28.560 --> 01:09:29.865 align:middle line:90%
+of the circuit.
+
+01:09:29.865 --> 01:09:31.740 align:middle line:84%
+So there is some way to
+describe the circuit.
+
+01:09:31.740 --> 01:09:34.700 align:middle line:90%
+I encrypt the description.
+
+01:09:34.700 --> 01:09:36.970 align:middle line:84%
+So I encrypt this
+description of a circuit g.
+
+01:09:36.970 --> 01:09:40.310 align:middle line:90%
+What this g is we'll see.
+
+01:09:40.310 --> 01:09:41.890 align:middle line:90%
+But that's my hash key.
+
+01:09:41.890 --> 01:09:45.640 align:middle line:90%
+So this is the hash key.
+
+01:09:45.640 --> 01:09:51.850 align:middle line:84%
+How do you evaluate
+hash key and alpha?
+
+01:09:51.850 --> 01:09:52.939 align:middle line:90%
+They say you know what?
+
+01:09:52.939 --> 01:09:56.920 align:middle line:84%
+Just compute g of
+alpha under the hood.
+
+01:09:56.920 --> 01:09:58.830 align:middle line:84%
+How do you compute g of
+alpha under the hood.
+
+01:09:58.830 --> 01:10:03.520 align:middle line:84%
+Essentially, they say, do
+they eval of the f and g.
+
+01:10:03.520 --> 01:10:05.710 align:middle line:84%
+There's two evals, so
+it's a bit confusing.
+
+01:10:05.710 --> 01:10:09.250 align:middle line:84%
+Because we usually denote
+the evaluation computing
+
+01:10:09.250 --> 01:10:10.600 align:middle line:90%
+the hash function by eval.
+
+01:10:10.600 --> 01:10:13.570 align:middle line:84%
+But now, we also have the
+eval of the full homomorphic
+
+01:10:13.570 --> 01:10:14.710 align:middle line:90%
+encryption scheme.
+
+01:10:14.710 --> 01:10:17.950 align:middle line:84%
+So take the fully homomorphic
+encryption scheme.
+
+01:10:17.950 --> 01:10:19.970 align:middle line:90%
+Take the ciphertext g.
+
+01:10:19.970 --> 01:10:24.070 align:middle line:84%
+So take the public key
+corresponding to the ciphertext.
+
+01:10:24.070 --> 01:10:25.220 align:middle line:90%
+What's the function?
+
+01:10:25.220 --> 01:10:26.390 align:middle line:90%
+What's the circuit c?
+
+01:10:26.390 --> 01:10:29.355 align:middle line:84%
+It's going to be kind of a
+universal circuit sub alpha.
+
+01:10:29.355 --> 01:10:31.795 align:middle line:90%
+
+
+01:10:31.795 --> 01:10:33.420 align:middle line:84%
+I'll tell you what
+this is in a second.
+
+01:10:33.420 --> 01:10:36.440 align:middle line:90%
+And the ciphertext is g.
+
+01:10:36.440 --> 01:10:39.380 align:middle line:84%
+And this universal circuit
+of alpha, all it does,
+
+01:10:39.380 --> 01:10:43.040 align:middle line:84%
+the definition, it takes
+as input a circuit g
+
+01:10:43.040 --> 01:10:47.000 align:middle line:90%
+and it outputs g of alpha.
+
+01:10:47.000 --> 01:10:49.490 align:middle line:84%
+So essentially, what we do,
+what this hash function does,
+
+01:10:49.490 --> 01:10:50.940 align:middle line:90%
+is exactly what we said before.
+
+01:10:50.940 --> 01:10:52.850 align:middle line:90%
+It takes an encryption of g.
+
+01:10:52.850 --> 01:10:54.650 align:middle line:84%
+How does it relate
+to the trapdoor?
+
+01:10:54.650 --> 01:10:55.830 align:middle line:90%
+I'll tell you in a second.
+
+01:10:55.830 --> 01:11:02.000 align:middle line:84%
+Before, we said, g, it just
+has the trapdoor in it.
+
+01:11:02.000 --> 01:11:04.830 align:middle line:84%
+Before, we say g is just
+this g, computes bad.
+
+01:11:04.830 --> 01:11:06.020 align:middle line:90%
+And it has the trapdoor.
+
+01:11:06.020 --> 01:11:08.310 align:middle line:90%
+And we encrypt g.
+
+01:11:08.310 --> 01:11:10.270 align:middle line:90%
+Now, they say, OK, you're right.
+
+01:11:10.270 --> 01:11:11.110 align:middle line:90%
+There's a problem.
+
+01:11:11.110 --> 01:11:12.690 align:middle line:84%
+We'll tell you what
+g is in a second.
+
+01:11:12.690 --> 01:11:15.900 align:middle line:84%
+But same idea, same
+idea, we encrypt this g.
+
+01:11:15.900 --> 01:11:18.090 align:middle line:84%
+Maybe it'll be a little
+different, but we encrypt g.
+
+01:11:18.090 --> 01:11:22.390 align:middle line:84%
+And the hash function computes
+g and alpha under the hood.
+
+01:11:22.390 --> 01:11:25.570 align:middle line:90%
+
+
+01:11:25.570 --> 01:11:27.640 align:middle line:84%
+So it takes the original
+first message alpha
+
+01:11:27.640 --> 01:11:31.890 align:middle line:84%
+and computes the function
+g under the hood.
+
+01:11:31.890 --> 01:11:33.300 align:middle line:90%
+We just went over for it.
+
+01:11:33.300 --> 01:11:34.023 align:middle line:90%
+It doesn't work.
+
+01:11:34.023 --> 01:11:35.190 align:middle line:90%
+Then you get the encryption.
+
+01:11:35.190 --> 01:11:36.270 align:middle line:90%
+It doesn't even type check.
+
+01:11:36.270 --> 01:11:36.770 align:middle line:90%
+What?
+
+01:11:36.770 --> 01:11:40.410 align:middle line:90%
+
+
+01:11:40.410 --> 01:11:42.840 align:middle line:90%
+So here's their idea.
+
+01:11:42.840 --> 01:11:46.505 align:middle line:84%
+Now, this is the most beautiful
+part of today's lecture.
+
+01:11:46.505 --> 01:11:54.130 align:middle line:90%
+
+
+01:11:54.130 --> 01:11:56.750 align:middle line:84%
+Let me just write it
+short kind of hand-way.
+
+01:11:56.750 --> 01:12:01.660 align:middle line:84%
+This is going to be g of
+alpha encrypted because this
+
+01:12:01.660 --> 01:12:04.280 align:middle line:84%
+is what u does. u does,
+it computes g of alpha.
+
+01:12:04.280 --> 01:12:08.040 align:middle line:84%
+So what you get back is
+encryption of g of alpha.
+
+01:12:08.040 --> 01:12:09.660 align:middle line:90%
+Now, they say, OK.
+
+01:12:09.660 --> 01:12:13.752 align:middle line:84%
+And by the way, let me first
+say, in their scheme, what is g?
+
+01:12:13.752 --> 01:12:15.460 align:middle line:84%
+It doesn't matter
+because it's encrypted.
+
+01:12:15.460 --> 01:12:18.200 align:middle line:84%
+It's the all-zero circuit
+of a certain size.
+
+01:12:18.200 --> 01:12:20.470 align:middle line:84%
+So in their scheme,
+this g is going
+
+01:12:20.470 --> 01:12:24.470 align:middle line:84%
+to be all-zero
+circuit of size T0.
+
+01:12:24.470 --> 01:12:27.320 align:middle line:90%
+What T is we'll see in a second.
+
+01:12:27.320 --> 01:12:29.040 align:middle line:90%
+But that's all it is.
+
+01:12:29.040 --> 01:12:30.770 align:middle line:84%
+This is the Fiat-Shamir
+hash function.
+
+01:12:30.770 --> 01:12:32.040 align:middle line:84%
+The question is,
+why is it secure?
+
+01:12:32.040 --> 01:12:34.220 align:middle line:84%
+Because it seems like
+there is no way this works.
+
+01:12:34.220 --> 01:12:36.980 align:middle line:84%
+But let me just say,
+again, the Fiat-Shamir hash
+
+01:12:36.980 --> 01:12:39.400 align:middle line:90%
+function, what does it do?
+
+01:12:39.400 --> 01:12:40.900 align:middle line:90%
+It generates a public key.
+
+01:12:40.900 --> 01:12:45.910 align:middle line:84%
+It encrypts in the actual
+scheme, all-zero string,
+
+01:12:45.910 --> 01:12:48.057 align:middle line:90%
+000 up to T times.
+
+01:12:48.057 --> 01:12:49.390 align:middle line:90%
+We'll see what T is in a second.
+
+01:12:49.390 --> 01:12:51.880 align:middle line:84%
+In the analysis, we're
+going to play with this g.
+
+01:12:51.880 --> 01:12:53.740 align:middle line:90%
+But this is what it is.
+
+01:12:53.740 --> 01:12:57.550 align:middle line:84%
+And when you give him
+alpha, it computes
+
+01:12:57.550 --> 01:13:00.270 align:middle line:84%
+the circuit, which is
+the all-zero circuit,
+
+01:13:00.270 --> 01:13:01.010 align:middle line:90%
+under the hood.
+
+01:13:01.010 --> 01:13:02.650 align:middle line:90%
+That's all it does.
+
+01:13:02.650 --> 01:13:04.660 align:middle line:90%
+And that's the b.
+
+01:13:04.660 --> 01:13:08.010 align:middle line:90%
+That's going to be the beta.
+
+01:13:08.010 --> 01:13:10.510 align:middle line:84%
+You should be very
+confused, but I'll explain.
+
+01:13:10.510 --> 01:13:11.325 align:middle line:90%
+Yeah.
+
+01:13:11.325 --> 01:13:13.590 align:middle line:84%
+AUDIENCE: All-zero
+circuit board?
+
+01:13:13.590 --> 01:13:15.675 align:middle line:84%
+YAEL T. KALAI: Just think
+of the zero-- everything
+
+01:13:15.675 --> 01:13:16.800 align:middle line:90%
+is, I don't know, whatever.
+
+01:13:16.800 --> 01:13:20.992 align:middle line:84%
+It doesn't matter, all
+pluses, all plus gates.
+
+01:13:20.992 --> 01:13:22.950 align:middle line:84%
+Or it actually doesn't
+matter, because nobody's
+
+01:13:22.950 --> 01:13:26.080 align:middle line:90%
+going to ever decrypt it.
+
+01:13:26.080 --> 01:13:28.960 align:middle line:84%
+So I guess I'm
+saying, each circuit,
+
+01:13:28.960 --> 01:13:34.320 align:middle line:84%
+you can describe it with
+bit 010101 in some way.
+
+01:13:34.320 --> 01:13:37.650 align:middle line:90%
+So put all 0 bits.
+
+01:13:37.650 --> 01:13:40.660 align:middle line:84%
+So I don't know if it
+even describes a circuit.
+
+01:13:40.660 --> 01:13:42.390 align:middle line:90%
+Yeah, Anand.
+
+01:13:42.390 --> 01:13:46.530 align:middle line:84%
+AUDIENCE: Could you just use
+the original beta bad plus 1/2
+
+01:13:46.530 --> 01:13:50.670 align:middle line:84%
+[INAUDIBLE], the
+prover has some--
+
+01:13:50.670 --> 01:13:52.170 align:middle line:84%
+because gamma is a
+function of beta.
+
+01:13:52.170 --> 01:13:57.360 align:middle line:84%
+So just do that under the FHE
+and get an encryption of gamma,
+
+01:13:57.360 --> 01:13:59.662 align:middle line:90%
+or is this not what [INAUDIBLE]?
+
+01:13:59.662 --> 01:14:01.870 align:middle line:84%
+YAEL T. KALAI: No, I'll tell
+you why it doesn't work.
+
+01:14:01.870 --> 01:14:02.540 align:middle line:90%
+OK, good.
+
+01:14:02.540 --> 01:14:03.390 align:middle line:90%
+No, great question.
+
+01:14:03.390 --> 01:14:04.893 align:middle line:84%
+So the question
+was the following.
+
+01:14:04.893 --> 01:14:06.060 align:middle line:90%
+You're saying you know what?
+
+01:14:06.060 --> 01:14:07.850 align:middle line:90%
+Change the protocol altogether.
+
+01:14:07.850 --> 01:14:13.690 align:middle line:84%
+Change this protocol
+and ask the guy,
+
+01:14:13.690 --> 01:14:18.150 align:middle line:84%
+you don't need to be blinded
+to this Fiat-Shamir paradigm.
+
+01:14:18.150 --> 01:14:19.410 align:middle line:90%
+Change it a little bit.
+
+01:14:19.410 --> 01:14:25.890 align:middle line:84%
+And now, you put an
+encryption of the trapdoor.
+
+01:14:25.890 --> 01:14:27.750 align:middle line:84%
+So now, he computes
+better under the hood.
+
+01:14:27.750 --> 01:14:29.667 align:middle line:84%
+Tell him to compute gamma
+also under the hood.
+
+01:14:29.667 --> 01:14:31.790 align:middle line:84%
+And then we don't
+have a problem.
+
+01:14:31.790 --> 01:14:33.300 align:middle line:84%
+The problem is
+that he can cheat.
+
+01:14:33.300 --> 01:14:33.860 align:middle line:90%
+Why?
+
+01:14:33.860 --> 01:14:37.045 align:middle line:84%
+Because when he answers
+gamma, he knows the trapdoor.
+
+01:14:37.045 --> 01:14:40.315 align:middle line:90%
+
+
+01:14:40.315 --> 01:14:40.870 align:middle line:90%
+No.
+
+01:14:40.870 --> 01:14:43.810 align:middle line:84%
+But actually, one
+second, you're right.
+
+01:14:43.810 --> 01:14:45.430 align:middle line:84%
+Under the hood, he
+knows the trapdoor.
+
+01:14:45.430 --> 01:14:45.930 align:middle line:90%
+Yeah.
+
+01:14:45.930 --> 01:14:49.700 align:middle line:90%
+So hold on.
+
+01:14:49.700 --> 01:14:52.460 align:middle line:84%
+Yeah, the problem is that, under
+the hood, he knows the trapdoor.
+
+01:14:52.460 --> 01:14:58.880 align:middle line:84%
+However, I'm not sure actually
+that that's a problem.
+
+01:14:58.880 --> 01:15:03.975 align:middle line:84%
+Because at that point,
+let me think for a second.
+
+01:15:03.975 --> 01:15:07.420 align:middle line:90%
+
+
+01:15:07.420 --> 01:15:10.370 align:middle line:90%
+I think it actually may work.
+
+01:15:10.370 --> 01:15:13.380 align:middle line:84%
+So look, it changes
+the protocol.
+
+01:15:13.380 --> 01:15:17.470 align:middle line:84%
+For example, now, it's no
+longer publicly verifiable.
+
+01:15:17.470 --> 01:15:19.810 align:middle line:84%
+Now, his message is
+encrypted, so you
+
+01:15:19.810 --> 01:15:22.450 align:middle line:84%
+need to decrypt in
+order to learn it.
+
+01:15:22.450 --> 01:15:25.880 align:middle line:90%
+So there are issue with this.
+
+01:15:25.880 --> 01:15:29.860 align:middle line:84%
+But also, I'll tell
+you more than that.
+
+01:15:29.860 --> 01:15:34.870 align:middle line:84%
+If, indeed, you put in the
+Fiat-Shamir in the actual
+
+01:15:34.870 --> 01:15:35.660 align:middle line:90%
+scheme--
+
+01:15:35.660 --> 01:15:38.390 align:middle line:84%
+you should think of it, the
+people who generate Fiat-Shamir,
+
+01:15:38.390 --> 01:15:40.770 align:middle line:84%
+they actually don't
+know the trapdoor.
+
+01:15:40.770 --> 01:15:43.025 align:middle line:90%
+They don't know the trapdoor.
+
+01:15:43.025 --> 01:15:44.400 align:middle line:84%
+There's a scheme,
+and it's sound.
+
+01:15:44.400 --> 01:15:46.090 align:middle line:84%
+And there is a trapdoor,
+but nobody knows it.
+
+01:15:46.090 --> 01:15:48.340 align:middle line:84%
+And the people, they don't
+actually know the trapdoor.
+
+01:15:48.340 --> 01:15:50.160 align:middle line:84%
+So in the actual
+scheme, there won't be
+
+01:15:50.160 --> 01:15:52.380 align:middle line:90%
+any encryption of the trapdoor.
+
+01:15:52.380 --> 01:15:54.510 align:middle line:84%
+The idea is we'll
+say, well, actually,
+
+01:15:54.510 --> 01:15:55.870 align:middle line:90%
+we don't use the trapdoor.
+
+01:15:55.870 --> 01:15:57.100 align:middle line:90%
+But it's indistinguishable.
+
+01:15:57.100 --> 01:15:57.840 align:middle line:84%
+You don't know if
+you're encrypted
+
+01:15:57.840 --> 01:15:58.950 align:middle line:90%
+zero, encrypted the trapdoor.
+
+01:15:58.950 --> 01:16:00.250 align:middle line:84%
+So we're going to
+prove soundness,
+
+01:16:00.250 --> 01:16:01.667 align:middle line:84%
+assuming you encrypt
+the trapdoor.
+
+01:16:01.667 --> 01:16:03.640 align:middle line:84%
+But in the scheme, won't
+encrypt the trapdoor.
+
+01:16:03.640 --> 01:16:05.250 align:middle line:84%
+So then in the
+scheme, the gamma is
+
+01:16:05.250 --> 01:16:08.800 align:middle line:84%
+going to be useless because
+it won't correspond.
+
+01:16:08.800 --> 01:16:09.640 align:middle line:90%
+Yeah?
+
+01:16:09.640 --> 01:16:11.570 align:middle line:90%
+OK, great.
+
+01:16:11.570 --> 01:16:13.730 align:middle line:84%
+OK, great, great,
+great questions.
+
+01:16:13.730 --> 01:16:14.868 align:middle line:90%
+So where are we?
+
+01:16:14.868 --> 01:16:16.910 align:middle line:84%
+So we said, here's the
+Fiat-Shamir hash function.
+
+01:16:16.910 --> 01:16:20.530 align:middle line:84%
+The Fiat-Shamir hash function
+will take actually an arbitrary
+
+01:16:20.530 --> 01:16:22.233 align:middle line:90%
+g of a certain size.
+
+01:16:22.233 --> 01:16:23.650 align:middle line:84%
+It doesn't matter
+because nobody's
+
+01:16:23.650 --> 01:16:26.990 align:middle line:84%
+going to decrypt that
+ciphertext anyway.
+
+01:16:26.990 --> 01:16:30.820 align:middle line:84%
+And all it will do is a
+computation under the hood.
+
+01:16:30.820 --> 01:16:34.450 align:middle line:84%
+And now, it seems like I don't
+know it seems like that cannot
+
+01:16:34.450 --> 01:16:35.842 align:middle line:90%
+work.
+
+01:16:35.842 --> 01:16:38.425 align:middle line:84%
+Nevertheless, I'm going to prove
+security in, like, two lines.
+
+01:16:38.425 --> 01:16:41.250 align:middle line:90%
+
+
+01:16:41.250 --> 01:16:43.880 align:middle line:84%
+And the proof is
+ingenious, really.
+
+01:16:43.880 --> 01:16:47.040 align:middle line:84%
+This construction, it's
+very tempting to try.
+
+01:16:47.040 --> 01:16:48.110 align:middle line:90%
+It just doesn't work.
+
+01:16:48.110 --> 01:16:50.152 align:middle line:84%
+When you look at it, it's
+like OK, and then what?
+
+01:16:50.152 --> 01:16:52.100 align:middle line:90%
+And then what?
+
+01:16:52.100 --> 01:16:53.660 align:middle line:90%
+But here's their idea.
+
+01:16:53.660 --> 01:16:54.940 align:middle line:90%
+Their idea is following.
+
+01:16:54.940 --> 01:17:01.370 align:middle line:84%
+Look, all we need to argue
+is that, for every alpha,
+
+01:17:01.370 --> 01:17:04.965 align:middle line:90%
+g of alpha is not beta bad.
+
+01:17:04.965 --> 01:17:08.440 align:middle line:90%
+
+
+01:17:08.440 --> 01:17:09.405 align:middle line:90%
+That's all we need.
+
+01:17:09.405 --> 01:17:13.740 align:middle line:90%
+
+
+01:17:13.740 --> 01:17:18.190 align:middle line:84%
+So then in the analysis,
+I'm going to say-- so again,
+
+01:17:18.190 --> 01:17:19.745 align:middle line:84%
+this is the actual
+hash function.
+
+01:17:19.745 --> 01:17:21.120 align:middle line:84%
+You have an
+encryption here of g.
+
+01:17:21.120 --> 01:17:21.870 align:middle line:90%
+What g?
+
+01:17:21.870 --> 01:17:22.960 align:middle line:90%
+This g is-- I don't care.
+
+01:17:22.960 --> 01:17:25.620 align:middle line:84%
+It's like the fixed
+circuit, whatever
+
+01:17:25.620 --> 01:17:26.620 align:middle line:90%
+circuit you want to put.
+
+01:17:26.620 --> 01:17:28.050 align:middle line:84%
+And nobody's going
+to decrypt it.
+
+01:17:28.050 --> 01:17:30.340 align:middle line:84%
+In the analysis, I'm going
+to say, you know what?
+
+01:17:30.340 --> 01:17:33.870 align:middle line:84%
+I'm going to replace this
+g with a very special g,
+
+01:17:33.870 --> 01:17:39.600 align:middle line:84%
+with a g whose encryption
+is not beta bad.
+
+01:17:39.600 --> 01:17:42.220 align:middle line:90%
+
+
+01:17:42.220 --> 01:17:47.940 align:middle line:90%
+But you're like, which g hat?
+
+01:17:47.940 --> 01:17:49.520 align:middle line:90%
+Which g hat?
+
+01:17:49.520 --> 01:17:55.090 align:middle line:84%
+How do we construct the g so
+that we know that encryption
+
+01:17:55.090 --> 01:17:58.680 align:middle line:90%
+of g and alpha is not beta?
+
+01:17:58.680 --> 01:17:59.230 align:middle line:90%
+Yeah?
+
+01:17:59.230 --> 01:18:00.730 align:middle line:84%
+AUDIENCE: Just a
+syntactic question,
+
+01:18:00.730 --> 01:18:02.100 align:middle line:90%
+what does this notation mean?
+
+01:18:02.100 --> 01:18:05.250 align:middle line:84%
+Is it like an encryption of g--
+is the hat over the whole thing?
+
+01:18:05.250 --> 01:18:06.420 align:middle line:90%
+YAEL T. KALAI: Yeah.
+
+01:18:06.420 --> 01:18:07.410 align:middle line:90%
+Sorry, yeah.
+
+01:18:07.410 --> 01:18:08.590 align:middle line:90%
+Sorry.
+
+01:18:08.590 --> 01:18:13.795 align:middle line:84%
+This is an encryption with
+public key of g alpha.
+
+01:18:13.795 --> 01:18:14.420 align:middle line:90%
+AUDIENCE: Yeah.
+
+01:18:14.420 --> 01:18:15.610 align:middle line:90%
+YAEL T. KALAI: Yeah, sorry.
+
+01:18:15.610 --> 01:18:16.300 align:middle line:90%
+Thanks.
+
+01:18:16.300 --> 01:18:17.020 align:middle line:90%
+Thank you.
+
+01:18:17.020 --> 01:18:21.730 align:middle line:90%
+
+
+01:18:21.730 --> 01:18:23.355 align:middle line:90%
+So any idea what--
+
+01:18:23.355 --> 01:18:28.140 align:middle line:90%
+
+
+01:18:28.140 --> 01:18:29.100 align:middle line:90%
+OK, I'll tell you.
+
+01:18:29.100 --> 01:18:31.440 align:middle line:84%
+You won't believe me,
+but I'll tell you anyway.
+
+01:18:31.440 --> 01:18:32.222 align:middle line:90%
+It's math.
+
+01:18:32.222 --> 01:18:33.430 align:middle line:90%
+So of course, you'll believe.
+
+01:18:33.430 --> 01:18:36.230 align:middle line:84%
+But you'll be
+mind-boggled for a while.
+
+01:18:36.230 --> 01:18:37.360 align:middle line:90%
+So here's their idea.
+
+01:18:37.360 --> 01:18:40.850 align:middle line:84%
+Their idea is they
+say, OK, here's my g.
+
+01:18:40.850 --> 01:18:43.530 align:middle line:84%
+I need to ensure
+that you're not beta,
+
+01:18:43.530 --> 01:18:53.980 align:middle line:84%
+so I'm going to make my g be the
+decryption secret key of beta.
+
+01:18:53.980 --> 01:18:57.290 align:middle line:90%
+
+
+01:18:57.290 --> 01:19:01.560 align:middle line:84%
+And I'm just going to add the
+1 to it so I know you're not--
+
+01:19:01.560 --> 01:19:03.560 align:middle line:84%
+I guess we're right XOR
+because we're over 01.
+
+01:19:03.560 --> 01:19:05.280 align:middle line:90%
+I'll XOR with this with 1.
+
+01:19:05.280 --> 01:19:07.650 align:middle line:90%
+That's my g in the analysis.
+
+01:19:07.650 --> 01:19:09.750 align:middle line:84%
+So in the analysis,
+I'm going to say,
+
+01:19:09.750 --> 01:19:12.390 align:middle line:84%
+suppose you succeed in
+breaking the Fiat-Shamir.
+
+01:19:12.390 --> 01:19:15.620 align:middle line:84%
+You're also going to
+succeed with this g.
+
+01:19:15.620 --> 01:19:19.220 align:middle line:84%
+Because it's encrypted, you
+don't know the difference.
+
+01:19:19.220 --> 01:19:22.200 align:middle line:84%
+You have no idea what's
+underneath the encryption.
+
+01:19:22.200 --> 01:19:24.920 align:middle line:84%
+So you should also succeed
+in breaking with this g.
+
+01:19:24.920 --> 01:19:28.880 align:middle line:84%
+Now, this g looks bizarre
+because I'm decrypting.
+
+01:19:28.880 --> 01:19:31.060 align:middle line:90%
+This is not a ciphertext.
+
+01:19:31.060 --> 01:19:33.455 align:middle line:84%
+This is just a bunch of
+strings, a 01 string.
+
+01:19:33.455 --> 01:19:34.330 align:middle line:90%
+It's a random string.
+
+01:19:34.330 --> 01:19:35.420 align:middle line:90%
+It's not ciphertext.
+
+01:19:35.420 --> 01:19:37.280 align:middle line:84%
+What does it mean to
+decrypt this thing.
+
+01:19:37.280 --> 01:19:38.865 align:middle line:90%
+It's like, this makes no sense.
+
+01:19:38.865 --> 01:19:46.130 align:middle line:90%
+
+
+01:19:46.130 --> 01:19:48.520 align:middle line:84%
+But if the length
+of this is the--
+
+01:19:48.520 --> 01:19:50.050 align:middle line:84%
+take a ciphertext
+that the length
+
+01:19:50.050 --> 01:19:51.435 align:middle line:90%
+is like these lambda bits.
+
+01:19:51.435 --> 01:19:54.090 align:middle line:90%
+
+
+01:19:54.090 --> 01:19:55.240 align:middle line:90%
+Look, this is a function.
+
+01:19:55.240 --> 01:19:57.520 align:middle line:84%
+So you can compute this
+function, not on a ciphertext,
+
+01:19:57.520 --> 01:20:00.420 align:middle line:90%
+but compute this function.
+
+01:20:00.420 --> 01:20:04.230 align:middle line:84%
+So I decrypt the beta message,
+which is not even a ciphertext.
+
+01:20:04.230 --> 01:20:05.460 align:middle line:90%
+And I add 1.
+
+01:20:05.460 --> 01:20:06.480 align:middle line:90%
+I XORed with 1.
+
+01:20:06.480 --> 01:20:09.305 align:middle line:84%
+I XORed with anything that's not
+0 just to move it from the bad.
+
+01:20:09.305 --> 01:20:12.280 align:middle line:90%
+
+
+01:20:12.280 --> 01:20:17.480 align:middle line:84%
+Now, I want to argue, now, we
+know that encryption of this
+
+01:20:17.480 --> 01:20:20.200 align:middle line:90%
+cannot be beta.
+
+01:20:20.200 --> 01:20:22.070 align:middle line:90%
+Why?
+
+01:20:22.070 --> 01:20:23.330 align:middle line:90%
+Now, I can argue this.
+
+01:20:23.330 --> 01:20:24.100 align:middle line:90%
+Why?
+
+01:20:24.100 --> 01:20:30.120 align:middle line:84%
+Because if it was equal,
+if you decrypt this,
+
+01:20:30.120 --> 01:20:31.740 align:middle line:84%
+then you'll get a
+description of this.
+
+01:20:31.740 --> 01:20:33.490 align:middle line:84%
+If you have two strings
+and they're equal,
+
+01:20:33.490 --> 01:20:35.580 align:middle line:84%
+if you decrypt one, you
+can apply decryption,
+
+01:20:35.580 --> 01:20:36.705 align:middle line:90%
+but they'll still be equal.
+
+01:20:36.705 --> 01:20:39.040 align:middle line:84%
+The decryption is just a
+deterministic function.
+
+01:20:39.040 --> 01:20:42.230 align:middle line:90%
+So I guess.
+
+01:20:42.230 --> 01:20:44.930 align:middle line:90%
+
+
+01:20:44.930 --> 01:20:50.700 align:middle line:84%
+For this g, I want
+to argue that this,
+
+01:20:50.700 --> 01:20:52.680 align:middle line:84%
+which is Fiat-Shamir
+hash function in alpha--
+
+01:20:52.680 --> 01:20:54.950 align:middle line:84%
+this is the Fiat-Shamir
+hash function in alpha.
+
+01:20:54.950 --> 01:20:58.370 align:middle line:90%
+I want to argue this.
+
+01:20:58.370 --> 01:21:01.100 align:middle line:84%
+I want to argue,
+if it was beta, I'm
+
+01:21:01.100 --> 01:21:03.620 align:middle line:90%
+going to get a contradiction.
+
+01:21:03.620 --> 01:21:05.430 align:middle line:90%
+I want to argue it's not beta.
+
+01:21:05.430 --> 01:21:07.040 align:middle line:90%
+Why?
+
+01:21:07.040 --> 01:21:13.360 align:middle line:84%
+If it was, then I can apply
+decryption on both sides.
+
+01:21:13.360 --> 01:21:15.430 align:middle line:84%
+Then it means that
+decryption of this
+
+01:21:15.430 --> 01:21:19.840 align:middle line:84%
+will be equal to
+decryption of this.
+
+01:21:19.840 --> 01:21:21.780 align:middle line:90%
+Of course.
+
+01:21:21.780 --> 01:21:23.150 align:middle line:90%
+What is decryption of this?
+
+01:21:23.150 --> 01:21:27.730 align:middle line:90%
+
+
+01:21:27.730 --> 01:21:30.080 align:middle line:90%
+g alpha.
+
+01:21:30.080 --> 01:21:32.480 align:middle line:84%
+So I just decrypt the
+encryption of g alpha.
+
+01:21:32.480 --> 01:21:33.280 align:middle line:90%
+I get back g alpha.
+
+01:21:33.280 --> 01:21:35.870 align:middle line:90%
+
+
+01:21:35.870 --> 01:21:41.740 align:middle line:84%
+But I know g alpha is not
+the decryption of bad alpha.
+
+01:21:41.740 --> 01:21:44.830 align:middle line:84%
+Because g alpha is
+the decryption--
+
+01:21:44.830 --> 01:21:47.050 align:middle line:90%
+not plus 1.
+
+01:21:47.050 --> 01:21:48.060 align:middle line:90%
+So it can't be.
+
+01:21:48.060 --> 01:21:53.970 align:middle line:90%
+
+
+01:21:53.970 --> 01:21:57.120 align:middle line:84%
+So again, in the analysis-- so
+let me maybe write this a bit
+
+01:21:57.120 --> 01:21:58.080 align:middle line:90%
+formally.
+
+01:21:58.080 --> 01:22:00.860 align:middle line:90%
+So let me write it up there.
+
+01:22:00.860 --> 01:22:07.510 align:middle line:90%
+
+
+01:22:07.510 --> 01:22:08.570 align:middle line:90%
+I'll use this part.
+
+01:22:08.570 --> 01:22:13.120 align:middle line:84%
+So here is the actual
+proof of soundness.
+
+01:22:13.120 --> 01:22:16.160 align:middle line:90%
+So suppose-- oh, sorry.
+
+01:22:16.160 --> 01:22:18.105 align:middle line:84%
+There's one thing I
+glossed over fast.
+
+01:22:18.105 --> 01:22:22.075 align:middle line:90%
+
+
+01:22:22.075 --> 01:22:23.450 align:middle line:84%
+We'll go over it
+in the analysis.
+
+01:22:23.450 --> 01:22:24.200 align:middle line:90%
+We'll see it.
+
+01:22:24.200 --> 01:22:30.430 align:middle line:84%
+So I say, suppose there exists
+poly size cheating prover.
+
+01:22:30.430 --> 01:22:33.810 align:middle line:90%
+
+
+01:22:33.810 --> 01:22:38.940 align:middle line:84%
+And he fixes some
+graph g that's not--
+
+01:22:38.940 --> 01:22:48.740 align:middle line:84%
+does not have a Hamiltonian
+cycle and cheats and cheats
+
+01:22:48.740 --> 01:22:51.378 align:middle line:90%
+with probability big.
+
+01:22:51.378 --> 01:22:52.670 align:middle line:90%
+Let's say greater than epsilon.
+
+01:22:52.670 --> 01:22:56.800 align:middle line:90%
+Epsilon is non-negligible.
+
+01:22:56.800 --> 01:23:02.740 align:middle line:84%
+Then I'm going to say,
+then I want to argue.
+
+01:23:02.740 --> 01:23:08.250 align:middle line:84%
+Then it means that
+p star also succeeds
+
+01:23:08.250 --> 01:23:15.240 align:middle line:90%
+with probability close to--
+
+01:23:15.240 --> 01:23:19.350 align:middle line:84%
+epsilon maybe minus negligible,
+but similar probability.
+
+01:23:19.350 --> 01:23:21.360 align:middle line:90%
+If I change the hash key--
+
+01:23:21.360 --> 01:23:27.120 align:middle line:84%
+before, the hash key was
+public key and some encryption
+
+01:23:27.120 --> 01:23:29.860 align:middle line:90%
+of some bogus g.
+
+01:23:29.860 --> 01:23:32.410 align:middle line:84%
+Now, I say it will
+also succeed if I take
+
+01:23:32.410 --> 01:23:34.270 align:middle line:90%
+public key and this specific g.
+
+01:23:34.270 --> 01:23:38.230 align:middle line:90%
+Let me call this g, g star.
+
+01:23:38.230 --> 01:23:41.710 align:middle line:90%
+So that's the g in the analysis.
+
+01:23:41.710 --> 01:23:43.760 align:middle line:84%
+So again, how does
+the analysis go?
+
+01:23:43.760 --> 01:23:46.720 align:middle line:84%
+I say, suppose there exists
+a cheating prover that
+
+01:23:46.720 --> 01:23:49.990 align:middle line:84%
+takes a false
+statement and succeeds
+
+01:23:49.990 --> 01:23:53.680 align:middle line:84%
+in proving nevertheless
+and convincing.
+
+01:23:53.680 --> 01:23:56.170 align:middle line:84%
+Then I want to say
+that he will also
+
+01:23:56.170 --> 01:24:12.310 align:middle line:84%
+succeed with hash key which is
+public key and encryption of g
+
+01:24:12.310 --> 01:24:16.610 align:middle line:90%
+star, of this g star.
+
+01:24:16.610 --> 01:24:17.510 align:middle line:90%
+Why?
+
+01:24:17.510 --> 01:24:21.190 align:middle line:84%
+By semantic security
+because you can't
+
+01:24:21.190 --> 01:24:26.240 align:middle line:84%
+distinguish between encryption
+of g star and encryption of g.
+
+01:24:26.240 --> 01:24:26.750 align:middle line:90%
+Yeah.
+
+01:24:26.750 --> 01:24:29.270 align:middle line:84%
+AUDIENCE: So here, we're
+using the proof is efficient?
+
+01:24:29.270 --> 01:24:30.290 align:middle line:84%
+YAEL T. KALAI:
+We're using the fact
+
+01:24:30.290 --> 01:24:31.105 align:middle line:90%
+that the proof is efficient.
+
+01:24:31.105 --> 01:24:32.210 align:middle line:84%
+AUDIENCE: So there's
+computational soundness.
+
+01:24:32.210 --> 01:24:33.840 align:middle line:84%
+YAEL T. KALAI:
+Computational soundness.
+
+01:24:33.840 --> 01:24:35.060 align:middle line:90%
+Computational soundness, yes.
+
+01:24:35.060 --> 01:24:38.810 align:middle line:84%
+We're using the fact that
+the poly size is efficient.
+
+01:24:38.810 --> 01:24:40.980 align:middle line:84%
+And therefore, he cannot
+break semantic security.
+
+01:24:40.980 --> 01:24:43.130 align:middle line:84%
+So he cannot
+distinguish between g,
+
+01:24:43.130 --> 01:24:45.470 align:middle line:84%
+whatever the bogus g that
+we put in the zero's one,
+
+01:24:45.470 --> 01:24:48.475 align:middle line:84%
+the all-zero circuit or
+whatever, and this g star.
+
+01:24:48.475 --> 01:24:52.510 align:middle line:90%
+
+
+01:24:52.510 --> 01:24:53.930 align:middle line:90%
+I cheated slightly here.
+
+01:24:53.930 --> 01:24:58.170 align:middle line:84%
+But let me move on, and we'll
+go to the cheat in a second.
+
+01:24:58.170 --> 01:25:01.080 align:middle line:84%
+But let's say you believe that
+even though you shouldn't.
+
+01:25:01.080 --> 01:25:04.760 align:middle line:84%
+But it's very delicate,
+so we'll go there.
+
+01:25:04.760 --> 01:25:06.860 align:middle line:90%
+OK, semantic security.
+
+01:25:06.860 --> 01:25:10.160 align:middle line:84%
+Now, I'm saying with
+this g star, now,
+
+01:25:10.160 --> 01:25:12.150 align:middle line:84%
+information theoretically,
+he cannot cheat.
+
+01:25:12.150 --> 01:25:12.920 align:middle line:90%
+He's stuck.
+
+01:25:12.920 --> 01:25:14.900 align:middle line:90%
+Because guess what?
+
+01:25:14.900 --> 01:25:21.030 align:middle line:84%
+You're saying he produces alpha,
+beta, gamma accepting, right?
+
+01:25:21.030 --> 01:25:23.540 align:middle line:90%
+That's what he means he cheated.
+
+01:25:23.540 --> 01:25:28.870 align:middle line:84%
+It means that he got alpha
+such that h of alpha is bad.
+
+01:25:28.870 --> 01:25:30.970 align:middle line:84%
+Because you can only
+cheat with a bad alpha.
+
+01:25:30.970 --> 01:25:32.980 align:middle line:84%
+That's the definition
+of a bad beta.
+
+01:25:32.980 --> 01:25:34.480 align:middle line:84%
+That's the definition
+of a bad beta,
+
+01:25:34.480 --> 01:25:36.220 align:middle line:90%
+one that you can cheat with.
+
+01:25:36.220 --> 01:25:40.520 align:middle line:84%
+So we found an alpha so
+that h of alpha is bad.
+
+01:25:40.520 --> 01:25:44.330 align:middle line:90%
+But this g star never hits bad.
+
+01:25:44.330 --> 01:25:45.660 align:middle line:90%
+That's how we made it.
+
+01:25:45.660 --> 01:25:48.870 align:middle line:84%
+It's so that g of alpha
+is never the bad alpha.
+
+01:25:48.870 --> 01:25:49.380 align:middle line:90%
+Yeah.
+
+01:25:49.380 --> 01:25:51.842 align:middle line:84%
+AUDIENCE: So g start
+is [INAUDIBLE].
+
+01:25:51.842 --> 01:25:55.010 align:middle line:84%
+YAEL T. KALAI: Ah, that's
+what I glossed over, exactly.
+
+01:25:55.010 --> 01:25:56.150 align:middle line:90%
+Good.
+
+01:25:56.150 --> 01:25:58.050 align:middle line:90%
+So that's the proof.
+
+01:25:58.050 --> 01:26:00.200 align:middle line:90%
+However, there is a cheat.
+
+01:26:00.200 --> 01:26:05.990 align:middle line:84%
+And the cheat is, look, g
+star, to compute g star--
+
+01:26:05.990 --> 01:26:08.960 align:middle line:90%
+I said, just describe g star.
+
+01:26:08.960 --> 01:26:11.060 align:middle line:84%
+When I mean encrypt
+g star, I mean
+
+01:26:11.060 --> 01:26:12.830 align:middle line:84%
+give the description,
+like encrypt
+
+01:26:12.830 --> 01:26:15.120 align:middle line:90%
+the description of g star.
+
+01:26:15.120 --> 01:26:19.370 align:middle line:84%
+So let's recall what does
+g star do. g star decrypts.
+
+01:26:19.370 --> 01:26:24.420 align:middle line:84%
+So you need to know the secret
+key corresponding to public key.
+
+01:26:24.420 --> 01:26:27.660 align:middle line:90%
+We said that you can encrypt--
+
+01:26:27.660 --> 01:26:32.310 align:middle line:84%
+semantic security holds if, for
+any fixed messages m0 and m1,
+
+01:26:32.310 --> 01:26:34.133 align:middle line:90%
+you cannot distinguish between--
+
+01:26:34.133 --> 01:26:38.960 align:middle line:90%
+
+
+01:26:38.960 --> 01:26:40.430 align:middle line:90%
+is it here?
+
+01:26:40.430 --> 01:26:41.120 align:middle line:90%
+Yeah.
+
+01:26:41.120 --> 01:26:45.060 align:middle line:84%
+For any fixed m0 and m1, you
+cannot distinguish between
+
+01:26:45.060 --> 01:26:47.570 align:middle line:84%
+encryption of m0
+encryption of m1.
+
+01:26:47.570 --> 01:26:51.410 align:middle line:84%
+But here, I'm saying you cannot
+distinguish between encryption
+
+01:26:51.410 --> 01:26:56.360 align:middle line:84%
+of the secret key and encryption
+of, let's say, other bits.
+
+01:26:56.360 --> 01:26:58.550 align:middle line:90%
+That's a different story.
+
+01:26:58.550 --> 01:27:06.230 align:middle line:84%
+And indeed, we assume what's
+called circular secure FHE.
+
+01:27:06.230 --> 01:27:08.978 align:middle line:90%
+
+
+01:27:08.978 --> 01:27:11.270 align:middle line:84%
+We assume all that you cannot
+distinguish an encryption
+
+01:27:11.270 --> 01:27:14.950 align:middle line:84%
+of the secret key an
+encryption of the all-zeros.
+
+01:27:14.950 --> 01:27:16.477 align:middle line:90%
+That's an assumption.
+
+01:27:16.477 --> 01:27:17.310 align:middle line:90%
+You have a question?
+
+01:27:17.310 --> 01:27:20.000 align:middle line:90%
+Yeah.
+
+01:27:20.000 --> 01:27:27.420 align:middle line:84%
+AUDIENCE: So far it seems like
+b beta, beta bad, is also given,
+
+01:27:27.420 --> 01:27:29.530 align:middle line:90%
+not computed?
+
+01:27:29.530 --> 01:27:30.435 align:middle line:90%
+How do we--
+
+01:27:30.435 --> 01:27:31.490 align:middle line:90%
+YAEL T. KALAI: Oh, no.
+
+01:27:31.490 --> 01:27:32.240 align:middle line:90%
+No, it's computed.
+
+01:27:32.240 --> 01:27:33.073 align:middle line:90%
+Sorry, sorry, sorry.
+
+01:27:33.073 --> 01:27:34.020 align:middle line:90%
+OK, good.
+
+01:27:34.020 --> 01:27:35.120 align:middle line:90%
+No, what I meant here--
+
+01:27:35.120 --> 01:27:35.657 align:middle line:90%
+OK, thanks.
+
+01:27:35.657 --> 01:27:37.240 align:middle line:84%
+Thank you very much
+for your question.
+
+01:27:37.240 --> 01:27:39.200 align:middle line:90%
+Here's what g star alpha does.
+
+01:27:39.200 --> 01:27:42.010 align:middle line:84%
+g star of alpha,
+it has-- actually,
+
+01:27:42.010 --> 01:27:44.300 align:middle line:90%
+let me write more carefully.
+
+01:27:44.300 --> 01:27:49.360 align:middle line:84%
+It has trapdoor and
+secret key hardwire.
+
+01:27:49.360 --> 01:27:53.980 align:middle line:84%
+The first thing it does,
+it computes bad alpha
+
+01:27:53.980 --> 01:27:57.700 align:middle line:90%
+using trapdoor.
+
+01:27:57.700 --> 01:28:00.740 align:middle line:84%
+This is kind corresponding
+to our scheme.
+
+01:28:00.740 --> 01:28:04.570 align:middle line:84%
+Then he takes what he
+got, the bad alpha, he
+
+01:28:04.570 --> 01:28:06.380 align:middle line:90%
+decrypted using the secret key.
+
+01:28:06.380 --> 01:28:09.160 align:middle line:84%
+Then he XORs 1 to the
+least significant bit
+
+01:28:09.160 --> 01:28:10.270 align:middle line:90%
+or something like that.
+
+01:28:10.270 --> 01:28:12.350 align:middle line:90%
+So yeah, it does compute it.
+
+01:28:12.350 --> 01:28:15.250 align:middle line:84%
+Yeah, so this g star, you
+need to encrypt trapdoor.
+
+01:28:15.250 --> 01:28:17.320 align:middle line:84%
+And you need to
+encrypt secret key.
+
+01:28:17.320 --> 01:28:19.370 align:middle line:84%
+Now, encrypting the
+trapdoor is not a problem.
+
+01:28:19.370 --> 01:28:21.280 align:middle line:84%
+It has nothing to
+do with the key.
+
+01:28:21.280 --> 01:28:23.290 align:middle line:84%
+But the problem is you
+also need to encrypt
+
+01:28:23.290 --> 01:28:27.630 align:middle line:84%
+the secret key corresponding
+to the public key.
+
+01:28:27.630 --> 01:28:29.250 align:middle line:84%
+But yeah, thank you
+for the question.
+
+01:28:29.250 --> 01:28:30.250 align:middle line:90%
+That's a great question.
+
+01:28:30.250 --> 01:28:34.420 align:middle line:84%
+So g alpha-- I want to repeat.
+g star alpha, what does it do?
+
+01:28:34.420 --> 01:28:35.380 align:middle line:90%
+It takes alpha.
+
+01:28:35.380 --> 01:28:38.910 align:middle line:84%
+It first computes the
+bad beta corresponding
+
+01:28:38.910 --> 01:28:40.870 align:middle line:90%
+to the alpha using the trapdoor.
+
+01:28:40.870 --> 01:28:42.580 align:middle line:90%
+Then he takes the string.
+
+01:28:42.580 --> 01:28:45.910 align:middle line:84%
+He decrypts this weird
+string using the secret key.
+
+01:28:45.910 --> 01:28:49.830 align:middle line:84%
+And then he XORs the least
+significant bit with 1
+
+01:28:49.830 --> 01:28:54.061 align:middle line:84%
+or any bit with 1 just
+to make it not equal.
+
+01:28:54.061 --> 01:28:55.630 align:middle line:90%
+AUDIENCE: What is trapdoor?
+
+01:28:55.630 --> 01:28:56.755 align:middle line:90%
+Is it still the secret key?
+
+01:28:56.755 --> 01:28:58.755 align:middle line:84%
+YAEL T. KALAI: It's the
+secret key corresponding
+
+01:28:58.755 --> 01:28:59.800 align:middle line:90%
+to this commitment.
+
+01:28:59.800 --> 01:29:01.900 align:middle line:84%
+That's why I said this
+trapdoor, in some sense,
+
+01:29:01.900 --> 01:29:04.310 align:middle line:84%
+is also a secret key of
+a public key encryption.
+
+01:29:04.310 --> 01:29:07.880 align:middle line:84%
+But there's two
+encryption going on.
+
+01:29:07.880 --> 01:29:10.650 align:middle line:90%
+One is the FHE encryption.
+
+01:29:10.650 --> 01:29:14.580 align:middle line:84%
+And one is how we
+implement this commitment.
+
+01:29:14.580 --> 01:29:17.310 align:middle line:84%
+So you write that we
+implement this commitment also
+
+01:29:17.310 --> 01:29:20.093 align:middle line:84%
+with an encryption scheme,
+but it's better to forget it.
+
+01:29:20.093 --> 01:29:21.510 align:middle line:84%
+Because, otherwise,
+it's confusing
+
+01:29:21.510 --> 01:29:22.930 align:middle line:84%
+that there's two
+encryption scheme.
+
+01:29:22.930 --> 01:29:25.180 align:middle line:84%
+So here, I want to say,
+suppose you have a commitment.
+
+01:29:25.180 --> 01:29:27.390 align:middle line:84%
+And there's a chapter that
+allows you to open it.
+
+01:29:27.390 --> 01:29:30.840 align:middle line:84%
+Forget that this trapdoor
+is also a secret key.
+
+01:29:30.840 --> 01:29:34.108 align:middle line:84%
+So now, I'm saying you need this
+trapdoor to open the commitment,
+
+01:29:34.108 --> 01:29:34.900 align:middle line:90%
+which you're right.
+
+01:29:34.900 --> 01:29:37.710 align:middle line:84%
+This trapdoor happens also
+to be a secret key, too.
+
+01:29:37.710 --> 01:29:41.790 align:middle line:84%
+Because that's how we
+implemented the commitment.
+
+01:29:41.790 --> 01:29:44.010 align:middle line:84%
+And it has a secret
+key corresponding
+
+01:29:44.010 --> 01:29:47.030 align:middle line:90%
+to this same public key.
+
+01:29:47.030 --> 01:29:47.750 align:middle line:90%
+You see?
+
+01:29:47.750 --> 01:29:51.010 align:middle line:84%
+So I guess what's
+the problematic part
+
+01:29:51.010 --> 01:29:56.590 align:middle line:84%
+is that the hash key consists
+of a public key of a fully
+
+01:29:56.590 --> 01:29:59.040 align:middle line:90%
+homomorphic encryption scheme.
+
+01:29:59.040 --> 01:30:07.152 align:middle line:84%
+And to describe g star,
+you need the trapdoor,
+
+01:30:07.152 --> 01:30:08.110 align:middle line:90%
+which is not a problem.
+
+01:30:08.110 --> 01:30:09.890 align:middle line:84%
+You could just encrypt this
+trapdoor under public key.
+
+01:30:09.890 --> 01:30:10.900 align:middle line:90%
+It's a fresh public key.
+
+01:30:10.900 --> 01:30:13.020 align:middle line:84%
+You can encrypt any--
+this is kind of fixed
+
+01:30:13.020 --> 01:30:14.530 align:middle line:90%
+compared to this public key.
+
+01:30:14.530 --> 01:30:18.090 align:middle line:84%
+But you also need to encrypt
+the secret key corresponding
+
+01:30:18.090 --> 01:30:20.210 align:middle line:90%
+to this public key.
+
+01:30:20.210 --> 01:30:25.080 align:middle line:84%
+And for that, we need to
+rely on circular security.
+
+01:30:25.080 --> 01:30:26.940 align:middle line:84%
+So let me just
+quickly write what
+
+01:30:26.940 --> 01:30:30.890 align:middle line:84%
+I mean by circular security,
+and then we'll break.
+
+01:30:30.890 --> 01:30:32.825 align:middle line:90%
+So I'll write it here.
+
+01:30:32.825 --> 01:30:42.110 align:middle line:90%
+
+
+01:30:42.110 --> 01:30:51.770 align:middle line:84%
+It just means that public key
+and encryption of the secret key
+
+01:30:51.770 --> 01:30:58.400 align:middle line:84%
+is indistinguishable from
+public key and encryption
+
+01:30:58.400 --> 01:31:01.610 align:middle line:90%
+of, let's say, the all-zeros.
+
+01:31:01.610 --> 01:31:05.580 align:middle line:84%
+And let me just mention
+that secret key here
+
+01:31:05.580 --> 01:31:07.860 align:middle line:84%
+you can think of
+it as lambda bits.
+
+01:31:07.860 --> 01:31:10.400 align:middle line:84%
+Let's say a security
+parameter number of bits.
+
+01:31:10.400 --> 01:31:14.870 align:middle line:84%
+Then if we think of
+bit-wise encryption,
+
+01:31:14.870 --> 01:31:16.530 align:middle line:84%
+it's like encryption
+of secret key,
+
+01:31:16.530 --> 01:31:18.988 align:middle line:84%
+the first bit of the secret
+key encryption, the second bit,
+
+01:31:18.988 --> 01:31:21.500 align:middle line:90%
+it's like lambda encryptions.
+
+01:31:21.500 --> 01:31:23.635 align:middle line:84%
+And this also, I
+mean, encryption of 0,
+
+01:31:23.635 --> 01:31:25.010 align:middle line:84%
+encryption of 0,
+encryption of 0.
+
+01:31:25.010 --> 01:31:27.160 align:middle line:90%
+We do everything bit by bit.
+
+01:31:27.160 --> 01:31:32.140 align:middle line:84%
+And the assumption is that you
+have an FHE scheme so that you
+
+01:31:32.140 --> 01:31:36.280 align:middle line:84%
+cannot distinguish between
+whether the lambda encryptions--
+
+01:31:36.280 --> 01:31:40.450 align:middle line:84%
+each one encrypts a bit--
+whether these encryptions are
+
+01:31:40.450 --> 01:31:42.820 align:middle line:84%
+all-zero or whether they
+correspond to the bits
+
+01:31:42.820 --> 01:31:44.710 align:middle line:90%
+of the secret key.
+
+01:31:44.710 --> 01:31:47.440 align:middle line:90%
+So that's an assumption.
+
+01:31:47.440 --> 01:31:52.760 align:middle line:84%
+By the way, so the
+question is, well,
+
+01:31:52.760 --> 01:31:56.290 align:middle line:84%
+do we have FHE that have
+circular security, question
+
+01:31:56.290 --> 01:31:56.900 align:middle line:90%
+mark?
+
+01:31:56.900 --> 01:31:59.470 align:middle line:90%
+Well, we do under an assumption.
+
+01:31:59.470 --> 01:32:01.810 align:middle line:84%
+It's called circular
+secure learning with error.
+
+01:32:01.810 --> 01:32:05.830 align:middle line:84%
+So we just move this circular
+secure into the assumption.
+
+01:32:05.830 --> 01:32:07.940 align:middle line:84%
+We believe this
+assumption to be true.
+
+01:32:07.940 --> 01:32:09.020 align:middle line:90%
+We don't know.
+
+01:32:09.020 --> 01:32:12.650 align:middle line:84%
+But actually, we
+can remove all this.
+
+01:32:12.650 --> 01:32:15.020 align:middle line:84%
+It turns out we don't need
+to put the secret key there.
+
+01:32:15.020 --> 01:32:19.450 align:middle line:84%
+And there's a follow-up
+work that did more work,
+
+01:32:19.450 --> 01:32:21.820 align:middle line:90%
+a lot of lattice work.
+
+01:32:21.820 --> 01:32:24.010 align:middle line:84%
+Here, I didn't
+talk at all about--
+
+01:32:24.010 --> 01:32:26.470 align:middle line:84%
+I mean, as long as you have
+fully homomorphic encryption
+
+01:32:26.470 --> 01:32:28.190 align:middle line:84%
+that's circular
+secure, we're all set.
+
+01:32:28.190 --> 01:32:30.460 align:middle line:90%
+I don't care what this is like.
+
+01:32:30.460 --> 01:32:31.960 align:middle line:84%
+But then there's
+follow-up work that
+
+01:32:31.960 --> 01:32:34.750 align:middle line:84%
+looks at the specific fully
+homomorphic encryption
+
+01:32:34.750 --> 01:32:37.660 align:middle line:84%
+scheme based on lattices and
+does a bunch of lattice tricks
+
+01:32:37.660 --> 01:32:40.610 align:middle line:84%
+to remove the need
+for circular security.
+
+01:32:40.610 --> 01:32:42.800 align:middle line:84%
+So this is something
+I didn't show you,
+
+01:32:42.800 --> 01:32:47.140 align:middle line:84%
+but there is a follow-up
+work that does that.
+
+01:32:47.140 --> 01:32:49.120 align:middle line:90%
+So I want to take a break.
+
+01:32:49.120 --> 01:32:51.300 align:middle line:84%
+But before a break, are
+there any questions?
+
+01:32:51.300 --> 01:32:51.800 align:middle line:90%
+Yeah.
+
+01:32:51.800 --> 01:32:53.633 align:middle line:84%
+AUDIENCE: So here, the
+size of the circuit T
+
+01:32:53.633 --> 01:32:55.747 align:middle line:84%
+has to be large enough
+to contain this--
+
+01:32:55.747 --> 01:32:56.580 align:middle line:90%
+YAEL T. KALAI: Good.
+
+01:32:56.580 --> 01:32:57.310 align:middle line:90%
+Exactly.
+
+01:32:57.310 --> 01:32:59.122 align:middle line:84%
+So good question,
+very good question.
+
+01:32:59.122 --> 01:33:01.330 align:middle line:84%
+Guys, you're really having
+fantastic questions today.
+
+01:33:01.330 --> 01:33:01.850 align:middle line:90%
+Thank you.
+
+01:33:01.850 --> 01:33:04.390 align:middle line:90%
+So going back, what is this T?
+
+01:33:04.390 --> 01:33:07.620 align:middle line:84%
+This T is the number of bits
+needed to represent this g star.
+
+01:33:07.620 --> 01:33:13.170 align:middle line:84%
+Because in the analysis,
+I convert the 0 to the T
+
+01:33:13.170 --> 01:33:16.270 align:middle line:84%
+with g star, with the
+decryption of g star.
+
+01:33:16.270 --> 01:33:19.030 align:middle line:84%
+So this is exactly what
+T is in the analysis.
+
+01:33:19.030 --> 01:33:25.850 align:middle line:90%
+
+
+01:33:25.850 --> 01:33:30.030 align:middle line:90%
+Any further questions?
+
+01:33:30.030 --> 01:33:32.750 align:middle line:84%
+So let's take like, maybe, I
+don't know, 8 minute break.
+
+01:33:32.750 --> 01:33:33.830 align:middle line:90%
+It feels intense.
+
+01:33:33.830 --> 01:33:36.530 align:middle line:90%
+Take like 8 minute break or so.
+
+01:33:36.530 --> 01:33:40.450 align:middle line:84%
+And when we go back,
+we'll do the NIZK.

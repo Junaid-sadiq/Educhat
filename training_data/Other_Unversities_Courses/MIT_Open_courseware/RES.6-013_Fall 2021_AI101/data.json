@@ -1,0 +1,23 @@
+{
+  "course_title":"AI 101",
+  "course_description":"*Machine vision. Data wrangling. Reinforcement learning.* What do these terms even mean? In AI 101, MIT researcher Brandon Leshchinskiy offers an introduction to artificial intelligence that's designed specifically for those with little to no background in the subject. The workshop starts with a summary of key concepts in AI, followed by an interactive exercise where participants train their own algorithm. Finally, it closes with a summary of key takeaways and Q/A. All are welcome!",
+  "course_description_html":"<em>Machine vision. Data wrangling. Reinforcement learning.</em> What do these terms even mean? In AI 101, MIT researcher Brandon Leshchinskiy offers an introduction to artificial intelligence that&rsquo;s designed specifically for those with little to no background in the subject. The workshop starts with a summary of key concepts in AI, followed by an interactive exercise where participants train their own algorithm. Finally, it closes with a summary of key takeaways and Q/A. All are welcome!",
+  "site_uid":"6c7bcd6a-1293-4483-be2b-a12fa9b9ef96",
+  "legacy_uid":"","instructors": [{
+    "first_name":"Brandon",
+    "last_name":"Leshchinskiy",
+    "middle_initial":"",
+    "salutation":"",
+    "title":"Brandon Leshchinskiy"}],"department_numbers":["6"],
+  "learning_resource_types":["Video Materials"],
+  "topics":[["Engineering","Computer Science","Artificial Intelligence"]],
+  "mit_learn_topics":null,
+  "primary_course_number":"RES.6-013",
+  "extra_course_numbers":"",
+  "term":"Fall",
+  "year":"2021",
+  "level":["Undergraduate"],
+  "hide_download":null,
+  "image_src":"./static_resources/res-6-013f21.png",
+  "course_image_metadata":{"body":"","content_type":"resource","description":"","draft":false,"file":"/courses/res-6-013-ai-101-fall-2021/res-6-013f21.png","file_size":170109,"file_type":"image/png","image_metadata":{"caption":"Classification of images is one common application of machine learning. (Image by MIT OpenCourseWare based on photos by [Andrea Pineda](https://www.flickr.com/photos/pine87/2787209562) (CC BY-NC-SA), [Driton Avdyli](https://www.flickr.com/photos/driton/2485380411) (CC BY-NC-SA), and [Tom Houslay](https://www.flickr.com/photos/tomhouslay/14962688165) (CC BY-NC), all on Flickr.)","credit":"","image-alt":""},"iscjklanguage":false,"learning_resource_types":[],"license":"https://creativecommons.org/licenses/by-nc-sa/4.0/","resourcetype":"Image","title":"RES-6-013f21.png","uid":"0eac70b6-a85f-47b4-b77a-8f9d38ceb023","video_files":{"video_captions_file":"","video_thumbnail_file":"","video_transcript_file":""},"video_metadata":{"video_speakers":"","video_tags":"","youtube_description":"","youtube_id":""}}}
+
