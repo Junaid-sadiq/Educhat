@@ -246,9 +246,9 @@ def main():
     # --- Configuration for targeting a specific subfolder (e.g., "resources") ---
     # Set this to the specific subfolder you want to process within the course.
     # If you want to process the entire course again, remove ", \"resources\"" from the path.
-    target_subfolder = "resources" # CHANGE THIS if you want a different subfolder or the whole course
+    target_subfolder = "static_resources" # CHANGE THIS if you want a different subfolder or the whole course
 
-    course_base_name = "6.830_Fall_2010_Database_systems"
+    course_base_name = "14.126_Spring_2024_Game_Theory"
 
     if target_subfolder:
         input_dir = os.path.join(base, "raw_txt_input",

@@ -1,36 +1,46 @@
 - role: system
   content: |
-    You are an expert at creating realistic student questions for a university AI assistant. 
-    Generate questions that university students would naturally ask in a Teams chat environment.
-    Questions should be relevant to the educational content provided.
+    You are an expert AI specializing in generating high-quality, realistic student questions for a university AI assistant named Kiran.
+    Your primary goal is to create questions that students would genuinely ask in a Microsoft Teams chat environment when seeking help, clarification, or deeper understanding of educational material.
+    The questions MUST be grounded in the provided text content and should encourage critical thinking or practical application, not just superficial recall.
+    Emulate natural student language, including informal phrasing, expressions of confusion, or requests for specific examples.
+    Ensure questions are distinct and cover different facets of the provided material.
+
 - role: user
   content: |
-    Here is educational content from Tampere University materials:
+    Here is a chunk of educational content from Tampere University course materials:
     
+    --- TEXT CHUNK START ---
     {chunk}
+    --- TEXT CHUNK END ---
     
-    Generate 3 realistic questions that students might ask about this content in a Teams chat. 
-    The questions should:
-    1. Be directly related to the content provided
-    2. Vary in complexity (simple clarifications, conceptual understanding, application questions)
-    3. Use natural, conversational language as students would type in Teams
-    4. Cover different aspects of the material
-    
-    Format each question as a separate JSON object with "question" as the key.
+    Please generate exactly 3 distinct questions based *only* on the information within the provided text chunk.
+    These questions should:
+    1.  Be directly and exclusively answerable or addressable using the information within the provided text chunk. Do NOT ask questions requiring external knowledge.
+    2.  Represent a mix of the following question types and complexities:
+        *   **Clarification/Definition:** Seeking to understand specific terms, jargon, acronyms, or simple statements. (e.g., "What does [term/acronym] actually mean in this context?", "Can you rephrase the part about [specific detail]?")
+        *   **Conceptual Understanding:** Probing deeper understanding of concepts, principles, relationships, or implications. (e.g., "How does [concept A] relate to [concept B] as mentioned here?", "Why is [principle X] important according to this text?")
+        *   **Application/Scenario-based/Problem-solving:** Asking how a concept might be used, what would happen in a hypothetical situation based on the text, or how to solve a problem hinted at. (e.g., "If we have [situation X], how would [principle Y] from the text apply?", "Could you give an example of how [concept Z] works in practice, based on what's written?")
+    3.  Be phrased naturally, as a student would type in a Teams chat (e.g., informal, direct, may express confusion like "I'm a bit lost on...", "Still not clear on..."). Use "Kiran" to address the assistant.
+    4.  Cover different key aspects, ideas, or sections presented in the material. Avoid focusing all questions on a single sentence or paragraph.
+    5.  Avoid questions that are trivially answered by the very first sentence of a paragraph or a simple keyword search of the chunk if the answer is explicitly and obviously stated. Aim for questions that require some synthesis or interpretation of the text.
+    6.  Ensure each question is unique and not a slight rephrasing of another.
+
+    Format your output as a valid JSON array, where each element is an object with a single key "question" and the student's question as its string value.
+    Example of a single question object: {"question": "Hey Kiran, I'm a bit lost on the 'XYZ' topic from the slides, can you break it down based on this section?"}
+
 - role: assistant
   content: |
-    Based on the provided educational content, here are three realistic student questions:
-    
     ```json
     [
       {
-        "question": "Can someone explain the difference between dynamic and static polymorphism in C++? The lecture notes mention both but I'm still confused about when to use each one."
+        "question": "Hi Kiran! The notes mention 'dynamic polymorphism' and 'static polymorphism'. I'm still a bit fuzzy on the main difference in how they actually work in C++ and, like, when would I choose one over the other based on what this section says?"
       },
       {
-        "question": "Hi everyone! I'm struggling with the inheritance concept from today's lecture. Does anyone know how protected members differ from private ones when a class is inherited?"
+        "question": "Hey Kiran, for the inheritance part, if a member is 'protected', does that mean only the direct child class can access it, or can like, 'grandchild' classes (classes that inherit from the child) also see it? The text isn't super clear to me on that specific detail."
       },
       {
-        "question": "Hey Kiran, I'm working on the assignment and need to implement an abstract class. The example in the slides uses pure virtual functions - are those required for every abstract class or can I mix regular and virtual methods?"
+        "question": "Hi kiran, I'm trying to figure out abstract classes for the assignment. The material says 'pure virtual functions' are used. Does an abstract class *have* to have *only* pure virtual functions, or can it have some normal methods too? And why would I make one like that, according to this text?"
       }
     ]
     ```
