@@ -1,6 +1,0 @@
-
-{
-  "title":"Syllabus",
-  "content":" Course Meeting Time Lectures: 2 sessions / week, 1.5 hours / session\nPrerequisites 6.5620[J] Foundations of Cryptography\nSummary This course is about the evolution of proofs in computer science. We will learn about the power of interactive proofs, multi-prover interactive proofs, and probabilistically checkable proofs. We will then show how to use cryptography to convert these powerful proof systems into computationally sound non-interactive arguments (SNARGs).\nReadings Within each lecture, students will find the lecture videos and the readings assigned.\nDeliverables 1. Each student will be asked to scribe one lecture. The notes should be taken on Overleaf.\n2. We will also have one homework: Advanced Topics in Cryptography Problem Set (PDF).\n"}
-
-

@@ -1,6 +1,0 @@
-
-{
-  "title":"Lecture 6: Fiat-Shamir Paradigm and Zero-Knowledge Proofs",
-  "content":" Topics Eliminating interaction via the Fiat-Shamir paradigm. The random oracle model (ROM). Proof of the soundness of the Kilian-Micali protocol in the ROM (more generally, proof of soundness of any constant round protocol with negligible soundness). Zero-knowledge proofs (ZKP). ZKP for NP: Specifically for the Hamiltonian cycle NP-complete language. ROM fails for this ZKP since it does not have negligible soundness, and the sequential repetition is not constant rounds. Readings None\nLecture Videos Part 1 Viewing videos requires an internet connection View video page Download video Download transcript Part 2 Viewing videos requires an internet connection View video page Download video Download transcript "}
-
-
